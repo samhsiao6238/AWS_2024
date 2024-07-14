@@ -70,6 +70,16 @@ _自動安裝 EB CLI 及其依賴項目，包括 Python 和 pip，並為 EB CLI 
 
 <br>
 
+## MacOS 透過 Homebrew 安裝
+
+1. 安裝 EB CLI。
+
+    ```bash
+    brew install awsebcli
+    ```
+
+<br>
+
 ## Windows 安裝 EB CLI
 
 1. 下載 [get-pip.py](https://bootstrap.pypa.io/get-pip.py) 並保存該文件到本地目錄。
