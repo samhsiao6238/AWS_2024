@@ -113,13 +113,15 @@ _將實體 instance 規劃為 LAMP server_
 
 1. 執行 MariaDB 安全設置腳本來配置 root 密碼和其他安全選項。
 
-        ```bash
-        sudo mysql_secure_installation
-        ```
+    ```bash
+    sudo mysql_secure_installation
+    ```
 
 <br>
 
 2. 設定與一般設定時相同，這裡暫時略過。
+
+<br>
 
 ## 安裝 PHP
 
