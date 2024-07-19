@@ -12,11 +12,11 @@
 
 2. 進入 `Project settings`，切換到 `Service accounts`，點擊下載密鑰文件。
 
-    ![](images/img_44.png)
+    <img src="images/img_44.png" width="400px" />
 
 <br>
 
-3. 進入下載資料夾，將密鑰文件進行重新命名 `serviceAccountKey.json`。
+1. 進入下載資料夾，將密鑰文件進行重新命名 `serviceAccountKey.json`。
 
 <br>
 
