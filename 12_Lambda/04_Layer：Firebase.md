@@ -38,7 +38,7 @@
 
 <br>
 
-3. 編輯 `package.json`。
+3. 編輯 `package.json`；特別注意，文件名稱要正確。
 
     ```json
     {
@@ -53,7 +53,7 @@
 
 <br>
 
-4. 透過指令查詢 firebase-admin 版本。
+4. 透過指令查詢 `firebase-admin` 版本。
 
     ```bash
     npm view firebase-admin version
@@ -78,7 +78,7 @@
 
 <br>
 
-6. 編輯。
+6. 編輯 `index.js`。
 
     ```js
     const admin = require('firebase-admin');
@@ -108,7 +108,7 @@
 
 <br>
 
-7. 將密鑰文件移至此處。
+7. 將更名後的密鑰文件移至專案資料夾，這個文件將會一起打包到 AWS。
 
     ```bash
     mv ~/.Downloads/serviceAccountKey.json .
@@ -118,7 +118,7 @@
 
 ## 安裝
 
-1. 執行指令，依據 `package.json` 安裝所需套件，套機會被安裝到 `node_modules` 目錄中。
+1. 執行安裝指令，將會依據 `package.json` 指定列表安裝所需套件到 `node_modules` 目錄中；假如有生成 `node_modules` 資料夾，就必須檢查是哪裡出錯。
 
     ```bash
     npm install
@@ -126,7 +126,7 @@
 
 <br>
 
-2. 進行壓縮，並命名為 `00_AWS_Firebase.zip`。
+2. 對當前資料夾進行壓縮，並對壓縮後的檔案自訂名稱，如 `00_AWS_Firebase.zip`。
 
     ```bash
     zip -r 00_AWS_Firebase.zip .
@@ -134,7 +134,7 @@
 
 <br>
 
-3. 查詢 nodejs 版本備用。
+3. 查詢 `nodejs` 版本號備用。
 
     ```bash
     node -v
@@ -146,13 +146,13 @@
 
 ## 進入 AWS Lambda
 
-1. 建立 Function。
+1. 建立 `Function`。
 
     ![](images/img_45.png)
 
 <br>
 
-2. 自訂名稱，如 `MyFinction-Firebase`，並依據查詢結果選擇 Nodejs 版本，點擊右下角 `Create Function`。
+2. 自訂名稱，如 `MyFinction-Firebase`，並依據查詢結果選擇 `Nodejs` 版本，然後點擊右下角 `Create Function`。
 
     ![](images/img_47.png)
 
@@ -164,7 +164,7 @@
 
 <br>
 
-4. 下拉選單中選取 `.zip` 文件。
+4. 在下拉選單中選取 `.zip` 文件。
 
     ![](images/img_49.png)
 
@@ -244,13 +244,11 @@ _改用以下腳本測試寫入 Firebase Realtime Database，其餘設定相同_
     };
     ```
 
-    ![](images/img_41.png)
-
 <br>
 
 3. 點擊 `Test`，顯示成功，並寫入資料庫。
 
-    ![](images/img_54.png)
+    ![](images/img_41.png)
 
 <br>
 
