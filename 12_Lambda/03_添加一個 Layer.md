@@ -2,6 +2,8 @@
 
 _製作 requests 的 Layer_
 
+<br>
+
 ## 說明
 
 1. 進入桌面建立資料夾 `python`；特別注意，這名稱不要改。
@@ -12,7 +14,7 @@ _製作 requests 的 Layer_
 
 <br>
 
-2. 建立並進入一個層級資料夾。
+2. 建立並進入一個層級資料夾 `lib/python3.12/site-packages`。
 
     ```bash
     mkdir -p lib/python3.12/site-packages && cd lib/python3.12/site-packages
@@ -20,7 +22,7 @@ _製作 requests 的 Layer_
 
 <br>
 
-3. 使用指定版本安裝套件；特別說明，這裡是進入到 `site-packages` 路徑中進行安裝，所以在參數 `--target` 部分給值 `.`，這主要是避免過長的路徑發生錯誤，假如在其他路徑中安裝，這裡可填入相對路徑。
+3. 安裝指定版本的套件；特別說明，這裡是進入到 `site-packages` 路徑中進行安裝，所以在參數 `--target` 部分給的值是一點 `.` 表示當前目錄，這主要是避免過長的路徑發生錯誤；若不是在`site-packages` 路徑中安裝，也可在參數之後填入 `相對路徑`。
 
     ```bash
     pip3 install --platform manylinux2014_x86_64 --target . --python-version 3.12 --only-binary=:all: requests==2.31.0 beautifulsoup4
@@ -29,7 +31,7 @@ _製作 requests 的 Layer_
 
 <br>
 
-4. 退回到桌面。
+4. 退回到桌面；準備壓縮檔案。
 
     ```bash
     cd ~/Desktop
@@ -37,7 +39,7 @@ _製作 requests 的 Layer_
 
 <br>
 
-5. 將資料夾 `python` 進行壓縮並命名為 `myRequests.zip`；特別注意，這裡可自訂名稱。
+5. 將資料夾 `python` 進行壓縮並自訂名稱如 `myRequests.zip`；特別注意，這個壓縮文件的名稱是可自訂的，與被壓縮文件不同。
 
     ```bash
     zip -r myRequests.zip python
@@ -53,13 +55,13 @@ _製作 requests 的 Layer_
 
 <br>
 
-## 測試
+## 測試腳本
 
-1. 在 AWS Lambda 中，`lambda_handler()` 函數需要接受兩個參數 `event` 和 `context`，因為這兩個參數提供了 Lambda 函數運行時的必要信息。
+1. 特別注意，在 AWS Lambda 中的 `lambda_handler()` 函數需要接受兩個參數 `event` 和 `context`，而這兩個參數將提供 Lambda 函數運行時的必要信息，詳後續的說明。
 
 <br>
 
-2. 使用以下腳本。
+2. 在 `lambda_function.py` 中貼上以下代碼。
 
     ```python
     import requests
@@ -112,7 +114,7 @@ _製作 requests 的 Layer_
 
 <br>
 
-## event 參數
+## 參數說明 `event`
 
 1. event 參數包含觸發 Lambda 函數的事件數據，這些數據由觸發事件的源提供，並根據不同的事件源有不同的結構。
 
@@ -122,7 +124,7 @@ _製作 requests 的 Layer_
 
 <br>
 
-## context 參數
+## 參數說明 `context`
 
 _context 參數提供了 Lambda 執行環境的信息_
 
