@@ -10,7 +10,7 @@
 
 <br>
 
-2. 可能是 IAM 使用者或角色缺少 `s3:DeleteBucket` 許可權。這意味著在您的 IAM 使用者政策中沒有授予刪除 Bucket 的權限，解決方法是添加 `s3:DeleteBucket` 許可權。
+2. 可能是 IAM 使用者或角色缺少 `s3:DeleteBucket` 許可權。這表示在您的 IAM 使用者政策中沒有授予刪除 Bucket 的權限，解決方法是添加 `s3:DeleteBucket` 許可權。
 
 <br>
 
