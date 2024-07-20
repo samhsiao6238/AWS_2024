@@ -4,7 +4,7 @@
 
 ## 說明
 
-1. 錯誤訊息 `Service:AmazonCloudFormation, Message:Resource AWSEBAutoScalingGroup does not exist for stack awseb-e-ivs4rzg5pe-stack` 表示在 AWS EB 環境建立過程中，CloudFormation 堆疊 (stack) 中的一個資源（AWSEBAutoScalingGroup）無法找到或未成功創建。這個問題通常與 CloudFormation 堆疊的配置或 Elastic Beanstalk 環境的設置有關。
+1. 錯誤訊息 `Service:AmazonCloudFormation, Message:Resource AWSEBAutoScalingGroup does not exist for stack awseb-e-ivs4rzg5pe-stack` 表示在 AWS EB 環境建立過程中，CloudFormation 堆疊 (stack) 中的一個資源（AWSEBAutoScalingGroup）無法找到或未成功建立。這個問題通常與 CloudFormation 堆疊的配置或 Elastic Beanstalk 環境的設置有關。
 
 <br>
 
@@ -20,7 +20,7 @@
 
 <br>
 
-5. 確認服務角色擁有 `rds:CreateDBSubnetGroup` 和其他相關 RDS 許可權用以創建和管理 RDS 子網組。
+5. 確認服務角色擁有 `rds:CreateDBSubnetGroup` 和其他相關 RDS 許可權用以建立和管理 RDS 子網組。
 
 <br>
 

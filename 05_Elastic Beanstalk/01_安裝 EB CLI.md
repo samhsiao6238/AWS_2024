@@ -1,6 +1,6 @@
 # 安裝 EB CLI
 
-_自動安裝 EB CLI 及其依賴項目，包括 Python 和 pip，並為 EB CLI 創建一個虛擬環境_
+_自動安裝 EB CLI 及其依賴項目，包括 Python 和 pip，並為 EB CLI 建立一個虛擬環境_
 
 <br>
 

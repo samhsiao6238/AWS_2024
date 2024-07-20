@@ -143,7 +143,7 @@ _將實體 instance 規劃為 LAMP server_
 
 ## 測試 LAMP 堆疊
 
-1. 創建一個 PHP 測試文件。
+1. 建立一個 PHP 測試文件。
 
     ```bash
     echo "<?php phpinfo(); ?>" | sudo tee /var/www/html/info.php
