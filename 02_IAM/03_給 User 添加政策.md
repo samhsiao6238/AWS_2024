@@ -38,7 +38,7 @@
 
 <br>
 
-3. 將政策文件指定給用戶 `s3user`。
+3. 將政策文件指定給用戶 `s3user`；特別注意，這涉及到政策文件路徑，所以要確保路徑正確。
 
     ```bash
     aws iam put-user-policy --user-name s3user --policy-name S3FullAccess --policy-document file://s3_policy.json
@@ -46,11 +46,13 @@
 
 <br>
 
-4. 確認指定用戶如 `s3user` 的政策設置。
+4. 確認指定用戶如 `s3user` 當前附加的政策列表。
 
     ```bash
     aws iam list-user-policies --user-name s3user
     ```
+
+    ![](images/img_10.png)
 
 <br>
 
@@ -62,7 +64,17 @@
 
 <br>
 
-6. 查詢指定用戶的區域。
+6. 配置好 profile，必須指定 profile 來切換用戶，如 `s3user`。
+
+    ```bash
+    export AWS_PROFILE=s3user
+    ```
+
+    ![](images/img_11.png)
+
+<br>
+
+7. 查詢指定用戶的區域。
 
     ```bash
     aws configure get region --profile s3user
@@ -70,7 +82,7 @@
 
 <br>
 
-7. 查詢指定用戶的所有設定。
+8. 查詢指定用戶的所有設定。
 
     ```bash
     aws configure list --profile s3user
@@ -78,7 +90,7 @@
 
 <br>
 
-8. 查詢全部 IAM 使用者資訊。
+9. 查詢全部 IAM 使用者資訊。
 
     ```bash
     aws iam list-users
