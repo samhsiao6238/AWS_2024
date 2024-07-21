@@ -1,26 +1,18 @@
-# 建立 IAM User
-
-_使用 CLI 建立一個具有 S3 完整權限的 IAM User_
+# 添加政策
 
 <br>
 
-1. 建立一個新的 IAM 用戶，命名為 `s3user`。
+## 步驟
+
+1. 建立一個 JSON 文件如 `s3_policy.json` 用來定義用戶的訪問權限。
 
     ```bash
-    aws iam create-user --user-name s3user
+    touch s3_policy.json
     ```
 
 <br>
 
-2. 為新用戶建立訪問密鑰，包含 Access Key 和 Secret Key。
-
-    ```bash
-    aws iam create-access-key --user-name s3user
-    ```
-
-<br>
-
-3. 建立一個 JSON 文件 `s3_policy.json` 用來定義用戶的 S3 訪問權限，允許該用戶對 S3 進行完全控制。
+2. 編輯政策文件，允許用戶對 S3 進行完全控制。
 
     ```json
     {
@@ -46,7 +38,7 @@ _使用 CLI 建立一個具有 S3 完整權限的 IAM User_
 
 <br>
 
-4. 將指定策略附加到 `s3user`。
+3. 將政策文件指定給用戶 `s3user`。
 
     ```bash
     aws iam put-user-policy --user-name s3user --policy-name S3FullAccess --policy-document file://s3_policy.json
@@ -54,7 +46,7 @@ _使用 CLI 建立一個具有 S3 完整權限的 IAM User_
 
 <br>
 
-5. 確認設置。
+4. 確認指定用戶如 `s3user` 的政策設置。
 
     ```bash
     aws iam list-user-policies --user-name s3user
@@ -62,7 +54,7 @@ _使用 CLI 建立一個具有 S3 完整權限的 IAM User_
 
 <br>
 
-6. 使用指定用戶 `s3user` 的憑證配置 AWS CLI。
+5. 使用指定用戶 `s3user` 的憑證配置 AWS CLI。
 
     ```bash
     aws configure --profile s3user
@@ -70,7 +62,7 @@ _使用 CLI 建立一個具有 S3 完整權限的 IAM User_
 
 <br>
 
-7. 查詢指定用戶的區域。
+6. 查詢指定用戶的區域。
 
     ```bash
     aws configure get region --profile s3user
@@ -78,7 +70,7 @@ _使用 CLI 建立一個具有 S3 完整權限的 IAM User_
 
 <br>
 
-8. 查詢指定用戶的所有設定。
+7. 查詢指定用戶的所有設定。
 
     ```bash
     aws configure list --profile s3user
@@ -86,7 +78,7 @@ _使用 CLI 建立一個具有 S3 完整權限的 IAM User_
 
 <br>
 
-9. 查詢全部 IAM 使用者資訊。
+8. 查詢全部 IAM 使用者資訊。
 
     ```bash
     aws iam list-users
