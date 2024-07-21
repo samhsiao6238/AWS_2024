@@ -104,33 +104,45 @@
 
 ## 建立使用者密鑰
 
-1. 在 IAM 服務中，點擊進入使用者後，點擊 `建立存取金鑰`。
+1. 在 IAM 服務中，點擊進入使用者 `Users` 後，先點擊指定的用戶帳如 `sam6239` 中。
+
+    ![](images/img_57.png)
+
+<br>
+
+2. 滑動到下方，切換頁籤 `Security credentials`，點擊建立存取金鑰 `Create access key`。
 
     ![](images/img_26.png)
 
 <br>
 
-2. 選取 `命令列介面` 後勾選下方的 `確認`，緊接著進入 `下一步`。
+3. 選取 `命令列介面` 後勾選下方的 `確認`，緊接著進入 `下一步`。
 
     ![](images/img_27.png)
 
 <br>
 
-3. 任意描述。
+4. 任意描述後，點擊右下角的 `Create access key`。
 
     ![](images/img_28.png)
 
 <br>
 
-4. 避免日後遺忘，同樣 `下載 .csv 檔案`，然後 `完成`。
+5. 與前面步驟相同，先點擊 `下載 .csv 檔案`，然後完成 `Done`。
 
     ![](images/img_29.png)
 
 <br>
 
-5. 這兩份檔案，前面的是 `credentials`，後面的是 `accessKeys`。
+6. 這個檔案與前面的 `*credentials.csv` 不同，這時下載的文件名稱是 `*accessKeys.csv`。
 
     ![](images/img_30.png)
+
+<br>
+
+7. 文件內容如下，這是在程式碼或應用程序中以程式化的方式訪問 AWS 服務時使用。
+
+    ![](images/img_58.png)
 
 <br>
 
