@@ -100,7 +100,7 @@
 
 ## 使用參數 `-v` 持久化數據
 
-1. 創建一個目錄來保存 LocalStack 的數據。
+1. 建立一個目錄來保存 LocalStack 的數據。
 
     ```bash
     mkdir -p ~/Documents/localstack/data
@@ -128,7 +128,7 @@
 
 ## 使用 AWS CLI 操作 DynamoDB
 
-1. 創建一個 DynamoDB 表。
+1. 建立一個 DynamoDB 表。
 
     ```bash
     aws --endpoint-url=http://localhost:4566 dynamodb create-table \
