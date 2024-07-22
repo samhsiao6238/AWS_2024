@@ -14,7 +14,7 @@ _以上的 AWS CLI 指令可以打包為 Shell 腳本，並且將不同功能分
 
 <br>
 
-2. 編輯腳本。
+2. 編輯腳本 `rotate_root_keys.sh`；這個腳本會將根用戶的憑證寫入 `.env`。
 
     ```bash
     #!/bin/bash
@@ -45,7 +45,7 @@ _以上的 AWS CLI 指令可以打包為 Shell 腳本，並且將不同功能分
 
 <br>
 
-3. 授權。
+3. 授權腳本可執行 `+x`。
 
     ```bash
     chmod +x rotate_root_keys.sh
@@ -53,17 +53,27 @@ _以上的 AWS CLI 指令可以打包為 Shell 腳本，並且將不同功能分
 
 <br>
 
-4. 運行。
+4. 運行腳本 `rotate_root_keys.sh`。
 
     ```bash
     ./rotate_root_keys.sh
     ```
 
+    _輸出_
+
+    ![](images/img_55.png)
+
+<br>
+
+5. `.env` 文件會寫入密鑰。
+
+    ![](images/img_56.png)
+
 <br>
 
 ## 建立 IAM User
 
-1. 創建一個名為 `create_user.sh` 的腳本。
+1. 新建一個腳本，命名為 `create_user.sh`；這個腳本會建立新的 IAM User `s3user`。
 
     ```bash
     touch create_user.sh
@@ -71,7 +81,7 @@ _以上的 AWS CLI 指令可以打包為 Shell 腳本，並且將不同功能分
 
 <br>
 
-2. 編輯腳本。
+2. 編輯腳本 `create_user.sh`。
 
     ```bash
     #!/bin/bash
@@ -140,18 +150,20 @@ _若要手動建立敏感資訊可依據這個步驟，不過在上一個單元�
 2. 編輯內容。
 
     ```json
-    AWS_ACCESS_KEY_ID=your_access_key_id
-    AWS_SECRET_ACCESS_KEY=your_secret_access_key
+    ROOT_ACCESS_KEY_ID=A
+    ROOT_SECRET_ACCESS_KEY=
+    AWS_ACCESS_KEY_ID=
+    AWS_SECRET_ACCESS_KEY=
     ```
 
 <br>
 
-## 建立 Bucket 腳本
+## 添加 User 政策
 
-1. 新增兩個腳本 `create_user_policy.sh` 及 `create_s3_bucket.sh`。
+1. 新增腳本 `create_user_policy.sh`。
 
     ```bash
-    touch create_user_policy.sh create_s3_bucket.sh
+    touch create_user_policy.sh
     ```
 
 <br>
@@ -201,7 +213,33 @@ _若要手動建立敏感資訊可依據這個步驟，不過在上一個單元�
 
 <br>
 
-3. 編輯腳本 `create_s3_bucket.sh`。
+3. 授予腳本執行權限。
+
+    ```bash
+    chmod +x create_user_policy.sh
+    ```
+
+<br>
+
+4. 執行建立用戶政策的腳本。
+
+    ```bash
+    ./create_user_policy.sh
+    ```
+
+<br>
+
+## 建立 Bucket 腳本
+
+1. 新增腳本 `create_s3_bucket.sh`。
+
+    ```bash
+    touch create_s3_bucket.sh
+    ```
+
+<br>
+
+2. 編輯腳本 `create_s3_bucket.sh`。
 
     ```bash
     #!/bin/bash
@@ -227,23 +265,15 @@ _若要手動建立敏感資訊可依據這個步驟，不過在上一個單元�
 
 <br>
 
-4. 授予腳本執行權限。
+3. 授予腳本執行權限。
 
     ```bash
-    chmod +x create_user_policy.sh create_s3_bucket.sh
+    chmod +x create_s3_bucket.sh
     ```
 
 <br>
 
-5. 先執行建立用戶和政策的腳本。
-
-    ```bash
-    ./create_user_policy.sh
-    ```
-
-<br>
-
-6. 接著執行 S3 的操作腳本。
+4. 執行 S3 的操作腳本。
 
     ```bash
     ./create_s3_bucket.sh
@@ -251,11 +281,11 @@ _若要手動建立敏感資訊可依據這個步驟，不過在上一個單元�
 
 <br>
 
-7. 在腳本中，`export $(grep -v '^#' .env | xargs)` 命令會去讀取 `.env` 文件中的變量並將其導出為 `環境變量`，然後在設置 AWS 配置時，使用 `$AWS_ACCESS_KEY_ID` 和 `$AWS_SECRET_ACCESS_KEY` 來載入環境變量。
+5. 在腳本中，`export $(grep -v '^#' .env | xargs)` 命令會去讀取 `.env` 文件中的變量並將其導出為 `環境變量`，然後在設置 AWS 配置時，使用 `$AWS_ACCESS_KEY_ID` 和 `$AWS_SECRET_ACCESS_KEY` 來載入環境變量。
 
 <br>
 
-## 查詢設置腳本
+## 查詢相關設置
 
 1. 新增腳本，命名為 `query_s3_settings.sh`。
 
