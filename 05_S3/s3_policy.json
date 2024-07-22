@@ -3,8 +3,20 @@
     "Statement": [
         {
             "Effect": "Allow",
-            "Action": "s3:*",
-            "Resource": "*"
+            "Action": [
+                "s3:PutBucketPolicy",
+                "s3:GetBucketPolicy",
+                "s3:ListBucket",
+                "s3:PutObject",
+                "s3:GetObject",
+                "s3:DeleteObject",
+                "s3:DeletePublicAccessBlock",
+                "s3:GetPublicAccessBlock"
+            ],
+            "Resource": [
+                "arn:aws:s3:::my-bucket-623801",
+                "arn:aws:s3:::my-bucket-623801/*"
+            ]
         }
     ]
 }

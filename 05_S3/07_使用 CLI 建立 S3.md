@@ -177,7 +177,36 @@ _設定指定配置文件的內容_
 
 <br>
 
-3. 將政策 `S3AccessPolicy` 添加到指定使用者，並授予指定的權限。
+3. 這個政策也可以限縮範圍如下，這是比較建議的做法。
+
+    ```json
+    {
+        "Version": "2012-10-17",
+        "Statement": [
+            {
+                "Effect": "Allow",
+                "Action": [
+                    "s3:PutBucketPolicy",
+                    "s3:GetBucketPolicy",
+                    "s3:ListBucket",
+                    "s3:PutObject",
+                    "s3:GetObject",
+                    "s3:DeleteObject",
+                    "s3:DeletePublicAccessBlock",
+                    "s3:GetPublicAccessBlock"
+                ],
+                "Resource": [
+                    "arn:aws:s3:::my-bucket-623801",
+                    "arn:aws:s3:::my-bucket-623801/*"
+                ]
+            }
+        ]
+    }
+    ```
+
+<br>
+
+4. 將政策 `S3AccessPolicy` 添加到指定使用者，並授予指定的權限。
 
     ```bash
     aws iam put-user-policy --user-name s3user --policy-name S3AccessPolicy --policy-document file://s3_policy.json --profile default
@@ -185,7 +214,7 @@ _設定指定配置文件的內容_
 
 <br>
 
-4. 列出使用者的內嵌策略，已確認前面步驟確實完成。
+5. 列出使用者的內嵌策略，已確認前面步驟確實完成。
 
     ```bash
     aws iam list-user-policies --user-name s3user --profile default
@@ -195,7 +224,7 @@ _設定指定配置文件的內容_
 
 <br>
 
-5. 查詢具體的內嵌政策內容。
+6. 查詢具體的內嵌政策內容。
 
     ```bash
     aws iam get-user-policy --user-name s3user --policy-name S3AccessPolicy --profile default
@@ -329,6 +358,84 @@ _以下所稱 Bucket 皆指 `S3 Bucket`，而指定 Bucket 皆為 `my-bucket-623
 <br>
 
 _關於 Bucket 的刪除指令在最後面補充，避免在此刪除後，無法繼續後續演繹_
+
+<br>
+
+## 管理 Block Public Access 設置
+
+_為了後續編輯 Bucket 政策的需要，可參考官方說明 [Configuring block public access settings for your account](https://docs.aws.amazon.com/AmazonS3/latest/userguide/configuring-block-public-access-account.html)_
+
+<br>
+
+1. 預設如下。
+
+    ![](images/img_46.png)
+
+2. 先取得帳戶 ID 用於後續指令。
+
+    ```bash
+    aws sts get-caller-identity --profile default
+    ```
+
+    ![](images/img_47.png)
+
+<br>
+
+3. 檢查當前 `帳戶級別` 的公共訪問阻止設置。
+
+    ```bash
+    aws s3control get-public-access-block --account-id 891377311393 --profile default
+    ```
+
+    ![](images/img_48.png)
+
+<br>
+
+3. 配置或更新帳戶級別的公共訪問阻止設置。
+
+    ```bash
+    aws s3control put-public-access-block --account-id 891377311393 --public-access-block-configuration BlockPublicAcls=false,IgnorePublicAcls=false,BlockPublicPolicy=false,RestrictPublicBuckets=false --profile default
+    ```
+
+<br>
+
+4. 確認 Bucket 級別的公共訪問阻止設置。
+
+    ```bash
+    aws s3api get-public-access-block --bucket my-bucket-623801 --profile default
+    ```
+
+    ![](images/img_49.png)
+
+<br>
+
+5. 嘗試刪除 Bucket 級別的公共訪問阻止設置；刪除後，該 Bucket 及其對象可以被設置為公共訪問，允許任何人訪。
+
+    ```bash
+    aws s3api delete-public-access-block --bucket my-bucket-623801 --profile default
+    ```
+
+<br>
+
+6. 確認 Bucket 級別的公共訪問阻止設置已刪除。
+
+    ![](images/img_50.png)
+
+<br>
+
+7. 確保帳戶級別和 Bucket 級別的公共訪問阻止設置允許後，使用根帳戶設置 Bucket 政策。
+
+    ```bash
+    aws s3api put-bucket-policy --bucket my-bucket-623801 --policy file://bucket-policy.json --profile default
+    ```
+
+<br>
+
+8. 再次執行附加政策到 `s3user`。
+
+    ```bash
+    aws iam put-user-policy --user-name s3user --policy-name S3AccessPolicy --policy-document file://s3_policy.json --profile default
+    ```
 
 <br>
 
