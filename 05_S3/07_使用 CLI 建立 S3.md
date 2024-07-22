@@ -1,6 +1,101 @@
 # 建立 S3 Bucket
 
-_透過 AWS CLI 指令_
+_透過 AWS CLI 操作 S3 之前，必須先建立一個具備 S3 權限的使用者_
+
+<br>
+
+## 刪除指定帳號與設定
+
+_要先刪除帳號的附加政策及內嵌政策_
+
+<br>
+
+1. 列出並刪除指定帳號如 `s3user` 的 `附加政策`。
+
+    ```bash
+    aws iam list-attached-user-policies --user-name s3user --profile default --query 'AttachedPolicies[*].PolicyArn' --output text | xargs -n 1 -I {} aws iam detach-user-policy --user-name s3user --policy-arn {} --profile default
+    ```
+
+<br>
+
+2. 刪除指定使用者如 `s3user` 的 `內嵌政策`。
+
+    ```bash
+    aws iam list-user-policies --user-name s3user --profile default --query 'PolicyNames' --output text | xargs -n 1 -I {} aws iam delete-user-policy --user-name s3user --policy-name {} --profile default
+    ```
+
+<br>
+
+3. 刪除指定使用者如 `s3user` 的 `訪問密鑰`。
+
+    ```bash
+    aws iam list-access-keys --user-name s3user --profile default --query 'AccessKeyMetadata[*].AccessKeyId' --output text | xargs -n 1 -I {} aws iam delete-access-key --user-name s3user --access-key-id {} --profile default
+    ```
+
+<br>
+
+4. 刪除指定使用者如 `s3user` 的登入設定；假如回傳 `NoSuchEntity`，表示使用者 `s3user` 沒有登入設定，故可跳過這步驟。
+
+    ```bash
+    aws iam delete-login-profile --user-name s3user --profile default
+    ```
+
+<br>
+
+5. 刪除 SSH 公鑰。
+
+    ```bash
+    aws iam list-ssh-public-keys --user-name s3user --profile default --query 'SSHPublicKeys[*].SSHPublicKeyId' --output text | xargs -n 1 -I {} aws iam delete-ssh-public-key --user-name s3user --ssh-public-key-id {} --profile default
+    ```
+
+<br>
+
+6. 刪除多因素驗證設備。
+
+    ```bash
+    aws iam list-mfa-devices --user-name s3user --profile default --query 'MFADevices[*].SerialNumber' --output text | xargs -n 1 -I {} aws iam deactivate-mfa-device --user-name s3user --serial-number {} --profile default
+    aws iam list-mfa-devices --user-name s3user --profile default --query 'MFADevices[*].SerialNumber' --output text | xargs -n 1 -I {} aws iam delete-virtual-mfa-device --serial-number {} --profile default
+    ```
+
+<br>
+
+7. 刪除使用者。
+
+    ```bash
+    aws iam delete-user --user-name s3user --profile default
+    ```
+
+<br>
+
+## 建立使用者及正側
+
+1. 查詢當前有哪些 User；特別注意，會回傳一個列表，但不包含 root 帳號。
+
+    ```bash
+    aws iam list-users
+    ```
+
+    _輸出：無其他使用者_
+
+    ![](images/img_39.png)
+
+<br>
+
+2. 刪除指定名稱的使用者，如 `s3user。`；使用 `root` 權限的配置文件 `default`。
+
+    ```bash
+    aws iam delete-user --user-name s3user --profile default
+    ```
+
+<br>
+
+3. 建立一個新的 IAM 用戶，命名為 s3user。
+
+    ```bash
+    aws iam create-user --user-name s3user
+    ```
+
+    ![](images/img_40.png)
 
 <br>
 
