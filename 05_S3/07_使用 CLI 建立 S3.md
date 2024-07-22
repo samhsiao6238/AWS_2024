@@ -364,7 +364,7 @@ _與前面設置 `IAM User Policy` 不同，Bucket 政策是直接附加到 S3 B
 
 <br>
 
-ˇ. 以下指令可設定或更新 S3 的政策，此處是將上述政策文件應用到指定的 Bucket `（my-bucket-623801）`；其中參數 `--bucket my-bucket-623801` 指定要設定的 S3 Bucket 是 `my-bucket-623801`；參數 `--policy` 指定政策名稱；參數 `--profile s3user` 指定使用的配置檔案。
+3. 以下指令可設定或更新 S3 的政策，此處是將上述政策文件應用到指定的 Bucket `（my-bucket-623801）`；其中參數 `--bucket my-bucket-623801` 指定要設定的 S3 Bucket 是 `my-bucket-623801`；參數 `--policy` 指定政策名稱；參數 `--profile s3user` 指定使用的配置檔案。
 
     ```bash
     aws s3api put-bucket-policy --bucket my-bucket-623801 --policy file://bucket-policy.json --profile s3user
