@@ -402,17 +402,19 @@ _為了後續編輯 Bucket 政策的需要，可參考官方說明 [Configuring 
 
 <br>
 
-3. 檢查當前 `帳戶級別` 的公共訪問阻止設置。
+3. 檢查當前 `帳戶級別` 的公共訪問設置，與控制台查詢結果是一致的。
 
     ```bash
     aws s3control get-public-access-block --account-id 891377311393 --profile default
     ```
 
+    _輸出：全部都是封鎖狀態_
+
     ![](images/img_48.png)
 
 <br>
 
-3. 配置或更新帳戶級別的公共訪問阻止設置。
+3. 配置或更新帳戶級別的公共訪問封鎖設置。
 
     ```bash
     aws s3control put-public-access-block --account-id 891377311393 --public-access-block-configuration BlockPublicAcls=false,IgnorePublicAcls=false,BlockPublicPolicy=false,RestrictPublicBuckets=false --profile default
@@ -420,7 +422,7 @@ _為了後續編輯 Bucket 政策的需要，可參考官方說明 [Configuring 
 
 <br>
 
-4. 確認 Bucket 級別的公共訪問阻止設置。
+4. 確認 Bucket 級別的公共訪問封鎖設置。
 
     ```bash
     aws s3api get-public-access-block --bucket my-bucket-623801 --profile default
@@ -430,7 +432,7 @@ _為了後續編輯 Bucket 政策的需要，可參考官方說明 [Configuring 
 
 <br>
 
-5. 嘗試刪除 Bucket 級別的公共訪問阻止設置；刪除後，該 Bucket 及其對象可以被設置為公共訪問，允許任何人訪。
+5. 嘗試刪除 Bucket 級別的公共訪問封鎖設置；刪除後，該 Bucket 及其對象可以被設置為公共訪問，允許任何人訪。
 
     ```bash
     aws s3api delete-public-access-block --bucket my-bucket-623801 --profile default
@@ -438,13 +440,13 @@ _為了後續編輯 Bucket 政策的需要，可參考官方說明 [Configuring 
 
 <br>
 
-6. 確認 Bucket 級別的公共訪問阻止設置已刪除。
+6. 確認 Bucket 級別的公共訪問封鎖設置已刪除。
 
     ![](images/img_50.png)
 
 <br>
 
-7. 確保帳戶級別和 Bucket 級別的公共訪問阻止設置允許後，使用根帳戶設置 Bucket 政策。
+7. 確保帳戶級別和 Bucket 級別的公共訪問封鎖設置允許後，使用根帳戶設置 Bucket 政策。
 
     ```bash
     aws s3api put-bucket-policy --bucket my-bucket-623801 --policy file://bucket-policy.json --profile default
