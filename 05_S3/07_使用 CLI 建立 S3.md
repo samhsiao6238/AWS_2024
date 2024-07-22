@@ -444,7 +444,7 @@ _為了後續編輯 Bucket 政策的需要，可參考官方說明 [Configuring 
 
 <br>
 
-7. 確認 Bucket 級別的公共訪問封鎖設置已刪除。
+7. 再次查詢會顯示 `NoSuchPublicAccessBlockConfiguration`，結果顯示 Bucket 級別的公共訪問封鎖設置已刪除。
 
     ![](images/img_50.png)
 
