@@ -692,6 +692,14 @@ _刪除 Bucket、User 及 Policy 等_
 
 <br>
 
+17. 刪除過程中建立的所有文件；徹底還原練習環境。
+
+    ```bash
+    rm bucket-policy.json downloadfile.txt encryption.json localfile.txt s3_policy.json
+    ```
+
+<br>
+
 ___
 
 _END_
