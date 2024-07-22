@@ -364,7 +364,7 @@ _與前面設置 `IAM User Policy` 不同，Bucket 政策是直接附加到 S3 B
 
 <br>
 
-2. 以下指令可設定或更新 S3 的政策，此處是將上述政策文件應用到指定的 Bucket `（my-bucket-623801）`；其中參數 `--bucket my-bucket-623801` 指定要設定的 S3 Bucket 是 `my-bucket-623801`；參數 `--policy` 指定政策名稱；參數 `--profile s3user` 指定使用的配置檔案。
+ˇ. 以下指令可設定或更新 S3 的政策，此處是將上述政策文件應用到指定的 Bucket `（my-bucket-623801）`；其中參數 `--bucket my-bucket-623801` 指定要設定的 S3 Bucket 是 `my-bucket-623801`；參數 `--policy` 指定政策名稱；參數 `--profile s3user` 指定使用的配置檔案。
 
     ```bash
     aws s3api put-bucket-policy --bucket my-bucket-623801 --policy file://bucket-policy.json --profile s3user
@@ -372,15 +372,15 @@ _與前面設置 `IAM User Policy` 不同，Bucket 政策是直接附加到 S3 B
 
 <br>
 
-3. 建立伺服器端加密（SSE）文件 `encryption.json`。
+4. 建立伺服器端加密（SSE）文件 `encryption.json`。
 
-```bash
-touch encryption.json
-```
+    ```bash
+    touch encryption.json
+    ```
 
 <br>
 
-4. 編輯加密文件的政策，指定使用 `AES256 算法`，確保存儲在 S3 中的對象自動進行伺服器端加密。
+5. 編輯加密文件的政策，指定使用 `AES256 算法`，確保存儲在 S3 中的對象自動進行伺服器端加密。
 
     ```json
     {
@@ -398,7 +398,7 @@ touch encryption.json
 
 <br>
 
-4. 對 S3 Bucket 設置伺服器端加密；可確保數據在存儲過程中安全的一個重要措施，幫助滿足合規要求，簡化加密管理，並降低數據洩露的風險；對於授權用戶來說，加密和解密過程通常是透明的，在讀取和寫入文件時不需要額外的操作，S3 會自動處理加密和解密；而未經授權者即使獲得了加密文件，由於沒有解密密鑰，也無法解密文件，確保了數據的安全性。
+6. 對 S3 Bucket 設置伺服器端加密；可確保數據在存儲過程中安全的一個重要措施，幫助滿足合規要求，簡化加密管理，並降低數據洩露的風險；對於授權用戶來說，加密和解密過程通常是透明的，在讀取和寫入文件時不需要額外的操作，S3 會自動處理加密和解密；而未經授權者即使獲得了加密文件，由於沒有解密密鑰，也無法解密文件，確保了數據的安全性。
 
     ```bash
     aws s3api put-bucket-encryption --bucket my-bucket-623801 --server-side-encryption-configuration file://encryption.json --profile s3user
@@ -406,7 +406,7 @@ touch encryption.json
 
 <br>
 
-5. 在上傳單一對象時指定加密選項，這樣只對指定的對象進行加密。
+7. 在上傳單一對象時指定加密選項，這樣只對指定的對象進行加密。
 
     ```bash
     aws s3 cp localfile.txt s3://my-bucket-623801/localfile.txt --sse AES256 --profile s3user
@@ -414,7 +414,7 @@ touch encryption.json
 
 <br>
 
-6. 查看指定對象的元數據，包括加密信息，用以確認對象已經使用伺服器端加密；其中 `"ServerSideEncryption": "AES256"` 就是加密的資訊。
+8. 查看指定對象的元數據，包括加密信息，用以確認對象已經使用伺服器端加密；其中 `"ServerSideEncryption": "AES256"` 就是加密的資訊。
 
     ```bash
     aws s3api head-object --bucket my-bucket-623801 --key localfile.txt --profile s3user
