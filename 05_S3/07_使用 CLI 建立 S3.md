@@ -10,7 +10,15 @@ _這裡是基於練習實作，刪除先前建立的帳號 `s3user`，而刪除�
 
 <br>
 
-1. 列出並刪除指定帳號如 `s3user` 的 `附加政策`。
+1. 檢查指定帳號 `s3user` 是否存在。
+
+    ```bash
+    aws iam get-user --user-name s3user --profile default
+    ```
+
+<br>
+
+2. 列出並刪除指定帳號如 `s3user` 的 `附加政策`。
 
     ```bash
     aws iam list-attached-user-policies --user-name s3user --profile default --query 'AttachedPolicies[*].PolicyArn' --output text | xargs -n 1 -I {} aws iam detach-user-policy --user-name s3user --policy-arn {} --profile default
@@ -18,7 +26,7 @@ _這裡是基於練習實作，刪除先前建立的帳號 `s3user`，而刪除�
 
 <br>
 
-2. 刪除指定使用者如 `s3user` 的 `內嵌政策`。
+3. 刪除指定使用者如 `s3user` 的 `內嵌政策`。
 
     ```bash
     aws iam list-user-policies --user-name s3user --profile default --query 'PolicyNames' --output text | xargs -n 1 -I {} aws iam delete-user-policy --user-name s3user --policy-name {} --profile default
@@ -26,7 +34,7 @@ _這裡是基於練習實作，刪除先前建立的帳號 `s3user`，而刪除�
 
 <br>
 
-3. 刪除指定使用者如 `s3user` 的 `訪問密鑰`。
+4. 刪除指定使用者如 `s3user` 的 `訪問密鑰`。
 
     ```bash
     aws iam list-access-keys --user-name s3user --profile default --query 'AccessKeyMetadata[*].AccessKeyId' --output text | xargs -n 1 -I {} aws iam delete-access-key --user-name s3user --access-key-id {} --profile default
@@ -34,7 +42,7 @@ _這裡是基於練習實作，刪除先前建立的帳號 `s3user`，而刪除�
 
 <br>
 
-4. 刪除指定使用者如 `s3user` 的登入設定；假如回傳 `NoSuchEntity`，表示使用者 `s3user` 沒有登入設定，故可跳過這步驟。
+5. 刪除指定使用者如 `s3user` 的登入設定；假如回傳 `NoSuchEntity`，表示使用者 `s3user` 沒有登入設定，故可跳過這步驟。
 
     ```bash
     aws iam delete-login-profile --user-name s3user --profile default
@@ -42,7 +50,7 @@ _這裡是基於練習實作，刪除先前建立的帳號 `s3user`，而刪除�
 
 <br>
 
-5. 刪除 SSH 公鑰。
+6. 刪除 SSH 公鑰。
 
     ```bash
     aws iam list-ssh-public-keys --user-name s3user --profile default --query 'SSHPublicKeys[*].SSHPublicKeyId' --output text | xargs -n 1 -I {} aws iam delete-ssh-public-key --user-name s3user --ssh-public-key-id {} --profile default
@@ -50,7 +58,7 @@ _這裡是基於練習實作，刪除先前建立的帳號 `s3user`，而刪除�
 
 <br>
 
-6. 刪除多因素驗證設備。
+7. 刪除多因素驗證設備。
 
     ```bash
     aws iam list-mfa-devices --user-name s3user --profile default --query 'MFADevices[*].SerialNumber' --output text | xargs -n 1 -I {} aws iam deactivate-mfa-device --user-name s3user --serial-number {} --profile default
@@ -59,7 +67,7 @@ _這裡是基於練習實作，刪除先前建立的帳號 `s3user`，而刪除�
 
 <br>
 
-7. 刪除使用者。
+8. 刪除使用者。
 
     ```bash
     aws iam delete-user --user-name s3user --profile default
