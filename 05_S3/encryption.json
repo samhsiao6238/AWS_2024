@@ -1,9 +1,0 @@
-{
-    "Rules": [
-        {
-            "ApplyServerSideEncryptionByDefault": {
-                "SSEAlgorithm": "AES256"
-            }
-        }
-    ]
-}

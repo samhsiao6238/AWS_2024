@@ -580,11 +580,11 @@ _特別注意，若遇到權限問題而重新設定政策，需再次運行這�
 
 <br>
 
-## 還原環境
-
-_刪除 Bucket、User 及 Policy 等_
+_以上從零開始，實作了建立 IAM User、配置 AWS CLI、建立 Policy、建立並操作 Bucket、管理 Public Access、設置 Bucket Policy，接下來要刪除一切設定並還原環境。_
 
 <br>
+
+## 還原環境
 
 1. 刪除 Bucket 之前，請確認 Bucket 中沒有對象。
 
