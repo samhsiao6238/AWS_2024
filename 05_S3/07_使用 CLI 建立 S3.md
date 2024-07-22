@@ -185,6 +185,24 @@ _設定指定配置文件的內容_
 
 <br>
 
+4. 列出使用者的內嵌策略，已確認前面步驟確實完成。
+
+    ```bash
+    aws iam list-user-policies --user-name s3user --profile default
+    ```
+
+    ![](images/img_42.png)
+
+<br>
+
+5. 查詢具體的內嵌政策內容。
+
+    ```bash
+    aws iam get-user-policy --user-name s3user --policy-name S3AccessPolicy --profile default
+    ```
+
+<br>
+
 ## 建立 S3 Bucket 對象
 
 1. 建立 S3 Bucket；參數 `--bucket` 指定命名為 `my-bucket-623801`；參數 `--region` 指定區域；參數 `--profile` 使用指定配置文件，也就是指定使用者。
@@ -211,7 +229,7 @@ _設定指定配置文件的內容_
 
 <br>
 
-3. 列出所有的 S3 Buckets。
+3. 列出所有的 S3 Buckets；其中 Owner `gsam6239` 指的是 root 使用者。
 
     ```bash
     aws s3api list-buckets --profile s3user
@@ -236,7 +254,17 @@ _設定指定配置文件的內容_
 
 <br>
 
-4. 上傳檔案到 S3 Bucket，如 `localfile.txt`。
+## 操作 S3 Bucket
+
+1. 建立測試文件 `localfile.txt` 並寫入測試內容。
+
+    ```bash
+    echo "這是測試文件 localfile.txt" > localfile.txt
+    ```
+
+<br>
+
+2. 上傳測試文件 `localfile.txt` 到 S3 Bucket。
 
     ```bash
     aws s3 cp localfile.txt s3://my-bucket-623801/localfile.txt --profile s3user
@@ -250,7 +278,7 @@ _設定指定配置文件的內容_
 
 <br>
 
-5. 列出 S3 Bucket 中的檔案。
+3. 列出 S3 Bucket 中的檔案。
 
     ```bash
     aws s3 ls s3://my-bucket-623801 --profile s3user
@@ -264,7 +292,7 @@ _設定指定配置文件的內容_
 
 <br>
 
-6. 從 S3 Bucket下載檔案。
+4. 從 S3 Bucket下載檔案。
 
     ```bash
     aws s3 cp s3://my-bucket-623801/localfile.txt downloadfile.txt --profile s3user
@@ -278,7 +306,7 @@ _設定指定配置文件的內容_
 
 <br>
 
-7. 刪除 S3 Bucket 中的檔案。
+5. 刪除 S3 Bucket 中的檔案。
 
     ```bash
     aws s3 rm s3://my-bucket-623801/localfile.txt --profile s3user
@@ -292,7 +320,7 @@ _設定指定配置文件的內容_
 
 <br>
 
-8. 刪除指定 S3 Bucket。
+6. 刪除指定 S3 Bucket。
 
     ```bash
     aws s3api delete-bucket --bucket my-bucket-623801 --region us-east-1 --profile s3user
