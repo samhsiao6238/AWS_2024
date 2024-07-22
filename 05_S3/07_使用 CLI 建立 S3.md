@@ -150,7 +150,7 @@ _設定指定配置文件的內容_
 
 <br>
 
-## 建立策略
+## 建立政策
 
 1. 建立訪問 S3 的政策文件 `s3_policy.json`。
 
@@ -216,7 +216,7 @@ _設定指定配置文件的內容_
 
 <br>
 
-5. 列出使用者的內嵌策略，已確認前面步驟確實完成。
+5. 列出使用者的內嵌政策，已確認前面步驟確實完成。
 
     ```bash
     aws iam list-user-policies --user-name s3user --profile default
@@ -549,7 +549,11 @@ _與前面設置 `IAM User Policy` 不同，Bucket 政策是直接附加到 S3 B
 
 <br>
 
-## 刪除 Bucket
+## 還原環境
+
+_刪除 Bucket、User 及 Policy 等_
+
+<br>
 
 1. 刪除 Bucket 之前，請確認 Bucket 中沒有對象。
 
@@ -580,6 +584,111 @@ _與前面設置 `IAM User Policy` 不同，Bucket 政策是直接附加到 S3 B
     ```
 
     ![](images/img_45.png)
+
+<br>
+
+4. 刪除附加政策。
+
+    ```bash
+    aws iam list-attached-user-policies --user-name s3user --profile default --query 'AttachedPolicies[*].PolicyArn' --output text | xargs -n 1 -I {} aws iam detach-user-policy --user-name s3user --policy-arn {} --profile default
+    ```
+
+<br>
+
+5. 查詢附加政策是否都已刪除。
+
+    ```bash
+    aws iam list-attached-user-policies --user-name s3user --profile default
+    ```
+
+<br>
+
+6. 刪除內嵌政策。
+
+    ```bash
+    aws iam list-user-policies --user-name s3user --profile default --query 'PolicyNames' --output text | xargs -n 1 -I {} aws iam delete-user-policy --user-name s3user --policy-name {} --profile default
+    ```
+
+<br>
+
+7. 確認內嵌策略都已刪除。
+
+    ```bash
+    aws iam list-user-policies --user-name s3user --profile default
+    ```
+
+<br>
+
+8. 刪除 User 的訪問密鑰。
+
+    ```bash
+    aws iam list-access-keys --user-name s3user --profile default --query 'AccessKeyMetadata[*].AccessKeyId' --output text | xargs -n 1 -I {} aws iam delete-access-key --user-name s3user --access-key-id {} --profile default
+    ```
+
+<br>
+
+9. 刪除 s3user 的登入設定。
+
+    ```bash
+    aws iam delete-login-profile --user-name s3user --profile default
+    ```
+
+<br>
+
+10. 列出多因素驗證設備。
+
+    ```bash
+    aws iam list-mfa-devices --user-name s3user --profile default
+    ```
+
+<br>
+
+11. 若有需要則刪除多因素驗證設備。
+
+    ```bash
+    aws iam list-mfa-devices --user-name s3user --profile default --query 'MFADevices[*].SerialNumber' --output text | xargs -n 1 -I {} aws iam deactivate-mfa-device --user-name s3user --serial-number {} --profile default
+    aws iam list-virtual-mfa-devices --profile default --query 'VirtualMFADevices[?User.UserName==`s3user`].SerialNumber' --output text | xargs -n 1 -I {} aws iam delete-virtual-mfa-device --serial-number {} --profile default
+    ```
+
+<br>
+
+12. 列出 SSH 公鑰。
+
+    ```bash
+    aws iam list-ssh-public-keys --user-name s3user --profile default
+    ```
+
+<br>
+
+13. 若有需要則刪除 SSH 公鑰。
+
+    ```bash
+    aws iam list-ssh-public-keys --user-name s3user --profile default --query 'SSHPublicKeys[*].SSHPublicKeyId' --output text | xargs -n 1 -I {} aws iam delete-ssh-public-key --user-name s3user --ssh-public-key-id {} --profile default
+    ```
+
+<br>
+
+14. 列出服務特定憑證。
+
+    ```bash
+    aws iam list-service-specific-credentials --user-name s3user --profile default
+    ```
+
+<br>
+
+15. 若有需要則進行刪除服務特定憑證。
+
+    ```bash
+    aws iam list-service-specific-credentials --user-name s3user --profile default --query 'ServiceSpecificCredentials[*].ServiceSpecificCredentialId' --output text | xargs -n 1 -I {} aws iam delete-service-specific-credential --user-name s3user --service-specific-credential-id {} --profile default
+    ```
+
+<br>
+
+16. 確認所有策略和資源已刪除後，刪除用戶。
+
+    ```bash
+    aws iam delete-user --user-name s3user --profile default
+    ```
 
 <br>
 

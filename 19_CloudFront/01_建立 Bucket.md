@@ -24,7 +24,7 @@ _以下示範包含的服務有 `S3 Bucket`、`CloudFront`、`EC2`_
 
 <br>
 
-3. 在 `Object Ownership` 部分預設是 `ACLs disabled`，表示該 S3 bucket 的所有物件都是由這個帳戶擁有，並且訪問控制僅通過策略來管理。
+3. 在 `Object Ownership` 部分預設是 `ACLs disabled`，表示該 S3 bucket 的所有物件都是由這個帳戶擁有，並且訪問控制僅通過政策來管理。
 
     ![](images/img_41.png)
 

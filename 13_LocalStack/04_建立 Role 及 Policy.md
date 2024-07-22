@@ -12,7 +12,7 @@
 
 <br>
 
-2. 建立角色時的 AssumeRole 策略 `assume-role-policy.json`。
+2. 建立角色時的 AssumeRole 政策 `assume-role-policy.json`。
 
     ```bash
     touch assume-role-policy.json && sudo nano assume-role-policy.json
@@ -20,7 +20,7 @@
 
 <br>
 
-3. 定義 Lambda 的 IAM 角色策略。
+3. 定義 Lambda 的 IAM 角色政策。
 
     ```json
     {
@@ -39,7 +39,7 @@
 
 <br>
 
-4. 建立並編輯執行策略 `execution-policy.json`。
+4. 建立並編輯執行政策 `execution-policy.json`。
 
     ```bash
     touch execution-policy.json && sudo nano execution-policy.json
@@ -107,7 +107,7 @@
 
 <br>
 
-5. 附加執行策略。
+5. 附加執行政策。
 
     ```bash
     awslocal iam put-role-policy --role-name lambda-role --policy-name lambda-basic-execution --policy-document file://execution-policy.json
@@ -145,7 +145,7 @@ _這裡示範的錯誤訊息類型是 `EntityAlreadyExists`，表示名為 `lamb
 
 <br>
 
-4. 重新建立角色並附加策略。
+4. 重新建立角色並附加政策。
 
     ```bash
     awslocal iam create-role --role-name lambda-role --assume-role-policy-document file://assume-role-policy.json

@@ -108,7 +108,7 @@
 
 <br>
 
-2. 建立一個策略文件 `policy.json`，內容如下。
+2. 建立一個政策文件 `policy.json`，內容如下。
 
     ```json
     {
@@ -133,7 +133,7 @@
 
 <br>
 
-4. 使用 `root` 為 `s3user` 附加這個策略。
+4. 使用 `root` 為 `s3user` 附加這個政策。
 
     ```bash
     aws iam put-user-policy --user-name s3user --policy-name ListUsersPolicy --policy-document file://policy.json --profile root

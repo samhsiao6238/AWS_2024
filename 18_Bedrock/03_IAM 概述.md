@@ -19,19 +19,19 @@
     ```bash
     # 建立一個新的 IAM 用戶
     aws iam create-user --user-name <使用者名稱>
-    # 為該用戶附加一個策略
+    # 為該用戶附加一個政策
     aws iam attach-user-policy --user-name <使用者名稱> --policy-arn arn:aws:iam::aws:policy/<policy_name>
     ```
 
 <br>
 
-2. 建立 IAM 角色並附加策略。
+2. 建立 IAM 角色並附加政策。
 
     ```bash
     # 建立一個新的 IAM 角色，指定信任政策文件
     aws iam create-role --role-name <role_name> --assume-role-policy-document file://trust-policy.json
 
-    # 為該角色附加一個策略
+    # 為該角色附加一個政策
     aws iam attach-role-policy --role-name <role_name> --policy-arn arn:aws:iam::aws:policy/<policy_name>
     ```
 
@@ -44,10 +44,10 @@
     aws iam list-users
     ```
 
-4. 列出指定用戶附加的所有策略。
+4. 列出指定用戶附加的所有政策。
 
     ```bash
-    # 列出指定用戶附加的所有管理策略
+    # 列出指定用戶附加的所有管理政策
     aws iam list-attached-user-policies --user-name <使用者名稱>
     ```
 
@@ -58,10 +58,10 @@
     aws iam list-roles
     ```
 
-6. 列出角色附加的所有策略。
+6. 列出角色附加的所有政策。
 
     ```bash
-    # 列出指定角色附加的所有管理策略
+    # 列出指定角色附加的所有管理政策
     aws iam list-attached-role-policies --role-name <role_name>
     ```
 
