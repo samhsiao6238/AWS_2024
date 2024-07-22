@@ -17,8 +17,7 @@ cat <<EOL > s3_policy.json
                 "s3:PutObject",
                 "s3:GetObject",
                 "s3:DeleteObject",
-                "s3:DeletePublicAccessBlock",
-                "s3:GetPublicAccessBlock",
+                "s3:PutBucketPublicAccessBlock",
                 "s3:PutEncryptionConfiguration",
                 "s3:GetEncryptionConfiguration",
                 "s3:DeleteBucket"
