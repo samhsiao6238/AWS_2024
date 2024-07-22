@@ -388,7 +388,7 @@ _為了後續編輯 Bucket 政策的需要，可參考官方說明 [Configuring 
 
 1. 預設如下，封鎖了所有形式的公有存取權，也就是沒有任何公有存取權能夠應用到該 Bucket 及其物件上。
 
-    ![](images/img_46.png)
+    <img src="images/img_46.png" width="450px">
 
 <br>
 
