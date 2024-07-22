@@ -104,7 +104,7 @@ _這裡是基於練習實作，刪除先前建立的帳號 `s3user`，而刪除�
 
 <br>
 
-## 建立使用者及政策
+## 建立使用者
 
 1. 查詢當前有哪些 User；特別注意，會回傳一個列表，但不包含 root 帳號。
 
@@ -136,9 +136,9 @@ _這裡是基於練習實作，刪除先前建立的帳號 `s3user`，而刪除�
 
 <br>
 
-## 配置文件
+## 設定 AWS CLI 配置文件
 
-1. 依據前面步驟建立的資訊，在本地配置名為 `s3user` 的 AWS CLI 配置檔案，可為配置檔案設置 `訪問金鑰`、`秘密金鑰`、`預設區域` 和 `輸出格式`。
+1. 依據前面步驟建立的資訊，在本地配置名為 `s3user` 的 AWS CLI 配置檔案，可為配置檔案設置 `訪問金鑰`、`秘密金鑰`、`預設區域` 和 `輸出格式`；其中 `Default region name` 設置為 `us-east-1`，`Default output format` 設置為 `json`。
 
     ```bash
     aws configure --profile s3user
@@ -146,7 +146,42 @@ _這裡是基於練習實作，刪除先前建立的帳號 `s3user`，而刪除�
 
 <br>
 
-2. 使用指令建立 S3 Bucket；參數 `--bucket` 指定命名為 `my-bucket-623801`；參數 `--region` 指定區域；參數 `--profile` 使用指定配置文件，也就是指定使用者。
+2. 建立訪問 S3 的政策文件 `s3_policy.json`。
+
+    ```bash
+    touch s3_policy.json
+    ```
+
+<br>
+
+3. 編輯政策文件 `s3_policy.json`。
+
+    ```json
+    {
+        "Version": "2012-10-17",
+        "Statement": [
+            {
+                "Effect": "Allow",
+                "Action": "s3:*",
+                "Resource": "*"
+            }
+        ]
+    }
+    ```
+
+<br>
+
+4. 將政策 `S3AccessPolicy` 添加到指定使用者，並授予指定的權限。
+
+    ```bash
+    aws iam put-user-policy --user-name s3user --policy-name S3AccessPolicy --policy-document file://s3_policy.json --profile default
+    ```
+
+<br>
+
+## 建立 S3 Bucket 對象
+
+2. 建立 S3 Bucket；參數 `--bucket` 指定命名為 `my-bucket-623801`；參數 `--region` 指定區域；參數 `--profile` 使用指定配置文件，也就是指定使用者。
 
     ```bash
     aws s3api create-bucket --bucket my-bucket-623801 --region us-east-1 --profile s3user
