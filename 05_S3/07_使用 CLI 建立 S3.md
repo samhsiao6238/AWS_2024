@@ -34,6 +34,14 @@ _以下示範的指定帳號是 `s3user`，不再贅述_
 
 <br>
 
+4. 查詢指定帳號的訪問密鑰。
+
+    ```bash
+    aws iam list-access-keys --user-name s3user --profile default
+    ```
+
+<br>
+
 ## 刪除指定帳號與設定
 
 _這裡是基於練習實作，刪除先前建立的帳號 `s3user`，而刪除帳號前，要先刪除帳號的 `附加政策` 及 `內嵌政策`_
@@ -84,12 +92,11 @@ _這裡是基於練習實作，刪除先前建立的帳號 `s3user`，而刪除�
 
     ```bash
     aws iam list-mfa-devices --user-name s3user --profile default --query 'MFADevices[*].SerialNumber' --output text | xargs -n 1 -I {} aws iam deactivate-mfa-device --user-name s3user --serial-number {} --profile default
-    aws iam list-mfa-devices --user-name s3user --profile default --query 'MFADevices[*].SerialNumber' --output text | xargs -n 1 -I {} aws iam delete-virtual-mfa-device --serial-number {} --profile default
     ```
 
 <br>
 
-7. 刪除使用者。
+7. 刪除指定帳號；使用 `root` 權限的配置文件 `default`。
 
     ```bash
     aws iam delete-user --user-name s3user --profile default
@@ -111,15 +118,7 @@ _這裡是基於練習實作，刪除先前建立的帳號 `s3user`，而刪除�
 
 <br>
 
-2. 刪除指定名稱的使用者，如 `s3user。`；使用 `root` 權限的配置文件 `default`。
-
-    ```bash
-    aws iam delete-user --user-name s3user --profile default
-    ```
-
-<br>
-
-3. 建立一個新的 IAM 用戶，命名為 s3user。
+2. 建立一個新的 IAM 用戶，命名為 `s3user`。
 
     ```bash
     aws iam create-user --user-name s3user
@@ -129,9 +128,17 @@ _這裡是基於練習實作，刪除先前建立的帳號 `s3user`，而刪除�
 
 <br>
 
-## 步驟
+3. 創建 User 的訪問密鑰；要記錄好輸出的資訊，因為後續步驟將用於編輯配置文件；此外，這個內容將無法再度查詢。
 
-1. 使用具備 S3 權限的使用者配置文件，如 `s3user`。
+    ```bash
+    aws iam create-access-key --user-name s3user
+    ```
+
+<br>
+
+## 配置文件
+
+1. 依據前面步驟建立的資訊，在本地配置名為 `s3user` 的 AWS CLI 配置檔案，可為配置檔案設置 `訪問金鑰`、`秘密金鑰`、`預設區域` 和 `輸出格式`。
 
     ```bash
     aws configure --profile s3user
