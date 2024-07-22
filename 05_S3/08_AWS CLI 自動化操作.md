@@ -1,6 +1,6 @@
-# 打包為腳本
+# 自動化操作
 
-_以上的 AWS CLI 指令可以打包為 Shell 腳本，並且將不同功能分開打包_
+_以上的 AWS CLI 指令可以打包為 Shell 腳本，並且將不同功能分開打包。_
 
 <br>
 
@@ -183,7 +183,8 @@ _若要手動建立敏感資訊可依據這個步驟，不過在上一個單元�
                     "s3:PutBucketPublicAccessBlock",
                     "s3:PutEncryptionConfiguration",
                     "s3:GetEncryptionConfiguration",
-                    "s3:DeleteBucket"
+                    "s3:DeleteBucket",
+                    "s3:CreateBucket"
                 ],
                 "Resource": [
                     "arn:aws:s3:::my-bucket-623801",
@@ -356,6 +357,16 @@ _若要手動建立敏感資訊可依據這個步驟，不過在上一個單元�
 
     ```bash
     ./delete_s3_bucket.sh
+    ```
+
+<br>
+
+## 清除練習環境
+
+1. 將文件都刪除。
+
+    ```bash
+    rm create_s3_bucket.sh create_user_policy.sh query_s3_settings.sh create_user.sh delete_s3_bucket.sh	rotate_root_keys.sh
     ```
 
 <br>

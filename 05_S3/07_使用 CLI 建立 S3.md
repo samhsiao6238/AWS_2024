@@ -202,7 +202,8 @@ _設定指定配置文件的內容_
                     "s3:GetPublicAccessBlock",
                     "s3:PutEncryptionConfiguration",
                     "s3:GetEncryptionConfiguration",
-                    "s3:DeleteBucket"
+                    "s3:DeleteBucket",
+                    "s3:CreateBucket"
                 ],
                 "Resource": [
                     "arn:aws:s3:::my-bucket-623801",
