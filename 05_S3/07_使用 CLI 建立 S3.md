@@ -256,6 +256,10 @@ _設定指定配置文件的內容_
 
 ## 操作 S3 Bucket
 
+_以下所稱 Bucket 皆指 `S3 Bucket`，而指定 Bucket 皆為 `my-bucket-623801`，不再贅述_
+
+<br>
+
 1. 建立測試文件 `localfile.txt` 並寫入測試內容。
 
     ```bash
@@ -264,7 +268,7 @@ _設定指定配置文件的內容_
 
 <br>
 
-2. 上傳測試文件 `localfile.txt` 到 S3 Bucket。
+2. 上傳測試文件 `localfile.txt` 到指定 Bucket。
 
     ```bash
     aws s3 cp localfile.txt s3://my-bucket-623801/localfile.txt --profile s3user
@@ -276,9 +280,11 @@ _設定指定配置文件的內容_
     upload: ./localfile.txt to s3://my-bucket-623801/localfile.txt  
     ```
 
+    ![](images/img_43.png)
+
 <br>
 
-3. 列出 S3 Bucket 中的檔案。
+3. 列出 Bucket 中的檔案。
 
     ```bash
     aws s3 ls s3://my-bucket-623801 --profile s3user
@@ -292,7 +298,7 @@ _設定指定配置文件的內容_
 
 <br>
 
-4. 從 S3 Bucket下載檔案。
+4. 從 Bucket下載檔案並命名為 `downloadfile.txt`。
 
     ```bash
     aws s3 cp s3://my-bucket-623801/localfile.txt downloadfile.txt --profile s3user
@@ -318,23 +324,29 @@ _設定指定配置文件的內容_
     delete: s3://my-bucket-623801/localfile.txt
     ```
 
+    ![](images/img_44.png)
+
 <br>
 
-6. 刪除指定 S3 Bucket。
-
-    ```bash
-    aws s3api delete-bucket --bucket my-bucket-623801 --region us-east-1 --profile s3user
-    ```
+_關於 Bucket 的刪除指令在最後面補充，避免在此刪除後，無法繼續後續演繹_
 
 <br>
 
 ## 設置 Bucket 政策
 
-_設置 Bucket 政策以控制對 S3 Bucket 的訪問權限；與前面設置特定使用者政策不同，Bucket 政策是直接附加到 S3 Bucket；而 User 政策是附加到特定的 IAM 使用者或角色，用以控制該對象訪問 AWS 資源的權限。_
+_與前面設置 `IAM User Policy` 不同，Bucket 政策是直接附加到 S3 Bucket；而 User 政策是附加到特定的 IAM 使用者或角色，用以控制該對象訪問 AWS 資源的權限。_
 
 <br>
 
-1. 建立 Bucket 政策文件，命名為 `bucket-policy.json`；允許 `所有人 (Principal: "*")` 對 `指定 Bucket（my-bucket-623801）` 中的對象執行 `s3:GetObject` 操作。
+1. 建立 Bucket 政策文件，命名為 `bucket-policy.json`。
+
+    ```bash
+    touch bucket-policy.json
+    ```
+
+<br>
+
+2. 編輯政策，允許 `所有人 (Principal: "*")` 對 `指定 Bucket（my-bucket-623801）` 中的對象執行 `s3:GetObject` 操作。
 
     ```json
     {
@@ -352,7 +364,7 @@ _設置 Bucket 政策以控制對 S3 Bucket 的訪問權限；與前面設置特
 
 <br>
 
-2. 設定或更新 S3 的政策，將上述政策文件應用到指定的 `S3 Bucket（my-bucket-623801）`；其中參數 `--bucket my-bucket-623801` 指定要設定的 S3 Bucket 是 `my-bucket-623801`；參數 `--policy` 指定政策名稱；參數 `--profile s3user` 指定使用的配置檔案。
+2. 以下指令可設定或更新 S3 的政策，此處是將上述政策文件應用到指定的 Bucket `（my-bucket-623801）`；其中參數 `--bucket my-bucket-623801` 指定要設定的 S3 Bucket 是 `my-bucket-623801`；參數 `--policy` 指定政策名稱；參數 `--profile s3user` 指定使用的配置檔案。
 
     ```bash
     aws s3api put-bucket-policy --bucket my-bucket-623801 --policy file://bucket-policy.json --profile s3user
@@ -421,6 +433,18 @@ touch encryption.json
         "Metadata": {}
     }
     ```
+
+<br>
+
+## 刪除 Bucket
+
+1. 刪除指定 S3 Bucket。
+
+    ```bash
+    aws s3api delete-bucket --bucket my-bucket-623801 --region us-east-1 --profile s3user
+    ```
+
+    ![](images/img_45.png)
 
 <br>
 
