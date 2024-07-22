@@ -241,6 +241,16 @@ _設定指定配置文件的內容_
 
 <br>
 
+## 內嵌政策 VS. 附加政策
+
+1. `內嵌政策` 是直接附加到用戶、組或角色上的 `JSON 格式政策文件`，這與 `附加政策（managed policy）` 不同；後者是 `獨立管理的政策`，可以附加到多個用戶、組或角色上。
+
+<br>
+
+2. `內嵌政策（inline policy）` 使用 `aws iam put-user-policy` 添加；`附加政策（managed policy）` 使用 `aws iam attach-user-policy` 附加；在前面步驟所添加的是 `內嵌政策`。
+
+<br>
+
 ## 建立 S3 Bucket 對象
 
 1. 建立 S3 Bucket；參數 `--bucket` 指定命名為 `my-bucket-623801`；參數 `--region` 指定區域；參數 `--profile` 使用指定配置文件，也就是指定使用者。
@@ -376,9 +386,11 @@ _為了後續編輯 Bucket 政策的需要，可參考官方說明 [Configuring 
 
 <br>
 
-1. 預設如下。
+1. 預設如下，封鎖了所有形式的公有存取權，也就是沒有任何公有存取權能夠應用到該 Bucket 及其物件上。
 
     ![](images/img_46.png)
+
+<br>
 
 2. 先取得帳戶 ID 用於後續指令。
 
