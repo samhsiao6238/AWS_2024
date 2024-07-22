@@ -450,22 +450,6 @@ _為了後續編輯 Bucket 政策的需要，可參考官方說明 [Configuring 
 
 <br>
 
-8. 確保帳戶級別和 Bucket 級別的公共訪問封鎖設置允許後，使用根帳戶設置 Bucket 政策。
-
-    ```bash
-    aws s3api put-bucket-policy --bucket my-bucket-623801 --policy file://bucket-policy.json --profile default
-    ```
-
-<br>
-
-9. 再次執行附加政策到 `s3user`。
-
-    ```bash
-    aws iam put-user-policy --user-name s3user --policy-name S3AccessPolicy --policy-document file://s3_policy.json --profile default
-    ```
-
-<br>
-
 ## 設置 Bucket 政策
 
 _與前面設置 `IAM User Policy` 不同，Bucket 政策是直接附加到 S3 Bucket；而 User 政策是附加到特定的 IAM 使用者或角色，用以控制該對象訪問 AWS 資源的權限。_
@@ -570,6 +554,28 @@ _與前面設置 `IAM User Policy` 不同，Bucket 政策是直接附加到 S3 B
         "ServerSideEncryption": "AES256",
         "Metadata": {}
     }
+    ```
+
+<br>
+
+## 重新授權
+
+_特別注意，若遇到權限問題而重新設定政策，需再次運行這個部分來重新授權_
+
+<br>
+
+1. 使用 `根帳戶` 設置 Bucket 政策。
+
+    ```bash
+    aws s3api put-bucket-policy --bucket my-bucket-623801 --policy file://bucket-policy.json --profile default
+    ```
+
+<br>
+
+2. 再次執行附加政策到 `s3user`。
+
+    ```bash
+    aws iam put-user-policy --user-name s3user --policy-name S3AccessPolicy --policy-document file://s3_policy.json --profile default
     ```
 
 <br>
