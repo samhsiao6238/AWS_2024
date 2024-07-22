@@ -1,11 +1,9 @@
 {
-    "ServerSideEncryptionConfiguration": {
-        "Rules": [
-            {
-                "ApplyServerSideEncryptionByDefault": {
-                    "SSEAlgorithm": "AES256"
-                }
+    "Rules": [
+        {
+            "ApplyServerSideEncryptionByDefault": {
+                "SSEAlgorithm": "AES256"
             }
-        ]
-    }
+        }
+    ]
 }

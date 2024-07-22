@@ -193,7 +193,9 @@ _設定指定配置文件的內容_
                     "s3:GetObject",
                     "s3:DeleteObject",
                     "s3:DeletePublicAccessBlock",
-                    "s3:GetPublicAccessBlock"
+                    "s3:GetPublicAccessBlock",
+                    "s3:PutEncryptionConfiguration",
+                    "s3:GetEncryptionConfiguration"
                 ],
                 "Resource": [
                     "arn:aws:s3:::my-bucket-623801",
@@ -491,15 +493,13 @@ _與前面設置 `IAM User Policy` 不同，Bucket 政策是直接附加到 S3 B
 
     ```json
     {
-        "ServerSideEncryptionConfiguration": {
-            "Rules": [
-                {
-                    "ApplyServerSideEncryptionByDefault": {
-                        "SSEAlgorithm": "AES256"
-                    }
+        "Rules": [
+            {
+                "ApplyServerSideEncryptionByDefault": {
+                    "SSEAlgorithm": "AES256"
                 }
-            ]
-        }
+            }
+        ]
     }
     ```
 
@@ -517,6 +517,12 @@ _與前面設置 `IAM User Policy` 不同，Bucket 政策是直接附加到 S3 B
 
     ```bash
     aws s3 cp localfile.txt s3://my-bucket-623801/localfile.txt --sse AES256 --profile s3user
+    ```
+
+    _輸出_
+
+    ```bash
+    upload: ./localfile.txt to s3://my-bucket-623801/localfile.txt   
     ```
 
 <br>
@@ -545,7 +551,29 @@ _與前面設置 `IAM User Policy` 不同，Bucket 政策是直接附加到 S3 B
 
 ## 刪除 Bucket
 
-1. 刪除指定 S3 Bucket。
+1. 刪除 Bucket 之前，請確認 Bucket 中沒有對象。
+
+    ```bash
+    aws s3api list-objects --bucket my-bucket-623801 --profile s3user
+    ```
+
+<br>
+
+2. 如果有對象要先刪除。
+
+    ```bash
+    aws s3 rm s3://my-bucket-623801 --recursive --profile s3user
+    ```
+
+    _輸出_
+
+    ```bash
+    delete: s3://my-bucket-623801/localfile.txt
+    ```
+
+<br>
+
+3. 刪除指定 S3 Bucket。
 
     ```bash
     aws s3api delete-bucket --bucket my-bucket-623801 --region us-east-1 --profile s3user

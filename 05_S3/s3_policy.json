@@ -11,7 +11,10 @@
                 "s3:GetObject",
                 "s3:DeleteObject",
                 "s3:DeletePublicAccessBlock",
-                "s3:GetPublicAccessBlock"
+                "s3:GetPublicAccessBlock",
+                "s3:PutEncryptionConfiguration",
+                "s3:GetEncryptionConfiguration",
+                "s3:DeleteBucket"
             ],
             "Resource": [
                 "arn:aws:s3:::my-bucket-623801",
