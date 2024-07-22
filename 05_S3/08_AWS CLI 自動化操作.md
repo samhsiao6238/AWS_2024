@@ -190,8 +190,6 @@ _若要手動建立敏感資訊可依據這個步驟，不過在上一個單元�
                     "s3:PutObject",
                     "s3:GetObject",
                     "s3:DeleteObject",
-                    "s3:DeletePublicAccessBlock",
-                    "s3:GetPublicAccessBlock",
                     "s3:PutBucketPublicAccessBlock",
                     "s3:PutEncryptionConfiguration",
                     "s3:GetEncryptionConfiguration",
@@ -226,6 +224,12 @@ _若要手動建立敏感資訊可依據這個步驟，不過在上一個單元�
     ```bash
     ./create_user_policy.sh
     ```
+
+<br>
+
+5. 在主控台 `Users` 中的 `Permissions` 頁籤中可查看政策 `S3AccessPolicy`。
+
+    ![](images/img_57.png)
 
 <br>
 
@@ -279,9 +283,25 @@ _若要手動建立敏感資訊可依據這個步驟，不過在上一個單元�
     ./create_s3_bucket.sh
     ```
 
+    _輸出_
+
+    ![](images/img_58.png)
+
 <br>
 
 5. 在腳本中，`export $(grep -v '^#' .env | xargs)` 命令會去讀取 `.env` 文件中的變量並將其導出為 `環境變量`，然後在設置 AWS 配置時，使用 `$AWS_ACCESS_KEY_ID` 和 `$AWS_SECRET_ACCESS_KEY` 來載入環境變量。
+
+<br>
+
+6. 在主控台的 S3 中可以看到這個 Bucket。
+
+    ![](images/img_59.png)
+
+<br>
+
+7. 點擊進入可以看到上傳的 `localfile.txt`。
+
+    ![](images/img_60.png)
 
 <br>
 
@@ -357,20 +377,40 @@ _若要手動建立敏感資訊可依據這個步驟，不過在上一個單元�
     ```bash
     #!/bin/bash
 
+    BUCKET_NAME="my-bucket-623801"
+    PROFILE="s3user"
+    ROOT_PROFILE="default"
+    USER_NAME="s3user"
+
     # 刪除 Bucket 中的文件
-    aws s3 rm s3://my-bucket-623801 --recursive --profile s3user
+    echo "正在刪除 S3 Bucket 中的文件..."
+    aws s3 rm s3://$BUCKET_NAME --recursive --profile $PROFILE
 
     # 刪除 S3 Bucket
-    aws s3api delete-bucket --bucket my-bucket-623801 --region us-east-1 --profile s3user
+    echo "正在刪除 S3 Bucket..."
+    aws s3api delete-bucket --bucket $BUCKET_NAME --region us-east-1 --profile $PROFILE
 
-    # 刪除使用者的政策和訪問密鑰
-    aws iam list-attached-user-policies --user-name s3user --profile default --query 'AttachedPolicies[*].PolicyArn' --output text | xargs -n 1 -I {} aws iam detach-user-policy --user-name s3user --policy-arn {} --profile default
-    aws iam list-user-policies --user-name s3user --profile default --query 'PolicyNames' --output text | xargs -n 1 -I {} aws iam delete-user-policy --user-name s3user --policy-name {} --profile default
-    aws iam list-access-keys --user-name s3user --profile default --query 'AccessKeyMetadata[*].AccessKeyId' --output text | xargs -n 1 -I {} aws iam delete-access-key --user-name s3user --access-key-id {} --profile default
-    aws iam delete-user --user-name s3user --profile default
+    # 刪除使用者的附加政策
+    echo "正在刪除使用者的附加政策..."
+    aws iam list-attached-user-policies --user-name $USER_NAME --profile $ROOT_PROFILE --query 'AttachedPolicies[*].PolicyArn' --output text | xargs -n 1 -I {} sh -c 'echo "刪除政策: {}"; aws iam detach-user-policy --user-name $USER_NAME --policy-arn {} --profile $ROOT_PROFILE'
+
+    # 刪除使用者的內嵌政策
+    echo "正在刪除使用者的內嵌政策..."
+    aws iam list-user-policies --user-name $USER_NAME --profile $ROOT_PROFILE --query 'PolicyNames' --output text | xargs -n 1 -I {} sh -c 'echo "刪除內嵌政策: {}"; aws iam delete-user-policy --user-name $USER_NAME --policy-name {} --profile $ROOT_PROFILE'
+
+    # 刪除使用者的訪問密鑰
+    echo "正在刪除使用者的訪問密鑰..."
+    aws iam list-access-keys --user-name $USER_NAME --profile $ROOT_PROFILE --query 'AccessKeyMetadata[*].AccessKeyId' --output text | xargs -n 1 -I {} sh -c 'echo "刪除訪問密鑰: {}"; aws iam delete-access-key --user-name $USER_NAME --access-key-id {} --profile $ROOT_PROFILE'
+
+    # 刪除使用者
+    echo "正在刪除使用者..."
+    aws iam delete-user --user-name $USER_NAME --profile $ROOT_PROFILE
 
     # 刪除本地文件
-    rm s3_policy.json localfile.txt
+    echo "正在刪除本地文件..."
+    rm -v s3_policy.json localfile.txt
+
+    echo "所有操作已完成。"
     ```
 
 <br>
@@ -393,7 +433,7 @@ _若要手動建立敏感資訊可依據這個步驟，不過在上一個單元�
 
 ## 清除練習環境
 
-1. 將文件都刪除。
+1. 手動將相關文件都刪除。
 
     ```bash
     rm create_s3_bucket.sh create_user_policy.sh query_s3_settings.sh create_user.sh delete_s3_bucket.sh	rotate_root_keys.sh
