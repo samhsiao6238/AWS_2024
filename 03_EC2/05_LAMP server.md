@@ -235,7 +235,7 @@ _將實體 instance 規劃為 LAMP server_
 
 <br>
 
-2. 查找 MariaDB 的可用包，依據結果，將安裝 `mariadb105-server`。
+2. 搜尋 MariaDB 的可用包，依據結果，將安裝 `mariadb105-server`。
 
     ```bash
     sudo dnf search mariadb
