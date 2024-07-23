@@ -108,7 +108,7 @@ _製作 requests 的 Layer_
         else:
             return {
                 'statusCode': response.status_code,
-                'body': f"檢索網頁失敗，狀態碼：{response.status_code}"
+                'body': f"查詢網頁失敗，狀態碼：{response.status_code}"
             }
     ```
 
