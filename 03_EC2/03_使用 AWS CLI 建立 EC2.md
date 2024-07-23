@@ -148,6 +148,148 @@ _以下所稱 `EC2` 除服務以外，指的是 `EC2 執行個體`，不再贅�
 
 <br>
 
+## 刪除 EC2
+
+1. 查詢並刪除 EC2 執行個體 ID。
+
+    ```bash
+    INSTANCE_ID=$(aws ec2 describe-instances --filters "Name=instance-state-name,Values=running" --query "Reservations[*].Instances[*].InstanceId" --output text) && aws ec2 terminate-instances --instance-ids $INSTANCE_ID
+    ```
+
+    _輸出_
+
+    ```json
+    {
+        "TerminatingInstances": [
+            {
+                "CurrentState": {
+                    "Code": 32,
+                    "Name": "shutting-down"
+                },
+                "InstanceId": "i-0ea8b39ffd6413e36",
+                "PreviousState": {
+                    "Code": 16,
+                    "Name": "running"
+                }
+            }
+        ]
+    }
+    ```
+
+<br>
+
+2. 若需要更嚴謹地處理沒有找到的情況，可以添加判斷；這裡僅作示範，但這個操作實務上，這樣的情境並不存在。
+
+    ```bash
+    INSTANCE_ID=$(aws ec2 describe-instances --filters "Name=instance-state-name,Values=running" --query "Reservations[*].Instances[*].InstanceId" --output text)
+    if [ -n "$INSTANCE_ID" ]; then
+        aws ec2 terminate-instances --instance-ids $INSTANCE_ID
+    else
+        echo "No running instances found."
+    fi
+    ```
+
+<br>
+
+3. 查詢安全群組。
+
+    ```bash
+    aws ec2 describe-security-groups --query "SecurityGroups[*].[GroupId,GroupName]" --output text
+    ```
+
+    ![](images/img_70.png)
+
+<br>
+
+4. 若需要刪除安全群組，可使用以下指令。
+
+    ```bash
+    SG_ID=<填入要刪除的群組 ID>
+    aws ec2 delete-security-group --group-id $SG_ID
+    ```
+
+<br>
+
+5. 查詢密鑰對。
+
+    ```bash
+    aws ec2 describe-key-pairs --query "KeyPairs[*].KeyName" --output text
+    ```
+
+<br>
+
+6. 若有自定義的密鑰對也可進行刪除。
+
+    ```bash
+    KEY_NAME=<填入要刪除的密鑰對名稱>
+    aws ec2 delete-key-pair --key-name $KEY_NAME
+    ```
+
+<br>
+
+## 建立刪除 EC2 的自動化腳本
+
+_雖然可以建立自動化腳本來復原環境，但這裡比較不建議這樣做，因為其中可能涉及使用了預設的相關實體如安全群組，錯誤刪除可能造成其他服務使用上的問題，以下腳本僅作示範。_
+
+<br>
+
+1. 建立自動化腳本，自訂名稱如 `auto_clean.sh`。
+
+    ```bash
+    touch auto_clean.sh
+    ```
+
+<br>
+
+2. 編輯腳本。
+
+    ```bash
+    # 查詢並刪除 EC2 執行個體
+    INSTANCE_ID=$(aws ec2 describe-instances --filters "Name=instance-state-name,Values=running" --query "Reservations[*].Instances[*].InstanceId" --output text)
+    if [ -n "$INSTANCE_ID" ]; then
+        echo "Terminating instance: $INSTANCE_ID"
+        aws ec2 terminate-instances --instance-ids $INSTANCE_ID
+    else
+        echo "No running instances found."
+    fi
+
+    # 查詢並刪除安全群組
+    SG_ID=$(aws ec2 describe-security-groups --query "SecurityGroups[?GroupName=='my-sg'].GroupId" --output text)
+    if [ -n "$SG_ID" ]; then
+        echo "Deleting security group: $SG_ID"
+        aws ec2 delete-security-group --group-id $SG_ID
+    else
+        echo "No custom security groups found."
+    fi
+
+    # 查詢並刪除密鑰對
+    KEY_NAME=$(aws ec2 describe-key-pairs --query "KeyPairs[?KeyName=='my-key-pair'].KeyName" --output text)
+    if [ -n "$KEY_NAME" ]; then
+        echo "Deleting key pair: $KEY_NAME"
+        aws ec2 delete-key-pair --key-name $KEY_NAME
+    else
+        echo "No custom key pairs found."
+    fi
+    ```
+
+<br>
+
+3. 授權腳本。
+
+    ```bash
+    chmod +x auto_clean.sh
+    ```
+
+<br>
+
+4. 運行腳本。
+
+    ```bash
+    ./auto_clean.sh
+    ```
+
+<br>
+
 ___
 
 _END：以上完成 EC2 連線_
