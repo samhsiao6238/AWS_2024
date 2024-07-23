@@ -6,15 +6,15 @@ _結合 API Gateway 和 Lambda 的簡單範例_
 
 ## 說明
 
-1. 在 AWS 中，可使用 API Gateway 和 Lambda 來創建一個簡單的 API 並建立接口給使用者使用。
+1. 在 AWS 中，可使用 API Gateway 和 Lambda 來建立一個簡單的 API 並建立接口給使用者使用。
 
 <br>
 
-2. 以下範例展示如何創建一個簡單的 API，這個 API 將調用一個 Lambda 函數來處理請求；其中 `Lambda 函數` 負責處理 API 請求並返回響應，`API Gateway` 提供一個 `RESTful API` 接口，將請求路由到 Lambda 函數。
+2. 以下範例展示如何建立一個簡單的 API，這個 API 將調用一個 Lambda 函數來處理請求；其中 `Lambda 函數` 負責處理 API 請求並返回響應，`API Gateway` 提供一個 `RESTful API` 接口，將請求路由到 Lambda 函數。
 
 <br>
 
-## 創建 Lambda 函數
+## 建立 Lambda 函數
 
 1. 進入 Lambda 服務，點擊 `Create function`。
 
@@ -64,7 +64,7 @@ _結合 API Gateway 和 Lambda 的簡單範例_
 
 <br>
 
-## 創建 API Gateway
+## 建立 API Gateway
 
 1. 進入 API Gateway 服務，選擇 `HTTP API`，點擊 `Build`。
 
