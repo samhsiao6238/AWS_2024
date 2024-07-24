@@ -134,7 +134,7 @@ _context 參數提供了 Lambda 執行環境的信息_
 
 2. log_group_name：與 Lambda 函數關聯的 CloudWatch 日誌組名稱。
 
-3. log_stream_name：此次調用的 CloudWatch 日誌流名稱。
+3. log_stream_name：此次調用的 CloudWatch Log Stream名稱。
 
 4. function_name：Lambda 函數的名稱。
 
