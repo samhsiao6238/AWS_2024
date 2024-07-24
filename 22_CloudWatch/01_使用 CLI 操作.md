@@ -310,7 +310,13 @@ _不能使用 default IAM 角色，需要創建一個專門的 IAM 角色並配�
 
 <br>
 
-3. 將政策 `CloudWatchLogsPolicy` 附加到角色 `MyCloudWatchLogsRole`。
+3. 觀察當前角色 `MyCloudWatchLogsRole` 尚無任何權限政策。
+
+    ![](images/img_18.png)
+
+<br>
+
+4. 將政策 `CloudWatchLogsPolicy` 附加到角色 `MyCloudWatchLogsRole`。
 
     ```bash
     aws iam attach-role-policy --role-name MyCloudWatchLogsRole --policy-arn arn:aws:iam::$(aws sts get-caller-identity --query "Account" --output text):policy/CloudWatchLogsPolicy
@@ -320,7 +326,7 @@ _不能使用 default IAM 角色，需要創建一個專門的 IAM 角色並配�
 
 <br>
 
-4. 創建一個實例配置文件 `CloudWatchLogsProfile`。
+5. 創建一個實例配置文件 `CloudWatchLogsProfile`。
 
     ```bash
     aws iam create-instance-profile --instance-profile-name CloudWatchLogsProfile
@@ -344,7 +350,7 @@ _不能使用 default IAM 角色，需要創建一個專門的 IAM 角色並配�
 
 <br>
 
-5. 將前面步驟創建的角色附加到該配置文件。
+6. 將前面步驟創建的角色附加到該配置文件。
 
     ```bash
     aws iam add-role-to-instance-profile --instance-profile-name CloudWatchLogsProfile --role-name MyCloudWatchLogsRole
@@ -352,7 +358,7 @@ _不能使用 default IAM 角色，需要創建一個專門的 IAM 角色並配�
 
 <br>
 
-6. 確認實例配置文件和角色的關聯。
+7. 確認實例配置文件和角色的關聯。
 
     ```bash
     aws iam get-instance-profile --instance-profile-name CloudWatchLogsProfile
