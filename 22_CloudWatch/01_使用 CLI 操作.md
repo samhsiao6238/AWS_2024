@@ -258,11 +258,11 @@ _捕獲 EC2 實例的系統日誌，並設定 CloudWatch 警報來監控這些�
 
 ## 建立並附加 IAM 角色
 
-_不能使用 default IAM 角色，需要創建一個專門的 IAM 角色並配置相應的權限，然後將該角色附加到 EC2 實例。_
+_不能使用 default IAM 角色，需要建立一個專門的 IAM 角色並配置相應的權限，然後將該角色附加到 EC2 實例。_
 
 <br>
 
-1. 創建角色 `MyCloudWatchLogsRole` 並信任政策，使其能夠被 EC2 使用。
+1. 建立角色 `MyCloudWatchLogsRole` 並信任政策，使其能夠被 EC2 使用。
 
     ```bash
     aws iam create-role --role-name MyCloudWatchLogsRole --assume-role-policy-document '{
@@ -285,7 +285,7 @@ _不能使用 default IAM 角色，需要創建一個專門的 IAM 角色並配�
 
 <br>
 
-2. 創建一個新的附加政策 `CloudWatchLogsPolicy`，允許 CloudWatch Logs 的必要權限。
+2. 建立一個新的附加政策 `CloudWatchLogsPolicy`，允許 CloudWatch Logs 的必要權限。
 
     ```bash
     aws iam create-policy --policy-name CloudWatchLogsPolicy --policy-document '{
@@ -322,11 +322,13 @@ _不能使用 default IAM 角色，需要創建一個專門的 IAM 角色並配�
     aws iam attach-role-policy --role-name MyCloudWatchLogsRole --policy-arn arn:aws:iam::$(aws sts get-caller-identity --query "Account" --output text):policy/CloudWatchLogsPolicy
     ```
 
+    _刷新觀察_
+
     ![](images/img_16.png)
 
 <br>
 
-5. 創建一個實例配置文件 `CloudWatchLogsProfile`。
+5. 使用指令 [create-instance-profile](https://docs.aws.amazon.com/cli/latest/reference/iam/create-instance-profile.html) 建立一個 EC2 實例配置文件 `CloudWatchLogsProfile`。
 
     ```bash
     aws iam create-instance-profile --instance-profile-name CloudWatchLogsProfile
@@ -350,7 +352,7 @@ _不能使用 default IAM 角色，需要創建一個專門的 IAM 角色並配�
 
 <br>
 
-6. 將前面步驟創建的角色附加到該配置文件。
+6. 將前面步驟建立的角色附加到該配置文件。
 
     ```bash
     aws iam add-role-to-instance-profile --instance-profile-name CloudWatchLogsProfile --role-name MyCloudWatchLogsRole
@@ -358,7 +360,7 @@ _不能使用 default IAM 角色，需要創建一個專門的 IAM 角色並配�
 
 <br>
 
-7. 確認實例配置文件和角色的關聯。
+7. 確認實例配置文件和角色的關聯；也就是顯示實例配置文件 `CloudWatchLogsProfile` 包含角色 `MyCloudWatchLogsRole。`
 
     ```bash
     aws iam get-instance-profile --instance-profile-name CloudWatchLogsProfile
@@ -367,6 +369,56 @@ _不能使用 default IAM 角色，需要創建一個專門的 IAM 角色並配�
     _確認關聯無誤_
 
     ![](images/img_17.png)
+
+<br>
+
+8. 在主控台查看角色的信任關係時，它顯示的是該角色的信任政策，而不是實例配置文件的詳細信息；而前面使用 CLI 指令 `aws iam get-instance-profile` 查詢實例配置文件時，它返回的是該實例配置文件的詳細信息，包括關聯的角色及其詳細信息，所以兩者查詢的結果並不相同。
+
+    ![](images/img_20.png)
+
+<br>
+
+## 關於實例配置文件
+
+1. 列出所有實例配置文件。
+
+    ```bash
+    aws iam list-instance-profiles
+    ```
+
+<br>
+
+2. 查看特定實例配置文件的詳細信息。
+
+    ```bash
+    aws iam get-instance-profile --instance-profile-name CloudWatchLogsProfile
+    ```
+
+    ![](images/img_19.png)
+
+<br>
+
+3. 查看特定實例配置文件的詳細信息。
+
+    ```bash
+    aws iam get-instance-profile --instance-profile-name CloudWatchLogsProfile
+    ```
+
+<br>
+
+4. 確保 CloudWatchLogsProfile 已經關聯到正確的角色。
+
+    ```bash
+    aws iam get-instance-profile --instance-profile-name CloudWatchLogsProfile
+    ```
+
+<br>
+
+5. 使用以下命令刪除 CloudWatchLogsProfile。
+
+    ```bash
+    aws iam delete-instance-profile --instance-profile-name CloudWatchLogsProfile
+    ```
 
 <br>
 
@@ -380,10 +432,26 @@ _不能使用 default IAM 角色，需要創建一個專門的 IAM 角色並配�
 
 <br>
 
-2. 附加實例配置文。
+2. 將 IAM 實例配置文件 `CloudWatchLogsProfile` 與指定的 EC2 實例關聯，從而使該實例能夠使用該實例配置文件中的 IAM 角色及其權限，通常用於允許 EC2 實例訪問其他 AWS 服務，如 CloudWatch 日誌、S3 存儲等，而不需要在實例上配置明文的 AWS 憑證。
 
     ```bash
     aws ec2 associate-iam-instance-profile --instance-id $INSTANCE_ID --iam-instance-profile Name=CloudWatchLogsProfile
+    ```
+
+    _輸出_
+
+    ```json
+    {
+        "IamInstanceProfileAssociation": {
+            "InstanceId": "i-02f28ac860c5dc163", 
+            "State": "associating", 
+            "AssociationId": "iip-assoc-026f4da2f5dac50d2", 
+            "IamInstanceProfile": {
+                "Id": "AIPA47CR2L2QVUJHXFWWX", 
+                "Arn": "arn:aws:iam::891377311393:instance-profile/CloudWatchLogsProfile"
+            }
+        }
+    }
     ```
 
 <br>
@@ -396,50 +464,21 @@ _不能使用 default IAM 角色，需要創建一個專門的 IAM 角色並配�
 
 <br>
 
-4. 確認配置文件。
+4. 從指定的 CloudWatch `Log Group` 和 `Log Stream` 中查看特定 EC2 實例的日誌信息；添加參數 `--limit 5` 可僅顯示最新五筆日誌訊息。
 
     ```bash
-    cat /etc/awslogs/awslogs.conf
-    ```
-
-    _輸出如下_
-
-    ```ini
-    [general]
-    state_file = /var/lib/awslogs/agent-state
-
-    [/var/log/messages]
-    datetime_format = %b %d %H:%M:%S
-    file = /var/log/messages
-    buffer_duration = 5000
-    log_stream_name = ${INSTANCE_ID}/messages
-    initial_position = start_of_file
-    log_group_name = EC2InstanceLogs
-
-    [/var/log/cloud-init.log]
-    file = /var/log/cloud-init.log
-    log_group_name = EC2InstanceLogs
-    log_stream_name = ${INSTANCE_ID}/cloud-init.log
-    datetime_format = %Y-%m-%d %H:%M:%S
-    ```
-
-<br>
-
-5. 稍等片刻，再次檢查是否有新的日誌事件。
-
-    ```bash
-    aws logs get-log-events --log-group-name EC2InstanceLogs --log-stream-name ${INSTANCE_ID}/messages --region us-east-1
+    aws logs get-log-events --log-group-name EC2InstanceLogs --log-stream-name ${INSTANCE_ID}/messages --region us-east-1 --limit 5
     ```
 
 <br>
 
 ## 設置 CloudWatch Logs Log Group 和 Log Stream
 
-_使用 AWS CLI 創建 Log Group 和 Log Stream_
+_使用 AWS CLI 建立 Log Group 和 Log Stream_
 
 <br>
 
-1. 創建 Log Group `EC2InstanceLogs`。
+1. 建立 Log Group `EC2InstanceLogs`。
 
     ```bash
     aws logs create-log-group --log-group-name EC2InstanceLogs --region us-east-1
@@ -453,13 +492,21 @@ _使用 AWS CLI 創建 Log Group 和 Log Stream_
 
 <br>
 
-3. 通常情況下，CloudWatch Logs Agent 會自動創建 Log Stream；如果沒有自動建立，可手動創建 Log Stream。
+3. 通常情況下，CloudWatch Logs Agent 會自動建立 Log Stream。
+
+    ![](images/img_21.png)
+
+<br>
+
+4. 如果沒有自動建立，可手動建立 Log Stream。
 
     ![](images/img_09.png)
 
 <br>
 
-4. 創建 Log Stream。
+## 手動建立 Log Stream
+
+1. 建立 Log Stream。
 
     ```bash
     aws logs create-log-stream --log-group-name EC2InstanceLogs --log-stream-name ${INSTANCE_ID}/messages --region us-east-1
@@ -469,7 +516,7 @@ _使用 AWS CLI 創建 Log Group 和 Log Stream_
 
 <br>
 
-5. 列出日誌組中的所有 Log Stream。
+2. 列出日誌組中的所有 Log Stream。
 
     ```bash
     aws logs describe-log-streams --log-group-name EC2InstanceLogs --region us-east-1
@@ -492,7 +539,7 @@ _使用 AWS CLI 創建 Log Group 和 Log Stream_
 
 <br>
 
-6. 可嘗試檢查 /var/log/awslogs.log 文件，確保 Agent 正在運行並且沒有錯誤；按下組合鍵 `comtrol + C` 可退出。
+3. 可嘗試檢查 /var/log/awslogs.log 文件，確保 Agent 正在運行並且沒有錯誤；按下組合鍵 `comtrol + C` 可退出。
 
     ```bash
     sudo cat /var/log/awslogs.log
@@ -500,7 +547,7 @@ _使用 AWS CLI 創建 Log Group 和 Log Stream_
 
 <br>
 
-7. 再次獲取日誌事件。
+4. 再次獲取日誌事件。
 
     ```bash
     aws logs get-log-events --log-group-name EC2InstanceLogs --log-stream-name ${INSTANCE_ID}/messages --region us-east-1
@@ -524,7 +571,7 @@ _監控 `/var/log/messages` 中的關鍵字 `ERROR`；_
 
 <br>
 
-1. 以下指令用於在 CloudWatch Logs 中創建一個 `度量過濾器（Metric Filter）`，將日誌中的特定模式轉換為 CloudWatch 度量標準。
+1. 以下指令用於在 CloudWatch Logs 中建立一個 `度量過濾器（Metric Filter）`，將日誌中的特定模式轉換為 CloudWatch 度量標準。
 
     ```bash
     aws logs put-metric-filter \
@@ -541,7 +588,7 @@ _監控 `/var/log/messages` 中的關鍵字 `ERROR`；_
 
 <br>
 
-2. 以下指令用於在 CloudWatch 中創建一個警報，當特定度量標準超過設定的閾值時觸發警報。
+2. 以下指令用於在 CloudWatch 中建立一個警報，當特定度量標準超過設定的閾值時觸發警報。
 
     ```bash
     aws cloudwatch put-metric-alarm \
