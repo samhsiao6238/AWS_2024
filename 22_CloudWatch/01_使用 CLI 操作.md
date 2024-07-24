@@ -432,7 +432,7 @@ _不能使用 default IAM 角色，需要建立一個專門的 IAM 角色並配�
 
 <br>
 
-2. 將 IAM 實例配置文件 `CloudWatchLogsProfile` 與指定的 EC2 實例關聯，從而使該實例能夠使用該實例配置文件中的 IAM 角色及其權限，通常用於允許 EC2 實例訪問其他 AWS 服務，如 CloudWatch 日誌、S3 存儲等，而不需要在實例上配置明文的 AWS 憑證。
+2. 將 IAM 實例配置文件 `CloudWatchLogsProfile` 與指定的 EC2 實例關聯，從而使該實例能夠使用該實例配置文件中的 IAM 角色及其權限，通常用於允許 EC2 實例訪問其他 AWS 服務，如 CloudWatch 日誌、S3 儲存等，而不需要在實例上配置明文的 AWS 憑證。
 
     ```bash
     aws ec2 associate-iam-instance-profile --instance-id $INSTANCE_ID --iam-instance-profile Name=CloudWatchLogsProfile
@@ -612,6 +612,86 @@ _監控 `/var/log/messages` 中的關鍵字 `ERROR`；_
 
     ```bash
     aws cloudwatch describe-alarms --alarm-names "EC2InstanceErrorAlarm"
+    ```
+
+<br>
+
+## 涉及收費項目
+
+_AWS 的多數服務如 EC2、CloudWatch 和 IAM 都可能產生費用，運行中的 EC2 實例會按使用時間收費，創建和儲存的日誌和指標也會產生費用，尤其是超出免費使用配額時，另外，雖然 IAM 本身不收費，但與其他服務結合使用可能會導致相關服務的費用增加。_
+
+<br>
+
+1. 刪除 EC2 實例。
+
+    ```bash
+    aws ec2 terminate-instances --instance-ids $INSTANCE_ID
+    ```
+
+<br>
+
+2. 刪除密鑰對。
+
+    ```bash
+    aws ec2 delete-key-pair --key-name MyKeyPair
+    ```
+
+<br>
+
+3. 刪除安全組。
+
+    ```bash
+    aws ec2 delete-security-group --group-id $SECURITY_GROUP_ID
+    ```
+
+<br>
+
+4. 刪除 CloudWatch 警報。
+
+    ```bash
+    aws cloudwatch delete-alarms --alarm-names "HighCPUUtilization" "EC2InstanceErrorAlarm"
+    ```
+
+<br>
+
+5. 刪除 CloudWatch 日誌組和日誌流。
+
+    ```bash
+    aws logs delete-log-group --log-group-name EC2InstanceLogs
+    ```
+
+<br>
+
+6. 刪除 IAM 角色和實例配置文件，先將角色從實例配置文件中移除。
+
+    ```bash
+    aws iam remove-role-from-instance-profile --instance-profile-name CloudWatchLogsProfile --role-name MyCloudWatchLogsRole
+    ```
+
+<br>
+
+7. 然後刪除實例配置文件。
+
+    ```bash
+    aws iam delete-instance-profile --instance-profile-name CloudWatchLogsProfile
+    ```
+
+<br>
+
+8. 刪除角色策略。
+
+    ```bash
+    POLICY_ARN=$(aws iam list-attached-role-policies --role-name MyCloudWatchLogsRole --query "AttachedPolicies[?PolicyName=='CloudWatchLogsPolicy'].PolicyArn" --output text)
+    aws iam detach-role-policy --role-name MyCloudWatchLogsRole --policy-arn $POLICY_ARN
+    aws iam delete-policy --policy-arn $POLICY_ARN
+    ```
+
+<br>
+
+9. 刪除角色。
+
+    ```bash
+    aws iam delete-role --role-name MyCloudWatchLogsRole
     ```
 
 <br>

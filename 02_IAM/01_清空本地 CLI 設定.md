@@ -28,7 +28,7 @@ _安裝 AWS CLI，另外也可使用腳本安裝，這裡僅示範使用 brew �
 
 ## 刪除 AWS CLI 配置檔案
 
-1. AWS CLI 玉社的配置與認證檔案分別存儲在 `~/.aws/config` 和 `~/.aws/credentials` 中，可手動刪除達到重置目的。
+1. AWS CLI 玉社的配置與認證檔案分別儲存在 `~/.aws/config` 和 `~/.aws/credentials` 中，可手動刪除達到重置目的。
 
     ```bash
     rm ~/.aws/config
