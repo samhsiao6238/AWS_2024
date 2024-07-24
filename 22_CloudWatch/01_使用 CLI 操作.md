@@ -539,28 +539,10 @@ _使用 AWS CLI 建立 Log Group 和 Log Stream_
 
 <br>
 
-3. 可嘗試檢查 /var/log/awslogs.log 文件，確保 Agent 正在運行並且沒有錯誤；按下組合鍵 `comtrol + C` 可退出。
+3. 查看 `CloudWatch Logs Agent` 產生的日誌內容文件 `/var/log/awslogs.log` 可確保 Agent 正在運行並且沒有錯誤；按下組合鍵 `comtrol + C` 可退出。
 
     ```bash
-    sudo cat /var/log/awslogs.log
-    ```
-
-<br>
-
-4. 再次獲取日誌事件。
-
-    ```bash
-    aws logs get-log-events --log-group-name EC2InstanceLogs --log-stream-name ${INSTANCE_ID}/messages --region us-east-1
-    ```
-
-    _輸出_
-
-    ```json
-    {
-        "nextForwardToken": "f/38397053140138874559500906921556524658767136414851137536/s", 
-        "events": [], 
-        "nextBackwardToken": "b/38396892574773445139014287864384961590564293355855937536/s"
-    }
+    cat /var/log/awslogs.log
     ```
 
 <br>
@@ -621,7 +603,7 @@ _監控 `/var/log/messages` 中的關鍵字 `ERROR`；_
 4. 查詢 CloudWatch 日誌。
 
     ```bash
-    aws logs get-log-events --log-group-name EC2InstanceLogs --log-stream-name ${INSTANCE_ID}/messages
+    aws logs get-log-events --log-group-name EC2InstanceLogs --log-stream-name ${INSTANCE_ID}/messages --limit 5
     ```
 
 <br>
