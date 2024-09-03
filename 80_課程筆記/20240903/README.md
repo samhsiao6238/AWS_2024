@@ -1,6 +1,6 @@
 # aws academy
 
-[登入頁面](https://www.awsacademy.com/vforcesite/LMS_Login)
+登入 [aws academy](https://www.awsacademy.com/vforcesite/LMS_Login)
 
 ![](images/img_01.png)
 
@@ -8,7 +8,7 @@
 
 # aws educate
 
-[登入頁面](https://www.awseducate.com/signin/SiteLogin?language=en_US)
+登入 [aws educate](https://www.awseducate.com/signin/SiteLogin?language=en_US)
 
 ![](images/img_02.png)
 
