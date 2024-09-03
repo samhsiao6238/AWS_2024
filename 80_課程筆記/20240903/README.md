@@ -1,6 +1,16 @@
-# 20240903 實踐大學 AWS
+# aws academy
 
-[lab](https://awsacademy.instructure.com/courses/90630?invitation=QWw9zVIEFn7hLFwVdhCeIxF7ajcDG28KzOR2AYAl)
+[登入頁面](https://www.awsacademy.com/vforcesite/LMS_Login)
+
+![](images/img_29.png)
+
+<br>
+
+# aws educate
+
+[登入頁面](https://www.awseducate.com/signin/SiteLogin?language=en_US)
+
+![](images/img_28.png)
 
 <br>
 
