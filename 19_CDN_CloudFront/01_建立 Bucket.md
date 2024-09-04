@@ -1,4 +1,4 @@
-# CloudFront
+# CDN & CloudFront
 
 _雲端內容傳遞服務_
 
