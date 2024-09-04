@@ -4,6 +4,16 @@ _雲端內容傳遞服務_
 
 <br>
 
+## 簡介
+
+1. 在 AWS 中，CDN 指的是 `Content Delivery Network`，服務名為 `Amazon CloudFront`。
+
+<br>
+
+2. CDN 是一種 `分佈式的網絡架構`，用來加速網頁內容的傳遞，特別是針對地理位置分散的用戶，CDN 通過將內容緩存到全球各地的 `伺服器節點`，也稱為 `邊緣位置（Edge Locations）` 上，從而減少用戶訪問內容時的 `延遲（Latency）`，提高網站或應用的加載速度和可靠性。
+
+<br>
+
 ## 說明
 
 _以下示範包含的服務有 `S3 Bucket`、`CloudFront`、`EC2`_
