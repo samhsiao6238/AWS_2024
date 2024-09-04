@@ -15,7 +15,7 @@ _快速設定 AWS CLI 的本地工作環境_
 
 <br>
 
-2. 驗證安裝；特別說明，因為 AWS CLI 是用 Python 開發的，因此它需要 Python 執行環境。。
+2. 驗證安裝；特別說明，因為 AWS CLI 是用 Python 開發的，因此它需要 Python 執行環境。
 
     ```bash
     aws --version
