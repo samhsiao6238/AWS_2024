@@ -16,7 +16,11 @@ _Module 5 – Introducing Computer Vision (CV)，使用 Amazon SageMaker 建立 
 
 ## SageMaker
 
-1. 在 Services 搜尋並開啟 Amazon SageMaker。
+_若從 Lab 進入，直接進入 `Lab 5 - Guided Lab: Facial Recognition`，然後 `Start Lab` 並進入 `AWS`_
+
+<br>
+
+1. 在 Services 搜尋並開啟 `Amazon SageMaker`。
 
    ![](images/img_09.png)
 
