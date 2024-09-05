@@ -24,7 +24,7 @@
 
 4. 勾選點擊。
 
-    <img src="images/img_75.png" width="300px">
+    <img src="images/img_75.png" width="500px">
 
 <br>
 
