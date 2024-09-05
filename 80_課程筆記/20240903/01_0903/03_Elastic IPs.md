@@ -6,31 +6,31 @@
 
 1. 搜尋服務 `Elastic IPs`。
 
-    ![](images/img_72.png)
+    <img src="images/img_72.png" width="200px">
 
 <br>
 
 2. 點擊 `Allocate Elastic IP address`。
 
-    ![](images/img_73.png)
+    <img src="images/img_73.png" width="300px">
 
 <br>
 
 3. 皆使用預設即可，點擊 `Allocate`。
 
-    ![](images/img_74.png)
+    <img src="images/img_74.png" width="400px">
 
 <br>
 
 4. 勾選點擊。
 
-    ![](images/img_75.png)
+    <img src="images/img_75.png" width="200px">
 
 <br>
 
 5. 建立關聯。
 
-    ![](images/img_76.png)
+    <img src="images/img_76.png" width="400px">
 
 <br>
 
@@ -42,31 +42,31 @@ _實際稱為釋放 `Release`_
 
 1. 先進入 EC2 進行解綁定 `Disassociate Elastic IP addresses`。
 
-    ![](images/img_77.png)
+    <img src="images/img_77.png" width="400px">
 
 <br>
 
 2. 點擊右下角 `Disassociate Elastic IP address`。
 
-    ![](images/img_78.png)
+    <img src="images/img_78.png" width="400px">
 
 <br>
 
 3. 確認。
 
-    ![](images/img_79.png)
+    <img src="images/img_79.png" width="400px">
 
 <br>
 
 4. 在進入 `Elastic IPs` 頁籤中進行釋放 `Release Elastic IP addresses`。
 
-    ![](images/img_80.png)
+    <img src="images/img_80.png" width="400px">
 
 <br>
 
 5. 點擊釋放 `Release`。
 
-    ![](images/img_81.png)
+    <img src="images/img_81.png" width="400px">
 
 <br>
 
