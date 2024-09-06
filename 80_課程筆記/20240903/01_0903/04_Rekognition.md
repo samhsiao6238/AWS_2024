@@ -315,7 +315,7 @@ _確認已完成本地 AWS 憑證配置；以下比照 Lab 中的程序分段操
     ```python
     import boto3
 
-    # 創建 Rekognition 客戶端
+    # 建立 Rekognition 客戶端
     client = boto3.client(
         'rekognition', region_name='us-east-1'
     )
@@ -337,7 +337,7 @@ _確認已完成本地 AWS 憑證配置；以下比照 Lab 中的程序分段操
     ```python
     import boto3
 
-    # 創建 Rekognition 客戶端
+    # 建立 Rekognition 客戶端
     client = boto3.client(
         'rekognition', region_name='us-east-1'
     )

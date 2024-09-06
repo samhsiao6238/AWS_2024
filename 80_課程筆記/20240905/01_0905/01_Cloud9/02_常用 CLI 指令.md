@@ -20,7 +20,7 @@
 
 <br>
 
-3. 查詢已創建的所有 Instance Profile。
+3. 查詢已建立的所有 Instance Profile。
 
     ```bash
     aws iam list-instance-profiles
