@@ -467,6 +467,16 @@ _從本地經由跳板進入目標 EC2_
 
 <br>
 
+12. 進入 `~/environment` 並輸出 `README.md`。
+
+    ```bash
+    cd ~/environment && cat README.md
+    ```
+
+    ![](images/img_46.png)
+
+<br>
+
 ___
 
 _END_
