@@ -217,7 +217,7 @@ _使用密鑰_
 
 <br>
 
-2. 其中 `Bastion Host` 就是 `堡壘主機`，以下我稱為 `跳板主機`，因為可通過 `Bastion Host` 來訪問其他位於私有子網中的 EC2 實例而得名。
+2. 其中 `Bastion Host` 就是 `堡壘主機`，以下我稱為 `跳板主機`；可通過 `Bastion Host` 來訪問其他位於私有子網中的 EC2 實例。
 
     ![](images/img_21.png)
 
