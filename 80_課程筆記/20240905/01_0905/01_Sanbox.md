@@ -6,13 +6,13 @@ _`90628`_
 
 ## 說明
 
-1. 點擊進入 `Sandbox Environment`。
+1. 從 `Modules` 點擊進入 `Sandbox Environment`。
 
     ![](images/img_01.png)
 
 <br>
 
-2. 參考左邊的步驟進行操作；完成 `Start Lab` 之後，點擊 `AWS` 進入主控台。
+1. 參考左側欄中的說明步驟進行操作；完成 `Start Lab` 之後，點擊 `AWS` 進入主控台。
 
     ![](images/img_02.png)
 
@@ -36,13 +36,17 @@ _`90628`_
 
 <br>
 
-6. 切換 `Network settings` 為 `SSH`。
+6. 切換 `Network settings` 為 `SSH`；並設定任一子網。
 
     ![](images/img_07.png)
 
+    _當前帳號不夠權限選擇預設的 `SSM`_
+
+    ![](images/img_31.png)
+
 <br>
 
-7. 其餘先使用預設，點擊右下角建立。
+7. 其餘先使用預設，點擊右下角建立 `Create`。
 
     ![](images/img_06.png)
 
@@ -72,7 +76,7 @@ _已經內建 CLI，無需額外安裝_
 
 <br>
 
-1. 打開下方終端，執行 AWS CLI 命令；查詢當前用戶身份。
+1. 打開下方終端，執行 AWS CLI 命令；查詢當前用戶身份，可比對這個 `Account` 會是自己的 `Academy` 帳號。
 
     ```bash
     aws sts get-caller-identity
@@ -90,19 +94,29 @@ _已經內建 CLI，無需額外安裝_
 
 <br>
 
+3. 可優化指令，僅顯示 EC2 實例的 ID 及名稱。
+
+    ```bash
+    aws ec2 describe-instances --query "Reservations[*].Instances[*].[InstanceId, Tags[?Key=='Name'].Value | [0]]" --output text
+    ```
+
+    ![](images/img_32.png)
+
+<br>
+
 ## 使用 AWS SDK for Python
 
 _Boto3_
 
 <br>
 
-1. 開啟新終端。
+1. 若要開啟新的終端，點擊 `+` 符號，然後點擊 `New Terminal`。
 
     ![](images/img_12.png)
 
 <br>
 
-2. 雖然官方文件語義上似乎說已經安裝了 `boto3`，但實際上並沒有，所以先進行必要的套件安裝。
+2. 雖然官方說明文件在語義上似乎說已經內建了 `boto3`，但實際上還是需要安裝才能使用；以下是安裝套件指令。
 
     ```bash
     pip install boto3
@@ -110,13 +124,13 @@ _Boto3_
 
 <br>
 
-3. 訊息指出因為權限問題無法寫入系統的全局 site-packages 目錄，pip 將自動選擇將 Boto3 安裝到使用者目錄，也就是 `user-level installation`，而不是安裝到全局系統目錄。
+3. 訊息指出因為權限問題無法寫入系統的全局 site-packages 目錄，pip 將自動選擇將 Boto3 安裝到使用者目錄，也就是 `user-level installation`，而不是安裝到全局系統目錄；不影響安裝，可順利完成。
 
     ![](images/img_13.png)
 
 <br>
 
-4. 安裝後可先進入 Python 環境中。
+4. 安裝後可先進入 Python 環境中測試看看。
 
     ```bash
     python3
@@ -161,25 +175,31 @@ _使用密鑰_
 <br>
 
 
-2. 依據使用的系統以及連線方式下載或複製相關文件或資訊。
+2. 在彈出的視窗中會顯示連線所需資訊，可依據使用的系統以及連線方式進行下載或複製必要文件或資訊。
 
     ![](images/img_16.png)
 
 <br>
 
-3. 假如是下載 PEM 密鑰文件。
+3. 以下示範透過 `PEM 密鑰文件` 進行連線；首先下載 `PEM 密鑰文件`。
 
     ![](images/img_17.png)
 
 <br>
 
-4. 這個文件預設是 `644`。
+4. 特別注意，在下方顯示的 `SecretKey` 與 `AccessKey`，其中 `SecretKey` 就是 `Secret Access Key`，`AccessKey` 就是 `AWS Access Key ID`；這兩個密鑰資料可在本機的 `~/.aws/credentials` 中查看，或透過終端機指令 `aws configure` 進行設定。
+
+    ![](images/img_33.png)
+
+<br>
+
+5. 這個下載的 `labsuser.*` 文件的權限設定初始值是 `644`。
 
     ![](images/img_18.png)
 
 <br>
 
-5. 比照 EC2 教程中的說明，先修改密鑰文件的權限為 `400`。
+6. 比照 EC2 教程中的說明，先修改密鑰文件的權限為 `400`；注意指令的執行路徑。
 
     ```bash
     chmod 400 labsuser.pem
@@ -197,7 +217,7 @@ _使用密鑰_
 
 <br>
 
-2. 其中 `Bastion Host` 就是 `跳板主機`，可以通過 `Bastion Host` 來訪問其他位於私有子網中的 EC2 實例。
+2. 其中 `Bastion Host` 就是 `堡壘主機`，也稱 `跳板主機`，因為可通過 `Bastion Host` 來訪問其他位於私有子網中的 EC2 實例而得名。
 
     ![](images/img_21.png)
 
@@ -224,7 +244,7 @@ _使用密鑰_
 6. 在密鑰所在路徑中開啟終端，並直接運行以下指令進行連線；若不在路徑中，則要添加密鑰文件的路徑。
 
     ```bash
-    ssh -i labsuser.pem ec2-user@3.238.75.63
+    ssh -i labsuser.pem ec2-user@<Bastion Host 公共 IP>
     ```
 
 <br>
@@ -241,15 +261,19 @@ _使用密鑰_
 
 <br>
 
-## 結束實驗
+## 結束 Learner Lab
 
-1. 完成所有操作後，務必關閉實驗，這會自動刪除所有創建的資源並清理環境。
+1. 完成所有操作後可關閉 Lab，這會自動刪除所有創建的資源並清理環境。
 
     ![](images/img_27.png)
 
 <br>
 
 ## 注意事項
+
+_在 Lab 中的操作是有侷限性的，官方對此加以說明_
+
+<br>
 
 1. 所有操作僅限於 `us-east-1` 區域。
 
@@ -277,9 +301,9 @@ _使用密鑰_
 
 <br>
 
-## 其他終端指令
+## 與 EC2 相關的終端指令
 
-_EC2 相關_
+_接著將示範在 Cloud9 終端中進行相關查詢指令，若嘗試在遠端連線的終端中運行將會出錯，因為 `EC2InstanceRole` 預設不具備相關權限，這裡先嘗試在 Cloud9 中執行，並體驗遠端並無權限後，將在後面步驟進行設定說明。_
 
 <br>
 
@@ -320,6 +344,118 @@ _EC2 相關_
     ```bash
     aws ec2 describe-account-attributes
     ```
+
+<br>
+
+## 添加權限
+
+1. 進入 IAM 服務。
+
+    ![](images/img_34.png)
+
+<br>
+
+2. 進入 Roles，搜尋並點擊進入與 EC2 實例關聯的 IAM 角色 `EC2InstanceRole`。
+
+    ![](images/img_35.png)
+
+<br>
+
+3. 為角色添加政策。
+
+    ![](images/img_36.png)
+
+<br>
+
+4. 搜尋並勾選 `AmazonEC2ReadOnlyAccess`，點擊 `Add permissions`。
+
+    ![](images/img_37.png)
+
+<br>
+
+5. 完成以上步驟後，可嘗試在遠端進行終端機指令。
+
+    ![](images/img_38.png)
+
+<br>
+
+## 遠端連線目標 EC2
+
+_從遠端經由跳板 EC2 進入目標 EC2_
+
+<br>
+
+1. 設定白名單。
+
+    ![](images/img_39.png)
+
+<br>
+
+2. 連線。
+
+    ![](images/img_40.png)
+
+<br>
+
+3. 修改名稱 `ec2-user` 連線，不建議使用預設的 `root`。
+
+    ![](images/img_41.png)
+
+<br>
+
+4. 先在堡壘中建立密鑰對。
+
+    ```bash
+    ssh-keygen
+    ```
+
+<br>
+
+5. 輸出。
+
+    ```bash
+    cat authorized_keys
+    ```
+
+<br>
+
+6. 複製。
+
+    ![](images/img_42.png)
+
+<br>
+
+7. 進入目標實例中，也就是 Cloud9 的 EC2 中，編輯授權文件。
+
+    ```bash
+    sudo nano ~/.ssh/authorized_keys
+    ```
+
+<br>
+
+8. 貼上前一段複製的公鑰。
+
+    ![](images/img_43.png)
+
+<br>
+
+9. 可直接複製連線中的終端下方顯示的公共 IP。
+
+    ![](images/img_44.png)
+
+<br>
+
+10. 從堡壘中進行連線。
+
+    ```bash
+    ssh ec2-user@184.72.167.166
+    ```
+
+<br>
+
+11. 連線成功。
+
+    ![](images/img_45.png)
 
 <br>
 
