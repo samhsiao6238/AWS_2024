@@ -678,7 +678,7 @@ _AWS 的多數服務如 EC2、CloudWatch 和 IAM 都可能產生費用，運行�
 
 <br>
 
-8. 刪除角色策略。
+8. 刪除角色政策。
 
     ```bash
     POLICY_ARN=$(aws iam list-attached-role-policies --role-name MyCloudWatchLogsRole --query "AttachedPolicies[?PolicyName=='CloudWatchLogsPolicy'].PolicyArn" --output text)
