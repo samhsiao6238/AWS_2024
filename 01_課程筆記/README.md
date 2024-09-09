@@ -1,18 +1,18 @@
 # AWS_2024
 
-_彙整 AWS 講義_
-
-
-
-[AWS academy](https://awsacademy.instructure.com/)
-
-![](images/img_03.png)
+<br>
 
 # aws academy
 
-登入 [aws academy](https://www.awsacademy.com/vforcesite/LMS_Login)
+Aws academy [登入頁面](https://www.awsacademy.com/vforcesite/LMS_Login)
 
 ![](images/img_01.png)
+
+<br>
+
+AWS academy [儀表板](https://awsacademy.instructure.com/)
+
+![](images/img_03.png)
 
 <br>
 
