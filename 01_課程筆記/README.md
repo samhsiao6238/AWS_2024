@@ -6,13 +6,13 @@
 
 Aws academy [登入頁面](https://www.awsacademy.com/vforcesite/LMS_Login)
 
-![](images/img_01.png)
+<img src="images/img_01.png" width="400px">
 
 <br>
 
 AWS academy [儀表板](https://awsacademy.instructure.com/)
 
-![](images/img_03.png)
+<img src="images/img_03.png" width="400px">
 
 <br>
 
@@ -20,7 +20,7 @@ AWS academy [儀表板](https://awsacademy.instructure.com/)
 
 登入 [aws educate](https://www.awseducate.com/signin/SiteLogin?language=en_US)
 
-![](images/img_02.png)
+<img src="images/img_02.png" width="400px">
 
 <br>
 
