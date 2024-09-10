@@ -1,66 +1,52 @@
-# Lightsail
+# Lightsail 簡介
 
-_Academy 帳號似乎無權限使用，切換到個人帳號_
-
-<br>
-
-## 說明
-
-1. Lightsail 是一個簡化的雲端平台，服務提供簡單的界面快速設置和管理虛擬私人伺服器（VPS）、數據庫、儲存空間等，適合中小型應用程式的部署。
+_Academy 帳號似乎無權限使用，切換到個人帳號完成以下筆記_
 
 <br>
 
-## 典型的應用
+## 簡介
 
-1. 網站託管：Lightsail 支持安裝和管理流行的 CMS（如 WordPress、Magento）或自訂網站。
-
-<br>
-
-2. 簡單的開發環境：適合用來快速設置測試環境或小型應用。
+_看了 Lightsail 介紹，簡單來說就像是一個簡化版的 EC2，適用於初學或是小型專案，相關細節不再贅述。_
 
 <br>
 
-3. 應用程式：包括 LAMP 堆疊、Node.js、GitLab 等應用程式，適合快速部署。
+## 操作記錄
+
+_以下示範建立實例、SSH 連線、Python 腳本操作等_
 
 <br>
 
-## 設置指引
-
-_以下示範使用 Lightsail 設置虛擬私人伺服器_
-
-<br>
-
-1. 搜尋並進入。
+1. 搜尋並進入 `Lightsail`。
 
     ![](images/img_37.png)
 
 <br>
 
-2. 點擊 `Create instance`。
+2. 點擊 `Create instance` 建立實例。
 
     ![](images/img_38.png)
 
 <br>
 
-3. 選擇區域。
+3. 選擇區域，預設在新加坡，切換到 `us-east-1`。
 
     ![](images/img_39.png)
 
 <br>
 
-4. 選擇伺服器的映像系統。
+4. 選擇 Platform `Linux/Unix`。
 
     ![](images/img_40.png)
 
 <br>
 
-5. 選擇 OS。
+5. 選擇 OS，基本上都與建立 EC2 相同。
 
     ![](images/img_41.png)
 
 <br>
 
-6. 選擇伺服器方案。
+6. 選擇伺服器方案；其中 `Dual-stack` 允許實例同時支持 IPv4 和 IPv6，也就是實例將擁有公共的 IPv4 地址以及公共的 IPv6 地址，並可以通過兩種協議訪問；另外一個選項則限用 `IPv6`。
 
     ![](images/img_42.png)
 
@@ -98,7 +84,7 @@ _以下示範使用 Lightsail 設置虛擬私人伺服器_
 
 <br>
 
-2. 點擊實例的 `Manage` 可進入細節畫面。
+2. 展開實例右側選單，點擊其中 `Manage` 可進入細節畫面。
 
     ![](images/img_48.png)
 
@@ -110,13 +96,13 @@ _以下示範使用 Lightsail 設置虛擬私人伺服器_
 
 <br>
 
-4. 預設的使用者名稱依舊是 `ec2-user`。
+4. 預設的使用者名稱依舊是 `ec2-user`；同時會顯示公共 IP。
 
     ![](images/img_50.png)
 
 <br>
 
-5. 與 EC2 操作相同，編輯遠端的 `authorized_keys` 文件。
+5. 與 EC2 操作相同，可編輯遠端的 `authorized_keys` 文件，讓本機進行遠端連線且無需輸入密碼。
 
     ```bash
     sudo ~/.ssh/authorized_keys
@@ -124,7 +110,7 @@ _以下示範使用 Lightsail 設置虛擬私人伺服器_
 
 <br>
 
-6. 查詢本機的 `*.pub` 文件。
+6. 查詢本機的 `*.pub` 文件，這將用於貼到遠端主機上進行認證使用。
 
     ```bash
     cat ~/.ssh/id_rsa.pub
@@ -148,7 +134,7 @@ _以下示範使用 Lightsail 設置虛擬私人伺服器_
 
 ## 使用 Python 控制 Lightsail
 
-_Lightsail 支援 boto3 進行自動化操作，以下示範簡單的查詢程序_
+_Lightsail 支援 boto3 進行自動化操作，以下示範簡單的查詢與刪除程序_
 
 <br>
 
@@ -168,7 +154,7 @@ _Lightsail 支援 boto3 進行自動化操作，以下示範簡單的查詢程�
     # 初始化 Lightsail 客戶端
     client = boto3.client('lightsail')
 
-    # 列出所有 Lightsail 實例並回傳其狀態資訊
+    # 列出所有實例並回傳其狀態資訊
     def list_instances():
         try:
             # 調用 Lightsail API 來獲取實例資訊
@@ -276,7 +262,7 @@ _Lightsail 支援 boto3 進行自動化操作，以下示範簡單的查詢程�
 
 <br>
 
-2. 會先顯示。
+2. 執行後會先顯示當前實例資訊。
 
     ```bash
     實例名稱: SamHsiao-202409
@@ -289,13 +275,13 @@ _Lightsail 支援 boto3 進行自動化操作，以下示範簡單的查詢程�
 
 <br>
 
-3. 上方會顯示對話窗，可複製 `實例名稱` 然後按下 `ENTER` 進行刪除。
+3. 最上方會顯示對話窗，可複製 Cell 所輸出的 `實例名稱`，複製貼在上方對話框中，然後按下 `ENTER` 進行刪除。
 
     ![](images/img_52.png)
 
 <br>
 
-4. 刪除後顯示。
+4. 顯示刪除結果。
 
     ```bash
     實例 SamHsiao-202409 刪除成功。
@@ -303,9 +289,15 @@ _Lightsail 支援 boto3 進行自動化操作，以下示範簡單的查詢程�
 
 <br>
 
-5. 再次查詢。
+5. 再次透過第一個腳本進行查詢。
 
     ![](images/img_53.png)
+
+<br>
+
+6. 進入主控台查看，不存在已刪除的實例。
+
+    ![](images/img_54.png)
 
 <br>
 
