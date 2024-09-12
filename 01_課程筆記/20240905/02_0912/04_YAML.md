@@ -2,24 +2,27 @@
 
 _任務：使用 `.yaml` 一鍵式建立雲計算環境；這裡以 `EC2` 為例_
 
-## 說明
+<br>
 
-1. 在 AWS 中可用 `AWS CloudFormation` 完成一鍵式建立雲計算環境。
+## 實作
 
-2. `CloudFormation` 使用 `.yaml` 或 `.json` 格式的模板來自動化基礎架構的部署和管理。
+_可用 `AWS CloudFormation` 完成一鍵式建立雲計算環境，透過 `.yaml` 或 `.json` 格式的模板來自動化基礎架構的部署和管理，部署 CloudFormation Stack 可通過控制台或 AWS CLI 進行。_ 
 
+<br>
 
-## 步驟規劃
+1. 搜尋並進入 `CloudFormation`。
 
-1. 建立 CloudFormation 模板：使用 YAML 語法來定義 AWS 資源。
+    ![](images/img_02.png)
 
-2. 部署 CloudFormation Stack：通過 AWS 控制台或 AWS CLI 部署 YAML 模板，並自動建立所有相關資源。
+<br>
 
-3. 驗證資源：確認 EC2 實例已正確啟動並運作。
+2. 點擊 `Create stack`。
 
-## 實作 
+    ![](images/img_03.png)
 
-1. 建立 CloudFormation 模板 (`cloudformation-template.yaml`)，這個模板會自動建立一個 VPC、子網路、網際網路閘道、路由表、安全群組，並在此網路架構中啟動一個 EC2 實例。
+<br>
+
+3. 在本地建立模板文件 `*.yaml`，命名為 `cloudformation-template.yaml`，內容如下；這個模板會自動建立一個 VPC、子網路、網際網路閘道、路由表、安全群組，並在此網路架構中啟動一個 EC2 實例。
 
 ```yaml
 AWSTemplateFormatVersion: '2010-09-09'
@@ -42,7 +45,7 @@ Resources:
       VpcId: !Ref MyVPC
       CidrBlock: '10.0.1.0/24'
       MapPublicIpOnLaunch: 'true'
-      AvailabilityZone: 'us-west-2a'
+      AvailabilityZone: 'us-east-1a'
       Tags:
         - Key: Name
           Value: MySubnet
@@ -104,8 +107,10 @@ Resources:
     Type: 'AWS::EC2::Instance'
     Properties: 
       InstanceType: 't2.micro'
-      KeyName: 'my-key-pair' # 替換為你自己的 Key Pair 名稱
-      ImageId: 'ami-0c55b159cbfafe1f0'  # 替換為你想使用的 AMI ID
+      # 替換為自己的 Key Pair 名稱
+      KeyName: 'my-key-pair'
+      # 替換指定要使用的 AMI ID
+      ImageId: 'ami-03808b1d5ea7e5ea8'
       NetworkInterfaces: 
         - AssociatePublicIpAddress: 'true'
           DeviceIndex: '0'
@@ -126,7 +131,83 @@ Outputs:
     Value: !GetAtt MyEC2Instance.PublicIp
 ```
 
-2. 使用 AWS CLI 部署 CloudFormation Stack；確保已安裝並配置好 AWS CLI；以下建立一個 CloudFormation Stack 並命名為 `my-ec2-stack`，並根據模板建立 EC2 實例及其相關的網路資源。
+<br>
+
+4. 點擊 `Choose an existing template`。
+
+    ![](images/img_04.png)
+
+<br>
+
+5. 選取 `Upload a template file`，然後點擊 `Choose file`。
+
+    ![](images/img_05.png)
+
+<br>
+
+6. 選擇前面編輯的腳本。
+
+    ![](images/img_06.png)
+
+<br>
+
+7. 可點擊 `View In Application Composer` 進行查看。
+
+    ![](images/img_07.png)
+
+<br>
+
+8. 顯示如下圖；`MyEC2Instance` 與 `MySecurityGroup` 相關聯，表示 EC2 實例放置在定義的安全群組中；`MySecurityGroup` 與 `MyVPC` 相關聯，代表安全群組被應用在建立的 VPC 中，而 `MyVPC` 中包含了 `子網路`、`路由表`、`網際網路閘道` 等定義。
+
+    ![](images/img_08.png)
+
+<br>
+
+9. 點擊 `Next`。
+
+    ![](images/img_09.png)
+
+<br>
+
+10. 命名為 `my-ec2-stack`，然後點擊 `Next`。
+
+    ![](images/img_10.png)
+
+<br>
+
+## Configure stack options
+
+_配置堆疊選項_
+
+<br>
+
+1. 可以設置標籤 `Tags`；Key 為 `Project`、Value 為 `EC2-Setup`；標籤有利於更好地組織和識別資源，特別在有多個堆疊或資源的狀況。
+
+    ![](images/img_11.png)
+
+<br>
+
+2. 其他使用預設，然後點擊 `Next`。
+
+    ![](images/img_09.png)
+
+<br>
+
+3. 檢查後點擊 `Submit` 建立。
+
+    ![](images/img_12.png)
+
+<br>
+
+4. 顯示 `CREATE_IN_PROGRESS`。
+
+    ![](images/img_13.png)
+
+<br>
+
+## 
+
+7. 使用 AWS CLI 部署 CloudFormation Stack；確保已安裝並配置好 AWS CLI；以下建立一個 CloudFormation Stack 並命名為 `my-ec2-stack`，並根據模板建立 EC2 實例及其相關的網路資源。
 
 ```bash
 aws cloudformation create-stack \
@@ -137,7 +218,8 @@ aws cloudformation create-stack \
 
 
 
-3. 部署完成後，使用 AWS CLI 獲取 EC2 實例信息驗證資源是否正確建立；這將返回 Stack 的詳細信息，並可使用返回的公有 IP 來連接到 EC2 實例。
+
+5. 部署完成後，使用 AWS CLI 獲取 EC2 實例信息驗證資源是否正確建立；這將返回 Stack 的詳細信息，並可使用返回的公有 IP 來連接到 EC2 實例。
 
 
 ```bash
