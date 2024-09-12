@@ -22,115 +22,115 @@ _使用 `CloudFormation` 完成自動化建立雲計算環境任務，可透過 
 
 <br>
 
-3. 在本地建立模板文件 `*.yaml`，命名為 `cloudformation-template.yaml`，內容如下；這個模板會自動建立一個 VPC、子網路、網際網路閘道、路由表、安全群組，並在此網路架構中啟動一個 EC2 實例。
+3. 在本地建立模板文件 `*.yaml`，命名為 `cloudformation-template.yaml`，內容如下；這個模板會自動建立一個 VPC、子網路、網際網路閘道、路由表、安全群組，並在此網路架構中啟動一個 EC2 實例；特別注意。
 
-```yaml
-AWSTemplateFormatVersion: '2010-09-09'
-Description: '使用 CloudFormation 一鍵式部署 EC2 實例的雲端環境'
+    ```yaml
+    AWSTemplateFormatVersion: '2010-09-09'
+    Description: '使用 CloudFormation 一鍵式部署 EC2 實例的雲端環境'
 
-Resources:
-  MyVPC:
-    Type: 'AWS::EC2::VPC'
-    Properties: 
-      CidrBlock: '10.0.0.0/16'
-      EnableDnsSupport: true
-      EnableDnsHostnames: true
-      Tags: 
-        - Key: Name
-          Value: MyVPC
+    Resources:
+    MyVPC:
+        Type: 'AWS::EC2::VPC'
+        Properties: 
+        CidrBlock: '10.0.0.0/16'
+        EnableDnsSupport: true
+        EnableDnsHostnames: true
+        Tags: 
+            - Key: Name
+            Value: MyVPC
 
-  MySubnet:
-    Type: 'AWS::EC2::Subnet'
-    Properties:
-      VpcId: !Ref MyVPC
-      CidrBlock: '10.0.1.0/24'
-      MapPublicIpOnLaunch: true
-      AvailabilityZone: 'us-east-1a'
-      Tags:
-        - Key: Name
-          Value: MySubnet
+    MySubnet:
+        Type: 'AWS::EC2::Subnet'
+        Properties:
+        VpcId: !Ref MyVPC
+        CidrBlock: '10.0.1.0/24'
+        MapPublicIpOnLaunch: true
+        AvailabilityZone: 'us-east-1a'
+        Tags:
+            - Key: Name
+            Value: MySubnet
 
-  MyInternetGateway:
-    Type: 'AWS::EC2::InternetGateway'
-    Properties: 
-      Tags:
-        - Key: Name
-          Value: MyInternetGateway
+    MyInternetGateway:
+        Type: 'AWS::EC2::InternetGateway'
+        Properties: 
+        Tags:
+            - Key: Name
+            Value: MyInternetGateway
 
-  AttachGateway:
-    Type: 'AWS::EC2::VPCGatewayAttachment'
-    Properties: 
-      VpcId: !Ref MyVPC
-      InternetGatewayId: !Ref MyInternetGateway
+    AttachGateway:
+        Type: 'AWS::EC2::VPCGatewayAttachment'
+        Properties: 
+        VpcId: !Ref MyVPC
+        InternetGatewayId: !Ref MyInternetGateway
 
-  MyRouteTable:
-    Type: 'AWS::EC2::RouteTable'
-    Properties: 
-      VpcId: !Ref MyVPC
-      Tags:
-        - Key: Name
-          Value: MyRouteTable
+    MyRouteTable:
+        Type: 'AWS::EC2::RouteTable'
+        Properties: 
+        VpcId: !Ref MyVPC
+        Tags:
+            - Key: Name
+            Value: MyRouteTable
 
-  MyRoute:
-    Type: 'AWS::EC2::Route'
-    DependsOn: AttachGateway
-    Properties: 
-      RouteTableId: !Ref MyRouteTable
-      DestinationCidrBlock: '0.0.0.0/0'
-      GatewayId: !Ref MyInternetGateway
+    MyRoute:
+        Type: 'AWS::EC2::Route'
+        DependsOn: AttachGateway
+        Properties: 
+        RouteTableId: !Ref MyRouteTable
+        DestinationCidrBlock: '0.0.0.0/0'
+        GatewayId: !Ref MyInternetGateway
 
-  MySubnetRouteTableAssociation:
-    Type: 'AWS::EC2::SubnetRouteTableAssociation'
-    Properties: 
-      SubnetId: !Ref MySubnet
-      RouteTableId: !Ref MyRouteTable
+    MySubnetRouteTableAssociation:
+        Type: 'AWS::EC2::SubnetRouteTableAssociation'
+        Properties: 
+        SubnetId: !Ref MySubnet
+        RouteTableId: !Ref MyRouteTable
 
-  MySecurityGroup:
-    Type: 'AWS::EC2::SecurityGroup'
-    Properties: 
-      # 使用英文描述
-      GroupDescription: 'Allow HTTP and SSH traffic'
-      VpcId: !Ref MyVPC
-      SecurityGroupIngress: 
-        - IpProtocol: tcp
-          FromPort: '22'
-          ToPort: '22'
-          CidrIp: '0.0.0.0/0'
-        - IpProtocol: tcp
-          FromPort: '80'
-          ToPort: '80'
-          CidrIp: '0.0.0.0/0'
-      Tags:
-        - Key: Name
-          Value: MySecurityGroup
+    MySecurityGroup:
+        Type: 'AWS::EC2::SecurityGroup'
+        Properties: 
+        # 使用英文描述
+        GroupDescription: 'Allow HTTP and SSH traffic'
+        VpcId: !Ref MyVPC
+        SecurityGroupIngress: 
+            - IpProtocol: tcp
+            FromPort: '22'
+            ToPort: '22'
+            CidrIp: '0.0.0.0/0'
+            - IpProtocol: tcp
+            FromPort: '80'
+            ToPort: '80'
+            CidrIp: '0.0.0.0/0'
+        Tags:
+            - Key: Name
+            Value: MySecurityGroup
 
-  MyEC2Instance:
-    Type: 'AWS::EC2::Instance'
-    Properties: 
-      InstanceType: 't2.micro'
-      # 替換 Key Pair 名稱
-      KeyName: 'my-key-pair'
-      # 使用最新的 Amazon Linux AMI ID
-      ImageId: 'ami-098143f68772b34f5'
-      NetworkInterfaces: 
-        - AssociatePublicIpAddress: true
-          DeviceIndex: '0'
-          SubnetId: !Ref MySubnet
-          GroupSet: 
-            - !Ref MySecurityGroup
-      Tags:
-        - Key: Name
-          Value: MyEC2Instance
-          
-Outputs:
-  InstanceId:
-    Description: "EC2 Instance ID"
-    Value: !Ref MyEC2Instance
+    MyEC2Instance:
+        Type: 'AWS::EC2::Instance'
+        Properties: 
+        InstanceType: 't2.micro'
+        # 替換 Key Pair 名稱
+        KeyName: 'my-key-pair'
+        # 使用最新的 Amazon Linux AMI ID
+        ImageId: 'ami-098143f68772b34f5'
+        NetworkInterfaces: 
+            - AssociatePublicIpAddress: true
+            DeviceIndex: '0'
+            SubnetId: !Ref MySubnet
+            GroupSet: 
+                - !Ref MySecurityGroup
+        Tags:
+            - Key: Name
+            Value: MyEC2Instance
+            
+    Outputs:
+    InstanceId:
+        Description: "EC2 Instance ID"
+        Value: !Ref MyEC2Instance
 
-  PublicIP:
-    Description: "Public IP Address of EC2 Instance"
-    Value: !GetAtt MyEC2Instance.PublicIp
-```
+    PublicIP:
+        Description: "Public IP Address of EC2 Instance"
+        Value: !GetAtt MyEC2Instance.PublicIp
+    ```
 
 <br>
 
