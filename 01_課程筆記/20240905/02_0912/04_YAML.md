@@ -137,34 +137,25 @@ aws cloudformation create-stack \
 
 
 
-3. 驗證資源
+3. 部署完成後，使用 AWS CLI 獲取 EC2 實例信息驗證資源是否正確建立；這將返回 Stack 的詳細信息，並可使用返回的公有 IP 來連接到 EC2 實例。
 
-部署完成後，可以通過 AWS CLI 或 AWS 控制台驗證資源是否正確建立。
-
-#### 使用 AWS CLI 獲取 EC2 實例信息
 
 ```bash
 aws cloudformation describe-stacks --stack-name my-ec2-stack
 ```
 
-這將返回有關 Stack 的詳細信息，包括 EC2 實例的公有 IP 地址和實例 ID。你可以使用返回的公有 IP 來連接到 EC2 實例。
 
-#### 使用 SSH 連接到 EC2 實例
+
+4. 使用 SSH 讀取 `Key Pair` 文件連接到 EC2 實例
 
 ```bash
-ssh -i my-key-pair.pem ec2-user@<PublicIP>
+ssh -i my-key-pair.pem ec2-user@<公共 IP>
 ```
 
-記得將 `<PublicIP>` 替換為前面取得的公有 IP 地址，並確保使用正確的 `Key Pair` 文件。
-
-### 4. 刪除 Stack（清理資源）
-
-當你不再需要這些資源時，通過刪除 CloudFormation Stack 可以自動清理所有資源。
+5. 刪除 CloudFormation Stack。
 
 ```bash
 aws cloudformation delete-stack --stack-name my-ec2-stack
 ```
 
-### 小結
-
-這個指南展示了如何使用 AWS CloudFormation 和 YAML 模板一鍵式地建立雲計算環境。在這個例子中，我們建立了一個 VPC、子網路、網際網路閘道、安全群組，並啟動了一個 EC2 實例。你可以根據需求修改這個模板，添加其他 AWS 資源如 S3、RDS 等。
+6. 以上使用 AWS CloudFormation 和 YAML 模板一鍵式地建立雲計算環境，包含 VPC、子網路、網際網路閘道、安全群組，並啟動一個 EC2 實例；除此，可修改這個模板添加其他 AWS 資源如 S3、RDS 等。
