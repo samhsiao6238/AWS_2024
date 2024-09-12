@@ -136,7 +136,7 @@ Outputs:
 
 4. 補充說明，EC2 安全群組的描述只接受 ASCII 字符，若使用中文描述導致創建失敗；以下是這類錯誤的訊息。
 
-  ![](images/img_15.png)
+    ![](images/img_15.png)
 
 <br>
 
