@@ -111,7 +111,7 @@ Resources:
       # 替換 Key Pair 名稱
       KeyName: 'my-key-pair'
       # 使用最新的 Amazon Linux AMI ID
-      ImageId: 'ami-01825f73e66f89c85'
+      ImageId: 'ami-098143f68772b34f5'
       NetworkInterfaces: 
         - AssociatePublicIpAddress: true
           DeviceIndex: '0'
