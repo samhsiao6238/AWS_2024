@@ -1,3 +1,21 @@
+# 中，Hadoop
+
+_用於大規模數據處理和分析_
+
+## 說明
+
+1. AWS 提供了 `EMR (Elastic MapReduce)`，這是一個基於 `Hadoop` 的雲端服務，可快速部署和運行 Hadoop 集群。
+
+## 具體應用包括
+
+1. 批量數據處理：使用 MapReduce 處理大數據集，例如日誌分析、ETL 任務。
+2. 數據分析：運行大規模的數據分析工作負載，結合工具如 Apache Hive 和 Pig。
+3. 機器學習：處理大數據集訓練模型，支持常見的機器學習框架如 Apache Mahout。
+4. 資料庫查詢：使用 Hadoop 進行大規模的結構化和非結構化數據查詢，支持工具如 Apache HBase。
+
+Amazon EMR 結合 Hadoop 提供了大規模數據處理的高效解決方案，並具有按需擴展、成本效益和高可用性等優勢。
+
+
 AWS 提供了一種簡便的方式來運行 Hadoop 框架，主要通過 Amazon EMR（Elastic MapReduce）來實現。Amazon EMR 是一個完全托管的服務，讓用戶可以在 AWS 上快速部署 Hadoop 集群，並使用 Hadoop 生態系統中的工具（如 Spark、HBase、Hive、Pig 等）來處理大數據工作負載。
 
 ### AWS 上的 Hadoop 簡介

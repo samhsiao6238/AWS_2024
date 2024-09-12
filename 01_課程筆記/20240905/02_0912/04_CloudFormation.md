@@ -468,7 +468,7 @@ _手動刪除子網_
 
 <br>
 
-## 確認 CloudFormation stack 已完全刪除
+5. 確認 CloudFormation stack 已完全刪除。
 
     ```bash
     aws cloudformation describe-stacks --stack-name my-ec2-stack
