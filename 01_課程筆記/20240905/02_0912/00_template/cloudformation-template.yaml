@@ -2,104 +2,104 @@ AWSTemplateFormatVersion: '2010-09-09'
 Description: '使用 CloudFormation 一鍵式部署 EC2 實例的雲端環境'
 
 Resources:
-  MyVPC:
+MyVPC:
     Type: 'AWS::EC2::VPC'
     Properties: 
-      CidrBlock: '10.0.0.0/16'
-      EnableDnsSupport: true
-      EnableDnsHostnames: true
-      Tags: 
+    CidrBlock: '10.0.0.0/16'
+    EnableDnsSupport: true
+    EnableDnsHostnames: true
+    Tags: 
         - Key: Name
-          Value: MyVPC
+        Value: MyVPC
 
-  MySubnet:
+MySubnet:
     Type: 'AWS::EC2::Subnet'
     Properties:
-      VpcId: !Ref MyVPC
-      CidrBlock: '10.0.1.0/24'
-      MapPublicIpOnLaunch: true
-      AvailabilityZone: 'us-east-1a'
-      Tags:
+    VpcId: !Ref MyVPC
+    CidrBlock: '10.0.1.0/24'
+    MapPublicIpOnLaunch: true
+    AvailabilityZone: 'us-east-1a'
+    Tags:
         - Key: Name
-          Value: MySubnet
+        Value: MySubnet
 
-  MyInternetGateway:
+MyInternetGateway:
     Type: 'AWS::EC2::InternetGateway'
     Properties: 
-      Tags:
+    Tags:
         - Key: Name
-          Value: MyInternetGateway
+        Value: MyInternetGateway
 
-  AttachGateway:
+AttachGateway:
     Type: 'AWS::EC2::VPCGatewayAttachment'
     Properties: 
-      VpcId: !Ref MyVPC
-      InternetGatewayId: !Ref MyInternetGateway
+    VpcId: !Ref MyVPC
+    InternetGatewayId: !Ref MyInternetGateway
 
-  MyRouteTable:
+MyRouteTable:
     Type: 'AWS::EC2::RouteTable'
     Properties: 
-      VpcId: !Ref MyVPC
-      Tags:
+    VpcId: !Ref MyVPC
+    Tags:
         - Key: Name
-          Value: MyRouteTable
+        Value: MyRouteTable
 
-  MyRoute:
+MyRoute:
     Type: 'AWS::EC2::Route'
     DependsOn: AttachGateway
     Properties: 
-      RouteTableId: !Ref MyRouteTable
-      DestinationCidrBlock: '0.0.0.0/0'
-      GatewayId: !Ref MyInternetGateway
+    RouteTableId: !Ref MyRouteTable
+    DestinationCidrBlock: '0.0.0.0/0'
+    GatewayId: !Ref MyInternetGateway
 
-  MySubnetRouteTableAssociation:
+MySubnetRouteTableAssociation:
     Type: 'AWS::EC2::SubnetRouteTableAssociation'
     Properties: 
-      SubnetId: !Ref MySubnet
-      RouteTableId: !Ref MyRouteTable
+    SubnetId: !Ref MySubnet
+    RouteTableId: !Ref MyRouteTable
 
-  MySecurityGroup:
+MySecurityGroup:
     Type: 'AWS::EC2::SecurityGroup'
     Properties: 
-      # 使用英文描述
-      GroupDescription: 'Allow HTTP and SSH traffic'
-      VpcId: !Ref MyVPC
-      SecurityGroupIngress: 
+    # 使用英文描述
+    GroupDescription: 'Allow HTTP and SSH traffic'
+    VpcId: !Ref MyVPC
+    SecurityGroupIngress: 
         - IpProtocol: tcp
-          FromPort: '22'
-          ToPort: '22'
-          CidrIp: '0.0.0.0/0'
+        FromPort: '22'
+        ToPort: '22'
+        CidrIp: '0.0.0.0/0'
         - IpProtocol: tcp
-          FromPort: '80'
-          ToPort: '80'
-          CidrIp: '0.0.0.0/0'
-      Tags:
+        FromPort: '80'
+        ToPort: '80'
+        CidrIp: '0.0.0.0/0'
+    Tags:
         - Key: Name
-          Value: MySecurityGroup
+        Value: MySecurityGroup
 
-  MyEC2Instance:
+MyEC2Instance:
     Type: 'AWS::EC2::Instance'
     Properties: 
-      InstanceType: 't2.micro'
-      # 替換 Key Pair 名稱
-      KeyName: 'my-key-pair'
-      # 使用最新的 Amazon Linux AMI ID
-      ImageId: 'ami-098143f68772b34f5'
-      NetworkInterfaces: 
+    InstanceType: 't2.micro'
+    # 替換 Key Pair 名稱
+    KeyName: 'my-key-pair'
+    # 使用最新的 Amazon Linux AMI ID
+    ImageId: 'ami-098143f68772b34f5'
+    NetworkInterfaces: 
         - AssociatePublicIpAddress: true
-          DeviceIndex: '0'
-          SubnetId: !Ref MySubnet
-          GroupSet: 
+        DeviceIndex: '0'
+        SubnetId: !Ref MySubnet
+        GroupSet: 
             - !Ref MySecurityGroup
-      Tags:
+    Tags:
         - Key: Name
-          Value: MyEC2Instance
-          
+        Value: MyEC2Instance
+        
 Outputs:
-  InstanceId:
+InstanceId:
     Description: "EC2 Instance ID"
     Value: !Ref MyEC2Instance
 
-  PublicIP:
+PublicIP:
     Description: "Public IP Address of EC2 Instance"
     Value: !GetAtt MyEC2Instance.PublicIp

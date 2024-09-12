@@ -478,6 +478,30 @@ _手動刪除子網_
 
 <br>
 
+## 補充
+
+_關於 VSCode 中編輯 YAML 格式化的設定_
+
+<br>
+
+1. 安裝插件 `Prettier`。
+
+    ![](images/img_28.png)
+
+<br>
+
+2. 在 `setting.json` 中進行設置即可；特別注意，不要使用 `redhat` 進行排版。
+
+    ```json
+    "[yaml]": {
+        // 不要使用
+        //"editor.defaultFormatter": "redhat.vscode-yaml"
+        "editor.defaultFormatter": "esbenp.prettier-vscode"
+    }
+    ```
+
+<br>
+
 ___
 
 _END_
