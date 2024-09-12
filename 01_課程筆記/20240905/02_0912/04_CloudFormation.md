@@ -22,7 +22,7 @@ _使用 `CloudFormation` 完成自動化建立雲計算環境任務，可透過 
 
 <br>
 
-3. 在本地建立模板文件 `*.yaml`，命名為 `cloudformation-template.yaml`，內容如下；這個模板會自動建立一個 VPC、子網路、網際網路閘道、路由表、安全群組，並在此網路架構中啟動一個 EC2 實例；特別注意。
+3. 在本地建立模板文件 `*.yaml`，命名為 `cloudformation-template.yaml`，完整內容如下；這個模板會自動建立一個 VPC、子網路、網際網路閘道、路由表、安全群組，並在此網路架構中啟動一個 EC2 實例，後續進行操作時會上傳到 AWS 服務中。
 
     ```yaml
     AWSTemplateFormatVersion: '2010-09-09'
@@ -134,7 +134,7 @@ _使用 `CloudFormation` 完成自動化建立雲計算環境任務，可透過 
 
 <br>
 
-4. 補充說明，EC2 安全群組的描述只接受 ASCII 字符，若使用中文描述導致創建失敗；以下是這類錯誤的訊息。
+4. 補充說明，EC2 安全群組的描述只接受 ASCII 字符，若使用中文描述導致創建失敗；以下是測試過程中出現的錯誤的訊息。
 
     ![](images/img_15.png)
 
@@ -184,11 +184,11 @@ _使用 `CloudFormation` 完成自動化建立雲計算環境任務，可透過 
 
 ## Configure stack options
 
-_配置堆疊選項_
+_配置 stack 選項_
 
 <br>
 
-1. _可_ 點擊添加標籤 `Add new tag`；將 Key 設置為 `Project`、Value 設置為 `EC2-Setup`；編輯標籤有利於更好地組織與識別資源，特別在有多個堆疊的狀況。
+1. _可_ 點擊添加標籤 `Add new tag`；將 Key 設置為 `Project`、Value 設置為 `EC2-Setup`；編輯標籤有利於更好地組織與識別資源，特別在有多個 stack 的狀況。
 
     ![](images/img_11.png)
 
@@ -288,7 +288,7 @@ _確保已安裝並配置好 AWS CLI_
 
 <br>
 
-5. 進入 `.pem` 所在路徑，先依據官網只是，降低授權到 `400`。
+5. 進入 `.pem` 所在路徑，先依據之前筆記說明過的官網指示，透過 `chmod` 指令降低授權到 `400`。
 
     ```bash
     chmod 400 my-key-pair.pem 
@@ -312,11 +312,11 @@ _確保已安裝並配置好 AWS CLI_
 
 ## 徹底刪除
 
-_包括 堆疊、VPC、安全群組_
+_包括 stack、VPC、安全群組_
 
 <br>
 
-1. 刪除 CloudFormation 堆疊；另外，CloudFormation 會自動處理資源的刪除，所以當刪除 堆疊時，會自動刪除該堆疊中創建的所有資源，包括 EC2 實例、VPC、子網、路由表、安全群組等。
+1. 刪除 CloudFormation stack；另外，CloudFormation 會自動處理資源的刪除，所以當刪除 `stack` 時，會自動刪除該 `stack` 中創建的所有資源，包括 EC2 實例、VPC、子網、路由表、安全群組等。
 
     ```bash
     aws cloudformation delete-stack --stack-name my-ec2-stack
@@ -324,7 +324,7 @@ _包括 堆疊、VPC、安全群組_
 
 <br>
 
-2. 確認堆疊的刪除進度。
+2. 確認stack的刪除進度。
 
     ```bash
     aws cloudformation describe-stacks --stack-name my-ec2-stack
@@ -468,7 +468,7 @@ _手動刪除子網_
 
 <br>
 
-## 確認 CloudFormation 堆疊已完全刪除
+## 確認 CloudFormation stack 已完全刪除
 
     ```bash
     aws cloudformation describe-stacks --stack-name my-ec2-stack
@@ -490,7 +490,7 @@ _關於 VSCode 中編輯 YAML 格式化的設定_
 
 <br>
 
-2. 在 `setting.json` 中進行設置即可；特別注意，不要使用 `redhat` 進行排版。
+2. 在 `setting.json` 中進行設置即可；特別注意，不要使用 `redhat` 進行排版，實測不好用、不贅述。
 
     ```json
     "[yaml]": {
