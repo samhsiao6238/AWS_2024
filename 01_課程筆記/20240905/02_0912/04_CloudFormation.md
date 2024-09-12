@@ -1,4 +1,4 @@
-# YAML
+# CloudFormation
 
 _以下嘗試完成老師上課時提到的使用 `.yaml` 腳本自動化建立雲計算 `EC2` 環境任務_
 
