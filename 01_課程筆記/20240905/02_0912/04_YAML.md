@@ -33,8 +33,8 @@ Resources:
     Type: 'AWS::EC2::VPC'
     Properties: 
       CidrBlock: '10.0.0.0/16'
-      EnableDnsSupport: 'true'
-      EnableDnsHostnames: 'true'
+      EnableDnsSupport: true
+      EnableDnsHostnames: true
       Tags: 
         - Key: Name
           Value: MyVPC
@@ -44,7 +44,7 @@ Resources:
     Properties:
       VpcId: !Ref MyVPC
       CidrBlock: '10.0.1.0/24'
-      MapPublicIpOnLaunch: 'true'
+      MapPublicIpOnLaunch: true
       AvailabilityZone: 'us-east-1a'
       Tags:
         - Key: Name
@@ -88,7 +88,8 @@ Resources:
   MySecurityGroup:
     Type: 'AWS::EC2::SecurityGroup'
     Properties: 
-      GroupDescription: '允許 HTTP 和 SSH 流量的安全群組'
+      # 使用英文描述
+      GroupDescription: 'Allow HTTP and SSH traffic'
       VpcId: !Ref MyVPC
       SecurityGroupIngress: 
         - IpProtocol: tcp
@@ -107,12 +108,12 @@ Resources:
     Type: 'AWS::EC2::Instance'
     Properties: 
       InstanceType: 't2.micro'
-      # 替換為自己的 Key Pair 名稱
+      # 替換 Key Pair 名稱
       KeyName: 'my-key-pair'
-      # 替換指定要使用的 AMI ID
-      ImageId: 'ami-03808b1d5ea7e5ea8'
+      # 使用最新的 Amazon Linux AMI ID
+      ImageId: 'ami-01825f73e66f89c85'
       NetworkInterfaces: 
-        - AssociatePublicIpAddress: 'true'
+        - AssociatePublicIpAddress: true
           DeviceIndex: '0'
           SubnetId: !Ref MySubnet
           GroupSet: 
@@ -123,53 +124,59 @@ Resources:
           
 Outputs:
   InstanceId:
-    Description: "EC2 實例的 ID"
+    Description: "EC2 Instance ID"
     Value: !Ref MyEC2Instance
 
   PublicIP:
-    Description: "EC2 實例的公有 IP"
+    Description: "Public IP Address of EC2 Instance"
     Value: !GetAtt MyEC2Instance.PublicIp
 ```
 
 <br>
 
-4. 點擊 `Choose an existing template`。
+4. 補充說明，EC2 安全群組的描述只接受 ASCII 字符，若使用中文描述導致創建失敗；以下是這類錯誤的訊息。
+
+  ![](images/img_15.png)
+
+<br>
+
+5. 點擊 `Choose an existing template`。
 
     ![](images/img_04.png)
 
 <br>
 
-5. 選取 `Upload a template file`，然後點擊 `Choose file`。
+6. 選取 `Upload a template file`，然後點擊 `Choose file`。
 
     ![](images/img_05.png)
 
 <br>
 
-6. 選擇前面編輯的腳本。
+7. 選擇前面編輯的腳本。
 
     ![](images/img_06.png)
 
 <br>
 
-7. 可點擊 `View In Application Composer` 進行查看。
+8. 可點擊 `View In Application Composer` 進行查看。
 
     ![](images/img_07.png)
 
 <br>
 
-8. 顯示如下圖；`MyEC2Instance` 與 `MySecurityGroup` 相關聯，表示 EC2 實例放置在定義的安全群組中；`MySecurityGroup` 與 `MyVPC` 相關聯，代表安全群組被應用在建立的 VPC 中，而 `MyVPC` 中包含了 `子網路`、`路由表`、`網際網路閘道` 等定義。
+9. 顯示如下圖；`MyEC2Instance` 與 `MySecurityGroup` 相關聯，表示 EC2 實例放置在定義的安全群組中；`MySecurityGroup` 與 `MyVPC` 相關聯，代表安全群組被應用在建立的 VPC 中，而 `MyVPC` 中包含了 `子網路`、`路由表`、`網際網路閘道` 等定義。
 
     ![](images/img_08.png)
 
 <br>
 
-9. 點擊 `Next`。
+10. 點擊 `Next`。
 
     ![](images/img_09.png)
 
 <br>
 
-10. 命名為 `my-ec2-stack`，然後點擊 `Next`。
+11. 命名為 `my-ec2-stack`，然後點擊 `Next`。
 
     ![](images/img_10.png)
 
@@ -181,13 +188,13 @@ _配置堆疊選項_
 
 <br>
 
-1. 可以設置標籤 `Tags`；Key 為 `Project`、Value 為 `EC2-Setup`；標籤有利於更好地組織和識別資源，特別在有多個堆疊或資源的狀況。
+1. _可_ 點擊添加標籤 `Add new tag`；將 Key 設置為 `Project`、Value 設置為 `EC2-Setup`；編輯標籤有利於更好地組織與識別資源，特別在有多個堆疊的狀況。
 
     ![](images/img_11.png)
 
 <br>
 
-2. 其他使用預設，然後點擊 `Next`。
+2. 其他使用預設，然後點擊最下方 `Next`。
 
     ![](images/img_09.png)
 
@@ -199,11 +206,15 @@ _配置堆疊選項_
 
 <br>
 
-4. 顯示 `CREATE_IN_PROGRESS`。
+4. 接下來在運行過程中會先顯示 `CREATE_IN_PROGRESS`。
 
     ![](images/img_13.png)
 
 <br>
+
+5. 右側會顯示事件。
+
+![](images/img_14.png)
 
 ## 
 

@@ -6,8 +6,8 @@ Resources:
     Type: 'AWS::EC2::VPC'
     Properties: 
       CidrBlock: '10.0.0.0/16'
-      EnableDnsSupport: 'true'
-      EnableDnsHostnames: 'true'
+      EnableDnsSupport: true
+      EnableDnsHostnames: true
       Tags: 
         - Key: Name
           Value: MyVPC
@@ -17,7 +17,7 @@ Resources:
     Properties:
       VpcId: !Ref MyVPC
       CidrBlock: '10.0.1.0/24'
-      MapPublicIpOnLaunch: 'true'
+      MapPublicIpOnLaunch: true
       AvailabilityZone: 'us-east-1a'
       Tags:
         - Key: Name
@@ -61,7 +61,8 @@ Resources:
   MySecurityGroup:
     Type: 'AWS::EC2::SecurityGroup'
     Properties: 
-      GroupDescription: '允許 HTTP 和 SSH 流量的安全群組'
+      # 使用英文描述
+      GroupDescription: 'Allow HTTP and SSH traffic'
       VpcId: !Ref MyVPC
       SecurityGroupIngress: 
         - IpProtocol: tcp
@@ -80,12 +81,12 @@ Resources:
     Type: 'AWS::EC2::Instance'
     Properties: 
       InstanceType: 't2.micro'
-      # 替換為你自己的 Key Pair 名稱
+      # 替換 Key Pair 名稱
       KeyName: 'my-key-pair'
-      # 替換指定要使用的 AMI ID
+      # 使用最新的 Amazon Linux AMI ID
       ImageId: 'ami-01825f73e66f89c85'
       NetworkInterfaces: 
-        - AssociatePublicIpAddress: 'true'
+        - AssociatePublicIpAddress: true
           DeviceIndex: '0'
           SubnetId: !Ref MySubnet
           GroupSet: 
@@ -96,9 +97,9 @@ Resources:
           
 Outputs:
   InstanceId:
-    Description: "EC2 實例的 ID"
+    Description: "EC2 Instance ID"
     Value: !Ref MyEC2Instance
 
   PublicIP:
-    Description: "EC2 實例的公有 IP"
+    Description: "Public IP Address of EC2 Instance"
     Value: !GetAtt MyEC2Instance.PublicIp
