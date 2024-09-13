@@ -1,6 +1,6 @@
 # CloudFormation
 
-_以下嘗試完成老師上課時提到的使用 `.yaml` 腳本自動化建立雲計算 `EC2` 環境任務；特別說明，尚未找到合適可操作的 Lab，這裡使用 Root 帳號進行操作_
+_以下嘗試完成老師提到的使用 `.yaml` 腳本自動化建立雲計算 `EC2` 環境任務；特別說明，尚未找到合適可操作的 Lab，所以以下筆記使用 Root 帳號進行操作；另外，老師也提到應使用 IAM 使用者進行操作，並為特定的任務授權所需的最小權限，但這是另一個主題，這裏暫時無視。_
 
 <br>
 
@@ -134,7 +134,7 @@ _使用 `CloudFormation` 完成自動化建立雲計算環境任務，可透過 
 
 <br>
 
-4. 補充說明，EC2 安全群組的描述只接受 ASCII 字符，若使用中文描述導致創建失敗；以下是測試過程中出現的錯誤的訊息。
+4. 補充說明，EC2 安全群組的 `GroupDescription` 描述只支持 ASCII 字符，若使用中文描述將導致建立失敗；以下是測試過程中記錄下的錯誤的訊息。
 
     ![](images/img_15.png)
 
@@ -275,7 +275,7 @@ _確保已安裝並配置好 AWS CLI_
 
 <br>
 
-4. 僅查詢公共 IP。
+4. 僅查詢公共 IP，記錄下來備用。
 
     ```bash
     aws cloudformation describe-stacks \
@@ -288,7 +288,7 @@ _確保已安裝並配置好 AWS CLI_
 
 <br>
 
-5. 進入 `.pem` 所在路徑，先依據之前筆記說明過的官網指示，透過 `chmod` 指令降低授權到 `400`。
+5. 進入 `*.pem` 憑證文件所在路徑，依據在之前筆記說明過的，官網指示 `*.pem` 文件需透過 `chmod` 指令降低授權到 `400`，也就是 `唯讀`。
 
     ```bash
     chmod 400 my-key-pair.pem 
@@ -312,11 +312,11 @@ _確保已安裝並配置好 AWS CLI_
 
 ## 徹底刪除
 
-_包括 stack、VPC、安全群組_
+_包括 stack、VPC、安全群組；練習過後儘可能刪除一切使用的資源，避免殘留項目產生不必要的費用；在 Lab 中可透過 `End Lab` 進行。_
 
 <br>
 
-1. 刪除 CloudFormation stack；另外，CloudFormation 會自動處理資源的刪除，所以當刪除 `stack` 時，會自動刪除該 `stack` 中創建的所有資源，包括 EC2 實例、VPC、子網、路由表、安全群組等。
+1. 刪除 CloudFormation stack；另外，CloudFormation 會自動處理資源的刪除，所以當刪除 `stack` 時，會自動刪除該 `stack` 中建立的所有資源，包括 EC2 實例、VPC、子網、路由表、安全群組等。
 
     ```bash
     aws cloudformation delete-stack --stack-name my-ec2-stack
