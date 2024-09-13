@@ -74,7 +74,7 @@ _使用 AWS SDK 在 Python 中操作 Amazon EMR 來建立一個簡單的 Hadoop 
 
 <br>
 
-2. 使用 Python 代碼建立 EMR 叢集運行 Hadoop。
+2. 建立 EMR 叢集運行 Hadoop。
 
     ```python
     import boto3
@@ -151,7 +151,7 @@ _使用 AWS SDK 在 Python 中操作 Amazon EMR 來建立一個簡單的 Hadoop 
 
 <br>
 
-3. 建立 Hadoop 叢集後，可提交任務來運行 MapReduce 作業。這裡假設要運行一個 MapReduce 任務來處理 S3 上的數據。
+3. 建立 Hadoop 叢集後，可提交任務來運行 MapReduce 作業；這裡假設要運行一個 `MapReduce` 任務來處理 `S3` 上的數據。
 
     ```python
     # 提交一個 Hadoop 任務到 EMR 叢集
@@ -196,6 +196,20 @@ _使用 AWS SDK 在 Python 中操作 Amazon EMR 來建立一個簡單的 Hadoop 
         JobFlowIds=['j-xxxxxxxxxxxxx']
     )
     ```
+
+<br>
+
+## MapReduce
+
+_Hadoop 生態系統中主要的分散式計算框架，專門用來處理大規模數據集，以下說明其兩個主要階段。_
+
+<br>
+
+1. Map（映射）階段：資料會被分成小塊，並分配給多個計算節點，這些節點各自處理部分資料，將資料轉換成 `鍵值對`；這階段主要負責過濾和分類數據。
+
+<br>
+
+2. Reduce（歸約）階段：接收 Map 階段的輸出，將相同 key 的數據進行合併和處理，生成最終的結果；這階段的目的是彙總和計算數據。
 
 <br>
 
