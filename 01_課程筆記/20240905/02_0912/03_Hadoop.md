@@ -1,6 +1,6 @@
-# 中，Hadoop
+# Hadoop
 
-_用於大規模數據處理和分析_
+_是個由 Apache Software Foundation 開發的分散式框架，專門用來儲存和處理大規模數據，主要解決傳統資料庫難以處理的超大數據集問題_
 
 <br>
 
@@ -10,15 +10,11 @@ _用於大規模數據處理和分析_
 
 <br>
 
-2. Amazon EMR 結合 Hadoop 提供了大規模數據處理的高效解決方案，並具有按需擴展、成本效益和高可用性等優勢。
+2. `Amazon EMR` 結合 Hadoop 提供大規模數據處理的高效解決方案，並具有按需擴展、成本效益和高可用性等優勢。
 
 <br>
 
-3. AWS 提供了一種簡便的方式來運行 Hadoop 框架，主要通過 Amazon EMR（Elastic MapReduce）來實現。Amazon EMR 是一個完全托管的服務，讓用戶可以在 AWS 上快速部署 Hadoop 集群，並使用 Hadoop 生態系統中的工具（如 Spark、HBase、Hive、Pig 等）來處理大數據工作負載。
-
-<br>
-
-4. Hadoop 是一個開源的框架，主要用來處理和存儲大量數據，具有分佈式處理能力。AWS 通過 EMR 服務簡化了 Hadoop 的管理和部署，用戶可以輕鬆地擴展或縮減資源。
+3. `Amazon EMR` 是一個完全托管的服務，讓用戶可在 AWS 上快速部署 Hadoop 集群，並使用 Hadoop 生態系統中的工具如 Spark、HBase、Hive、Pig 等來處理大數據工作負載。
 
 <br>
 
@@ -37,6 +33,30 @@ _用於大規模數據處理和分析_
 <br>
 
 4. S3 整合：可以將 S3 用作 Hadoop 分散式文件系統（HDFS）的替代品，用來存儲和讀取數據。
+
+<br>
+
+## 運行模式
+
+_Amazon EMR 提供了多種不同的模式_
+
+![](images/img_29.png)
+
+<br>
+
+1. Amazon EMR running on Amazon EC2：這個模式運行在 EC2 上，可根據需求配置並運行大數據框架如 `Apache Spark、Apache Hive、Presto` 等進行資料處理和分析，這個選項允許完整控制運算資源和集群管理，適合需要自訂環境的使用者。
+
+<br>
+
+2. Amazon EMR Studio：這是專門為數據科學家和工程師設計的模式，允許通過 Jupyter Notebooks 來進行可視化資料處理和應用程式開發，使用者可在這裡運行和調試基於 `Apache Spark` 的應用，適合需要互動式工作流程和開發環境的人。
+
+<br>
+
+3. Amazon EMR Serverless：這是個無伺服器的選項，讓使用者可以運行大數據應用程式而不需要管理底層的基礎架構，系統會自動根據應用程式的需求來縮放運算資源，只需為實際使用的資源付費，適合那些希望簡化運維和彈性擴展需求的應用。
+
+<br>
+
+4. Amazon EMR on EKS：這個選項允許在 `Amazon Elastic Kubernetes Service (EKS)` 上運行開源大數據框架，它將工作負載和基礎設施分離，適合有容器化需求或已經使用 EKS 的用戶，可以方便地利用 `Kubernetes 集群` 來執行大數據處理工作。
 
 <br>
 
