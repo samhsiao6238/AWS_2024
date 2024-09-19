@@ -30,6 +30,14 @@ AWS academy [儀表板](https://awsacademy.instructure.com/)
 
 <br>
 
+##  刷題
+
+1. [whizlabs](https://www.whizlabs.com/)
+
+    ![](images/img_01.png)
+
+<br>
+
 ___
 
 _未完_
