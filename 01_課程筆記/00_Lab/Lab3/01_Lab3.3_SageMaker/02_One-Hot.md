@@ -42,7 +42,7 @@ _非序數型變量的 `One-Hot Encoding`_
 
 <br>
 
-3. 消除多重共線性問題：在某些情況下，可使用 `drop_first=True` 來避免因為生成了多個 `One-Hot Encoding` 列所引發可能 `多重共線性問題`。舉例來說，如果 `drive-wheels` 只有兩個類別值 `fwd` 和 `rwd`，那麼只需要生成一個欄位如 `drive-wheels_fwd`，而不需要生成兩個欄位，因為當 `drive-wheels_fwd` 為 `0` 時，就意味著這是 `rwd`。
+3. 消除多重共線性問題：在某些情況下，可使用 `drop_first=True` 來避免因為生成了多個 `One-Hot Encoding` 列所引發可能 `多重共線性問題`。舉例來說，如果 `drive-wheels` 只有兩個類別值 `fwd` 和 `rwd`，那麼只需要生成一個欄位如 `drive-wheels_fwd`，而不需要生成兩個欄位，因為當 `drive-wheels_fwd` 為 `0` 時，就表示這是 `rwd`。
 
 <br>
 
