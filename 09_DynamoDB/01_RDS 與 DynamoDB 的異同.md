@@ -1,4 +1,4 @@
-# RDS VS DynamoDB 
+# RDS vs DynamoDB 
 
 _兩者都是 AWS 提供的雲端資料庫服務，不同之處如下_
 
