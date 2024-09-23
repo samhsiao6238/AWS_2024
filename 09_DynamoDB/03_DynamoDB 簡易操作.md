@@ -20,19 +20,19 @@ _以下將使用這個 `.csv` 文件說明_
 
 <br>
 
-3. 使用 `movieId` 作為主鍵。
+3. 使用 `movieId` 作為主鍵 `Partition key`。
 
     ![](images/img_04.png)
 
 <br>
 
-4. 點擊右下角 `建立資料表`。
+4. 點擊右下角建立資料表 `Create table`。
 
     ![](images/img_05.png)
 
 <br>
 
-5. 過一會建立完成，點擊資料表進入。
+5. 過一會建立完成並顯示作用中 `Active`，點擊資料表名稱處進入。
 
     ![](images/img_06.png)
 
@@ -40,19 +40,19 @@ _以下將使用這個 `.csv` 文件說明_
 
 ## 資料表
 
-1. 點擊 `動作` 展開選單，點擊 `建立項目`。
+1. 點擊動作 `Actions` 展開選單，點擊建立項目 `Create item`。
 
     ![](images/img_07.png)
 
 <br>
 
-2. 內有一個已建立好的屬性 `movieId`。
+2. 內有一個已建立好的屬性名稱 `Attribute name` 就是前面建立的 `movieId`。
 
     ![](images/img_08.png)
 
 <br>
 
-3. 點擊右上方 `新增屬性`，選擇 `字串`。
+3. 點擊右上方新增屬性 `Add new attribute`，選擇字串 `String`。
 
     ![](images/img_09.png)
 
@@ -64,25 +64,25 @@ _以下將使用這個 `.csv` 文件說明_
 
 <br>
 
-5. 再添加一個 `genres`；若有更多也是這樣加入。
+5. 再添加一個屬性 `genres`；若有更多也是這樣加入。
 
     ![](images/img_11.png)
 
 <br>
 
-6. 接著編輯，完成後點擊右下角的 `建立項目`。
+6. 接著編輯值 `Value`，分別是 `21`、`英雄本色`、`警匪片`，完成後點擊右下角的建立項目 `Create item`。
 
     ![](images/img_12.png)
 
 <br>
 
-7. 點擊 `檢視資料表詳細資訊` 可展開資訊。
+7. 點擊檢視資料表詳細資訊 `View table details` 可展開資訊。
 
     ![](images/img_13.png)
 
 <br>
 
-8. 點擊右上角的 `探索資料表項目` 或左側的 `探索項目` 可進行簡易操作。
+8. 點擊右上角的探索資料表項目 `Explore table items` 或左側的 `探索項目` 可進行簡易操作。
 
     ![](images/img_14.png)
 
