@@ -98,9 +98,15 @@ _進入主控台，選擇 `DynamoDB` 服務_
 
 <br>
 
-8. 會顯示 `Fetching items`；可直接刷新網頁。
+8. 會顯示 `Fetching items`。
 
     ![](images/img_32.png)
+
+<br>
+
+9. 可直接刷新網頁，就會看到前面步驟建立的項目 `item`。
+
+    ![](images/img_37.png)
 
 <br>
 
