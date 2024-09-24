@@ -30,31 +30,33 @@ _`90628`；這個 Lab 實作上遇到一些挑戰，因為依據教程似乎暗�
 
 <br>
 
-1. 參考左側欄中的說明步驟進行操作；完成 `Start Lab` 之後，點擊 `AWS` 進入主控台。
+2. 參考左側欄中的說明步驟進行操作；完成 `Start Lab` 之後，點擊 `AWS` 進入主控台。
 
     ![](images/img_02.png)
 
 <br>
 
-3. 搜尋並進入 `Cloud9`。
+## 開始操作
+
+1. 搜尋並進入 `Cloud9`。
 
     ![](images/img_03.png)
 
 <br>
 
-4. 建立環境。
+2. 建立環境。
 
     ![](images/img_04.png)
 
 <br>
 
-5. 任意命名如 `_MyEnv-0906_`。
+3. 任意命名如 `_MyEnv-0906_`。
 
     ![](images/img_05.png)
 
 <br>
 
-6. 切換 `Network settings` 為 `SSH`；並設定任一子網。
+4. 切換 `Network settings` 為 `SSH`；並設定任一子網。
 
     ![](images/img_07.png)
 
@@ -64,25 +66,25 @@ _`90628`；這個 Lab 實作上遇到一些挑戰，因為依據教程似乎暗�
 
 <br>
 
-7. 其餘先使用預設，點擊右下角建立 `Create`。
+5. 其餘先使用預設，點擊右下角建立 `Create`。
 
     ![](images/img_06.png)
 
 <br>
 
-8. 會自動跳回清單頁面，等待建立完成。
+6. 會自動跳回清單頁面，等待建立完成。
 
     ![](images/img_08.png)
 
 <br>
 
-9. 點擊 `Open` 進入。
+7. 點擊 `Open` 進入。
 
     ![](images/img_09.png)
 
 <br>
 
-10. 關閉歡迎頁面。
+8. 關閉歡迎頁面。
 
     ![](images/img_10.png)
 
