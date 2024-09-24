@@ -44,13 +44,13 @@ _進入主控台，選擇 `DynamoDB` 服務_
 
 ## 資料表
 
-1. 點擊動作 `Actions` 展開選單，點擊建立項目 `Create item`。
+1. 展開動作 `Actions` 選單，點擊建立項目 `Create item`。
 
     ![](images/img_07.png)
 
 <br>
 
-2. 內有一個已建立好的屬性名稱 `Attribute name` 就是前面建立的 `movieId`。
+1. 內有一個已建立好的屬性名稱 `Attribute name` 就是前面建立的 `movieId`。
 
     ![](images/img_08.png)
 
