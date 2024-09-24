@@ -8,6 +8,10 @@ _以下將使用這個 `.csv` 文件說明_
 
 ## 說明
 
+_進入主控台，選擇 `DynamoDB` 服務_
+
+<br>
+
 1. `建立資料表 Create table`。
 
     ![](images/img_01.png)
