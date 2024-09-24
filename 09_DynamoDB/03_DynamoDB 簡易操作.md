@@ -266,10 +266,30 @@ _使用 PartiQL 編輯器進行查詢_
 
 <br>
 
-5. 查詢以排序方式查詢資料；特別注意，這個資料由於 ID 是字串，所以無法排序，這個語法僅作為示範。
+## 語句錯誤
+
+1. 以排序方式查詢資料時出現錯誤；特別注意，DynamoDB 的查詢機制不支援對整個資料表進行無限制的排序操作；當使用 `ORDER BY` 子句時，DynamoDB 需要知道如何篩選查詢的範圍，也就是 `WHERE` 子句，然後再基於篩選結果進行排序。
 
     ```sql
     SELECT * FROM "Table_20240718_01" ORDER BY "movieId";
+    ```
+
+    ![](images/img_31.png)
+
+<br>
+
+2. 因為 DynamoDB 是針對大規模分散式資料設計的，因此它的查詢過程與傳統 SQL 資料庫不同，為了保持高效的查詢性能，DynamoDB 只允許在有限範圍內進行排序，而不能對整個資料表進行排序；所以在使用 `ORDER BY` 時，需要有 `WHERE` 條件來限制查詢範圍。
+
+<br>
+
+3. 要使用 `ORDER BY` 必須加入 `WHERE` 條件，指定篩選的範圍，也就是以主鍵 `movieId` 對特定範圍的資料進行排序。
+
+<br>
+
+4. 具有 `WHERE` 子句的排序查詢，`WHERE` 子句限制了查詢的範圍，然後再按照 `movieId` 進行排序。
+
+    ```sql
+    SELECT * FROM "Table_20240718_01" WHERE movieId = '25' ORDER BY movieId;
     ```
 
 <br>
