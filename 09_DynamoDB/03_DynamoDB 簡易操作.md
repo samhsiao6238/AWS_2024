@@ -24,19 +24,25 @@ _進入主控台，選擇 `DynamoDB` 服務_
 
 <br>
 
-3. 使用 `movieId` 作為主鍵 `Partition key`。
+3. 特別注意，這個命名在相同的 AWS Region 中必須是唯一的。
+
+    ![](images/img_25.png)
+
+<br>
+
+4. 使用 `movieId` 作為主鍵 `Partition key`。
 
     ![](images/img_04.png)
 
 <br>
 
-4. 點擊右下角建立資料表 `Create table`。
+5. 點擊右下角建立資料表 `Create table`。
 
     ![](images/img_05.png)
 
 <br>
 
-5. 過一會建立完成並顯示作用中 `Active`，點擊資料表名稱處進入。
+6. 過一會建立完成並顯示作用中 `Active`，點擊資料表名稱處進入。
 
     ![](images/img_06.png)
 
@@ -50,7 +56,7 @@ _進入主控台，選擇 `DynamoDB` 服務_
 
 <br>
 
-1. 內有一個已建立好的屬性名稱 `Attribute name` 就是前面建立的 `movieId`。
+2. 內有一個已建立好的屬性名稱 `Attribute name`，就是前面建立的 `movieId`。
 
     ![](images/img_08.png)
 
