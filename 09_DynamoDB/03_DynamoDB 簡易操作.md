@@ -98,6 +98,12 @@ _進入主控台，選擇 `DynamoDB` 服務_
 
 <br>
 
+8. 會顯示 `Fetching items`；可直接刷新網頁。
+
+    ![](images/img_32.png)
+
+<br>
+
 ## 查詢資料
 
 _特別注意，完成這個步驟後，先手動刷新網頁 `command + R`_
