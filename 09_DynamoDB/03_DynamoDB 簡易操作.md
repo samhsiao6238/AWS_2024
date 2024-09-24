@@ -188,7 +188,17 @@ _特別注意，完成這個步驟後，先手動刷新網頁 `command + R`_
 
 <br>
 
-## 使用 PartQL 編輯器
+## 簡介 PartiQL 編輯器
+
+1. `PartiQL` 是一種查詢語言、資料庫語言，支援 SQL 風格的語法，可對 DynamoDB 進行操作。
+
+<br>
+
+2. `PartiQL 編輯器` 是 DynamoDB 中的一個功能，用於操作 DynamoDB 資料，可使用 SQL 語法撰寫查詢語句。
+
+<br>
+
+## 使用 PartiQL 編輯器
 
 1. 添加資料。
 
