@@ -34,7 +34,7 @@ AWS academy [儀表板](https://awsacademy.instructure.com/)
 
 1. [whizlabs](https://www.whizlabs.com/)
 
-    ![](images/img_01.png)
+    ![](images/img_04.png)
 
 <br>
 
