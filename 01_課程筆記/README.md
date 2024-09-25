@@ -26,6 +26,10 @@ AWS academy [儀表板](https://awsacademy.instructure.com/)
 
 ## 工具
 
+_可用作互聯的工具很多，可多比較_
+
+<br>
+
 1. [winscp 載點](https://winscp.net/eng/download.php)
 
 <br>
