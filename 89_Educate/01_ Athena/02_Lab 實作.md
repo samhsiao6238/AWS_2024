@@ -66,7 +66,7 @@ _問題：Dr. Wei 想知道其腫瘤診所中女性癌症 `患者（sample_sourc
 
 <br>
 
-2. 從列表中找到名稱為 `1 - All female samples` 的查詢，點擊 ID 列中的鏈接。
+2. 從列表中找到名稱為 `1 - All female samples` 的查詢，點擊 ID 列中的鏈接；特別注意，這是無序的資料。
 
    ![](images/img_07.png)
 
