@@ -18,15 +18,15 @@ _建立腳本_
 
 <br>
 
-1. 建立連接與創建表格。
+1. 建立連接與建立表格。
 
     ```python
     import boto3
 
-    # 創建 DynamoDB 資源
+    # 建立 DynamoDB 資源
     dynamodb = boto3.resource('dynamodb', region_name='us-east-1')
 
-    # 創建 DynamoDB 表格
+    # 建立 DynamoDB 表格
     table_name = 'SampleTable'
     table = dynamodb.create_table(
         TableName=table_name,
@@ -50,7 +50,7 @@ _建立腳本_
         }
     )
 
-    # 等待表格創建完成
+    # 等待表格建立完成
     table.meta.client.get_waiter('table_exists').wait(TableName=table_name)
     print(f"Table {table_name} is created successfully.")
     ```
@@ -113,7 +113,7 @@ _建立腳本_
     ```python
     import boto3
 
-    # 創建 DynamoDB 資源
+    # 建立 DynamoDB 資源
     dynamodb = boto3.resource('dynamodb', region_name='us-east-1')
     table = dynamodb.Table('Table_20240718_01')
 

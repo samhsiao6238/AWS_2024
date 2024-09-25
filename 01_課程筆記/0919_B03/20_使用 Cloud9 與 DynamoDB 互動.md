@@ -70,9 +70,9 @@ _在 AWS Cloud9 中，可使用 AWS CLI 與 DynamoDB 互動_
 
 <br>
 
-## 創建 DynamoDB 表格
+## 建立 DynamoDB 表格
 
-1. 使用 AWS CLI 創建一個新的 DynamoDB 表格，這將創建一個名為 `MovieTable` 的表格，使用 `movieId` 作為主鍵。
+1. 使用 AWS CLI 建立一個新的 DynamoDB 表格，這將建立一個名為 `MovieTable` 的表格，使用 `movieId` 作為主鍵。
 
     ```bash
     aws dynamodb create-table \
