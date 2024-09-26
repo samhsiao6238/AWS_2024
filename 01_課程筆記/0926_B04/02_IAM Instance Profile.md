@@ -1,18 +1,30 @@
 # IAM Instance Profile
 
-_IAM Instance Profile 是 EC2 與 IAM 角色之間的橋樑_
+_IAM Instance Profile 是 EC2 與 IAM 角色之間的橋樑；以下可結合 `90628` 操作_
+
+<br>
 
 ## 說明
 
 1. `IAM Instance Profile` 可將一個 IAM 角色附加到 EC2 實例上，使實例能夠繼承這個 IAM 角色的權限，從而可以執行受權的 AWS API 操作，例如存取 S3 資源、使用 DynamoDB 等。
 
+<br>
+
 2. `IAM Instance Profile` 是一個 IAM 角色的容器，實際上允許 EC2 實例與 IAM 角色之間建立橋樑。每個 EC2 實例都可以擁有一個 IAM Instance Profile，它通過內部的機制，讓應用程式可以取得 IAM 角色所授權的臨時安全憑證來執行操作。
+
+<br>
 
 3. 特別注意，無法直接在 IAM 主控台的特定頁面中對 `IAM Instance Profile` 進行管理，但可通過 `IAM Role` 頁面間接地查看哪些角色附加到了實例配置文件。
 
+<br>
+
 4. 登入 AWS 管理控制台並進入 IAM 控制台，在左側導航欄中，選擇 Roles（角色），當某個角色被分配給一個 EC2 實例，這個角色便會與 Instance Profile 相關聯，點擊這個具體的角色，可在角色詳細頁面中看到這個角色的使用情況，包括與實例配置文件，這個文件就是 `Instance Profile` 的關聯。
 
+<br>
+
 5. 特別注意，在 EC2 控制台中啟動或修改 EC2 實例時，可選擇一個 IAM 角色，它會自動創建或關聯到一個 `Instance Profile`。
+
+<br>
 
 ## 使用 boto3
 
