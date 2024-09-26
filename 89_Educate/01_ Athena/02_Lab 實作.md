@@ -66,13 +66,13 @@ _問題：Dr. Wei 想知道其腫瘤診所中女性癌症 `患者（sample_sourc
 
 <br>
 
-2. 從列表中找到名稱為 `1 - All female samples` 的查詢，點擊 ID 列中的鏈接；特別注意，這是無序的資料。
+2. 從列表中找到名稱為 `1 - All female samples` 的查詢，點擊 ID 列中的鏈接，這是 `全部女性樣本` 的數據；特別注意，這是無序的資料。
 
    ![](images/img_07.png)
 
 <br>
 
-3. 其中已經預設了查詢語法。
+3. 其中已經預設了查詢語法；這就是 SQL 語法，很容易理解就是查看全部女性樣本。
 
    ```sql
    SELECT * FROM samples WHERE sex = 'female'
@@ -80,19 +80,19 @@ _問題：Dr. Wei 想知道其腫瘤診所中女性癌症 `患者（sample_sourc
 
 <br>
 
-4. 選擇 `Run`，查看女性患者的樣本結果。
+4. 點擊 `Run` 執行，結果會顯示女性患者的樣本結果。
 
    ![](images/img_08.png)
 
 <br>
 
-5. 依據教程指示，要 `記下以下問題的答案：癌症樣本來自哪些部位？例如，腎臟、骨髓、肺或胰腺`，在這裡我選擇 `下載結果`。
+5. 依據教程指示，要 `記下以下問題的答案：癌症樣本來自哪些部位？例如，腎臟、骨髓、肺或胰腺`，有可以選擇 `下載結果（Download results）`。
 
    ![](images/img_09.png)
 
 <br>
 
-6. 再次切換頁籤到 `Saved queries`，選擇名稱為 `2 - Female TP53 samples` 的查詢，並運行 `Run`。
+6. 再次切換頁籤到 `Saved queries`，選擇名稱為 `2 - Female TP53 samples` 的查詢，並點擊運行 `Run`。
 
    ![](images/img_10.png)
 
