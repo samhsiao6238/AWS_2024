@@ -119,7 +119,7 @@ _查看具體內容_
 
 <br>
 
-2. 可加入參數 `--instance-profile-name` 查詢特定的 Instance Profile。
+2. 可加入參數 `--instance-profile-name` 查詢特定的 `Instance Profile`。
 
     ```bash
     aws iam get-instance-profile --instance-profile-name <InstanceProfileName>
