@@ -22,7 +22,7 @@ _IAM Instance Profile 是 EC2 與 IAM 角色之間的橋樑；以下若使用 `9
 
 <br>
 
-5. 特別注意，在 EC2 控制台中啟動或修改 EC2 實例時，可選擇一個 IAM 角色，它會自動創建或關聯到一個 `Instance Profile`。
+5. 特別注意，在 EC2 控制台中啟動或修改 EC2 實例時，可選擇一個 IAM 角色，它會自動建立或關聯到一個 `Instance Profile`。
 
 <br>
 
@@ -83,7 +83,7 @@ _IAM Instance Profile 是 EC2 與 IAM 角色之間的橋樑；以下若使用 `9
     ```python
     import boto3
 
-    # 創建 IAM 客戶端
+    # 建立 IAM 客戶端
     iam = boto3.client('iam')
 
     # 查詢所有的 Instance Profiles

@@ -32,6 +32,6 @@ _如果想要更大的控制權，可以在 Amazon EC2 上手動部署 PostgreSQ
 
 _Lightsail 是一個簡化的雲端服務，適合於快速部署應用和資料庫，這也包含 PostgreSQL 的應用_
 
-1. 在 Lightsail 中創建一個資料庫實例，選擇 PostgreSQL 作為資料庫引擎。
+1. 在 Lightsail 中建立一個資料庫實例，選擇 PostgreSQL 作為資料庫引擎。
 
 2. Lightsail 提供簡單的定價模型和自動化工具，適合小型應用和快速開發。

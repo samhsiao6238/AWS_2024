@@ -42,13 +42,13 @@ _以下說明在 RDS 上建立 PostgreSQL 引擎，以及進行必要的互動�
 
 <br>
 
-7. Settings 部分，首先任意命名如 `my-postgres-db`。
+7. Settings 部分，首先任意命名如 `my-postgres-db`；特別注意，這並非資料庫名稱，而是 _資料庫實例的識別名稱_，具體來說，資料庫實例建立後，內部僅有一個預設的資料庫 `postgres`，這部分建立完成後會再作說明。
 
     ![](images/img_57.png)
 
 <br>
 
-1. Master username 輸入管理員名稱，預設是 `postgres`，這裡使用自己慣用的名稱如 `sam6238`。
+8. Master username 輸入管理員名稱，預設是 `postgres`，這裡使用自己慣用的名稱如 `sam6238`。
 
     ![](images/img_58.png)
 
@@ -138,94 +138,357 @@ _以下說明在 RDS 上建立 PostgreSQL 引擎，以及進行必要的互動�
 
 <br>
 
-#### 6. 監控資料庫創建
-資料庫的創建可能需要幾分鐘。創建完成後，您可以在 Databases 頁面查看到資料庫實例。點擊資料庫名稱來查看連接信息，包括 Endpoint 和 Port。
+3. 資料庫的建立需要幾分鐘，過程中會在 `Status` 切換當前狀態。
 
----
+    ![](images/img_72.png)
 
-### 第二部分：使用 Python 腳本模擬數據並與 PostgreSQL 進行互動
+<br>
 
-#### 1. 安裝所需的 Python 套件
-在本地開發環境或 EC2 實例上，確保安裝了 `psycopg2`（Python 的 PostgreSQL 客戶端庫），使用以下指令安裝：
+4. 完成後的狀態顯示為 `Backing-up`，表示資料庫正在備份過程中，但不影響連接或運作資料庫；整個完成會顯示 `Available`，點擊進入查看。
 
-```bash
-pip install psycopg2-binary
-```
+    ![](images/img_73.png)
 
-#### 2. 連接到 PostgreSQL 的 Python 腳本範例
+<br>
 
-```python
-import psycopg2
-from psycopg2 import sql
-import random
+5. 需要幾項資訊，其一是 `Endpoint`。
 
-# 使用您的資料庫連接信息
-db_host = 'your-db-endpoint.amazonaws.com'  # 從 RDS 控制台獲取 Endpoint
-db_name = 'postgres'
-db_user = 'postgres'
-db_password = 'your-password'
-db_port = 5432
+    ![](images/img_74.png)
 
-# 連接到 PostgreSQL 資料庫
-try:
-    conn = psycopg2.connect(
-        host=db_host,
-        database=db_name,
-        user=db_user,
-        password=db_password,
-        port=db_port
-    )
-    print("成功連接到 PostgreSQL 資料庫")
-except Exception as e:
-    print(f"連接失敗: {e}")
+<br>
 
-# 創建游標來執行 SQL 命令
-cursor = conn.cursor()
+## 關於資料庫名稱
 
-# 創建一個表格
-cursor.execute('''
-    CREATE TABLE IF NOT EXISTS employees (
-        id SERIAL PRIMARY KEY,
-        name VARCHAR(100),
-        age INT,
-        department VARCHAR(50)
-    );
-''')
-conn.commit()
+1. 點擊進入資料庫後，可切換到 `Configuration` 頁籤。
 
-# 使用隨機數據插入模擬數據
-names = ["Alice", "Bob", "Charlie", "David", "Eve"]
-departments = ["HR", "IT", "Finance", "Marketing", "Sales"]
+    ![](images/img_75.png)
 
-for _ in range(10):
-    name = random.choice(names)
-    age = random.randint(22, 60)
-    department = random.choice(departments)
-    cursor.execute('''
-        INSERT INTO employees (name, age, department)
-        VALUES (%s, %s, %s);
-    ''', (name, age, department))
+<br>
 
-conn.commit()
+2. 其中 `DB name` 顯示為 `-`；特別注意，在資料庫實例設定過程中，並無指定預設資料庫的步驟，因為 RDS 創建的是一個資料庫實例，而不是具體的資料庫；另外，RDS 會自動創建一個預設的資料庫 postgres，但不會顯示具體的資料庫名稱，所以在後續步驟中，可直接使用這個資料庫進行連接和操作。
 
-# 查詢並打印表中的數據
-cursor.execute('SELECT * FROM employees;')
-rows = cursor.fetchall()
-for row in rows:
-    print(row)
+    ![](images/img_76.png)
 
-# 關閉游標和連接
-cursor.close()
-conn.close()
-```
+<br>
 
-#### 3. 確認 Python 腳本生成數據並成功互動
-1. 執行上述 Python 腳本，它將創建一個 employees 表，並向表中隨機插入數據。
-2. 腳本成功運行後，您將看到插入到資料庫的數據，並且能夠通過查詢顯示出來。
+## 連線資料庫 
 
----
+_使用 Python 腳本模擬數據並與 PostgreSQL 進行互動_
 
-### 總結：
-在這個部分中，我們已經在 AWS 的 RDS 服務中成功建立了 PostgreSQL 資料庫，並使用 Python 腳本與資料庫進行了互動，模擬了數據的生成和插入。這個過程涵蓋了從 AWS RDS 的控制台設置到 Python 程式碼編寫的具體操作步驟。
+<br>
 
-接下來的部分可以進一步介紹更多 PostgreSQL 的進階功能，如索引、查詢優化、備份與還原等。
+1. 在本地開發環境或 EC2 實例上，確保安裝了 `psycopg2`，使用以下指令安裝。
+
+    ```bash
+    pip install psycopg2-binary
+    ```
+
+<br>
+
+2. 連接到 PostgreSQL。
+
+    ```python
+    import psycopg2
+    from psycopg2 import sql
+    import random
+
+    # 使用您的資料庫連接信息
+    db_host = 'my-postgres-db.cacwqxy1xikj.us-east-1.rds.amazonaws.com'
+    # 先連接到預設的 postgres 資料庫
+    db_name = 'postgres'
+    db_user = 'sam6238'
+    db_password = 'sam112233'
+    db_port = 5432
+
+    # 連接到 PostgreSQL 預設資料庫
+    try:
+        conn = psycopg2.connect(
+            host=db_host,
+            database=db_name,
+            user=db_user,
+            password=db_password,
+            port=db_port
+        )
+        # 關閉自動交易模式以允許執行 CREATE DATABASE
+        conn.autocommit = True
+        print("成功連接到 PostgreSQL 預設資料庫")
+    except Exception as e:
+        print(f"連接失敗: {e}")
+        # 如果連接失敗，確保 conn 設置為 None
+        conn = None
+
+    # 如果連接成功，先創建新的資料庫
+    if conn is not None:
+        cursor = conn.cursor()
+        
+        # 創建新的資料庫 my_postgres_db
+        try:
+            cursor.execute('CREATE DATABASE my_postgres_db;')
+            print("成功創建資料庫 my_postgres_db")
+        except Exception as e:
+            print(f"資料庫創建失敗: {e}")
+        
+        # 關閉游標和連接
+        cursor.close()
+        conn.close()
+
+    # 連接到新創建的資料庫 my_postgres_db
+    db_name = 'my_postgres_db'
+
+    try:
+        conn = psycopg2.connect(
+            host=db_host,
+            database=db_name,
+            user=db_user,
+            password=db_password,
+            port=db_port
+        )
+        print(f"成功連接到新創建的資料庫 {db_name}")
+    except Exception as e:
+        print(f"連接失敗: {e}")
+        conn = None
+
+    # 如果連接成功，繼續操作
+    if conn is not None:
+        # 建立游標來執行 SQL 命令
+        cursor = conn.cursor()
+
+        # 建立一個表格
+        cursor.execute('''
+            CREATE TABLE IF NOT EXISTS employees (
+                id SERIAL PRIMARY KEY,
+                name VARCHAR(100),
+                age INT,
+                department VARCHAR(50)
+            );
+        ''')
+        conn.commit()
+
+        # 使用隨機數據插入模擬數據
+        names = ["Alice", "Bob", "Charlie", "David", "Eve"]
+        departments = ["HR", "IT", "Finance", "Marketing", "Sales"]
+
+        for _ in range(10):
+            name = random.choice(names)
+            age = random.randint(22, 60)
+            department = random.choice(departments)
+            cursor.execute('''
+                INSERT INTO employees (name, age, department)
+                VALUES (%s, %s, %s);
+            ''', (name, age, department))
+
+        conn.commit()
+
+        # 查詢並打印表中的數據
+        cursor.execute('SELECT * FROM employees;')
+        rows = cursor.fetchall()
+        for row in rows:
+            print(row)
+
+        # 關閉游標和連接
+        cursor.close()
+        conn.close()
+    ```
+
+<br>
+
+## 終端機指令
+
+1. 更新。
+
+    ```bash
+    brew update
+    ```
+
+<br>
+
+2. 安裝 `psql` 工具，特別注意，這裡要適配 AWS 中的版本。
+
+    ```bash
+    brew install postgresql@16
+    ```
+
+<br>
+
+3. 編輯環境參數。
+
+    ```bash
+    code ~/.zshrc
+    ```
+
+<br>
+
+4. 更新 PATH。
+
+    ```bash
+    export PATH="/opt/homebrew/opt/postgresql@16/bin:$PATH"
+    ```
+
+<br>
+
+5. 套用更新。
+
+    ```bash
+    source ~/.zshrc
+    ```
+
+<br>
+
+6. 重啟終端，查詢當前指令路徑。
+
+    ```bash
+    which psql
+    ```
+
+<br>
+
+7. 若要停止服務，例如停止 `15`。
+
+    ```bash
+    brew services stop postgresql@16 
+    ```
+
+<br>
+
+8. 重啟服務。
+
+    ```bash
+    brew services restart postgresql@16
+    ```
+
+<br>
+
+9. 使用 `psql` 連接資料庫；參數 `-h` 指定資料庫的端點、`-U` 指定資料庫的用戶名、`-d` 指定資料庫名稱、`-p` 指定端口。
+
+    ```bash
+    psql -h my-postgres-db.cacwqxy1xikj.us-east-1.rds.amazonaws.com -U sam6238 -d my_postgres_db -p 5432
+    ```
+
+<br>
+
+10. 輸入密碼後便可連接成功。
+
+    ![](images/img_77.png)
+
+<br>
+
+## 其他常用 `psql` 指令
+
+1. 查看所有表。
+
+    ```sql
+    \dt
+    ```
+
+    ![](images/img_78.png)
+
+<br>
+
+2. 查看資料庫中的數據。
+
+    ```sql
+    SELECT * FROM employees;
+    ```
+
+    ![](images/img_79.png)
+
+<br>
+
+3. 退出 `psql`，會退回到終端機指令中。
+
+    ```sql
+    \q
+    ```
+
+    ![](images/img_80.png)
+
+<br>
+
+## 刪除建立的資料庫
+
+1. 連接到預設的 `postgres` 資料庫，因為無法刪除當前正在使用的資料庫。
+
+    ```bash
+    psql -h my-postgres-db.cacwqxy1xikj.us-east-1.rds.amazonaws.com -U sam6238 -d postgres -p 5432
+    ```
+
+    ![](images/img_81.png)
+
+<br>
+
+2. 連接成功，可使用 `DROP DATABASE` 命令來刪除您創建的資料庫。
+
+    ```sql
+    DROP DATABASE my_postgres_db;
+    ```
+
+    ![](images/img_82.png)
+
+<br>
+
+## 使用腳本查詢
+
+1. 使用 psycopg2 庫來查詢資料庫列表。如果刪除成功，該資料庫將不會出現在查詢結果中。
+
+    ```python
+    import psycopg2
+    from psycopg2 import sql
+
+    # 使用您的資料庫連接信息
+    db_host = 'my-postgres-db.cacwqxy1xikj.us-east-1.rds.amazonaws.com'
+    # 連接到預設的 postgres 資料庫
+    db_name = 'postgres'
+    db_user = 'sam6238'
+    db_password = 'sam112233'
+    db_port = 5432
+
+    # 連接到 PostgreSQL 資料庫
+    try:
+        conn = psycopg2.connect(
+            host=db_host,
+            database=db_name,
+            user=db_user,
+            password=db_password,
+            port=db_port
+        )
+        conn.autocommit = True
+        print("成功連接到 PostgreSQL 資料庫")
+    except Exception as e:
+        print(f"連接失敗: {e}")
+        # 如果連接失敗，確保 conn 設置為 None
+        conn = None
+
+    # 如果連接成功，查詢所有資料庫
+    if conn is not None:
+        cursor = conn.cursor()
+
+        try:
+            # 查詢資料庫列表
+            cursor.execute("SELECT datname FROM pg_database;")
+            databases = cursor.fetchall()
+
+            print("當前資料庫列表：")
+            for db in databases:
+                print(db[0])
+
+            # 確認資料庫是否存在
+            database_to_check = 'my_postgres_db'
+            if (database_to_check,) not in databases:
+                print(f"資料庫 '{database_to_check}' 已不存在。")
+            else:
+                print(f"資料庫 '{database_to_check}' 仍然存在。")
+        
+        except Exception as e:
+            print(f"查詢失敗: {e}")
+        
+        # 關閉游標和連接
+        cursor.close()
+        conn.close()
+    ```
+
+    ![](images/img_83.png)
+
+<br>
+
+___
+
+_END_
