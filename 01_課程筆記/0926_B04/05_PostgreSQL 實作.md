@@ -195,8 +195,8 @@ _使用 Python 腳本模擬數據並與 PostgreSQL 進行互動_
     db_host = 'my-postgres-db.cacwqxy1xikj.us-east-1.rds.amazonaws.com'
     # 先連接到預設的 postgres 資料庫
     db_name = 'postgres'
-    db_user = 'sam6238'
-    db_password = 'sam112233'
+    db_user = '<填入帳號>'
+    db_password = '<填入密碼>'
     db_port = 5432
 
     # 連接到 PostgreSQL 預設資料庫
