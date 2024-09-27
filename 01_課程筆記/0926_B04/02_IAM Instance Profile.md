@@ -1,6 +1,6 @@
 # IAM Instance Profile
 
-_IAM Instance Profile 是 EC2 與 IAM 角色之間的橋樑；以下可結合 `90628` 操作_
+_IAM Instance Profile 是 EC2 與 IAM 角色之間的橋樑；以下若使用 `90629` 操作可能會遇到 IAM 權限問題，所以使用 `90630`_
 
 <br>
 
@@ -26,93 +26,107 @@ _IAM Instance Profile 是 EC2 與 IAM 角色之間的橋樑；以下可結合 `9
 
 <br>
 
+## 啟動環境
+
+1. 使用 `90630` 的 `Learner Lab`；搜尋並進入 `SageMaker`。
+
+    ![](images/img_41.png)
+
+<br>
+
+2. 點擊左側 `Notebooks`。
+
+    ![](images/img_42.png)
+
+<br>
+
+3. 點擊 `Create notebook instance`。
+
+    ![](images/img_43.png)
+
+<br>
+
+4. 命名 `Mynotebook`，其餘使用預設。
+
+    ![](images/img_44.png)
+
+<br>
+
+5. 保持其他設置為預設值，點擊 `Create notebook instance`。
+
+    ![](images/img_46.png)
+
+<br>
+
+6. 建立後，Notebook 實例的狀態會先顯示為灰色的 `Pending`，當狀態變為綠色的 `InService` 時，便可繼續進行下一步，這個過程需要一點時間。
+
+    ![](images/img_47.png)
+
+<br>
+
+7. 當 Notebook 實例變為 `InService` 後可點擊 `Open JupyterLab`；其中 Jupyter 就是指傳統的 Jupyter Notebook，而 JupyterLab 則是進階版，提供更多功能，適用於複雜的工作流程。
+
+    ![](images/img_48.png)
+
+<br>
+
+8. 點擊開啟一個腳本。
+
+    ![](images/img_49.png)
+
+<br>
+
 ## 使用 boto3
 
 1. 查詢 IAM Instance Profile，以下程式碼會列出所有 IAM Instance Profiles 及其關聯的角色。
 
-```python
-import boto3
+    ```python
+    import boto3
 
-# 創建 IAM 客戶端
-iam = boto3.client('iam')
+    # 創建 IAM 客戶端
+    iam = boto3.client('iam')
 
-# 查詢所有的 Instance Profiles
-response = iam.list_instance_profiles()
+    # 查詢所有的 Instance Profiles
+    response = iam.list_instance_profiles()
 
-# 列出所有的 Instance Profiles
-for profile in response['InstanceProfiles']:
-    print(f"Profile Name: {profile['InstanceProfileName']}")
-    print(f"Role(s): {[role['RoleName'] for role in profile['Roles']]}")
-    print(f"Instance Profile ARN: {profile['Arn']}")
-    print('---')
-```
+    # 列出所有的 Instance Profiles
+    for profile in response['InstanceProfiles']:
+        print(f"Profile Name: {profile['InstanceProfileName']}")
+        print(f"Role(s): {[role['RoleName'] for role in profile['Roles']]}")
+        print(f"Instance Profile ARN: {profile['Arn']}")
+        print('---')
+    ```
 
+<br>
+
+2. 輸出結果如下，顯示了兩個 `Profile` 的內容；第一個 `EMR_EC2_DefaultRole`  Profile 綁定了一個同名角色 `EMR_EC2_DefaultRole`，為 EMR 提供 EC2 所需的權限來操作 S3、CloudWatch 和其他 AWS 服務，而 `ARN` 就是 Profile 的唯一識別符，可將 IAM 角色與 EC2 實例關聯起來，讓這些實例可以使用角色中的權限；另一個 Profile 是 `LabInstanceProfile`，綁定的角色為 `LabRole`， 其具體權限取決於與它關聯的策略，這些策略可能允許 EC2 實例或其他資源訪問特定的 AWS 服務，如 S3、DynamoDB、SageMaker 等；透過觀察可知 Instance Profile 使 AWS 實例可獲取需要的權限來執行特定操作，而無需硬編碼 AWS 憑證，這提高了安全性和靈活性。
+
+    ![](images/img_50.png)
+
+<br>
 
 ## 使用 AWS CLI
 
+_查看具體內容_
+
+<br>
+
 1. 使用指令列出所有的 IAM Instance Profiles，並顯示每個配置文件的詳細信息。
 
-```bash
-aws iam list-instance-profiles
-```
+    ```bash
+    aws iam list-instance-profiles
+    ```
+
+<br>
 
 2. 可加入參數 `--instance-profile-name` 查詢特定的 Instance Profile。
 
-```bash
-aws iam get-instance-profile --instance-profile-name <InstanceProfileName>
-```
+    ```bash
+    aws iam get-instance-profile --instance-profile-name <InstanceProfileName>
+    ```
 
+<br>
 
-要查詢具體的「Instance Profile 名稱」，可以有以下幾種方式，具體步驟包括在 AWS 主控台、使用 AWS CLI 或 `boto3`。
+___
 
-## 在 EC2 主控台查詢 Instance Profile 名稱
-
-1. 通過 EC2 主控台查看
-1. 登入 AWS 管理控制台，導航到 EC2 控制台。
-2. 點擊左側選單中的 Instances（實例）查看 EC2 實例列表。
-3. 選擇你感興趣的 EC2 實例，進入實例詳細頁面。
-4. 在 Description（描述）部分，你會看到與該實例相關聯的 IAM Role（IAM 角色）。點擊該角色的名稱。
-5. 點擊後進入 IAM 角色頁面，在該角色的「Trusted entities」（信任實體）中，你可以看到與此角色關聯的 Instance Profile 名稱。
-
-#### 方法二：在 IAM 控制台查看
-1. 登入 AWS 管理控制台，導航到 IAM 控制台。
-2. 點擊左側選單中的 Roles（角色）。
-3. 選擇一個與 EC2 實例關聯的 IAM 角色，進入角色詳細頁面。
-4. 在該角色的詳細信息中，可以看到與之關聯的 Instance Profile 名稱。
-
-### 2. 使用 AWS CLI 查詢 Instance Profile 名稱
-
-你可以使用 AWS CLI 指令來查詢所有的 Instance Profiles，然後查看具體名稱。以下是查詢所有 Instance Profiles 的指令：
-
-```bash
-aws iam list-instance-profiles
-```
-
-這條指令會返回所有 IAM Instance Profiles 的清單，其中包括具體的 InstanceProfileName、ARN 以及其他詳細信息。
-
-### 3. 使用 boto3 查詢 Instance Profile 名稱
-
-你也可以使用 `boto3` 程式來查詢所有的 Instance Profiles。這段 Python 程式碼會列出所有的 Instance Profile 及其相關資訊：
-
-```python
-import boto3
-
-# 創建 IAM 客戶端
-iam = boto3.client('iam')
-
-# 查詢所有的 Instance Profiles
-response = iam.list_instance_profiles()
-
-# 列出所有的 Instance Profiles
-for profile in response['InstanceProfiles']:
-    print(f"Profile Name: {profile['InstanceProfileName']}")
-    print(f"Role(s): {[role['RoleName'] for role in profile['Roles']]}")
-    print(f"Instance Profile ARN: {profile['Arn']}")
-    print('---')
-```
-
-### 總結
-- 你可以在 EC2 控制台 或 IAM 控制台 中找到具體的 Instance Profile 名稱。
-- 也可以使用 AWS CLI 或 boto3 查詢並列出所有的 Instance Profiles。
-
-這些方法能幫助你快速找到 EC2 實例所關聯的具體 Instance Profile 名稱。
+_END_
