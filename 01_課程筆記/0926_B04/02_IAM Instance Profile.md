@@ -135,6 +135,52 @@ _查看具體內容_
 
 <br>
 
+## 相關查詢相關查詢
+
+_以下使用 AWS CLI 在本機進行查詢_
+
+<br>
+
+1. 查詢當前 default 使用者。
+
+    ```bash
+    aws sts get-caller-identity
+    ```
+
+<br>
+
+2. 僅顯示當前使用者名稱，可以結合 `jq` 來過濾 `ARN` 中的使用者名稱。
+
+    ```bash
+    aws sts get-caller-identity --query "Arn" --output text | cut -d '/' -f 2
+    ```
+
+<br>
+
+3. 依據回傳的 UserId，可進一步透過以下指令查詢帳戶名稱等資訊。
+
+    ```bash
+    aws organizations describe-account <取得的 ID>
+    ```
+
+<br>
+
+4. 獲取具體的 IAM 使用者名稱；這是指與當前身份相關聯的 ARN 中的使用者名稱。
+
+    ```bash
+    aws iam list-users
+    ```
+
+<br>
+
+5. 以上指令是使用預設的 default 配置，若要指定 Profile，可以加入參數 `--profile`；例如要查詢 `sam6237` 的使用者資訊，就是在第一個指令行加入參數；其餘指令相同。
+
+    ```bash
+    aws sts get-caller-identity --profile sam6237
+    ```
+
+<br>
+
 ___
 
 _END_
