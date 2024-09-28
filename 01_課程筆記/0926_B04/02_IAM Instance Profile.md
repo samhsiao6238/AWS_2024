@@ -6,23 +6,31 @@ _IAM Instance Profile 是 EC2 與 IAM 角色之間的橋樑；以下若使用 `9
 
 ## 說明
 
-1. `IAM Instance Profile` 可將一個 IAM 角色附加到 EC2 實例上，使實例能夠繼承這個 IAM 角色的權限，從而可以執行受權的 AWS API 操作，例如存取 S3 資源、使用 DynamoDB 等。
+1. 依據官網說明，`IAM Instance Profile` 是一個包含 IAM 角色的 `容器`，當 EC2 實例啟動時，可以使用這個設定檔將 IAM 角色附加到實例上，讓實例繼承角色的權限來執行受權的 AWS API 操作，如訪問 S3 或 DynamoDB 等資源，這使得應用程式能夠透過角色授權的臨時安全憑證執行相關操作。
+
+    ![](images/img_84.png)
 
 <br>
 
-2. `IAM Instance Profile` 是一個 IAM 角色的容器，實際上允許 EC2 實例與 IAM 角色之間建立橋樑。每個 EC2 實例都可以擁有一個 IAM Instance Profile，它通過內部的機制，讓應用程式可以取得 IAM 角色所授權的臨時安全憑證來執行操作。
+2. 特別注意，`Instance Profile` 是無法直接在 IAM 主控台中進行查看與管理，但可以透過 IAM Role 頁面查看與哪些實例設定檔關聯的角色，當啟動或修改 EC2 實例時，可以選擇 IAM 角色，系統會自動建立或關聯到相應的 `Instance Profile`。此外，透過 AWS 管理控制台中的 IAM 角色頁面，還可以檢視角色的使用情況，包括該角色與哪些 EC2 實例關聯。
 
 <br>
 
-3. 特別注意，無法直接在 IAM 主控台的特定頁面中對 `IAM Instance Profile` 進行管理，但可通過 `IAM Role` 頁面間接地查看哪些角色附加到了實例配置文件。
+## MALZ & SALZ
+
+_在官方文件中，`MALZ` 和 `SALZ` 是 AWS Managed Services (AMS) 中的兩種不同的架構_
 
 <br>
 
-4. 登入 AWS 管理控制台並進入 IAM 控制台，在左側導航欄中，選擇 Roles（角色），當某個角色被分配給一個 EC2 實例，這個角色便會與 Instance Profile 相關聯，點擊這個具體的角色，可在角色詳細頁面中看到這個角色的使用情況，包括與實例配置文件，這個文件就是 `Instance Profile` 的關聯。
+1. `MALZ` 全名 `Multi-account Landing Zone`，這種架構提供跨多個帳戶部署工作負載的共享服務，例如訪問控制、端點安全和網絡管理；這種多帳戶架構通常適用於需要多個隔離環境的情況，例如大型組織中的不同部門。
 
 <br>
 
-5. 特別注意，在 EC2 控制台中啟動或修改 EC2 實例時，可選擇一個 IAM 角色，它會自動建立或關聯到一個 `Instance Profile`。
+2. `SALZ` 全名 `Single-account Landing Zone`，這是單一帳戶架構，其中所有的共享服務（如訪問控制、網絡安全等）和工作負載都部署在同一個帳戶中。這種架構適用於需要高度隔離的工作負載，但其 AWS 成本相對較高。
+
+<br>
+
+3. 兩種架構各有其應用場景，MALZ 更適合於需要多帳戶管理和隔離的情況，而 SALZ 則適用於單一帳戶中對安全性和隔離性要求較高的工作負載。
 
 <br>
 
