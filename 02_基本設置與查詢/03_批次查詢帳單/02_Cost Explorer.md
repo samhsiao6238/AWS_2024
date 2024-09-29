@@ -1,6 +1,6 @@
 # AWS Cost Explorer API
 
-_根據 [官網說明](https://aws.amazon.com/tw/aws-cost-management/aws-cost-explorer/pricing/)，透過 `AWS Cost Explorer API` 查詢，每項請求會產生 0.01 USD 的費用_
+_根據 [官網說明](https://aws.amazon.com/tw/aws-cost-management/aws-cost-explorer/pricing/)，透過 `AWS Cost Explorer API` 查詢，每項請求會產生 0.01 USD 的費用；另外，AWS 會自動為所有出此使用 Cost Explorer 的用戶啟用成本異常檢測 (Cost Anomaly Detection) 服務，這個檢測服務的本身是免費的，但因此使用其他服務進行通知時可能產生額外費用。_
 
 <br>
 
