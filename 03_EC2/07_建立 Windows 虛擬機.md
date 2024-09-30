@@ -12,7 +12,7 @@ _以下是在 Learner Lab 中運行的紀錄_
 
 <br>
 
-2. 自訂名稱 `_MyWin_`，選擇 `Windows`，確認是否 `符合免費方案資格`。
+2. 自訂名稱如 `_MyWin_`，系統選擇 `Windows`，實例類型使用預設的 `t2.micro` 即可，這是個符合免費的方案 `Free tier eligible`。
 
     ![](images/img_34.png)
 
