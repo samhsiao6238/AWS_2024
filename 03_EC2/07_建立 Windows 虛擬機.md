@@ -52,19 +52,19 @@ _以下是在 Learner Lab 中運行的紀錄_
 
 ## 取得密碼
 
-1. 進入執行個體後，點擊 `動作`，選擇 `安全性`，點擊 `取得 Windows 密碼`。
+1. 進入清單，選取 EC2 實例後，點擊下拉選單中的 `動作（Actions）`，選擇 `安全性`，點擊 `取得 Windows 密碼`。
 
     ![](images/img_39.png)
 
 <br>
 
-1. 點擊 `上傳私有金鑰檔案`，會看到載入 `.pem` 文件內容，然後點擊 `解密密碼`。
+2. 點擊 `上傳私有金鑰檔案`，會看到載入 `.pem` 文件內容，然後點擊 `解密密碼`；當上傳這個私鑰文件並點擊 `Decrypt password`，系統將使用這個私鑰來解密並顯示該 `Windows Instance` 的管理員密碼。
 
     ![](images/img_40.png)
 
 <br>
 
-3. 複製解密的密碼，然後點擊 `好`。
+3. 複製解密的密碼，然後點擊 `好（OK）`。
 
     ![](images/img_41.png)
 
@@ -72,25 +72,35 @@ _以下是在 Learner Lab 中運行的紀錄_
 
 ## 連線
 
+_先使用 AWS 預設的終端機測試連線_
+
+<br>
+
 1. 在執行個體中點擊 `連線`。
 
     ![](images/img_42.png)
 
 <br>
 
-2. 連線類型按照預設選取 `使用 RDP 用戶端連線`，然後點擊 `下載遠端桌面檔`。
+2. 切換到 `RDP client` 頁籤。
+
+    ![](images/img_72.png)
+
+<br>
+
+3. 連線類型按照預設選取 `Connect using RDP client`，然後點擊 `Download remote desktop file`。
 
     ![](images/img_43.png)
 
 <br>
 
-3. 會下載一個 `.rdp` 文件，在 Windows 中可以使用遠端桌面開啟。
+4. 會下載一個 `.rdp` 文件；點擊後可使用遠端桌面連線實例。
 
     ![](images/img_44.png)
 
 <br>
 
-4. 在彈出視窗中點擊 `連線`。
+5. 在彈出視窗中點擊 `連線`。
 
     ![](images/img_45.png)
 
