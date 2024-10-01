@@ -4,7 +4,74 @@ _以下示範使用 Greengrass V2 組件自動化方式將 Greengrass 配置同�
 
 <br>
 
-## 步驟
+## 建立 Lambda IAM Role
+
+_在部署 Lambda 函數之前，需要建立一個 Lambda 執行角色並授予其所需的權限，這個角色將允許 Lambda 函數與其他 AWS 服務進行互動；以下操作確保 Lambda 函數有正確的角色來執行並能夠寫入 CloudWatch Logs 以進行日誌記錄。_
+
+<br>
+
+1. 建立策略文件 `trust-policy.json`，允許 Lambda 使用此角色。
+
+   ```json
+   {
+      "Version": "2012-10-17",
+      "Statement": [
+         {
+            "Effect": "Allow",
+            "Principal": {
+            "Service": "lambda.amazonaws.com"
+            },
+            "Action": "sts:AssumeRole"
+         }
+      ]
+   }
+   ```
+
+<br>
+
+2. 基於政策文件，建立一個 IAM 角色，並附加基本的 Lambda 執行權限。
+
+   ```bash
+   aws iam create-role \
+      --role-name GreengrassLambdaExecutionRole \
+      --assume-role-policy-document file://trust-policy.json
+   ```
+
+<br>
+
+3. 為該角色附加 AWS 預設的 Lambda 基本執行策略 `AWSLambdaBasicExecutionRole`，允許 Lambda 寫入 CloudWatch Logs。
+
+   ```bash
+   aws iam attach-role-policy \
+      --role-name GreengrassLambdaExecutionRole \
+      --policy-arn arn:aws:iam::aws:policy/service-role/AWSLambdaBasicExecutionRole
+   ```
+
+<br>
+
+4. 查詢新建角色的 `ARN（Amazon Resource Name）`，以便後續部署 Lambda 函數時使用。
+
+   ```bash
+   aws iam get-role \
+      --role-name GreengrassLambdaExecutionRole
+   ```
+
+<br>
+
+5.  結果會看到角色的 ARN。
+
+   ```json
+   {
+      "Role": {
+         "Arn": "arn:aws:iam::<YOUR_ACCOUNT_ID>:role/GreengrassLambdaExecutionRole",
+         // 省略 ...
+      }
+   }
+   ```
+
+<br>
+
+## 基本配置
 
 _首先建立 Greengrass 群組並配置 Lambda 函數_
 
@@ -47,6 +114,8 @@ _首先建立 Greengrass 群組並配置 Lambda 函數_
    ```bash
    zip function.zip lambda_function.py
    ```
+
+   ![](images/img_01.png)
 
 <br>
 
