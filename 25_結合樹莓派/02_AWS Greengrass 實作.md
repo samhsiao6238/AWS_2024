@@ -18,7 +18,15 @@ _首先建立 Greengrass 群組並配置 Lambda 函數_
 
 <br>
 
-2. 建立 Lambda 函數，該函數將部署到 Greengrass 群組中；首先在本地建立 Lambda 函數的 Python 腳本，任意命名如 `lambda_function.py`。
+2. 任意建立一個專案資料夾，進入後添加腳本並任意命名如 `lambda_function.py`，
+
+   ```bash
+   cd ~/Desktop && mkdir _ex1001_ && cd _ex1001_ && touch lambda_function.py && code .
+   ```
+
+<br>
+
+3. 並在其中編輯 Lambda 函數，該函數將部署到 Greengrass 群組中。
 
    ```python
    import json
@@ -33,7 +41,7 @@ _首先建立 Greengrass 群組並配置 Lambda 函數_
 
 <br>
 
-3. 建立一個部署包，包含代碼和依賴。
+4. 建立一個部署包，包含代碼和依賴。
 
    ```bash
    zip function.zip lambda_function.py
@@ -41,7 +49,7 @@ _首先建立 Greengrass 群組並配置 Lambda 函數_
 
 <br>
 
-4. 使用 AWS CLI 建立 Lambda 函數，以下命令會建立一個 Lambda 函數並部署至 AWS，`YOUR_ACCOUNT_ID` 和 `YOUR_LAMBDA_ROLE` 分別是 AWS 帳號 ID 和 Lambda 執行角色。
+5. 使用 AWS CLI 建立 Lambda 函數，以下命令會建立一個 Lambda 函數並部署至 AWS，`YOUR_ACCOUNT_ID` 和 `YOUR_LAMBDA_ROLE` 分別是 AWS 帳號 ID 和 Lambda 執行角色。
 
    ```bash
    aws lambda create-function \
@@ -54,7 +62,7 @@ _首先建立 Greengrass 群組並配置 Lambda 函數_
 
 <br>
 
-5. 將 Lambda 函數部署到本地的樹莓派 Greengrass 核心設備上，建立 Greengrass 部署後會將 Lambda 函數配置成為 Greengrass 組件。
+6. 將 Lambda 函數部署到本地的樹莓派 Greengrass 核心設備上，建立 Greengrass 部署後會將 Lambda 函數配置成為 Greengrass 組件。
 
    ```bash
    aws greengrassv2 create-deployment \
