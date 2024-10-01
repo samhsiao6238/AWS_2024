@@ -52,7 +52,7 @@ _Application Programming Interface_
 
 ## 補充說明
 
-1. REST（Representational State Transfer）是一種設計風格和架構，旨在通過統一的接口和無狀態的交互來實現網絡服務的通信，常用於設計 Web API。
+1. REST（Representational State Transfer）是一種設計風格和架構，旨在通過統一的接口和無狀態的互動來實現網絡服務的通信，常用於設計 Web API。
 
 <br>
 
