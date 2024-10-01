@@ -31,12 +31,13 @@ _首先建立 Greengrass 群組並配置 Lambda 函數_
    ```python
    import json
 
+
    def lambda_handler(event, context):
-       print("接收到的事件: ", json.dumps(event))
-       return {
-           'statusCode': 200,
-           'body': json.dumps('Hello from Greengrass Lambda!')
-       }
+      print("接收到的事件: ", json.dumps(event))
+      return {
+         'statusCode': 200,
+         'body': json.dumps('Hello from Greengrass Lambda!')
+      }
    ```
 
 <br>
