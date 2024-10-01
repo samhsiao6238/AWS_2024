@@ -18,16 +18,7 @@ _首先建立 Greengrass 群組並配置 Lambda 函數_
 
 <br>
 
-2. 建立 Greengrass 核心設備，這需要在 AWS 中註冊一個 Greengrass 核心設備，在此也就是樹莓派。
-
-   ```bash
-   aws greengrassv2 create-core-device \
-      --core-device-thing-name "RaspberryPi_Core"
-   ```
-
-<br>
-
-3. 後續要使用 AWS CLI 自動化建立和部署 Lambda 函數，該函數將部署到 Greengrass 群組中；首先在本地建立 Lambda 函數的 Python 腳本，任意命名如 `lambda_function.py`。
+2. 建立 Lambda 函數，該函數將部署到 Greengrass 群組中；首先在本地建立 Lambda 函數的 Python 腳本，任意命名如 `lambda_function.py`。
 
    ```python
    import json
@@ -42,7 +33,7 @@ _首先建立 Greengrass 群組並配置 Lambda 函數_
 
 <br>
 
-4. 建立一個部署包，包含代碼和依賴。
+3. 建立一個部署包，包含代碼和依賴。
 
    ```bash
    zip function.zip lambda_function.py
@@ -50,7 +41,7 @@ _首先建立 Greengrass 群組並配置 Lambda 函數_
 
 <br>
 
-5. 使用 AWS CLI 建立 Lambda 函數，以下命令會建立一個 Lambda 函數並部署至 AWS，`YOUR_ACCOUNT_ID` 和 `YOUR_LAMBDA_ROLE` 分別是 AWS 帳號 ID 和 Lambda 執行角色。
+4. 使用 AWS CLI 建立 Lambda 函數，以下命令會建立一個 Lambda 函數並部署至 AWS，`YOUR_ACCOUNT_ID` 和 `YOUR_LAMBDA_ROLE` 分別是 AWS 帳號 ID 和 Lambda 執行角色。
 
    ```bash
    aws lambda create-function \
@@ -63,7 +54,7 @@ _首先建立 Greengrass 群組並配置 Lambda 函數_
 
 <br>
 
-6. 接下來要將這個 Lambda 函數部署到本地的樹莓派 Greengrass 核心設備上，建立 Greengrass 部署後會將 Lambda 函數配置成為 Greengrass 組件。
+5. 將 Lambda 函數部署到本地的樹莓派 Greengrass 核心設備上，建立 Greengrass 部署後會將 Lambda 函數配置成為 Greengrass 組件。
 
    ```bash
    aws greengrassv2 create-deployment \
@@ -79,8 +70,7 @@ _首先建立 Greengrass 群組並配置 Lambda 函數_
 1. 需要在樹莓派上安裝 Greengrass 核心軟體，才能與 AWS 進行通信並運行配置的 Lambda 函數；首先更新並安裝套件。
 
    ```bash
-   sudo apt-get update
-   sudo apt-get install python3-pip openjdk-11-jdk
+   sudo apt-get update && sudo apt-get install python3-pip openjdk-17-jdk
    ```
 
 <br>
@@ -161,3 +151,4 @@ _通過 Greengrass CLI 或 AWS IoT 控制台來驗證部署是否成功_
 ___
 
 _END_
+
