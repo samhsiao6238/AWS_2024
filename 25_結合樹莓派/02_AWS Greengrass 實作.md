@@ -65,7 +65,13 @@ _在部署 Lambda 函數之前，需要建立一個 Lambda 執行角色並授予
 
 <br>
 
-3. 為該角色附加 AWS 預設的 Lambda 基本執行策略 `AWSLambdaBasicExecutionRole`，允許 Lambda 寫入 CloudWatch Logs。
+3. 可透過主控台進行查看。
+
+   ![](images/img_02.png)
+
+<br>
+
+4. 為該角色附加 AWS 預設的 Lambda 基本執行策略 `AWSLambdaBasicExecutionRole`，允許 Lambda 寫入 CloudWatch Logs。
 
    ```bash
    aws iam attach-role-policy \
@@ -75,7 +81,13 @@ _在部署 Lambda 函數之前，需要建立一個 Lambda 執行角色並授予
 
 <br>
 
-4. 查詢新建角色的 `ARN（Amazon Resource Name）`，以便後續部署 Lambda 函數時使用。
+5. 同樣透過主控台可以查看。
+
+   ![](images/img_03.png)
+
+<br>
+
+6. 查詢新建角色的 `ARN（Amazon Resource Name）`，以便後續部署 Lambda 函數時使用。
 
    ```bash
    aws iam get-role \
@@ -84,16 +96,9 @@ _在部署 Lambda 函數之前，需要建立一個 Lambda 執行角色並授予
 
 <br>
 
-5.  結果會看到角色的 ARN。
+7. 結果會看到角色的 ARN。
 
-   ```json
-   {
-      "Role": {
-         "Arn": "arn:aws:iam::<YOUR_ACCOUNT_ID>:role/GreengrassLambdaExecutionRole",
-         // 省略 ...
-      }
-   }
-   ```
+   ![](images/img_04.png)
 
 <br>
 
