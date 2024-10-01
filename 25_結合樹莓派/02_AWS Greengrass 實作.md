@@ -28,7 +28,15 @@ _在部署 Lambda 函數之前，需要建立一個 Lambda 執行角色並授予
 
 <br>
 
-1. 建立策略文件 `trust-policy.json`，允許 Lambda 使用此角色。
+1. 建立策略文件 `trust-policy.json`；特別說明，在筆記中使用 `touch` 來操作文件添加，用意是透過閱讀指令了解該步驟在做什麼，具體上可透過 VSCode 介面操作，不再贅述。
+
+   ```bash
+   touch trust-policy.json
+   ```
+
+<br>
+
+2. 編輯文件，允許 Lambda 使用此角色。
 
    ```json
    {
