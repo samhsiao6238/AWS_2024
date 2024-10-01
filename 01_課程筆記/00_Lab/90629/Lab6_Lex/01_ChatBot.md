@@ -348,9 +348,21 @@ _託管靜態網頁來運行聊天機器人_
 
 <br>
 
-4. 依據教程，任意命名以前綴加六個隨機數字，這裡是 `lexlab6-241002`；然後就可以點擊最下方的 `Create bucket`。
+4. 依據教程，任意命名以前綴加六個隨機數字，這裡示範命名為 `lexlab6-241002`。
 
     ![](images/img_45.png)
+
+<br>
+
+5. 接著取消勾選 `Block all public access`，並勾選 `I acknowledge ...` 表明已知取消的風險。
+
+    ![](images/img_65.png)
+
+<br>
+
+6. 後就點擊最下方的 `Create bucket`。
+
+    ![](images/img_66.png)
 
 <br>
 
