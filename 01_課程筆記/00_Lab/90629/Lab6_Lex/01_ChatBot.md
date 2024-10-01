@@ -186,7 +186,7 @@ _`意圖` 是機器人用來理解和處理用戶需求的主要邏輯單位，�
 
 <br>
 
-1. 在 `Fulfillment` 部分，選擇 `Lambda` 函數 `MakeAppointmentCodeHook`，並保存意圖。
+4. 在 `Fulfillment` 部分，選擇 `Lambda` 函數 `MakeAppointmentCodeHook`，並保存意圖；`Fulfillment` 是指當 `Lex 聊天機器人` 成功收集到所需的資訊並完成用戶的請求時，最終執行的動作，也就是機器人回應過程的最後一步，用來處理用戶的請求。
 
     ![](images/img_11.png)
 
