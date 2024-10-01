@@ -446,7 +446,13 @@ _在本地進行文件編輯然後重新上傳_
 
 <br>
 
-6. 編輯 `Bucket policy`，貼上以下代碼，其中 `example.com` 要更換為自己的 S3 的名稱，例如前面所命名的 `lexlab6-241002`；然後點擊 `Save changes`。
+6. 滑動到 `Bucket policy` 區塊，點擊 `Edit` 進行編輯。
+
+    ![](images/img_67.png)
+
+<br>
+
+7. 貼上以下代碼，其中 `example.com` 要更換為自己的 S3 的名稱，例如前面所命名的 `lexlab6-241002`；然後點擊 `Save changes`。
 
     ```json
     {
@@ -469,25 +475,25 @@ _在本地進行文件編輯然後重新上傳_
 
 <br>
 
-7. 完成時顯示如下。
+8. 完成時顯示如下。
 
     ![](images/img_58.png)
 
 <br>
 
-8. 再次切換到 `Properties` 頁籤，滑動到下方的 `Static website hosting`，複製並訪問這個網頁。
+9. 再次切換到 `Properties` 頁籤，滑動到下方的 `Static website hosting`，複製並訪問這個網頁。
 
     ![](images/img_59.png)
 
 <br>
 
-9. 顯示如下，可嘗試進行對話。
+10. 顯示如下，可嘗試進行對話。
 
     ![](images/img_60.png)
 
 <br>
 
-10. 與之前對話相同，依此會完成預約程序。
+11. 與之前對話相同，依此會完成預約程序。
 
     ![](images/img_61.png)
 
