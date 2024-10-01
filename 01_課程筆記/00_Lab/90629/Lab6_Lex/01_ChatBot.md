@@ -174,19 +174,19 @@ _`意圖` 是機器人用來理解和處理用戶需求的主要邏輯單位，�
 
 <br>
 
-2. 先點擊 `Edit`。
+2. 進入機器人後，先點擊畫面上方的 `Edit`。
 
     ![](images/img_09.png)
 
 <br>
 
-3. 展開 `Lambda initialization and validation` 部分，勾選 `Initialization and validation code hook`，並選擇 `MakeAppointmentCodeHook` 函數。
+3. 展開 `Lambda initialization and validation` 部分，勾選 `Initialization and validation code hook`，並選擇 `MakeAppointmentCodeHook` 函數，另外一定要選擇版本。
 
     ![](images/img_10.png)
 
 <br>
 
-4. 在 `Fulfillment` 部分，選擇 `Lambda` 函數 `MakeAppointmentCodeHook`，並保存意圖。
+1. 在 `Fulfillment` 部分，選擇 `Lambda` 函數 `MakeAppointmentCodeHook`，並保存意圖。
 
     ![](images/img_11.png)
 
