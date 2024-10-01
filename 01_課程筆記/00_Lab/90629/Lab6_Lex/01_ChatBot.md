@@ -336,7 +336,7 @@ _託管靜態網頁來運行聊天機器人_
 
 <br>
 
-2. 下載教程中的壓縮檔，解壓縮後，在資料夾中有兩個文件 `index.html` 及 `error.html`。
+2. [下載](https://aws-tc-largeobjects.s3-us-west-2.amazonaws.com/CUR-TF-200-ACMLFO-1/lab-6/202011/en_us/lab6.zip) 教程中的壓縮檔，解壓縮後，在資料夾中有兩個文件 `index.html` 及 `error.html`。
 
     ![](images/img_43.png)
 
