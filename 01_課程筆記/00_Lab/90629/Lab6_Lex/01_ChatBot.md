@@ -288,19 +288,25 @@ _管理應用程序的用戶身份驗證、授權和用戶數據同步，可用�
 
 <br>
 
-3. 展開 `Add permissions` 並點擊 `Attach policies`。
+3. 預設僅有一個 Policy。
+
+    ![](images/img_63.png)
+
+<br>
+
+4. 展開 `Add permissions` 並點擊 `Attach policies`。
 
     ![](images/img_39.png)
 
 <br>
 
-4. 依序附加 `AmazonLexReadOnly` 和 `AmazonLexRunBotsOnly` 政策。
+5. 依序附加 `AmazonLexReadOnly` 和 `AmazonLexRunBotsOnly` 政策。
 
     ![](images/img_40.png)
 
 <br>
 
-5. 完成時可以看到清單中多了兩個 Policies。
+6. 完成時可以看到清單中多了兩個 Policies。
 
     ![](images/img_41.png)
 
