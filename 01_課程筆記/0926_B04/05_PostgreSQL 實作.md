@@ -164,7 +164,7 @@ _以下說明在 RDS 上建立 PostgreSQL 引擎，以及進行必要的互動�
 
 <br>
 
-2. 其中 `DB name` 顯示為 `-`；特別注意，在資料庫實例設定過程中，並無指定預設資料庫的步驟，因為 RDS 創建的是一個資料庫實例，而不是具體的資料庫；另外，RDS 會自動創建一個預設的資料庫 postgres，但不會顯示具體的資料庫名稱，所以在後續步驟中，可直接使用這個資料庫進行連接和操作。
+2. 其中 `DB name` 顯示為 `-`；特別注意，在資料庫實例設定過程中，並無指定預設資料庫的步驟，因為 RDS 建立的是一個資料庫實例，而不是具體的資料庫；另外，RDS 會自動建立一個預設的資料庫 postgres，但不會顯示具體的資料庫名稱，所以在後續步驟中，可直接使用這個資料庫進行連接和操作。
 
     ![](images/img_76.png)
 
@@ -216,22 +216,22 @@ _使用 Python 腳本模擬數據並與 PostgreSQL 進行互動_
         # 如果連接失敗，確保 conn 設置為 None
         conn = None
 
-    # 如果連接成功，先創建新的資料庫
+    # 如果連接成功，先建立新的資料庫
     if conn is not None:
         cursor = conn.cursor()
         
-        # 創建新的資料庫 my_postgres_db
+        # 建立新的資料庫 my_postgres_db
         try:
             cursor.execute('CREATE DATABASE my_postgres_db;')
-            print("成功創建資料庫 my_postgres_db")
+            print("成功建立資料庫 my_postgres_db")
         except Exception as e:
-            print(f"資料庫創建失敗: {e}")
+            print(f"資料庫建立失敗: {e}")
         
         # 關閉游標和連接
         cursor.close()
         conn.close()
 
-    # 連接到新創建的資料庫 my_postgres_db
+    # 連接到新建立的資料庫 my_postgres_db
     db_name = 'my_postgres_db'
 
     try:
@@ -242,7 +242,7 @@ _使用 Python 腳本模擬數據並與 PostgreSQL 進行互動_
             password=db_password,
             port=db_port
         )
-        print(f"成功連接到新創建的資料庫 {db_name}")
+        print(f"成功連接到新建立的資料庫 {db_name}")
     except Exception as e:
         print(f"連接失敗: {e}")
         conn = None
@@ -415,7 +415,7 @@ _使用 Python 腳本模擬數據並與 PostgreSQL 進行互動_
 
 <br>
 
-2. 連接成功，可使用 `DROP DATABASE` 命令來刪除您創建的資料庫。
+2. 連接成功，可使用 `DROP DATABASE` 命令來刪除您建立的資料庫。
 
     ```sql
     DROP DATABASE my_postgres_db;
