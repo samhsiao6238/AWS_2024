@@ -1,6 +1,6 @@
-# Amazon Lex Guided Lab: Natural Language Processing
+# Lab 6 
 
-_以下是本實驗的官方說明步驟，可完成 Amazon Lex 聊天機器人搭建，與使用者進行互動以預約牙科診療。_
+_Amazon Lex Guided Lab: Natural Language Processing；以下是本實驗的官方說明步驟，可完成 Amazon Lex 聊天機器人搭建，與使用者進行互動以預約牙科診療。_
 
 <br>
 
