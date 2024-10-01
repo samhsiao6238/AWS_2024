@@ -4,33 +4,33 @@ _Amazon Lex Guided Lab: Natural Language Processing；以下是本實驗的官�
 
 <br>
 
-## 實驗概述
+## 專案涵蓋服務項目
 
-1. 使用 Amazon Lex 的 ScheduleAppointment 範本建立並測試一個聊天機器人。
-
-<br>
-
-2. 建立並測試 AWS Lambda 函數與 Lex 整合，處理初始化、驗證和執行請求。
+1. 使用 `Amazon Lex` 的 `ScheduleAppointment` 範本建立並測試一個聊天機器人。
 
 <br>
 
-3. 配置 MakeAppointment 意圖，使用 Lambda 函數作為程式鉤子。
+2. 建立並測試 `AWS Lambda` 函數與 `Lex` 整合，處理初始化、驗證和執行請求。
 
 <br>
 
-4. 在 Amazon S3 上建立並托管靜態網頁來運行聊天機器人，與聊天機器人進行互動。
+3. 配置 `MakeAppointment` 意圖，使用 `Lambda` 函數作為程式鉤子。
+
+<br>
+
+4. 在 `Amazon S3` 上建立並托管靜態網頁來運行聊天機器人，與聊天機器人進行互動。
 
 <br>
 
 ## 建立 Amazon Lex 聊天機器人
 
-1. 登入 AWS Management Console，選擇 Amazon Lex 服務。
+1. 登入 AWS Management Console，選擇 `Amazon Lex` 服務。
 
     ![](images/img_12.png)
 
 <br>
 
-2. 選擇 `Get Started`，在 `Amazon Lex` 主控台中，點擊左側欄位最下方的 `Return to the V1 console`。
+2. 進入 `Amazon Lex` 主控台後，先點擊左側欄位最下方的 `Return to the V1 console`。
 
     ![](images/img_01.png)
 
@@ -114,7 +114,7 @@ _Amazon Lex Guided Lab: Natural Language Processing；以下是本實驗的官�
 
 <br>
 
-2. 點擊 `Create a function`，選擇 `Use a blueprint`。
+2. 點擊 `Create a function`，選擇 `Use a blueprint`；這些是預先設計好的 `模板（blueprint）`，包含常見的功能代碼和配置，可快速開始構建 Lambda 函數，並與其他 AWS 服務集成，無需從頭開始編寫代碼。
 
     ![](images/img_19.png)
 
