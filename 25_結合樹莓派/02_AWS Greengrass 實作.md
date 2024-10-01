@@ -4,6 +4,24 @@ _以下示範使用 Greengrass V2 組件自動化方式將 Greengrass 配置同�
 
 <br>
 
+## 基本環境建立
+
+1. 設置 AWS CLI 環境。
+
+   ```bash
+   aws configure
+   ```
+
+<br>
+
+2. 任意建立一個專案資料夾，進入後添加腳本並任意命名如 `lambda_function.py`，
+
+   ```bash
+   cd ~/Desktop && mkdir _ex1001_ && cd _ex1001_ && code .
+   ```
+
+<br>
+
 ## 建立 Lambda IAM Role
 
 _在部署 Lambda 函數之前，需要建立一個 Lambda 執行角色並授予其所需的權限，這個角色將允許 Lambda 函數與其他 AWS 服務進行互動；以下操作確保 Lambda 函數有正確的角色來執行並能夠寫入 CloudWatch Logs 以進行日誌記錄。_
@@ -71,29 +89,21 @@ _在部署 Lambda 函數之前，需要建立一個 Lambda 執行角色並授予
 
 <br>
 
-## 基本配置
+## 配置 Lambda 函數
 
-_首先建立 Greengrass 群組並配置 Lambda 函數_
+_建立 Greengrass 群組並配置 Lambda 函數_
 
 <br>
 
-1. 設置 AWS CLI 環境。
+1. 在案資料夾添加腳本並任意命名如 `lambda_function.py`，
 
    ```bash
-   aws configure
+   touch lambda_function.py
    ```
 
 <br>
 
-2. 任意建立一個專案資料夾，進入後添加腳本並任意命名如 `lambda_function.py`，
-
-   ```bash
-   cd ~/Desktop && mkdir _ex1001_ && cd _ex1001_ && touch lambda_function.py && code .
-   ```
-
-<br>
-
-3. 並在其中編輯 Lambda 函數，該函數將部署到 Greengrass 群組中。
+2. 編輯 Lambda 函數，該函數將部署到 Greengrass 群組中。
 
    ```python
    import json
@@ -109,7 +119,7 @@ _首先建立 Greengrass 群組並配置 Lambda 函數_
 
 <br>
 
-4. 建立一個部署包，包含代碼和依賴。
+3. 建立一個部署包，包含代碼和依賴。
 
    ```bash
    zip function.zip lambda_function.py
@@ -119,7 +129,7 @@ _首先建立 Greengrass 群組並配置 Lambda 函數_
 
 <br>
 
-5. 使用 AWS CLI 建立 Lambda 函數，以下命令會建立一個 Lambda 函數並部署至 AWS，`YOUR_ACCOUNT_ID` 和 `YOUR_LAMBDA_ROLE` 分別是 AWS 帳號 ID 和 Lambda 執行角色。
+4. 使用 AWS CLI 建立 Lambda 函數，以下命令會建立一個 Lambda 函數並部署至 AWS，`YOUR_ACCOUNT_ID` 和 `YOUR_LAMBDA_ROLE` 分別是 AWS 帳號 ID 和 Lambda 執行角色。
 
    ```bash
    aws lambda create-function \
@@ -132,7 +142,7 @@ _首先建立 Greengrass 群組並配置 Lambda 函數_
 
 <br>
 
-6. 將 Lambda 函數部署到本地的樹莓派 Greengrass 核心設備上，建立 Greengrass 部署後會將 Lambda 函數配置成為 Greengrass 組件。
+5. 將 Lambda 函數部署到本地的樹莓派 Greengrass 核心設備上，建立 Greengrass 部署後會將 Lambda 函數配置成為 Greengrass 組件。
 
    ```bash
    aws greengrassv2 create-deployment \
