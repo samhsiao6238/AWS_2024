@@ -1,110 +1,128 @@
-### 任務 2: 使用 Athena 查詢表格
+# ETL
 
-現在你已經創建了 Data Catalog，可以進一步使用 Athena 來查詢數據。
+_使用 AWS Glue 對數據集進行 ETL 操作_
 
-在這個任務中，你將完成以下步驟：
+<br>
 
-1. 配置一個 S3 存儲桶來存儲 Athena 查詢結果。
+## 任務 2，使用 Athena 查詢表格
+
+_已經建立了 `Data Catalog`，可以進一步使用 Athena 來查詢數據_
+
+1. 配置一個 S3 Bucket來存儲 Athena 查詢結果。
+
 2. 在 Athena 中預覽數據庫表格。
-3. 為 1950 年之後的數據創建一個表格。
+
+3. 為 1950 年之後的數據建立一個表格。
+
 4. 對選定數據運行查詢。
 
-#### 配置 S3 存儲桶來存儲 Athena 查詢結果
+## 配置 S3 Bucket來存儲 Athena 查詢結果
 
-1. 在左側導航窗格中，於「數據庫」下選擇 **Tables**（表格）。
-2. 點擊 `by_year` 表格的鏈接。
-3. 選擇 **Actions** > **View data**（操作 > 查看數據）。
-4. 當彈出提示框警告你將被重定向至 Athena 控制台時，選擇 **Proceed**（繼續）。
-5. 打開 Athena 控制台，會出現一個錯誤消息，指出未提供查詢結果的輸出位置。在運行查詢之前，需要指定一個 S3 存儲桶來存儲查詢結果。
-6. 選擇 **Settings**（設置）標籤。
-7. 選擇 **Manage**（管理）。
-8. 在「查詢結果位置」旁邊，選擇 **Browse S3**（瀏覽 S3）。
-9. 選擇類似 `data-science-bucket-XXXXXX` 名稱的存儲桶。
-    - 重要提示：請不要選擇包含 `glue-1950-bucket` 的存儲桶名稱。
-10. 選擇 **Choose**（選擇）。
-11. 保留其他選項的默認設置，然後選擇 **Save**（保存）。
+1. 在左側導航窗格中，於 `atabases` 下選擇 `Tables`；然後點擊 `by_year` 表格的鏈接。
 
-#### 在 Athena 中預覽表格
+![](images/img_26.png)
 
-1. 選擇 **Editor**（編輯器）標籤。
-2. 在左側的 **Data**（數據）面板中，確認數據源為 `AwsDataCatalog`。
-3. 在 **Database**（數據庫）部分，選擇 `weatherdata`。
-4. 在 **Tables**（表格）部分，選擇 `by_year` 表格旁邊的三點圖標，然後選擇 **Preview Table**（預覽表格）。
-    - 提示：如需查看該表格中的列名稱及其數據類型，請選擇表格名稱左側的圖標。
-5. 第一頁會顯示來自 `weatherdata` 表格的前 10 條記錄，類似如下截圖：
+2. 展開 `Actions` 並選擇 `View data`。
 
-   **天氣數據預覽**
+![](images/img_27.png)
 
-6. 注意運行時間和查詢掃描的數據量。在開發更複雜的應用程式時，減少資源消耗來優化成本是很重要的。在本任務的後續步驟中，你將會看到如何優化 Athena 查詢的成本。
+3. 出現彈窗警告將被重定向至 `Athena` 控制台，選擇 `Proceed`。
 
-#### 為 1950 年之後的數據創建表格
+![](images/img_28.png)
 
-1. 首先，你需要檢索為你創建的存儲數據的 S3 存儲桶名稱。
-2. 在 AWS 管理控制台中的搜索框旁輸入 `S3` 並選擇 **S3** 服務。
-3. 在存儲桶列表中，將包含 `glue-1950-bucket` 的存儲桶名稱複製到你選擇的文本編輯器中。
+4. 自動開啟 `Athena` 控制台，選擇 `Settings` 並點擊 `Manage`。
+
+![](images/img_29.png)
+
+5. 點擊 `Location of query result - optional` 右側的 `Browse S3`。
+
+![](images/img_30.png)
+
+6. 選擇類似 `data-science-bucket-XXXXXX` 名稱的 Bucket，切勿選擇包含 `glue-1950-bucket` 的 Bucket；點擊右下方 `Choose`。
+
+![](images/img_31.png)
+
+7. 保留其他選項的預設設置，然後選擇 `Save`。
+
+![](images/img_32.png)
+
+## 在 Athena 中預覽表格
+
+1. 選擇 `Editor` 標籤，在 `Data` 面板中，確認數據源為 `AwsDataCatalog`，在 `Database` 部分，選擇 `weatherdata`；在 `Tables` 部分選擇 `by_year` 表格旁邊的三點圖標，展開後選擇 `Preview Table`；如需查看該表格中的列名稱及其數據類型，可選擇表格名稱左側的圖標。
+
+![](images/img_33.png)
+
+2. 第一頁會顯示來自 `weatherdata` 表格的前 10 條記錄，注意運行時間和查詢掃描的數據量，在開發應用程式時，減少資源消耗來優化成本是很重要的。
+
+```sql
+SELECT * FROM "weatherdata"."by_year" limit 10;
+```
+
+## 為 1950 年之後的數據建立表格
+
+1. 首先，需要檢索預設建立的存儲數據的 S3 Bucket名稱。
+
+2. 在 AWS 管理控制台中的搜索框旁輸入 `S3` 並選擇 S3 服務。
+
+3. 在Bucket列表中，將包含 `glue-1950-bucket` 的 Bucket 名稱複製到選擇的文本編輯器中。
+
 4. 返回 Athena 查詢編輯器。
-5. 將以下查詢複製並粘貼到編輯器的查詢標籤中。將 `<glue-1950-bucket>` 替換為你之前記錄的存儲桶名稱：
-   
-   ```sql
-   CREATE table weatherdata.late20th
-   WITH (
-     format='PARQUET', external_location='s3://<glue-1950-bucket>/lab3'
-   ) AS SELECT date, type, observation FROM by_year
-   WHERE date/10000 BETWEEN 1950 AND 2015;
-   ```
 
-6. 選擇 **Run**（運行）。
-   - 查詢運行完成後，運行時間和掃描數據的大小類似如下：
-     - 排隊時間：128 毫秒
-     - 運行時間：1 分鐘 8.324 秒
-     - 掃描數據量：98.44 GB
+5. 將以下查詢複製並粘貼到編輯器的查詢標籤中。將 `<glue-1950-bucket>` 替換為你之前記錄的Bucket名稱：
 
-7. 如需預覽結果，在 `late20th` 表格旁邊選擇三點圖標，然後選擇 **Preview Table**（預覽表格）。
+    ```sql
+    CREATE table weatherdata.late20th
+    WITH (
+        format='PARQUET',
+        external_location='s3://<glue-1950-bucket>/lab3'
+    ) AS SELECT date, type, observation 
+    FROM by_year
+    WHERE date/10000 BETWEEN 1950 AND 2015;
+    ```
 
-   **查詢結果：日期、類型和觀測值**
+6. 選擇 `Run`，運行時間和掃描數據的大小類似如下。
 
-#### 對新表格運行查詢
+```bash
+排隊時間：128 毫秒
+運行時間：1 分鐘 8.324 秒
+掃描數據量：98.44 GB
+```
 
-1. 首先，創建一個僅包含最大溫度讀數（`TMAX`）值的視圖。
-2. 在新查詢標籤中運行以下查詢：
+7. 如需預覽結果，在 `late20th` 表格旁邊選擇三點圖標，然後選擇 `Preview Table`。
 
-   ```sql
-   CREATE VIEW TMAX AS
-   SELECT date, observation, type
-   FROM late20th
-   WHERE type = 'TMAX';
-   ```
 
-3. 如需預覽結果，在 `tmax` 視圖旁邊選擇三點圖標，然後選擇 **Preview View**（預覽視圖）。
+## 對新表格運行查詢
 
-   **查詢結果：日期、觀測值和類型**
+1. 首先，建立一個僅包含最大溫度讀數（`TMAX`）值的視圖。
 
-4. 在新的查詢標籤中運行以下查詢：
+2. 在新查詢標籤中運行以下查詢。
 
-   ```sql
-   SELECT date/10000 as Year, avg(observation)/10 as Max
-   FROM tmax
-   GROUP BY date/10000
-   ORDER BY date/10000;
-   ```
+    ```sql
+    CREATE VIEW TMAX AS
+    SELECT date, observation, type
+    FROM late20th
+    WHERE type = 'TMAX';
+    ```
 
-   - 該查詢的目的是計算每年數據集中平均最高溫度。
+3. 如需預覽結果，在 `tmax` 視圖旁邊選擇三點圖標，然後選擇 `Preview View`。
 
-5. 查詢運行完成後，運行時間和掃描的數據大小類似如下：
-   - 排隊時間：0.211 秒
-   - 運行時間：25.109 秒
-   - 掃描數據量：2.45 GB
 
-6. 結果顯示了 1950 年到 2015 年間的每年平均最高溫度，類似如下的截圖：
+4. 在新的查詢標籤中運行以下查詢，該查詢的目的是計算每年數據集中平均最高溫度。
 
-   **查詢結果：年份與 1950 到 2015 年的平均最高溫度**
+```sql
+SELECT date/10000 as Year, avg(observation)/10 as Max
+FROM tmax
+GROUP BY date/10000
+ORDER BY date/10000;
+```
 
-#### 任務 2 總結
+5. 查詢運行完成後，運行時間和掃描的數據大小類似如下。
 
-在這個任務中，你學會了如何使用 Athena 查詢 AWS Glue 爬網程式創建的數據庫中的表格。你為 1950 年之後的數據創建了一個新表格，並使用 Apache Parquet 格式來優化 Athena 查詢，從而減少運行時間和成本。隔離這些數據後，你創建了一個計算每年平均最高溫度的視圖。
+    ```bash
+    排隊時間：0.211 秒
+    運行時間：25.109 秒
+    掃描數據量：2.45 GB
+    ```
 
-AWS Glue 可以與存儲在 Amazon S3 的原始數據集集成，並且可以通過爬網程式將原始數據集引入到數據庫中並推斷出適當的結構。隨後，你可以迅速轉到 Athena 來開發查詢，從而更好地理解你的數據。這種集成減少了從數據中獲取洞察並應用這些洞察來做出更好決策所需的時間。
+2. 結果顯示了 1950 年到 2015 年間的每年平均最高溫度。
 
----
-
-這是 Task 2 的完整翻譯。如果需要進一步翻譯其餘任務，隨時告訴我！
