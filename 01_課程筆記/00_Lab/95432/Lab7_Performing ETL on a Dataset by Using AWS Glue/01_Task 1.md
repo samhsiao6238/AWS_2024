@@ -226,7 +226,7 @@ _手動切換頁面到前面步驟的畫面中_
 
 <br>
 
-4. 修改欄位名稱，根據以下指示進行修改：`id -> station`、`date -> date`、`element -> type`、`data_value -> observation`、`m_flag -> mflag`、`q_flag -> qflag`、`s_flag -> sflag`、`obs_time -> time`；特別注意，AWS Glue 只支持小寫的列名稱，完成時點擊 `Save ...`。
+4. 修改欄位名稱，根據以下指示進行修改：`id -> station`、`date` 不變、`element -> type`、`data_value -> observation`；剩餘項目將字串中的底線 `_` 刪除：`m_flag -> mflag`、`q_flag -> qflag`、`s_flag -> sflag`、`obs_time -> time`；特別注意，AWS Glue 只支持小寫的列名稱，完成時點擊 `Save as new table version`。
 
     ![](images/img_25.png)
 
