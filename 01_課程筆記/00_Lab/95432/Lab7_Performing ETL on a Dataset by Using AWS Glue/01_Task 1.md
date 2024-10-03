@@ -112,6 +112,10 @@ _配置並建立一個爬網程式來發現 `GHCN-D` 資料集的結構，並從
 
 ## 回到 Glue
 
+_前面已經選好了 `gluelab`_
+
+<br>
+
 1. 點擊 `Next` 後會進入 `Set output and scheduling`，選擇 `Add database`；會自動開啟新的頁面。
 
     ![](images/img_12.png)
