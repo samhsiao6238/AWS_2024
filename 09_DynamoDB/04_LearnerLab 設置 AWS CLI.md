@@ -34,7 +34,7 @@
      - `AWS Secret Access Key`
      - `Region`（例如 `ap-northeast-1` 或 `us-east-1`）
 
-5. LearnerLab 主控台：如果 LearnerLab 提供一個類似於 AWS 主控台的介面，您可以嘗試在主控台的安全憑證頁面中查找 `Access Key` 和 `Secret Key`。通常，這些資訊會在 LearnerLab 的 AWS 設定或憑證管理頁面中提供。
+5. LearnerLab 主控台：如果 LearnerLab 提供一個類似於 AWS 主控台的介面，您可以嘗試在主控台的安全憑證頁面中搜尋 `Access Key` 和 `Secret Key`。通常，這些資訊會在 LearnerLab 的 AWS 設定或憑證管理頁面中提供。
 
 6. LearnerLab 文件或技術支援：如果 LearnerLab 沒有直接提供憑證資訊，您可以查看官方文件或聯繫 LearnerLab 的支援團隊，詢問如何從 LearnerLab 帳號中提取 AWS 認證憑證。
 

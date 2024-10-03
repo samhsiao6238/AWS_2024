@@ -56,7 +56,7 @@ _在此 [Lab](https://awseducate.instructure.com/courses/990/modules) 中會使�
 
 ## Scenario 1: Dr. Wei 和 TP53 突變
 
-_問題：Dr. Wei 想知道其腫瘤診所中女性癌症 `患者（sample_source）` 的分佈，並查找是否有 TP53 突變的樣本。_
+_問題：Dr. Wei 想知道其腫瘤診所中女性癌症 `患者（sample_source）` 的分佈，並搜尋是否有 TP53 突變的樣本。_
 
 <br>
 
@@ -144,7 +144,7 @@ _問題：Dr. Salazar 想知道 BRAF 突變是否與數據中的癌症相關，�
 
 <br>
 
-5. 也可以點擊 `+` 號建立一個新查詢，同樣輸入前面的 SQL 查詢，便可查找皮膚癌的治療方案。
+5. 也可以點擊 `+` 號建立一個新查詢，同樣輸入前面的 SQL 查詢，便可搜尋皮膚癌的治療方案。
 
    ![](images/img_15.png)
 
@@ -190,7 +190,7 @@ _問題：Dr. Santos 想知道腎癌患者的非註釋型替換突變，並尋�
 
 <br>
 
-5. 建立新查詢，輸入以下 SQL 查詢以查找腎癌的治療方案。
+5. 建立新查詢，輸入以下 SQL 查詢以搜尋腎癌的治療方案。
 
    ```sql
    select * from treatments where location = 'kidney'
@@ -208,7 +208,7 @@ _問題：Dr. Owusu 想了解其肺癌患者的性別比例以及哪些患者有
 
 <br>
 
-1. 建立新查詢，輸入以下 SQL 查詢以查找所有肺癌樣本。
+1. 建立新查詢，輸入以下 SQL 查詢以搜尋所有肺癌樣本。
 
    ```sql
    select * from samples where location = 'lung'
