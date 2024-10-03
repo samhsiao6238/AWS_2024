@@ -59,7 +59,11 @@ _確認 Mary 能夠透過 Redshift 查詢數據，使用 AWS CLI 指令模擬 Ma
 
 ## 完成
 
-_Submit_
+![](images/img_67.png)
+
+<br>
+
+_Submit & End Lab_
 
 <br>
 
