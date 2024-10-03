@@ -128,7 +128,7 @@ _前面已經選好了 `gluelab`_
 
 <br>
 
-1. 會自動回到 Databases 清單中，可看到建立的資料庫 `weatherdata`。
+3. 會自動回到 Databases 清單中，可看到建立的資料庫 `weatherdata`。
 
     ![](images/img_34.png)
 
