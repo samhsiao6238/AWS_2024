@@ -1,31 +1,53 @@
+# 任務 5：查詢數據
 
-#### 任務 5: 查詢數據
-加載數據後，你可以撰寫 SQL 查詢來生成 Mary 所需的報告。Mary 提供了查詢來統計特定日期銷售的商品數量，以及查詢購買量最多的前 10 名客戶。
+_資料集已成功匯入 Redshift Cluster，接下來要編寫 Query 來產生所需報告。_
 
-步驟包括：
-- 使用 SQL 查詢來查詢 `sales` 和 `date` 表格，並找出特定日期的總銷量。
-- 使用 SQL 查詢找出購買量最多的 10 位客戶。
+<br>
 
-#### 任務 6: 使用 AWS CLI 運行查詢
-除了通過控制台運行查詢，你還可以使用 Amazon Redshift API、AWS SDK 庫和 AWS CLI 來執行操作。在這個任務中，你將通過 AWS Cloud9 終端執行 AWS CLI 指令，來查詢 Redshift 集群中的數據。
+## 預覽資料
 
-步驟包括：
-- 使用 AWS CLI 在 Cloud9 中查詢 Redshift 資料庫。
-- 使用 `get-statement-result` 指令檢索查詢結果。
+1. 在前面步驟已經操作過，透過 `Preview data` 可查看資料，資料內容如下，不再贅述。
 
-#### 任務 7: 審查對 Redshift 的 IAM 訪問策略
-你將審查附加到 DataScienceGroup 群組的 `Policy-For-Data-Scientists` IAM 策略，該策略允許使用 Redshift Data API 進行有限的資料庫操作。
+    ![](images/img_49.png)
 
-步驟包括：
-- 審查策略的 JSON，了解授權的動作和資源。
+<br>
 
-#### 任務 8: 確認使用者可以在 Redshift 資料庫上運行查詢
-最後，確認 Mary 能夠透過 Redshift 查詢數據。使用 AWS CLI 指令模擬 Mary 的權限，並測試其能否檢索查詢結果。
+2. 透過以下語句可查詢並計算 `2008/01/05` 當天銷售的 `商品總數（qtysold）`。
 
-步驟包括：
-- 透過 Mary 的憑證運行 `execute-statement` 指令進行數據查詢。
-- 使用 `get-statement-result` 指令檢索查詢結果。
+    ```sql
+    SELECT sum(qtysold)
+    FROM sales, date
+    WHERE sales.dateid = date.dateid
+    AND caldate = '2008-01-05';
+    ```
 
----
+    _查詢結果_
 
-這個教程展示了如何建立 Redshift 數據倉庫、加載數據以及進行查詢分析，並且提供了如何使用 IAM 角色和 AWS CLI 進行操作的完整指引。
+    ![](images/img_50.png)
+
+<br>
+
+3. 以下是按數量尋找前 10 位買家。
+
+    ```sql
+    SELECT username, total_quantity
+    FROM
+    (SELECT buyerid, sum(qtysold) total_quantity
+    FROM  sales
+    GROUP BY buyerid
+    ORDER BY total_quantity desc limit 10) Q, users
+    WHERE Q.buyerid = userid
+    ORDER BY Q.total_quantity desc;
+    ```
+
+<br>
+
+4. 查詢傳回客戶使用者名稱以及銷售給每位客戶的總數量，按 `total_quantity` 欄位排序，並且限制為 `10` 個結果。
+
+    ![](images/img_51.png)
+
+<br>
+
+___
+
+_END_
