@@ -40,7 +40,7 @@ _在 `Task 1` 中，使用 Glue 控制台創建爬網程式以檢查數據源並
 
 ![](images/img_57.png)
 
-5. 將以下代碼複製並粘貼到文件中：
+5. 將以下代碼複製並粘貼到文件中；特別注意，`yaml` 對於格式的規範是嚴格的。
 
     ```yaml
     AWSTemplateFormatVersion: '2010-09-09'
