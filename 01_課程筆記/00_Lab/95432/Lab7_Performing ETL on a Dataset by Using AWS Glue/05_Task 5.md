@@ -4,29 +4,6 @@ _使用 AWS Glue 對數據集進行 ETL 操作_
 
 <br>
 
-## 任務 4，審查 Athena 和 AWS Glue 訪問的 IAM 策略
-
-_審查爬網程式的 IAM 策略，以確保其他人可以在生產環境中使用它_
-
-<br>
-
-1. 在 AWS 管理控制台中的搜索框旁搜尋 IAM，打開 IAM 控制台。
-
-2. 在左側導航窗格中，選擇 Users（使用者）。
-3. 注意，`mary` 是列出的 IAM 使用者之一。該使用者屬於 DataScienceGroup IAM 群組。
-4. 選擇 DataScienceGroup 群組的鏈接。
-5. 在群組詳細信息頁面，選擇 Permissions（權限）標籤。
-6. 在附加到群組的策略列表中，選擇 Policy-For-Data-Scientists 策略的鏈接。
-7. 在策略詳細信息頁面，審查與該策略相關的權限。
-
-   - 提示：如需更仔細地查看 IAM 策略的詳細信息，選擇 {} JSON，可以查看允許和拒絕的操作及其相關資源。
-
-#### 任務 4 總結
-
-在這個任務中，你審查了 DataScienceGroup 群組的 IAM 策略。該策略包含對 Amazon S3、AWS Glue 和 Athena 的有限訪問權限。此策略可以作為用於重用操作團隊構建的爬網程式的示例策略。
-
----
-
 ### 任務 5: 確認 Mary 能夠訪問並使用 AWS Glue 爬網程式
 
 現在你已經審查了 IAM 策略，接下來你將測試另一個使用者（`mary`）是否能夠訪問 AWS Glue 爬網程式並使用它來提取、轉換和加載存儲在 Amazon S3 中的數據。
