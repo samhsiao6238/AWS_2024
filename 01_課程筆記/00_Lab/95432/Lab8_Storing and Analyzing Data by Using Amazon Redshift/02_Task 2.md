@@ -88,7 +88,7 @@ _教程內容與面板略有不同，這裡將以實際操作作為筆記_
 
 <br>
 
-5. 顯示 `Available` 後表示完成；點擊 `Cluster` 進入。
+5. 顯示 `Available` 後表示完成；點擊 `Cluster` 的名稱 `redshift-cluster-1` 處進入。
 
     ![](images/img_16.png)
 
