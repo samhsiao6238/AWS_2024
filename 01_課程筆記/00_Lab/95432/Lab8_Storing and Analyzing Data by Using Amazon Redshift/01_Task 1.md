@@ -40,7 +40,7 @@ _觀察預設 Role 是否具備適當權限訪問 Redshift_
 
 <br>
 
-6. 另外，`RedshiftIAMLabPolicy` 部分允許用戶描述、創建、修改和刪除與 EC2 網路相關的資源，適用於管理 EC2 網路環境的場景。
+6. 另外，`RedshiftIAMLabPolicy` 部分允許用戶描述、建立、修改和刪除與 EC2 網路相關的資源，適用於管理 EC2 網路環境的場景。
 
     ![](images/img_27.png)
 

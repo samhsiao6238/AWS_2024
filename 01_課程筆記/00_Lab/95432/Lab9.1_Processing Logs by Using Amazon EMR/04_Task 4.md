@@ -4,7 +4,7 @@
 
 ## 步驟
 
-1. 若要建立名為 `impressions` 的外部表，可在 Cloud9 終端機中執行下列程式碼；這個表結構定義了 `7` 個欄位，Hive 指定使用 `JsonSerDe` 來將 `JSON` 格式的數據解析成結構化數據，並將其映射到表的定義中；S3 中存儲的 JSON 數據包含 16 個頂層鍵值對，如 `number`、`referrer`、`processId` 等，但是在創建表時只引用了其中的 `7` 個欄位，因此這個表只會引用部分 JSON 數據。
+1. 若要建立名為 `impressions` 的外部表，可在 Cloud9 終端機中執行下列程式碼；這個表結構定義了 `7` 個欄位，Hive 指定使用 `JsonSerDe` 來將 `JSON` 格式的數據解析成結構化數據，並將其映射到表的定義中；S3 中存儲的 JSON 數據包含 16 個頂層鍵值對，如 `number`、`referrer`、`processId` 等，但是在建立表時只引用了其中的 `7` 個欄位，因此這個表只會引用部分 JSON 數據。
 
     ```sql
     CREATE EXTERNAL TABLE impressions (
@@ -43,7 +43,7 @@
 
 <br>
 
-3. 執行以下命令來忽略路徑驗證並修復表的分區；特別注意，`MSCK REPAIR TABLE` 命令會掃描 Amazon S3 中的新分區，這些分區是在表創建後添加的，若發現分區，這些分區將被加入到表的元數據中，此命令是 AWS 版本 Hive 的擴展功能。
+3. 執行以下命令來忽略路徑驗證並修復表的分區；特別注意，`MSCK REPAIR TABLE` 命令會掃描 Amazon S3 中的新分區，這些分區是在表建立後添加的，若發現分區，這些分區將被加入到表的元數據中，此命令是 AWS 版本 Hive 的擴展功能。
 
     ```sql
     set hive.msck.path.validation=ignore;
@@ -72,9 +72,9 @@
 
 <br>
 
-## 創建另一個外部表並發現其分區
+## 建立另一個外部表並發現其分區
 
-1. 執行以下命令來創建一個名為 `clicks` 的外部表，並將其指向存儲在 Amazon S3 中的點擊流日誌數據。
+1. 執行以下命令來建立一個名為 `clicks` 的外部表，並將其指向存儲在 Amazon S3 中的點擊流日誌數據。
 
     ```sql
     CREATE EXTERNAL TABLE clicks (impressionId string, adId string)
