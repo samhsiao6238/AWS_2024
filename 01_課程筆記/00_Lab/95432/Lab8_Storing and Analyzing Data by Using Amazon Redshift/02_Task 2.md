@@ -88,13 +88,19 @@ _教程內容與面板略有不同，這裡將以實際操作作為筆記_
 
 <br>
 
-5. 顯示 `Available` 後表示完成；點擊 `Cluster` 的名稱 `redshift-cluster-1` 處進入。
+5. 若手動刷新會顯示 ` Unavailable`，稍作等待。
+
+    ![](images/img_58.png)
+
+<br>
+
+6. 顯示 `Available` 後表示完成；點擊 `Cluster` 的名稱 `redshift-cluster-1` 處進入。
 
     ![](images/img_16.png)
 
 <br>
 
-6. 上方會出現彈窗，官方教程特別提到，請忽略這些提示。
+7. 上方會出現彈窗，官方教程特別提到，請忽略這些提示。
 
     ![](images/img_17.png)
 
