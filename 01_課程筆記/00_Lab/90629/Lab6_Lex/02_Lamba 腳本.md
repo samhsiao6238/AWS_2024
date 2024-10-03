@@ -198,7 +198,7 @@
     def is_available(appointment_time, duration, availabilities):
         """
         幫助函數，用於檢查指定的時間和時長是否在已知的可用時段內。
-        時長默認為 30 或 60 分鐘。
+        時長預設為 30 或 60 分鐘。
         """
         if duration == 30:
             return appointment_time in availabilities

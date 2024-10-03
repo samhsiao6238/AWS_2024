@@ -128,25 +128,27 @@ _配置並建立一個爬網程式來發現 `GHCN-D` 資料集的結構，並從
 
 _手動切換頁面到前面步驟的畫面中_
 
+<br>
+
 1. 返回頁面中，可先手動刷新頁面。
 
     ![](images/img_14.png)
 
 <br>
 
-2. 接著下拉選單並選擇剛建立的 `weatherdata` 資料庫作為目標資料庫。
+2. 下拉 `Target database` 選單，選擇前面步驟建立的 `weatherdata` 資料庫作為目標資料庫。
 
     ![](images/img_15.png)
 
 <br>
 
-3. 在 `Crawler schedule` 部分，將 `Frequency` 保留默認的 `On demand`；然後點擊 `Next`。
+3. 在最下方的 `Crawler schedule` 區塊，將 `Frequency` 保留預設的 `On demand`；然後點擊 `Next`。
 
     ![](images/img_16.png)
 
 <br>
 
-4. 確認爬網程式相關配置，點擊 `Create crawler`。
+4. 可瀏覽一下爬網程式相關配置，確認無誤後點擊 `Create crawler`。
 
     ![](images/img_17.png)
 
@@ -154,19 +156,25 @@ _手動切換頁面到前面步驟的畫面中_
 
 ## 運行爬網程式
 
-1. 在 `Crawlers` 頁面中，選擇剛建立的 `Weather` 爬網程式，然後點擊 `Run`。
+1. 在 `Weather` 頁面中，可點擊 `Run crawler` 啟動爬往程式。
+
+    ![](images/img_35.png)
+
+<br>
+
+2. 或是在 `Crawlers` 頁面中，選擇剛建立的 `Weather` 爬網程式，然後點擊 `Run`。
 
     ![](images/img_18.png)
 
 <br>
 
-2. 爬網程式狀態將更改為 `Running`，這個過程約耗時三分鐘。
+3. 運行時爬網程式的狀態會更改為 `Running`，這個過程約耗時三分鐘。
 
     ![](images/img_19.png)
 
 <br>
 
-3. 過程中還會顯示 `Stopping` 不用擔心，完成時狀態會變更為 `Ready`。
+1. 過程中還會顯示 `Stopping` 不用擔心，完成時狀態會變更為 `Ready`。
 
     ![](images/img_20.png)
 
