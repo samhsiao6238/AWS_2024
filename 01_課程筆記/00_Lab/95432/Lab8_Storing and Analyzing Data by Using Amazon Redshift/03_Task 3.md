@@ -1,42 +1,95 @@
-## 任務 3：在資料庫中建立表格
+# 任務 3：在資料庫中建立表格
 
 _從 S3 加載數據到 Redshift Cluster_
 
+<br>
 
-#### 任務 4: 從 Amazon S3 加載數據
-透過 `COPY` 命令，你將從 S3 存儲桶中加載數據到 Redshift 集群。每個表格使用不同的分隔符，例如 `\t` 和 `|`。
+## 步驟
 
-步驟包括：
-- 使用 `COPY` 命令將數據從 S3 加載到表格中。
-- 檢查數據加載是否成功。
+1. 進入 Redshift，在下方的 `Cluster` 中，選取前面步驟建立的 `redshift-cluster-1`，然後點擊 `Query data`。
 
-#### 任務 5: 查詢數據
-加載數據後，你可以撰寫 SQL 查詢來生成 Mary 所需的報告。Mary 提供了查詢來統計特定日期銷售的商品數量，以及查詢購買量最多的前 10 名客戶。
+    ![](images/img_37.png)
 
-步驟包括：
-- 使用 SQL 查詢來查詢 `sales` 和 `date` 表格，並找出特定日期的總銷量。
-- 使用 SQL 查詢找出購買量最多的 10 位客戶。
+<br>
 
-#### 任務 6: 使用 AWS CLI 運行查詢
-除了通過控制台運行查詢，你還可以使用 Amazon Redshift API、AWS SDK 庫和 AWS CLI 來執行操作。在這個任務中，你將通過 AWS Cloud9 終端執行 AWS CLI 命令，來查詢 Redshift 集群中的數據。
+2. 在選單中點擊 `Query in query editor`。
 
-步驟包括：
-- 使用 AWS CLI 在 Cloud9 中查詢 Redshift 資料庫。
-- 使用 `get-statement-result` 命令檢索查詢結果。
+    ![](images/img_38.png)
 
-#### 任務 7: 審查對 Redshift 的 IAM 訪問策略
-你將審查附加到 DataScienceGroup 群組的 `Policy-For-Data-Scientists` IAM 策略，該策略允許使用 Redshift Data API 進行有限的資料庫操作。
+<br>
 
-步驟包括：
-- 審查策略的 JSON，了解授權的動作和資源。
+3. 點擊右上角 `Connect to database`。
 
-#### 任務 8: 確認使用者可以在 Redshift 資料庫上運行查詢
-最後，確認 Mary 能夠透過 Redshift 查詢數據。使用 AWS CLI 指令模擬 Mary 的權限，並測試其能否檢索查詢結果。
+    ![](images/img_39.png)
 
-步驟包括：
-- 透過 Mary 的憑證運行 `execute-statement` 命令進行數據查詢。
-- 使用 `get-statement-result` 命令檢索查詢結果。
+<br>
 
----
+4. 名稱輸入 `dev`、使用者輸入 `awsuser`，其餘皆使用預設，然後點擊右下角 `Connect`。
 
-這個教程展示了如何建立 Redshift 數據倉庫、加載數據以及進行查詢分析，並且提供了如何使用 IAM 角色和 AWS CLI 進行操作的完整指引。
+    ![](images/img_40.png)
+
+<br>
+
+## 建立使用者表格
+
+1. 複製以下語句並貼到查詢標籤中，然後點擊 `Run`。
+
+    ```sql
+    create table users(
+            userid integer not null distkey sortkey,
+            username char(8),
+            city varchar(30),
+            state char(2),
+            likesports boolean,
+            liketheatre boolean,
+            likeconcerts boolean,
+            likejazz boolean,
+            likeclassical boolean,
+            likeopera boolean,
+            likerock boolean,
+            likevegas boolean,
+            likebroadway boolean,
+            likemusicals boolean);
+    ```
+
+    ![](images/img_41.png)
+
+<br>
+
+2. 若要建立日期表，複製並貼上以下語句，然後 `Run`。
+
+    ```sql
+    create table date(
+    dateid smallint not null distkey sortkey,
+    caldate date not null,
+    day character(3) not null,
+    week smallint not null,
+    month character(5) not null,
+    qtr character(5) not null,
+    year smallint not null,
+    holiday boolean default('N'));
+    ```
+
+<br>
+
+3. 若要建立銷售表，複製並貼上下語句，然後 `Run`。
+
+    ```sql
+    create table sales(
+    salesid integer not null,
+    listid integer not null distkey,
+    sellerid integer not null,
+    buyerid integer not null,
+    eventid integer not null,
+    dateid smallint not null sortkey,
+    qtysold smallint not null,
+    pricepaid decimal(8,2),
+    commission decimal(8,2),
+    saletime timestamp);
+    ```
+
+<br>
+
+___
+
+_這個 Task 已經完成，資料載入請進行下一個 Task_
