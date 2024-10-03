@@ -57,6 +57,12 @@ _確認 Mary 能夠透過 Redshift 查詢數據，使用 AWS CLI 指令模擬 Ma
 
 <br>
 
+## 完成
+
+_Submit_
+
+<br>
+
 ___
 
 _END_
