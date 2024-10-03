@@ -28,25 +28,25 @@ _已經建立了 `Data Catalog`，可以進一步使用 Athena 來查詢數據_
 
 ## 配置 S3 Bucket來存儲 Athena 查詢結果
 
-1. 在左側導航窗格中，於 `atabases` 下選擇 `Tables`；然後點擊 `by_year` 表格的鏈接。
+1. 在左側欄中的 `atabases` 下點擊 `Tables`；然後點擊進入 `by_year`。
 
     ![](images/img_26.png)
 
 <br>
 
-2. 展開 `Actions` 並選擇 `View data`。
+2. 展開右上角的 `Actions` 並選擇 `View data`。
 
     ![](images/img_27.png)
 
 <br>
 
-3. 出現彈窗警告將被重定向至 `Athena` 控制台，選擇 `Proceed`。
+3. 出現彈窗警告將被重定向至 `Athena` 控制台，點擊 `Proceed` 前往，這時會開啟新的網頁頁籤。
 
     ![](images/img_28.png)
 
 <br>
 
-4. 自動開啟 `Athena` 控制台，選擇 `Settings` 並點擊 `Manage`。
+4. 在新開啟的 `Athena` 主控台中，切換頁籤到 `Settings`，然後點擊 `Manage`。
 
     ![](images/img_29.png)
 
@@ -58,13 +58,13 @@ _已經建立了 `Data Catalog`，可以進一步使用 Athena 來查詢數據_
 
 <br>
 
-6. 選擇類似 `data-science-bucket-XXXXXX` 名稱的 Bucket，切勿選擇包含 `glue-1950-bucket` 的 Bucket；點擊右下方 `Choose`。
+6. 勾選名稱前綴為 `data-science-bucket-XXXXXX` 的 Bucket，切勿選擇前綴為 `glue-1950-bucket` 的 Bucket；然後點擊右下方 `Choose`。
 
     ![](images/img_31.png)
 
 <br>
 
-7. 保留其他選項的預設設置，然後選擇 `Save`。
+7. 保留其他預設的設置，然後點擊右下角的 `Save`。
 
     ![](images/img_32.png)
 
@@ -72,7 +72,7 @@ _已經建立了 `Data Catalog`，可以進一步使用 Athena 來查詢數據_
 
 ## 在 Athena 中預覽表格
 
-1. 選擇 `Editor` 標籤，在 `Data` 面板中，確認數據源為 `AwsDataCatalog`，在 `Database` 部分，選擇 `weatherdata`；在 `Tables` 部分選擇 `by_year` 表格旁邊的三點圖標，展開後選擇 `Preview Table`；如需查看該表格中的列名稱及其數據類型，可選擇表格名稱左側的圖標。
+1. 切換頁籤為 `Editor`，在 `Data` 區塊中，確認 `Data source` 為 `AwsDataCatalog`、`Database` 為 `weatherdata`；確認後，點擊 `Tables` 內 `by_year` 右側的三點圖標展開選單，點擊其中的 `Preview Table`；如需查看該表格中的列名稱及其數據類型，可選擇表格名稱左側的圖標。
 
     ![](images/img_33.png)
 
