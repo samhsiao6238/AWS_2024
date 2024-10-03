@@ -188,19 +188,19 @@ _手動切換頁面到前面步驟的畫面中_
 
 ## 查看 AWS Glue 建立的元數據
 
-1. 在左側導航窗格中，選擇 `Databases`，接著點擊 `weatherdata` 資料庫的鏈接。
+1. 在左側欄中選擇 `Databases`，接著點擊 `weatherdata` 資料庫。
 
     ![](images/img_21.png)
 
 <br>
 
-2. 在 `Tables` 部分，選擇 `by_year` 鏈接。
+2. 在 `Tables` 部分，點擊 `by_year`。
 
     ![](images/img_22.png)
 
 <br>
 
-3. 查看爬網程式捕獲的元數據，並查看表格中檢測到的列。
+3. 查看爬網程式捕獲的元數據，在下方的 `Schema` 頁籤中會顯示檢測到的欄位。
 
     ![](images/img_23.png)
 
