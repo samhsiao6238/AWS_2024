@@ -1,6 +1,21 @@
-#### 任務 7: 審查對 Redshift 的 IAM 訪問策略
-你將審查附加到 DataScienceGroup 群組的 `Policy-For-Data-Scientists` IAM 策略，該策略允許使用 Redshift Data API 進行有限的資料庫操作。
+# 任務 7：檢視 Redshift 的 IAM 訪問策略
 
-步驟包括：
-- 審查策略的 JSON，了解授權的動作和資源。
+<br>
 
+## 步驟
+
+1. 進入 `IAM` 主控台，點擊 `mary` 所在 `Group` 的 `DataScienceGroup`。
+
+    ![](images/img_55.png)
+
+<br>
+
+2. 進入後切換到 `Permissions`，會看到 `Policy-For-Data-Scientists` 政策。
+
+    ![](images/img_56.png)
+
+<br>
+
+___
+
+_END_
