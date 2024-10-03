@@ -1,8 +1,17 @@
-### 任務 4: 審查 Athena 和 AWS Glue 訪問的 IAM 策略
+# ETL
 
-現在你已經使用 CloudFormation 建立了爬網程式，接下來需要審查爬網程式的 IAM 策略，以確保其他人可以在生產環境中使用它。
+_使用 AWS Glue 對數據集進行 ETL 操作_
+
+<br>
+
+## 任務 4，審查 Athena 和 AWS Glue 訪問的 IAM 策略
+
+_審查爬網程式的 IAM 策略，以確保其他人可以在生產環境中使用它_
+
+<br>
 
 1. 在 AWS 管理控制台中的搜索框旁搜尋 IAM，打開 IAM 控制台。
+
 2. 在左側導航窗格中，選擇 Users（使用者）。
 3. 注意，`mary` 是列出的 IAM 使用者之一。該使用者屬於 DataScienceGroup IAM 群組。
 4. 選擇 DataScienceGroup 群組的鏈接。
