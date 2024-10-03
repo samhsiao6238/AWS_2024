@@ -161,7 +161,7 @@ _在 `Task 1` 中，使用 Glue 控制台建立爬網程式以檢查數據源並
 
 ## 回到 Cloud9
 
-1. 驗證 AWS Glue 數據庫是否已建立，會輸出與堆疊相關的數據庫。
+1. 驗證 AWS Glue 資料庫是否已建立，會輸出與堆疊相關的資料庫。
 
     ```bash
     aws glue get-databases
