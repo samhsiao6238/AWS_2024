@@ -232,7 +232,15 @@ _回到 Redshift 主控台_
 
 <br>
 
-7. 接著在 Clusters 區塊進行刷新，會發現 Cluster 狀態改變為 `Modifying`；要等候五分鐘左右，讓狀態重新恢復到 `Available`。
+## 回到 Clusters
+
+1. 點擊左側欄或上方路徑中的 `Clusters` 返回。
+
+    ![](images/img_60.png)
+
+<br>
+
+2. 接著在 Clusters 區塊進行刷新，會發現 Cluster 狀態改變為 `Modifying`；要等候五分鐘左右，讓狀態重新恢復到 `Available`。
 
     ![](images/img_36.png)
 
