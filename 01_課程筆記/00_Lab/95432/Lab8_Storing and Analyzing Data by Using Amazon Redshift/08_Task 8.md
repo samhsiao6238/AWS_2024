@@ -48,8 +48,12 @@ _確認 Mary 能夠透過 Redshift 查詢數據，使用 AWS CLI 指令模擬 Ma
 3. 再運行以下指令，替換其中 `前一個步驟取得的ID`，這同樣是使用指定憑證來進行檢索。
 
     ```bash
-    AWS_ACCESS_KEY_ID=$AK AWS_SECRET_ACCESS_KEY=$SAK aws redshift-data get-statement-result  --id <前一個步驟取得的ID> --region us-east-1 
+    AWS_ACCESS_KEY_ID=$AK AWS_SECRET_ACCESS_KEY=$SAK aws redshift-data get-statement-result  --id <前一個步驟取得的ID> --region us-east-1
     ```
+
+    _輸出_
+
+    ![](images/img_66.png)
 
 <br>
 
