@@ -6,7 +6,7 @@ _Extract、Transform、Load，提取、轉換、加載；使用 AWS Glue 對數�
 
 ## 任務 1，使用 AWS Glue 爬網程式處理 GHCN-D 資料集
 
-_可能不知道需要分析的數據結構，可將 AWS Glue 指向存儲在 AWS 上的數據，該服務將會將相關的元數據存儲在 AWS Glue Data Catalog 中，可通過建立爬網程式來實現這一點，該程式會檢查數據源並根據數據推斷結構。_
+_可能不知道需要分析的數據結構，可將 AWS Glue 指向存儲在 AWS 上的數據，該服務將會將相關的元數據存儲在 AWS Glue Data Catalog 中，可通過建立爬網程式來實現這一點，該程式會檢查數據源並根據數據推斷結構；特別注意，這裡稱 Crawler 為 `爬網程式`，也就是俗稱的 `爬蟲` 或 `網路爬蟲`。_
 
 <br>
 
@@ -166,7 +166,7 @@ _手動切換頁面到前面步驟的瀏覽器頁籤中_
 
 ## 運行爬網程式
 
-1. 在 `Weather` 頁面中，可點擊 `Run crawler` 啟動爬往程式。
+1. 在 `Weather` 頁面中，可點擊 `Run crawler` 啟動爬網程式。
 
     ![](images/img_35.png)
 
