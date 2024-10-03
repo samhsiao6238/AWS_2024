@@ -27,6 +27,10 @@ _確認 Mary 能夠透過 Redshift 查詢數據，使用 AWS CLI 指令模擬 Ma
     SAK=<填入查詢的值>
     ```
 
+    _輸入如下_
+
+    ![](images/img_64.png)
+
 <br>
 
 2. 運行以下指令，使用指定憑證執行 SQL 查詢，從 Redshift Cluster 中的 `dev` 資料庫的 `users` 表中檢索一行數據。
@@ -35,12 +39,16 @@ _確認 Mary 能夠透過 Redshift 查詢數據，使用 AWS CLI 指令模擬 Ma
     AWS_ACCESS_KEY_ID=$AK AWS_SECRET_ACCESS_KEY=$SAK aws redshift-data execute-statement --region us-east-1 --db-user awsuser --cluster-identifier redshift-cluster-1 --database dev --sql "select * from users limit 1"
     ```
 
+    _輸出結果_
+
+    ![](images/img_65.png)
+
 <br>
 
-3. 再運行以下指令，同樣使用指定憑證來檢索先前通過 `ID` 執行的 Redshift SQL 查詢的結果。
+3. 再運行以下指令，替換其中 `前一個步驟取得的ID`，這同樣是使用指定憑證來進行檢索。
 
     ```bash
-    AWS_ACCESS_KEY_ID=$AK AWS_SECRET_ACCESS_KEY=$SAK aws redshift-data get-statement-result  --id <QUERY-ID> --region us-east-1 
+    AWS_ACCESS_KEY_ID=$AK AWS_SECRET_ACCESS_KEY=$SAK aws redshift-data get-statement-result  --id <前一個步驟取得的ID> --region us-east-1 
     ```
 
 <br>
