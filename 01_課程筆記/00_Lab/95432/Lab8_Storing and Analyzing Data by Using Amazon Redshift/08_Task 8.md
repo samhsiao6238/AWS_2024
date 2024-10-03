@@ -1,10 +1,44 @@
-#### 任務 8: 確認使用者可以在 Redshift 資料庫上運行查詢
-最後，確認 Mary 能夠透過 Redshift 查詢數據。使用 AWS CLI 指令模擬 Mary 的權限，並測試其能否檢索查詢結果。
+# 任務 8：確認使用者可以在 Redshift 資料庫上運行查詢
 
-步驟包括：
-- 透過 Mary 的憑證運行 `execute-statement` 指令進行數據查詢。
-- 使用 `get-statement-result` 指令檢索查詢結果。
+_確認 Mary 能夠透過 Redshift 查詢數據，使用 AWS CLI 指令模擬 Mary 的權限，並測試其能否檢索查詢結果。_
 
----
+<br>
 
-這個教程展示了如何建立 Redshift 數據倉庫、加載數據以及進行查詢分析，並且提供了如何使用 IAM 角色和 AWS CLI 進行操作的完整指引。
+## 進入 CloudFormation 查詢
+
+1. 進入 `CloudFormation` 主控台，並切換到 `Stacks`，使用 Lab 環境中建立的 Stack，然後將頁籤切換到 `Outputs`，下方就會顯示 `mary` 的相關資訊，複製其中 `MarysAccessKey` 及 `MarysSecretAccessKey` 備用；這在前面已經做很多次，不再贅述。
+
+    ![](images/img_57.png)
+
+<br>
+
+## 返回 Cloud9
+
+1. 先記錄變數。
+
+    ```bash
+    AK=<>
+    SAK=<>
+    ```
+
+<br>
+
+2. 運行以下指令，使用指定憑證執行 SQL 查詢，從 Redshift Cluster 中的 `dev` 資料庫的 `users` 表中檢索一行數據。
+
+    ```bash
+    AWS_ACCESS_KEY_ID=$AK AWS_SECRET_ACCESS_KEY=$SAK aws redshift-data execute-statement --region us-east-1 --db-user awsuser --cluster-identifier redshift-cluster-1 --database dev --sql "select * from users limit 1"
+    ```
+
+<br>
+
+3. 再運行以下指令，同樣使用指定憑證來檢索先前通過 `ID` 執行的 Redshift SQL 查詢的結果。
+
+    ```bash
+    AWS_ACCESS_KEY_ID=$AK AWS_SECRET_ACCESS_KEY=$SAK aws redshift-data get-statement-result  --id <QUERY-ID> --region us-east-1 
+    ```
+
+<br>
+
+___
+
+_END_
