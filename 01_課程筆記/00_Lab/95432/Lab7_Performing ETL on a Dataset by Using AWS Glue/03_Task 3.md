@@ -6,7 +6,7 @@ _使用 AWS Glue 對數據集進行 ETL 操作_
 
 ## 任務 3，使用 CloudFormation 建立並部署 Glue 爬網程式
 
-_在 `Task 1` 中，使用 Glue 控制台創建爬網程式以檢查數據源並推斷其結構。當爬網程式多次運行時，會自動查找數據存儲中的新增或已修改文件，並輸出自上次運行以來發現的新表和分區。_
+_在 `Task 1` 中，使用 Glue 控制台建立爬網程式以檢查數據源並推斷其結構。當爬網程式多次運行時，會自動查找數據存儲中的新增或已修改文件，並輸出自上次運行以來發現的新表和分區。_
 
 ## 搜尋 `gluelab` IAM 角色的 ARN
 
@@ -40,7 +40,7 @@ _在 `Task 1` 中，使用 Glue 控制台創建爬網程式以檢查數據源並
 
 ![](images/img_57.png)
 
-5. 將以下代碼複製並粘貼到文件中；特別注意，`yaml` 對於格式的規範是嚴格的。
+5. 將以下代碼複製並貼到文件中；特別注意，`yaml` 對於格式的規範是嚴格的。
 
     ```yaml
     AWSTemplateFormatVersion: '2010-09-09'
@@ -79,115 +79,78 @@ _在 `Task 1` 中，使用 Glue 控制台創建爬網程式以檢查數據源並
                 Configuration: "{\"Version\":1.0,\"CrawlerOutput\":{\"Partitions\":{\"AddOrUpdateBehavior\":\"InheritFromTable\"},\"Tables\":{\"AddOrUpdateBehavior\":\"MergeNewColumns\"}}}"
     ```
 
-6. 在文件中，將 `<GLUELAB-ROLE-ARN>` 替換為你之前複製的 `gluelab` 角色的 ARN。
-7. 保存模板文件。
+6. 接著要編輯文件，將其中 `<GLUELAB-ROLE-ARN>` 替換為之前複製備用的 `gluelab` 角色 ARN。
 
-#### 驗證並部署模板
+    ![](images/img_58.png)
 
-1. 在 AWS Cloud9 終端中，運行以下命令來驗證 CloudFormation 模板：
+7. 完成後儲存，並確認頁籤上無白色圓點。
 
-   ```bash
-   aws cloudformation validate-template --template-body file://gluecrawler.cf.yml
-   ```
+    ![](images/img_59.png)
 
-   - 如果模板格式正確，應該會顯示驗證成功的消息。
-   - 注意：如果收到「YAML not well-formed」的錯誤，請檢查 `gluelab` 角色名稱的值，並檢查每行的縮進和間距，確保 YAML 格式正確。
+## 驗證並部署模板
 
-2. 運行以下命令來建立 CloudFormation 堆疊：
+1. 在 Cloud9 終端中，運行以下命令來驗證 CloudFormation 模板。
 
-   ```bash
-   aws cloudformation create-stack --stack-name gluecrawler --template-body file://gluecrawler.cf.yml --capabilities CAPABILITY_NAMED_IAM
-   ```
+    ```bash
+    aws cloudformation validate-template --template-body file://gluecrawler.cf.yml
+    ```
 
-   - 注意：命令中包含 `--capabilities` 參數，因為你正在建立具有自定義名稱的資源，這會影響權限。
+2. 如果模板格式正確，會顯示驗證成功的消息。
 
-3. 如需驗證 AWS Glue 數據庫是否已建立，運行以下命令：
+    ![](images/img_60.png)
 
-   ```bash
-   aws glue get-databases
-   ```
+## 查看 Stack
 
-   - 輸出應該顯示與堆疊相關的數據庫。
+1. 在接續後面步驟前，先進入 `CloudFormation`。
 
-4. 如需驗證爬網程式是否已建立，運行以下命令：
+    ![](images/img_61.png)
 
-   ```bash
-   aws glue list-crawlers
-   ```
+2. 可查看當前有兩個 Stack。
 
-5. 如需檢索爬網程式的詳細信息，運行以下命令：
+    ![](images/img_62.png)
 
-   ```bash
-   aws glue get-crawler --name cfn-crawler-weather
-   ```
+## 建立 Stack
 
-#### 任務 3 總結
+_回到 Cloud9 中_ 
 
-在這個任務中，你學會了如何將 AWS Glue 爬網程式集成到 CloudFormation 模板中。你還學會了如何在 AWS Cloud9 終端中使用 AWS CLI 來驗證並部署模板，建立爬網程式。透過使用模板，你可以在其他 AWS 帳戶中重複使用爬網程式，並根據需要更改參數。
+<br>
 
----
+1. 運行以下命令來建立 CloudFormation Stack；特別注意，在建立 `CloudFormation Stack` 時，參數 `--capabilities` 可用來授權 `CloudFormation` 建立具有自定義名稱的資源，如 `IAM Role`，因為這些資源涉及更改或管理 AWS 中的權限，必須明確授權才能執行這些操作。
 
-### 任務 4: 審查 Athena 和 AWS Glue 訪問的 IAM 策略
+    ```bash
+    aws cloudformation create-stack --stack-name gluecrawler --template-body file://gluecrawler.cf.yml --capabilities CAPABILITY_NAMED_IAM
+    ```
 
-現在你已經使用 CloudFormation 建立了爬網程式，接下來需要審查爬網程式的 IAM 策略，以確保其他人可以在生產環境中使用它。
+    ![](images/img_63.png)
 
-1. 在 AWS 管理控制台中的搜索框旁搜尋 IAM，打開 IAM 控制台。
-2. 在左側導航窗格中，選擇 Users（使用者）。
-3. 注意，`mary` 是列出的 IAM 使用者之一。該使用者屬於 DataScienceGroup IAM 群組。
-4. 選擇 DataScienceGroup 群組的鏈接。
-5. 在群組詳細信息頁面，選擇 Permissions（權限）標籤。
-6. 在附加到群組的策略列表中，選擇 Policy-For-Data-Scientists 策略的鏈接。
-7. 在策略詳細信息頁面，審查與該策略相關的權限。
 
-   - 提示：如需更仔細地查看 IAM 策略的詳細信息，選擇 {} JSON，可以查看允許和拒絕的操作及其相關資源。
+2. 驗證 AWS Glue 數據庫是否已建立，會輸出與堆疊相關的數據庫。
 
-#### 任務 4 總結
+    ```bash
+    aws glue get-databases
+    ```
 
-在這個任務中，你審查了 DataScienceGroup 群組的 IAM 策略。該策略包含對 Amazon S3、AWS Glue 和 Athena 的有限訪問權限。此策略可以作為用於重用操作團隊構建的爬網程式的示例策略。
+3. 驗證爬網程式是否已建立。
 
----
+    ```bash
+    aws glue list-crawlers
+    ```
 
-### 任務 5: 確認 Mary 能夠訪問並使用 AWS Glue 爬網程式
+    ![](images/img_64.png)
 
-現在你已經審查了 IAM 策略，接下來你將測試另一個使用者（`mary`）是否能夠訪問 AWS Glue 爬網程式並使用它來提取、轉換和加載存儲在 Amazon S3 中的數據。
+4. 檢索爬網程式的詳細信息。
 
-1. 在 AWS 管理控制台中，打開 CloudFormation，找到建立實驗環境的堆疊。
-2. 選擇該堆疊的鏈接，並在 Outputs（輸出）標籤中複製 `MarysAccessKey` 和 `MarysSecretAccessKey`。
-3. 返回到 AWS Cloud9 終端，將這些值分別存儲為變數：
+    ```bash
+    aws glue get-crawler --name cfn-crawler-weather
+    ```
 
-   ```bash
-   AK=<ACCESS-KEY>
-   SAK=<SECRET-ACCESS-KEY>
-   ```
+## 總結
 
-4. 使用 `mary` 的憑證測試 `list-crawlers` 命令：
+1. 以上任務將 Glue 爬網程式集成到 CloudFormation 模板中。
 
-   ```bash
-   AWS_ACCESS_KEY_ID=$AK AWS_SECRET_ACCESS_KEY=$SAK aws glue list-crawlers
-   ```
+2. 在 Cloud9 終端中使用 AWS CLI 來驗證並部署模板，建立爬網程式。
 
-5. 如需檢索爬網程式的詳細信息，運行以下命令：
+3. 透過使用模板，可在其他 AWS 帳戶中重複使用爬網程式，並根據需要更改參數。
 
-   ```bash
-   AWS_ACCESS_KEY_ID=$AK AWS_SECRET_ACCESS_KEY=$SAK aws glue get-crawler --name cfn-crawler-weather
-   ```
 
-6. 如需測試 `mary` 是否能夠運行爬網程式，運行
 
-以下命令：
-
-   ```bash
-   AWS_ACCESS_KEY_ID=$AK AWS_SECRET_ACCESS_KEY=$SAK aws glue start-crawler --name cfn-crawler-weather
-   ```
-
-   - 當爬網程式運行成功時，終端不會顯示任何輸出。
-
-7. 你可以在 AWS Glue 控制台中查看爬網程式的運行情況，並等待狀態更改為 Ready（就緒），這可能需要幾分鐘。
-
-#### 任務 5 總結
-
-這一結果確認了 `mary` 有權訪問並運行你使用 CloudFormation 建立和部署的 AWS Glue 爬網程式。她能夠列出、檢索爬網程式並運行它來提取數據。
-
----
-
-至此，所有任務的翻譯已完成。如果你有進一步的問題或需要更多協助，請隨時告訴我！
