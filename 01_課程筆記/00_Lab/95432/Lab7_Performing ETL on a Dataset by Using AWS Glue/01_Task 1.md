@@ -98,7 +98,13 @@ _配置並建立一個爬網程式來發現 `GHCN-D` 資料集的結構，並從
 
 ## 關於 Role
 
-1. 特別說明，這個 Role 是在 Lab 中已經預設並提供使用的，詳細內容可前往 `CloudFormation` 查看，進入後點擊 `Stack details`，選擇對應的 Stack，並切換到 `Template` 頁籤就可查看。
+1. 特別說明，這個 Role 是在 Lab 中已經預設並提供使用的，詳細內容可前往 `CloudFormation` 查看。
+
+    ![](images/img_65.png)
+
+<br>
+
+2. 進入後點擊 `Stack details`，選擇對應的 Stack，並切換到 `Template` 頁籤就可查看。
 
     ![](images/img_11.png)
 
