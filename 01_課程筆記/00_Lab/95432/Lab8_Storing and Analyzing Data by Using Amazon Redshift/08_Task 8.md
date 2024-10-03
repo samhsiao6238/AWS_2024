@@ -6,7 +6,13 @@ _確認 Mary 能夠透過 Redshift 查詢數據，使用 AWS CLI 指令模擬 Ma
 
 ## 進入 CloudFormation 查詢
 
-1. 進入 `CloudFormation` 主控台，並切換到 `Stacks`，使用 Lab 環境中建立的 Stack，然後將頁籤切換到 `Outputs`，下方就會顯示 `mary` 的相關資訊，複製其中 `MarysAccessKey` 及 `MarysSecretAccessKey` 備用；這在前面已經做很多次，不再贅述。
+1. 進入 `CloudFormation` 主控台，並切換到 `Stacks`，點擊下方的 `Stacks details`。
+
+    ![](images/img_63.png)
+
+<br>
+
+2. 使用 Lab 環境中建立的 Stack，然後將頁籤切換到 `Outputs`，下方就會顯示 `mary` 的相關資訊，複製其中 `MarysAccessKey` 及 `MarysSecretAccessKey` 備用；這在前面已經做很多次，不再贅述。
 
     ![](images/img_57.png)
 
