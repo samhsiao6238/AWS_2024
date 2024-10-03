@@ -134,19 +134,25 @@ _已經建立了 `Data Catalog`，可以進一步使用 Athena 來查詢數據_
 
 <br>
 
-4. 點擊 `Run`；同樣地，可觀察運行時間等資訊。
+4. 點擊 `Run`，完成時會添加一個名為 `late20th` 的 Table。
+
+    ![](images/img_66.png)
+
+<br>
+
+5. 同樣地，可觀察運行時間等資訊。
 
     ![](images/img_45.png)
 
 <br>
 
-5. 如需預覽結果，點擊 `late20th` 右側三點圖標，然後選擇 `Preview Table`。
+6. 如需預覽結果，點擊 `late20th` 右側三點圖標，然後選擇 `Preview Table`。
 
     ![](images/img_46.png)
 
 <br>
 
-6. 同樣會自動生成查詢語句，點擊下方 `Run` 即可。
+7. 同樣會自動生成查詢語句，點擊下方 `Run` 即可。
 
     ![](images/img_47.png)
 
