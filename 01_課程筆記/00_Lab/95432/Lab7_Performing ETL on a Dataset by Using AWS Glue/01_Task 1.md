@@ -140,7 +140,7 @@ _手動切換頁面到前面步驟的瀏覽器頁籤中_
 
 <br>
 
-1. 返回頁面中，可先手動刷新頁面。
+1. 返回頁面後，可先手動刷新頁面。
 
     ![](images/img_14.png)
 
@@ -152,7 +152,7 @@ _手動切換頁面到前面步驟的瀏覽器頁籤中_
 
 <br>
 
-3. 在最下方的 `Crawler schedule` 區塊，將 `Frequency` 保留預設的 `On demand`；然後點擊 `Next`。
+3. 在最下方的 `Crawler schedule` 區塊，將 `Frequency` 設定為 `On demand`，預設也是這個選項；然後點擊 `Next`。
 
     ![](images/img_16.png)
 
