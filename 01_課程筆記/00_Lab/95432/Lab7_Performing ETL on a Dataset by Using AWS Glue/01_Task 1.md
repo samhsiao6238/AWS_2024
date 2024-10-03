@@ -112,31 +112,41 @@ _配置並建立一個爬網程式來發現 `GHCN-D` 資料集的結構，並從
 
 <br>
 
-2. 在新開啟的頁面中，為資料庫命名 `weatherdata`，然後選擇 `Create database`。
+2. 在新開啟的頁面中，為資料庫命名 `weatherdata`，然後點擊 `Create database`。
 
     ![](images/img_13.png)
 
 <br>
 
-3. 返回前面步驟的頁面中，先刷新頁面。
+3. 會自動回到 Databases 清單中，可看到建立的資料庫 ``。
+
+    ![](images/img_34.png)
+
+<br>
+
+## 返回 `Set output and scheduling`
+
+_手動切換頁面到前面步驟的畫面中_
+
+1. 返回頁面中，可先手動刷新頁面。
 
     ![](images/img_14.png)
 
 <br>
 
-4. 接著下拉選單並選擇剛建立的 `weatherdata` 資料庫作為目標資料庫。
+2. 接著下拉選單並選擇剛建立的 `weatherdata` 資料庫作為目標資料庫。
 
     ![](images/img_15.png)
 
 <br>
 
-5. 在 `Crawler schedule` 部分，將 `Frequency` 保留默認的 `On demand`；然後點擊 `Next`。
+3. 在 `Crawler schedule` 部分，將 `Frequency` 保留默認的 `On demand`；然後點擊 `Next`。
 
     ![](images/img_16.png)
 
 <br>
 
-6. 確認爬網程式相關配置，點擊 `Create crawler`。
+4. 確認爬網程式相關配置，點擊 `Create crawler`。
 
     ![](images/img_17.png)
 
