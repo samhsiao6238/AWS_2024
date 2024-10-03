@@ -289,7 +289,7 @@ _若要手動建立敏感資訊可依據這個步驟，不過在上一個單元�
 
 <br>
 
-5. 在腳本中，`export $(grep -v '^#' .env | xargs)` 命令會去讀取 `.env` 文件中的變量並將其導出為 `環境變量`，然後在設置 AWS 配置時，使用 `$AWS_ACCESS_KEY_ID` 和 `$AWS_SECRET_ACCESS_KEY` 來載入環境變量。
+5. 在腳本中，`export $(grep -v '^#' .env | xargs)` 指令會去讀取 `.env` 文件中的變量並將其導出為 `環境變量`，然後在設置 AWS 配置時，使用 `$AWS_ACCESS_KEY_ID` 和 `$AWS_SECRET_ACCESS_KEY` 來載入環境變量。
 
 <br>
 

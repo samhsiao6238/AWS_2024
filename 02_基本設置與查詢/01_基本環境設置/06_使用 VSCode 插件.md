@@ -8,7 +8,7 @@
 
 <br>
 
-2. 使用組合鍵 `SHIFT+command+P` 開啟 _命令選擇區_，輸入 `Connect to AWS`。
+2. 使用組合鍵 `SHIFT+command+P` 開啟 _指令選擇區_，輸入 `Connect to AWS`。
 
     ![](images/img_17.png)
 

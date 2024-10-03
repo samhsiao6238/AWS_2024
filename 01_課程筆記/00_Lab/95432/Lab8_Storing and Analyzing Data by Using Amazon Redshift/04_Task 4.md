@@ -1,38 +1,91 @@
 
-#### 任務 4: 從 Amazon S3 加載數據
-透過 `COPY` 命令，你將從 S3 存儲桶中加載數據到 Redshift 集群。每個表格使用不同的分隔符，例如 `\t` 和 `|`。
+# 任務 4：從 S3 加載數據
 
-步驟包括：
-- 使用 `COPY` 命令將數據從 S3 加載到表格中。
-- 檢查數據加載是否成功。
+_透過 `COPY` 指令從 S3 Bucket 中加載數據到 Redshift 集群，每個表格使用不同的 `分隔符`，例如 `\t` 和 `|`。_
 
-#### 任務 5: 查詢數據
-加載數據後，你可以撰寫 SQL 查詢來生成 Mary 所需的報告。Mary 提供了查詢來統計特定日期銷售的商品數量，以及查詢購買量最多的前 10 名客戶。
+<br>
 
-步驟包括：
-- 使用 SQL 查詢來查詢 `sales` 和 `date` 表格，並找出特定日期的總銷量。
-- 使用 SQL 查詢找出購買量最多的 10 位客戶。
+## 查詢 Role
 
-#### 任務 6: 使用 AWS CLI 運行查詢
-除了通過控制台運行查詢，你還可以使用 Amazon Redshift API、AWS SDK 庫和 AWS CLI 來執行操作。在這個任務中，你將通過 AWS Cloud9 終端執行 AWS CLI 命令，來查詢 Redshift 集群中的數據。
+1. 進入 `IAM`，選取 `Roles` 中指定的 Role。
 
-步驟包括：
-- 使用 AWS CLI 在 Cloud9 中查詢 Redshift 資料庫。
-- 使用 `get-statement-result` 命令檢索查詢結果。
+    ![](images/img_42.png)
 
-#### 任務 7: 審查對 Redshift 的 IAM 訪問策略
-你將審查附加到 DataScienceGroup 群組的 `Policy-For-Data-Scientists` IAM 策略，該策略允許使用 Redshift Data API 進行有限的資料庫操作。
+<br>
 
-步驟包括：
-- 審查策略的 JSON，了解授權的動作和資源。
+2. 複製 `ARN` 備用。
 
-#### 任務 8: 確認使用者可以在 Redshift 資料庫上運行查詢
-最後，確認 Mary 能夠透過 Redshift 查詢數據。使用 AWS CLI 指令模擬 Mary 的權限，並測試其能否檢索查詢結果。
+    ![](images/img_43.png)
 
-步驟包括：
-- 透過 Mary 的憑證運行 `execute-statement` 命令進行數據查詢。
-- 使用 `get-statement-result` 命令檢索查詢結果。
+<br>
 
----
+## 載入數據
 
-這個教程展示了如何建立 Redshift 數據倉庫、加載數據以及進行查詢分析，並且提供了如何使用 IAM 角色和 AWS CLI 進行操作的完整指引。
+_回到 Redshift_
+
+<br>
+
+1. 當前在 `Resources` 中有三個表格，但其內容是空的。
+
+    ![](images/img_45.png)
+
+<br>
+
+2. 可點擊資料表右側三點中的 `Preview data` 預覽資料。
+
+    ![](images/img_46.png)
+
+<br>
+
+3. 特別注意，這裡的預覽功能並不會生成語句，而是直接在 `Table details` 中顯示內容，從這可知目前表內無數據。
+
+    ![](images/img_47.png)
+
+<br>
+
+4. 複製以下語句，替換其中的 `<替換 ARN>`，替換後無需使用尖勾括號。
+
+    ```sql
+    copy users from 's3://aws-tc-largeobjects/CUR-TF-200-ACDSCI-1/Lab4/allusers_tab.txt'
+    credentials 'aws_iam_role=<替換 ARN>'
+    delimiter '\t'
+    region 'us-west-2';
+    ```
+
+<br>
+
+5. 運行以上命令後，`S3` 中的數據文件會被加載到 `Redshift` 的 `users` 表，Redshift 會使用指定的 IAM 角色來確保對 S3 的訪問權限。如果數據格式正確且權限設置無誤，users 表將會填充來自該文件的數據。。
+
+    ![](images/img_44.png)
+
+<br>
+
+6. 比照相同模式，以下是查詢 `date`。
+
+    ```sql
+    copy date from 's3://aws-tc-largeobjects/CUR-TF-200-ACDSCI-1/Lab4/date2008_pipe.txt'
+    credentials 'aws_iam_role=<替換 ARN>'
+    delimiter '|' region 'us-west-2';
+    ```
+
+<br>
+
+7. 再次預覽 `data`，此時數據已被填入。
+
+    ![](images/img_48.png)
+
+<br>
+
+8. 對於 `sales` 也是相同。
+
+    ```sql
+    copy sales from 's3://aws-tc-largeobjects/CUR-TF-200-ACDSCI-1/Lab4/sales_tab.txt'
+    credentials 'aws_iam_role=<替換 ARN>'
+    delimiter '\t' timeformat 'MM/DD/YYYY HH:MI:SS' region 'us-west-2';
+    ```
+
+<br>
+
+___
+
+_END_

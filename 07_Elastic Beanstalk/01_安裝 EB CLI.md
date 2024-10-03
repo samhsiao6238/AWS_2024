@@ -86,7 +86,7 @@ _自動安裝 EB CLI 及其依賴項目，包括 Python 和 pip，並為 EB CLI 
 
 <br>
 
-2. 在 CMD 中運行以下命令。
+2. 在 CMD 中運行以下指令。
 
     ```bash
     python get-pip.py --user

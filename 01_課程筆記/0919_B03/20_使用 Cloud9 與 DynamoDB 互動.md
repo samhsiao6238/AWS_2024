@@ -44,7 +44,7 @@ _在 AWS Cloud9 中，可使用 AWS CLI 與 DynamoDB 互動_
 
 <br>
 
-5. 使用以下 AWS CLI 命令來查詢當前 IAM 角色的權限。
+5. 使用以下 AWS CLI 指令來查詢當前 IAM 角色的權限。
 
     ```bash
     aws sts get-caller-identity
@@ -86,7 +86,7 @@ _在 AWS Cloud9 中，可使用 AWS CLI 與 DynamoDB 互動_
 
 <br>
 
-2. 使用 `put-item` 命令插入資料到 DynamoDB 表格。
+2. 使用 `put-item` 指令插入資料到 DynamoDB 表格。
 
     ```bash
     aws dynamodb put-item \
@@ -117,7 +117,7 @@ _在 AWS Cloud9 中，可使用 AWS CLI 與 DynamoDB 互動_
 
 <br>
 
-5. 如果要更新某個項目中的屬性，可以使用 `update-item` 命令；這會將 `movieId` 為 `26` 的電影標題更新為 `黑客帝國重啟`。
+5. 如果要更新某個項目中的屬性，可以使用 `update-item` 指令；這會將 `movieId` 為 `26` 的電影標題更新為 `黑客帝國重啟`。
 
     ```bash
     aws dynamodb update-item \
@@ -129,7 +129,7 @@ _在 AWS Cloud9 中，可使用 AWS CLI 與 DynamoDB 互動_
 
 <br>
 
-6. 可以使用 `delete-item` 命令刪除某個特定的項目；這會刪除 `movieId` 為 `26` 的項目。
+6. 可以使用 `delete-item` 指令刪除某個特定的項目；這會刪除 `movieId` 為 `26` 的項目。
 
     ```bash
     aws dynamodb delete-item \

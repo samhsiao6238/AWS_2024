@@ -27,7 +27,7 @@ _快速設定 AWS CLI 的本地工作環境_
 
 ## 配置 AWS CLI
 
-1. 執行以下命令配置 AWS CLI，系統會提示輸入 AWS Access Key ID、Secret Access Key、預設區域以及輸出格式；特別說明，這需要依據下載的密鑰文件進行設置，而不是在這裡建立一個帳號。
+1. 執行以下指令配置 AWS CLI，系統會提示輸入 AWS Access Key ID、Secret Access Key、預設區域以及輸出格式；特別說明，這需要依據下載的密鑰文件進行設置，而不是在這裡建立一個帳號。
 
     ```bash
     aws configure

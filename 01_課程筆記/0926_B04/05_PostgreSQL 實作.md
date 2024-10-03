@@ -249,7 +249,7 @@ _使用 Python 腳本模擬數據並與 PostgreSQL 進行互動_
 
     # 如果連接成功，繼續操作
     if conn is not None:
-        # 建立游標來執行 SQL 命令
+        # 建立游標來執行 SQL 指令
         cursor = conn.cursor()
 
         # 建立一個表格
@@ -415,7 +415,7 @@ _使用 Python 腳本模擬數據並與 PostgreSQL 進行互動_
 
 <br>
 
-2. 連接成功，可使用 `DROP DATABASE` 命令來刪除您建立的資料庫。
+2. 連接成功，可使用 `DROP DATABASE` 指令來刪除您建立的資料庫。
 
     ```sql
     DROP DATABASE my_postgres_db;

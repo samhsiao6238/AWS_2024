@@ -414,7 +414,7 @@ _不能使用 default IAM 角色，需要建立一個專門的 IAM 角色並配�
 
 <br>
 
-5. 使用以下命令刪除 CloudWatchLogsProfile。
+5. 使用以下指令刪除 CloudWatchLogsProfile。
 
     ```bash
     aws iam delete-instance-profile --instance-profile-name CloudWatchLogsProfile

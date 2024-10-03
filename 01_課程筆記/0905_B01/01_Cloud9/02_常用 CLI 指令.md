@@ -154,9 +154,9 @@
 
 <br>
 
-## AWS Systems Manager，SSM 命令
+## AWS Systems Manager，SSM 指令
 
-1. 列出可用的 SSM 命令文檔。
+1. 列出可用的 SSM 指令文檔。
 
     ```bash
     aws ssm list-documents
@@ -164,7 +164,7 @@
 
 <br>
 
-2. 執行 SSM 命令以管理 EC2 實例。
+2. 執行 SSM 指令以管理 EC2 實例。
 
     ```bash
     aws ssm send-command --instance-ids <instance-id> --document-name "AWS-RunShellScript" --parameters commands="uptime"

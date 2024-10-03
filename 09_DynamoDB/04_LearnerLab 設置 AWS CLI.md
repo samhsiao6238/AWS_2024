@@ -49,7 +49,7 @@
 aws configure
 ```
 
-此命令會提示您輸入以下資訊：
+此指令會提示您輸入以下資訊：
 - AWS Access Key ID：輸入從 LearnerLab 獲得的 `Access Key ID`。
 - AWS Secret Access Key：輸入從 LearnerLab 獲得的 `Secret Access Key`。
 - Default region name：輸入 LearnerLab 提供的區域，例如 `ap-northeast-1` 或 `us-east-1`。
@@ -58,7 +58,7 @@ aws configure
 這將會在您的本地建立一個憑證檔案，位於 `~/.aws/credentials`，並且 `boto3` 會自動讀取這個檔案中的憑證。
 
 #### 方法 2：設置環境變量
-如果您不想使用 AWS CLI，也可以直接設置環境變量。這可以手動將 LearnerLab 的 AWS 認證密鑰設置在您的系統環境變量中。您可以在命令行中輸入以下指令：
+如果您不想使用 AWS CLI，也可以直接設置環境變量。這可以手動將 LearnerLab 的 AWS 認證密鑰設置在您的系統環境變量中。您可以在指令行中輸入以下指令：
 
 ```bash
 export AWS_ACCESS_KEY_ID='your-access-key-id'

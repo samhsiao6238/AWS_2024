@@ -27,7 +27,7 @@ _測試另一個使用者是否能夠訪問 AWS Glue 爬網程式並使用它來
 
 <br>
 
-3. 使用 `mary` 的憑證測試 `list-crawlers` 命令。
+3. 使用 `mary` 的憑證測試 `list-crawlers` 指令。
 
     ```bash
     AWS_ACCESS_KEY_ID=$AK AWS_SECRET_ACCESS_KEY=$SAK aws glue list-crawlers

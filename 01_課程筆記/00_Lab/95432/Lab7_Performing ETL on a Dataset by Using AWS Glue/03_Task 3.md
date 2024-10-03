@@ -111,7 +111,7 @@ _在 `Task 1` 中，使用 Glue 控制台建立爬網程式以檢查數據源並
 
 ## 驗證並部署模板
 
-1. 在 Cloud9 終端中，運行以下命令來驗證 CloudFormation 模板。
+1. 在 Cloud9 終端中，運行以下指令來驗證 CloudFormation 模板。
 
     ```bash
     aws cloudformation validate-template --template-body file://gluecrawler.cf.yml
@@ -141,7 +141,7 @@ _在 `Task 1` 中，使用 Glue 控制台建立爬網程式以檢查數據源並
 
 ## 建立 Stack
 
-1. 運行以下命令來建立 CloudFormation Stack；特別注意，在建立 `CloudFormation Stack` 時，參數 `--capabilities` 可用來授權 `CloudFormation` 建立具有自定義名稱的資源，如 `IAM Role`，因為這些資源涉及更改或管理 AWS 中的權限，必須明確授權才能執行這些操作。
+1. 運行以下指令來建立 CloudFormation Stack；特別注意，在建立 `CloudFormation Stack` 時，參數 `--capabilities` 可用來授權 `CloudFormation` 建立具有自定義名稱的資源，如 `IAM Role`，因為這些資源涉及更改或管理 AWS 中的權限，必須明確授權才能執行這些操作。
 
     ```bash
     aws cloudformation create-stack --stack-name gluecrawler --template-body file://gluecrawler.cf.yml --capabilities CAPABILITY_NAMED_IAM

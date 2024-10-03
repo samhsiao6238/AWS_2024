@@ -34,7 +34,7 @@ _延續之前的操作_
 
 <br>
 
-4. 在專案資料夾內使用 `awslocal` 命令建立和部署 Lambda 函數；結果成功建立並顯示詳細配置。
+4. 在專案資料夾內使用 `awslocal` 指令建立和部署 Lambda 函數；結果成功建立並顯示詳細配置。
 
     ```bash
     awslocal lambda create-function --function-name my-function --runtime python3.8 --role arn:aws:iam::000000000000:role/lambda-role --handler lambda_function.lambda_handler --zip-file fileb://function.zip

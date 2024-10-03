@@ -58,7 +58,7 @@ _若從 Lab 進入，直接進入 `Lab 5 - Guided Lab: Facial Recognition`，然
 
 ## 運作步驟
 
-1. 建立人臉集合（Collection）：在 Notebook 中運行命令建立一個新的 Amazon Rekognition 人臉集合。
+1. 建立人臉集合（Collection）：在 Notebook 中運行指令建立一個新的 Amazon Rekognition 人臉集合。
 
 <br>
 

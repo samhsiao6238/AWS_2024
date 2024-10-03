@@ -109,7 +109,7 @@
 
 <br>
 
-3. 在 VSCode 中打開的 `index.php` 文件，然後按下 `Ctrl + Shift + P` 打開命令面板，輸入 `PHP Server: Serve Project` 並選擇此選項，這會啟動 PHP 的內建伺服器，並在瀏覽器中打開 `index.php`。
+3. 在 VSCode 中打開的 `index.php` 文件，然後按下 `Ctrl + Shift + P` 打開指令面板，輸入 `PHP Server: Serve Project` 並選擇此選項，這會啟動 PHP 的內建伺服器，並在瀏覽器中打開 `index.php`。
 
     ![](images/img_44.png)
 

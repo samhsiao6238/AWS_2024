@@ -96,7 +96,7 @@ _已經內建 CLI，無需額外安裝_
 
 <br>
 
-1. 打開下方終端，執行 AWS CLI 命令；查詢當前用戶身份，可比對這個 `Account` 會是自己的 `Academy` 帳號。
+1. 打開下方終端，執行 AWS CLI 指令；查詢當前用戶身份，可比對這個 `Account` 會是自己的 `Academy` 帳號。
 
     ```bash
     aws sts get-caller-identity

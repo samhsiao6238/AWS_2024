@@ -142,7 +142,7 @@ _建立 Greengrass 群組並配置 Lambda 函數_
 
 <br>
 
-4. 使用 AWS CLI 建立 Lambda 函數，以下命令會建立一個 Lambda 函數並部署至 AWS，`YOUR_ACCOUNT_ID` 和 `YOUR_LAMBDA_ROLE` 分別是 AWS 帳號 ID 和 Lambda 執行角色。
+4. 使用 AWS CLI 建立 Lambda 函數，以下指令會建立一個 Lambda 函數並部署至 AWS，`YOUR_ACCOUNT_ID` 和 `YOUR_LAMBDA_ROLE` 分別是 AWS 帳號 ID 和 Lambda 執行角色。
 
    ```bash
    aws lambda create-function \
@@ -241,7 +241,7 @@ _通過 Greengrass CLI 或 AWS IoT 控制台來驗證部署是否成功_
 
 <br>
 
-1. 使用以下命令查看 Greengrass 部署狀態。
+1. 使用以下指令查看 Greengrass 部署狀態。
 
    ```bash
    sudo /greengrass/v2/bin/greengrass-cli deployment status
