@@ -6,7 +6,7 @@ _從 S3 加載數據到 Redshift Cluster_
 
 ## 步驟
 
-1. 進入 Redshift，在下方的 `Cluster` 中，選取前面步驟建立的 `redshift-cluster-1`，然後點擊 `Query data`。
+1. 進入 Redshift，在下方的 `Clusters` 中，選取前面步驟建立的 `redshift-cluster-1`，然後點擊 `Query data`。
 
     ![](images/img_37.png)
 
@@ -18,7 +18,7 @@ _從 S3 加載數據到 Redshift Cluster_
 
 <br>
 
-3. 點擊右上角 `Connect to database`。
+3. 點擊上方或右上角 `Connect to database`。
 
     ![](images/img_39.png)
 
