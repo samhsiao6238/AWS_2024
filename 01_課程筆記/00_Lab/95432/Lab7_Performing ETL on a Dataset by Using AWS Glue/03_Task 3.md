@@ -8,37 +8,53 @@ _使用 AWS Glue 對數據集進行 ETL 操作_
 
 _在 `Task 1` 中，使用 Glue 控制台建立爬網程式以檢查數據源並推斷其結構。當爬網程式多次運行時，會自動查找數據存儲中的新增或已修改文件，並輸出自上次運行以來發現的新表和分區。_
 
+<br>
+
 ## 搜尋 `gluelab` IAM 角色的 ARN
 
 1. 進入 IAM 控制台。
 
     ![](images/img_51.png)
 
+<br>
+
 2. 在左側欄中選擇 Roles，接著點擊清單中的 `gluelab`。
 
     ![](images/img_52.png)
+
+<br>
 
 3. 複製 `Summary` 中的 ARN 備用。
 
     ![](images/img_53.png)
 
+<br>
+
 ## 建立 CloudFormation 模板
 
 1. 進入 `Cloud9` 控制台。
 
-![](images/img_54.png)
+    ![](images/img_54.png)
+
+<br>
 
 2. 在預設的實體 `Cloud9 Instance` 點擊 `Open` 打開 IDE；這會開啟新的瀏覽夜面。
 
-![](images/img_55.png)
+    ![](images/img_55.png)
+
+<br>
 
 3. 在 Cloud9 IDE 中，展開上方功能選單的 `File`，點及 `New File` 新建文件。
 
-![](images/img_56.png)
+    ![](images/img_56.png)
+
+<br>
 
 4. 在編輯前，直接先將空文件保存為 `gluecrawler.cf.yml`；這些操作的快速鍵與本地常用編輯器都相同。
 
-![](images/img_57.png)
+    ![](images/img_57.png)
+
+<br>
 
 5. 將以下代碼複製並貼到文件中；特別注意，`yaml` 對於格式的規範是嚴格的。
 
@@ -121,16 +137,27 @@ _回到 Cloud9 中_
     aws cloudformation create-stack --stack-name gluecrawler --template-body file://gluecrawler.cf.yml --capabilities CAPABILITY_NAMED_IAM
     ```
 
+    _輸出結果_
+
     ![](images/img_63.png)
 
+<br>
 
-2. 驗證 AWS Glue 數據庫是否已建立，會輸出與堆疊相關的數據庫。
+2. 可切換到前一個步驟的頁面查看這個添加的 Stack。
+
+    ![](images/img_67.png)
+
+<br>
+
+3. 驗證 AWS Glue 數據庫是否已建立，會輸出與堆疊相關的數據庫。
 
     ```bash
     aws glue get-databases
     ```
 
-3. 驗證爬網程式是否已建立。
+<br>
+
+4. 驗證爬網程式是否已建立。
 
     ```bash
     aws glue list-crawlers
@@ -138,11 +165,15 @@ _回到 Cloud9 中_
 
     ![](images/img_64.png)
 
-4. 檢索爬網程式的詳細信息。
+<br>
+
+5. 檢索爬網程式的詳細信息。
 
     ```bash
     aws glue get-crawler --name cfn-crawler-weather
     ```
+
+<br>
 
 ## 總結
 
