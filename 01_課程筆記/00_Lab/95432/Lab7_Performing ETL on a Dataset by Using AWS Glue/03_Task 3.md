@@ -95,13 +95,19 @@ _在 `Task 1` 中，使用 Glue 控制台建立爬網程式以檢查數據源並
                 Configuration: "{\"Version\":1.0,\"CrawlerOutput\":{\"Partitions\":{\"AddOrUpdateBehavior\":\"InheritFromTable\"},\"Tables\":{\"AddOrUpdateBehavior\":\"MergeNewColumns\"}}}"
     ```
 
+<br>
+
 6. 接著要編輯文件，將其中 `<GLUELAB-ROLE-ARN>` 替換為之前複製備用的 `gluelab` 角色 ARN。
 
     ![](images/img_58.png)
 
+<br>
+
 7. 完成後儲存，並確認頁籤上無白色圓點。
 
     ![](images/img_59.png)
+
+<br>
 
 ## 驗證並部署模板
 
@@ -111,9 +117,13 @@ _在 `Task 1` 中，使用 Glue 控制台建立爬網程式以檢查數據源並
     aws cloudformation validate-template --template-body file://gluecrawler.cf.yml
     ```
 
+<br>
+
 2. 如果模板格式正確，會顯示驗證成功的消息。
 
     ![](images/img_60.png)
+
+<br>
 
 ## 查看 Stack
 
@@ -121,15 +131,15 @@ _在 `Task 1` 中，使用 Glue 控制台建立爬網程式以檢查數據源並
 
     ![](images/img_61.png)
 
+<br>
+
 2. 可查看當前有兩個 Stack。
 
     ![](images/img_62.png)
 
-## 建立 Stack
-
-_回到 Cloud9 中_ 
-
 <br>
+
+## 建立 Stack
 
 1. 運行以下命令來建立 CloudFormation Stack；特別注意，在建立 `CloudFormation Stack` 時，參數 `--capabilities` 可用來授權 `CloudFormation` 建立具有自定義名稱的資源，如 `IAM Role`，因為這些資源涉及更改或管理 AWS 中的權限，必須明確授權才能執行這些操作。
 
@@ -159,7 +169,7 @@ _回到 Cloud9 中_
 
 <br>
 
-4. 驗證爬網程式是否已建立。
+2. 驗證爬網程式是否已建立。
 
     ```bash
     aws glue list-crawlers
@@ -169,7 +179,7 @@ _回到 Cloud9 中_
 
 <br>
 
-5. 檢索爬網程式的詳細信息。
+3. 檢索爬網程式的詳細信息。
 
     ```bash
     aws glue get-crawler --name cfn-crawler-weather
@@ -181,9 +191,16 @@ _回到 Cloud9 中_
 
 1. 以上任務將 Glue 爬網程式集成到 CloudFormation 模板中。
 
+<br>
+
 2. 在 Cloud9 終端中使用 AWS CLI 來驗證並部署模板，建立爬網程式。
+
+<br>
 
 3. 透過使用模板，可在其他 AWS 帳戶中重複使用爬網程式，並根據需要更改參數。
 
+<br>
 
+___
 
+_END_
