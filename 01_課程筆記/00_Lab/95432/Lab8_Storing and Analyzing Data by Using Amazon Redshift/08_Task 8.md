@@ -17,8 +17,8 @@ _確認 Mary 能夠透過 Redshift 查詢數據，使用 AWS CLI 指令模擬 Ma
 1. 先記錄變數。
 
     ```bash
-    AK=<>
-    SAK=<>
+    AK=<填入查詢的值>
+    SAK=<填入查詢的值>
     ```
 
 <br>
