@@ -174,7 +174,13 @@ _手動切換頁面到前面步驟的畫面中_
 
 <br>
 
-1. 過程中還會顯示 `Stopping` 不用擔心，完成時狀態會變更為 `Ready`。
+4. 可點擊 `Crawlers` 回到清單中。
+
+    ![](images/img_36.png)
+
+<br>
+
+5. 過程中還會顯示 `Stopping` 不用擔心，完成時狀態會變更為 `Ready`。
 
     ![](images/img_20.png)
 
