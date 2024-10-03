@@ -78,7 +78,7 @@ _已經建立了 `Data Catalog`，可以進一步使用 Athena 來查詢數據_
 
 <br>
 
-2. 第一頁會顯示來自 `weatherdata` 表格的前 10 條記錄，注意運行時間和查詢掃描的數據量，在開發應用程式時，減少資源消耗來優化成本是很重要的。
+2. 預設的查詢語法會顯示 `weatherdata` 表格的前 10 條記錄；點擊下方 `Run` 運行查詢。
 
     ```sql
     SELECT * FROM "weatherdata"."by_year" limit 10;
@@ -86,31 +86,39 @@ _已經建立了 `Data Catalog`，可以進一步使用 Athena 來查詢數據_
 
 <br>
 
+3. 特別注意，運行後可對 `運行時間(Run time)` 和 `查詢掃描的數據量（Data scanned）` 進行觀察，因為在開發應用程式時，減少資源消耗來優化成本是很重要的議題。
+
+    ![](images/img_40.png)
+
+<br>
+
 ## 為 1950 年之後的數據建立表格
 
-1. 首先，需要檢索預設建立的存儲數據的 S3 Bucket名稱。
+1. 首先，需要檢索預設建立的存儲數據的 S3 Bucket 名稱；搜尋並進入 `S3` 服務。
+
+    ![](images/img_41.png)
 
 <br>
 
-2. 在 AWS 管理控制台中的搜索框旁輸入 `S3` 並選擇 S3 服務。
+2. 點擊 `Buckets`，在下方清單中會看到前綴為 `glue-1950-bucket` 的 Bucket，複製完整名稱備用。
+
+    ![](images/img_42.png)
 
 <br>
 
-3. 在Bucket列表中，將包含 `glue-1950-bucket` 的 Bucket 名稱複製到選擇的文本編輯器中。
+## 返回 Athena 查詢編輯器
 
-<br>
+1. 返回 `Athena` 主控台，開啟新的查詢頁籤，或對當前頁籤進行編輯。
 
-4. 返回 Athena 查詢編輯器。
+    ![](images/img_43.png)
 
-<br>
-
-5. 將以下查詢複製並粘貼到編輯器的查詢標籤中。將 `<glue-1950-bucket>` 替換為你之前記錄的Bucket名稱：
+2. 複製以下查詢語並貼到頁籤中，修改 `<glue-1950-bucket 完整名稱>` 為前面步驟查詢到的名稱。
 
     ```sql
     CREATE table weatherdata.late20th
     WITH (
         format='PARQUET',
-        external_location='s3://<glue-1950-bucket>/lab3'
+        external_location='s3://<glue-1950-bucket 完整名稱>/lab3'
     ) AS SELECT date, type, observation 
     FROM by_year
     WHERE date/10000 BETWEEN 1950 AND 2015;
