@@ -214,7 +214,19 @@ _手動切換頁面到前面步驟的畫面中_
 
 <br>
 
-2. 修改列名稱，根據以下表格進行更改：`id` 改為 `station`、`date` 改為 `date`、`element` 改為 `type`、`data_value` 改為 `observation`、`m_flag` 改為 `mflag`、`q_flag` 改為 `qflag`、`s_flag` 改為 `sflag`、`obs_time` 改為 `time`；特別注意，AWS Glue 只支持小寫的列名稱，完成時點擊 `Save ...`。
+2. 或直接在 `Schema` 區塊點擊右上角的 `Edit schema`。
+
+    ![](images/img_37.png)
+
+<br>
+
+3. 除此，若要更快速修正，可直接點擊 `Edit schema as JSON` 編輯 JSON 文件。
+
+    ![](images/img_38.png)
+
+<br>
+
+4. 修改欄位名稱，根據以下指示進行修改：`id -> station`、`date -> date`、`element -> type`、`data_value -> observation`、`m_flag -> mflag`、`q_flag -> qflag`、`s_flag -> sflag`、`obs_time -> time`；特別注意，AWS Glue 只支持小寫的列名稱，完成時點擊 `Save ...`。
 
     ![](images/img_25.png)
 
