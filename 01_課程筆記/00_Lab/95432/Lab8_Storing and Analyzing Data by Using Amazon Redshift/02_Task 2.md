@@ -1,52 +1,8 @@
-# Amazon Redshift
-
-_Storing and Analyzing Data by Using Amazon Redshift_
+# 任務 2：建立並配置 Redshift 集群
 
 <br>
 
-## 任務 1：檢視 IAM Role
-
-_觀察預設 Role 是否具備適當權限訪問 Redshift_
-
-<br>
-
-1. 進入 `IAM`。
-
-    ![](images/img_02.png)
-
-<br>
-
-2. IAM 中有以下成員。
-
-    ![](images/img_25.png)
-
-<br>
-
-3. Lab 有預設角色 `MyRedshiftRole`，點擊進入。
-
-    ![](images/img_03.png)
-
-<br>
-
-4. 該角色預設附加了 `AmazonS3ReadOnlyAccess` 和 `RedshiftIAMLabPolicy` 策略。
-
-    ![](images/img_04.png)
-
-<br>
-
-5. 可對 Policy 進性展開觀察，例如 `AmazonS3ReadOnlyAccess`；該 IAM 策略主要用於授權用戶對 `Amazon S3` 和 `S3 Object Lambda` 資源進行讀取和列出操作，適用於需要查看和檢索 S3 中存儲的數據但不需要修改權限的場景。
-
-    ![](images/img_26.png)
-
-<br>
-
-6. 另外，`RedshiftIAMLabPolicy` 部分允許用戶描述、創建、修改和刪除與 EC2 網路相關的資源，適用於管理 EC2 網路環境的場景。
-
-    ![](images/img_27.png)
-
-<br>
-
-## 任務 2：建立並配置 Redshift 集群
+## 配置 `Redshift`
 
 1. 進入 `Redshift`。
 
@@ -164,9 +120,9 @@ _教程內容與面板略有不同，這裡將以實際操作作為筆記_
 
 <br>
 
-## 任務 3：在資料庫中建立表格
+## 建立安全性群組
 
-_從 S3 加載數據到 Redshift Cluster_
+_配置對 Redshift 資料庫的存取_
 
 <br>
 
@@ -220,73 +176,52 @@ _從 S3 加載數據到 Redshift Cluster_
 
 8. 然後點擊右下角 `Create security group`。
 
-![](images/img_30.png)
+    ![](images/img_30.png)
+
+<br>
 
 ## 將 Cluster 新增至安全性群組
 
 _回到 Redshift 主控台_
 
+<br>
+
 1. 點擊進入前面步驟建立的 Cluster。 
 
-![](images/img_31.png)
+    ![](images/img_31.png)
+
+<br>
 
 2. 切換頁籤到 `properties`。
 
-![](images/img_32.png)
+    ![](images/img_32.png)
+
+<br>
 
 3. 在 `Network and security settings` 區塊，點擊右側 `Edit`。
 
-![](images/img_33.png)
+    ![](images/img_33.png)
+
+<br>
 
 4. 在 `VPC security groups` 區塊，在下拉選單中勾選 `Redshift security group`，並取消勾選 `default`。
 
-![](images/img_34.png)
+    ![](images/img_34.png)
+
+<br>
 
 5. 其餘不變，點擊右下角 `Save changes`。
 
-![](images/img_35.png)
+    ![](images/img_35.png)
+
+<br>
 
 6. 這實在 Clusters 區塊進行刷新，會發現 Cluster 狀態改變為 `Modifying`；要等候五分鐘左右，讓狀態重新恢復到 `Available`。
 
-![](images/img_36.png)
+    ![](images/img_36.png)
 
-7.  
+<br>
 
+___
 
-#### 任務 4: 從 Amazon S3 加載數據
-透過 `COPY` 命令，你將從 S3 存儲桶中加載數據到 Redshift 集群。每個表格使用不同的分隔符，例如 `\t` 和 `|`。
-
-步驟包括：
-- 使用 `COPY` 命令將數據從 S3 加載到表格中。
-- 檢查數據加載是否成功。
-
-#### 任務 5: 查詢數據
-加載數據後，你可以撰寫 SQL 查詢來生成 Mary 所需的報告。Mary 提供了查詢來統計特定日期銷售的商品數量，以及查詢購買量最多的前 10 名客戶。
-
-步驟包括：
-- 使用 SQL 查詢來查詢 `sales` 和 `date` 表格，並找出特定日期的總銷量。
-- 使用 SQL 查詢找出購買量最多的 10 位客戶。
-
-#### 任務 6: 使用 AWS CLI 運行查詢
-除了通過控制台運行查詢，你還可以使用 Amazon Redshift API、AWS SDK 庫和 AWS CLI 來執行操作。在這個任務中，你將通過 AWS Cloud9 終端執行 AWS CLI 命令，來查詢 Redshift 集群中的數據。
-
-步驟包括：
-- 使用 AWS CLI 在 Cloud9 中查詢 Redshift 資料庫。
-- 使用 `get-statement-result` 命令檢索查詢結果。
-
-#### 任務 7: 審查對 Redshift 的 IAM 訪問策略
-你將審查附加到 DataScienceGroup 群組的 `Policy-For-Data-Scientists` IAM 策略，該策略允許使用 Redshift Data API 進行有限的資料庫操作。
-
-步驟包括：
-- 審查策略的 JSON，了解授權的動作和資源。
-
-#### 任務 8: 確認使用者可以在 Redshift 資料庫上運行查詢
-最後，確認 Mary 能夠透過 Redshift 查詢數據。使用 AWS CLI 指令模擬 Mary 的權限，並測試其能否檢索查詢結果。
-
-步驟包括：
-- 透過 Mary 的憑證運行 `execute-statement` 命令進行數據查詢。
-- 使用 `get-statement-result` 命令檢索查詢結果。
-
----
-
-這個教程展示了如何建立 Redshift 數據倉庫、加載數據以及進行查詢分析，並且提供了如何使用 IAM 角色和 AWS CLI 進行操作的完整指引。
+_END_
