@@ -1,23 +1,47 @@
-#### 任務 6: 使用 AWS CLI 運行查詢
-除了通過控制台運行查詢，你還可以使用 Amazon Redshift API、AWS SDK 庫和 AWS CLI 來執行操作。在這個任務中，你將通過 AWS Cloud9 終端執行 AWS CLI 指令，來查詢 Redshift 集群中的數據。
+# 任務 6：使用 AWS CLI 運行查詢
 
-步驟包括：
-- 使用 AWS CLI 在 Cloud9 中查詢 Redshift 資料庫。
-- 使用 `get-statement-result` 指令檢索查詢結果。
+_除了在控制台運行查詢，還可以使用 Amazon Redshift API、AWS SDK 庫和 AWS CLI 來執行操作。以下將使用 Cloud9 終端執行 AWS CLI 指令，來查詢 Redshift 集群中的數據。_
 
-#### 任務 7: 審查對 Redshift 的 IAM 訪問策略
-你將審查附加到 DataScienceGroup 群組的 `Policy-For-Data-Scientists` IAM 策略，該策略允許使用 Redshift Data API 進行有限的資料庫操作。
+<br>
 
-步驟包括：
-- 審查策略的 JSON，了解授權的動作和資源。
+## 步驟
 
-#### 任務 8: 確認使用者可以在 Redshift 資料庫上運行查詢
-最後，確認 Mary 能夠透過 Redshift 查詢數據。使用 AWS CLI 指令模擬 Mary 的權限，並測試其能否檢索查詢結果。
+1. 進入 `Cloud9`，並開啟 Lab 準備好的實例，細節不贅述。
 
-步驟包括：
-- 透過 Mary 的憑證運行 `execute-statement` 指令進行數據查詢。
-- 使用 `get-statement-result` 指令檢索查詢結果。
+    ![](images/img_52.png)
 
----
+<br>
 
-這個教程展示了如何建立 Redshift 數據倉庫、加載數據以及進行查詢分析，並且提供了如何使用 IAM 角色和 AWS CLI 進行操作的完整指引。
+2. 在終端機運行以下指令，這指令是在 Redshift Cluster 中執行 SQL 查詢，從 `dev` 數據庫中的 `users` 表中查詢並返回一行數據。
+
+    ```bash
+    aws redshift-data execute-statement --region us-east-1 --db-user awsuser --cluster-identifier redshift-cluster-1 --database dev --sql "select * from users limit 1"
+    ```
+
+    ![](images/img_53.png)
+
+<br>
+
+3. 使用前一個步驟取得的 id 值 `bf44c7cc-bdba-4df6-a13a-9f34dac6c2f9` 運行以下指令，這個指令會使用 `ID` 來檢索之前查詢的數據，也就是返回查詢的結果集，類似於在 SQL 查詢編輯器中查看結果的效果。
+
+    ```bash
+    aws redshift-data get-statement-result  --id <填入 ID> --region us-east-1
+    ```
+
+    _實際命令_
+
+    ```bash
+    aws redshift-data get-statement-result  --id bf44c7cc-bdba-4df6-a13a-9f34dac6c2f9 --region us-east-1
+    ```
+
+<br>
+
+4. 回傳數據很長，請自行運行指令查看。
+
+    ![](images/img_54.png)
+
+<br>
+
+___
+
+_END_
