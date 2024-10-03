@@ -230,7 +230,7 @@ _手動切換頁面到前面步驟的瀏覽器頁籤中_
 
 <br>
 
-3. 除此，若要更快速修正，可直接點擊 `Edit schema as JSON` 編輯 JSON 文件。
+3. 除此，先返回 `Schema` 中；這裡建議直接點擊 `Edit schema as JSON` 編輯 JSON 文件，這是最快速且易讀的方式。
 
     ![](images/img_38.png)
 
