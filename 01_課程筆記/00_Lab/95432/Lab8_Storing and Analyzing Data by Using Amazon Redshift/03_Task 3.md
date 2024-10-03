@@ -56,7 +56,7 @@ _從 S3 加載數據到 Redshift Cluster_
 
 <br>
 
-2. 若要建立日期表，複製並貼上以下語句，然後 `Run`。
+2. 建立日期表，可開啟新頁籤或編輯下當前頁籤，複製並貼上以下語句，然後 `Run`。
 
     ```sql
     create table date(
