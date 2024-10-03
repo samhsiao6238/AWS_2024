@@ -14,7 +14,7 @@ _可能不知道需要分析的數據結構，可將 AWS Glue 指向存儲在 AW
 
 <br>
 
-2. 運行爬網程式以提取、轉換和加載數據到 AWS Glue 數據庫中。
+2. 運行爬網程式以提取、轉換和加載數據到 AWS Glue 資料庫中。
 
 <br>
 
@@ -106,13 +106,13 @@ _配置並建立一個爬網程式來發現 `GHCN-D` 資料集的結構，並從
 
 ## 回到 Glue
 
-1. 點擊 `Next` 後會進入 `Set output and scheduling`，選擇 `Add database`。
+1. 點擊 `Next` 後會進入 `Set output and scheduling`，選擇 `Add database`；會自動開啟新的頁面。
 
     ![](images/img_12.png)
 
 <br>
 
-2. 會開啟新的瀏覽器頁面，為數據庫命名 `weatherdata`，然後選擇 `Create database`。
+2. 在新開啟的頁面中，為資料庫命名 `weatherdata`，然後選擇 `Create database`。
 
     ![](images/img_13.png)
 
@@ -124,7 +124,7 @@ _配置並建立一個爬網程式來發現 `GHCN-D` 資料集的結構，並從
 
 <br>
 
-4. 接著下拉選單並選擇剛建立的 `weatherdata` 數據庫作為目標數據庫。
+4. 接著下拉選單並選擇剛建立的 `weatherdata` 資料庫作為目標資料庫。
 
     ![](images/img_15.png)
 
@@ -164,7 +164,7 @@ _配置並建立一個爬網程式來發現 `GHCN-D` 資料集的結構，並從
 
 ## 查看 AWS Glue 建立的元數據
 
-1. 在左側導航窗格中，選擇 `Databases`，接著點擊 `weatherdata` 數據庫的鏈接。
+1. 在左側導航窗格中，選擇 `Databases`，接著點擊 `weatherdata` 資料庫的鏈接。
 
     ![](images/img_21.png)
 

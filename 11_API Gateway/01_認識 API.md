@@ -46,7 +46,7 @@ _Application Programming Interface_
 
 ## Database API
 
-1. 數據庫提供的接口，用於數據查詢和操作。例如，SQL 語句就是一種 API。
+1. 資料庫提供的接口，用於數據查詢和操作。例如，SQL 語句就是一種 API。
 
 <br>
 
