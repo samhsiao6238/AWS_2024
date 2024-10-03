@@ -116,7 +116,7 @@ _前面已經選好了 `gluelab`_
 
 <br>
 
-1. 點擊 `Next` 後會進入 `Set output and scheduling`，選擇 `Add database`；會自動開啟新的頁面。
+1. 點擊 `Next` 後會進入 `Set output and scheduling`，點擊 `Add database`；會自動開啟新的頁面。
 
     ![](images/img_12.png)
 
@@ -128,7 +128,7 @@ _前面已經選好了 `gluelab`_
 
 <br>
 
-3. 會自動回到 Databases 清單中，可看到建立的資料庫 ``。
+3. 會自動回到 Databases 清單中，可看到建立的資料庫 `weatherdata`。
 
     ![](images/img_34.png)
 
