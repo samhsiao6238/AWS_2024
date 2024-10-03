@@ -38,7 +38,7 @@ _配置並建立一個爬網程式來發現 `GHCN-D` 資料集的結構，並從
 
 <br>
 
-2. 在左側欄位的 `Databases` 下選擇 `Tables`。
+2. 點擊左側欄位中 `Databases` 下的 `Tables`。
 
     ![](images/img_02.png)
 
