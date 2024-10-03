@@ -208,25 +208,31 @@ _回到 Redshift 主控台_
 
 <br>
 
-3. 在 `Network and security settings` 區塊，點擊右側 `Edit`。
+3. 假如沒看到，可先往右滾動。
+
+    ![](images/img_59.png)
+
+<br>
+
+4. 在 `Network and security settings` 區塊，點擊右側 `Edit`。
 
     ![](images/img_33.png)
 
 <br>
 
-4. 在 `VPC security groups` 區塊，在下拉選單中勾選 `Redshift security group`，並取消勾選 `default`。
+5. 在 `VPC security groups` 區塊，在下拉選單中勾選 `Redshift security group`，並取消勾選 `default`。
 
     ![](images/img_34.png)
 
 <br>
 
-5. 其餘不變，點擊右下角 `Save changes`。
+6. 其餘不變，點擊右下角 `Save changes`。
 
     ![](images/img_35.png)
 
 <br>
 
-6. 這實在 Clusters 區塊進行刷新，會發現 Cluster 狀態改變為 `Modifying`；要等候五分鐘左右，讓狀態重新恢復到 `Available`。
+7. 這實在 Clusters 區塊進行刷新，會發現 Cluster 狀態改變為 `Modifying`；要等候五分鐘左右，讓狀態重新恢復到 `Available`。
 
     ![](images/img_36.png)
 
