@@ -1,6 +1,6 @@
 # ETL
 
-_使用 AWS Glue 對數據集進行 ETL 操作_
+_Extract、Transform、Load，提取、轉換、加載；使用 AWS Glue 對數據集進行 ETL 操作_
 
 <br>
 
