@@ -112,6 +112,8 @@ _已經建立了 `Data Catalog`，可以進一步使用 Athena 來查詢數據_
 
     ![](images/img_43.png)
 
+<br>
+
 2. 複製以下查詢語並貼到頁籤中，修改 `<glue-1950-bucket 完整名稱>` 為前面步驟查詢到的名稱。
 
     ```sql
