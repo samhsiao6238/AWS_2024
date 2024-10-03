@@ -32,7 +32,7 @@ _從 S3 加載數據到 Redshift Cluster_
 
 ## 建立使用者表格
 
-1. 複製以下語句並貼到查詢標籤中，然後點擊 `Run`。
+1. 複製以下語句並貼到查詢標籤中，然後點擊 `Run`；完成後在左側會添加新的 Table `users`。
 
     ```sql
     create table users(
@@ -56,7 +56,7 @@ _從 S3 加載數據到 Redshift Cluster_
 
 <br>
 
-2. 建立日期表，可開啟新頁籤或編輯下當前頁籤，複製並貼上以下語句，然後 `Run`。
+2. 建立日期表，可開啟新頁籤或編輯下當前頁籤，複製並貼上以下語句，然後 `Run`；同樣的，完成後左側會添加新的表 `date`。
 
     ```sql
     create table date(
@@ -87,6 +87,18 @@ _從 S3 加載數據到 Redshift Cluster_
     commission decimal(8,2),
     saletime timestamp);
     ```
+
+<br>
+
+4. 完成以上語句後，左側會顯示三個空的 Table，
+
+    ![](images/img_61.png)
+
+<br>
+
+5. 雖然展開會有欄位，但無數據。
+
+    ![](images/img_62.png)
 
 <br>
 
