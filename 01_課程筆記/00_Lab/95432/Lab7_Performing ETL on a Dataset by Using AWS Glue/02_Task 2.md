@@ -114,7 +114,7 @@ _已經建立了 `Data Catalog`，可以進一步使用 Athena 來查詢數據_
 
 <br>
 
-2. 複製以下查詢語並貼到頁籤中，修改 `<glue-1950-bucket 完整名稱>` 為前面步驟查詢到的名稱。
+2. 複製以下查詢語並貼到頁籤中，接著替換語句中的 `<glue-1950-bucket 完整名稱>` 為前面步驟查詢到的名稱，貼上時不包含尖鉤括號。
 
     ```sql
     CREATE table weatherdata.late20th
@@ -128,17 +128,27 @@ _已經建立了 `Data Catalog`，可以進一步使用 Athena 來查詢數據_
 
 <br>
 
-6. 選擇 `Run`，運行時間和掃描數據的大小類似如下。
+3. 例如這裡查詢到的是 `glue-1950-bucket--231561d0`，所以編輯如下。
 
-    ```bash
-    排隊時間：128 毫秒
-    運行時間：1 分鐘 8.324 秒
-    掃描數據量：98.44 GB
-    ```
+    ![](images/img_44.png)
 
 <br>
 
-7. 如需預覽結果，在 `late20th` 表格旁邊選擇三點圖標，然後選擇 `Preview Table`。
+4. 點擊 `Run`；同樣地，可觀察運行時間等資訊。
+
+    ![](images/img_45.png)
+
+<br>
+
+5. 如需預覽結果，點擊 `late20th` 右側三點圖標，然後選擇 `Preview Table`。
+
+    ![](images/img_46.png)
+
+<br>
+
+6. 同樣會自動生成查詢語句，點擊下方 `Run` 即可。
+
+    ![](images/img_47.png)
 
 <br>
 
