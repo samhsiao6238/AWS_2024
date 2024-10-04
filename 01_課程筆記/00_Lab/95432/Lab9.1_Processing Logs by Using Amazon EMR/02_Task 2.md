@@ -38,13 +38,13 @@
 
 <br>
 
-5. 點擊其中的 `Download PEM` 下載文件。
+2. 點擊其中的 `Download PEM` 下載文件。
 
     ![](images/img_32.png)
 
 <br>
 
-6. 會下載文件到本地。
+3. 會下載文件到本地。
 
     ![](images/img_33.png)
 
