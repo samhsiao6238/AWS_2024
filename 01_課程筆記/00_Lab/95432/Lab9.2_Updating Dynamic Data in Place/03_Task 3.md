@@ -16,7 +16,11 @@ _特別注意，這裡不是搜尋服務進入 `Cloud9` 主控台，請依以下
 
 <br>
 
-2. 若是複製並保存的網址 `https://us-east-1.console.aws.amazon.com/cloud9/ide/6a8832e56f854979896d413542c3d99e`，可貼到瀏覽器開啟，同樣這會啟動 Cloud9 中預設的 IDE。
+2. 若是複製並保存的網址，可貼到瀏覽器開啟，同樣這會啟動 Cloud9 中預設的 IDE。
+
+    ```bash
+    https://us-east-1.console.aws.amazon.com/cloud9/ide/<這只是網址範例>
+    ```
 
 <br>
 
