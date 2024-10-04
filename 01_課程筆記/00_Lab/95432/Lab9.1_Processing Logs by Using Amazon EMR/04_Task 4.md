@@ -107,11 +107,13 @@
 
 <br>
 
-3. 驗證這兩個表現在存在。
+3. 顯示這兩個表。
 
     ```sql
     show tables;
     ```
+
+    ![](images/img_50.png)
 
 <br>
 
