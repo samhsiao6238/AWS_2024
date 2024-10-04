@@ -80,15 +80,8 @@ _使用當前開啟的 Cloud9 終端機_
 2. 運行以下指令，分別將文件複製到 S3 Bucket 中的 `artifacts` 及 `templates` 資料夾；特別注意，要替換下方的 `<Bucket name>` 為自己查詢的名稱，這裡是 `ade-dsc-bucket-094adf30`。
 
     ```bash
-    aws s3 cp glue_job_script.py s3://<Bucket name>/artifacts/
-    aws s3 cp glue_job.template s3://<Bucket name>/templates/
-    ```
-
-    _實際指令如下_
-
-    ```bash
-    aws s3 cp glue_job_script.py s3://ade-dsc-bucket-094adf30/artifacts/
-    aws s3 cp glue_job.template s3://ade-dsc-bucket-094adf30/templates/
+    aws s3 cp glue_job_script.py s3://<替換自己的 Bucket name>/artifacts/
+    aws s3 cp glue_job.template s3://<替換自己的 Bucket name>/templates/
     ```
 
 <br>
