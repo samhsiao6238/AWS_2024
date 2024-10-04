@@ -124,13 +124,13 @@ _使用 Amazon EMR 處理日誌_
 
 <br>
 
-2. 在下方點擊 `Edit inbound rules`。
+2. 在 `Inbound rules` 頁籤中點擊右側的 `Edit inbound rules`。
 
     ![](images/img_20.png)
 
 <br>
 
-3. 點擊最下方的 `Add rule`。
+3. 點擊最下方的 `Add rule` 添加入站規則。
 
     ![](images/img_21.png)
 

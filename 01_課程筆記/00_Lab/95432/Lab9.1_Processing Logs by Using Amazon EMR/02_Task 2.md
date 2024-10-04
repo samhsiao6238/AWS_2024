@@ -4,7 +4,7 @@
 
 ## 在 EMR 複製 DNS
 
-1. 複製公共 DNS `ec2-3-95-6-4.compute-1.amazonaws.com`。
+1. 可複製 `Primary node public DNS` 備用；或保留畫面稍後再進行複製。
 
     ![](images/img_27.png)
 
@@ -12,13 +12,13 @@
 
 ## 前往 Cloud9
 
-1. 進入 Cloud9，開啟預設的 IDE。
+1. 進入 Cloud9，點擊 `Open` 開啟預設的 IDE。
 
     ![](images/img_28.png)
 
 <br>
 
-2. 添加文件。
+2. 開啟新文件 `New File`；特別注意，這裡這份文件僅用作貼上前面複製的 DNS 備用，除此並無編輯任何腳本。
 
     ![](images/img_29.png)
 
