@@ -6,6 +6,10 @@ _檢索並配置 AWS Glue 作業所需的文件_
 
 ## 進入 `Cloud9`
 
+_特別注意，這裡不是搜尋服務進入 `Cloud9` 主控台，請依以下說明操作_
+
+<br>
+
 1. 之前在 Stacks 中記錄的文件中，包含一組 Key 為 `Cloud9URL` 的數據，複製 Value。
 
     ![](images/img_17.png)
