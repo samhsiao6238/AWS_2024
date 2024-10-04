@@ -63,13 +63,13 @@ _特別注意，這裡不是搜尋服務進入 `Cloud9` 主控台，請依以下
 
 ## 複製文件到 S3
 
-1. 在 Outputs 中記錄了 Bucket name 如 `ade-dsc-bucket-094adf30`。
+1. 再次回到 `Stacks` 的 `Outputs`，其中有個 Key 是 `HUDIBucketName`，其值記錄 S3 的 Bucket 名稱 `ade-dsc-bucket-094adf30`。
 
     ![](images/img_19.png)
 
 <br>
 
-2. 運行以下指令，替換其中的 `<Bucket name>` 為 `ade-dsc-bucket-094adf30`。
+2. 運行以下指令，分別將文件複製到 S3 Bucket 中的 `artifacts` 及 `templates` 資料夾；特別注意，要替換下方的 `<Bucket name>` 為自己查詢的名稱，這裡是 `ade-dsc-bucket-094adf30`。
 
     ```bash
     aws s3 cp glue_job_script.py s3://<Bucket name>/artifacts/
@@ -83,4 +83,38 @@ _特別注意，這裡不是搜尋服務進入 `Cloud9` 主控台，請依以下
     aws s3 cp glue_job.template s3://ade-dsc-bucket-094adf30/templates/
     ```
 
+<br>
+
+3. 完成上傳，顯示資訊如下。
+
     ![](images/img_20.png)
+
+<br>
+
+## 檢索
+
+_從 S3 Bucket 中檢索已上傳的 CloudFormation 模板 (`glue_job.template`) 的 URL_
+
+<br>
+
+1. 進入 S3 主控台，點擊進入包含 `ade-hudi-bucket` 名稱的 S3 Bucket。
+
+    ![](images/img_23.png)
+
+<br>
+
+2. 點擊進入 `templates`。
+
+    ![](images/img_24.png)
+
+<br>
+
+3. 選擇 `glue_job.template`，然後點擊 `Copy URL` 來複製模板的 URL，將此 `URL` 保存備用。
+
+    ![](images/img_25.png)
+
+<br>
+
+___
+
+_END_
