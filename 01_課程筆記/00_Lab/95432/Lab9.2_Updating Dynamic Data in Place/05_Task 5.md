@@ -52,6 +52,10 @@ _使用 Kinesis Data Generator（KDG）工具生成並模擬 IoT 設備的隨機
 
 <br>
 
+_特別注意，不要關閉這個頁面_
+
+<br>
+
 ___
 
 _END_
