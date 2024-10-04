@@ -48,7 +48,7 @@ _配置 Hudi 連接器，用於 AWS Glue 與 S3 進行交互，實現動態數�
 
 <br>
 
-8. `Fulfillment option` 選擇 `Glue 3.0`，`Software version` 選擇 `0.10.1 (Jun 13, 2022)`，然後點擊右上角 `Continue to Launch`。
+8. `Fulfillment option` 選擇 `Glue 3.0`；選取後會跳出後續選單，在 `Software version` 選擇 `0.10.1 (Jun 13, 2022)`，然後點擊右上角 `Continue to Launch`。
 
     ![](images/img_10.png)
 
@@ -60,27 +60,33 @@ _配置 Hudi 連接器，用於 AWS Glue 與 S3 進行交互，實現動態數�
 
 <br>
 
-10. 在彈窗中點擊首行中的連結。
+10. 在彈窗中點擊首行中的連結，會開啟新的瀏覽頁面。
 
     ![](images/img_12.png)
 
 <br>
 
-11. 會開啟新的頁面，畫面上方有個藍色彈窗，右側有個 `Activate connector only` 按鈕，不予理會。
+11. 在新開啟的頁面中，畫面上方有個藍色訊息視窗，右側有個 `Activate connector only` 按鈕，在這不予理會。
 
     ![](images/img_13.png)
 
 <br>
 
-12. 在 `Connector` 命名為 `hudi-connection`，然後點擊右下角的 `Create connection and activate connector`。
+12. 在 `Connection properties` 區塊中，命名為 `hudi-connection`，然後點擊右下角的 `Create connection and activate connector`。
 
     ![](images/img_14.png)
 
 <br>
 
-13. 點擊連結可查看詳情。
+13. 至此完成這個階段，點擊名稱中的連結可查看詳情。
 
     ![](images/img_15.png)
+
+<br>
+
+14. 這是 `Connection details` 資訊。
+
+    ![](images/img_21.png)
 
 <br>
 
