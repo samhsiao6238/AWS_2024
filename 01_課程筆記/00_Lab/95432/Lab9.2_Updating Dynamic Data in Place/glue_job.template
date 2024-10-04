@@ -1,0 +1,57 @@
+AWSTemplateFormatVersion: "2010-09-09"
+Description: "ADE_1.0"
+
+Parameters:
+  HudiARN: 
+    Description: 'ARN of role used'
+    Type: String
+
+  LocalS3Bucket: 
+    Description: 'Bucket used for the lab'
+    Type: String
+
+Resources:
+  HudiStreamingJob:
+    Type: 'AWS::Glue::Job'
+    Properties: 
+      Command: 
+        Name: 'gluestreaming'
+        PythonVersion: 3
+        ScriptLocation: !Join ['', ["s3://", !Ref LocalS3Bucket, "/artifacts/glue_job_script.py"]]
+      Connections:
+        Connections:
+          - 'hudi-connection'
+      DefaultArguments:
+        '--database_name': 'hudi_demo_db'              
+        '--kinesis_table_name': 'hudi_demo_kinesis_stream_table'
+        '--hudi_table_name': 'hudi_demo_table'
+        '--starting_position_of_kinesis_iterator': 'LATEST'
+        '--window_size': '10 seconds'
+        '--s3_path_hudi': !Join ['', ["s3://", !Ref LocalS3Bucket, "/hudi_stuff/hudi_demo_table/"]]
+        '--s3_path_spark': !Join ['', ["s3://", !Ref LocalS3Bucket, "/spark_checkpoints/"]]
+        '--spark-event-logs-path': !Join ['', ["s3://", !Ref LocalS3Bucket, "/sparkHistoryLogs/"]]
+        '--enable-continuous-cloudwatch-log': 'true'
+        '--TempDir': !Join ['', ["s3://", !Ref LocalS3Bucket, "/temp"]]
+        '--job-language': 'python'
+        '--enable-metrics': 'true' 
+        '--job-bookmark-option': 'job-bookmark-enable'
+        '--enable-glue-datacatalog': 'true'
+        '--enable-spark-ui': 'true'
+        '--class': 'GlueApp'
+      ExecutionProperty:
+        MaxConcurrentRuns: 1
+      GlueVersion: 3.0
+      MaxRetries: 0
+      Name: !Join
+      - "-"
+      - - "Hudi_Streaming_Job"
+        - !Select
+          - 0
+          - !Split
+            - "-"
+            - !Select
+              - 2
+              - !Split
+                - "/"
+                - !Ref "AWS::StackId"
+      Role: !Ref HudiARN

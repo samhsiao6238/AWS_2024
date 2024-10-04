@@ -1,15 +1,6 @@
 # Updating Dynamic Data in Place
 
 
-
-
-### 任務 3：配置 AWS Glue 作業腳本
-此任務中，你將檢索並配置 AWS Glue 作業所需的文件。
-
-#### 步驟：
-1. 透過 Cloud9 終端下載兩個文件 `glue_job_script.py` 和 `glue_job.template`。
-2. 將這些文件上傳到 S3 Bucket，為後續 AWS Glue 作業配置所用。
-
 ### 任務 4：配置並運行 AWS Glue 作業
 AWS Glue 提供運行 ETL 作業的能力，用於在各數據源之間進行數據複製。
 
