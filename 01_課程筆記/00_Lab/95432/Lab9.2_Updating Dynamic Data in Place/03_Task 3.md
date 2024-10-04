@@ -55,6 +55,12 @@ _特別注意，這裡不是搜尋服務進入 `Cloud9` 主控台，請依以下
 
 <br>
 
+4. 完成後可在左側導覽中看到這兩個文件已經下載。
+
+    ![](images/img_22.png)
+
+<br>
+
 ## 複製文件到 S3
 
 1. 在 Outputs 中記錄了 Bucket name 如 `ade-dsc-bucket-094adf30`。
