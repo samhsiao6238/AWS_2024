@@ -30,7 +30,7 @@ _配置 Hudi 連接器，用於 AWS Glue 與 S3 進行交互，實現動態數�
 
 <br>
 
-5. 點擊 `Accept Terms`。
+5. 點擊 `Accept Terms`；假如已經接受過條款則不會出現彈窗，直接進入下下步驟。
 
     ![](images/img_07.png)
 
