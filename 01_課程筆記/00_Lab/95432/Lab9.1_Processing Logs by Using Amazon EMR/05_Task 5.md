@@ -71,6 +71,8 @@ _通過將展示給用戶的廣告資料 `impressions 表` 與用戶選擇廣告
     AND c.dt < '${NEXT_DAY}-${NEXT_HOUR}-20';
     ```
 
+    ![](images/img_52.png)
+
 <br>
 
 4. 執行以下指令來將結果集寫入 `joined_impressions` 表。
@@ -88,6 +90,8 @@ _通過將展示給用戶的廣告資料 `impressions 表` 與用戶選擇廣告
     FROM tmp_impressions i
     LEFT OUTER JOIN tmp_clicks c ON i.impressionId=c.impressionId;
     ```
+
+    ![](images/img_53.png)
 
 <br>
 
