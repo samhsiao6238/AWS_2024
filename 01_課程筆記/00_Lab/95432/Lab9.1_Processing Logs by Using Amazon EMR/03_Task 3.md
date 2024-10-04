@@ -4,7 +4,21 @@
 
 ## 步驟
 
-1. 使用 `chown` 指令將 `/var/log/hive` 目錄及其子目錄的擁有者更改為用戶 `hadoop`，其中 `-R` 參數就是遞迴到每一層執行。
+1. 查看 `/var/log/hive` 目錄的當前擁有者及權限資訊。
+
+    ```bash
+    ls -ld /var/log/hive
+    ```
+
+<br>
+
+2. 結果顯示目錄的擁有者及群組都是 `hive`。
+
+    ![](images/img_43.png)
+
+<br>
+
+3. 使用 `chown` 指令將 `/var/log/hive` 目錄及其子目錄的擁有者更改為用戶 `hadoop`，其中 `-R` 參數就是遞迴到每一層執行。
 
     ```bash
     sudo chown hadoop -R /var/log/hive
@@ -12,7 +26,7 @@
 
 <br>
 
-2. 在 `/var/log/hive/user/` 目錄下創建一個名為 `hadoop` 的新目錄，這就是為 Hive 建立的日誌記錄目錄。
+4. 在 `/var/log/hive/user/` 目錄下創建一個名為 `hadoop` 的新目錄，這就是為 Hive 建立的日誌記錄目錄。
 
     ```bash
     
