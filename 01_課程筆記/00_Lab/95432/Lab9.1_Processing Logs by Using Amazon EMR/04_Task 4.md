@@ -45,7 +45,7 @@
 
 <br>
 
-3. 執行命令設定 Hive 忽略路徑驗證，當運行 `MSCK REPAIR TABLE` 時，Hive 會掃描外部存儲如 `S3` 的路徑來搜尋符合 Hive 分區結構的資料，如果某些路徑不符合預期，預設會產生錯誤訊息，此指令設定 Hive 忽略這些檢查，允許繼續進行分區修復。
+3. 執行命令設定 Hive 忽略路徑驗證；後續會運行 `MSCK REPAIR TABLE` 指令，屆時 Hive 會掃描外部存儲 `S3` 的路徑來搜尋符合 Hive 分區結構的資料，如果某些路徑不符合預期，預設會產生錯誤訊息，此指令設定 Hive 忽略這些檢查，允許繼續進行分區修復；特別注意，這個指令運行後不會有任何回傳。
 
     ```sql
     set hive.msck.path.validation=ignore;
@@ -63,13 +63,7 @@
 
 5. 當命令完成後，輸出應類似如下。
 
-    ```
-    Repair: Added partition to metastore impressions:dt=2009-04-14-12-10
-    Repair: Added partition to metastore impressions:dt=2009-04-14-12-15
-    Repair: Added partition to metastore impressions:dt=2009-04-14-12-20
-    Repair: Added partition to metastore impressions:dt=2009-04-14-13-00
-    Time taken: ...[truncated]
-    ```
+    ![](images/img_46.png)
 
 <br>
 
