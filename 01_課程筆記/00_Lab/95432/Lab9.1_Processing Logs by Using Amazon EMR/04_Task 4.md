@@ -117,7 +117,7 @@
 
 <br>
 
-4. 描述點擊表。
+4. 描述 `clicks`。
 
     ```sql
     describe formatted clicks;

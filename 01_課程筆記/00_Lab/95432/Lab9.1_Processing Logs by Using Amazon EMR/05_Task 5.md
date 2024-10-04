@@ -52,6 +52,8 @@ _通過將展示給用戶的廣告資料 `impressions 表` 與用戶選擇廣告
     AND i.dt < '${NEXT_DAY}-${NEXT_HOUR}-00';
     ```
 
+    ![](images/img_51.png)
+
 <br>
 
 3. 建立並插入臨時表 `tmp_clicks`。
