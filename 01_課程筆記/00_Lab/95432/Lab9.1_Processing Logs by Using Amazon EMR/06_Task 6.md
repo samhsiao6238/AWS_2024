@@ -6,7 +6,7 @@ _使用 Hive 來查詢 `joined_impressions` 表中的數據，以分析哪些展
 
 ## 步驟
 
-1. 在結果集中顯示列名。
+1. 指示 Hive CLI 在查詢結果中顯示欄位名稱，執行這個指令後，運行查詢並返回結果時，Hive 會在結果的頂部顯示每個欄位的名稱；這個指令無回傳值。
 
     ```sql
     set hive.cli.print.header=true;
@@ -19,6 +19,8 @@ _使用 Hive 來查詢 `joined_impressions` 表中的數據，以分析哪些展
     ```sql
     SELECT * FROM joined_impressions LIMIT 10;
     ```
+
+    ![](images/img_54.png)
 
 <br>
 
@@ -33,18 +35,35 @@ _使用 Hive 來查詢 `joined_impressions` 表中的數據，以分析哪些展
     LIMIT 10;
     ```
 
+    ![](images/img_55.png)
+
 <br>
 
-4. 退出 Hive CLI 並執行以下指令查詢來自哪個網站的用戶點擊了最多的廣告。
+4. 退出 Hive CLI。
+
+    ```sql
+    exit;
+    ```
+
+<br>
+
+5. 查詢來自哪個網站的用戶點擊了最多的廣告。
 
     ```bash
     hive -e "SELECT referrer, count(*) as hits FROM joined_impressions WHERE clicked = true GROUP BY referrer ORDER BY hits DESC LIMIT 10;" > /home/hadoop/result.txt
     ```
 
-    使用 `cat` 指令查看結果：
+    ![](images/img_56.png)
+
+<br>
+
+6. 使用 `cat` 指令查看結果。
+
     ```bash
     cat /home/hadoop/result.txt
     ```
+
+    ![](images/img_57.png)
 
 <br>
 
