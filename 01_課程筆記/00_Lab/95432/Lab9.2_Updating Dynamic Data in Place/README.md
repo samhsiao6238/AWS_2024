@@ -1,13 +1,6 @@
 # Updating Dynamic Data in Place
 
 
-### 任務 5：使用 KDG 向 Kinesis 發送數據
-你將使用 Kinesis Data Generator（KDG）工具生成並模擬 IoT 設備的隨機數據，並發送至 Kinesis。
-
-#### 步驟：
-1. 打開 KDG 工具，使用指定憑證登錄。
-2. 配置數據發送到 Kinesis，並保持 KDG 運行以模擬數據流。
-
 ### 任務 6：使用 Athena 檢查架構並查詢數據
 你將使用 Athena 檢查表架構，並運行查詢來分析數據。
 
