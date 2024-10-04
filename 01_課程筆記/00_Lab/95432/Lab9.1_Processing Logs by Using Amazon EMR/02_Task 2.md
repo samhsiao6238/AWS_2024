@@ -30,7 +30,9 @@
 
 <br>
 
-4. 在 Lab 簡介頁面中，點擊 `AWS Details`。
+## 開啟 Lab 首頁
+
+1. 在 Lab 簡介頁面中，點擊上方 `AWS Details`。
 
     ![](images/img_31.png)
 
