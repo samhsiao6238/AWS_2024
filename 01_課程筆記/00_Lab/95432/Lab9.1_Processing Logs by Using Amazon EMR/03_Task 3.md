@@ -4,10 +4,18 @@
 
 ## 步驟
 
-1. 為 Hive 建立日誌記錄目錄。
+1. 使用 `chown` 指令將 `/var/log/hive` 目錄及其子目錄的擁有者更改為用戶 `hadoop`，其中 `-R` 參數就是遞迴到每一層執行。
 
     ```bash
     sudo chown hadoop -R /var/log/hive
+    ```
+
+<br>
+
+2. 在 `/var/log/hive/user/` 目錄下創建一個名為 `hadoop` 的新目錄，這就是為 Hive 建立的日誌記錄目錄。
+
+    ```bash
+    
     mkdir /var/log/hive/user/hadoop
     ```
 
