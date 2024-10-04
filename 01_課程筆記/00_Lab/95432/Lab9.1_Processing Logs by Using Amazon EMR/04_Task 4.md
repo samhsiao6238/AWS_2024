@@ -45,16 +45,23 @@
 
 <br>
 
-3. 執行以下命令來忽略路徑驗證並修復表的分區；特別注意，`MSCK REPAIR TABLE` 命令會掃描 Amazon S3 中的新分區，這些分區是在表建立後添加的，若發現分區，這些分區將被加入到表的元數據中，此命令是 AWS 版本 Hive 的擴展功能。
+3. 執行命令設定 Hive 忽略路徑驗證，當運行 `MSCK REPAIR TABLE` 時，Hive 會掃描外部存儲如 `S3` 的路徑來搜尋符合 Hive 分區結構的資料，如果某些路徑不符合預期，預設會產生錯誤訊息，此指令設定 Hive 忽略這些檢查，允許繼續進行分區修復。
 
     ```sql
     set hive.msck.path.validation=ignore;
+    ```
+
+<br>
+
+4. 這個指令告訴 Hive 檢查指定的表 `impressions` 的資料路徑，並修復元數據中的分區資訊，如果表格存儲在外部資料來源如 `S3`，Hive 將掃描資料夾，並將找到的分區添加到表格的元數據中，從而允許查詢這些分區中的資料；特別注意，`MSCK REPAIR TABLE` 命令會掃描 `S3` 中的新分區，這些分區是在表建立後添加的，若發現分區，這些分區將被加入到表的元數據中，此命令是 AWS 版本 Hive 的擴展功能。
+
+    ```sql
     MSCK REPAIR TABLE impressions;
     ```
 
 <br>
 
-4. 當命令完成後，輸出應類似如下。
+5. 當命令完成後，輸出應類似如下。
 
     ```
     Repair: Added partition to metastore impressions:dt=2009-04-14-12-10
@@ -66,7 +73,7 @@
 
 <br>
 
-5. 再次運行以下命令來確認分區數量，輸出應顯示表中現在包含 241 個分區。
+6. 再次運行以下命令來確認分區數量，輸出應顯示表中現在包含 241 個分區。
 
     ```sql
     describe formatted impressions;
@@ -96,7 +103,7 @@
 
 <br>
 
-3. 與 `impressions` 表類似，`clicks` 表引用的是存儲在 S3 中的日誌數據，並且只導入了部分字段，通過使用 `MSCK REPAIR TABLE` 命令，Hive 會自動查找並修復 S3 中的分區，將其加入元數據存儲中，以確保查詢時能夠正確訪問數據。
+3. 與 `impressions` 表類似，`clicks` 表引用的是存儲在 S3 中的日誌數據，並且只導入了部分字段，通過使用 `MSCK REPAIR TABLE` 命令，Hive 會自動搜尋並修復 S3 中的分區，將其加入元數據存儲中，以確保查詢時能夠正確訪問數據。
 
 <br>
 
