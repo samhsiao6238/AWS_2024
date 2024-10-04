@@ -22,7 +22,7 @@ _特別注意，這裡不是搜尋服務進入 `Cloud9` 主控台，請依以下
 
 ## 下載文件
 
-1. 依據官網指示，要下載兩個文件 `glue_job_script.py`、`glue_job_script.py`，網址如下。
+1. 依據官網指示，要下載兩個文件 `glue_job_script.py`、`glue_job_script.py`，這裡將示範兩種下載方式，網址如下。
 
     ```html
     # glue_job_script.py
