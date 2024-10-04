@@ -1,13 +1,6 @@
 # Updating Dynamic Data in Place
 
 
-### 任務 4：配置並運行 AWS Glue 作業
-AWS Glue 提供運行 ETL 作業的能力，用於在各數據源之間進行數據複製。
-
-#### 步驟：
-1. 使用 CloudFormation 創建 Glue 作業堆疊。
-2. 開啟 AWS Glue 控制台，運行名為 `Hudi_Streaming_Job` 的作業，並檢查其運行狀態。
-
 ### 任務 5：使用 KDG 向 Kinesis 發送數據
 你將使用 Kinesis Data Generator（KDG）工具生成並模擬 IoT 設備的隨機數據，並發送至 Kinesis。
 
