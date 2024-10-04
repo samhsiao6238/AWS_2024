@@ -24,6 +24,8 @@
     sudo chown hadoop -R /var/log/hive
     ```
 
+    ![](images/img_44.png)
+
 <br>
 
 4. 在 `/var/log/hive/user/` 目錄下創建一個名為 `hadoop` 的新目錄，這就是為 Hive 建立的日誌記錄目錄。
