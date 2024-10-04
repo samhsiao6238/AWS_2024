@@ -39,7 +39,7 @@
 
 ## 配置 Hive
 
-1. 取得要儲存 Hive 輸出的 S3 Bucket 的名稱，以下查詢的結果是 `hive-output-oqfb0qte`。
+1. 取得要儲存 Hive 輸出的 S3 Bucket 的名稱；以下查詢的結果是 `hive-output-oqfb0qte`。
 
     ```bash
     aws s3 ls /
