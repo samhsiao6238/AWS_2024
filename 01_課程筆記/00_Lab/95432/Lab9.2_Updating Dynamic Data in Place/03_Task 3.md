@@ -10,13 +10,13 @@ _特別注意，這裡不是搜尋服務進入 `Cloud9` 主控台，請依以下
 
 <br>
 
-1. 之前在 Stacks 中記錄的文件中，包含一組 Key 為 `Cloud9URL` 的數據，複製 Value。
+1. 之前進入 `CloudFormation` 的 `Stacks` 時查看了 `Outputs`，可使用記錄下的內文或展開未關閉的網頁；其中有一組 Key 是 `Cloud9URL`，點擊 Value 中的連結就會進入 Cloud9 中預設的 IDE。
 
     ![](images/img_17.png)
 
 <br>
 
-2. 將這段值 `https://us-east-1.console.aws.amazon.com/cloud9/ide/6a8832e56f854979896d413542c3d99e` 貼到瀏覽器開啟，這會啟動 Cloud9 中預設的 IDE。
+2. 若是複製並保存的網址 `https://us-east-1.console.aws.amazon.com/cloud9/ide/6a8832e56f854979896d413542c3d99e`，可貼到瀏覽器開啟，同樣這會啟動 Cloud9 中預設的 IDE。
 
 <br>
 
