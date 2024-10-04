@@ -54,7 +54,13 @@ _AWS Glue 提供運行 ETL 作業的能力，用於在各數據源之間進行�
 
 <br>
 
-9. 可返回清單中查看，當前顯示 `CREATE_IN_PROGRESS`；稍作等待，完成時顯示 `CREATE_COMPLETE`。
+9. 在當前 `create-glue-job` 的 `Events` 中顯示 `CREATE_IN_PROGRESS`。
+
+    ![](images/img_59.png)
+
+<br>
+
+10. 可返回 Stacks 清單中查看，當前顯示 `CREATE_IN_PROGRESS`；稍作等待，完成時顯示 `CREATE_COMPLETE`。
 
     ![](images/img_34.png)
 
