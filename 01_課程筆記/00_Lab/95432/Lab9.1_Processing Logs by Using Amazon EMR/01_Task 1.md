@@ -62,13 +62,13 @@ _使用 Amazon EMR 處理日誌_
 
 <br>
 
-5. 選取 `Lab VPC`。
+5. 選取 `Lab VPC`，然後點擊 `Choose`。
 
     ![](images/img_10.png)
 
 <br>
 
-6. `Subnet` 同樣點擊 `Browse` 之後選取 `Lab subnet`。
+6. `Subnet` 預設已經是 `Lab subnet`。
 
     ![](images/img_11.png)
 
@@ -92,13 +92,13 @@ _使用 Amazon EMR 處理日誌_
 
 <br>
 
-10. 在 `Amazon EC2 key pair for SSH to the cluster` 部分，從下拉選單中選取預設的 `vockey`；稍後會下載這個密鑰對文件 `labsuser.pem`。
+10. 展開 `Security configuration and EC2 key pair Info`，在 `Amazon EC2 key pair for SSH to the cluster` 部分，從下拉選單中選取預設的 `vockey`；稍後會下載這個密鑰對文件 `labsuser.pem`。
 
     ![](images/img_15.png)
 
 <br>
 
-11. 在 `Amazon EMR service role` 部分，使用預設的 `Choose an existing service role` 選項，然後在 `Service role` 中從下拉選單中選取 `EMR_DefaultRole`。
+11. 展開 `Identity and Access Management (IAM) roles`，在 `Amazon EMR service role` 部分，使用預設的 `Choose an existing service role` 選項，然後在 `Service role` 中從下拉選單中選取 `EMR_DefaultRole`。
 
     ![](images/img_16.png)
 
@@ -118,7 +118,7 @@ _使用 Amazon EMR 處理日誌_
 
 ## 確認安全群組
 
-1. 展開 `EC2 security groups`，點擊其中的安全群組；這會開啟新的瀏覽頁籤並進入 `EC2` 主控台。
+1. 滑動到最下方並展開 `EC2 security groups (firewall)`，點擊 `Primary node` 中的安全群組；這會開啟新的瀏覽頁籤並進入 `EC2` 主控台。
 
     ![](images/img_19.png)
 
