@@ -67,13 +67,37 @@ _使用 Hive 來查詢 `joined_impressions` 表中的數據，以分析哪些展
 
 <br>
 
-## 補充
+## 總結
 
-1. 通過這些查詢可深入了解哪些廣告最受歡迎，哪些網站帶來了最多的用戶點擊。
+1. 讓 Hive CLI 顯示查詢結果的欄位名稱，這讓查看結果時能清楚辨識每個欄位的內容，方便分析。
+
+```bash
+set hive.cli.print.header=true;
+```
 
 <br>
 
-2. 數據被存儲在 S3 中，未來可再次建立集群來連接到這些數據進行進一步分析。
+2. 從 `joined_impressions` 表中返回前 10 行數據，檢查數據是否成功寫入表中，並確認其結構。
+
+```bash
+SELECT * FROM joined_impressions LIMIT 10;
+```
+
+<br>
+
+3. 統計 `joined_impressions` 表中每個廣告的點擊次數，並顯示點擊次數最多的前 10 個廣告，提供對哪些廣告表現最佳的洞察。
+
+```bash
+SELECT adid, count(*) AS hits FROM joined_impressions...
+```
+
+<br>
+
+4. 使用 `hive -e` 命令從 Hive 外部執行查詢，結果被保存到 `/home/hadoop/result.txt` 文件中，這個查詢列出了哪些來源網站帶來了最多的點擊數。
+
+```bash
+hive -e "SELECT referrer, count(*) as hits ..."
+```
 
 <br>
 
