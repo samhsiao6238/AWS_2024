@@ -31,7 +31,7 @@
 
 ## 更新 `impressions` 表的 Hive 元數據以包含所有分區
 
-1. 執行以下命令來查看 `impressions` 表目前有多少個分區。
+1. 執行以下指令來查看 `impressions` 表目前有多少個分區。
 
     ```sql
     describe formatted impressions;
@@ -45,7 +45,7 @@
 
 <br>
 
-3. 執行命令設定 Hive 忽略路徑驗證；後續會運行 `MSCK REPAIR TABLE` 指令，屆時 Hive 會掃描外部存儲 `S3` 的路徑來搜尋符合 Hive 分區結構的資料，如果某些路徑不符合預期，預設會產生錯誤訊息，此指令設定 Hive 忽略這些檢查，允許繼續進行分區修復；特別注意，這個指令運行後不會有任何回傳。
+3. 執行指令設定 Hive 忽略路徑驗證；後續會運行 `MSCK REPAIR TABLE` 指令，屆時 Hive 會掃描外部存儲 `S3` 的路徑來搜尋符合 Hive 分區結構的資料，如果某些路徑不符合預期，預設會產生錯誤訊息，此指令設定 Hive 忽略這些檢查，允許繼續進行分區修復；特別注意，這個指令運行後不會有任何回傳。
 
     ```sql
     set hive.msck.path.validation=ignore;
@@ -53,7 +53,7 @@
 
 <br>
 
-4. 這個指令告訴 Hive 檢查指定的表 `impressions` 的資料路徑，並修復元數據中的分區資訊，如果表格存儲在外部資料來源如 `S3`，Hive 將掃描資料夾，並將找到的分區添加到表格的元數據中，從而允許查詢這些分區中的資料；特別注意，`MSCK REPAIR TABLE` 命令會掃描 `S3` 中的新分區，這些分區是在表建立後添加的，若發現分區，這些分區將被加入到表的元數據中，此命令是 AWS 版本 Hive 的擴展功能。
+4. 這個指令告訴 Hive 檢查指定的表 `impressions` 的資料路徑，並修復元數據中的分區資訊，如果表格存儲在外部資料來源如 `S3`，Hive 將掃描資料夾，並將找到的分區添加到表格的元數據中，從而允許查詢這些分區中的資料；特別注意，`MSCK REPAIR TABLE` 指令會掃描 `S3` 中的新分區，這些分區是在表建立後添加的，若發現分區，這些分區將被加入到表的元數據中，此指令是 AWS 版本 Hive 的擴展功能。
 
     ```sql
     MSCK REPAIR TABLE impressions;
@@ -61,13 +61,13 @@
 
 <br>
 
-5. 當命令完成後，輸出應類似如下。
+5. 當指令完成後，輸出應類似如下。
 
     ![](images/img_46.png)
 
 <br>
 
-6. 再次運行以下命令來確認分區數量，輸出應顯示表中現在包含 `241` 個分區。
+6. 再次運行以下指令來確認分區數量，輸出應顯示表中現在包含 `241` 個分區。
 
     ```sql
     describe formatted impressions;
@@ -83,7 +83,7 @@
 
 ## 建立另一個外部表並發現其分區
 
-1. 執行以下命令來建立一個名為 `clicks` 的外部表，並將其指向存儲在 Amazon S3 中的點擊流日誌數據。
+1. 執行以下指令來建立一個名為 `clicks` 的外部表，並將其指向存儲在 Amazon S3 中的點擊流日誌數據。
 
     ```sql
     CREATE EXTERNAL TABLE clicks (impressionId string, adId string)
@@ -93,21 +93,21 @@
     LOCATION '${SAMPLE}/tables/clicks';
     ```
 
+    ![](images/img_48.png)
+
 <br>
 
-2. 為了返回來自點擊流日誌數據的所有分區，執行以下命令，該命令會掃描 S3 中的點擊流數據，並將新發現的分區加載到 Hive 的元數據中。
+2. 執行以下指令返回來自點擊流日誌數據的所有分區，該指令會掃描 `S3` 中的點擊流數據，並將新發現的分區加載到 Hive 的元數據中；與 `impressions` 表類似，`clicks` 表引用的是存儲在 S3 中的日誌數據，並且只導入了部分字段，通過使用 `MSCK REPAIR TABLE` 指令，Hive 會自動搜尋並修復 S3 中的分區，將其加入元數據存儲中，以確保查詢時能夠正確訪問數據。
 
     ```sql
     MSCK REPAIR TABLE clicks;
     ```
 
-<br>
-
-3. 與 `impressions` 表類似，`clicks` 表引用的是存儲在 S3 中的日誌數據，並且只導入了部分字段，通過使用 `MSCK REPAIR TABLE` 命令，Hive 會自動搜尋並修復 S3 中的分區，將其加入元數據存儲中，以確保查詢時能夠正確訪問數據。
+    ![](images/img_49.png)
 
 <br>
 
-4. 驗證這兩個表現在存在。
+3. 驗證這兩個表現在存在。
 
     ```sql
     show tables;
@@ -115,7 +115,7 @@
 
 <br>
 
-5. 描述點擊表。
+4. 描述點擊表。
 
     ```sql
     describe formatted clicks;

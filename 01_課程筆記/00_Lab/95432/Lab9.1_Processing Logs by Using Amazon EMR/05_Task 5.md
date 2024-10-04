@@ -6,7 +6,7 @@ _通過將展示給用戶的廣告資料 `impressions 表` 與用戶選擇廣告
 
 ## 步驟
 
-1. 執行以下命令來建立外部表 `joined_impressions`；表 `joined_impressions` 定義了與 `impressions` 表相同的七個欄位，並增加了第八個欄位 `clicked`；特別注意，這個表還沒有任何數據，當數據被添加時，會存儲在 S3 的 `hive-output` 資料夾中。
+1. 執行以下指令來建立外部表 `joined_impressions`；表 `joined_impressions` 定義了與 `impressions` 表相同的七個欄位，並增加了第八個欄位 `clicked`；特別注意，這個表還沒有任何數據，當數據被添加時，會存儲在 S3 的 `hive-output` 資料夾中。
 
     ```sql
     CREATE EXTERNAL TABLE joined_impressions (
@@ -26,7 +26,7 @@ _通過將展示給用戶的廣告資料 `impressions 表` 與用戶選擇廣告
 
 <br>
 
-2. 執行以下命令來建立並插入資料。
+2. 執行以下指令來建立並插入資料。
 
     ```sql
     CREATE TABLE tmp_impressions (
@@ -71,7 +71,7 @@ _通過將展示給用戶的廣告資料 `impressions 表` 與用戶選擇廣告
 
 <br>
 
-4. 執行以下命令來將結果集寫入 `joined_impressions` 表。
+4. 執行以下指令來將結果集寫入 `joined_impressions` 表。
     ```sql
     INSERT OVERWRITE TABLE joined_impressions
     PARTITION (day='${DAY}', hour='${HOUR}')

@@ -28,7 +28,7 @@ _除了在控制台運行查詢，還可以使用 Amazon Redshift API、AWS SDK 
     aws redshift-data get-statement-result  --id <填入 ID> --region us-east-1
     ```
 
-    _實際命令_
+    _實際指令_
 
     ```bash
     aws redshift-data get-statement-result  --id bf44c7cc-bdba-4df6-a13a-9f34dac6c2f9 --region us-east-1

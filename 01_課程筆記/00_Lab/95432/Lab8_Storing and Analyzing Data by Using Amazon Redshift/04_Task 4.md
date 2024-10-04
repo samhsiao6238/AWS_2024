@@ -54,7 +54,7 @@ _回到 Redshift_
 
 <br>
 
-5. 運行以上命令後，`S3` 中的數據文件會被加載到 `Redshift` 的 `users` 表，Redshift 會使用指定的 IAM 角色來確保對 S3 的訪問權限。如果數據格式正確且權限設置無誤，users 表將會填充來自該文件的數據。。
+5. 運行以上指令後，`S3` 中的數據文件會被加載到 `Redshift` 的 `users` 表，Redshift 會使用指定的 IAM 角色來確保對 S3 的訪問權限。如果數據格式正確且權限設置無誤，users 表將會填充來自該文件的數據。。
 
     ![](images/img_44.png)
 

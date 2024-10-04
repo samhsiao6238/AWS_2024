@@ -35,13 +35,13 @@ _使用 Hive 來查詢 `joined_impressions` 表中的數據，以分析哪些展
 
 <br>
 
-4. 退出 Hive CLI 並執行以下命令查詢來自哪個網站的用戶點擊了最多的廣告。
+4. 退出 Hive CLI 並執行以下指令查詢來自哪個網站的用戶點擊了最多的廣告。
 
     ```bash
     hive -e "SELECT referrer, count(*) as hits FROM joined_impressions WHERE clicked = true GROUP BY referrer ORDER BY hits DESC LIMIT 10;" > /home/hadoop/result.txt
     ```
 
-    使用 `cat` 命令查看結果：
+    使用 `cat` 指令查看結果：
     ```bash
     cat /home/hadoop/result.txt
     ```
