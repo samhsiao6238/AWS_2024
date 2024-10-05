@@ -2,6 +2,14 @@
 
 <br>
 
+## 特別提醒
+
+1. 這個 Lab 啟動後一直呈現 `黃燈`，但點擊可以進入，若有其他異狀，將在各 Lab 筆記中作說明。
+
+    ![](images/img_11.png)
+
+<br>
+
 ## 說明
 
 1. 這個 Lab 探討如何處理和分析來自網頁伺服器的實時串流數據，並通過 `OpenSearch Dashboards` 進行數據可視化，將使用 `Amazon Kinesis Data Streams` 從 `EC2` 網頁伺服器收集訪問日誌，並通過 `AWS Lambda` 進行數據處理與增強，最後通過 `OpenSearch Service` 將數據索引，並在 `OpenSearch Dashboards` 上建立可視化報表來進行數據分析。
