@@ -6,7 +6,7 @@ _簡單回顧 EC2_
 
 ## 檢查 EC2
 
-1. 這個 Lab 有點奇怪，在登入頁面中的 `AWS` 會始終保持在黃色狀態；點擊 `AWS` 進入 Lab 環境。
+1. 這個 Lab 啟動相當耗時，務必確保登入頁面中的 `AWS` 呈現綠色再進入 Lab 環境。
 
     ![](images/img_21.png)
 
@@ -18,20 +18,25 @@ _簡單回顧 EC2_
 
 <br>
 
-
-3. 啟動完成會顯示運行中的實例數量，點擊 `Instances(running)` 進入。
+3. 過一陣子會先顯示 `1`，這時會啟動一個名稱前綴 `aws-cloud9-Cloud9` 的實例，請繼續等候。
 
     ![](images/img_01.png)
 
 <br>
 
-1. 看到其中名為 `OpenSearch Demo` 的實例，點擊其 ID 進入。
+4. 完全啟動後會顯示 `2` 個運行中的實例，點擊 `Instances(running)` 進入。
+
+    ![](images/img_22.png)
+
+<br>
+
+5. 點擊其中名為 `OpenSearch Demo` 的 ID 進入。
 
     ![](images/img_02.png)
 
 <br>
 
-3. 複製這個實例的 `Public IPv4 address` 備用。
+6. 複製這個實例的 `Public IPv4 address` 備用。
 
     ![](images/img_06.png)
 
