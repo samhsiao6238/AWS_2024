@@ -64,6 +64,10 @@ _使用 Kinesis Data Firehose、OpenSearch Service 和 OpenSearch Dashboards 進
 
 ## 完成
 
+_Submit & End Lab_
+
+<br>
+
 ![](images/img_77.png)
 
 <br>
