@@ -28,7 +28,7 @@
 
 <br>
 
-4. 在 `/var/log/hive/user/` 目錄下創建一個名為 `hadoop` 的新目錄，這就是為 Hive 建立的日誌記錄目錄。
+4. 在 `/var/log/hive/user/` 目錄下建立一個名為 `hadoop` 的新目錄，這就是為 Hive 建立的日誌記錄目錄。
 
     ```bash
     

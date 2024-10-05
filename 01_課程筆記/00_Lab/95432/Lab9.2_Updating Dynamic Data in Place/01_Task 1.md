@@ -18,7 +18,7 @@ _檢查 Lab 環境，並記錄初始配置的詳細信息。_
 
 <br>
 
-## CloudFormation 創建的資源
+## CloudFormation 建立的資源
 
 1. S3 Bucket：用於存儲 AWS Glue 和 Athena 的數據。
 
