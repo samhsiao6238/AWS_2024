@@ -56,7 +56,7 @@ _簡單回顧 EC2_
 
 <br>
 
-3. 可點擊第一個 `OsDemoWebserverIAMPolicy1` 進入查看，這會自動開啟新的瀏覽器頁面。
+3. 可點擊第一個 `OsDemoWebserverIAMPolicy1` 進入查看，這會自動開啟新的瀏覽器頁面；特別注意，雖然展開政策就可以查看內容，但若是要通過 Lab，必須點擊進入查看。
 
     ![](images/img_09.png)
 
