@@ -28,7 +28,7 @@
 
 <br>
 
-5. 另外，目標被指定為 `Amazon OpenSearch Service`，傳輸流會將負載傳輸到 Amazon OpenSearch Service，以便稍後分析日誌。
+5. 另外，目標被指定為 `Amazon OpenSearch Service`，這表示傳輸流會將負載傳輸到 `Amazon OpenSearch Service`，以便稍後分析日誌。
 
     ![](images/img_16.png)
 
