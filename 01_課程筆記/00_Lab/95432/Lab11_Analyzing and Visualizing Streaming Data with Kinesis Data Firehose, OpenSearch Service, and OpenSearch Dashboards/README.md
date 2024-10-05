@@ -1,4 +1,6 @@
-# Lab 介紹：使用 Kinesis Data Firehose、OpenSearch Service 和 OpenSearch Dashboards 進行串流數據分析與可視化
+# Lab 介紹
+
+_使用 Kinesis Data Firehose、OpenSearch Service 和 OpenSearch Dashboards 進行串流數據分析與可視化_
 
 <br>
 
@@ -57,6 +59,12 @@
 <br>
 
 5. 使用 OpenSearch Dashboards 建立視覺化，如展示操作系統和瀏覽器統計的圓餅圖，以及展示用戶如何到達產品頁面的熱圖。
+
+<br>
+
+## 完成
+
+![](images/img_77.png)
 
 <br>
 
