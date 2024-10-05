@@ -6,13 +6,26 @@ _簡單回顧 EC2_
 
 ## 檢查 EC2
 
-1. 進入 EC2，點擊 Resources 中的 `Instances(running)`，在這個 Lab 會有兩個實例。
+1. 這個 Lab 有點奇怪，在登入頁面中的 `AWS` 會始終保持在黃色狀態；點擊 `AWS` 進入 Lab 環境。
+
+    ![](images/img_21.png)
+
+<br>
+
+2. 首先進入 EC2，可查看ㄧ下 Resources，假如還沒準備好 `Instances(running)` 數量會顯示 `0`，稍等片刻。
+
+    ![](images/img_20.png)
+
+<br>
+
+
+3. 啟動完成會顯示運行中的實例數量，點擊 `Instances(running)` 進入。
 
     ![](images/img_01.png)
 
 <br>
 
-2. 看到其中名為 `OpenSearch Demo` 的實例，點擊其 ID 進入。
+1. 看到其中名為 `OpenSearch Demo` 的實例，點擊其 ID 進入。
 
     ![](images/img_02.png)
 
