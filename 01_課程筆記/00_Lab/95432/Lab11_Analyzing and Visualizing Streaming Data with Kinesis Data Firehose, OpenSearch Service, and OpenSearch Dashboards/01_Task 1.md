@@ -44,25 +44,25 @@ _簡單回顧 EC2_
 
 ## 查看安全設定
 
-1. 滑動到實例下方，切換到 `Security` 頁籤，並點擊 `IAM Role` 下方 `OsDemoWebserverIAMRole ` 的連結。
+1. 滑動到實例下方，切換到 `Security` 頁籤，按住 `command` 並點擊 `IAM Role` 下方 `OsDemoWebserverIAMRole ` 的連結，這會在新頁籤開啟 IAM 主控台中的 Role。
 
     ![](images/img_07.png)
 
 <br>
 
-2. 這個角色下有三個 Policy，可點擊進入查看內容。
+2. 這個角色下有三個 Policy。
 
     ![](images/img_08.png)
 
 <br>
 
-3. 點擊 `OsDemoWebserverIAMPolicy1` 進入查看。
+3. 可點擊第一個 `OsDemoWebserverIAMPolicy1` 進入查看，這會自動開啟新的瀏覽器頁面。
 
     ![](images/img_09.png)
 
 <br>
 
-4. 在 `JSON` 頁籤中，可從 JSON 文件查看權限設置；這個角色擁有對指定的 S3 Bucket 及其所有內部對象進行所有操作的 `完整權限（s3:*）`，包括但不限於 `讀取、寫入、刪除、列出` 等操作。
+4. 在 `JSON` 頁籤中，可從 JSON 文件查看權限設置；這個角色擁有對指定 S3 Bucket 及其所有內部對象進行所有操作的 `完整權限（s3:*）`，包括但不限於 `讀取、寫入、刪除、列出` 等操作。
 
     ![](images/img_10.png)
 
