@@ -34,7 +34,7 @@
 
 <br>
 
-6. 下方的 Monitoring 頁籤顯示監控已啟用並產生傳輸流指標。
+6. 下方的 `Monitoring` 頁籤顯示監控已啟用並產生傳輸流指標。
 
     ![](images/img_17.png)
 
@@ -46,7 +46,7 @@
 
 <br>
 
-8. 點擊進入可查看 Lambda 函數更多細節。
+8. 點擊函數 `os-demo-lambda-function ` 會開啟新的瀏覽頁面進入 Lambda，可進一步查看更多細節。
 
     ![](images/img_19.png)
 
