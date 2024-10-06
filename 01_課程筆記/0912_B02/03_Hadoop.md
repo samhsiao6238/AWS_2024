@@ -32,7 +32,7 @@ _是個由 Apache Software Foundation 開發的分散式框架，專門用來儲
 
 <br>
 
-4. S3 整合：可以將 S3 用作 Hadoop 分散式文件系統（HDFS）的替代品，用來存儲和讀取數據。
+4. S3 整合：可以將 S3 用作 Hadoop 分散式文件系統（HDFS）的替代品，用來儲存和讀取數據。
 
 <br>
 

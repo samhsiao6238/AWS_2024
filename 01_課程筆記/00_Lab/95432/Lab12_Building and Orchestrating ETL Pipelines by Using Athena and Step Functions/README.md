@@ -14,7 +14,7 @@ _Building and Orchestrating ETL Pipelines by Using Athena and Step Functions_
 
 <br>
 
-3. `AWS Glue Data Catalog` 提供持久的元數據存儲，包括表定義、結構和其他控制信息，這些信息將支援 ETL 管道的建構。`Athena` 是一個無伺服器的互動式查詢服務，通過標準 SQL 簡化對 `Amazon S3` 中數據的分析。
+3. `AWS Glue Data Catalog` 提供持久的元數據儲存，包括表定義、結構和其他控制信息，這些信息將支援 ETL 管道的建構。`Athena` 是一個無伺服器的互動式查詢服務，通過標準 SQL 簡化對 `Amazon S3` 中數據的分析。
 
 <br>
 
@@ -30,7 +30,7 @@ _Building and Orchestrating ETL Pipelines by Using Athena and Step Functions_
 
 <br>
 
-2. 本 Lab 的目標是研究紐約市的出租車數據，數據的列名已知，並已為數據導入提供了視圖和 SQL 命令。研究目標是分析 2020 年初紐約市出租車的使用模式。數據將按月份進行分區，並以 Parquet 格式存儲，並使用 Snappy 壓縮技術以提高效能和降低存儲成本。由於這是一個 `概念驗證`，因此可使用硬編碼值來處理列名、分區、視圖和 `S3 Bucket` 的相關資訊。
+2. 本 Lab 的目標是研究紐約市的出租車數據，數據的列名已知，並已為數據導入提供了視圖和 SQL 命令。研究目標是分析 2020 年初紐約市出租車的使用模式。數據將按月份進行分區，並以 Parquet 格式儲存，並使用 Snappy 壓縮技術以提高效能和降低儲存成本。由於這是一個 `概念驗證`，因此可使用硬編碼值來處理列名、分區、視圖和 `S3 Bucket` 的相關資訊。
 
 <br>
 

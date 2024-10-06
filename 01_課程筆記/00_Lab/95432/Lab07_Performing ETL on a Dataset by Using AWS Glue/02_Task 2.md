@@ -10,7 +10,7 @@ _已經建立了 `Data Catalog`，可以進一步使用 Athena 來查詢數據_
 
 <br>
 
-1. 配置一個 S3 Bucket來存儲 Athena 查詢結果。
+1. 配置一個 S3 Bucket來儲存 Athena 查詢結果。
 
 <br>
 
@@ -26,7 +26,7 @@ _已經建立了 `Data Catalog`，可以進一步使用 Athena 來查詢數據_
 
 <br>
 
-## 配置 S3 Bucket來存儲 Athena 查詢結果
+## 配置 S3 Bucket來儲存 Athena 查詢結果
 
 1. 在左側欄中的 `atabases` 下點擊 `Tables`；然後點擊進入 `by_year`。
 
@@ -94,7 +94,7 @@ _已經建立了 `Data Catalog`，可以進一步使用 Athena 來查詢數據_
 
 ## 為 1950 年之後的數據建立表格
 
-1. 首先，需要檢索預設建立的存儲數據的 S3 Bucket 名稱；搜尋並進入 `S3` 服務。
+1. 首先，需要檢索預設建立的儲存數據的 S3 Bucket 名稱；搜尋並進入 `S3` 服務。
 
     ![](images/img_41.png)
 

@@ -86,7 +86,7 @@ _使用 Athena 檢查表架構，並運行查詢來分析數據_
 
 <br>
 
-2. 每次查詢的結果都不一樣是因為 `Kinesis Data Generator (KDG)` 每秒會生成並發送一組新的隨機數據到 `Kinesis` 資料流中，`AWS Glue` 作業會捕捉這些數據變更，並使用 `Apache Hudi` 連接器將新的數據即時插入或更新到存儲在 `S3` 資料湖中的 `Hudi` 表中；因此，每次在 `Athena` 中查詢 `hudi_demo_table` 時，返回的結果都會反映最新的數據變更，這就是為什麼每次查詢的結果都會不同。
+2. 每次查詢的結果都不一樣是因為 `Kinesis Data Generator (KDG)` 每秒會生成並發送一組新的隨機數據到 `Kinesis` 資料流中，`AWS Glue` 作業會捕捉這些數據變更，並使用 `Apache Hudi` 連接器將新的數據即時插入或更新到儲存在 `S3` 資料湖中的 `Hudi` 表中；因此，每次在 `Athena` 中查詢 `hudi_demo_table` 時，返回的結果都會反映最新的數據變更，這就是為什麼每次查詢的結果都會不同。
 
     ![](images/img_54.png)
 

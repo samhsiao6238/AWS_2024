@@ -34,7 +34,7 @@ _觀察預設 Role 是否具備適當權限訪問 Redshift_
 
 <br>
 
-5. 可對 Policy 進性展開觀察，例如 `AmazonS3ReadOnlyAccess`；該 IAM 策略主要用於授權用戶對 `Amazon S3` 和 `S3 Object Lambda` 資源進行讀取和列出操作，適用於需要查看和檢索 S3 中存儲的數據但不需要修改權限的場景。
+5. 可對 Policy 進性展開觀察，例如 `AmazonS3ReadOnlyAccess`；該 IAM 策略主要用於授權用戶對 `Amazon S3` 和 `S3 Object Lambda` 資源進行讀取和列出操作，適用於需要查看和檢索 S3 中儲存的數據但不需要修改權限的場景。
 
     ![](images/img_26.png)
 

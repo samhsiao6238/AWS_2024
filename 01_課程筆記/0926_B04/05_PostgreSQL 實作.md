@@ -68,7 +68,7 @@ _以下說明在 RDS 上建立 PostgreSQL 引擎，以及進行必要的互動�
 
 <br>
 
-2. Storage 部分，type 選擇標準存儲類型（`General Purpose SSD(gp2)`），Allocated storage 使用預設值 `20` GiB。
+2. Storage 部分，type 選擇標準儲存類型（`General Purpose SSD(gp2)`），Allocated storage 使用預設值 `20` GiB。
 
     ![](images/img_61.png)
 

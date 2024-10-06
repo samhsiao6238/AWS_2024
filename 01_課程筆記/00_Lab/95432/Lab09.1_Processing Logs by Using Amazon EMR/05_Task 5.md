@@ -6,7 +6,7 @@ _通過將展示給用戶的廣告資料 `impressions 表` 與用戶選擇廣告
 
 ## 步驟
 
-1. 執行以下指令來建立外部表 `joined_impressions`；表 `joined_impressions` 定義了與 `impressions` 表相同的七個欄位，並增加了第八個欄位 `clicked`；特別注意，這個表還沒有任何數據，當數據被添加時，會存儲在 S3 的 `hive-output` 資料夾中。
+1. 執行以下指令來建立外部表 `joined_impressions`；表 `joined_impressions` 定義了與 `impressions` 表相同的七個欄位，並增加了第八個欄位 `clicked`；特別注意，這個表還沒有任何數據，當數據被添加時，會儲存在 S3 的 `hive-output` 資料夾中。
 
     ```sql
     CREATE EXTERNAL TABLE joined_impressions (
