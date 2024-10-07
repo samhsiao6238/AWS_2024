@@ -6,7 +6,7 @@ _Building and Orchestrating ETL Pipelines by Using Athena and Step Functions_
 
 ## 說明
 
-1. 在此 Lab 中，將使用 `AWS Step Functions` 建立一個包含 `Amazon S3`、`AWS Glue Data Catalog` 和 `Amazon Athena` 的 `ETL`（Extract、Transform、Load）管道來處理大規模數據集。
+1. 在此 Lab 中，將使用 `Step Functions` 建立一個包含 `S3`、`Glue Data Catalog`、`Athena` 的 `ETL（Extract、Transform、Load）` 管道來處理大規模數據集。
 
 <br>
 
