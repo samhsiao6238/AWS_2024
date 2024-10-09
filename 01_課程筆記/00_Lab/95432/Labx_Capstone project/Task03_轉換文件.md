@@ -82,7 +82,7 @@ _進入 Cloud9_
 
 <br>
 
-6. 主要差異總結在 `SAU-EEZ-242-v48-0` 中的 `fish_name` 和 `country` 需要對應到其他數據集中的 `common_name` 和 `fishing_entity` 欄位，這是主要不匹配的地方；`SAU-EEZ-242-v48-0` 也包含一些獨有的欄位，如 `data_layer` 和 `uncertainty_score`，這些欄位在其他數據集中並未出現；`SAU-HighSeas-71-v48-0` 比 `SAU-GLOBAL-1-v48-0` 提供了更多關於區域和魚種的分類信息；這些欄位的差異提示了需要合併或轉換某些欄位來對齊不同文件的結構。
+6. 主要差異集中在 `SAU-EEZ-242-v48-0` 中的 `fish_name` 和 `country` 欄位，這兩個欄位分別應對應到其他數據集中的 `common_name` 和 `fishing_entity` 欄位，這是欄位名稱的主要不匹配部分。此外，`SAU-EEZ-242-v48-0` 也包含一些在其他數據集中不存在的獨有欄位，如 `data_layer` 和 `uncertainty_score`。與此同時，`SAU-HighSeas-71-v48-0` 與 `SAU-GLOBAL-1-v48-0` 相比，提供了更多與區域和魚種相關的分類信息，如 `area_name` 和 `common_name` 欄位。這些欄位的差異顯示在合併這些數據集時，可能需要進行欄位名稱的轉換或欄位的對齊，尤其是在處理特定的魚種名稱和國家名稱時，需要進行相應的欄位映射。
 
 <br>
 
