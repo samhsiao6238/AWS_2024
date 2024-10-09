@@ -1,0 +1,238 @@
+# Task 1：配置開發環境
+
+<br>
+
+## 觀察 CapstoneGlueRole 角色
+
+1. 進入 IAM，在 Roles 中搜尋預先建立的角色 `CapstoneGlueRole`，並點擊查看詳細信息。
+
+    ![](images/img_01.png)
+
+<br>
+
+2. 在 Permissions 中有三個 Policy，這三個都是 AWS 預設的 Policy，`AmazonAthenaFullAccess` 允許對 Athena 的完全存取權限，包含查詢、檢視及管理資料集等操作；`AmazonS3FullAccess` 允許對 Amazon S3 儲存桶的完全存取權限，包含讀取、寫入、刪除檔案等操作；`AWSGlueServiceRole` 提供 AWS Glue 服務進行爬網、ETL 操作時所需的執行角色和權限。
+
+    ![](images/img_02.png)
+
+<br>
+
+3. 在 `Trust relationship` 部分，是指定義哪些實體可以被視為一個特定的 IAM 角色，指定的信任實體將能夠以該角色的身份運行操作；以下這個信任關係允許 AWS Glue 服務在需要的時候，使用此角色執行爬網、ETL 等操作。
+
+    ```json
+    {
+        "Version": "2012-10-17",
+        "Statement": [
+            {
+                "Effect": "Allow",
+                "Principal": {
+                    "Service": "glue.amazonaws.com"
+                },
+                "Action": "sts:AssumeRole"
+            }
+        ]
+    }
+    ```
+
+<br>
+
+## 進入 Cloud9
+
+_建立開發環境_
+
+<br>
+
+1. 建立新環境。
+
+    ![](images/img_03.png)
+
+<br>
+
+2. 設置環境名稱為 `CapstoneIDE`，其餘使用預設，包含選擇建立新的 EC2 實例、使用 t2.micro 型號實例。
+
+    ![](images/img_04.png)
+
+<br>
+
+3. 在 Network settings 中，選擇 `Secure Shell(SSH)`。
+
+    ![](images/img_07.png)
+
+<br>
+
+4. 展開 VPC settings，分別選取 Capstone VPC、Capstone public subnet。
+
+    ![](images/img_05.png)
+
+<br>
+
+5. 然後點擊右下角的 `Create`。
+
+    ![](images/img_06.png)
+
+<br>
+
+## 進入 S3
+
+_在 `us-east-1` 區域中建立兩個 S3 Bucket_
+
+<br>
+
+1. 第一個命名為 `data-source-99991`；`99991` 可以是隨機數字，其餘使用預設，然後點擊右下角 `Create bucket`。
+
+    ![](images/img_08.png)
+
+<br>
+
+2. 比照前一步驟模式，第二個命名為 `query-results-99991`。
+
+    ![](images/img_09.png)
+
+<br>
+
+3. 完成時清單中有三個 Bucket。
+
+    ![](images/img_10.png)
+
+<br>
+
+## 進入 Cloud9
+
+_下載三個 .csv 源數據文件_
+
+<br>
+
+1. 進入 Cloud9 點擊 `Open` 開啟 IDE，在終端中運行以下命令，下載所需的 CSV 檔案；這裡加上 `&&` 只是懶得再逐一按 `ENTER`，不是必須的。
+
+    ```bash
+    wget https://aws-tc-largeobjects.s3.us-west-2.amazonaws.com/CUR-TF-200-ACDENG-1-91570/lab-capstone/s3/SAU-GLOBAL-1-v48-0.csv && 
+    wget https://aws-tc-largeobjects.s3.us-west-2.amazonaws.com/CUR-TF-200-ACDENG-1-91570/lab-capstone/s3/SAU-HighSeas-71-v48-0.csv && 
+    wget https://aws-tc-largeobjects.s3.us-west-2.amazonaws.com/CUR-TF-200-ACDENG-1-91570/lab-capstone/s3/SAU-EEZ-242-v48-0.csv
+    ```
+
+    ![](images/img_11.png)
+
+<br>
+
+2. 使用以下命令查看 `SAU-GLOBAL-1-v48-0.csv` 文件的列標題和前五行數據。
+
+    ```bash
+    head -6 SAU-GLOBAL-1-v48-0.csv
+    ```
+
+    ![](images/img_12.png)
+
+<br>
+
+## 數據集簡介
+
+1. 數據集包含 561,675 行，數據的格式是每行包括 `捕魚年份`、`捕魚國家（fishing_entity）`、`捕魚噸數` 和 `魚的價值`，其中價值是以 `2010 年`、`美元` 計算；這些數據涵蓋了 `1950` 年至 `2018` 年之間全球高海域的捕魚數據，不包括任何國家 `專屬經濟區（EEZ）內` 的捕魚活動。
+
+<br>
+
+2. 可以使用以下命令確認行數。
+
+    ```bash
+    wc -l SAU-GLOBAL-1-v48-0.csv
+    ```
+
+    ![](images/img_13.png)
+
+<br>
+
+## 轉換數據格式
+
+_將 CSV 文件轉換為 Parquet 格式_
+
+<br>
+
+1. 安裝所需工具。
+
+    ```bash
+    sudo pip3 install pandas pyarrow fastparquet
+    ```
+
+<br>
+
+2. 依照官方指引安裝會出現以下錯誤。
+
+    ![](images/img_14.png)
+
+<br>
+
+3. 先建立虛擬環境。
+
+    ```bash
+    python3 -m venv envCapstone
+    ```
+
+<br>
+
+4. 啟用虛擬環境。
+
+    ```bash
+    source envCapstone/bin/activate
+    ```
+
+<br>
+
+5. 重新安裝套件。
+
+    ```bash
+    pip install pandas pyarrow fastparquet
+    ```
+
+<br>
+
+6. 開啟 Python 交互式終端。
+
+    ```bash
+    python3
+    ```
+
+<br>
+
+7. 使用以下 Python 代碼將 CSV 文件轉換為 Parquet 格式。
+
+    ```bash
+    import pandas as pd
+    df = pd.read_csv('SAU-GLOBAL-1-v48-0.csv')
+    df.to_parquet('SAU-GLOBAL-1-v48-0.parquet')
+    ```
+
+<br>
+
+8. 退出交互式終端。
+
+    ```bash
+    exit()
+    ```
+
+<br>
+
+9. 關閉虛擬環境。
+
+    ```bash
+    deactivate
+    ```
+
+<br>
+
+## 上傳文件到 S3 Bucket 
+
+1. 上傳 SAU-GLOBAL-1-v48-0.parquet 文件至 data-source Bucket。
+
+    ```bash
+    aws s3 cp SAU-GLOBAL-1-v48-0.parquet s3://data-source-99991
+    ```
+
+<br>
+
+2. 可前往 S3 查看。
+
+    ![](images/img_15.png)
+
+<br>
+
+___
+
+_END_
