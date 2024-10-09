@@ -58,24 +58,19 @@ _進入 Cloud9_
     columns_highseas = df_highseas.columns.tolist()
     columns_eez = df_eez.columns.tolist()
 
-    # 整理成表格格式進行比較
-    comparison_data = {
-        "SAU-GLOBAL-1-v48-0": columns_global,
-        "SAU-HighSeas-71-v48-0": columns_highseas,
-        "SAU-EEZ-242-v48-0": columns_eez
-    }
+    # 創建一個欄位名稱的集合，以確保所有唯一的欄位名稱都會被比較
+    all_columns = sorted(set(columns_global + columns_highseas + columns_eez))
 
-    # 將欄位名稱整理成相同的行數，空缺部分補上空字串
-    max_len = max(len(columns_global), len(columns_highseas), len(columns_eez))
-    columns_global += [""] * (max_len - len(columns_global))
-    columns_highseas += [""] * (max_len - len(columns_highseas))
-    columns_eez += [""] * (max_len - len(columns_eez))
+    # 將每個欄位的名稱與對應的 CSV 文件進行匹配，沒有匹配的補空字串
+    global_match = [col if col in columns_global else "" for col in all_columns]
+    highseas_match = [col if col in columns_highseas else "" for col in all_columns]
+    eez_match = [col if col in columns_eez else "" for col in all_columns]
 
-    # 將結果表格化並輸出
-    table = list(zip(columns_global, columns_highseas, columns_eez))
+    # 構建表格進行展示
+    table = list(zip(global_match, highseas_match, eez_match))
     headers = ["SAU-GLOBAL-1-v48-0", "SAU-HighSeas-71-v48-0", "SAU-EEZ-242-v48-0"]
 
-    # 使用 tabulate 模組進行排版
+    # 使用 tabulate 進行表格化輸出
     print(tabulate(table, headers=headers, tablefmt="grid"))
     ```
 
