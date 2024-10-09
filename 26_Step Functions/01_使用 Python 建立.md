@@ -20,10 +20,10 @@
     import boto3
     import json
 
-    # 創建 Step Functions 客戶端
+    # 建立 Step Functions 客戶端
     client = boto3.client('stepfunctions')
 
-    # 定義 State Machine ARN，這是你在 Step Functions 中創建的狀態機 ARN
+    # 定義 State Machine ARN，這是你在 Step Functions 中建立的狀態機 ARN
     state_machine_arn = 'arn:aws:states:<region>:<account-id>:stateMachine:<state-machine-name>'
 
     # 定義輸入數據（根據你的狀態機輸入需求定義）
