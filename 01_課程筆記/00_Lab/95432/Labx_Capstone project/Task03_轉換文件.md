@@ -22,171 +22,211 @@ _細節之後補充_
 
 1. 建立文件備份。
 
-```bash
-cp SAU-EEZ-242-v48-0.csv SAU-EEZ-242-v48-0-old.csv
-```
+    ```bash
+    cp SAU-EEZ-242-v48-0.csv SAU-EEZ-242-v48-0-old.csv
+    ```
+
+<br>
 
 2. 啟動虛擬環境。
 
-```bash
-source envCapstone/bin/activate
-```
+    ```bash
+    source envCapstone/bin/activate
+    ```
+
+<br>
 
 3. 開啟 python 互動界面。
-```bash
-python3
-```
+
+    ```bash
+    python3
+    ```
+
+<br>
 
 4. 執行以下腳本完成欄位名修正及文件轉換。
 
-```python
-import pandas as pd
+    ```python
+    import pandas as pd
 
-# 加載備份文件
-data_location = 'SAU-EEZ-242-v48-0-old.csv'
-df = pd.read_csv(data_location)
+    # 加載備份文件
+    data_location = 'SAU-EEZ-242-v48-0-old.csv'
+    df = pd.read_csv(data_location)
 
-# 查看現有的欄位名
-print(df.head(1))
+    # 查看現有的欄位名
+    print(df.head(1))
 
-# 修改欄位名，將 fish_name 和 country 欄位名修正為 common_name 和 fishing_entity
-df.rename(columns = {"fish_name": "common_name", "country": "fishing_entity"}, inplace = True)
+    # 修改欄位名，將 fish_name 和 country 欄位名修正為 common_name 和 fishing_entity
+    df.rename(columns = {"fish_name": "common_name", "country": "fishing_entity"}, inplace = True)
 
-# 確認欄位名已經修正
-print(df.head(1))
+    # 確認欄位名已經修正
+    print(df.head(1))
 
-# 保存 CSV 及 Parquet 格式文件
-df.to_csv('SAU-EEZ-242-v48-0.csv', header=True, index=False)
-df.to_parquet('SAU-EEZ-242-v48-0.parquet')
-```
+    # 保存 CSV 及 Parquet 格式文件
+    df.to_csv('SAU-EEZ-242-v48-0.csv', header=True, index=False)
+    df.to_parquet('SAU-EEZ-242-v48-0.parquet')
+    ```
+
+<br>
 
 5. 退出 Python 環境。
-```bash
-exit()
-```
+
+    ```bash
+    exit()
+    ```
+
+<br>
 
 6. 結束虛擬環境。
-```bash
-deactivate
-```
+
+    ```bash
+    deactivate
+    ```
+
+<br>
 
 ## 上傳轉換後的文件至 Amazon S3 Bucket
 
 1. 將生成的 `SAU-EEZ-242-v48-0.parquet` 文件上傳至先前建立的 S3 Bucket。
 
-```bash
-aws s3 cp SAU-EEZ-242-v48-0.parquet s3://data-source-99991
-```
+    ```bash
+    aws s3 cp SAU-EEZ-242-v48-0.parquet s3://data-source-99991
+    ```
+
+<br>
 
 2. 假如要使用 Boto3。
 
-```python
-import boto3
+    ```python
+    import boto3
 
-# 初始化 S3 客戶端
-s3 = boto3.client('s3')
+    # 初始化 S3 客戶端
+    s3 = boto3.client('s3')
 
-# 設定桶名稱和文件路徑
-bucket_name = 'data-source-99991'
-file_path = 'SAU-EEZ-242-v48-0.parquet'
-# S3 中的路徑
-s3_key = 'data-folder/SAU-EEZ-242-v48-0.parquet'
+    # 設定桶名稱和文件路徑
+    bucket_name = 'data-source-99991'
+    file_path = 'SAU-EEZ-242-v48-0.parquet'
+    # S3 中的路徑
+    s3_key = 'data-folder/SAU-EEZ-242-v48-0.parquet'
 
-# 上傳文件到 S3
-s3.upload_file(file_path, bucket_name, s3_key)
+    # 上傳文件到 S3
+    s3.upload_file(file_path, bucket_name, s3_key)
 
-print(f"{file_path} 已成功上傳至 S3 桶: {bucket_name}/{s3_key}")
-```
+    print(f"{file_path} 已成功上傳至 S3 桶: {bucket_name}/{s3_key}")
+    ```
+
+<br>
 
 ## 更新 AWS Glue 中的表元數據
 
 1. 重新運行一次既有的 Crawler 就可以更新表的元數據。
 
-![](images/img_42.png)
+    ![](images/img_42.png)
+
+<br>
 
 2. 完成後進入 `Tables` 確認表格已更新並顯示新加入的數據列。
 
 _後補_
 
+<br>
+
 ## 在 Athena 中運行查詢以驗證數據
 
 1. 使用以下查詢來驗證 `area_name` 列的值。
 
-```sql
-SELECT DISTINCT area_name FROM fishdb.data_source_99991;
-```
+    ```sql
+    SELECT DISTINCT area_name FROM fishdb.data_source_99991;
+    ```
+
+<br>
 
 2. 此查詢應返回三個結果，包括來自 EEZ 文件的數據，此查詢之前只返回兩個結果。
 
-![](images/img_43.png)
+    ![](images/img_43.png)
+
+<br>
 
 3. 驗證 Fiji 自 2001 年以來在開放海域捕撈魚類的美元價值，按年份組織。
 
-```sql
-SELECT year, fishing_entity AS Country, 
-CAST(CAST(SUM(landed_value) AS DOUBLE) AS DECIMAL(38,2)) AS ValueOpenSeasCatch
-FROM fishdb.data_source_99991
-WHERE area_name IS NULL AND fishing_entity='Fiji' AND year > 2000
-GROUP BY year, fishing_entity
-ORDER BY year;
-```
+    ```sql
+    SELECT year, fishing_entity AS Country, 
+    CAST(CAST(SUM(landed_value) AS DOUBLE) AS DECIMAL(38,2)) AS ValueOpenSeasCatch
+    FROM fishdb.data_source_99991
+    WHERE area_name IS NULL AND fishing_entity='Fiji' AND year > 2000
+    GROUP BY year, fishing_entity
+    ORDER BY year;
+    ```
+
+<br>
 
 4. 驗證 Fiji 自 2001 年以來在 Fiji 專屬經濟區（EEZ）捕撈魚類的美元價值，按年份組織。
 
-```sql
-SELECT year, fishing_entity AS Country, 
-CAST(CAST(SUM(landed_value) AS DOUBLE) AS DECIMAL(38,2)) AS ValueEEZCatch
-FROM fishdb.data_source_99991
-WHERE area_name LIKE '%Fiji%' AND fishing_entity='Fiji' AND year > 2000
-GROUP BY year, fishing_entity
-ORDER BY year;
-```
+    ```sql
+    SELECT year, fishing_entity AS Country, 
+    CAST(CAST(SUM(landed_value) AS DOUBLE) AS DECIMAL(38,2)) AS ValueEEZCatch
+    FROM fishdb.data_source_99991
+    WHERE area_name LIKE '%Fiji%' AND fishing_entity='Fiji' AND year > 2000
+    GROUP BY year, fishing_entity
+    ORDER BY year;
+    ```
+
+<br>
 
 5. 驗證 Fiji 自 2001 年以來在 EEZ 和高海域捕撈魚類的總價值，按年份組織。
 
-```sql
-SELECT year, fishing_entity AS Country, 
-CAST(CAST(SUM(landed_value) AS DOUBLE) AS DECIMAL(38,2)) AS ValueEEZAndOpenSeasCatch
-FROM fishdb.data_source_99991
-WHERE (area_name LIKE '%Fiji%' OR area_name IS NULL) AND fishing_entity='Fiji' AND year > 2000
-GROUP BY year, fishing_entity
-ORDER BY year;
-```
+    ```sql
+    SELECT year, fishing_entity AS Country, 
+    CAST(CAST(SUM(landed_value) AS DOUBLE) AS DECIMAL(38,2)) AS ValueEEZAndOpenSeasCatch
+    FROM fishdb.data_source_99991
+    WHERE (area_name LIKE '%Fiji%' OR area_name IS NULL) AND fishing_entity='Fiji' AND year > 2000
+    GROUP BY year, fishing_entity
+    ORDER BY year;
+    ```
+
+<br>
 
 ## 分析結果
 
 1. 如果數據格式正確，且 AWS Glue 的 Crawler 已正確更新元數據表，則前三個查詢的結果應該加總一致。例如， `2001` 年的 `ValueOpenSeasCatch` 和 `ValueEEZCatch` 的總和應等於 `2001` 年的 `ValueEEZAndOpenSeasCatch`。
 
+<br>
 
 ## 在 Athena 中建立視圖
 
 1. 運行下列查詢，將視圖命名為 `MackerelsCatch`，並用來檢視數據。
 
-```sql
-CREATE OR REPLACE VIEW MackerelsCatch AS
-SELECT year, area_name AS WhereCaught, fishing_entity as Country, SUM(tonnes) AS TotalWeight
-FROM fishdb.data_source_99991
-WHERE common_name LIKE '%Mackerels%' AND year > 2014
-GROUP BY year, area_name, fishing_entity, tonnes
-ORDER BY tonnes DESC;
-```
+    ```sql
+    CREATE OR REPLACE VIEW MackerelsCatch AS
+    SELECT year, area_name AS WhereCaught, fishing_entity as Country, SUM(tonnes) AS TotalWeight
+    FROM fishdb.data_source_99991
+    WHERE common_name LIKE '%Mackerels%' AND year > 2014
+    GROUP BY year, area_name, fishing_entity, tonnes
+    ORDER BY tonnes DESC;
+    ```
+
+<br>
 
 2. 添加視圖。
 
-![](images/img_44.png)
+    ![](images/img_44.png)
+
+<br>
 
 ## 查詢視圖數據
 
 1. 驗證視圖是否正確地返回數據，並使用視圖進行後續分析。例如，可以查詢每年 mackerel 捕撈數量最多的國家。
 
-```sql
-SELECT year, Country, MAX(TotalWeight) AS Weight
-FROM fishdb.mackerelscatch
-GROUP BY year, Country
-ORDER BY year, Weight DESC;
-```
+    ```sql
+    SELECT year, Country, MAX(TotalWeight) AS Weight
+    FROM fishdb.mackerelscatch
+    GROUP BY year, Country
+    ORDER BY year, Weight DESC;
+    ```
 
-![](images/img_45.png)
+    ![](images/img_45.png)
+
+<br>
 
 ## 完成
 
