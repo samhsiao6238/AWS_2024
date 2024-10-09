@@ -72,7 +72,7 @@ _已經建立了 `Data Catalog`，可以進一步使用 Athena 來查詢數據_
 
 ## 在 Athena 中預覽表格
 
-1. 切換頁籤為 `Editor`，在 `Data` 區塊中，確認 `Data source` 為 `AwsDataCatalog`、`Database` 為 `weatherdata`；確認後，點擊 `Tables` 內 `by_year` 右側的三點圖標展開選單，點擊其中的 `Preview Table`；如需查看該表格中的列名稱及其數據類型，可選擇表格名稱左側的圖標。
+1. 切換頁籤為 `Editor`，在 `Data` 區塊中，確認 `Data source` 為 `AwsDataCatalog`、`Database` 為 `weatherdata`；確認後，點擊 `Tables` 內 `by_year` 右側的三點圖標展開選單，點擊其中的 `Preview Table`；如需查看該表格中的欄位名稱及其數據類型，可選擇表格名稱左側的圖標。
 
     ![](images/img_33.png)
 
