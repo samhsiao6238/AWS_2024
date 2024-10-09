@@ -76,13 +76,65 @@ _進入 Cloud9_
 
 <br>
 
-5. 得到以下結果。
+5. 得到以下結果；特別說明，我這個部分是在完成教程後才回來做的，所以可能已經映射完成，所以並未查看到 `fish_name` 和 `country` 欄位。
 
     ![](images/img_47.png)
 
 <br>
 
 6. 主要差異集中在 `SAU-EEZ-242-v48-0` 中，該數據集包含一些獨有的欄位，如 `data_layer` 和 `uncertainty_score`，這些欄位在其他數據集中不存在。此外，`SAU-EEZ-242-v48-0` 的 `fish_name` 和 `country` 欄位在數據結構上不存在於當前的輸出中。與此同時，`SAU-HighSeas-71-v48-0` 和 `SAU-EEZ-242-v48-0` 都比 `SAU-GLOBAL-1-v48-0` 提供了更多與區域和分類相關的信息，特別是像 `area_name` 和 `common_name` 等欄位。此外，這三個數據集中的共同欄位（如 `catch_type`、`fishing_entity`、`tonnes` 等）需要在合併時進行一致性的對齊或轉換。欄位名稱的差異顯示，在合併這些數據集時，可能需要對某些欄位進行名稱映射和轉換，尤其是在處理特定的區域名稱和分類名稱時。
+
+<br>
+
+## 轉換
+
+_這裡先將映射部分筆記起來，我之後重做的時候，再來確認是不是原始資料的出圖可看到跟官方教程相同內容_
+
+<br>
+
+1. 根據官方指引的相關說明，需要將 `fish_name` 映射為 `common_name`、將 `country` 映射為 `fishing_entity`。
+
+    ![](images/img_48.png)
+
+<br>
+
+2. 加入了映射規則來對輸出表格進行欄位名稱的對齊。映射操作僅針對表格輸出，不會對原始 CSV 文件進行任何變更。具體的映射邏輯將 fish_name 映射為 common_name，並將 country 映射為 fishing_entity。
+
+    ```python
+    import pandas as pd
+    from tabulate import tabulate
+
+    # 讀取每個 CSV 文件的前幾行，並獲取欄位名稱
+    df_global = pd.read_csv('SAU-GLOBAL-1-v48-0.csv', nrows=0)
+    df_highseas = pd.read_csv('SAU-HighSeas-71-v48-0.csv', nrows=0)
+    df_eez = pd.read_csv('SAU-EEZ-242-v48-0.csv', nrows=0)
+
+    # 提取欄位名稱
+    columns_global = df_global.columns.tolist()
+    columns_highseas = df_highseas.columns.tolist()
+    columns_eez = df_eez.columns.tolist()
+
+    # 手動映射需要對齊的欄位名稱
+    mapping_eez = {"fish_name": "common_name", "country": "fishing_entity"}
+
+    # 將 SAU-EEZ-242-v48-0 的欄位名稱根據映射進行調整
+    columns_eez_mapped = [mapping_eez.get(col, col) for col in columns_eez]
+
+    # 創建一個欄位名稱的集合，以確保所有唯一的欄位名稱都會被比較
+    all_columns = sorted(set(columns_global + columns_highseas + columns_eez_mapped))
+
+    # 將每個欄位的名稱與對應的 CSV 文件進行匹配，沒有匹配的補空字串
+    global_match = [col if col in columns_global else "" for col in all_columns]
+    highseas_match = [col if col in columns_highseas else "" for col in all_columns]
+    eez_match = [col if col in columns_eez_mapped else "" for col in all_columns]
+
+    # 構建表格進行展示
+    table = list(zip(global_match, highseas_match, eez_match))
+    headers = ["SAU-GLOBAL-1-v48-0", "SAU-HighSeas-71-v48-0", "SAU-EEZ-242-v48-0 (Mapped)"]
+
+    # 使用 tabulate 進行表格化輸出
+    print(tabulate(table, headers=headers, tablefmt="grid"))
+    ```
 
 <br>
 
