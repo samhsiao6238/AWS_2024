@@ -16,66 +16,80 @@
 
 _進入 Cloud9_
 
+<br>
+
 1. 啟動虛擬環境。
 
-```bash
-source envCapstone/bin/activate
-```
+    ```bash
+    source envCapstone/bin/activate
+    ```
+
+<br>
 
 2. 安裝套件。
 
-```bash
-pip install tabulate
-```
+    ```bash
+    pip install tabulate
+    ```
+
+<br>
 
 3. 啟動 Python 互動環境。
 
-```bash
-python3
-```
+    ```bash
+    python3
+    ```
+
+<br>
 
 4. 運行以下腳本。 
 
-```python
-import pandas as pd
-from tabulate import tabulate
+    ```python
+    import pandas as pd
+    from tabulate import tabulate
 
-# 讀取每個 CSV 文件的前幾行，並獲取欄位名稱
-df_global = pd.read_csv('SAU-GLOBAL-1-v48-0.csv', nrows=0)
-df_highseas = pd.read_csv('SAU-HighSeas-71-v48-0.csv', nrows=0)
-df_eez = pd.read_csv('SAU-EEZ-242-v48-0.csv', nrows=0)
+    # 讀取每個 CSV 文件的前幾行，並獲取欄位名稱
+    df_global = pd.read_csv('SAU-GLOBAL-1-v48-0.csv', nrows=0)
+    df_highseas = pd.read_csv('SAU-HighSeas-71-v48-0.csv', nrows=0)
+    df_eez = pd.read_csv('SAU-EEZ-242-v48-0.csv', nrows=0)
 
-# 提取欄位名稱
-columns_global = df_global.columns.tolist()
-columns_highseas = df_highseas.columns.tolist()
-columns_eez = df_eez.columns.tolist()
+    # 提取欄位名稱
+    columns_global = df_global.columns.tolist()
+    columns_highseas = df_highseas.columns.tolist()
+    columns_eez = df_eez.columns.tolist()
 
-# 整理成表格格式進行比較
-comparison_data = {
-    "SAU-GLOBAL-1-v48-0": columns_global,
-    "SAU-HighSeas-71-v48-0": columns_highseas,
-    "SAU-EEZ-242-v48-0": columns_eez
-}
+    # 整理成表格格式進行比較
+    comparison_data = {
+        "SAU-GLOBAL-1-v48-0": columns_global,
+        "SAU-HighSeas-71-v48-0": columns_highseas,
+        "SAU-EEZ-242-v48-0": columns_eez
+    }
 
-# 將欄位名稱整理成相同的行數，空缺部分補上空字串
-max_len = max(len(columns_global), len(columns_highseas), len(columns_eez))
-columns_global += [""] * (max_len - len(columns_global))
-columns_highseas += [""] * (max_len - len(columns_highseas))
-columns_eez += [""] * (max_len - len(columns_eez))
+    # 將欄位名稱整理成相同的行數，空缺部分補上空字串
+    max_len = max(len(columns_global), len(columns_highseas), len(columns_eez))
+    columns_global += [""] * (max_len - len(columns_global))
+    columns_highseas += [""] * (max_len - len(columns_highseas))
+    columns_eez += [""] * (max_len - len(columns_eez))
 
-# 將結果表格化並輸出
-table = list(zip(columns_global, columns_highseas, columns_eez))
-headers = ["SAU-GLOBAL-1-v48-0", "SAU-HighSeas-71-v48-0", "SAU-EEZ-242-v48-0"]
+    # 將結果表格化並輸出
+    table = list(zip(columns_global, columns_highseas, columns_eez))
+    headers = ["SAU-GLOBAL-1-v48-0", "SAU-HighSeas-71-v48-0", "SAU-EEZ-242-v48-0"]
 
-# 使用 tabulate 模組進行排版
-print(tabulate(table, headers=headers, tablefmt="grid"))
-```
+    # 使用 tabulate 模組進行排版
+    print(tabulate(table, headers=headers, tablefmt="grid"))
+    ```
+
+<br>
 
 5. 得到以下結果。
 
-![](images/img_47.png)
+    ![](images/img_47.png)
+
+<br>
 
 6. 主要差異總結在 `SAU-EEZ-242-v48-0` 中的 `fish_name` 和 `country` 需要對應到其他數據集中的 `common_name` 和 `fishing_entity` 欄位，這是主要不匹配的地方；`SAU-EEZ-242-v48-0` 也包含一些獨有的欄位，如 `data_layer` 和 `uncertainty_score`，這些欄位在其他數據集中並未出現；`SAU-HighSeas-71-v48-0` 比 `SAU-GLOBAL-1-v48-0` 提供了更多關於區域和魚種的分類信息；這些欄位的差異提示了需要合併或轉換某些欄位來對齊不同文件的結構。
+
+<br>
 
 ## 分析 `SAU-EEZ-242-v48-0.csv` 文件的數據結構
 
