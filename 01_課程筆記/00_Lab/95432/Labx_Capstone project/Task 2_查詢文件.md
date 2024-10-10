@@ -284,6 +284,10 @@ _同樣在 data_source_99991 中進行查詢_
         year;
     ```
 
+<br>
+
+2. 查詢結果。
+
     ![](images/img_37.png)
 
 <br>
