@@ -135,19 +135,19 @@ _與之前相同方式，將 `SAU-HighSeas-71-v48-0.csv` 文件轉換為 `Parque
 
 <br>
 
-5. 選取前綴為 `data-source` 的 Bucket。
+5. 選取前綴為 `data-source` 的 Bucket，然後點擊 `Choose`。
 
     ![](images/img_24.png)
 
 <br>
 
-1. 在路徑中輸入 `/`。
+6. 會看到 `S3 path` 出現紅字警告，在路徑尾端輸入 `/` 即可。
 
     ![](images/img_25.png)
 
 <br>
 
-7. 點擊右下角 `add`。
+7. 點擊右下角 `add an S3 data source`。
 
     ![](images/img_26.png)
 
