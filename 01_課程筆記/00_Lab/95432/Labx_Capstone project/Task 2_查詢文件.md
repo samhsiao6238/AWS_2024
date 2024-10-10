@@ -247,6 +247,10 @@ _會在 AWS Glue 資料庫中建立包含元數據的 Table_
 
 ## 查詢特定數據
 
+_同樣在 data_source_99991 中進行查詢_
+
+<br>
+
 1. 要查詢自 `2001 年` 以來，`Fiji` 在 `Pacific, Western Central` 高海域中的魚類捕撈價值（以美元計算），並按年分組，可使用以下 SQL 查詢；這裡使用了 `CAST` 函數來將捕撈價值 (`landed_value`) 的顯示格式轉換為便於閱讀的美元格式。
 
     ```sql
