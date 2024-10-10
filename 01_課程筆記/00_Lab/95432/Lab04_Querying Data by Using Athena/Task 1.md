@@ -26,7 +26,7 @@ _進入 Lab 之後_
 
 ## 開始操作
 
-1. 點擊主控台首頁的 `Launch query wditor` 啟動編輯器。
+1. 點擊主控台首頁的 `Launch query editor` 啟動編輯器。
 
     ![](images/img_02.png)
 
