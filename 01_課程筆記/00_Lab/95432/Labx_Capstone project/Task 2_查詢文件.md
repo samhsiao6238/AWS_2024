@@ -39,7 +39,7 @@ _與之前相同方式，將 `SAU-HighSeas-71-v48-0.csv` 文件轉換為 `Parque
 
 <br>
 
-2. 開啟 Python 交互式終端。
+2. 在終端機開啟 Python 交互式環境。
 
     ```bash
     python3
@@ -54,6 +54,8 @@ _與之前相同方式，將 `SAU-HighSeas-71-v48-0.csv` 文件轉換為 `Parque
     df = pd.read_csv('SAU-HighSeas-71-v48-0.csv')
     df.to_parquet('SAU-HighSeas-71-v48-0.parquet')
     ```
+
+    ![](images/img_59.png)
 
 <br>
 
