@@ -235,7 +235,7 @@ _會在 AWS Glue 資料庫中建立包含元數據的 Table_
 
 <br>
 
-6. 可替換語句中的查詢對象來觀察其他欄位，例如 `common_name`，結果顯示共有 `24` 個唯一值，這些是魚類或海洋生物名稱，也就是捕撈到的魚貨種類。
+6. 可替換語句中的查詢對象來觀察其他欄位，例如 `common_name`，結果顯示共有 `24` 個唯一值，這些是魚類或海洋生物名稱，也就是捕撈到的漁獲種類。
 
     ```sql
     SELECT DISTINCT common_name FROM fishdb.data_source_99991;
