@@ -179,7 +179,11 @@ _將 `CSV` 文件轉換為 `Parquet` 格式；該格式具備空間效率、查�
 
 <br>
 
-3. 先建立虛擬環境。
+## 修正教程指引
+
+_排除以上錯誤並完成安裝與後續操作_
+
+1. 先建立虛擬環境。
 
     ```bash
     python3 -m venv envCapstone
@@ -187,7 +191,7 @@ _將 `CSV` 文件轉換為 `Parquet` 格式；該格式具備空間效率、查�
 
 <br>
 
-4. 啟用虛擬環境。
+2. 啟用虛擬環境。
 
     ```bash
     source envCapstone/bin/activate
@@ -195,7 +199,7 @@ _將 `CSV` 文件轉換為 `Parquet` 格式；該格式具備空間效率、查�
 
 <br>
 
-5. 重新安裝套件。
+3. 重新安裝套件。
 
     ```bash
     pip install pandas pyarrow fastparquet
@@ -203,7 +207,7 @@ _將 `CSV` 文件轉換為 `Parquet` 格式；該格式具備空間效率、查�
 
 <br>
 
-6. 開啟 Python 交互式終端。
+4. 開啟 Python 交互式終端。
 
     ```bash
     python3
@@ -211,7 +215,7 @@ _將 `CSV` 文件轉換為 `Parquet` 格式；該格式具備空間效率、查�
 
 <br>
 
-7. 使用以下 Python 代碼將 CSV 文件轉換為 Parquet 格式。
+5. 使用以下 Python 代碼將 CSV 文件轉換為 Parquet 格式。
 
     ```bash
     import pandas as pd
@@ -221,7 +225,7 @@ _將 `CSV` 文件轉換為 `Parquet` 格式；該格式具備空間效率、查�
 
 <br>
 
-8. 退出交互式終端。
+6. 退出交互式終端。
 
     ```bash
     exit()
@@ -229,7 +233,7 @@ _將 `CSV` 文件轉換為 `Parquet` 格式；該格式具備空間效率、查�
 
 <br>
 
-9. 關閉虛擬環境。
+7. 關閉虛擬環境。
 
     ```bash
     deactivate
