@@ -142,21 +142,41 @@ _Boto3_
 
 <br>
 
-2. 雖然官方說明文件在語義上似乎說已經內建了 `boto3`，但實際上還是需要安裝才能使用；以下是安裝套件指令。
+2. 與一般使用 Python 開發的程序相同，先建立虛擬環境。
 
     ```bash
-    pip install boto3
+    python3 -m venv envSandBox
     ```
 
 <br>
 
-3. 訊息指出因為權限問題無法寫入系統的全局 site-packages 目錄，pip 將自動選擇將 Boto3 安裝到使用者目錄，也就是 `user-level installation`，而不是安裝到全局系統目錄；不影響安裝，可順利完成。
+3. 啟動虛擬環境。
 
-    ![](images/img_13.png)
+    ```bash
+    source envSandBox/bin/activate
+    ```
 
 <br>
 
-4. 安裝後可先進入 Python 環境中測試看看。
+4. 先更新 pip。
+
+    ```bash
+    python3 -m pip install --upgrade pip
+    ```
+
+<br>
+
+5. 雖然官方說明文件在語義上似乎說已經內建了 `boto3`，但實際上還是需要安裝才能使用；以下是安裝套件指令。
+
+    ```bash
+    python3 -m pip install boto3
+    ```
+
+<br>
+
+## 啟動互動環境
+
+1. 安裝後可先進入 Python 環境中測試看看。
 
     ```bash
     python3
