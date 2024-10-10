@@ -160,6 +160,8 @@ _細節之後補充_
     cp SAU-EEZ-242-v48-0.csv SAU-EEZ-242-v48-0-old.csv
     ```
 
+    ![](images/img_65.png)
+
 <br>
 
 2. 啟動虛擬環境。
@@ -170,7 +172,7 @@ _細節之後補充_
 
 <br>
 
-3. 開啟 python 互動界面。
+3. 開啟 python 互動環境。
 
     ```bash
     python3
@@ -178,7 +180,7 @@ _細節之後補充_
 
 <br>
 
-4. 執行以下腳本完成欄位名修正及文件轉換。
+4. 執行以下腳本完成欄位名修正及文件轉換；特別說明，這個官方範例腳本直接修改原始文件的欄位名，將 `fish_name` 改為 `common_name`、`country` 改為 `fishing_entity`，並且保存了變更，前面僅將欄位名稱進行映射，以便輸出在終端機上進行查看。
 
     ```python
     import pandas as pd
@@ -190,14 +192,25 @@ _細節之後補充_
     # 查看現有的欄位名
     print(df.head(1))
 
-    # 修改欄位名，將 fish_name 和 country 欄位名修正為 common_name 和 fishing_entity
-    df.rename(columns = {"fish_name": "common_name", "country": "fishing_entity"}, inplace = True)
+    # 修改欄位名
+    # 將 fish_name  common_name
+    # 將 country 修正為 fishing_entity
+    df.rename(
+        columns = {
+            "fish_name": "common_name",
+            "country": "fishing_entity"
+        }, inplace = True
+    )
 
     # 確認欄位名已經修正
     print(df.head(1))
 
     # 保存 CSV 及 Parquet 格式文件
-    df.to_csv('SAU-EEZ-242-v48-0.csv', header=True, index=False)
+    df.to_csv(
+        'SAU-EEZ-242-v48-0.csv',
+        header=True,
+        index=False
+    )
     df.to_parquet('SAU-EEZ-242-v48-0.parquet')
     ```
 
