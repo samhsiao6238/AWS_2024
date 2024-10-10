@@ -1,4 +1,4 @@
-# 檢視 IAM 策略
+# Task 6：檢視 IAM 策略
 
 _Lab 已建立好查詢的 IAM 策略，自己是無法在 Lab 中建立 IAM 策略的_
 
