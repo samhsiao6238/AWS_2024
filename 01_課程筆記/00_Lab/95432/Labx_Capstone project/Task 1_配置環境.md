@@ -123,7 +123,7 @@ _下載三個 .csv 源數據文件_
 
 <br>
 
-1. 進入 Cloud9 後，對預設的環境對象點擊 `Open` 開啟 IDE，並在終端中運行以下命令，這會下載所需的三個 CSV 檔案；這裡加上 `&&` 只是懶得再逐一按 `ENTER`，不是必須的。
+1. 進入 Cloud9 後，在前面步驟建立的環境中點擊 `Open` 開啟 IDE，並在終端中運行以下命令，這會下載所需的三個 CSV 檔案；這裡加上 `&&` 只是懶得再逐一按 `ENTER`，不是必須的。
 
     ```bash
     wget https://aws-tc-largeobjects.s3.us-west-2.amazonaws.com/CUR-TF-200-ACDENG-1-91570/lab-capstone/s3/SAU-GLOBAL-1-v48-0.csv && \
