@@ -4,27 +4,41 @@ _進入 Lab 之後_
 
 <br>
 
-## 步驟說明
+## 環境觀察
 
-1. 進入主控台搜尋並進入 `Athena`。
+1. 搜尋並進入 `Athena`。
 
     ![](images/img_01.png)
 
 <br>
 
-2. 啟動查詢編輯器。
+2. 點擊 `Workgroups` 查看，預設已經有一個工作群 `primary`。
+
+    ![](images/img_61.png)
+
+<br>
+
+3. 在 `Data sources` 中已有一個預設的 `AwsDataCatalog`。
+
+    ![](images/img_62.png)
+
+<br>
+
+## 開始操作
+
+1. 點擊主控台首頁的 `Launch query wditor` 啟動編輯器。
 
     ![](images/img_02.png)
 
 <br>
 
-3. 或展開選單，點擊 `Query editor` 進入。
+2. 或展開選單，點擊 `Query editor` 進入。
 
     ![](images/img_22.png)
 
 <br>
 
-4. 切換到 `Settings` 頁籤，會看到當前所在是 `Query result and encryption settings`，點擊右側的 `Manage`。
+3. 切換到 `Settings` 頁籤，會看到當前所在是 `Query result and encryption settings`，點擊右側的 `Manage`。
 
     ![](images/img_03.png)
 
