@@ -71,13 +71,13 @@ _進入 Cloud9 檢查結構差異_
 
 <br>
 
-5. 得到以下結果；特別說明，我這個部分是在完成教程後才回來做的，所以可能已經映射完成，所以並未查看到 `fish_name` 和 `country` 欄位。
+5. 得到以下結果。
 
     ![](images/img_47.png)
 
 <br>
 
-6. 主要差異集中在 `SAU-EEZ-242-v48-0` 中，該數據集包含一些獨有的欄位，如 `data_layer` 和 `uncertainty_score`，這些欄位在其他數據集中不存在。此外，`SAU-EEZ-242-v48-0` 的 `fish_name` 和 `country` 欄位在數據結構上不存在於當前的輸出中。與此同時，`SAU-HighSeas-71-v48-0` 和 `SAU-EEZ-242-v48-0` 都比 `SAU-GLOBAL-1-v48-0` 提供了更多與區域和分類相關的信息，特別是像 `area_name` 和 `common_name` 等欄位。此外，這三個數據集中的共同欄位（如 `catch_type`、`fishing_entity`、`tonnes` 等）需要在合併時進行一致性的對齊或轉換。欄位名稱的差異顯示，在合併這些數據集時，可能需要對某些欄位進行名稱映射和轉換，尤其是在處理特定的區域名稱和分類名稱時。
+6. `SAU-EEZ-242-v48-0` 數據集確實包含一些在其他數據集中不存在的獨有欄位，如 `data_layer` 和 `uncertainty_score`，這些欄位在 `SAU-GLOBAL-1-v48-0` 和 `SAU-HighSeas-71-v48-0` 中均未出現。此外，`SAU-EEZ-242-v48-0` 的 `fish_name` 和 `country` 欄位也沒有出現在其他兩個數據集中。`SAU-HighSeas-71-v48-0` 和 `SAU-EEZ-242-v48-0` 提供了更多關於區域與魚種分類的資訊，例如 `area_name` 和 `functional_group`，而這些欄位並不存在於 `SAU-GLOBAL-1-v48-0` 中。另一方面，這三個數據集中存在共同欄位（如 `catch_type`、`fishing_sector`、`tonnes` 等），這些欄位在合併時需要確保名稱和結構的一致性。欄位名稱之間的差異顯示出，在合併數據集時，需要進行適當的欄位映射和名稱轉換，尤其是在處理區域和分類信息時，應特別留意這些欄位的對齊和匹配。
 
 <br>
 
