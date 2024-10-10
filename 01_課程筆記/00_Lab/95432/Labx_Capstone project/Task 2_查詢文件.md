@@ -183,13 +183,13 @@ _會在 AWS Glue 資料庫中建立包含元數據的 Table_
 
 <br>
 
-1. 回到 Crawlers 清單中；選取並運行 `fishcrawler` Crawler；過程中會顯示 `Running`，稍等片刻。
+1. 回到 Crawlers 清單中；選取並運行 `fishcrawler` Crawler；過程中會顯示 `Running`、`Stopping` 然後完成，稍等片刻。
 
     ![](images/img_31.png)
 
 <br>
 
-2. 完成時，進入 Tables 確認成功建立了。
+2. 完成時，進入 Glue Databases 的 Tables 確認成功建立了 `data_source_99991`。
 
     ![](images/img_32.png)
 
