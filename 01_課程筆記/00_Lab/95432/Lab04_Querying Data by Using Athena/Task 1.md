@@ -186,7 +186,7 @@ _回到 Athena Editor 編輯器_
 
 ## 在 Glue table 預覽
 
-1. 在左側 ` Data` 區塊，先點擊刷新圖標。
+1. 在左側 `Data` 區塊，先點擊刷新圖標。
 
     ![](images/img_18.png)
 
