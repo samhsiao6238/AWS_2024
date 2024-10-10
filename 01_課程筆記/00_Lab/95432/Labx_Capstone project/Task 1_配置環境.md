@@ -111,7 +111,7 @@ _在 `us-east-1` 區域中建立兩個 S3 Bucket，這是 Lab 預設的區域_
 
 <br>
 
-4. 完成時清單中有三個 Bucket。
+4. 完成時可在清單中再次確認兩個 Bucket 的命名與區域正確無誤。
 
     ![](images/img_10.png)
 
