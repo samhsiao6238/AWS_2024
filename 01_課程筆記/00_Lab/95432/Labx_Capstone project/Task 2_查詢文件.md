@@ -288,56 +288,39 @@ _同樣在 data_source_99991 中進行查詢_
 
 <br>
 
-##
-以下是重新排版的查詢語句，並解釋每個部分的作用：
+## 語句解釋
 
-    ```sql
-    SELECT 
-        year, 
-        fishing_entity AS Country, 
-        CAST(CAST(SUM(landed_value) AS DOUBLE) AS DECIMAL(38,2)) AS ValuePacificWCSeasCatch
-    FROM 
-        fishdb.data_source_99991
-    WHERE 
-        area_name LIKE '%Pacific%' 
-        AND fishing_entity = 'Fiji' 
-        AND year > 2001
-    GROUP BY 
-        year, fishing_entity
-    ORDER BY 
-        year;
-    ```
+1. `SELECT year, fishing_entity AS Country`：選擇 `year` 和 `fishing_entity` 欄位，並將 `fishing_entity` 定義別名 `Country` 增加可讀性，也就是國家；這表示查詢結果會顯示年份和代表捕魚國家的資料。
 
-### 語句解釋：
+<br>
 
-1. `SELECT year, fishing_entity AS Country`  
-   - 這部分選擇了 `year` 和 `fishing_entity` 欄位，其中 `fishing_entity` 被別名化為 `Country`，即國家。  
-   - 這表示查詢結果中會顯示年份和代表捕魚國家的資料，這裡的 `fishing_entity` 指的是國家名稱，如 Fiji。
+2. `CAST(CAST(SUM(landed_value) AS DOUBLE) AS DECIMAL(38,2)) AS ValuePacificWCSeasCatch`：這段語句首先計算 `landed_value` 欄位的總和，也就是捕撈魚類的總價值，接著使用兩次 `CAST` 函數來轉換數據類型，先在內層使用 `CAST(... AS DOUBLE)` 將加總的結果轉換為 `DOUBLE` 類型；接著在外層使用 `CAST(... AS DECIMAL(38,2))` 將 `DOUBLE` 類型轉換為小數點後有兩位數的 `DECIMAL` 類型並命名為 `ValuePacificWCSeasCatch`，代表在太平洋西部和中部的捕撈價值。
 
-2. `CAST(CAST(SUM(landed_value) AS DOUBLE) AS DECIMAL(38,2)) AS ValuePacificWCSeasCatch`  
-   - 這段語句首先計算了 `landed_value` 欄位的總和（也就是捕撈魚類的總價值），使用了兩次 `CAST` 函數來轉換數據類型。
-     - `SUM(landed_value)`：對 `landed_value` 欄位進行加總。
-     - `CAST(... AS DOUBLE)`：將加總的結果轉換為 `DOUBLE` 類型。
-     - `CAST(... AS DECIMAL(38,2))`：再將 `DOUBLE` 類型轉換為小數點後有兩位數的 `DECIMAL` 類型。
-   - 最終的結果被命名為 `ValuePacificWCSeasCatch`，代表在太平洋西部和中部的捕撈價值。
+<br>
 
-3. `FROM fishdb.data_source_99991`  
-   - 這部分指定查詢的數據來源表，即 `fishdb` 資料庫中的 `data_source_99991` 表。
+3. `FROM fishdb.data_source_99991` 是指定查詢的數據來源表。
 
-4. `WHERE area_name LIKE '%Pacific%'`  
-   - 這段 `WHERE` 條件用來篩選 `area_name` 欄位中包含 "Pacific" 的所有行，這樣可以鎖定太平洋地區的捕撈數據。
+<br>
 
-5. `AND fishing_entity = 'Fiji'`  
-   - 這條件限定了 `fishing_entity` 欄位的值為 "Fiji"，也就是僅篩選出來自斐濟的捕撈數據。
+4. `WHERE area_name LIKE '%Pacific%'` 是使用 `WHERE` 篩選 `area_name` 欄位中包含 `Pacific` 的所有數據列，這樣可以鎖定太平洋地區的捕撈數據。
 
-6. `AND year > 2001`  
-   - 這條件表示只選取 `year` 欄位大於 2001 年的數據，即 2001 年之後的數據。
+<br>
 
-7. `GROUP BY year, fishing_entity`  
-   - `GROUP BY` 用於根據 `year` 和 `fishing_entity` 對數據進行分組，確保加總的捕撈價值會依據每個年份和國家分別計算。
+5. `AND fishing_entity = 'Fiji'` 限定 `fishing_entity` 欄位的值為 `Fiji`，也就是僅篩選出來自斐濟的捕撈數據。
 
-8. `ORDER BY year`  
-   - `ORDER BY` 指示查詢結果按 `year` 欄位進行排序，即按照年份從小到大排列結果。
+<br>
+
+6. `AND year > 2001` 表示選取 `year` 欄位大於 2001 年的數據，即 2001 年之後的數據。
+
+<br>
+
+7. `GROUP BY year, fishing_entity` 中的 `GROUP BY` 用於根據 `year` 和 `fishing_entity` 對數據進行分組，確保加總的捕撈價值會依據每個年份和國家分別計算。
+
+<br>
+
+8. `ORDER BY year` 中的 `ORDER BY` 指示查詢結果按 `year` 欄位進行排序，即按照年份從小到大排列結果。
+
+<br>
 
 ## 挑戰任務
 
