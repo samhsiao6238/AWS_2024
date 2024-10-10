@@ -73,6 +73,9 @@ _利用 `CloudFormation` 建立 `Amazon Athena` 的查詢，並分享給其他 A
                     FROM yellow 
                     WHERE total >= 100.0 
                     ORDER BY total DESC
+    Outputs:
+        AthenaNamedQuery:
+            Value: !Ref AthenaNamedQuery
     ```
 
 <br>
