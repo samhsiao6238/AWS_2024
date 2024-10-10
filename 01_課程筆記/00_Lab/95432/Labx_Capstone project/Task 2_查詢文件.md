@@ -229,7 +229,7 @@ _會在 AWS Glue 資料庫中建立包含元數據的 Table_
 
 <br>
 
-5. 此查詢將返回兩個結果，對於來自 `SAU-GLOBAL-1-v48-0.parquet` 的行，`area_name` 為 `null`；對於來自 `SAU-HighSeas-71-v48-0.parquet` 的行，`area_name` 為 `Pacific, Western Central`。
+5. 這個舉句查詢數據集中 `area_name` 欄位的唯一值，從結果可看到兩列，一列是空值，表示某些記錄的 `area_name` 欄位沒有數據，另一列則是 `Pacific, Western Central`，表示該數據集的某些記錄與該地區相關。
 
     ![](images/img_36.png)
 
