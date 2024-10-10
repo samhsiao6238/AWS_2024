@@ -233,6 +233,8 @@ _排除以上錯誤並完成安裝與後續操作；以下操作同樣在 Cloud9
     source envCapstone/bin/activate
     ```
 
+    ![](images/img_54.png)
+
 <br>
 
 3. 重新安裝套件。
