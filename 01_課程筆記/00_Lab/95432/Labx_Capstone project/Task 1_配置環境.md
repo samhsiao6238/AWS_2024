@@ -245,7 +245,7 @@ _排除以上錯誤並完成安裝與後續操作；以下操作同樣在 Cloud9
 
 ## 上傳文件到 S3 Bucket 
 
-1. 上傳 SAU-GLOBAL-1-v48-0.parquet 文件至 data-source Bucket。
+1. 上傳 `SAU-GLOBAL-1-v48-0.parquet` 文件至 `data-source` Bucket。
 
     ```bash
     aws s3 cp SAU-GLOBAL-1-v48-0.parquet s3://data-source-99991
