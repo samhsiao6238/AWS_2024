@@ -212,7 +212,7 @@ _進入 Cloud9 檢查結構差異_
 
 <br>
 
-6. 結束虛擬環境。
+6. 如有需要結束虛擬環境。
 
     ```bash
     deactivate
@@ -227,6 +227,8 @@ _進入 Cloud9 檢查結構差異_
     ```bash
     aws s3 cp SAU-EEZ-242-v48-0.parquet s3://data-source-99991
     ```
+
+    ![](images/img_67.png)
 
 <br>
 
