@@ -10,7 +10,7 @@ _`head -6 SAU-GLOBAL-1-v48-0.csv` 及 `SAU-HighSeas-71-v48-0.csv`_
 
 <br>
 
-1. 使用 `head` 命令查看該 CSV 文件的欄位和前幾列數據；`SAU-HighSeas-71-v48-0.csv` 文件包含了 `SAU-GLOBAL-1-v48-0.csv` 文件所有的欄位，另外還有其他額外的欄位；特別注意，這裡使用終端機指令確實不容易觀察數據格式，這在下一個 Task 中將使用 Python 腳本進行輸出，這裡站不重複贅述。
+1. 使用 `head` 命令查看該 CSV 文件的欄位和前幾列數據；`SAU-HighSeas-71-v48-0.csv` 文件包含了 `SAU-GLOBAL-1-v48-0.csv` 文件所有的欄位，另外還有其他額外的欄位；特別注意，這裡使用終端機指令確實不容易觀察數據格式，這在下一個 Task 中將使用 Python 腳本進行輸出，這裡暫不重複贅述。
 
     ```bash
     head -6 SAU-GLOBAL-1-v48-0.csv
