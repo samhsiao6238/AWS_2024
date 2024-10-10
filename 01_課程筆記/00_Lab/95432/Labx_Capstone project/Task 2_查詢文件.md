@@ -171,7 +171,7 @@ _與之前相同方式，將 `SAU-HighSeas-71-v48-0.csv` 文件轉換為 `Parque
 
 <br>
 
-11. 點擊 `Create`。
+11. 略作查看無誤後，點擊右下角 `Create crewler`。
 
     ![](images/img_30.png)
 
