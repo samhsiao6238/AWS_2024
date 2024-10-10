@@ -67,7 +67,7 @@ _與之前相同方式，將 `SAU-HighSeas-71-v48-0.csv` 文件轉換為 `Parque
 
 <br>
 
-5. 關閉虛擬環境。
+5. 假如需要關閉虛擬環境。
 
     ```bash
     deactivate
