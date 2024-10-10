@@ -6,7 +6,7 @@ _從配置環境開始_
 
 ## 觀察 CapstoneGlueRole 角色
 
-1. 進入 IAM，在 Roles 中搜尋預先建立的角色 `CapstoneGlueRole`，並點擊查看詳細信息。
+1. 進入 IAM，在 Roles 中搜尋預先建立好提供 Lab 使用的角色 `CapstoneGlueRole`，並點擊查看詳細信息。
 
     ![](images/img_01.png)
 
