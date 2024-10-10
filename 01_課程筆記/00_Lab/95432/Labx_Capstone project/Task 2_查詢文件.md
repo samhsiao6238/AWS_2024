@@ -177,7 +177,11 @@ _與之前相同方式，將 `SAU-HighSeas-71-v48-0.csv` 文件轉換為 `Parque
 
 <br>
 
-## 運行 Crawler 以在 AWS Glue 資料庫中建立包含元數據的表
+## 運行 Crawler 建立 Glue Table
+
+_會在 AWS Glue 資料庫中建立包含元數據的 Table_
+
+<br>
 
 1. 選取並運行 Crawler；過程中會顯示 `Running`，稍等片刻。
 
