@@ -209,7 +209,7 @@ _排除以上錯誤並完成安裝與後續操作；以下操作同樣在 Cloud9
 
 <br>
 
-4. 開啟 Python 交互式終端。
+4. 開啟 Python 交互式環境。
 
     ```bash
     python3
@@ -217,7 +217,7 @@ _排除以上錯誤並完成安裝與後續操作；以下操作同樣在 Cloud9
 
 <br>
 
-5. 使用以下 Python 代碼將 CSV 文件轉換為 Parquet 格式。
+5. 使用以下 Python 代碼將 `CSV` 文件轉換為 `Parquet` 格式。
 
     ```bash
     import pandas as pd
@@ -227,7 +227,7 @@ _排除以上錯誤並完成安裝與後續操作；以下操作同樣在 Cloud9
 
 <br>
 
-6. 退出交互式終端。
+6. 退出交互式環境。
 
     ```bash
     exit()
