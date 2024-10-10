@@ -217,11 +217,13 @@ _排除以上錯誤並完成安裝與後續操作；以下操作同樣在 Cloud9
 
 <br>
 
-1. 先建立虛擬環境，自訂名稱為 `envCapstone`；特別說明，在 Cloud9 中必須明確使用 `python3` 指令，而不是使用 `python`。
+1. 在當前目錄中建立虛擬環境，自訂名稱為 `envCapstone`；特別說明，在 Cloud9 中必須明確使用 `python3` 指令，而不是使用 `python`。
 
     ```bash
     python3 -m venv envCapstone
     ```
+
+    ![](images/img_53.png)
 
 <br>
 
