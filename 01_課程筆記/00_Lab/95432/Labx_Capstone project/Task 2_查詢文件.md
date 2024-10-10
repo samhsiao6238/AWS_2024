@@ -235,6 +235,16 @@ _會在 AWS Glue 資料庫中建立包含元數據的 Table_
 
 <br>
 
+6. 可替換語句中的查詢對象來觀察其他欄位，例如 `common_name`，結果顯示共有 `24` 個唯一值，這些是魚類或海洋生物名稱，也就是捕撈到的魚類種類。
+
+    ```sql
+    SELECT DISTINCT common_name FROM fishdb.data_source_99991;
+    ```
+
+    ![](images/img_61.png)
+
+<br>
+
 ## 查詢特定數據
 
 1. 要查詢自 `2001 年` 以來，`Fiji` 在 `Pacific, Western Central` 高海域中的魚類捕撈價值（以美元計算），並按年分組，可使用以下 SQL 查詢；這裡使用了 `CAST` 函數來將捕撈價值 (`landed_value`) 的顯示格式轉換為便於閱讀的美元格式。
