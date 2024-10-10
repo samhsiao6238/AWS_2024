@@ -309,12 +309,21 @@ _使用已經開啟的 Query Editor_
 3. 驗證 Fiji 自 2001 年以來在開放海域捕撈魚類的美元價值，按年份組織。
 
     ```sql
-    SELECT year, fishing_entity AS Country, 
-    CAST(CAST(SUM(landed_value) AS DOUBLE) AS DECIMAL(38,2)) AS ValueOpenSeasCatch
-    FROM fishdb.data_source_99991
-    WHERE area_name IS NULL AND fishing_entity='Fiji' AND year > 2000
-    GROUP BY year, fishing_entity
-    ORDER BY year;
+    SELECT 
+        year,
+        fishing_entity AS Country, 
+        CAST(CAST(SUM(landed_value) AS DOUBLE) AS DECIMAL(38,2)) AS ValueOpenSeasCatch
+    FROM
+        fishdb.data_source_99991
+    WHERE
+        area_name IS NULL 
+        AND fishing_entity='Fiji' 
+        AND year > 2000
+    GROUP BY 
+        year, 
+        fishing_entity
+    ORDER BY 
+        year;
     ```
 
 <br>
