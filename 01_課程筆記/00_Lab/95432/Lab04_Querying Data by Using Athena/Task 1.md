@@ -166,6 +166,46 @@ _回到 Athena_
 
 <br>
 
+## 在 Glue table 預覽
+
+1. 在左側 ` Data` 區塊，先點擊刷新圖標。
+
+    ![](images/img_18.png)
+
+<br>
+
+2. 確認 `Database` 是 `taxidata`，然後 `Tables` 是 `yellow`；點擊 `yellow` 尾部的三個點來展開選單，點擊 `Preview Table`。
+
+    ![](images/img_19.png)
+
+<br>
+
+3. 此時在 `Query` 視窗中會自動顯示以下語法；這條查詢會從資料庫 `taxidata` 中的 `yellow` 表格中選取所有欄位，並僅返回最多 10 筆資料，可藉此檢查表格中的數據樣本。
+
+    ```sql
+    SELECT * FROM "taxidata"."yellow" limit 10;
+    ```
+
+<br>
+
+4. 點擊 `Run` 之後，在下方的 `Results` 會顯示前十筆資料。
+
+    ![](images/img_20.png)
+
+<br>
+
+5. 可點擊個別查詢頁籤右側的 `X` 來關閉查詢。
+
+    ![](images/img_21.png)
+
+<br>
+
+6. 彈窗中再次點擊 `Close query`。
+
+    ![](images/img_24.png)
+
+<br>
+
 ___
 
 _END_
