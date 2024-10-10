@@ -200,6 +200,8 @@ _進入 Cloud9 檢查結構差異_
     df.to_parquet('SAU-EEZ-242-v48-0.parquet')
     ```
 
+    ![](images/img_66.png)
+
 <br>
 
 5. 退出 Python 環境。
