@@ -66,7 +66,7 @@ _在 `90628`中實作這個 Lab 時遇到一些挑戰，因為依據教程似乎
 
 <br>
 
-5. 在 VPC 部分，設定為 Work VPC 及 Work Public Subnet。
+5. 在 VPC 部分，設定為 `Work VPC` 及 `Work Public Subnet`。
 
     ![](images/img_48.png)
 
@@ -84,7 +84,7 @@ _在 `90628`中實作這個 Lab 時遇到一些挑戰，因為依據教程似乎
 
 <br>
 
-8. 點擊 `Open` 進入。
+8. 點擊 `Open` 進入 IDE。
 
     ![](images/img_09.png)
 
@@ -102,7 +102,7 @@ _已經內建 CLI，無需額外安裝_
 
 <br>
 
-1. 打開下方終端，執行 AWS CLI 指令；查詢當前用戶身份，可比對這個 `Account` 會是自己的 `Academy` 帳號。
+1. 打開下方終端，執行 AWS CLI 指令；查詢當前用戶身份，可比對這個 `Account` 會是自己的 `Academy` 帳號；等號後面的空白通常表示該角色名中的某些部分被隱藏或省略。
 
     ```bash
     aws sts get-caller-identity
