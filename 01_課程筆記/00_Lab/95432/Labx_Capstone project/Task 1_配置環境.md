@@ -89,7 +89,7 @@ _建立開發環境_
 
 ## 進入 S3
 
-_在 `us-east-1` 區域中建立兩個 S3 Bucket_
+_在 `us-east-1` 區域中建立兩個 S3 Bucket，這是 Lab 預設的區域_
 
 <br>
 
