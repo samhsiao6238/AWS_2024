@@ -429,6 +429,14 @@ _為了排除相關限制，以下略超出教程範圍，對預設的 IAM 進�
 
 5. 完成以上步驟後，可嘗試在本機進行終端機查詢指令，會得到跳板與目標 EC2 實例的資訊；確保可以運行，然後繼續以下步驟。
 
+    ```bash
+    aws ec2 describe-instances \
+    --filters "Name=instance-state-name,Values=running" \
+    --query 'Reservations[*].Instances[*].[InstanceId, PublicIpAddress, PrivateIpAddress, Tags[?Key==`Name`].Value | [0]]' \
+    --output table
+
+    ```
+
     ![](images/img_38.png)
 
 <br>
