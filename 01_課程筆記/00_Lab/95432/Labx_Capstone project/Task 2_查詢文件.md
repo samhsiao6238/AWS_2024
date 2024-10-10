@@ -75,7 +75,7 @@ _與之前相同方式，將 `SAU-HighSeas-71-v48-0.csv` 文件轉換為 `Parque
 
 <br>
 
-6. 上傳 S3。
+6. 將 `parquet` 文件上傳至 S3。
 
     ```bash
     aws s3 cp SAU-HighSeas-71-v48-0.parquet s3://data-source-99991
