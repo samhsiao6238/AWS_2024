@@ -237,10 +237,10 @@ _排除以上錯誤並完成安裝與後續操作；以下操作同樣在 Cloud9
 
 <br>
 
-3. 重新安裝套件。
+3. 在虛擬環境中安裝套件；在這不加入 `python3 -m` 的效果是相同的，但建議養成良好習慣避免不必要的潛在問題。
 
     ```bash
-    pip install pandas pyarrow fastparquet
+    python3 -m pip install pandas pyarrow fastparquet
     ```
 
 <br>
