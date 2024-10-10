@@ -232,7 +232,17 @@ _進入 Cloud9 檢查結構差異_
 
 <br>
 
-2. 假如要使用 Boto3。
+## 使用 Boto3
+
+1. 安裝套件。
+
+    ```bash
+    python3 -m pip install boto3
+    ```
+
+<br>
+
+2. 上傳至先前建立的 S3 Bucket。
 
     ```python
     import boto3
@@ -243,8 +253,8 @@ _進入 Cloud9 檢查結構差異_
     # 設定桶名稱和文件路徑
     bucket_name = 'data-source-99991'
     file_path = 'SAU-EEZ-242-v48-0.parquet'
-    # S3 中的路徑
-    s3_key = 'data-folder/SAU-EEZ-242-v48-0.parquet'
+    # S3 中的路徑，將文件直接放入根目錄
+    s3_key = 'SAU-EEZ-242-v48-0.parquet'
 
     # 上傳文件到 S3
     s3.upload_file(file_path, bucket_name, s3_key)
