@@ -1,4 +1,4 @@
-# 為地點查詢數據建立 Glue 表
+# Task 06：為地點查詢數據建立 Glue 表
 
 _任務目標是更新並運行 `Step Functions` 工作流，建立另一個 Glue 表來引用儲存在 S3 中的 `taxi _zone_lookup.csv` 文件，在後續任務中，將連結表 `yellow taxi data` 分析數據。_
 
