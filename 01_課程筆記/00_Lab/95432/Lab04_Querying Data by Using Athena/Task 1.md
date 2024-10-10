@@ -64,6 +64,10 @@ _進入 Lab 之後_
 
 ## 建立 `Glue` 資料庫
 
+_在 Athena 中使用請求語句進行建立_
+
+<br>
+
 1. 切換頁籤到 `Editor`。
 
     ![](images/img_07.png)
