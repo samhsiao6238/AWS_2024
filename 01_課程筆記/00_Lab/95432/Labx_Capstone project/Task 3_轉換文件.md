@@ -83,17 +83,13 @@ _進入 Cloud9 檢查結構差異_
 
 ## 轉換
 
-_這裡先將映射部分筆記起來，我之後重做的時候，再來確認是不是原始資料的出圖可看到跟官方教程相同內容_
-
-<br>
-
 1. 根據官方指引的相關說明，需要將 `fish_name` 映射為 `common_name`、將 `country` 映射為 `fishing_entity`。
 
     ![](images/img_48.png)
 
 <br>
 
-2. 加入了映射規則來對輸出表格進行欄位名稱的對齊。映射操作僅針對表格輸出，不會對原始 CSV 文件進行任何變更。具體的映射邏輯將 fish_name 映射為 common_name，並將 country 映射為 fishing_entity。
+2. 延續上一點，根據官方指引，`fish_name` 欄位需要映射為 `common_name`，而 `country` 欄位則需要映射為 `fishing_entity`；根據這些規則對原始腳本進行的優化，但僅用於輸出，不修改原始文件，文件修正的作業留給教程中指引的其他步驟來完成。
 
     ```python
     import pandas as pd
@@ -109,11 +105,14 @@ _這裡先將映射部分筆記起來，我之後重做的時候，再來確認�
     columns_highseas = df_highseas.columns.tolist()
     columns_eez = df_eez.columns.tolist()
 
-    # 手動映射需要對齊的欄位名稱
-    mapping_eez = {"fish_name": "common_name", "country": "fishing_entity"}
+    # 欄位映射規則
+    column_mapping = {
+        'fish_name': 'common_name',
+        'country': 'fishing_entity'
+    }
 
-    # 將 SAU-EEZ-242-v48-0 的欄位名稱根據映射進行調整
-    columns_eez_mapped = [mapping_eez.get(col, col) for col in columns_eez]
+    # 根據映射規則修改 EEZ 的欄位名稱（僅用於顯示）
+    columns_eez_mapped = [column_mapping.get(col, col) for col in columns_eez]
 
     # 建立一個欄位名稱的集合，以確保所有唯一的欄位名稱都會被比較
     all_columns = sorted(set(columns_global + columns_highseas + columns_eez_mapped))
