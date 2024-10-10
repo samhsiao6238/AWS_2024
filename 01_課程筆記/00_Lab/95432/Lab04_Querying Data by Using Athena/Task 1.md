@@ -110,11 +110,11 @@ _這裡只是簡單進行查看，不做其他操作_
 
 ## 建立 Glue 表格
 
-_回到 Athena_
+_回到 Athena Editor 編輯器_
 
 <br>
 
-1. 在左側 `Tables and views` 區塊中，展開選單 `Create` 並點擊 `S3 bucket data`。
+1. 在編輯畫面左側 `Tables and views` 區塊中，展開選單 `Create` 並點擊 `S3 bucket data`。
 
     ![](images/img_11.png)
 
