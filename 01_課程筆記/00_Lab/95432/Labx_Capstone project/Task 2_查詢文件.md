@@ -111,7 +111,7 @@ _與之前相同方式，將 `SAU-HighSeas-71-v48-0.csv` 文件轉換為 `Parque
 
 ## 建立 Glue Crawler
 
-1. 進入 Crawler，並點擊建立。
+1. 進入 Crawler，並點擊 `Create crewler` 建立爬蟲。
 
     ![](images/img_20.png)
 
@@ -141,7 +141,7 @@ _與之前相同方式，將 `SAU-HighSeas-71-v48-0.csv` 文件轉換為 `Parque
 
 <br>
 
-6. 在路徑中輸入 `/`。
+1. 在路徑中輸入 `/`。
 
     ![](images/img_25.png)
 
