@@ -19,11 +19,13 @@ _進入 Cloud9 檢查結構差異_
 
 <br>
 
-2. 安裝套件。
+2. 安裝新套件，這將用於格式化輸出以利觀察資料結構。
 
     ```bash
     python3 -m pip install tabulate
     ```
+
+    ![](images/img_63.png)
 
 <br>
 
