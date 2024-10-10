@@ -37,7 +37,7 @@ _從配置環境開始_
 
 <br>
 
-4. 補充說明，AWS 的 Policy 分為 `預設（Managed Policies）` 和 `自訂（Custom Policies）` 兩類，預設的 Policy 由 AWS 提供和管理，自訂的 Policy 由使用者自行創建和管理。
+4. 補充說明，AWS 的 Policy 分為 `預設（Managed Policies）` 和 `自訂（Custom Policies）` 兩類，預設的 Policy 由 AWS 提供和管理，自訂的 Policy 由使用者自行建立和管理。
 
 <br>
 
