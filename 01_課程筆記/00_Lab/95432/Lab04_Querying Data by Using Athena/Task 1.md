@@ -206,19 +206,19 @@ _回到 Athena Editor 編輯器_
 
 <br>
 
-4. 點擊 `Run` 之後，在下方的 `Results` 會顯示前十筆資料。
+4. 點擊 `Run` 之後，在下方的 `Results` 會顯示十筆資料。
 
     ![](images/img_20.png)
 
 <br>
 
-5. 可點擊個別查詢頁籤右側的 `X` 來關閉查詢。
+5. 可點擊個別 Query 頁籤右側的 `X` 來關閉 Query。
 
     ![](images/img_21.png)
 
 <br>
 
-6. 彈窗中再次點擊 `Close query`。
+6. 點擊 `X` 後，在彈窗中再次點擊 `Close query` 即可完成關閉。
 
     ![](images/img_24.png)
 
