@@ -1,4 +1,24 @@
-# AWS Athena
+# Querying Data by Using Athena
+
+_此 Lab 是使用 AWS Athena 和 AWS Glue 來查詢儲存在 Amazon S3 中的數據，包含建立 Glue 資料庫與表格、查詢並優化 Athena 的查詢，以及使用 Athena 視圖來簡化數據分析。_
+
+<br>
+
+## 目標
+
+1. 使用 Athena 查詢編輯器建立 AWS Glue 資料庫與表格。
+
+<br>
+
+2. 使用 Athena 查詢 S3 中的數據集，並進行優化。
+
+<br>
+
+3. 建立 Athena 視圖來簡化數據查詢。
+
+<br>
+
+## 關於 AWS Athena
 
 _這是一個互動式查詢服務，允許使用標準的 SQL 語法直接查詢儲存在 Amazon S3 中的資料；這是無伺服器（serverless）的解決方案，這代表不需要設定或管理伺服器，且只需為實際執行的查詢付費。_
 
