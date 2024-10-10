@@ -89,7 +89,7 @@ _與之前相同方式，將 `SAU-HighSeas-71-v48-0.csv` 文件轉換為 `Parque
 
 <br>
 
-## 建立 AWS Glue 資料庫與 Crawler
+## 建立 AWS Glue 資料庫
 
 1. 進入 Glue 並點擊 Databases。
 
@@ -109,67 +109,69 @@ _與之前相同方式，將 `SAU-HighSeas-71-v48-0.csv` 文件轉換為 `Parque
 
 <br>
 
-4. 進入 Crawler，並點擊建立。
+## 建立 Glue Crawler
+
+1. 進入 Crawler，並點擊建立。
 
     ![](images/img_20.png)
 
 <br>
 
-5. 命名 `fishcrawler` 並點擊 `Next`。
+2. 命名 `fishcrawler` 並點擊 `Next`。
 
     ![](images/img_21.png)
 
 <br>
 
-6. 點擊 `Add a data source`。
+3. 點擊 `Add a data source`。
 
     ![](images/img_22.png)
 
 <br>
 
-7. 點擊 `Browse S3`。
+4. 點擊 `Browse S3`。
 
     ![](images/img_23.png)
 
 <br>
 
-8. 選取前綴為 `data-source` 的 Bucket。
+5. 選取前綴為 `data-source` 的 Bucket。
 
     ![](images/img_24.png)
 
 <br>
 
-9. 在路徑中輸入 `/`。
+6. 在路徑中輸入 `/`。
 
     ![](images/img_25.png)
 
 <br>
 
-10. 點擊右下角 `add`。
+7. 點擊右下角 `add`。
 
     ![](images/img_26.png)
 
 <br>
 
-11. 點擊 `Next`。
+8. 點擊 `Next`。
 
     ![](images/img_27.png)
 
 <br>
 
-12. 使用教程預設的角色 `CapstoneGlueRole`；其餘無需設定，點擊 `Next`。
+9. 使用教程預設的角色 `CapstoneGlueRole`；其餘無需設定，點擊 `Next`。
 
     ![](images/img_28.png)
 
 <br>
 
-13. 目標資料庫選取 `fishdb`，爬取頻率使用預設的 `On Demand`，點擊 `Next`。
+10. 目標資料庫選取 `fishdb`，爬取頻率使用預設的 `On Demand`，點擊 `Next`。
 
     ![](images/img_29.png)
 
 <br>
 
-14. 點擊 `Create`。
+11. 點擊 `Create`。
 
     ![](images/img_30.png)
 
