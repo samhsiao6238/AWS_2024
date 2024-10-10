@@ -4,7 +4,7 @@ _利用 `CloudFormation` 建立 `Amazon Athena` 的查詢，並分享給其他 A
 
 <br>
 
-## 步驟
+## 在 Athena 中查詢
 
 1. 以下查詢從 `yellow` 表中選取了 `行程距離（distance）`、`支付類型（paytype）`、`車資（fare）`、`小費（tip）`、`過路費（tolls）`、`附加費（surcharge）` 和 `總金額（total）` 這些欄位，並過濾出 `總金額大於等於 100` 的行程記錄；結果將按 `總金額（total）` 從 `高到低排序（DESC 代表降序排列）`。
 
