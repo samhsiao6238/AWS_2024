@@ -625,7 +625,87 @@ _內容複雜的代碼在互動環境中常因縮排問題而出錯，可改為�
 
 ## 完成
 
-![](images/img_46.png)
+1. 全部通過。
+
+    ![](images/img_46.png)
+
+<br>
+
+2. 自動化刪除使用中的資源，避免 Lab 額度耗盡；另外，Cloud9 及 Athena 的 Query 必須手動進行刪除或清理。
+
+    ```python
+    import boto3
+
+    # 初始化 AWS 服務的客戶端
+    s3_client = boto3.client("s3")
+    rds_client = boto3.client("rds")
+    glue_client = boto3.client("glue")
+
+
+    # 1. 刪除 S3 存儲桶
+    def delete_s3_buckets():
+        buckets = s3_client.list_buckets()["Buckets"]
+        for bucket in buckets:
+            bucket_name = bucket["Name"]
+            try:
+                # 刪除存儲桶中的對象
+                s3_client.delete_objects(
+                    Bucket=bucket_name,
+                    Delete={
+                        "Objects": [
+                            {"Key": obj["Key"]}
+                            for obj in s3_client.list_objects_v2(
+                                Bucket=bucket_name).get(
+                                "Contents", []
+                            )
+                        ]
+                    },
+                )
+                # 刪除存儲桶
+                s3_client.delete_bucket(Bucket=bucket_name)
+                print(f"S3 Bucket {bucket_name} 刪除成功。")
+            except Exception as e:
+                print(f"無法刪除存儲桶 {bucket_name}: {e}")
+
+
+    # 2. 刪除 RDS 資料庫實例
+    def delete_rds_instances():
+        instances = rds_client.describe_db_instances()["DBInstances"]
+        for db_instance in instances:
+            db_instance_identifier = db_instance["DBInstanceIdentifier"]
+            rds_client.delete_db_instance(
+                DBInstanceIdentifier=db_instance_identifier,
+                SkipFinalSnapshot=True,  # 跳過最終快照
+            )
+            print(f"RDS 資料庫實例 {db_instance_identifier} 刪除成功。")
+
+
+    # 3. 刪除 Glue Crawler 和 Database
+    def delete_glue_resources():
+        crawlers = glue_client.get_crawlers()["Crawlers"]
+        for crawler in crawlers:
+            glue_client.delete_crawler(Name=crawler["Name"])
+            print(f"Glue Crawler {crawler['Name']} 已刪除。")
+
+        databases = glue_client.get_databases()["DatabaseList"]
+        for db in databases:
+            glue_client.delete_database(Name=db["Name"])
+            print(f"Glue Database {db['Name']} 已刪除。")
+
+
+    # 執行自動化刪除資源的腳本
+    if __name__ == "__main__":
+        # 刪除 S3 存儲桶
+        delete_s3_buckets()
+
+        # 刪除 RDS 資料庫實例
+        delete_rds_instances()
+
+        # 刪除 Glue 資源
+        delete_glue_resources()
+
+        print("所有資源已經被刪除。請手動刪除 Cloud9 環境。")
+    ```
 
 <br>
 
