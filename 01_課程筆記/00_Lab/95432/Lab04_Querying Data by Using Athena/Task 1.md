@@ -178,7 +178,7 @@ _回到 Athena Editor 編輯器_
 
 <br>
 
-9. 可在 `Preview table query` 進行語法的預覽，這才是寫入前面欄位數據的語法；然後點擊右下角 `Create Table`；至此完成建立 Glue 資料庫與表格，並導入了 Lab 預設儲存在 S3 的數據。
+9. 可在 `Preview table query` 區塊中預覽語法，這是自動生成用來建立 Table 的語法；然後點擊右下角 `Create Table`；至此完成建立 Glue 資料庫與表格，並導入了 Lab 預設儲存在 S3 的數據。
 
     ![](images/img_17.png)
 
