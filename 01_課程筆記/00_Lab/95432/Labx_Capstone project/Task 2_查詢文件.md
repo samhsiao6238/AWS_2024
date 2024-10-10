@@ -221,7 +221,7 @@ _會在 AWS Glue 資料庫中建立包含元數據的 Table_
 
 <br>
 
-4. 切換回到 `Editor` 頁籤，可直接使用以下範例查詢，名稱部分依照自己的命名替換，點擊 `Run`。
+4. 切換回到 `Editor` 頁籤，使用以下範例查詢，然後點擊 `Run`；這段語句使用了關鍵字 `DISTINCT`，從名為 `fishdb.data_source_99991` 的資料表中，選取所有不同的 `area_name` 欄位值，也就是去除 `area_name` 欄位重複的部分並列出所有的唯一值。
 
     ```sql
     SELECT DISTINCT area_name FROM fishdb.data_source_99991;
