@@ -4,7 +4,7 @@ _配置 AWS Glue Crawler 來探索數據的結構，然後使用 Athena 查詢�
 
 <br>
 
-## 查看文件的數據內容
+## 查看數據結構與內容
 
 _`head -6 SAU-GLOBAL-1-v48-0.csv` 及 `SAU-HighSeas-71-v48-0.csv`_
 
