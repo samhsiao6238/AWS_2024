@@ -243,6 +243,8 @@ _排除以上錯誤並完成安裝與後續操作；以下操作同樣在 Cloud9
     python3 -m pip install --upgrade pip
     ```
 
+    ![](images/img_55.png)
+
 <br>
 
 4. 在虛擬環境中安裝套件；在這不加入 `python3 -m` 的效果是相同的，但建議養成良好習慣避免不必要的潛在問題。
@@ -250,6 +252,10 @@ _排除以上錯誤並完成安裝與後續操作；以下操作同樣在 Cloud9
     ```bash
     python3 -m pip install pandas pyarrow fastparquet
     ```
+
+    _無暇完成安裝_
+
+    ![](images/img_56.png)
 
 <br>
 
