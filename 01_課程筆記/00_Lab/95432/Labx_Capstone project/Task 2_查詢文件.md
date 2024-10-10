@@ -203,19 +203,25 @@ _會在 AWS Glue 資料庫中建立包含元數據的 Table_
 
 ## 使用 Athena 查詢新表中的數據
 
-1. 進入 `Athena` 並點擊 `Query Editor`，切換到 `Settings` 頁籤，並點擊 `Manage`。
+1. 進入 `Athena` 並點擊 `Query Editor`。
+
+    ![](images/img_60.png)
+
+<br>
+
+2. 切換到 `Settings` 頁籤，並點擊 `Manage`。
 
     ![](images/img_34.png)
 
 <br>
 
-2. 點擊 `Browse S3`，選取 `query-results-99991`，然後點擊 `Choose`；返回設定頁面後，點擊右下角 `Save`。
+3. 點擊 `Browse S3`，選取 `query-results-99991`，然後點擊 `Choose`；返回設定頁面後，點擊右下角 `Save`。
 
     ![](images/img_35.png)
 
 <br>
 
-3. 切換回到 `Editor` 頁籤，可直接使用以下範例查詢，名稱部分依照自己的命名替換，點擊 `Run`。
+4. 切換回到 `Editor` 頁籤，可直接使用以下範例查詢，名稱部分依照自己的命名替換，點擊 `Run`。
 
     ```sql
     SELECT DISTINCT area_name FROM fishdb.data_source_99991;
@@ -223,7 +229,7 @@ _會在 AWS Glue 資料庫中建立包含元數據的 Table_
 
 <br>
 
-4. 此查詢將返回兩個結果，對於來自 `SAU-GLOBAL-1-v48-0.parquet` 的行，`area_name` 為 `null`；對於來自 `SAU-HighSeas-71-v48-0.parquet` 的行，`area_name` 為 `Pacific, Western Central`。
+5. 此查詢將返回兩個結果，對於來自 `SAU-GLOBAL-1-v48-0.parquet` 的行，`area_name` 為 `null`；對於來自 `SAU-HighSeas-71-v48-0.parquet` 的行，`area_name` 為 `Pacific, Western Central`。
 
     ![](images/img_36.png)
 
