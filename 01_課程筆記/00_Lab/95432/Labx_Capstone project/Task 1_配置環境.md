@@ -117,7 +117,7 @@ _在 `us-east-1` 區域中建立兩個 S3 Bucket，這是 Lab 預設的區域_
 
 <br>
 
-## 進入 Cloud9
+## 返回 Cloud9
 
 _下載三個 .csv 源數據文件_
 
