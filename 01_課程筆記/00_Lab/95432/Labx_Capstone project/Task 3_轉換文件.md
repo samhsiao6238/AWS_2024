@@ -437,170 +437,185 @@ _使用已經開啟的 Query Editor_
 
 1. 將查詢結果輸出到 S3。
 
-```python
-import boto3
-import time
+    ```python
+    import boto3
+    import time
 
-# 初始化 Athena 客戶端
-athena_client = boto3.client('athena')
+    # 初始化 Athena 客戶端
+    athena_client = boto3.client('athena')
 
-# 設定查詢語句
-query = """
-    SELECT 
-        year,
-        fishing_entity AS Country, 
-        CAST(CAST(SUM(landed_value) AS DOUBLE) AS DECIMAL(38,2)) AS ValueOpenSeasCatch
-    FROM
-        fishdb.data_source_99991
-    WHERE
-        area_name IS NULL 
-        AND fishing_entity='Fiji' 
-        AND year > 2000
-    GROUP BY 
-        year, 
-        fishing_entity
-    ORDER BY 
-        year;
-"""
+    # 設定查詢語句
+    query = """
+        SELECT 
+            year,
+            fishing_entity AS Country, 
+            CAST(CAST(SUM(landed_value) AS DOUBLE) AS DECIMAL(38,2)) AS ValueOpenSeasCatch
+        FROM
+            fishdb.data_source_99991
+        WHERE
+            area_name IS NULL 
+            AND fishing_entity='Fiji' 
+            AND year > 2000
+        GROUP BY 
+            year, 
+            fishing_entity
+        ORDER BY 
+            year;
+    """
 
-# 替換為之前建立的 Athena 工作組和 S3 結果Bucket 位置
-workgroup = 'primary'
-# 替換為 S3 Bucket 名稱和路徑
-s3_output = 's3://query-results-99991/results/'
+    # 替換為之前建立的 Athena 工作組和 S3 結果Bucket 位置
+    workgroup = 'primary'
+    # 替換為 S3 Bucket 名稱和路徑
+    s3_output = 's3://query-results-99991/results/'
 
-# 執行 Athena 查詢
-response = athena_client.start_query_execution(
-    QueryString=query,
-    QueryExecutionContext={'Database': 'fishdb'},
-    ResultConfiguration={'OutputLocation': s3_output}
-)
+    # 執行 Athena 查詢
+    response = athena_client.start_query_execution(
+        QueryString=query,
+        QueryExecutionContext={'Database': 'fishdb'},
+        ResultConfiguration={'OutputLocation': s3_output}
+    )
 
-# 查詢執行 ID
-query_execution_id = response['QueryExecutionId']
+    # 查詢執行 ID
+    query_execution_id = response['QueryExecutionId']
 
-# 輸出執行 ID
-print(f"Query executed with ID: {query_execution_id}")
+    # 輸出執行 ID
+    print(f"Query executed with ID: {query_execution_id}")
 
-# 輪詢查詢結果狀態，直到查詢完成或失敗
-while True:
-    query_status = athena_client.get_query_execution(QueryExecutionId=query_execution_id)
-    status = query_status['QueryExecution']['Status']['State']
-    
-    if status == 'SUCCEEDED':
-        print("Query succeeded.")
-        break
-    elif status == 'FAILED':
-        print(f"Query failed with status: {status}")
-        break
-    else:
-        print(f"Query is still running with status: {status}. Waiting for completion...")
-        # 每隔5秒檢查一次狀態
-        time.sleep(5)
-```
+    # 輪詢查詢結果狀態，直到查詢完成或失敗
+    while True:
+        query_status = athena_client.get_query_execution(QueryExecutionId=query_execution_id)
+        status = query_status['QueryExecution']['Status']['State']
+        
+        if status == 'SUCCEEDED':
+            print("Query succeeded.")
+            break
+        elif status == 'FAILED':
+            print(f"Query failed with status: {status}")
+            break
+        else:
+            print(f"Query is still running with status: {status}. Waiting for completion...")
+            # 每隔5秒檢查一次狀態
+            time.sleep(5)
+    ```
 
-![](images/img_69.png)
+    ![](images/img_69.png)
 
+<br>
 
 ## 使用 Python 腳本
 
 _內容複雜的腳本在互動環境中常出現縮排問題而出錯，可直接運行腳本_
 
+<br>
+
 1. 在本地編輯以下腳本，功能是直接輸出查詢結果，而不需要依賴 S3 存儲來查看結果；任意命名儲存如 `test01.py`。
 
-```python
-import boto3
-import time
-import pandas as pd
+    ```python
+    import boto3
+    import time
+    import pandas as pd
 
-# 初始化 Athena 客戶端
-athena_client = boto3.client('athena')
+    # 初始化 Athena 客戶端
+    athena_client = boto3.client('athena')
 
-# 設定查詢語句
-query = """
-    SELECT 
-        year,
-        fishing_entity AS Country, 
-        CAST(CAST(SUM(landed_value) AS DOUBLE) AS DECIMAL(38,2)) AS ValueOpenSeasCatch
-    FROM
-        fishdb.data_source_99991
-    WHERE
-        area_name IS NULL 
-        AND fishing_entity='Fiji' 
-        AND year > 2000
-    GROUP BY 
-        year, 
-        fishing_entity
-    ORDER BY 
-        year;
-"""
+    # 設定查詢語句
+    query = """
+        SELECT 
+            year,
+            fishing_entity AS Country, 
+            CAST(CAST(SUM(landed_value) AS DOUBLE) AS DECIMAL(38,2)) AS ValueOpenSeasCatch
+        FROM
+            fishdb.data_source_99991
+        WHERE
+            area_name IS NULL 
+            AND fishing_entity='Fiji' 
+            AND year > 2000
+        GROUP BY 
+            year, 
+            fishing_entity
+        ORDER BY 
+            year;
+    """
 
-# 替換為您之前建立的 Athena 工作組和 S3 結果Bucket 位置
-workgroup = 'primary'
-# 替換為 S3 Bucket 名稱和路徑
-s3_output = 's3://query-results-99991/results/'
+    # 替換為您之前建立的 Athena 工作組和 S3 結果Bucket 位置
+    workgroup = 'primary'
+    # 替換為 S3 Bucket 名稱和路徑
+    s3_output = 's3://query-results-99991/results/'
 
-# 執行 Athena 查詢
-response = athena_client.start_query_execution(
-    QueryString=query,
-    QueryExecutionContext={'Database': 'fishdb'},
-    ResultConfiguration={'OutputLocation': s3_output}
-)
+    # 執行 Athena 查詢
+    response = athena_client.start_query_execution(
+        QueryString=query,
+        QueryExecutionContext={'Database': 'fishdb'},
+        ResultConfiguration={'OutputLocation': s3_output}
+    )
 
-# 查詢執行 ID
-query_execution_id = response['QueryExecutionId']
-print(f"Query executed with ID: {query_execution_id}")
+    # 查詢執行 ID
+    query_execution_id = response['QueryExecutionId']
+    print(f"Query executed with ID: {query_execution_id}")
 
-# 輪詢查詢結果狀態，直到查詢完成
-while True:
-    query_status = athena_client.get_query_execution(QueryExecutionId=query_execution_id)
-    status = query_status['QueryExecution']['Status']['State']
-    
-    if status in ['SUCCEEDED', 'FAILED', 'CANCELLED']:
-        break
-    
-    print(f"Query is still running. Current status: {status}")
-    # 等待 5 秒後重新檢查狀態
-    time.sleep(5)
+    # 輪詢查詢結果狀態，直到查詢完成
+    while True:
+        query_status = athena_client.get_query_execution(QueryExecutionId=query_execution_id)
+        status = query_status['QueryExecution']['Status']['State']
+        
+        if status in ['SUCCEEDED', 'FAILED', 'CANCELLED']:
+            break
+        
+        print(f"Query is still running. Current status: {status}")
+        # 等待 5 秒後重新檢查狀態
+        time.sleep(5)
 
-if status != 'SUCCEEDED':
-    print(f"Query failed with status: {status}")
-else:
-    print("Query succeeded. Fetching results...")
+    if status != 'SUCCEEDED':
+        print(f"Query failed with status: {status}")
+    else:
+        print("Query succeeded. Fetching results...")
 
-    # 獲取查詢結果
-    result_response = athena_client.get_query_results(QueryExecutionId=query_execution_id)
+        # 獲取查詢結果
+        result_response = athena_client.get_query_results(QueryExecutionId=query_execution_id)
 
-    # 解析結果
-    rows = result_response['ResultSet']['Rows']
-    headers = [col['VarCharValue'] for col in rows[0]['Data']]
-    data = [[col.get('VarCharValue', 'NULL') for col in row['Data']] for row in rows[1:]]
+        # 解析結果
+        rows = result_response['ResultSet']['Rows']
+        headers = [col['VarCharValue'] for col in rows[0]['Data']]
+        data = [[col.get('VarCharValue', 'NULL') for col in row['Data']] for row in rows[1:]]
 
-    # 使用 Pandas 顯示結果
-    df = pd.DataFrame(data, columns=headers)
-    print(df)
-```
+        # 使用 Pandas 顯示結果
+        df = pd.DataFrame(data, columns=headers)
+        print(df)
+    ```
+
+<br>
 
 2. 在 Cloud9 上方功能欄位中，點擊 File 並選取 `Upload Local Files...`。
 
-![](images/img_70.png)
+    ![](images/img_70.png)
+
+<br>
 
 3. 點擊 `Select files` 後，選取本地的 `test01.py` 腳本。
 
-![](images/img_71.png)
+    ![](images/img_71.png)
+
+<br>
 
 4. 開啟會直接完成上傳，無需點擊任何確認。
 
-![](images/img_72.png)
+    ![](images/img_72.png)
+
+<br>
 
 5. 運行。
 
-```bash
-python3 test01.py
-```
+    ```bash
+    python3 test01.py
+    ```
+
+<br>
 
 6. 取得運行結果；這樣的運行效率比起在 Cloud9 的互動環境中運行要來得高效。
 
-![](images/img_73.png)
+    ![](images/img_73.png)
+
+<br>
 
 ## 完成
 
