@@ -159,7 +159,7 @@ _與之前相同方式，將 `SAU-HighSeas-71-v48-0.csv` 文件轉換為 `Parque
 
 <br>
 
-9. 使用教程預設的角色 `CapstoneGlueRole`；其餘無需設定，點擊 `Next`。
+9. 從下拉選單中選取預設的角色 `CapstoneGlueRole`；其餘無需設定，點擊 `Next`。
 
     ![](images/img_28.png)
 
