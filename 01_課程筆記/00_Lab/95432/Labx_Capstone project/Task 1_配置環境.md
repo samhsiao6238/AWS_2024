@@ -1,5 +1,7 @@
 # Task 1：配置開發環境
 
+_從配置環境開始_
+
 <br>
 
 ## 觀察 CapstoneGlueRole 角色
