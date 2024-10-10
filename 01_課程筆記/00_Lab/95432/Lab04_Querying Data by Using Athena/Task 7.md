@@ -36,6 +36,9 @@
 
 _Submit & End Lab_
 
+<br>
+
+![](images/img_58.png)
 
 <br>
 
