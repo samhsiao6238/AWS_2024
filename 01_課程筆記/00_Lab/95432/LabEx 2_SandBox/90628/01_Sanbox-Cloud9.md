@@ -56,7 +56,7 @@ _在 `90628`中實作這個 Lab 時遇到一些挑戰，因為依據教程似乎
 
 <br>
 
-4. 切換 `Network settings` 為 `SSH`；
+4. 切換 `Network settings` 為 `SSH`。
 
     ![](images/img_07.png)
 
