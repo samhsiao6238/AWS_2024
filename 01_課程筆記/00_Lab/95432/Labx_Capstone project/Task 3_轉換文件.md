@@ -631,7 +631,7 @@ _內容複雜的代碼在互動環境中常因縮排問題而出錯，可改為�
 
 <br>
 
-2. 自動化刪除使用中的資源，避免 Lab 額度耗盡；另外，Cloud9 及 Athena 的 Query 必須手動進行刪除或清理。
+2. 自動化刪除使用中的資源，避免 Lab 額度耗盡；另外，Cloud9 及 Athena 的 Query 必須手動進行刪除或清理；至於預設的 Role 及 Workgroup 是無法進行刪除的。
 
     ```python
     import boto3
