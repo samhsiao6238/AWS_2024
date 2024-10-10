@@ -38,7 +38,7 @@ _進入 Lab 之後_
 
 <br>
 
-3. 切換到 `Settings` 頁籤，會看到當前所在是 `Query result and encryption settings`，點擊右側的 `Manage`。
+3. 切換到 `Settings` 頁籤，點擊右側的 `Manage`。
 
     ![](images/img_03.png)
 
