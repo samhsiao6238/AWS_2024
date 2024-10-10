@@ -183,7 +183,7 @@ _會在 AWS Glue 資料庫中建立包含元數據的 Table_
 
 <br>
 
-1. 回到 Crawlers 清單中；選取並運行 `fishcrawler` Crawler；過程中會顯示 `Running`、`Stopping` 然後完成，稍等片刻。
+1. 回到 Crawlers 清單中；選取並運行 `fishcrawler` Crawler；過程中 State 會顯示 `Running`、`Stopping` 然後完成回到 `Ready`，需要一點時間。
 
     ![](images/img_31.png)
 
