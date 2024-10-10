@@ -90,7 +90,7 @@ _利用 `CloudFormation` 建立 `Amazon Athena` 的查詢，並分享給其他 A
 
 <br>
 
-7. 部署模板，執行以下指令來部署 CloudFormation 堆疊，使用 CloudFormation 來建立可重用的 Athena 查詢模板，並將其部署到 AWS。
+7. 部署模板，執行以下指令來部署 CloudFormation 堆疊，使用 CloudFormation 來建立可重用的 Athena 查詢模板，並將其部署到 AWS；特別注意，Lab 中的角色並無權限刪除 CloudFormation 中的 Stack。
 
     ```bash
     aws cloudformation create-stack --stack-name athenaquery --template-body file://athenaquery.cf.yml
