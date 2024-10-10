@@ -29,7 +29,7 @@ _進入 Cloud9_
 2. 安裝套件。
 
     ```bash
-    pip install tabulate
+    python3 -m pip install tabulate
     ```
 
 <br>
