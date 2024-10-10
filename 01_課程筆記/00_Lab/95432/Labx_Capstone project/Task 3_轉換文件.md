@@ -384,11 +384,22 @@ _使用已經開啟的 Query Editor_
 
     ```sql
     CREATE OR REPLACE VIEW MackerelsCatch AS
-    SELECT year, area_name AS WhereCaught, fishing_entity as Country, SUM(tonnes) AS TotalWeight
-    FROM fishdb.data_source_99991
-    WHERE common_name LIKE '%Mackerels%' AND year > 2014
-    GROUP BY year, area_name, fishing_entity, tonnes
-    ORDER BY tonnes DESC;
+    SELECT 
+        year, 
+        area_name AS WhereCaught, 
+        fishing_entity as Country, 
+        SUM(tonnes) AS TotalWeight
+    FROM 
+        fishdb.data_source_99991
+    WHERE 
+        common_name LIKE '%Mackerels%' 
+        AND year > 2014
+    GROUP BY 
+        year, area_name, 
+        fishing_entity, 
+        tonnes
+    ORDER BY 
+        tonnes DESC;
     ```
 
 <br>
@@ -404,10 +415,18 @@ _使用已經開啟的 Query Editor_
 1. 驗證視圖是否正確地返回數據，並使用視圖進行後續分析。例如，可以查詢每年 mackerel 捕撈數量最多的國家。
 
     ```sql
-    SELECT year, Country, MAX(TotalWeight) AS Weight
-    FROM fishdb.mackerelscatch
-    GROUP BY year, Country
-    ORDER BY year, Weight DESC;
+    SELECT 
+        year, 
+        Country, 
+        MAX(TotalWeight) AS Weight
+    FROM 
+        fishdb.mackerelscatch
+    GROUP BY 
+        year, 
+        Country
+    ORDER BY 
+        year, 
+        Weight DESC;
     ```
 
     ![](images/img_45.png)
