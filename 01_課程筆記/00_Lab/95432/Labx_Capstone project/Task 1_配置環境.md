@@ -12,7 +12,7 @@ _從配置環境開始_
 
 <br>
 
-2. 在 Permissions 頁籤中可看到三個 Policy，這三個都是 AWS 預設的；其中 `AmazonAthenaFullAccess` 允許對 Athena 的完全存取權限，包含查詢、檢視及管理資料集等操作；`AmazonS3FullAccess` 允許對 Amazon S3 儲存桶的完全存取權限，包含讀取、寫入、刪除檔案等操作；`AWSGlueServiceRole` 提供 AWS Glue 服務進行爬網、ETL 操作時所需的執行角色和權限。
+1. 在 Permissions 頁籤中可看到三個 Policy，這三個都是 AWS 預設的；其中 `AmazonAthenaFullAccess` 允許對 Athena 的完全存取權限，`AmazonS3FullAccess` 允許對 Amazon S3 Bucket 的完全存取權限，`AWSGlueServiceRole` 則是提供 AWS Glue 服務進行爬網、ETL 操作時所需的執行角色和權限。
 
     ![](images/img_02.png)
 
