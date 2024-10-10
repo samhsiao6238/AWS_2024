@@ -147,13 +147,23 @@ _下載三個 .csv 源數據文件_
 
 <br>
 
-4. 使用以下命令查看 `SAU-GLOBAL-1-v48-0.csv` 文件的欄位標題和前五行數據。
+4. 使用 `head` 指令查看其中 `SAU-GLOBAL-1-v48-0.csv` 文件的欄位標題和前五行數據。
 
     ```bash
     head -6 SAU-GLOBAL-1-v48-0.csv
     ```
 
     ![](images/img_12.png)
+
+<br>
+
+5. 可串接 `column` 命令來進行格式化顯示。
+
+    ```bash
+    head -6 SAU-GLOBAL-1-v48-0.csv | column -t -s ","
+    ```
+
+    ![](images/img_52.png)
 
 <br>
 
