@@ -245,7 +245,7 @@ _會在 AWS Glue 資料庫中建立包含元數據的 Table_
 
 <br>
 
-7. 查詢捕撈活動的國家或實體。
+7. 使用欄位 `fishing_entity` 查詢捕撈活動的國家或實體。
 
     ```sql
     SELECT DISTINCT fishing_entity FROM fishdb.data_source_99991;
