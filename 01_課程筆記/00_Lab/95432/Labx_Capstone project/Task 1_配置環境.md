@@ -75,7 +75,7 @@ _建立開發環境_
 
 <br>
 
-4. 展開 VPC settings，在下拉選單中分別選取 `Capstone VPC`、`Capstone public subnet`。
+4. 展開 VPC settings，在下拉選單中分別選取 `Capstone VPC`、`Capstone public subnet`；這是 Lab 預先準備好的設定。
 
     ![](images/img_05.png)
 
