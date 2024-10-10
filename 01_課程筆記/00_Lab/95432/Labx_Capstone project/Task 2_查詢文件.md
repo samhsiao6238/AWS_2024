@@ -245,6 +245,20 @@ _會在 AWS Glue 資料庫中建立包含元數據的 Table_
 
 <br>
 
+7. 查詢捕撈活動的國家或實體。
+
+    ```sql
+    SELECT DISTINCT fishing_entity FROM fishdb.data_source_99991;
+    ```
+
+<br>
+
+8. 結果顯示，資料集中共有 `198` 個捕撈實體，其中第三個是斐濟，這會在下一個步驟中用到。
+
+    ![](images/img_62.png)
+
+<br>
+
 ## 查詢特定數據
 
 _同樣在 data_source_99991 中進行查詢_
