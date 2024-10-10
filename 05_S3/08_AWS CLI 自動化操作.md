@@ -29,7 +29,7 @@ _以上的 AWS CLI 指令可以打包為 Shell 腳本，並且將不同功能分
 
     # 檢查上一步是否成功
     if [ $? -ne 0 ]; then
-        echo "AWS CLI 配置的根用戶憑證無效。請檢查您的 AWS CLI 配置。"
+        echo "AWS CLI 配置的根用戶憑證無效。請檢查 AWS CLI 配置。"
         exit 1
     fi
 

@@ -28,7 +28,7 @@
 
 <br>
 
-4. 在 `Web Application Firewall` 部分選取 `Enable security protections` 以啟用 WAF，確保應用程式免受常見的網路威脅和安全漏洞的侵害，並在有惡意請求時阻止它們進入您的伺服器。
+4. 在 `Web Application Firewall` 部分選取 `Enable security protections` 以啟用 WAF，確保應用程式免受常見的網路威脅和安全漏洞的侵害，並在有惡意請求時阻止它們進入伺服器。
 
     ![](images/img_12.png)
 

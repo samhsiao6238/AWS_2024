@@ -191,7 +191,7 @@ _使用 Python 腳本模擬數據並與 PostgreSQL 進行互動_
     from psycopg2 import sql
     import random
 
-    # 使用您的資料庫連接信息
+    # 使用資料庫連接信息
     db_host = 'my-postgres-db.cacwqxy1xikj.us-east-1.rds.amazonaws.com'
     # 先連接到預設的 postgres 資料庫
     db_name = 'postgres'
@@ -433,7 +433,7 @@ _使用 Python 腳本模擬數據並與 PostgreSQL 進行互動_
     import psycopg2
     from psycopg2 import sql
 
-    # 使用您的資料庫連接信息
+    # 使用資料庫連接信息
     db_host = 'my-postgres-db.cacwqxy1xikj.us-east-1.rds.amazonaws.com'
     # 連接到預設的 postgres 資料庫
     db_name = 'postgres'
