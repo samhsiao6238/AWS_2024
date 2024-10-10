@@ -1,10 +1,14 @@
 # Task 2：查詢文件
 
-_配置 AWS Glue Crawler 來發現數據的結構，然後使用 Athena 查詢這些數據。_
+_配置 AWS Glue Crawler 來探索數據的結構，然後使用 Athena 查詢這些數據。_
 
 <br>
 
-## 查看 SAU-HighSeas-71-v48-0.csv 文件的數據
+## 查看文件的數據內容
+
+_SAU-HighSeas-71-v48-0.csv_
+
+<br>
 
 1. 使用 `head` 命令查看該 CSV 文件的列標題和前幾行數據；`SAU-HighSeas-71-v48-0.csv` 文件包含了 `SAU-GLOBAL-1-v48-0.csv` 文件所有的欄位，另外還有其他額外的欄位。
 
