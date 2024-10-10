@@ -50,7 +50,7 @@ _進入 Lab 之後_
 
 <br>
 
-5. 選取預設的 `S3 Bucket`，點擊右下角 `Choose`。
+5. 在彈窗中選取預設的 `S3 Bucket`，名稱前綴為 `ade-s3lab-bucket`，尾綴數字每次使用 Lab 都會不同；勾選後點擊右下角的 `Choose`。
 
     ![](images/img_05.png)
 
