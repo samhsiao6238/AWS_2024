@@ -129,7 +129,7 @@ _下載三個 .csv 源數據文件_
 
 <br>
 
-2. 使用以下命令查看 `SAU-GLOBAL-1-v48-0.csv` 文件的列標題和前五行數據。
+2. 使用以下命令查看 `SAU-GLOBAL-1-v48-0.csv` 文件的欄位標題和前五行數據。
 
     ```bash
     head -6 SAU-GLOBAL-1-v48-0.csv
