@@ -1,10 +1,12 @@
-# Task 5：使用 CloudFormation 建立 Athena 命名查詢
+# Task 5：建立 Athena 查詢
+
+_利用 `CloudFormation` 建立 `Amazon Athena` 的查詢，並分享給其他 AWS 帳戶的部門使用。_
 
 <br>
 
 ## 步驟
 
-1. 接下來要利用 `CloudFormation` 建立 `Amazon Athena` 的命名查詢，並分享給其他 AWS 帳戶的部門使用；以下查詢從 `yellow` 表中選取了 `行程距離（distance）`、`支付類型（paytype）`、`車資（fare）`、`小費（tip）`、`過路費（tolls）`、`附加費（surcharge）` 和 `總金額（total）` 這些欄位，並過濾出 `總金額大於等於 100` 的行程記錄；結果將按 `總金額（total）` 從 `高到低排序（DESC 代表降序排列）`。
+1. 以下查詢從 `yellow` 表中選取了 `行程距離（distance）`、`支付類型（paytype）`、`車資（fare）`、`小費（tip）`、`過路費（tolls）`、`附加費（surcharge）` 和 `總金額（total）` 這些欄位，並過濾出 `總金額大於等於 100` 的行程記錄；結果將按 `總金額（total）` 從 `高到低排序（DESC 代表降序排列）`。
 
     ```sql
     SELECT 
