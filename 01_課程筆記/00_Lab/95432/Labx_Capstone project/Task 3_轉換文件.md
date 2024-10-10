@@ -331,12 +331,21 @@ _使用已經開啟的 Query Editor_
 4. 驗證 Fiji 自 2001 年以來在 Fiji 專屬經濟區（EEZ）捕撈魚類的美元價值，按年份組織。
 
     ```sql
-    SELECT year, fishing_entity AS Country, 
-    CAST(CAST(SUM(landed_value) AS DOUBLE) AS DECIMAL(38,2)) AS ValueEEZCatch
-    FROM fishdb.data_source_99991
-    WHERE area_name LIKE '%Fiji%' AND fishing_entity='Fiji' AND year > 2000
-    GROUP BY year, fishing_entity
-    ORDER BY year;
+    SELECT 
+        year, 
+        fishing_entity AS Country, 
+        CAST(CAST(SUM(landed_value) AS DOUBLE) AS DECIMAL(38,2)) AS ValueEEZCatch
+    FROM 
+        fishdb.data_source_99991
+    WHERE 
+        area_name LIKE '%Fiji%' 
+        AND fishing_entity='Fiji' 
+        AND year > 2000
+    GROUP BY 
+        year, 
+        fishing_entity
+    ORDER BY 
+        year;
     ```
 
 <br>
@@ -344,12 +353,21 @@ _使用已經開啟的 Query Editor_
 5. 驗證 Fiji 自 2001 年以來在 EEZ 和高海域捕撈魚類的總價值，按年份組織。
 
     ```sql
-    SELECT year, fishing_entity AS Country, 
-    CAST(CAST(SUM(landed_value) AS DOUBLE) AS DECIMAL(38,2)) AS ValueEEZAndOpenSeasCatch
-    FROM fishdb.data_source_99991
-    WHERE (area_name LIKE '%Fiji%' OR area_name IS NULL) AND fishing_entity='Fiji' AND year > 2000
-    GROUP BY year, fishing_entity
-    ORDER BY year;
+    SELECT 
+        year, 
+        fishing_entity AS Country, 
+        CAST(CAST(SUM(landed_value) AS DOUBLE) AS DECIMAL(38,2)) AS ValueEEZAndOpenSeasCatch
+    FROM 
+        fishdb.data_source_99991
+    WHERE 
+        (area_name LIKE '%Fiji%' OR area_name IS NULL) 
+        AND fishing_entity='Fiji' 
+        AND year > 2000
+    GROUP BY 
+        year, 
+        fishing_entity
+    ORDER BY 
+        year;
     ```
 
 <br>
