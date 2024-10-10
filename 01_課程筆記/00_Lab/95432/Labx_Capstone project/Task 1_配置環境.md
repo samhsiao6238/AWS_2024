@@ -267,7 +267,7 @@ _排除以上錯誤並完成安裝與後續操作；以下操作同樣在 Cloud9
 
 <br>
 
-6. 使用以下 Python 代碼將 `CSV` 文件轉換為 `Parquet` 格式。
+6. 使用以下 Python 代碼將 `CSV` 文件 `SAU-GLOBAL-1-v48-0.csv` 轉換為 `Parquet` 格式；特別注意，共有三個 `CSV` 文件，這裡僅先針對其一進行轉換。
 
     ```bash
     import pandas as pd
