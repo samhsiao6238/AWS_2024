@@ -585,25 +585,31 @@ _內容複雜的腳本在互動環境中常出現縮排問題而出錯，可直�
 
 <br>
 
-2. 在 Cloud9 上方功能欄位中，點擊 File 並選取 `Upload Local Files...`。
+2. 運行後前往 S3 進行查看。
+
+    ![](images/img_74.png)
+
+<br>
+
+3. 在 Cloud9 上方功能欄位中，點擊 File 並選取 `Upload Local Files...`。
 
     ![](images/img_70.png)
 
 <br>
 
-3. 點擊 `Select files` 後，選取本地的 `test01.py` 腳本。
+4. 點擊 `Select files` 後，選取本地的 `test01.py` 腳本。
 
     ![](images/img_71.png)
 
 <br>
 
-4. 開啟會直接完成上傳，無需點擊任何確認。
+5. 開啟會直接完成上傳，無需點擊任何確認。
 
     ![](images/img_72.png)
 
 <br>
 
-5. 運行。
+6. 運行。
 
     ```bash
     python3 test01.py
@@ -611,7 +617,7 @@ _內容複雜的腳本在互動環境中常出現縮排問題而出錯，可直�
 
 <br>
 
-6. 取得運行結果；這樣的運行效率比起在 Cloud9 的互動環境中運行要來得高效。
+7. 取得運行結果；這樣的運行效率比起在 Cloud9 的互動環境中運行要來得高效。
 
     ![](images/img_73.png)
 
