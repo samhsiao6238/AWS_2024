@@ -237,7 +237,15 @@ _排除以上錯誤並完成安裝與後續操作；以下操作同樣在 Cloud9
 
 <br>
 
-3. 在虛擬環境中安裝套件；在這不加入 `python3 -m` 的效果是相同的，但建議養成良好習慣避免不必要的潛在問題。
+3. 更新 pip；特別注意，這只是使用虛擬環境時的良好習慣，不贅述。
+
+    ```bash
+    python3 -m pip install --upgrade pip
+    ```
+
+<br>
+
+4. 在虛擬環境中安裝套件；在這不加入 `python3 -m` 的效果是相同的，但建議養成良好習慣避免不必要的潛在問題。
 
     ```bash
     python3 -m pip install pandas pyarrow fastparquet
@@ -245,7 +253,7 @@ _排除以上錯誤並完成安裝與後續操作；以下操作同樣在 Cloud9
 
 <br>
 
-4. 開啟 Python 交互式環境。
+5. 開啟 Python 交互式環境。
 
     ```bash
     python3
@@ -253,7 +261,7 @@ _排除以上錯誤並完成安裝與後續操作；以下操作同樣在 Cloud9
 
 <br>
 
-5. 使用以下 Python 代碼將 `CSV` 文件轉換為 `Parquet` 格式。
+6. 使用以下 Python 代碼將 `CSV` 文件轉換為 `Parquet` 格式。
 
     ```bash
     import pandas as pd
@@ -263,7 +271,7 @@ _排除以上錯誤並完成安裝與後續操作；以下操作同樣在 Cloud9
 
 <br>
 
-6. 退出交互式環境。
+7. 退出交互式環境。
 
     ```bash
     exit()
@@ -271,7 +279,7 @@ _排除以上錯誤並完成安裝與後續操作；以下操作同樣在 Cloud9
 
 <br>
 
-7. 關閉虛擬環境。
+8. 關閉虛擬環境。
 
     ```bash
     deactivate
