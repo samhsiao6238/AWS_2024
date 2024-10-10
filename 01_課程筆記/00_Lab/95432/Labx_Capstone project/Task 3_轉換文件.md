@@ -234,6 +234,10 @@ _進入 Cloud9 檢查結構差異_
 
 ## 使用 Boto3
 
+_若要實測，請先刪除使用 CLI 上傳的文件_
+
+<br>
+
 1. 安裝套件。
 
     ```bash
@@ -261,6 +265,8 @@ _進入 Cloud9 檢查結構差異_
 
     print(f"{file_path} 已成功上傳至 S3 桶: {bucket_name}/{s3_key}")
     ```
+
+    ![](images/img_68.png)
 
 <br>
 
