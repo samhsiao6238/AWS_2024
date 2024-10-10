@@ -277,7 +277,7 @@ _同樣在 data_source_99991 中進行查詢_
     WHERE 
         area_name LIKE '%Pacific%' 
         AND fishing_entity = 'Fiji' 
-        AND year > 2001
+        AND year > 2000
     GROUP BY 
         year, fishing_entity
     ORDER BY 
@@ -286,7 +286,7 @@ _同樣在 data_source_99991 中進行查詢_
 
 <br>
 
-2. 查詢結果，共有 `17` 個年度的資料。
+2. 查詢結果，共有 `18` 個年度的資料，計算捕撈價值的區域為 `ValuePacificWCSeasCatch`。
 
     ![](images/img_37.png)
 
@@ -326,13 +326,13 @@ _同樣在 data_source_99991 中進行查詢_
 
 <br>
 
-## 挑戰任務
+## 繼續查詢
 
-_查詢 Fiji 在所有高海域的魚類捕撈總價值_
+_依據教程指示修改前面的語句，查詢 `Fiji` 在 `所有高海域` 的魚類捕撈總價值_
 
 <br>
 
-1. 搜尋自 `2001 年` 以來 `Fiji` 在所有高海域的捕撈價值，並將美元值欄位命名為 `ValueAllHighSeasCatch`；`area_name IS NULL` 使用 `IS NULL` 表示搜尋不屬於任何國家的高海域資料，`fishing_entity = 'Fiji'` 過濾出來自 `Fiji` 的捕撈數據，`year > 2000` 過濾自 `2001 年` 以來的數據，`CAST` 將捕撈價值轉換為讀者友好的格式，以兩位小數顯示。
+1. 搜尋自 `2001 年` 以來 `Fiji` 在所有高海域的捕撈價值，並將美元值欄位命名為 `ValueAllHighSeasCatch`；在 `area_name` 部分使用 `IS NULL` 表示搜尋不屬於任何國家的高海域資料，`fishing_entity = 'Fiji'` 過濾出來自 `Fiji` 的捕撈數據，`year > 2000` 過濾自 `2001 年` 以來的數據，`CAST` 將捕撈價值轉換為讀者友好的格式，以兩位小數顯示。
 
     ```sql
     SELECT 
