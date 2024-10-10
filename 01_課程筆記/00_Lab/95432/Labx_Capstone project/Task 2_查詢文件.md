@@ -27,7 +27,7 @@ _`head -6 SAU-GLOBAL-1-v48-0.csv` 及 `SAU-HighSeas-71-v48-0.csv`_
 
 ## 再次轉換
 
-_與之前相同模式，將 `SAU-HighSeas-71-v48-0.csv` 文件轉換為 `Parquet` 格式並上傳至 `data-source Bucket`_
+_與之前相同方式，將 `SAU-HighSeas-71-v48-0.csv` 文件轉換為 `Parquet` 格式並上傳至 `data-source Bucket`_
 
 <br>
 
