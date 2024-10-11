@@ -22,7 +22,7 @@ _若從 Lab 進入，直接進入 `Lab 5 - Guided Lab: Facial Recognition`，然
 
 1. 在 Services 搜尋並開啟 `Amazon SageMaker`。
 
-    ![](images/img_09.png)
+    ![](images/img_55.png)
 
 <br>
 
