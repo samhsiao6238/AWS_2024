@@ -56,6 +56,8 @@ _進一步探索負載均衡器和自動擴展組等資源_
 
 _Submit && End Lab_
 
+![](images/img_25.png)
+
 <br>
 
 ___
