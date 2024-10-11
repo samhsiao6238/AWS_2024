@@ -1,6 +1,6 @@
 # 人臉識別
 
-_Module 5 – Introducing Computer Vision (CV)，使用 Amazon SageMaker 建立 Jupyter Notebook 實例，以及使用 Amazon Rekognition 進行已知人臉檢測的步驟_
+_參考 `90629` 的 `Module 5` – Introducing Computer Vision (CV)，使用 Amazon SageMaker 建立 Jupyter Notebook 實例，以及使用 Amazon Rekognition 進行已知人臉檢測的步驟；這個筆記不是正式的 Lab 實作，可作為 Lab 實作的補充。_
 
 <br>
 
