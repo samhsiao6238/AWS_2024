@@ -150,7 +150,7 @@ _比照之前步驟_
 
 <br>
 
-5. 類型 `HTTP`、來源 `Anywhere-IPv4`、描述 `Permit web requests`。
+5. 類型選 `HTTP`、來源選 `Anywhere-IPv4`、描述填入 `Permit web requests`。
 
     ![](images/img_34.png)
 
@@ -164,25 +164,45 @@ _比照之前步驟_
 
 ## 啟動 Web 伺服器
 
-1. 搜尋並進入 EC2 主控台，點擊 `Launch instance`；命名 `Web Server 1`，密鑰對選擇 `vockey`；接著點擊網路設置 `Network settings` 右側的 `Edit`。
+1. 搜尋並進入 EC2 主控台，點擊 `Launch instance`。
+
+    ![](images/img_54.png)
+
+<br>
+
+2. 命名為 `Web Server 1`。
+
+    ![](images/img_55.png)
+
+<br>
+
+3. 密鑰對選擇 `vockey`。
+
+    ![](images/img_56.png)
+
+<br>
+
+4. 接著在 `Network settings` 區塊，點擊標題右側的 `Edit`。
 
     ![](images/img_36.png)
 
 <br>
 
-2. 選擇 `lab-vpc`、子網選擇 `lab-subnet-public2`、自動分配公共 IP `Auto-assign public IP` 設定為 `Enable`。
+## 進入 `Network settings`
+
+1. VPC 選擇 `lab-vpc`、子網選擇 `lab-subnet-public2`、`Auto-assign public IP` 設定為 `Enable`。
 
     ![](images/img_37.png)
 
 <br>
 
-3. 防火牆 `Firewall` 選擇 `Web Security Group`。
+2. 防火牆 `Firewall` 選擇 `Web Security Group`。
 
     ![](images/img_38.png)
 
 <br>
 
-4. 展開最下方的 `Advanced details`，將以下代碼貼到 `User data` 欄位中。
+3. 展開最下方的 `Advanced details`，將以下代碼貼到 `User data` 欄位中。
 
     ```bash
     #!/bin/bash
@@ -195,7 +215,7 @@ _比照之前步驟_
 
 <br>
 
-5. 以上是個一般的 Bash 腳本，所以不需要勾選 `User data has already been base64 encoded`，AWS 會自動將該腳本進行 Base64 編碼並傳遞給 EC2 實例；點擊 `Launch instance` 啟動。
+4. 以上是個一般的 Bash 腳本，所以不需要勾選 `User data has already been base64 encoded`，AWS 會自動將該腳本進行 Base64 編碼並傳遞給 EC2 實例；點擊 `Launch instance` 啟動。
 
     ![](images/img_39.png)
 
