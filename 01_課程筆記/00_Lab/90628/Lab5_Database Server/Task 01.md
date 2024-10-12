@@ -22,7 +22,7 @@
 
 <br>
 
-4. 點擊右上角 `Create security group`，配置以下設定；Security group name `DB Security Group`、Description `Permit access from Web Security Group`；VPC 選擇 `Lab VPC`。
+4. 點擊右上角 `Create security group`，配置以下設定；Security group name 設置為 `DB Security Group`、描述 Description 填入 `Permit access from Web Security Group`；VPC 選擇 `Lab VPC`。
 
     ![](images/img_02.png)
 
