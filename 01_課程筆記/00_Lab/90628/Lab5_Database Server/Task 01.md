@@ -48,7 +48,7 @@
 
 <br>
 
-3. 選擇 `Create DB Subnet Group`，並配置以下設定；Name `DB-Subnet-Group`、Description `DB Subnet Group`，VPC 一樣從下拉選單中選取 `Lab VPC`。
+3. 選擇 `Create DB Subnet Group`，並配置以下設定；Name 設定為 `DB-Subnet-Group`、描述 Description 部分填入 `DB Subnet Group`；展開 VPC ，然後在下拉選單中選取 `Lab VPC`。
 
 <br>
 
