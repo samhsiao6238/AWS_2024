@@ -78,11 +78,19 @@ _同樣在 RDS_
 
 <br>
 
-13. 點擊右下角的 `Create database`，可能會彈出建議視窗 `Suggested add-ons for lab-db`，點擊右下角 `Close` 即可。
+13. 點擊右下角的 `Create database`。
+
+    ![](images/img_40.png)
 
 <br>
 
-14. 完成後會回到 `Databases` 清單中，此時狀態為 `Cereating`，需等待約三四分鐘，直到資料庫狀態顯示為 `modifying` 或 `Available`，這裡所稱的或是說會先 `modifying` 然後在那邊 `Available`，但是在 `modifying` 時即可進行下一步操作，並非兩種狀態只會出現一種。
+14. 會彈出建議視窗 `Suggested add-ons for lab-db`，點擊右下角 `Close` 即可
+
+    ![](images/img_41.png)
+
+<br>
+
+15. 完成後會回到 `Databases` 清單中，此時狀態為 `Cereating`，需等待約三四分鐘，直到資料庫狀態顯示為 `modifying` 或 `Available`，這裡所稱的或是說會先 `modifying` 然後在那邊 `Available`，但是在 `modifying` 時即可進行下一步操作，並非兩種狀態只會出現一種。
 
     ![](images/img_16.png)
 
