@@ -4,43 +4,45 @@
 
 ## 步驟
 
-1. 搜尋並進入服務 VPC；進入後確認所在區域為 `N. Virginia (us-east-1)`。
+1. 搜尋並進入服務 VPC；進入後確認所在區域為 `N. Virginia (us-east-1)`；在 Lab 環境中應該都被侷限在這個區域。
 
     ![](images/img_12.png)
 
 <br>
 
-2. 觀察一下當前的 VPCs，有兩個。
+2. 點擊進入 `VPCs` 觀察一下當前的 VPCs，有兩個。
 
     ![](images/img_17.png)
 
 <br>
 
-3. 點擊 `Create VPC`，建立新的 VPC。
+3. 點擊右上角 `Create VPC`，建立新的 VPC。
 
     ![](images/img_16.png)
 
 <br>
 
-4. 選擇 `VPC and more`。
+## 建立設定
+
+1. 選擇 `VPC and more`。
 
     ![](images/img_01.png)
 
 <br>
 
-5. 右側有預覽的樹狀圖。
+2. 右側有預覽的樹狀圖。
 
     ![](images/img_13.png)
 
 <br>
 
-6. 勾選名稱自動生成 `Auto-generate`，命名為 `lab`；注意，右側預覽畫面中的名稱 `project-vpc` 也會更改為 `lab-vpc`。
+3. 勾選名稱自動生成 `Auto-generate`，命名為 `lab`；注意，右側預覽畫面中的名稱 `project-vpc` 也會更改為 `lab-vpc`。
 
     ![](images/img_02.png)
 
 <br>
 
-## 進行設定
+## 設定網路
 
 1. 選擇 `1` 個可用區 `AZs`。
 
