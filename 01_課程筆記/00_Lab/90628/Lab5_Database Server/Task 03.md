@@ -84,7 +84,7 @@ _同樣在 RDS_
 
 <br>
 
-1.  點擊右下角的 `Create database`。
+14. 點擊右下角的 `Create database`。
 
     ![](images/img_40.png)
 
