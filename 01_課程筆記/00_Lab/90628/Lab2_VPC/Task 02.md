@@ -56,9 +56,15 @@ _當前已有 `公共子網`、`私有子網` 各一個_
 
 <br>
 
-4. 在 `IPv4 subnet CIDR block` 下方手動輸入設定為 `10.0.3.0/24`；完成後同樣點擊 `Create subnet`，會顯示在清單的最下方。
+4. 在 `IPv4 subnet CIDR block` 下方手動輸入設定為 `10.0.3.0/24`；接著點擊右下方 `Create subnet`。
 
     ![](images/img_50.png)
+
+<br>
+
+5. 完成後會顯示在最下方。 
+
+    ![](images/img_51.png)
 
 <br>
 
