@@ -22,7 +22,7 @@
 
 <br>
 
-4. 在網頁應用程式中選擇 `RDS`，並配置以下設定；Endpoint 貼上之前複製的 `Endpoint`，Database 命名為 `lab`、Username `main`、Password `lab-password`；然後點擊下方的 `Submit`。
+4. 在網頁應用程式中選擇 `RDS`，並配置以下設定；Endpoint 貼上之前複製的 `Endpoint`，Database 命名為 `lab`、Username 設置為 `main`、Password 填入 `lab-password`；然後點擊下方的 `Submit`。
 
     ![](images/img_21.png)
 
