@@ -82,13 +82,27 @@ _同樣在 RDS_
 
 <br>
 
-14. 完成後會回到 `Databases` 清單中，此時狀態為 `Cereating`，需等待約三四分鐘，直到資料庫狀態顯示為 `Available`。
+14. 完成後會回到 `Databases` 清單中，此時狀態為 `Cereating`，需等待約三四分鐘，直到資料庫狀態顯示為 `modifying` 或 `Available`，這裡所稱的或是說會先 `modifying` 然後在那邊 `Available`，但是在 `modifying` 時即可進行下一步操作，並非兩種狀態只會出現一種。
 
     ![](images/img_16.png)
 
+<br>
+
+## 查看
+
+1. 完成後，點擊進入資料庫實例。
+
+    ![](images/img_38.png)
 
 <br>
-14. 完成後點擊進入資料庫實例中，預設會在 `Connectivity & security` 頁籤中，複製 `Endpoint` 並儲存；尚未完成時會顯示空白。
+
+2. 在 `Connectivity & security` 頁籤中，複製 `Endpoint` 並儲存；
+
+    ![](images/img_39.png)
+
+<br>
+
+3. 補充說明前面提及的 `Modifying` 或 `Available`，假如尚未達到這兩個狀態之一，這個 `Endpoint` 會顯示空白。
 
     ![](images/img_17.png)
 
