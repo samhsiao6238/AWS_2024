@@ -22,19 +22,19 @@
 
 <br>
 
-3. 點擊右上角 `Create security group`，配置以下設定；Security group name `DB Security Group`、Description `Permit access from Web Security Group`；VPC 選擇 `Lab VPC`。
+4. 點擊右上角 `Create security group`，配置以下設定；Security group name `DB Security Group`、Description `Permit access from Web Security Group`；VPC 選擇 `Lab VPC`。
 
     ![](images/img_02.png)
 
 <br>
 
-4. 在 `Inbound rules` 中選擇 `Add rule`，設置 Type `MySQL/Aurora (3306)`，Source 為 `Web Security Group`。
+5. 在 `Inbound rules` 中選擇 `Add rule`，設置 Type `MySQL/Aurora (3306)`，Source 為 `Web Security Group`。
 
     ![](images/img_03.png)
 
 <br>
 
-5. 點擊右下角 `Create security group`。
+6. 點擊右下角 `Create security group`。
 
 <br>
 
