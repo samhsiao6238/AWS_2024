@@ -22,7 +22,7 @@ _進一步探索負載均衡器和自動擴展組等資源_
 
 <br>
 
-2. 另外，教程中提到 `A load balancer that both instances belong to`；首先，`負載平衡器` 相關的安全群組通常會以 `awseb` 最為前綴來命名，在下圖中，可以看到兩個在安全群組使用了前綴 `awseb`，這就是 Elastic Beanstalk 創建的。
+2. 另外，教程中提到 `A load balancer that both instances belong to`；首先，`負載平衡器` 相關的安全群組通常會以 `awseb` 最為前綴來命名，在下圖中，可以看到兩個在安全群組使用了前綴 `awseb`，這就是 Elastic Beanstalk 建立的。
 
     ![](images/img_20.png)
 
