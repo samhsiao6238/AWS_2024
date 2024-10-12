@@ -4,15 +4,17 @@
 
 ## 步驟
 
-1. 搜尋並進入 `EC2`，確認當前區域為 `N. Virginia (us-east-1)`，點擊 `Launch instance`；在 Lab 中的可用區域已限制在 `us-east-1`。
+1. 搜尋並進入 `EC2` 主控台，確認當前區域為 `N. Virginia (us-east-1)`，點擊 `Launch instance`；在 Lab 中的可用區域已限制在 `us-east-1`。
 
 <br>
 
-2. 實例命名為 `Web Server`，`Key pair` 選擇 `vockey`。
+2. 實例命名為 `Web Server`，`Key pair` 選擇 `vockey`；這個 Key 是 Lab 預設準備的。
+
+    ![](images/img_29.png)
 
 <br>
 
-3. 在 `Network settings` 點擊 `Edit` 展開，選用 `Lab VPC`，這是一個包含兩個公共子網的 VPC。
+3. 在 `Network settings` 點擊右側的 `Edit`，VPC 選用 `Lab VPC`，這是一個包含兩個公共子網的 VPC。
 
     ![](images/img_01.png)
 
@@ -24,7 +26,7 @@
 
 <br>
 
-5. 點擊 `Remove` 移除預設的入站規則 `Inbound Security Group Rules`。
+5. 在 `Inbound Security Group Rules` 區塊點擊 `Remove`，這會移除預設的入站規則 `Inbound Security Group Rules`。
 
     ![](images/img_03.png)
 
