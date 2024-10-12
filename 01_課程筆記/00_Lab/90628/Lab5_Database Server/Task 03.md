@@ -48,7 +48,7 @@ _同樣在 RDS_
 
 <br>
 
-8. 在 `Storage` 區塊，因為教程並未明確指出要設定 `gp2` 或 `gp3`，這裡設置 Storage type 為預設的 `General Purpose SSD(gp3)`，Allocated storage 設置為 `20` GB；另外，在 AWS 的最新建議中，gp3 通常是更具成本效益且靈活的選擇。
+8. 在 `Storage` 區塊，因為教程並未明確指出要設定 `gp2` 或 `gp3`，這裡設置 Storage type 為預設的 `General Purpose SSD(gp3)`，`Allocated storage` 下修為 `20` GB；補充說明一下，在 AWS 的最新建議中，`gp3` 是更具成本效益且靈活的選擇。
 
     ![](images/img_11.png)
 
