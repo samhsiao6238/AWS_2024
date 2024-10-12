@@ -42,7 +42,7 @@ _同樣在 RDS_
 
 <br>
 
-7. 在 DB instance class 區塊，切換到 `Burstable classes`，並選取  `db.t3.micro`。
+7. 在 DB instance class 區塊，切換到 `Burstable classes`，並使用預設的  `db.t3.micro`。
 
     ![](images/img_10.png)
 
