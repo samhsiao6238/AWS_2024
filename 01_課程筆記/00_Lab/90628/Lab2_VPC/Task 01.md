@@ -30,13 +30,19 @@
 
 <br>
 
-2. 右側有預覽的樹狀圖。
+2. 畫面的右側有 `Preview` 視圖，可預覽網路設施的樹狀圖。
 
     ![](images/img_13.png)
 
 <br>
 
-3. 勾選名稱自動生成 `Auto-generate`，命名為 `lab`；注意，右側預覽畫面中的名稱 `project-vpc` 也會更改為 `lab-vpc`。
+3. 可觀察名稱都帶有前綴 `peoject`，這是預設的網路名稱，稍後將進行修改。
+
+    ![](images/img_46.png)
+
+<br>
+
+4. 勾選名稱自動生成 `Auto-generate`，並將預設的命名改為 `lab`；注意，右側預覽畫面中的名稱 `project-vpc` 也會更改為 `lab-vpc`，所有的前綴也會改為 `lab`。
 
     ![](images/img_02.png)
 
