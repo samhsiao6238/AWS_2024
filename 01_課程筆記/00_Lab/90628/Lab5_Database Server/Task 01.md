@@ -40,21 +40,33 @@ _允許來自 `Web Security Group` 的訪問_
 
 <br>
 
-1. 在 `Inbound rules` 中點擊 `Add rule`，設置 Type `MySQL/Aurora`，此時 Protocol 及 Port range 皆反白不可編輯，分別是 `TCP`、`3306`；
+3. 在 `Inbound rules` 中點擊 `Add rule`。
+
+    ![](images/img_43.png)
+
+<br>
+
+4. 設置 Type `MySQL/Aurora`，此時 Protocol 及 Port range 皆反白不可編輯，分別是 `TCP`、`3306`；
 
     ![](images/img_03.png)
 
 <br>
 
-4. 展開 Source 為 `Web Security Group`。
+5. 在右側 `Source` 中，維持預設選項 `Custom`，點擊右側對話框輸入 `sg`，在下方顯示的選項選擇 `Web Security Group`。
 
     ![](images/img_29.png)
 
 <br>
 
-5. 點擊右下角 `Create security group`。
+6. 點擊右下角 `Create security group`。
 
     ![](images/img_30.png)
+
+<br>
+
+7. 返回清單中，會看到新建立的 `DB Security Group`。
+
+    ![](images/img_44.png)
 
 <br>
 
