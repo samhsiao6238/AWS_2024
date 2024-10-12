@@ -4,7 +4,7 @@
 
 ## 步驟
 
-1. 進入 EC2 服務，確認區域為 `N. Virginia (us-east-1)`，點擊 `Launch instance`。
+1. 搜尋並進入 `EC2`，確認當前區域為 `N. Virginia (us-east-1)`，點擊 `Launch instance`；在 Lab 中的可用區域已限制在 `us-east-1`。
 
 <br>
 
