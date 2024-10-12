@@ -16,7 +16,7 @@
 
 <br>
 
-3. 選擇 `Create DB Subnet Group`。
+3. 點擊畫面中的 `Create DB Subnet Group`。
 
     ![](images/img_33.png)
 
@@ -34,13 +34,19 @@
 
 <br>
 
-6. Subnets 中要設置 `CIDR 範圍`，從下拉選單選取 `10.0.1.0/24` 和 `10.0.3.0/24` 的子網路。
+6. 緊接著在 `Subnets` 區塊中設置 `CIDR 範圍`，從下拉選單選取 `10.0.1.0/24` 和 `10.0.3.0/24` 的子網路；特別注意，畫面中看到的順序不是固定的，務必確實查看後勾選。
 
     ![](images/img_05.png)
 
 <br>
 
-7. 點擊右下角 `Create` 完成設置。
+7. 務必再次檢查是否正確如下。
+
+    ![](images/img_45.png)
+
+<br>
+
+8. 點擊右下角 `Create` 完成設置。
 
     ![](images/img_35.png)
 
