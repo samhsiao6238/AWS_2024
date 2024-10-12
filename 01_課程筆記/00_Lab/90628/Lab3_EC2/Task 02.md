@@ -1,4 +1,8 @@
-# Task 02：監控 EC2 實例
+# Task 2：監控 EC2 實例
+
+<br>
+
+## 步驟
 
 1. 進入 `Status and alarms` 頁籤可以查看 `Status checks`。
 

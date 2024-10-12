@@ -1,4 +1,8 @@
-# Task 04：調整實例與 EBS 卷
+# Task 4：調整實例與 EBS 卷
+
+<br>
+
+## 步驟
 
 1. 停止實例 `Stop instance`。
 

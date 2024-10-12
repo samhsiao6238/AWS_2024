@@ -1,4 +1,8 @@
-# Task 03：更新安全組並存取 Web 伺服器
+# Task 3：更新安全組並存取 Web 伺服器
+
+<br>
+
+## 步驟
 
 1. 修改安全組 `Web Server security group`， 添加入站規則。
 

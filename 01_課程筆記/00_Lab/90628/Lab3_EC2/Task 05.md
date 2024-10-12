@@ -1,4 +1,8 @@
-# Task 05：探索 EC2 限制
+# Task 5：探索 EC2 限制
+
+<br>
+
+## 步驟
 
 1. 進入 `Service Quotas`，檢查 EC2 資源的使用配額。
 

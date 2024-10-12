@@ -1,4 +1,8 @@
-#  Task 01：啟動 Amazon EC2 實例
+#  Task 1：啟動 Amazon EC2 實例
+
+<br>
+
+## 步驟
 
 1. 進入 EC2 服務，確認區域為 `N. Virginia (us-east-1)`，點擊 `Launch instance`。
 
