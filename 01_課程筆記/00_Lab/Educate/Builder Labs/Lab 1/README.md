@@ -1,6 +1,6 @@
 # Amazon Cognito 
 
-_用於身份驗證和用戶管理的服務，專為行動應用程式和網頁應用程式設計；Amazon Cognito 可簡化應用程式的用戶管理及身份驗證過程，無需自行處理這些基礎設施。_
+_介紹 [Amazon Cognito](https://labs.vocareum.com/main/main.php?m=editor&asnid=2525760&stepid=2525761&hideNavBar=1)，用於身份驗證和用戶管理的服務，專為行動應用程式和網頁應用程式設計；Amazon Cognito 可簡化應用程式的用戶管理及身份驗證過程，無需自行處理這些基礎設施。_
 
 <br>
 
