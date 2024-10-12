@@ -78,13 +78,13 @@ _同樣在 RDS_
 
 <br>
 
-13. 在 `Backup` 區塊取消勾選 `Enable automatic backups` 及 `Enable encryption` 兩個 Check Box。
+13. 分別在 `Backup` 區塊取消勾選 `Enable automatic backups`， 在 `Encryption` 區塊取消 `Enable encryption` 兩個 Check Box。
 
     ![](images/img_15.png)
 
 <br>
 
-14. 點擊右下角的 `Create database`。
+1.  點擊右下角的 `Create database`。
 
     ![](images/img_40.png)
 
