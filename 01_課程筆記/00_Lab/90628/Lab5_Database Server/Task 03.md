@@ -84,7 +84,7 @@ _同樣在 RDS_
 
 <br>
 
-14. 會彈出建議視窗 `Suggested add-ons for lab-db`，點擊右下角 `Close` 即可
+14. 會彈出建議視窗 `Suggested add-ons for lab-db`，點擊右下角 `Close` 即可；若重複操作，這個彈窗景會出現一次。
 
     ![](images/img_41.png)
 
