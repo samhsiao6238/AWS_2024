@@ -126,25 +126,25 @@ _比照之前步驟_
 
 ## 建立安全群組
 
-1. 在左側欄選擇 `Security groups`。
+1. 在左側欄點擊進入 `Security groups`。
 
     ![](images/img_30.png)
 
 <br>
 
-2. 建立新的安全群組。
+2. 點擊右上方 `Create security group` 建立新的安全群組。
 
     ![](images/img_31.png)
 
 <br>
 
-3. 名稱為 `Web Security Group`、描述 `Enable HTTP access`、VPC `lab-vpc`。
+3. 命名為 `Web Security Group`、描述填入 `Enable HTTP access`、VPC 選擇 `lab-vpc`。
 
     ![](images/img_32.png)
 
 <br>
 
-4. 添加入站規則 `Inbound rules`。
+4. 點擊 `Add rule` 添加入站規則 `Inbound rules`。
 
     ![](images/img_33.png)
 
