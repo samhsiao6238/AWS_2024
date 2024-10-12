@@ -6,9 +6,17 @@
 
 1. 在控制台搜尋並進入 `VPC`。
 
+    ![](images/img_27.png)
+
 <br>
 
-2. 在左側導航列中，選擇 `Security Groups`；預設有五個安全群組。
+2. 在左側導覽中，展開 `Security` 中點擊 `Security groups`。
+
+    ![](images/img_28.png)
+
+<br>
+
+3. 在 `Security Groups` 清單中預設有五個安全群組。
 
     ![](images/img_01.png)
 
