@@ -40,7 +40,7 @@ _允許來自 `Web Security Group` 的訪問_
 
 <br>
 
-3. 在 `Inbound rules` 中點擊 `Add rule`，設置 Type `MySQL/Aurora`，此時 Protocol 及 Port range 皆反白不可編輯，分別是 `TCP`、`3306`；
+1. 在 `Inbound rules` 中點擊 `Add rule`，設置 Type `MySQL/Aurora`，此時 Protocol 及 Port range 皆反白不可編輯，分別是 `TCP`、`3306`；
 
     ![](images/img_03.png)
 
