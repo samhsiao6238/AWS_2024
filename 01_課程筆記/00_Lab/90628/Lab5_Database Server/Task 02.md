@@ -10,7 +10,7 @@
 
 <br>
 
-2. 在左側欄中，點擊進入 `Subnet groups`。
+2. 在左側欄中，點擊進入 `Subnet groups`；目前尚無任何設置。
 
     ![](images/img_32.png)
 
