@@ -42,7 +42,7 @@
 
 ## 完成
 
-_`Submit` & `Yes`_
+_`Submit` & `End Lab`_
 
 ![](images/img_23.png)
 
