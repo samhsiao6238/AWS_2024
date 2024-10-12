@@ -1,28 +1,30 @@
-## 建立其他子網
+# Task02：建立額外的子網
 
-_當前有公共、私有子網各有一個_
+_當前已有 `公共子網`、`私有子網` 各一個_
 
 <br>
 
-1. 在左側欄選擇 `Subnets`。
+## 建立第二個公共子網
+
+1. 點擊左側欄中的 `Subnets`。
 
     ![](images/img_08.png)
 
 <br>
 
-2. 建立第二個公共子網 `Cretae subnet`。
+2. 點擊 `Cretae subnet` 建立第二個公共子網。
 
     ![](images/img_09.png)
 
 <br>
 
-3. 選擇剛剛建立的 `lab-vpc`。
+3. VPC ID 選擇前面步驟建立的 `lab-vpc`。
 
     ![](images/img_10.png)
 
 <br>
 
-4. 子網名稱 `lab-subnet-public2`、AZ 選 `us-east-1b`；`IPv4 subnet CIDR block` 需要手動輸入為 `10.0.2.0/24`。
+4. 命名 `lab-subnet-public2`，AZ 設定為 `us-east-1b`；`IPv4 subnet CIDR block` 需要手動輸入為 `10.0.2.0/24`。
 
     ![](images/img_11.png)
 
@@ -34,9 +36,29 @@ _當前有公共、私有子網各有一個_
 
 <br>
 
-6. 接著，建立第二個私有子網，名稱 `lab-subnet-private2`、可用區 `us-east-1b`、IPv4 CIDR：`10.0.3.0/24`；完成同樣點擊 `Create subnet`，會顯示在清單的最下方。
+## 建立第二個私有子網
+
+1. 同樣點擊 `Create subnet`，這是要建立第二個私有子網。
+
+    ![](images/img_48.png)
+
+<br>
+
+2. 在 VPC ID 選擇 `lab-vpc`。
+
+    ![](images/img_49.png)
+
+<br>
+
+3. 命名為 `lab-subnet-private2`、可用區 `us-east-1b`、
 
     ![](images/img_24.png)
+
+<br>
+
+4. 在 `IPv4 subnet CIDR block` 下方手動輸入設定為 `10.0.3.0/24`；完成後同樣點擊 `Create subnet`，會顯示在清單的最下方。
+
+    ![](images/img_50.png)
 
 <br>
 
