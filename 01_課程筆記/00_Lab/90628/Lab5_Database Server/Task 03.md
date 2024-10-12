@@ -60,13 +60,13 @@ _同樣在 RDS_
 
 <br>
 
-10. Existing VPC security groups 下拉選單中勾選 `DB Security Group`，並取消勾選 `default`。
+10. 滑動到 `Existing VPC security groups` 區塊，從下拉選單中勾選 `DB Security Group`，並取消預設被勾選的 `default`。
 
     ![](images/img_13.png)
 
 <br>
 
-11. 在 `Monitoring` 區塊取消勾選 `Enable Enhanced monitoring`。
+11. 向下滾動到 `Monitoring` 區塊，取消勾選 `Enable Enhanced monitoring`。
 
     ![](images/img_14.png)
 
@@ -78,7 +78,11 @@ _同樣在 RDS_
 
 <br>
 
-13. 點擊右下角的 `Create database`，等待約三四分鐘，直到資料庫狀態顯示為 `Available`，會先經過 initialing、modifying。
+13. 點擊右下角的 `Create database`，可能會彈出建議視窗 `Suggested add-ons for lab-db`，點擊右下角 `Close` 即可。
+
+<br>
+
+14. 等待約三四分鐘，直到資料庫狀態顯示為 `Available`，會先經過 initialing、modifying。
 
     ![](images/img_16.png)
 
