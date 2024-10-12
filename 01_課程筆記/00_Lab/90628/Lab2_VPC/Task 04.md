@@ -91,6 +91,12 @@ _完成後上方彈窗會顯示實例狀態為 `Success` _
 
 <br>
 
+4. 以下是官方提供的 Lab 設施架構圖。
+
+    ![](images/img_60.png)
+
+<br>
+
 ## 完成
 
 _`Submit` & `End Lab`_
