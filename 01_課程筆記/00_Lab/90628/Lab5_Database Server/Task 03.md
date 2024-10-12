@@ -110,7 +110,7 @@ _同樣在 RDS_
 
 <br>
 
-2. 在 `Connectivity & security` 頁籤中，複製 `Endpoint` 並儲存；
+2. 在 `Connectivity & security` 頁籤中，查看 `Endpoint`，假如有顯示網址就代表資料庫已經建立完成，可儲存這個網址備用。
 
     ![](images/img_39.png)
 
