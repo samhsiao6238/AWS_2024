@@ -82,7 +82,7 @@ _同樣在 RDS_
 
 <br>
 
-14. 等待約三四分鐘，直到資料庫狀態顯示為 `Available`，會先經過 initialing、modifying。
+14. 完成後會回到 `Databases` 清單中，此時狀態為 `Cereating`，需等待約三四分鐘，直到資料庫狀態顯示為 `Available`。
 
     ![](images/img_16.png)
 
