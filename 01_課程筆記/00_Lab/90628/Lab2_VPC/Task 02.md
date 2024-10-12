@@ -196,7 +196,7 @@ _比照之前步驟_
 
 <br>
 
-2. 防火牆 `Firewall` 選擇 `Web Security Group`。
+2. 防火牆 `Firewall` 切換到 `Select existing security group`，然後在選單中選擇 `Web Security Group`。
 
     ![](images/img_38.png)
 
