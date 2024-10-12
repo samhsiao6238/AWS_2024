@@ -70,7 +70,7 @@ _當前已有 `公共子網`、`私有子網` 各一個_
 
 ## 更新路由表
 
-1. 點擊左側的 `Route tables`，然後點擊 `刷新`，就會看到新增的路由表。
+1. 點擊左側的 `Route tables`，然後點擊 `刷新`，就會看到新增的路由表；切記，一定要點擊 `刷新`。
 
     ![](images/img_25.png)
 
@@ -88,7 +88,7 @@ _當前已有 `公共子網`、`私有子網` 各一個_
 
 <br>
 
-4. 勾選新建的私有子網 (`lab-subnet-private2`) ，點擊右下角 `Save associations` 便可建立與此路由表的關聯。
+4. 無論使用哪一種方式進入設定頁面，接著要勾選新建的私有子網 (`lab-subnet-private2`) ，這時下方會顯示兩個 subnets 被選取；點擊右下角 `Save associations` 便可建立與此路由表的關聯。
 
     ![](images/img_27.png)
 
@@ -100,9 +100,27 @@ _當前已有 `公共子網`、`私有子網` 各一個_
 
 <br>
 
-6. 比照之前步驟，接著對 `lab-rtb-public` 路由表編輯子網關聯，將新建的公共子網 (`lab-subnet-public2`) 與此路由表關聯。
+## 再次更新路由表
+
+_比照之前步驟_
+
+<br>
+
+1. 接著對 `lab-rtb-public` 路由表編輯子網關聯。
+
+    ![](images/img_52.png)
+
+<br>
+
+2. 勾選新建的公共子網 (`lab-subnet-public2`) 與此路由表關聯，然後點擊右下角 `Save assocciations`。
 
     ![](images/img_29.png)
+
+<br>
+
+3. 完成後，可看到在路由表清單中，這兩個路由都有兩個子網。
+
+    ![](images/img_53.png)
 
 <br>
 
