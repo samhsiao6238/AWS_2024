@@ -101,6 +101,8 @@ _完成後上方彈窗會顯示實例狀態為 `Success` _
 
 _`Submit` & `End Lab`_
 
+![](images/img_61.png)
+
 <br>
 
 ___
