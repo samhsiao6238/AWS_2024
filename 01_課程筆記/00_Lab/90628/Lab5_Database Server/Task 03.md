@@ -72,25 +72,31 @@ _同樣在 RDS_
 
 <br>
 
-12. 展開 `Additional configuration`，在 `Backup` 區塊取消勾選 `Enable automatic backups` 及 `Enable encryption` 兩個 Check Box。
+12. 展開 `Additional configuration`，在 `Initial database name` 區塊輸入 `lab`。
+
+    ![](images/img_46.png)
+
+<br>
+
+13. 在 `Backup` 區塊取消勾選 `Enable automatic backups` 及 `Enable encryption` 兩個 Check Box。
 
     ![](images/img_15.png)
 
 <br>
 
-13. 點擊右下角的 `Create database`。
+14. 點擊右下角的 `Create database`。
 
     ![](images/img_40.png)
 
 <br>
 
-14. 會彈出建議視窗 `Suggested add-ons for lab-db`，點擊右下角 `Close` 即可；若重複操作，這個彈窗景會出現一次。
+15. 會彈出建議視窗 `Suggested add-ons for lab-db`，點擊右下角 `Close` 即可；若重複操作，這個彈窗景會出現一次。
 
     ![](images/img_41.png)
 
 <br>
 
-15. 完成後會回到 `Databases` 清單中，此時狀態為 `Cereating`，需等待約三四分鐘，直到資料庫狀態顯示為 `modifying` 或 `Available`，這裡所稱的或是說會先 `modifying` 然後在那邊 `Available`，但是在 `modifying` 時即可進行下一步操作，並非兩種狀態只會出現一種。
+16. 完成後會回到 `Databases` 清單中，此時狀態為 `Cereating`，需等待約三四分鐘，直到資料庫狀態顯示為 `modifying` 或 `Available`，這裡所稱的或是說會先 `modifying` 然後在那邊 `Available`，但是在 `modifying` 時即可進行下一步操作，並非兩種狀態只會出現一種。
 
     ![](images/img_16.png)
 
