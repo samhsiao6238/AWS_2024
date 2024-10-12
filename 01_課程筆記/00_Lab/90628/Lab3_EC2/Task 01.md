@@ -34,13 +34,17 @@
 
 ## `Advanced details ` 進階設置
 
-1. 啟用終止保護和停止保護。
+_在設定頁面最下方_
+
+<br>
+
+1. 找到 `Termination protection`，展開選單並設置為 `Enable`。
 
     ![](images/img_04.png)
 
 <br>
 
-2. 在 `User Data` 輸入以下指令腳本；這個腳本在啟動實例後，可將使用者資料傳遞給實例，而這些資料會在實例啟動後執行自動化安裝和設定任務，包含了安裝 Apache Web 伺服器 (httpd)、將 Web 伺服器設定為開機自動啟動、安裝完成後執行 Web 伺服器、建立一個簡單的網頁。
+2. 在 `User Data` 輸入以下指令腳本；這個腳本在啟動實例後，可將使用者資料傳遞給實例，而這些資料會在實例啟動後執行自動化安裝和設定任務，包含了安裝 `Apache Web` 伺服器 (httpd)、將 Web 伺服器設定為開機自動啟動、安裝完成後執行 Web 伺服器、建立一個簡單的網頁。
 
     ```bash
     #!/bin/bash
@@ -52,7 +56,7 @@
 
 <br>
 
-3. 完成後，選擇 `Launch instance`。
+3. 完成後，點擊右下方的 `Launch instance`。
 
     ![](images/img_05.png)
 
