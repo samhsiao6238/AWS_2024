@@ -46,7 +46,7 @@ _允許來自 `Web Security Group` 的訪問_
 
 <br>
 
-3. 點擊右下角 `Create security group`。
+4. 點擊右下角 `Create security group`。
 
 <br>
 
