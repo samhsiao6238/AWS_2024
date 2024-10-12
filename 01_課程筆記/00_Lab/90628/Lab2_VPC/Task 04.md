@@ -69,9 +69,25 @@
 
 ## 連接 Web 伺服器
 
-1. 實例狀態顯示 `Success` 之後，複製 `Public IPv4 address` 在瀏覽器查看網頁。
+_完成後上方彈窗會顯示實例狀態為 `Success` _
+
+<br>
+
+1. 在 Instances 中點擊進入實例。
+
+    ![](images/img_58.png)
+
+<br>
+
+2. 複製 `Public IPv4 address`，貼在瀏覽器中進行訪問。
 
     ![](images/img_40.png)
+
+<br>
+
+3. 顯示畫面如下。
+
+    ![](images/img_59.png)
 
 <br>
 
