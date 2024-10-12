@@ -96,7 +96,7 @@ _同樣在 RDS_
 
 <br>
 
-16. 完成後會回到 `Databases` 清單中，此時狀態為 `Cereating`，需等待約三四分鐘，直到資料庫狀態顯示為 `modifying` 或 `Available`，這裡所稱的或是說會先 `modifying` 然後在那邊 `Available`，但是在 `modifying` 時即可進行下一步操作，並非兩種狀態只會出現一種。
+16. 完成後會回到 `Databases` 清單中，此時狀態為 `Cereating`，需等待約三四分鐘，直到資料庫狀態顯示為 `Modifying` 或 `Available`；這裡所稱的 `【或】` 是說會先 `modifying` 然後再顯示為 `Available`，但是當狀態為 `Modifying` 時即可進行下一步操作，並非兩種狀態只會出現一種。
 
     ![](images/img_16.png)
 
