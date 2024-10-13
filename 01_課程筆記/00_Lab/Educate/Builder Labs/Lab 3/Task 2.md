@@ -56,17 +56,25 @@ _返回 `SNS` 主題 `EmailReport` 的頁面_
 
 1. 在頁面頂部，點擊 `EmailReport`，回到該主題的詳細頁面。
 
+    ![](images/img_25.png)
+
 <br>
 
 2. 選擇右側 `Publish message`。
+
+    ![](images/img_26.png)
 
 <br>
 
 3. 進行配置頁面，在 `Subject` 輸入 `Test`。
 
+    ![](images/img_27.png)
+
 <br>
 
-4. 在 `Message body` 部分，保持預選的 `Message structure`，在下方輸入 `Hello! This is a test.`。
+4. 在 `Message body` 部分，保持預選的 `Message structure`，在下方輸入 `你好，這是一封測試信件。`。
+
+    ![](images/img_28.png)
 
 <br>
 
@@ -82,7 +90,7 @@ _返回 `SNS` 主題 `EmailReport` 的頁面_
 
 <br>
 
-2. 以上步驟的目的是確認 SNS 訂閱功能是否正常運作，並確保未來的報告通知能夠正確傳送給指定的對象。
+2. 以上步驟確認了 SNS 訂閱功能的正常運作，並確保未來的報告通知能夠正確傳送給指定的對象。
 
 <br>
 
