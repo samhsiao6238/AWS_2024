@@ -6,9 +6,19 @@
 
 1. 搜尋並進入 `Cloud9`。
 
+    ![](images/img_13.png)
+
 <br>
 
 2. 點擊現有 `Cloud9 Instance` 右側 `Open` 進入 IDE；保持這個頁面在開啟中。
+
+    ![](images/img_14.png)
+
+<br>
+
+3. 上方會出現紅色警告，可不予理會；在下方終端機中可輸入指令。
+
+    ![](images/img_15.png)
 
 <br>
 
