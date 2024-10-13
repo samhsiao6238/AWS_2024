@@ -191,7 +191,11 @@ _完成以上更新後，在終端機中運行以下指令_
 
 ## 更新程式碼以只顯示已登入學生的數據
 
-1. 返回 Cloud9 IDE，在 `website/scripts` 資料夾中找到並打開 `db_scan_filter.js` 檔案，原始代碼如下。
+_進入 Cloud9 IDE 中_
+
+<br>
+
+1. 在左側 `website` 資料夾中，找到並進入子資料夾 `/scripts`，接著找到並點擊開啟檔案 `db_scan_filter.js`；完整原始代碼如下，並已加入逐行繁體中文註解，不再贅述。
 
     ```javascript
     var DB = (function(){
@@ -315,7 +319,7 @@ _完成以上更新後，在終端機中運行以下指令_
     ```javascript
     var params = {
         TableName: "BirdSightings",
-        FilterExpression: "student_name_str = :student_name_str",
+        FilterExpression: "<Attribute-名稱> = :student_name_str",
         ExpressionAttributeValues: { ":student_name_str": student }
     };
     ```
