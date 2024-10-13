@@ -70,7 +70,7 @@ _在此任務中，將測試用於生成 HTML 報告的 Lambda 函數，該函�
 
 <br>
 
-2. 完成儲存後，點擊 `Test` 進行測試；查看返回的 JSON 消息，假如出現如下的內容，表示 Lambda 函數成功運行並覆蓋了 S3 中的 `report.html` 文件。
+3. 完成儲存後，點擊 `Test` 進行測試；查看返回的 JSON 消息，假如出現如下的內容，表示 Lambda 函數成功運行並覆蓋了 S3 中的 `report.html` 文件。
 
     ```json
     {
@@ -80,7 +80,7 @@ _在此任務中，將測試用於生成 HTML 報告的 Lambda 函數，該函�
 
 <br>
 
-## 將 generateHTML 函數添加到狀態機
+## 將函數添加到狀態機
 
 _返回 Step Functions 控制台_
 
@@ -92,21 +92,35 @@ _返回 Step Functions 控制台_
 
 2. 切換到 `Flow` 標籤，將 `Parallel` 對象拖到 `Lambda: Invoke GeneratePresignedURL` 上方。
 
+    ![](images/img_43.png)
+
 <br>
 
 3. 將 `Lambda: Invoke GeneratePresignedURL` 拖到 `Parallel`狀態的右側區域。
 
-<br>
-
-4. 在 `Actions` 標籤下，搜尋 `Lambda`，將 `AWS Lambda Invoke` 對象拖到 `Parallel` 狀態的左側區域。
+    ![](images/img_44.png)
 
 <br>
 
-5. 並設置以下詳細信息，在 `State name` 輸入 `generateHTML`，`Function name` 選擇 `generateHTML:$LATEST`，`Payload` 選擇 `Use state input as payload`，`Next state` 選擇 `Go to end`。
+4. 在左側搜尋框中輸入 `Lambda`，拖曳新的 `Invoke` 對象到 `Parallel` 狀態的左側區域。
+
+    ![](images/img_45.png)
 
 <br>
 
-6. 選擇 `Parallel` 狀態對象，並設置 `State name` 為 `Process Report`。
+5. 選取新加入的 `Lambda Invoke`，在右側區域進行設置；在 `State name` 輸入 `generateHTML`，`Function name` 選擇 `generateHTML:$LATEST`。
+
+    ![](images/img_46.png)
+
+<br>
+
+6. 在 `Payload` 使用預設選擇的 `Use state input as payload`，`Next state` 使用預設選擇 `Go to end`。
+
+<br>
+
+7. 選擇 `Parallel` 狀態對象，並設置 `State name` 為 `Process Report`。
+
+    ![](images/img_47.png)
 
 <br>
 
