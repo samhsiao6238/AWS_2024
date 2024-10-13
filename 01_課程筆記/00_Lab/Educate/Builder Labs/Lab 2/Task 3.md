@@ -6,11 +6,11 @@ _雖然可用手動方式在 `DynamoDB` 主控台中逐一新增記錄，但對�
 
 ## 檢視即將載入的數據
 
-1. 返回 Cloud9 IDE。
+_返回 Cloud9 IDE_
 
 <br>
 
-2. 在終端機左側的 Environment 視窗中，展開 `node_server` 資料夾，找到並打開 `past_sightings.json` 檔案，這是後續要載入到 `BirdSightings` 資料表的數據，內容包含 `25` 筆記錄，每筆記錄包含多個屬性。
+1. 在終端機左側的 Environment 視窗中，展開 `node_server` 資料夾，找到並打開 `past_sightings.json` 檔案，這是後續要載入到 `BirdSightings` 資料表的數據，內容包含 `25` 筆記錄，每筆記錄包含多個屬性。
 
     ```json
     [
