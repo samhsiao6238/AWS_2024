@@ -4,32 +4,39 @@ _在這個任務中，將測試並加入一個 Lambda 函數來從 DynamoDB 表�
 
 ## 測試 `getRealData` Lambda 函數
 
-1. 首先進行查看並測試 `getRealData` Lambda 函數；搜尋並進入 `Lambda` 服務。
+1. 搜尋並進入 `Lambda`，點擊進入 `getRealData`函數。
 
-2. 選擇名為 `getRealData` 的 Lambda 函數。檢查該函數的 IAM Role，確認它使用的是 `RoleForAllLambdas`，這個角色允許 Lambda 與 Amazon S3、Amazon SNS 和 Amazon DynamoDB 互動。該函數的代碼將從 DynamoDB 中檢索所有鳥類觀察紀錄，並以 JSON 格式返回。
+2. 切換到 `Configuration` 頁籤，點擊左側 `Permissions`，查看函數的 IAM Role 使用的是 `RoleForAllLambdas`。
 
-## 測試 `getRealData` Lambda 函數：
+    ![](images/img_50.png)
 
-1. 選擇 Code 標籤，然後選擇 Test。
+3. 這個角色允許 Lambda 與 Amazon S3、Amazon SNS 和 Amazon DynamoDB 互動。該函數的代碼將從 DynamoDB 中檢索所有鳥類觀察紀錄，並以 JSON 格式返回。
 
-2. 將事件名稱設為 `test3`，並將測試事件輸入設為 `{}`。
+## 測試 Lambda 函數
 
-3. 選擇 Save 並再次選擇 Test。
+1. 選擇 `Code` 標籤，然後選擇 `Test`。
 
-4. 在執行結果中，應該會看到返回的鳥類觀察紀錄數據。
+2. 將事件名稱設為 `test3`，並將測試事件輸入設為 `{}`，點擊右下角 `Save`。
 
-## 將 `getRealData` Lambda 函數添加到狀態機
+    ![](images/img_51.png)
 
-1. 編輯狀態機以添加 `getRealData` 函數：
-   - 返回 Step Functions 控制台，選擇 MyStateMachine，然後選擇 Edit。
-   - 在左側的 States browser 搜尋 Lambda。
-   - 將 AWS Lambda Invoke 對象拖到 `Parallel` 狀態（`Process Report`）上方，作為它之前執行的一步。
+3. 再次選擇 `Test`；在執行結果中，應該會看到返回的鳥類觀察紀錄數據。
 
-2. 配置 Lambda Invoke 詳細信息：
-   - State name：輸入 `getRealData`。
-   - Function name：選擇 `getRealData:$LATEST`。
-   - Payload：選擇 No payload。
-   - 在右上角選擇 Save。
+    ![](images/img_52.png)
+
+## 將 Lambda 函數添加到狀態機
+
+_返回 Step Functions 控制台_
+
+1. 選擇 MyStateMachine，然後選擇 Edit。
+
+2. 在左側搜尋 `Lambda`，將 `Invoke` 對象拖到 `Parallel` 狀態（`Process Report`）上方，作為它之前執行的一步。
+
+    ![](images/img_53.png)
+
+3. 點選 `Lambda Invoke` 進行設置，`State name` 輸入 `getRealData`，`Function name` 選擇 `getRealData:$LATEST`，`Payload` 選擇 `No payload`，然後點擊右上角 `Save`。
+
+    ![](images/img_54.png)
 
 #### 3. 更新 SNS Publish 物件的消息格式
 
