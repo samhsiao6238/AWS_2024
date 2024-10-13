@@ -53,7 +53,7 @@
 
 ## 下載並設置應用程式代碼
 
-1. 在 Cloud9 終端機中執行以下命令，這是下載並設置 Lab 所需的應用程式代碼；在終端機中，多行指令若未使用 `&&` 串接，最後一行指令需要再按一次 `ENTER`，切勿盲等。
+1. 在 Cloud9 終端機中執行以下命令，這是下載並設置 Lab 所需的應用程式代碼；在終端機中，多行指令若未使用 `&&` 串接，最後一行指令需要再按一次 `ENTER`，特別注意避免盲等。
 
     ```bash
     wget https://aws-tc-largeobjects.s3.us-west-2.amazonaws.com/CUR-TF-100-EDBLDR-1-107430/02-lab-ddb/code.zip
