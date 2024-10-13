@@ -14,7 +14,7 @@ _返回 Cloud9，將報告上傳至 S3 並測試訪問_
 
 <br>
 
-2. 在新的文件中貼上以下代碼，並將文件儲存為 `report.html`。
+2. 在新的文件中貼上以下文本，並將文件儲存為 `report.html`。
 
     ```html
     <output>Hello! This is some sample HTML.</output>
@@ -22,7 +22,7 @@ _返回 Cloud9，將報告上傳至 S3 並測試訪問_
 
 <br>
 
-3. 運行以下指令將文件上傳至 `S3`，並設置 `cache-control` 為 `max-age=0`：
+3. 運行以下指令將文件上傳至 `S3`，並設置 `cache-control` 為 `max-age=0`；透過這樣的設置具體表示該檔案不應被快取，或至少在每次請求時應該重新驗證是否有更新版本，也就是說這樣設置會強制瀏覽器每次都向伺服器請求最新的檔案，而不使用之前快取的版本。
 
     ```bash
     cd /home/ec2-user/environment
