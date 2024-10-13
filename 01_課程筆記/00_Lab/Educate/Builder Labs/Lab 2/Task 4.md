@@ -314,7 +314,7 @@ _進入 Cloud9 IDE 中_
 
 <br>
 
-2. 將原始代碼中的 `<Attribute-名稱>` 替換為 `student_name_str` 如下圖，修正後儲存更改並關閉檔案。
+2. 將原始代碼中的 `<Attribute-名稱>` 替換為 `student_name_str` 如下圖，修正後儲存更改並關閉檔案；官方代碼的佔位符為 `<attribute-name>`。
 
     ![](images/img_41.png)
 
