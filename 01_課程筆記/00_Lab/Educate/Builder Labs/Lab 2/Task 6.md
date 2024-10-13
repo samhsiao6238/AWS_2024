@@ -68,7 +68,7 @@ _為了能夠依據 `年級` 和 `日期` 篩選記錄，需在 `BirdSightings` 
 <br>
 
 2. 以上操作成功為 `BirdSightings` 資料表新增了 `全域次要索引 (GSI)`，這個 GSI 是使用 `class_level_str` 作為分區鍵，並使用 `date_int` 作為排序鍵，允許依據年級與日期來進行高效的查詢。
-
+4
 <br>
 
 ___
