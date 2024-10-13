@@ -22,7 +22,7 @@
 
 <br>
 
-## 記錄實驗環境的重要信息
+## 記錄 Lab 環境的重要信息
 
 1. 使用任何可建立文檔的方式建立一個文檔，這裡使用 Cloud9 的功能選單添加新文件。
 
@@ -53,7 +53,7 @@
 
 ## 下載並設置應用程式代碼
 
-1. 在 Cloud9 終端機中執行以下命令，這是下載並設置實驗所需的應用程式代碼；最後一行指令需要再按一次 `ENTER`。
+1. 在 Cloud9 終端機中執行以下命令，這是下載並設置 Lab 所需的應用程式代碼；最後一行指令需要再按一次 `ENTER`。
 
     ```bash
     wget https://aws-tc-largeobjects.s3.us-west-2.amazonaws.com/CUR-TF-100-EDBLDR-1-107430/02-lab-ddb/code.zip

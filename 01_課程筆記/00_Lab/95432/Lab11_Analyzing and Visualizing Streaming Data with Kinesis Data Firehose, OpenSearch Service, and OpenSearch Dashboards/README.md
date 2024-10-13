@@ -42,7 +42,7 @@ _使用 Kinesis Data Firehose、OpenSearch Service 和 OpenSearch Dashboards 進
 
 ## 目標
 
-1. 瞭解並描述 AWS 管理控制台中的實驗基礎設施。
+1. 瞭解並描述 AWS 管理控制台中的 Lab 基礎設施。
 
 <br>
 
