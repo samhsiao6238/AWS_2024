@@ -10,7 +10,7 @@ _返回 Cloud9，將報告上傳至 S3 並測試訪問_
 
 <br>
 
-1. 首先要建立範例 `report.html`，在 Cloud9 文件夾中點擊 `File` 中的 `New File` 新建文件。
+1. 首先要建立文本 `report.html`，點擊上方 `File` 中的 `New File` 新建文件。
 
 <br>
 
