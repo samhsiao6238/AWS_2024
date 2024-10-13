@@ -132,7 +132,7 @@ _完成以上更新後，在終端機中運行以下指令_
 
 <br>
 
-1. 更新網站程式碼。
+1. 更新網站程式碼；特別注意，這指令運後後無輸出。
 
     ```bash
     cd /home/ec2-user/environment/website
@@ -153,29 +153,138 @@ _完成以上更新後，在終端機中運行以下指令_
 
 ## 測試網站更新
 
-1. 在新的瀏覽器標籤頁中，輸入之前記錄的 CloudFront 分發網域。
+1. 開啟新的瀏覽器頁籤，輸入之前紀錄在 `MyDoc.txt` 文件中的 `CloudFront distribution domain`；前情回顧一下，這是 `CloudFront` 分發的網域，透過運行指令後所取得。
+
+    ![](images/img_35.png)
 
 <br>
 
-2. 開啟瀏覽器的開發者工具。
+2. 進行訪問會看到以下畫面，這就是 Lab 提供的 Birds 應用程式；接著開啟瀏覽器的的 `開發者工具`，這裡預設使用了 Chrome，對於瀏覽器開發者工具的使用，這裡不做贅述。
+
+    ![](images/img_36.png)
 
 <br>
 
-3. 進入 Birds 應用程式並進行登入，選擇 SIGHTINGS 頁籤，選擇 LOGIN，並輸入以下憑證 Username 為 `teststudent`、Password 為 `Welcome1!`；當系統提示選擇新密碼時，輸入記得的密碼（例如 `Welcome123!`），並在記錄檔中記下新密碼。
+3. 在瀏覽畫面中切換到 `SIGHTINGS 頁籤` 並點擊 `LOGIN`。
+
+    ![](images/img_37.png)
 
 <br>
 
-4. 返回 SIGHTINGS 頁面，應顯示所有 25 筆鳥類觀察記錄。
+4. 分別在 `Username` 輸入 `teststudent`、`Password` 輸入 `Welcome1!`；然後點擊 `Sign In`。
+
+    ![](images/img_38.png)
+
+<br>
+
+5. 當系統提示選擇新密碼時，輸入自訂密碼如 `Welcome123!`，在這請使用這個密碼避免忘記，輸入完畢點擊 `Send`；特別說明，Lab 並未指定要輸入這個密碼。
+
+    ![](images/img_39.png)
+
+<br>
+
+6. 返回 SIGHTINGS 頁面，應顯示所有 25 筆鳥類觀察記錄。
 
 <br>
 
 ## 更新程式碼以只顯示已登入學生的數據
 
-1. 返回 AWS Cloud9 IDE，在 `website/scripts` 資料夾中找到並打開 `db_scan_filter.js` 檔案。
+1. 返回Cloud9 IDE，在 `website/scripts` 資料夾中找到並打開 `db_scan_filter.js` 檔案。
 
 <br>
 
-2. 將 `<attribute-name>` 替換為 `student_name_str`，儲存更改並關閉檔案。
+2. 原始代碼如下。
+
+    ```javascript
+    var DB = (function(){
+        var 
+            expose = {
+                getSightings: getSightings
+            },hide = {
+                //init
+                setUpHandlers: setUpHandlers
+            };
+
+        (function init(){
+            setUpHandlers();
+        })();
+
+        function setUpHandlers(){
+            $(document).on("load", "[data-action='get-sightings']", getSightings);
+        }
+
+        async function getSightings(req, res, next){
+            console.log('getSightings');
+            var msg_str = "We are verifying that your temporary AWS credentials can access dynamoDB. One moment...";
+            $("[data-role='get-sightings-from-ddb']").text(msg_str);
+            
+            
+            var token_str_or_null = localStorage.getItem("bearer_str");
+            
+            AWS.config.update({region: "us-east-1"});
+            
+            // Using Cognito Identity to retrieve temporary AWS Credentials
+            AWS.config.credentials = new AWS.CognitoIdentityCredentials({
+                IdentityPoolId : CONFIG.COGNITO_IDENTITY_POOL_ID_STR,
+                Logins : {
+                "cognito-idp.us-east-1.amazonaws.com/us-east-1_hZtfxiiPX": token_str_or_null
+                }
+            });
+            
+            var docClient = new AWS.DynamoDB.DocumentClient({region: "us-east-1"});
+            
+            var student_name = req;
+            console.log('Checking student name.');
+            console.log(student_name);
+            
+            var params = {
+                TableName: "BirdSightings",
+                FilterExpression: "<Attribute-名稱> = :student_name_str",
+                ExpressionAttributeValues: { ":student_name_str": student_name }
+            };
+            
+            // testing communitaction with DynamoDB
+            async function getDdbData(){
+                try {
+                    const data = await docClient.scan(params).promise()
+                    msg_str = "Got DB data.";
+                    sightings_list = data['Items'];
+                    for ( var i = 0; i < sightings_list.length; i++ ) {
+                        sighting_date = new Date(sightings_list[i].date_int * 1000);
+                        sighting_date.toISOString().substring(0, 10);
+                        year = sighting_date.getFullYear();
+                        month = sighting_date.getMonth()+1;
+                        day = sighting_date.getDate();
+                        sightings_list[i].date_str = month+'-' + day + '-'+year;
+                        delete sightings_list[i].date_int;
+                    }
+                    
+                    return {
+                        msg_str: msg_str,
+                        sightings_list: sightings_list,
+                    }
+                } catch (err) {
+                    msg_str = "There was a problem with your credentials.";
+                    return msg_str
+                }
+            }
+            
+            var sightingsDdbData = await getDdbData();
+            
+            $("[data-role='get-sightings-from-ddb']").text(msg_str);
+            
+            return sightingsDdbData['sightings_list']
+                
+        }
+
+        return expose;
+
+    })();
+    ```
+
+<br>
+
+3. 將 `<Attribute-名稱>` 替換為 `student_name_str`，儲存更改並關閉檔案。
 
     ```javascript
     var params = {
@@ -187,7 +296,7 @@ _完成以上更新後，在終端機中運行以下指令_
 
 <br>
 
-3. 更新網站程式碼並上傳至 S3。
+4. 更新網站程式碼並上傳至 S3。
 
     ```bash
     cd /home/ec2-user/environment/website
@@ -196,7 +305,7 @@ _完成以上更新後，在終端機中運行以下指令_
 
 <br>
 
-4. 切換至 `resources` 資料夾並運行命令上傳程式碼。
+5. 切換至 `resources` 資料夾並運行命令上傳程式碼。
 
     ```bash
     cd /home/ec2-user/environment/resources
@@ -205,7 +314,7 @@ _完成以上更新後，在終端機中運行以下指令_
 
 <br>
 
-5. 返回 Birds 應用程式的瀏覽器標籤頁並刷新頁面，現在應只顯示 `teststudent` 的鳥類觀察記錄。整體來說，這個部分是透過更新網站程式碼以動態檢索並過濾資料，成功將 `BirdSightings` 資料表中的數據顯示在應用程式的 `Sightings` 頁面上；學生可查看自己提交的觀察數據，並確保只有自己的數據被顯示。
+6. 返回 Birds 應用程式的瀏覽器標籤頁並刷新頁面，現在應只顯示 `teststudent` 的鳥類觀察記錄。整體來說，這個部分是透過更新網站程式碼以動態檢索並過濾資料，成功將 `BirdSightings` 資料表中的數據顯示在應用程式的 `Sightings` 頁面上；學生可查看自己提交的觀察數據，並確保只有自己的數據被顯示。
 
 <br>
 
