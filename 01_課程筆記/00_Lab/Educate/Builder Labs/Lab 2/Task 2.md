@@ -32,7 +32,7 @@ _在這個 Lab 情境中，為了儲存和動態管理學生的鳥類觀察數�
 
 <br>
 
-3. 配置以下設定，`Table name` 輸入 `BirdSightings`；`Partition key` 輸入 `id`，並確保選擇 `String`；`Sort key` 輸入 `student_name_str`，並確保選擇 `String`。
+3. 相關設定如下說明，在 `Table name` 輸入 `BirdSightings`；`Partition key` 輸入 `id`，並確保選擇 `String`；`Sort key` 輸入 `student_name_str`，並確保選擇 `String`。
 
     ![](images/img_07.png)
 
