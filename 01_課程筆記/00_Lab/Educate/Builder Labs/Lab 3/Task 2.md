@@ -26,7 +26,11 @@ _`SNS`，就是 `Simple Notification Service` 的縮寫；在這個任務中，�
 
 2. 在 `Topic ARN` 對話框中會自動填寫無需更改；在 `Protocol` 選擇 `Email`；在 `Endpoint` 輸入一個有效的電子郵件地址，這將是在 Lab 期間接收通知的地址，這裡我輸入自己的 Email 信箱 `gsam6238@gmail.com`。
 
+<br>
+
 3. 點擊右下角 `Create subscription`。
+
+<br>
 
 ## 確認電子郵件訂閱
 
@@ -38,28 +42,43 @@ _`SNS`，就是 `Simple Notification Service` 的縮寫；在這個任務中，�
 
 2. 此時瀏覽器將打開一個網頁，顯示訂閱成功的訊息；可關閉通知網頁。
 
-![](images/img_03.png)
+    ![](images/img_03.png)
+
+<br>
 
 ## 發佈測試訊息以確認訂閱
 
 _返回 `SNS` 主題 `EmailReport` 的頁面_
 
+<br>
+
 1. 在頁面頂部，點擊 `EmailReport`，回到該主題的詳細頁面。
+
+<br>
 
 2. 選擇右側 `Publish message`。
 
+<br>
 
 3. 進行配置頁面，在 `Subject` 輸入 `Test`。
 
+<br>
+
 4. 在 `Message body` 部分，保持預選的 `Message structure`，在下方輸入 `Hello! This is a test.`。
 
+<br>
+
 5. 點擊右下方 `Publish message`。
+
+<br>
 
 ## 確認收到測試訊息
 
 1. 此時在之前提供的電子郵件信箱中會收到主題為 `Test` 的測試郵件，查看並確認郵件的主題與訊息內容是否與先前配置的內容一致。
 
-![](images/img_04.png)
+    ![](images/img_04.png)
+
+<br>
 
 2. 以上步驟的目的是確認 SNS 訂閱功能是否正常運作，並確保未來的報告通知能夠正確傳送給指定的對象。
 
