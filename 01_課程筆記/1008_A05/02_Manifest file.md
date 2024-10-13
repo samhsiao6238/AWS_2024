@@ -1,6 +1,6 @@
 在 AWS 中，Manifest file（清單檔案）是一個 JSON 或 XML 格式的文件，用來描述大型資料集或多個物件的結構與位置。它主要用於以下情境：
 
-1. S3 整合：Manifest file 常用於 Amazon S3，當您需要處理大量資料或檔案時，透過 Manifest file，您可以指定一組 S3 中物件的完整路徑，這有助於批次處理或資料分析。例如，在 AWS Glue、Redshift Spectrum 或 Athena 中讀取多個檔案時，您可以使用 Manifest file 指定所有檔案的位置。
+1. S3 整合：Manifest file 常用於 Amazon S3，當需要處理大量資料或檔案時，透過 Manifest file，可以指定一組 S3 中物件的完整路徑，這有助於批次處理或資料分析。例如，在 AWS Glue、Redshift Spectrum 或 Athena 中讀取多個檔案時，可以使用 Manifest file 指定所有檔案的位置。
 
 2. 資料遷移與處理：Manifest file 也可用於 AWS Snowball 等資料遷移服務中，用來追蹤哪些檔案已上傳或傳輸到目的地。
 

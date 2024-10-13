@@ -91,7 +91,7 @@ _替換其中的佔位符_
 
 ## 更新網站程式碼並上傳至 S3
 
-1. 運行命令更新網站程式碼。
+1. 運行指令更新網站程式碼。
 
     ```bash
     cp /home/ec2-user/environment/website/scripts/templates_with_add_sightings.js /home/ec2-user/environment/website/scripts/templates.js

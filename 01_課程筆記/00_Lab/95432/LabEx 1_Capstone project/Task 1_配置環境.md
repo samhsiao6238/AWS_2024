@@ -129,7 +129,7 @@ _下載三個 .csv 源數據文件_
 
 <br>
 
-2. 在終端中運行以下命令，這會下載所需的三個 CSV 檔案；這裡加上 `&&` 只是懶得再逐一按 `ENTER`，不是必須的。
+2. 在終端中運行以下指令，這會下載所需的三個 CSV 檔案；這裡加上 `&&` 只是懶得再逐一按 `ENTER`，不是必須的。
 
     ```bash
     wget https://aws-tc-largeobjects.s3.us-west-2.amazonaws.com/CUR-TF-200-ACDENG-1-91570/lab-capstone/s3/SAU-GLOBAL-1-v48-0.csv && \
@@ -157,7 +157,7 @@ _下載三個 .csv 源數據文件_
 
 <br>
 
-5. 可串接 `column` 命令來進行格式化顯示。
+5. 可串接 `column` 指令來進行格式化顯示。
 
     ```bash
     head -6 SAU-GLOBAL-1-v48-0.csv | column -t -s ","
@@ -177,7 +177,7 @@ _僅說明結構，詳細內容請參考 `README`_
 
 <br>
 
-2. 可以使用以下命令確認 `行數(lines)`；正確說，這應該是 `列數(rows)`。
+2. 可以使用以下指令確認 `行數(lines)`；正確說，這應該是 `列數(rows)`。
 
     ```bash
     wc -l SAU-GLOBAL-1-v48-0.csv

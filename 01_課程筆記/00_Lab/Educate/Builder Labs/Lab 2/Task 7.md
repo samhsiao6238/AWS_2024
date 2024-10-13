@@ -114,7 +114,7 @@ _回到 Cloud9_
 
 <br>
 
-1. 執行以下命令測試查詢腳本。
+1. 執行以下指令測試查詢腳本。
 
     ```bash
     cd /home/ec2-user/environment/node_server

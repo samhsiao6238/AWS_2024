@@ -53,7 +53,7 @@
 
 ## 下載並設置應用程式代碼
 
-1. 在 Cloud9 終端機中執行以下命令，這是下載並設置 Lab 所需的應用程式代碼。
+1. 在 Cloud9 終端機中執行以下指令，這是下載並設置 Lab 所需的應用程式代碼。
 
     ```bash
     wget https://aws-tc-largeobjects.s3.us-west-2.amazonaws.com/CUR-TF-100-EDBLDR-1-107430/02-lab-ddb/code.zip
@@ -84,7 +84,7 @@
 
 ## 啟動 Node.js 伺服器
 
-1. 運行以下命令啟動 Node.js 伺服器。
+1. 運行以下指令啟動 Node.js 伺服器。
 
     ```bash
     cd /home/ec2-user/environment/node_server

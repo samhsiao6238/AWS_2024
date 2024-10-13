@@ -415,7 +415,7 @@ _使用 Python 腳本模擬數據並與 PostgreSQL 進行互動_
 
 <br>
 
-2. 連接成功，可使用 `DROP DATABASE` 指令來刪除您建立的資料庫。
+2. 連接成功，可使用 `DROP DATABASE` 指令來刪除建立的資料庫。
 
     ```sql
     DROP DATABASE my_postgres_db;

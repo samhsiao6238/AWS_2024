@@ -329,7 +329,7 @@ _進入 Cloud9 IDE 中_
 
 <br>
 
-5. 切換至 `resources` 資料夾並運行命令上傳程式碼。
+5. 切換至 `resources` 資料夾並運行指令上傳程式碼。
 
     ```bash
     cd /home/ec2-user/environment/resources
