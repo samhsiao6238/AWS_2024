@@ -1,9 +1,9 @@
 ### Task 4：將 GeneratePresignedURL Lambda 函數加入到狀態機中
 
-在此任務中，將創建一個 `report.html` 文件並將其上傳到 Amazon S3，然後使用 AWS CLI 創建並測試一個預簽名 URL（presigned URL），確認能夠通過該 URL 訪問報告。接著，將測試一個用來生成預簽名 URL 的 Lambda 函數，並將該函數添加到之前創建的狀態機中。
+在此任務中，將建立一個 `report.html` 文件並將其上傳到 Amazon S3，然後使用 AWS CLI 建立並測試一個預簽名 URL（presigned URL），確認能夠通過該 URL 訪問報告。接著，將測試一個用來生成預簽名 URL 的 Lambda 函數，並將該函數添加到之前建立的狀態機中。
 
-#### 1. 創建一個範例報告，將其上傳至 Amazon S3，並測試訪問
-1. 創建範例 `report.html` 頁面：
+#### 1. 建立一個範例報告，將其上傳至 Amazon S3，並測試訪問
+1. 建立範例 `report.html` 頁面：
    - 返回 AWS Cloud9 IDE。
    - 在 Cloud9 Instance 文件夾中，選擇 File > New File。
    - 在新的文件中貼上以下代碼：
@@ -41,7 +41,7 @@
 4. 測試訪問範例報告：
    - 在 S3 控制台中，複製 `report.html` 的 Object URL 並在新瀏覽器標籤中打開，應會看到 `AccessDenied` 錯誤，這是由於 Bucket Policy 的限制。
 
-5. 創建並測試預簽名 URL：
+5. 建立並測試預簽名 URL：
    - 在 Cloud9 終端中，運行以下指令生成有效期為 30 秒的預簽名 URL：
      ```bash
      aws s3 presign s3://$bucket/report.html --expires-in 30
@@ -77,4 +77,4 @@
    - 選擇 Start execution 開始執行狀態機，檢查執行詳情，並確認收到的郵件中包含的預簽名 URL 是否能夠正確打開報告。
 
 #### 總結
-在此任務中，成功創建了一個範例報告並將其上傳至 S3，測試了預簽名 URL 功能，並將用於生成預簽名 URL 的 Lambda 函數集成到 Step Functions 狀態機中。這確保了報告只能通過安全的預簽名 URL 訪問。
+在此任務中，成功建立了一個範例報告並將其上傳至 S3，測試了預簽名 URL 功能，並將用於生成預簽名 URL 的 Lambda 函數集成到 Step Functions 狀態機中。這確保了報告只能通過安全的預簽名 URL 訪問。

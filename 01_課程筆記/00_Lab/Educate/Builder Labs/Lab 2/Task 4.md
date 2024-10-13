@@ -68,7 +68,7 @@ _返回 Cloud9 IDE_
                 "cognito-idp.us-east-1.amazonaws.com/us-east-1_hZtfxiiPX": token_str_or_null 
                 }
             });
-            // 創建 DynamoDB 文件客戶端，用於操作資料表
+            // 建立 DynamoDB 文件客戶端，用於操作資料表
             var docClient = new AWS.DynamoDB.DocumentClient({region: "us-east-1"});
             // 定義查詢參數，指定資料表名稱
             var params = {
@@ -243,7 +243,7 @@ _進入 Cloud9 IDE 中_
                     "cognito-idp.us-east-1.amazonaws.com/us-east-1_hZtfxiiPX": token_str_or_null
                 }
             });
-            // 創建 DynamoDB 文件客戶端，用於操作資料表
+            // 建立 DynamoDB 文件客戶端，用於操作資料表
             var docClient = new AWS.DynamoDB.DocumentClient(
                 {region: "us-east-1"}
             );
