@@ -2,43 +2,61 @@
 
 _在此任務中，將建立一個 `report.html` 文件並將其上傳到 Amazon S3，然後使用 AWS CLI 建立並測試一個預簽名 URL（presigned URL），確認能夠通過該 URL 訪問報告。接著，將測試一個用來生成預簽名 URL 的 Lambda 函數，並將該函數添加到之前建立的狀態機中。_
 
+<br>
+
 ## 建立一個範例報告
 
 _返回 Cloud9，將報告上傳至 S3 並測試訪問_
 
+<br>
+
 1. 首先要建立範例 `report.html`，在 Cloud9 文件夾中點擊 `File` 中的 `New File` 新建文件。
+
+<br>
 
 2. 在新的文件中貼上以下代碼，並將文件儲存為 `report.html`。
 
-```html
-<output>Hello! This is some sample HTML.</output>
-```
+    ```html
+    <output>Hello! This is some sample HTML.</output>
+    ```
+
+<br>
 
 3. 運行以下指令將文件上傳至 `S3`，並設置 `cache-control` 為 `max-age=0`：
 
-```bash
-cd /home/ec2-user/environment
-bucket=`aws s3api list-buckets --query "Buckets[].Name" | grep s3bucket | tr -d ',' | sed -e 's/"//g' | xargs`
-aws s3 cp report.html s3://$bucket/ --cache-control "max-age=0"
-```
+    ```bash
+    cd /home/ec2-user/environment
+    bucket=`aws s3api list-buckets --query "Buckets[].Name" | grep s3bucket | tr -d ',' | sed -e 's/"//g' | xargs`
+    aws s3 cp report.html s3://$bucket/ --cache-control "max-age=0"
+    ```
+
+<br>
 
 ## 驗證 Bucket 設定
 
 1. 進入 S3。
 
+<br>
+
 2. 切換到 `Permissions` 頁籤，查看 `Bucket Policy`。
 
-![](images/img_15.png)
+    ![](images/img_15.png)
+
+<br>
 
 ## 測試訪問範例報告
 
 1. 在 S3 控制台中，找到前面步驟上傳的 `report.html` 文件，複製 `report.html` 的 `Object URL`。
 
-![](images/img_16.png)
+    ![](images/img_16.png)
+
+<br>
 
 2. 在新瀏覽器標籤中打開，應會看到 `AccessDenied` 錯誤，這是由於 Bucket Policy 的限制。
 
-![](images/img_17.png)
+    ![](images/img_17.png)
+
+<br>
 
 ## 建立並測試預簽名 URL
 
@@ -48,75 +66,124 @@ aws s3 cp report.html s3://$bucket/ --cache-control "max-age=0"
     aws s3 presign s3://$bucket/report.html --expires-in 30
     ```
 
+<br>
+
 2. 在瀏覽器中打開該 URL，確認能夠在 30 秒內訪問報告。
 
-![](images/img_18.png)
+    ![](images/img_18.png)
+
+<br>
 
 3. 超過 30 秒後 URL 將過期，刷新頁面就會返回 `AccessDenied` 錯誤。
 
-![](images/img_17.png)
+    ![](images/img_17.png)
+
+<br>
 
 ## 測試 GeneratePresignedURL Lambda 函數
 
 _查看 Lambda 函數的 IAM 角色_
 
+<br>
+
 1. 打開 IAM 控制台，搜尋並點擊進入 `RoleForAllLambdas` 角色。
+
+<br>
 
 2. 在 `Permissions` 標籤中展開 `lambdaPolicyForAllLambdaSteps` 政策，確認允許對 Amazon S3、Amazon SNS 和 DynamoDB 執行操作。
 
+<br>
+
 3. 切換到 `Trust relationships` 標籤中，確認 `Lambda` 服務可以假設此角色。
+
+<br>
 
 ## 測試 GeneratePresignedURL Lambda 函數
 
 1. 搜尋並進入 `Lambda` 服務。
 
+<br>
+
 2. 搜尋並點擊進入 `GeneratePresignedURL` 函數。
+
+<br>
 
 3. 切換到 `Test` 頁籤，設置 `Event name` 為 `test1`，並點擊右上角的 `Test`。
 
+<br>
+
 4. 展開 `Details` 可看到返回值中包含預簽名 URL。
 
-![](images/img_19.png)
+    ![](images/img_19.png)
+
+<br>
 
 5. 複製這個網址，然後在瀏覽器中進行訪問，確認這能夠正確加載 `report.html`。
 
-![](images/img_20.png)
+    ![](images/img_20.png)
+
+<br>
 
 ## 將 GeneratePresignedURL Lambda 函數添加至狀態機
 
 _返回 Step Functions 編輯狀態機_
 
+<br>
+
 1. 選擇 `MyStateMachine` 並點擊 `Edit`。
+
+<br>
 
 2. 在左側搜尋框輸入 `Lambda`，並將 `Invoke` 拖到 `SNS Publish` 之前。
 
-![](images/img_21.png)
+    ![](images/img_21.png)
+
+<br>
 
 ## 配置 Lambda 調用設置
 
 1. 在 `State name` 輸入 `GeneratePresignedURL`。
 
+<br>
+
 2. `Function name` 選擇 `GeneratePresignedURL:$LATEST`。
+
+<br>
 
 3. `Payload` 選擇 `No payload`。
 
+<br>
+
 4. `Next state` 選擇 `SNS Publish`。
 
+<br>
+
 5. 點擊右上角的 `Save`。
+
+<br>
 
 ## 測試更新後的狀態機
 
 1. 點擊 `Execute`，並刪除 `Input` 的內容，只保留空大括號 `{}` 作為輸入。
 
+<br>
+
 2. 點擊右下角 `Start execution` 開始執行狀態機。
+
+<br>
 
 3. 查看收到的郵件中是否包含的預簽名 URL。
 
-![](images/img_22.png)
+    ![](images/img_22.png)
 
-4. 確認點擊後是否能夠正確打開報告。
+<br>
 
-![](images/img_20.png)
+4. 確認點擊後是否能夠正確打開報告；在此任務中，成功建立一個範例報告並將其上傳至 S3，測試了預簽名 URL 功能，並將用於生成預簽名 URL 的 Lambda 函數集成到 Step Functions 狀態機中，這確保了報告只能通過安全的預簽名 URL 訪問。
 
-#### 總結
-在此任務中，成功建立了一個範例報告並將其上傳至 S3，測試了預簽名 URL 功能，並將用於生成預簽名 URL 的 Lambda 函數集成到 Step Functions 狀態機中。這確保了報告只能通過安全的預簽名 URL 訪問。
+    ![](images/img_20.png)
+
+<br>
+
+___
+
+_END_
