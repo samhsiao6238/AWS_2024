@@ -1,4 +1,4 @@
-_特別注意，這個 Lab 錯誤將 Task 5 標注為 Task 6，所以有兩個 Task 6_
+_特別注意，這個 Lab 錯誤將 Task 5 標註為 Task 6，所以有兩個 Task 6_
 
 <br>
 
