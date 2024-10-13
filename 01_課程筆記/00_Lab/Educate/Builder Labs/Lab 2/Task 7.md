@@ -96,7 +96,11 @@ _先不急著操作，這裡簡單說明一下代碼內容_
 
 <br>
 
-## 測試 `ddb_query.js` 腳本
+## 查看 GSI 狀態
+
+_進入 DynamoDB_
+
+<br>
 
 1. 在執行查詢之前，進入 Tables 並點擊進入 `BirdSightings`，然後切換到 `Indexes` 頁籤中觀察，確保 GSI `class-date-index` 的狀態顯示為 `Active`。
 
@@ -104,7 +108,13 @@ _先不急著操作，這裡簡單說明一下代碼內容_
 
 <br>
 
-2. 執行以下命令測試查詢腳本。
+## 測試 `ddb_query.js` 腳本
+
+_回到 Cloud9_
+
+<br>
+
+1. 執行以下命令測試查詢腳本。
 
     ```bash
     cd /home/ec2-user/environment/node_server
