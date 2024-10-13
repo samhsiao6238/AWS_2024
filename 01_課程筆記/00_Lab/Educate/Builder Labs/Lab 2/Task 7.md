@@ -6,15 +6,17 @@ _完成建立 `BirdSightings` 資料表的 `GSI` 後，現在可以使用此索�
 
 ## 檢視並更新 `ddb_query.js` 檔案
 
-1. 返回 AWS Cloud9 IDE 的瀏覽器標籤。
+_返回 Cloud9 IDE_
 
 <br>
 
-2. 在終端機左側的 Environment 視窗中，展開 `node_server` 資料夾，找到並打開 `ddb_query.js` 檔案。
+1. 在左側的視窗中展開 `node_server` 資料夾，找到並點擊開啟 `ddb_query.js` 檔案。
+
+    ![](images/img_52.png)
 
 <br>
 
-3. 該程式碼與之前載入記錄的腳本類似，查詢的關鍵參數配置如下。
+2. 該程式碼與之前載入記錄的腳本類似，查詢的關鍵參數配置如下。
 
     ```javascript
     var params = {
@@ -35,6 +37,10 @@ _完成建立 `BirdSightings` 資料表的 `GSI` 後，現在可以使用此索�
 <br>
 
 ## 關鍵說明
+
+_先不急著操作，這裡簡單說明一下代碼內容_
+
+<br>
 
 1. `IndexName` 指定了 GSI 的名稱，因此查詢方法會使用 GSI 的分區鍵和排序鍵進行查詢。
 
@@ -74,7 +80,7 @@ _完成建立 `BirdSightings` 資料表的 `GSI` 後，現在可以使用此索�
 
 <br>
 
-3. 將以下佔位符替換為實際的值。
+3. 將以下三個佔位符替換為實際的值，修改後記得儲存腳本。
 
     ```javascript
     `<index-name>`：`class-date-index`
