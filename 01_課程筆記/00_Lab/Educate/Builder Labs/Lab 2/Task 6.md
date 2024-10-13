@@ -27,11 +27,11 @@ _在新增 GSI 之前，先執行以下命令，將額外的數據載入至 `Bir
 
 ## 在資料表中建立 GSI
 
-_為了能夠依據年級和日期篩選記錄，需在 `BirdSightings` 資料表上新增一個全域次要索引 (GSI)。_
+_為了能夠依據 `年級` 和 `日期` 篩選記錄，需在 `BirdSightings` 資料表上新增一個 `GSI`。_
 
 <br>
 
-1. 進入 DynamoDB 主控台，在左側欄中選擇 `Tables`，並點擊 BirdSightings 資料表。
+1. 進入 DynamoDB 主控台，在左側欄中選擇 `Tables`，並點擊 `BirdSightings` 資料表。
 
 <br>
 
