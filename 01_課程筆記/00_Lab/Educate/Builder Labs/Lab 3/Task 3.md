@@ -16,7 +16,13 @@ _在此任務中，將建立一個 AWS Step Functions 狀態機，該狀態機�
 
 <br>
 
-3. 預設進入 `Permissions` 頁籤，展開 `stepPolicyForCreateReport` 政策查看，這些權限允許對特定 `Lambda` 函數執行多個 `Lambda` 操作，並對所有資源執行日誌操作。
+3. 預設進入 `Permissions` 頁籤，點擊 `stepPolicyForCreateReport` 政策前面的加號 `+` 展開查看。
+
+    ![](images/img_29.png)
+
+<br>
+
+4. 這些權限允許對特定 `Lambda` 函數執行多個 `Lambda` 操作，並對所有資源執行日誌操作。
 
     ```json
     {
@@ -103,7 +109,7 @@ _在此任務中，將建立一個 AWS Step Functions 狀態機，該狀態機�
 
 ## 設計工作流程
 
-1. 在左側的 States 中，搜尋 `SNS`。
+1. 在左側搜尋框中輸入 `SNS` 進行搜尋。
 
 <br>
 
@@ -113,21 +119,27 @@ _在此任務中，將建立一個 AWS Step Functions 狀態機，該狀態機�
 
 <br>
 
-3. 在 `SNS Publish` 面板中進行配置，其中 `Topic` 選擇之前建立的 `EmailReport` SNS 主題的 ARN。
+3. 點擊選取 `SNS Publish`，接著在右側面板中進行配置，其中 `Topic` 選擇之前建立的 `EmailReport` SNS 主題的 ARN。
 
     ![](images/img_10.png)
 
 <br>
 
-4. `Message` 設置為 `Use state input as message`。
+4. `Message` 使用預設選取的 `Use state input as message`。
 
     ![](images/img_11.png)
 
 <br>
 
-## 修改狀態機代碼
+## 編輯預設的狀態機代碼
 
-1. 切換到 `Code` 頁籤進入 `代碼模式`，會見到如下的預設代碼。
+1. 切換到 `Code` 頁籤進入 `代碼模式`。
+
+    ![](images/img_30.png)
+
+<br>
+
+2. 顯示如下的預設代碼。
 
     ```json
     {
@@ -149,7 +161,7 @@ _在此任務中，將建立一個 AWS Step Functions 狀態機，該狀態機�
 
 <br>
 
-2. 在代碼中將 `"Message.$"` 的值從 `"$"` 更改為 `"$..presigned_url_str"`；這表示應用程式將傳入一個 `JSON` 負載，包含 `presigned_url_str`，這會作為郵件內容發送。
+3. 修改代碼中的鍵 `"Message.$"` 的值，將原本的 `"$"` 更改為 `"$..presigned_url_str"`；這表示應用程式將傳入一個 `JSON` 格式的 `payload`，內容包含了 `presigned_url_str`，這會作為郵件內容發送。
 
     ![](images/img_12.png)
 
@@ -161,11 +173,11 @@ _在此任務中，將建立一個 AWS Step Functions 狀態機，該狀態機�
 
 <br>
 
-2. 狀態機名稱輸入 `MyStateMachine`。
+2. 將預設的狀態機名稱改為 `MyStateMachine`。
 
 <br>
 
-3. 在 `Execution role` 展開選單並點擊 `Choose an existing role`，選擇其中 `RoleForStepToCreateAReport`。
+3. 展開在 `Permissions` 區塊中的 `Execution role`，選取其中 `Choose an existing role` 項目下的 `RoleForStepToCreateAReport`。
 
     ![](images/img_13.png)
 
@@ -181,7 +193,7 @@ _在此任務中，將建立一個 AWS Step Functions 狀態機，該狀態機�
 
 ## 建立並測試狀態機
 
-1. 完成後，點擊右上角 `Execute` 開始執行測試。
+1. 完成後，點擊右上角 `Execute` 開始執行測試，這會自動開啟新的瀏覽頁面。
 
 <br>
 
