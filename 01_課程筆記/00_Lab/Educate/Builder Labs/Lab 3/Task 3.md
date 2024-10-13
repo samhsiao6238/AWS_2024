@@ -201,7 +201,7 @@ _在此任務中，將建立一個 AWS Step Functions 狀態機，該狀態機�
 
     ```json
     {
-    "presigned_url_str": "Testing that my email message works"
+        "presigned_url_str": "Testing that my email message works"
     }
     ```
 
