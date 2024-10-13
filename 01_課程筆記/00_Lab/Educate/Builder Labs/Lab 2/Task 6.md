@@ -33,17 +33,31 @@ _為了能夠依據 `年級` 和 `日期` 篩選記錄，需在 `BirdSightings` 
 
 1. 進入 DynamoDB 主控台，在左側欄中選擇 `Tables`，並點擊 `BirdSightings` 資料表。
 
-<br>
-
-2. 選擇 `Actions` > `Create index`。
+    ![](images/img_47.png)
 
 <br>
 
-3. 在 `Index details`配置以下設定，`Partition key` 輸入 `class_level_str` 並確保選擇 `String`；`Sort key` 輸入 `date_int` 並確保選擇 `Number`；`Index name` 輸入 `class-date-index`。
+2. 展開 `Actions` 並點擊 `Create index`。
+
+    ![](images/img_48.png)
 
 <br>
 
-4. 點擊 `Create index`；記錄下索引名稱、索引分區鍵及排序鍵的資訊，稍後會使用這些資訊進行查詢。
+3. 在 `Index details` 中進行以下設定，首先在 `Partition key` 輸入 `class_level_str` 並確保選擇 `String`；`Sort key` 輸入 `date_int` 並確保選擇 `Number`；`Index name` 輸入 `class-date-index`。
+
+    ![](images/img_49.png)
+
+<br>
+
+4. 滾動到下方點擊 `Create index`。
+
+    ![](images/img_50.png)
+
+<br>
+
+5. 可將索引名稱、索引分區鍵及排序鍵等資訊紀錄在 `MyDoc.txt`，稍後會用來進行查詢
+
+    ![](images/img_51.png)
 
 <br>
 
