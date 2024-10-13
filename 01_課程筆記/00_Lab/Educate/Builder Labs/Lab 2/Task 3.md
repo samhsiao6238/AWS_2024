@@ -59,7 +59,25 @@ _此部分主要對腳本內容做說明，另外將替換為實際資料表名�
 
 <br>
 
-2. 完整代碼如下，已加入逐行繁體中文註解，不再贅述。
+2. 特別注意，先滾動到下方，將代碼中 `<Table-名稱>` 替換為實際資料表名稱。
+
+    ```javascript
+    var params = {
+        RequestItems: { 
+            '<Table-名稱>': items_array
+        }
+    };
+    ```
+
+<br>
+
+3. 延續上一點，也就是替換為 `BirdSightings`；修改後務必記得儲存再關閉。
+
+    ![](images/img_25.png)
+
+<br>
+
+4. 完整代碼如下，已加入逐行繁體中文註解，不再贅述。
 
     ```javascript
     function load_past_sightings(){
@@ -116,8 +134,8 @@ _此部分主要對腳本內容做說明，另外將替換為實際資料表名�
         // 設置批次寫入的參數，指定要寫入的資料表名稱
         var params = {
             RequestItems: { 
-                // 將 <table_name> 替換為實際資料表名稱
-                '<table_name>': items_array
+                // 替換為實際資料表名稱
+                '<Table-名稱>': items_array
             }
         };
 
@@ -139,24 +157,6 @@ _此部分主要對腳本內容做說明，另外將替換為實際資料表名�
     // 執行 load_past_sightings 函數來載入數據
     load_past_sightings();
     ```
-
-<br>
-
-3. 特別提示，在代碼中需手動將 `<table_name>` 替換為實際資料表名稱。
-
-    ```javascript
-    var params = {
-        RequestItems: { 
-            '<table_name>': items_array
-        }
-    };
-    ```
-
-<br>
-
-4. 延續上一點，也就是替換為 `BirdSightings`；修改後務必記得儲存再關閉。
-
-    ![](images/img_25.png)
 
 <br>
 
