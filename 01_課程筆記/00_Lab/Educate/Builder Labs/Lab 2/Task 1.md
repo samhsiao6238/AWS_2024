@@ -76,7 +76,7 @@
 
 <br>
 
-4. 將輸出中的 `CloudFront distribution domain` 紀錄在前面步驟建立的文件中。
+4. 將輸出中的 `CloudFront distribution domain` 紀錄在前面步驟建立的文件中；特別注意，這個輸出值每次都會生成唯一識別符，每次都會不同。
 
     ![](images/img_03.png)
 
