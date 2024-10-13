@@ -93,7 +93,7 @@
 
 <br>
 
-2. 結果如下。
+2. 結果如下，將這個終端保持在運行中。
 
     ![](images/img_04.png)
 
@@ -102,6 +102,8 @@
 ## 監控 CloudFront 分發部署
 
 1. 搜尋並進入 `CloudFront`。
+
+    ![](images/img_18.png)
 
 <br>
 

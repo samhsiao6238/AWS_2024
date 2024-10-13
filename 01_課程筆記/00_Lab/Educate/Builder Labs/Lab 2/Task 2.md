@@ -1,6 +1,6 @@
 # Task 2：建立 DynamoDB 資料表
 
-_為了儲存和動態管理學生的鳥類觀察數據，將會在本任務中建立一個全新的 DynamoDB 資料表。此資料表將使用複合主鍵，包含分區鍵 (Partition Key) 和排序鍵 (Sort Key)。_
+_在這個 Lab 情境中，為了儲存和動態管理學生的鳥類觀察數據，將會在本任務中建立一個全新的 DynamoDB 資料表。此資料表將使用複合主鍵，包含分區鍵 (Partition Key) 和排序鍵 (Sort Key)。_
 
 <br>
 
