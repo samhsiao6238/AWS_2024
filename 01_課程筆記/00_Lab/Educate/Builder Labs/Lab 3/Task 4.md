@@ -1,47 +1,51 @@
-### Task 4：將 GeneratePresignedURL Lambda 函數加入到狀態機中
+# Task 4：將 GeneratePresignedURL Lambda 函數加入到狀態機中
 
-在此任務中，將建立一個 `report.html` 文件並將其上傳到 Amazon S3，然後使用 AWS CLI 建立並測試一個預簽名 URL（presigned URL），確認能夠通過該 URL 訪問報告。接著，將測試一個用來生成預簽名 URL 的 Lambda 函數，並將該函數添加到之前建立的狀態機中。
+_在此任務中，將建立一個 `report.html` 文件並將其上傳到 Amazon S3，然後使用 AWS CLI 建立並測試一個預簽名 URL（presigned URL），確認能夠通過該 URL 訪問報告。接著，將測試一個用來生成預簽名 URL 的 Lambda 函數，並將該函數添加到之前建立的狀態機中。_
 
-#### 1. 建立一個範例報告，將其上傳至 Amazon S3，並測試訪問
-1. 建立範例 `report.html` 頁面：
-   - 返回 AWS Cloud9 IDE。
-   - 在 Cloud9 Instance 文件夾中，選擇 File > New File。
-   - 在新的文件中貼上以下代碼：
-     ```html
-     <output>Hello! This is some sample HTML.</output>
-     ```
-   - 選擇 File > Save，將文件命名為 `report.html`。
+## 建立一個範例報告
 
-2. 上傳範例報告文件到 S3 Bucket：
-   - 在 AWS Cloud9 終端中運行以下指令，將文件上傳至 S3 並設置 `cache-control` 為 `max-age=0`：
-     ```bash
-     cd /home/ec2-user/environment
-     bucket=`aws s3api list-buckets --query "Buckets[].Name" | grep s3bucket | tr -d ',' | sed -e 's/"//g' | xargs`
-     aws s3 cp report.html s3://$bucket/ --cache-control "max-age=0"
-     ```
+_返回 Cloud9，將報告上傳至 S3 並測試訪問_
 
-3. 驗證 Bucket 設定：
-   - 在 AWS 管理控制台，選擇 S3 服務並找到上傳的 `report.html` 文件。
-   - 在 Permissions（權限）標籤中查看 Bucket Policy，注意以下策略段落：
-     ```json
-     {
-         "Sid": "DenyOneObjectIfRequestNotSigned",
-         "Effect": "Deny",
-         "Principal": "*",
-         "Action": "s3:GetObject",
-         "Resource": "arn:aws:s3:::bucket-name/report.html",
-         "Condition": {
-             "StringNotEquals": {
-                 "s3:authtype": "REST-QUERY-STRING"
-             }
-         }
-     }
-     ```
+1. 首先要建立範例 `report.html`，在 Cloud9 文件夾中點擊 `File` 中的 `New File` 新建文件。
 
-4. 測試訪問範例報告：
+2. 在新的文件中貼上以下代碼，並將文件儲存為 `report.html`。
+
+```html
+<output>Hello! This is some sample HTML.</output>
+```
+
+3. 運行以下指令將文件上傳至 `S3`，並設置 `cache-control` 為 `max-age=0`：
+
+```bash
+cd /home/ec2-user/environment
+bucket=`aws s3api list-buckets --query "Buckets[].Name" | grep s3bucket | tr -d ',' | sed -e 's/"//g' | xargs`
+aws s3 cp report.html s3://$bucket/ --cache-control "max-age=0"
+```
+
+## 驗證 Bucket 設定
+
+1. 進入 S3，找到前面步驟上傳的 `report.html` 文件，確認上完作業完成。
+
+2. 切換到 `Permissions` 頁籤，查看 `Bucket Policy`。
+    ```json
+    {
+        "Sid": "DenyOneObjectIfRequestNotSigned",
+        "Effect": "Deny",
+        "Principal": "*",
+        "Action": "s3:GetObject",
+        "Resource": "arn:aws:s3:::bucket-name/report.html",
+        "Condition": {
+            "StringNotEquals": {
+                "s3:authtype": "REST-QUERY-STRING"
+            }
+        }
+    }
+    ```
+
+1. 測試訪問範例報告：
    - 在 S3 控制台中，複製 `report.html` 的 Object URL 並在新瀏覽器標籤中打開，應會看到 `AccessDenied` 錯誤，這是由於 Bucket Policy 的限制。
 
-5. 建立並測試預簽名 URL：
+2. 建立並測試預簽名 URL：
    - 在 Cloud9 終端中，運行以下指令生成有效期為 30 秒的預簽名 URL：
      ```bash
      aws s3 presign s3://$bucket/report.html --expires-in 30
