@@ -6,7 +6,7 @@ _開始之前，先將一些文件匯入 Cloud9，並安裝所需的包，以便
 
 ## 連接到 Cloud9 IDE
 
-1. 進入 Cloud9，點擊預設 Instance 右側的 `Open` 進入 `IDE`。
+1. 進入 Cloud9，在 Lab 預設的 Instance 右側點擊 `Open` 進入 `IDE`。
 
 <br>
 
