@@ -118,9 +118,11 @@ _預簽名 `Presigned URL` 是指在 AWS S3 中生成的一種具有臨時訪問
 
 2. 切換到 `Test` 頁籤，設置 `Event name` 為 `test1`，並點擊右上角的 `Test`。
 
+    ![](images/img_35.png)
+
 <br>
 
-3. 展開 `Details` 可看到返回值中包含預簽名 URL。
+3. 展開 `Details` 可看到返回值中包含 `預簽名 URL`。
 
     ![](images/img_19.png)
 
@@ -132,7 +134,7 @@ _預簽名 `Presigned URL` 是指在 AWS S3 中生成的一種具有臨時訪問
 
 <br>
 
-## 將 GeneratePresignedURL Lambda 函數添加至狀態機
+## 將 Lambda 函數添加至狀態機
 
 _返回 Step Functions 編輯狀態機_
 
