@@ -187,7 +187,7 @@ _僅說明_
 
 1. 回到 DynamoDB 主控台的標籤頁；在 `Scan or query items` 區域中，依舊保持預設的 `Scan`，然後點擊 `Run` 進行掃描操作。
 
-![](images/img_28.png)
+    ![](images/img_28.png)
 
 <br>
 
