@@ -32,13 +32,21 @@ _在這個 Lab 情境中，為了儲存和動態管理學生的鳥類觀察數�
 
 <br>
 
-3. 相關設定如下說明，在 `Table name` 輸入 `BirdSightings`；`Partition key` 輸入 `id`，並確保選擇 `String`；`Sort key` 輸入 `student_name_str`，並確保選擇 `String`。
+3. 相關設定如下說明，在 `Table name` 輸入 `BirdSightings`；`Partition key` 輸入 `id`，在尾端的型態選擇使用預設的 `String`；`Sort key` 輸入 `student_name_str`，並確保選擇 `String`。
 
     ![](images/img_07.png)
 
 <br>
 
-4. 在之前準備的文字檔案中，記錄下資料表名稱、分區鍵及排序鍵，後續任務中將需要這些資訊，資料表名稱為 `BirdSightings`、分區鍵為 `id`、排序鍵 `student_name_str`。
+4. 滾動至頁面底部點擊 `Create table`，等待資料表狀態顯示為 `Active`；這過程可能需要幾秒鐘。
+
+    ![](images/img_08.png)
+
+<br>
+
+## 紀錄設定訊息
+
+1. 在之前準備的文字檔案中，記錄下資料表名稱、分區鍵及排序鍵，後續任務中將需要這些資訊，資料表名稱為 `BirdSightings`、分區鍵為 `id`、排序鍵 `student_name_str`。
 
     ```bash
     CloudFront distribution domain:dfdmbukxogh19.cloudfront.net
@@ -50,12 +58,6 @@ _在這個 Lab 情境中，為了儲存和動態管理學生的鳥類觀察數�
     Index partition key:
     Index sort key:
     ```
-
-<br>
-
-5. 滾動至頁面底部點擊 `Create table`，等待資料表狀態顯示為 `Active`；這過程可能需要幾秒鐘。
-
-    ![](images/img_08.png)
 
 <br>
 
