@@ -6,7 +6,7 @@ _GSI，全域次要索引；這個任務的情境是 Ms. García 希望每週收
 
 ## 載入額外數據至資料表
 
-_在新增 GSI 之前，先執行以下命令，將額外的數據載入至 `BirdSightings` 資料表。此數據包含一些四年級學生的觀察記錄。_
+_在新增 GSI 之前，先執行以下命令，將額外的數據載入至 `BirdSightings` 資料表，此數據包含一些四年級學生的觀察記錄。_
 
 <br>
 
@@ -19,14 +19,9 @@ _在新增 GSI 之前，先執行以下命令，將額外的數據載入至 `Bir
 
 <br>
 
-2. 確認輸出結果，成功載入了 9 筆記錄至 DynamoDB。
+2. 結果顯示載入了 `9` 筆數據到 `DynamoDB`。
 
-    ```bash
-    { PutRequest: { Item: [Object] } },
-    { PutRequest: { Item: [Object] } },
-    ...
-    Added 9 items to DynamoDB
-    ```
+    ![](images/img_46.png)
 
 <br>
 
