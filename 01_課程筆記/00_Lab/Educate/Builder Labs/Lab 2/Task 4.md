@@ -314,19 +314,13 @@ _進入 Cloud9 IDE 中_
 
 <br>
 
-3. 將 `<Attribute-名稱>` 替換為 `student_name_str`，儲存更改並關閉檔案。
+2. 將原始代碼中的 `<Attribute-名稱>` 替換為 `student_name_str` 如下圖，修正後儲存更改並關閉檔案。
 
-    ```javascript
-    var params = {
-        TableName: "BirdSightings",
-        FilterExpression: "<Attribute-名稱> = :student_name_str",
-        ExpressionAttributeValues: { ":student_name_str": student }
-    };
-    ```
+    ![](images/img_41.png)
 
 <br>
 
-4. 更新網站程式碼並上傳至 S3。
+3. 更新網站程式碼並上傳至 S3。
 
     ```bash
     cd /home/ec2-user/environment/website
