@@ -126,11 +126,17 @@ _返回 Step Functions 控制台_
 
 ## 修改 SNS Publish 狀態中的消息設置
 
-1. 在早先的步驟中，將 `Message.$` 設為 `$.presigned_url_str`，這是用於測試的。但現在要將來自 `GeneratePresignedURL` 和 `generateHTML` 的數據一併發送給 `SNS`，故需要將 `Message.$` 恢復為 `$.`。
+_在早先的步驟中，將 `Message.$` 設為 `$.presigned_url_str`，這是用於測試的。但現在要將來自 `GeneratePresignedURL` 和 `generateHTML` 的數據一併發送給 `SNS`，故需要將 `Message.$` 恢復為 `$.`。_
 
 <br>
 
-2. 在 JSON 編輯模式中，找到 `"Message.$": "$.presigned_url_str",`，並將其更改為 `"$"`，保存更改。
+1. 切換到 `Code` 頁籤，在 JSON 編輯區塊中找到 `"Message.$": "$.presigned_url_str",`。
+
+    ![](images/img_48.png)
+
+<br>
+
+2. 並將其更改回 `"$"`，然後點擊右上角 `Save` 保存更改。
 
     ```json
     "SNS Publish": {
@@ -148,7 +154,9 @@ _返回 Step Functions 控制台_
 
 ## 測試更新後的狀態機
 
-1. 選擇 `Start execution`，並將輸入的 JSON 代碼更改為以下內容。
+1. 點擊右上角 `Execution`。
+
+2. 將 `Input` 的 JSON 代碼更改為以下內容。
 
     ```json
     {
