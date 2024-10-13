@@ -193,7 +193,11 @@ _這是個批次的自動化腳本_
 
 ## 檢視新增的記錄
 
-1. 回到 DynamoDB 主控台的標籤頁；在 `Scan or query items` 區域中，依舊保持預設的 `Scan`，然後點擊 `Run` 進行掃描操作。
+_返回 `DynamoDB` 主控台進行查看_
+
+<br>
+
+1. 在 `Scan or query items` 區域中，依舊保持預設的 `Scan`，然後點擊 `Run` 進行掃描操作。
 
     ![](images/img_28.png)
 
