@@ -99,7 +99,7 @@ _替換其中的佔位符_
 
 <br>
 
-2. 將更新的網站程式碼上傳至 S3：
+2. 將更新的網站程式碼上傳至 `S3`。
 
     ```bash
     python /home/ec2-user/environment/resources/upload_website_code.py
