@@ -154,9 +154,13 @@ _返回 Step Functions 編輯狀態機_
 
 1. 在 `State name` 輸入 `GeneratePresignedURL`。
 
+    ![](images/img_36.png)
+
 <br>
 
-2. `Function name` 選擇 `GeneratePresignedURL:$LATEST`。
+2. 展開 `Function name` 選擇 `GeneratePresignedURL:$LATEST`。
+
+    ![](images/img_37.png)
 
 <br>
 
@@ -164,7 +168,7 @@ _返回 Step Functions 編輯狀態機_
 
 <br>
 
-4. `Next state` 選擇 `SNS Publish`。
+4. `Next state` 使用預設的 `SNS Publish`。
 
 <br>
 
