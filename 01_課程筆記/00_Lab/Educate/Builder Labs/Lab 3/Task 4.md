@@ -92,11 +92,7 @@ _預簽名 `Presigned URL` 是指在 AWS S3 中生成的一種具有臨時訪問
 
 <br>
 
-## 測試 Lambda 函數
-
-_查看 Lambda 函數的 IAM 角色_
-
-<br>
+## 查看 Lambda 函數的 IAM 角色
 
 1. 打開 IAM 控制台，搜尋並點擊進入 `RoleForAllLambdas` 角色。
 
@@ -112,7 +108,7 @@ _查看 Lambda 函數的 IAM 角色_
 
 <br>
 
-## 測試 GeneratePresignedURL Lambda 函數
+## 測試 Lambda 函數
 
 1. 搜尋並進入 `Lambda` 服務。
 
