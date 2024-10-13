@@ -45,7 +45,7 @@
 
 <br>
 
-4. 暫時儲存為 `MyDoc.txt`
+3. 可使用快速鍵儲存為 `MyDoc.txt`，組合鍵與一般文書軟體相同，在 `MacOS` 是 `command + S`。
 
     ![](images/img_01.png)
 
