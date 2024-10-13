@@ -6,7 +6,7 @@ _`SNS`，就是 `Simple Notification Service` 的縮寫；在這個任務中，�
 
 ## 進入 SNS 主題頁面
 
-1. 搜尋並進入 `Simple Notification Service`。
+1. 搜尋並進入 `Simple Notification Service`；搜尋 `SNS` 也可以。
 
     ![](images/img_01.png)
 
