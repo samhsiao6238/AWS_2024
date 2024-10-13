@@ -46,7 +46,11 @@ _在這個 Lab 情境中，為了儲存和動態管理學生的鳥類觀察數�
 
 ## 紀錄設定訊息
 
-1. 在之前準備的文字檔案中，記錄下資料表名稱、分區鍵及排序鍵，後續任務中將需要這些資訊，資料表名稱為 `BirdSightings`、分區鍵為 `id`、排序鍵 `student_name_str`。
+_Cloud9 的紀錄文件_
+
+<br>
+
+1. 記錄資料表名稱、分區鍵及排序鍵，資料表名稱為 `BirdSightings`、分區鍵為 `id`、排序鍵 `student_name_str`。
 
     ```bash
     CloudFront distribution domain:dfdmbukxogh19.cloudfront.net
