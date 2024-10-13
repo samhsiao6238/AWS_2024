@@ -185,23 +185,33 @@ _僅說明_
 
 ## 檢視新增的記錄
 
-1. 回到 DynamoDB 主控台的標籤頁。
+1. 回到 DynamoDB 主控台的標籤頁；在 `Scan or query items` 區域中，依舊保持預設的 `Scan`，然後點擊 `Run` 進行掃描操作。
+
+![](images/img_28.png)
 
 <br>
 
-2. 在 `Scan or query items` 區域中，確保選擇 `Scan`，然後選擇 `Run` 進行掃描操作。
+2. 在 `Items returned` 中會顯示來自 `past_sightings.json` 檔案的 25 筆記錄。
+
+    ![](images/img_29.png)
 
 <br>
 
-3. 在 `Items returned` 區域中，將顯示來自 `past_sightings.json` 檔案的 25 筆記錄。
+3. 首先，代碼中自動化為每筆記錄生成了唯一的 `id` 值。
+
+    ![](images/img_31.png)
 
 <br>
 
-4. 注意到資料表現在有 7 個屬性，儘管在建立時只設定了 2 個屬性，這是因為 DynamoDB 是一個 `NoSQL 非關聯式資料庫`，如果資料表中尚未包含載入的屬性，這些新屬性將自動新增。
+3. 另外，在日期的欄位部分被轉換為整數值，這是因為 `JavaScript` 代碼進行了該操作。
+
+    ![](images/img_32.png)
 
 <br>
 
-5. 此外，注意到日期欄位已轉換為整數值，這是因為 `JavaScript` 代碼進行了該操作；代碼還自動為每筆記錄生成了唯一的 `id` 值。
+4. 特別注意，前面步驟在建立時只設定了 `2` 個屬性，但是導入資料後的有 `7` 個屬性，這是因為 `DynamoDB` 是一個 `非關聯式資料庫 (NoSQL)`，當資料表中沒有新載入資料的屬性時，這些屬性將被自動新增。
+
+    ![](images/img_30.png)
 
 <br>
 
