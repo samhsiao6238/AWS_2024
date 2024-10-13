@@ -1,4 +1,4 @@
-# Task 4：將 GeneratePresignedURL Lambda 函數加入到狀態機中
+# Task 4：將 Lambda 加入狀態機
 
 _在此任務中，將建立一個 `report.html` 文件並將其上傳到 Amazon S3，然後使用 AWS CLI 建立並測試一個預簽名 URL（presigned URL），確認能夠通過該 URL 訪問報告。接著，將測試一個用來生成預簽名 URL 的 Lambda 函數，並將該函數添加到之前建立的狀態機中。_
 
