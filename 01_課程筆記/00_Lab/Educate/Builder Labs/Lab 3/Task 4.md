@@ -92,7 +92,7 @@ _預簽名 `Presigned URL` 是指在 AWS S3 中生成的一種具有臨時訪問
 
 <br>
 
-## 測試 GeneratePresignedURL Lambda 函數
+## 測試 Lambda 函數
 
 _查看 Lambda 函數的 IAM 角色_
 
