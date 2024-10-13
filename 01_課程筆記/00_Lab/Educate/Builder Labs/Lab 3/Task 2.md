@@ -12,17 +12,15 @@ _`SNS`，就是 `Simple Notification Service` 的縮寫；在這個任務中，�
 
 <br>
 
-2. 在左側欄選擇 `Topics`。
-
-<br>
-
-3. 在清單中點擊進入 `Name` 為 `EmailReport` 的 `SNS 主題`。
+2. 在左側欄選擇 `Topics`，在右側清單中點擊進入 `Name` 為 `EmailReport` 的 `SNS 主題`。
 
 <br>
 
 ## 建立 Email 訂閱
 
 1. 預設會進入 `Subscriptions` 頁籤，點擊 `Create subscription`。
+
+    ![](images/img_24.png)
 
 <br>
 
@@ -45,7 +43,6 @@ _`SNS`，就是 `Simple Notification Service` 的縮寫；在這個任務中，�
 ## 發佈測試訊息以確認訂閱
 
 _返回 `SNS` 主題 `EmailReport` 的頁面_
-
 
 1. 在頁面頂部，點擊 `EmailReport`，回到該主題的詳細頁面。
 
