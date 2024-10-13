@@ -20,7 +20,7 @@ _`SNS`，就是 `Simple Notification Service` 的縮寫；在這個任務中，�
 
 <br>
 
-## 建立一個電子郵件訂閱
+## 建立 Email 訂閱
 
 1. 預設會進入 `Subscriptions` 頁籤，點擊 `Create subscription`。
 
