@@ -10,7 +10,13 @@ _返回 Cloud9 IDE_
 
 <br>
 
-1. 在終端機左側的 Environment 視窗中，展開 `node_server` 資料夾，找到並打開 `past_sightings.json` 檔案，這是後續要載入到 `BirdSightings` 資料表的數據，內容包含 `25` 筆記錄，每筆記錄包含多個屬性。
+1. 在終端機左側的 Environment 視窗中，展開 `node_server` 資料夾，找到並打開 `past_sightings.json` 檔案。
+
+    ![](images/img_22.png)
+
+<br>
+
+2. 點擊兩下可開啟文件，這是後續要載入到 `BirdSightings` 資料表的數據，內容包含 `25` 筆記錄，每筆記錄包含多個屬性。
 
     ```json
     [
@@ -35,7 +41,9 @@ _返回 Cloud9 IDE_
 
 <br>
 
-3. 關閉 `past_sightings.json` 檔案。
+3. 點擊文件右側 `x` 可關閉檔案。
+
+    ![](images/img_23.png)
 
 <br>
 
