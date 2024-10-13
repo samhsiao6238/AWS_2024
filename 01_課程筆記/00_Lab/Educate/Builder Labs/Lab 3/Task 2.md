@@ -1,10 +1,10 @@
 # Task 2：訂閱 SNS 主題
 
-_在這個任務中，將會訂閱一個 SNS 主題，當應用程式用戶請求報告時，該主題將會發送通知給訂閱者。_
+_`SNS`，就是 `Simple Notification Service` 的縮寫；在這個任務中，將會訂閱一個 SNS 主題，當應用程式用戶請求報告時，該主題將會發送通知給訂閱者。_
 
 <br>
 
-## 進入 Simple Notification Service（SNS）主題頁面
+## 進入 SNS 主題頁面
 
 1. 搜尋並進入 `Simple Notification Service`。
 

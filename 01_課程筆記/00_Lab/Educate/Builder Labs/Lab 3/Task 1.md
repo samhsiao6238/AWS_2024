@@ -6,11 +6,11 @@ _開始之前，先將一些文件匯入 Cloud9，並安裝所需的包，以便
 
 ## 連接到 Cloud9 IDE
 
-1. 進入 Cloud9，在 Lab 預設的 Instance 右側點擊 `Open` 進入 `IDE`。
+1. 進入 `Cloud9`，在 Lab 預設的 Instance 右側點擊 `Open` 進入 `IDE`。
 
 <br>
 
-2. 進入 Cloud9 之後，先新增一個 File 並貼上以下內容，在之後的步驟中用於記錄重要資訊備用，儲存為 `MyDoc.txt`。
+2. 進入 `Cloud9` 之後，先新增一個 `File` 並貼上以下內容，在之後的步驟中用於記錄重要資訊備用，儲存為 `MyDoc.txt`。
 
     ```bash
     CloudFront Domain:
