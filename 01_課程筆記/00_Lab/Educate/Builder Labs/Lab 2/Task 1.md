@@ -33,14 +33,14 @@
 2. 編輯內容，將以下文字貼在新開啟的文件中，這是要用來記錄後續步驟中的各種重要資訊備用。
 
     ```bash
-    CloudFront distribution domain: 
-    Table name: 
-    Table partition key: 
-    Table sort key:  
+    CloudFront distribution domain:
+    Table name:
+    Table partition key:
+    Table sort key:
     Password:
     Index name:
-    Index partition key: 
-    Index sort key: 
+    Index partition key:
+    Index sort key:
     ```
 
 <br>
