@@ -4,7 +4,7 @@ _雖然可用手動方式在 `DynamoDB` 主控台中逐一新增記錄，但對�
 
 <br>
 
-## 檢視即將載入的數據
+## 檢視要載入的數據
 
 _返回 Cloud9 IDE_
 
@@ -47,19 +47,74 @@ _返回 Cloud9 IDE_
 
 <br>
 
-## 檢視並更新批次腳本
+## 更新批次腳本
 
 1. 在 `node_server` 資料夾中找到並打開 `load_past_sightings.js` 檔案。
 
+    ![](images/img_24.png)
+
 <br>
 
-2. 使用代碼匯入 AWS SDK 並配置 DynamoDB 的文件客戶端，設置為 `us-east-1` 區域。
+2. 代碼如下，使用代碼匯入 AWS SDK 並配置 DynamoDB 的文件客戶端，區域設置為 `us-east-1`。
 
     ```javascript
-    var AWS = require("aws-sdk");
-    var docClient = new AWS.DynamoDB.DocumentClient(
-        {region: 'us-east-1'}
-    );
+    function load_past_sightings(){
+        var	FS = require("fs");
+        const { v4: uuidv4 } = require('uuid');
+        var AWS = require("aws-sdk");
+        var docClient = new AWS.DynamoDB.DocumentClient(
+            {region: 'us-east-1'}
+        );
+
+        console.log("getting past bird sightings");
+
+        let rawdata = FS.readFileSync('past_sightings.json');
+        let past_sightings = JSON.parse(rawdata);
+        var items_array = [];
+        
+        for ( var i = 0; i < past_sightings.length; i++ ) {
+            // 為資料加入 id
+            past_sightings[i].id = uuidv4();
+
+            // 將 date_str（ISO 日期）替換為 date_int（紀元時間 - 數字日期）
+            var sighting_date = new Date(past_sightings[i].date_str);
+            past_sightings[i].date_int = sighting_date.getTime()/1000; 
+            delete past_sightings[i].date_str;
+
+            console.log(past_sightings[i]);
+
+            var item = {
+                    PutRequest: {
+                        Item: past_sightings[i]
+                    }
+                };
+
+            if (item) {
+                items_array.push(item);
+            }
+        }
+
+        console.log(items_array);
+
+        var params = {
+            RequestItems: { 
+                '<table_name>': items_array
+            }
+        };
+
+        docClient.batchWrite(params, function(err, data) {
+            if (err) {
+                console.log(err); 
+            } else  {
+                console.log(
+                    'Added ' + items_array.length + ' items to DynamoDB'
+                );
+            }   
+        });
+
+    }
+
+    load_past_sightings();
     ```
 
 <br>
