@@ -47,7 +47,11 @@ _返回 Cloud9 IDE_
 
 <br>
 
-## 更新批次腳本
+## 腳本代碼說明
+
+_僅說明_
+
+<br>
 
 1. 在 `node_server` 資料夾中找到並打開 `load_past_sightings.js` 檔案。
 
@@ -55,57 +59,75 @@ _返回 Cloud9 IDE_
 
 <br>
 
-2. 代碼如下，使用代碼匯入 AWS SDK 並配置 DynamoDB 的文件客戶端，區域設置為 `us-east-1`。
+2. 完整代碼如下，已加入逐行繁體中文註解，不再贅述。
 
     ```javascript
     function load_past_sightings(){
+        // 載入檔案系統模組，用於讀取 JSON 檔案
         var	FS = require("fs");
+        // 載入 uuid 模組，用於生成唯一的 id
         const { v4: uuidv4 } = require('uuid');
+        // 載入 AWS SDK 並設置 DynamoDB 文件客戶端，區域設定為 us-east-1
         var AWS = require("aws-sdk");
         var docClient = new AWS.DynamoDB.DocumentClient(
             {region: 'us-east-1'}
         );
 
+        // 輸出訊息：開始取得過去的鳥類觀察記錄
         console.log("getting past bird sightings");
 
+        // 讀取本地的 past_sightings.json 檔案
         let rawdata = FS.readFileSync('past_sightings.json');
+        // 將讀取的 JSON 原始數據解析為 JavaScript 物件
         let past_sightings = JSON.parse(rawdata);
+        // 初始化一個陣列，準備存放要寫入 DynamoDB 的項目
         var items_array = [];
         
+        // 遍歷每一筆觀察記錄
         for ( var i = 0; i < past_sightings.length; i++ ) {
-            // 為資料加入 id
+            // 為每一筆記錄生成一個唯一的 id
             past_sightings[i].id = uuidv4();
 
-            // 將 date_str（ISO 日期）替換為 date_int（紀元時間 - 數字日期）
+            // 將 date_str（ISO 日期格式）轉換為 date_int（Unix 時間戳）
             var sighting_date = new Date(past_sightings[i].date_str);
-            past_sightings[i].date_int = sighting_date.getTime()/1000; 
+            past_sightings[i].date_int = sighting_date.getTime()/1000; // 轉換為秒數
+            // 刪除原始的 date_str 屬性
             delete past_sightings[i].date_str;
 
+            // 輸出轉換後的記錄以供檢查
             console.log(past_sightings[i]);
 
+            // 構建要插入 DynamoDB 的項目
             var item = {
                     PutRequest: {
                         Item: past_sightings[i]
                     }
                 };
 
+            // 如果 item 有值，則將其加入 items_array
             if (item) {
                 items_array.push(item);
             }
         }
 
+        // 輸出準備寫入 DynamoDB 的所有項目
         console.log(items_array);
 
+        // 設置批次寫入的參數，指定要寫入的資料表名稱
         var params = {
             RequestItems: { 
+                // 將 <table_name> 替換為實際資料表名稱
                 '<table_name>': items_array
             }
         };
 
+        // 使用 AWS SDK 的 batchWrite 方法批次寫入資料至 DynamoDB
         docClient.batchWrite(params, function(err, data) {
+            // 如果出現錯誤，則輸出錯誤訊息
             if (err) {
                 console.log(err); 
             } else  {
+                // 如果成功，則輸出成功訊息，並顯示新增的項目數量
                 console.log(
                     'Added ' + items_array.length + ' items to DynamoDB'
                 );
@@ -114,12 +136,13 @@ _返回 Cloud9 IDE_
 
     }
 
+    // 執行 load_past_sightings 函數來載入數據
     load_past_sightings();
     ```
 
 <br>
 
-3. 接下來的代碼將從 `past_sightings.json` 檔案中構建一個名為 `items_array` 的陣列，並將此陣列用於配置資料庫調用的參數。變數 `params` 定義了接收記錄的資料表名稱以及要載入的數據（即 `items_array`）。
+3. 特別提示，在代碼中需手動將 `<table_name>` 替換為實際資料表名稱，也就是替換為 `BirdSightings`；修改後務必記得儲存再關閉。
 
     ```javascript
     var params = {
@@ -128,38 +151,6 @@ _返回 Cloud9 IDE_
         }
     };
     ```
-
-<br>
-
-4. 以下代碼使用 AWS SDK 的 `batchWrite` 方法來同時將多筆記錄新增至資料表；注意參數 `params` 被傳遞給此方法。
-
-    ```javascript
-    docClient.batchWrite(params, function(err, data) {
-        if (err) {
-            console.log(err); 
-        } else  {
-            console.log(
-                'Added ' + items_array.length + ' items to DynamoDB'
-            );
-        }   
-    });
-    ```
-
-<br>
-
-5. 更新腳本中的資料表名稱，將 `<Table-名稱>` 替換為 `BirdSightings`。
-
-    ```javascript
-    var params = {
-        RequestItems: { 
-            '<Table-名稱>': items_array
-        }
-    };
-    ```
-
-<br>
-
-6. 儲存對 `load_past_sightings.js` 的更改，並關閉檔案。
 
 <br>
 
