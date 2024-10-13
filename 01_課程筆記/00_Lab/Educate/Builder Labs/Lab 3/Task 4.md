@@ -34,11 +34,13 @@ _返回 Cloud9，將報告上傳至 S3 並測試訪問_
 
 ## 驗證 Bucket 設定
 
-1. 進入 S3。
+1. 進入 `S3`，點擊進入預設的 Bucket。
+
+    ![](images/img_31.png)
 
 <br>
 
-2. 切換到 `Permissions` 頁籤，查看 `Bucket Policy`。
+2. 切換到 `Permissions` 頁籤，查看下方的 `Bucket Policy` 區塊。
 
     ![](images/img_15.png)
 
@@ -46,13 +48,19 @@ _返回 Cloud9，將報告上傳至 S3 並測試訪問_
 
 ## 測試訪問範例報告
 
-1. 在 S3 控制台中，找到前面步驟上傳的 `report.html` 文件，複製 `report.html` 的 `Object URL`。
+1. 回到前面步驟所進入的 Bucket 中，找到並點擊進入前面步驟上傳的 `report.html` 文件。
+
+    ![](images/img_32.png)
+
+<br>
+
+2. 複製其中的 `Object URL`。
 
     ![](images/img_16.png)
 
 <br>
 
-2. 在新瀏覽器標籤中打開，應會看到 `AccessDenied` 錯誤，這是由於 Bucket Policy 的限制。
+3. 開啟新的瀏覽器頁面貼上網址進行訪問，應會看到 `AccessDenied` 錯誤，這是由於 `Bucket Policy` 的限制所致。
 
     ![](images/img_17.png)
 
@@ -60,7 +68,7 @@ _返回 Cloud9，將報告上傳至 S3 並測試訪問_
 
 ## 建立並測試預簽名 URL
 
-1. 在 Cloud9 終端中運行以下指令，生成有效期為 `30 秒` 的預簽名 URL。
+1. 在 Cloud9 終端中運行以下指令，生成有效期為 `30 秒` 的 `預簽名 URL`。
 
     ```bash
     aws s3 presign s3://$bucket/report.html --expires-in 30
@@ -77,6 +85,24 @@ _返回 Cloud9，將報告上傳至 S3 並測試訪問_
 3. 超過 30 秒後 URL 將過期，刷新頁面就會返回 `AccessDenied` 錯誤。
 
     ![](images/img_17.png)
+
+<br>
+
+## 說明 `預簽名`
+
+_預簽名 `Presigned URL` 是指在 AWS S3 中生成的一種具有臨時訪問權限的 URL，允許用戶在限定的時間內無需擁有 AWS 資格憑證就可以直接訪問指定的 S3 資源，預簽名 URL 包含了以下幾個關鍵部分。_
+
+<br>
+
+1. S3 資源的具體位置。
+
+<br>
+
+2. 基於 AWS 身份和訪問管理（IAM）權限生成的加密簽名，用於驗證請求。
+
+<br>
+
+3. 定義該 URL 的有效期，超過這個時間後該 URL 失效。
 
 <br>
 
