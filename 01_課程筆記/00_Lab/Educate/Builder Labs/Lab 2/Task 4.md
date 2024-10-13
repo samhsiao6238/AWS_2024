@@ -16,42 +16,112 @@ _返回 Cloud9 IDE_
 
 <br>
 
-2. 在第 42 行左右，找到下列代碼，這是用於定義文件客戶端的代碼。這與之前在批次載入腳本中看到的代碼相同。
-
-    ```javascript
-    var docClient = new AWS.DynamoDB.DocumentClient(
-        {region: "us-east-1"}
-    );
-    ```
-
-<br>
-
-3. 參數 `params` 定義了傳遞給 Scan 方法的參數，在此例中，該變數指定了要掃描的資料表名稱。
-
-    ```javascript
-    var params = {
-        TableName: "<table-name>"
-    };
-    ```
-
-<br>
-
-4. 在第 46 行附近，找到 `getDdbData` 函數。該代碼使用 AWS SDK 的 `scan` 方法向 DynamoDB 傳送掃描請求。參數 `params` 被傳遞給該方法。
-
-    ```javascript
-    const data = await docClient.scan(params).promise();
-    ```
-
-<br>
-
-## 更新 `db_scan.js` 文件
-
-1. 將 `<table-name>` 替換為 `BirdSightings`。
+2. 將代碼中 `<Table-名稱>` 替換為實際的資料表名稱，也就是 `BirdSightings`，修改如下，記得儲存變更。
 
     ```javascript
     var params = {
         TableName: "BirdSightings"
     };
+    ```
+
+<br>
+
+3. 以下是完整代碼，已加入逐行繁體中文註解，不再贅述。
+
+    ```javascript
+    var DB = (function(){
+        // 定義兩個對象，`expose` 代表公開方法，`hide` 代表私有方法
+        var 
+            expose = {
+                // 將 `getSightings` 方法暴露出來供外部調用
+                getSightings: getSightings
+            },hide = {
+                // 私有方法，只在模組內部使用
+                setUpHandlers: setUpHandlers
+            };
+        // 自動執行初始化函數
+        (function init(){
+            // 設定事件處理器
+            setUpHandlers();
+        })();
+        // 設置事件處理器的函數
+        function setUpHandlers(){
+            // 綁定 DOM 事件處理，當網頁載入時，觸發 `get-sightings` 操作
+            $(document).on("load", "[data-action='get-sightings']", getSightings);
+        }
+        // 非同步函數，從 DynamoDB 獲取觀察記錄
+        async function getSightings(req, res, next){
+            // 顯示訊息，通知使用者正在驗證 AWS 憑證
+            var msg_str = "We are verifying that your temporary AWS credentials can access dynamoDB. One moment...";
+            // 更新前端顯示的訊息
+            $("[data-role='get-sightings-from-ddb']").text(msg_str);
+            // 從 localStorage 中獲取 Bearer Token，用於身份驗證
+            var token_str_or_null = localStorage.getItem("bearer_str");
+            // 更新 AWS 配置，設置區域為 "us-east-1"
+            AWS.config.update({region: "us-east-1"});
+            // 使用 Cognito Identity 憑證來取得臨時 AWS 憑證
+            AWS.config.credentials = new AWS.CognitoIdentityCredentials({
+                // 使用者池 ID
+                IdentityPoolId : CONFIG.COGNITO_IDENTITY_POOL_ID_STR,
+                Logins : {
+                    // 用於身份驗證的 Bearer Token
+                "cognito-idp.us-east-1.amazonaws.com/us-east-1_hZtfxiiPX": token_str_or_null 
+                }
+            });
+            // 創建 DynamoDB 文件客戶端，用於操作資料表
+            var docClient = new AWS.DynamoDB.DocumentClient({region: "us-east-1"});
+            // 定義查詢參數，指定資料表名稱
+            var params = {
+                // 替換為實際資料表名稱
+                TableName: "<Table-名稱>"
+            };
+            // 非同步函數，用於測試與 DynamoDB 的通訊
+            async function getDdbData(){
+                try {
+                    // 使用 `scan` 方法從 DynamoDB 中讀取所有記錄
+                    const data = await docClient.scan(params).promise()
+                    // 更新訊息
+                    msg_str = "Got DB data.";
+                    // 將獲取到的資料存入 sightings_list
+                    sightings_list = data['Items'];
+                    // 遍歷每一筆觀察記錄，並將日期從 UNIX 時間戳轉換為可讀格式
+                    for ( var i = 0; i < sightings_list.length; i++ ) {
+                        // 轉換為日期物件sighting_date = new Date(sightings_list[i].
+                        date_int * 1000);
+                        // 將日期轉換為 ISO 格式
+                        sighting_date.toISOString().substring(0, 10);
+                        // 提取年份
+                        year = sighting_date.getFullYear();
+                        // 提取月份
+                        month = sighting_date.getMonth()+1;
+                        // 提取日期
+                        day = sighting_date.getDate();
+                        // 組合成新的日期格式
+                        sightings_list[i].date_str = month+'-' + day + '-'+year;
+                        // 刪除原來的 UNIX 時間戳屬性
+                        delete sightings_list[i].date_int;
+                    }
+                    // 返回訊息和更新後的觀察記錄
+                    return {
+                        msg_str: msg_str,
+                        sightings_list: sightings_list,
+                    }
+                } catch (err) {
+                    // 如果出錯，返回錯誤訊息
+                    msg_str = "There was a problem with your credentials.";
+                    return msg_str;
+                }
+            }
+            // 等待並取得從 DynamoDB 返回的數據
+            var sightingsDdbData = await getDdbData();
+            // 更新前端顯示的訊息
+            $("[data-role='get-sightings-from-ddb']").text(msg_str);
+            // 返回取得的觀察記錄列表
+            return sightingsDdbData['sightings_list'];
+        }
+        // 返回公開的方法，允許外部調用 `getSightings`
+        return expose;
+    })();
     ```
 
 <br>
