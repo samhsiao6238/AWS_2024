@@ -4,7 +4,7 @@ _在此任務中，將測試用於生成 HTML 報告的 Lambda 函數，該函�
 
 <br>
 
-## 查看並測試 generateHTML Lambda 函數
+## 查看並測試 Lambda 函數
 
 1. 進入 Lambda，選擇名為 `generateHTML` 的函數。
 
