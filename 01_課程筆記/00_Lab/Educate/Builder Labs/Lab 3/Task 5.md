@@ -1,4 +1,4 @@
-# Task 5：將 generateHTML Lambda 函數加入到狀態機
+# Task 5：將 Lambda 加入狀態機
 
 _在此任務中，將測試用於生成 HTML 報告的 Lambda 函數，該函數將生成的報告文件寫入到 S3 Bucket 中。隨後，將把這個 Lambda 函數添加到狀態機的工作流程中，並與之前的 GeneratePresignedURL 函數並行運行，以提高效率。_
 
