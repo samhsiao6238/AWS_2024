@@ -6,11 +6,13 @@ _在此任務中，將更新網站程式碼，使其從 `BirdSightings` 資料�
 
 ## 檢視程式碼
 
-_返回 AWS Cloud9 IDE_
+_返回 Cloud9 IDE_
 
 <br>
 
-1. 在終端機左側的 Environment 視窗中，展開 `website` 資料夾，然後展開 `scripts` 資料夾，找到並打開 `db_scan.js` 檔案。
+1. 在左側的視窗中，依序展開 `website` 資料夾、`scripts` 資料夾，然後找到並點擊開啟 `db_scan.js` 檔案。
+
+    ![](images/img_34.png)
 
 <br>
 
