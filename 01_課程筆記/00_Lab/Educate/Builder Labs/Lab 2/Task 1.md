@@ -53,7 +53,7 @@
 
 ## 下載並設置應用程式代碼
 
-1. 在 Cloud9 終端機中執行以下命令，這是下載並設置 Lab 所需的應用程式代碼；在終端機中，多行指令若未使用 `&&` 串接，最後一行指令需要再按一次 `ENTER`，特別注意避免盲等。
+1. 在 Cloud9 終端機中執行以下命令，這是下載並設置 Lab 所需的應用程式代碼。
 
     ```bash
     wget https://aws-tc-largeobjects.s3.us-west-2.amazonaws.com/CUR-TF-100-EDBLDR-1-107430/02-lab-ddb/code.zip
@@ -64,13 +64,19 @@
 
 <br>
 
-2. 當 `setup.sh` 腳本執行完成後，輸出的最後幾行會顯示類似以下的信息。
+2. 特別注意，在終端機中執行多行指令若未使用 `&&` 串接，最後一行指令需要再按一次 `ENTER`，特別注意避免盲等；下圖提示的就是上一點的指令運行到最後一行時，會停在最後一行指令等待使用者操作，按下 `ENTER` 繼續運行。
+
+    ![](images/img_17.png)
+
+<br>
+
+3. 最後一行只另是運行 `setup.sh` 腳本，執行後會輸出相關信息，其中最後幾行如下。
 
     ![](images/img_02.png)
 
 <br>
 
-3. 將輸出中的 `CloudFront distribution domain` 紀錄在前面步驟建立的文件中。
+4. 將輸出中的 `CloudFront distribution domain` 紀錄在前面步驟建立的文件中。
 
     ![](images/img_03.png)
 
