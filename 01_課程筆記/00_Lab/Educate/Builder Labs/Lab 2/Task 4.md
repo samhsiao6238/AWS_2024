@@ -6,15 +6,15 @@ _在此任務中，將更新網站程式碼，使其從 `BirdSightings` 資料�
 
 ## 檢視程式碼
 
-1. 返回 AWS Cloud9 IDE 的瀏覽器標籤。
+_返回 AWS Cloud9 IDE_
 
 <br>
 
-2. 在終端機左側的 Environment 視窗中，展開 `website` 資料夾，然後展開 `scripts` 資料夾，找到並打開 `db_scan.js` 檔案。
+1. 在終端機左側的 Environment 視窗中，展開 `website` 資料夾，然後展開 `scripts` 資料夾，找到並打開 `db_scan.js` 檔案。
 
 <br>
 
-3. 在第 42 行左右，找到下列代碼，這是用於定義文件客戶端的代碼。這與之前在批次載入腳本中看到的代碼相同。
+2. 在第 42 行左右，找到下列代碼，這是用於定義文件客戶端的代碼。這與之前在批次載入腳本中看到的代碼相同。
 
     ```javascript
     var docClient = new AWS.DynamoDB.DocumentClient(
@@ -24,7 +24,7 @@ _在此任務中，將更新網站程式碼，使其從 `BirdSightings` 資料�
 
 <br>
 
-4. 參數 `params` 定義了傳遞給 Scan 方法的參數，在此例中，該變數指定了要掃描的資料表名稱。
+3. 參數 `params` 定義了傳遞給 Scan 方法的參數，在此例中，該變數指定了要掃描的資料表名稱。
 
     ```javascript
     var params = {
@@ -34,7 +34,7 @@ _在此任務中，將更新網站程式碼，使其從 `BirdSightings` 資料�
 
 <br>
 
-5. 在第 46 行附近，找到 `getDdbData` 函數。該代碼使用 AWS SDK 的 `scan` 方法向 DynamoDB 傳送掃描請求。參數 `params` 被傳遞給該方法。
+4. 在第 46 行附近，找到 `getDdbData` 函數。該代碼使用 AWS SDK 的 `scan` 方法向 DynamoDB 傳送掃描請求。參數 `params` 被傳遞給該方法。
 
     ```javascript
     const data = await docClient.scan(params).promise();
