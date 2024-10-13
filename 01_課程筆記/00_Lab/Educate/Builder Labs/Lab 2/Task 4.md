@@ -16,7 +16,7 @@ _返回 Cloud9 IDE_
 
 <br>
 
-2. 將代碼中 `<Table-名稱>` 替換為實際的資料表名稱，也就是 `BirdSightings`，修改如下，記得儲存變更。
+2. 將代碼中 `<Table-名稱>` 替換為實際的資料表名稱，也就是 `BirdSightings`，修改如下，記得儲存變更；同樣的，在教程中顯示的會是 `<table-name>`，這裡使用 `<Table-名稱>` 是便於在完整代碼中進行辨識。
 
     ```javascript
     var params = {
