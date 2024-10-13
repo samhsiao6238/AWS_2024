@@ -10,7 +10,7 @@ _返回 Cloud9 IDE_
 
 <br>
 
-1. 在終端機左側的 Environment 視窗中，展開 `node_server` 資料夾，找到並打開 `past_sightings.json` 檔案。
+1. 在左側視窗中，展開 `node_server` 資料夾，找到並打開 `past_sightings.json` 檔案。
 
     ![](images/img_22.png)
 
