@@ -162,11 +162,13 @@ _僅說明_
 
 ## 執行批次腳本
 
-1. 在 AWS Cloud9 IDE 中，打開第二個終端機窗口；特別注意：不要停止當前正在運行的 Node.js 伺服器，需使用新的終端窗口進行以下步驟。
+1. 在 Cloud9 IDE 中，點擊 `+` 可打開新的終端機窗口；特別注意：不要停止當前正在運行的 Node.js 伺服器，需使用新的終端窗口進行以下步驟。
+
+    ![](images/img_26.png)
 
 <br>
 
-2. 執行以下命令來進入 `node_server` 目錄並運行批次腳本。
+2. 在新開啟的終端機中，執行以下命令運行批次腳本。
 
     ```bash
     cd /home/ec2-user/environment/node_server
@@ -177,13 +179,7 @@ _僅說明_
 
 3. 輸出結果如下。
 
-    ```bash
-    ... Truncated for brevity
-    { PutRequest: { Item: [Object] } },
-    { PutRequest: { Item: [Object] } },
-    ...
-    Added 25 items to DynamoDB
-    ```
+    ![](images/img_27.png)
 
 <br>
 
