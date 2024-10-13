@@ -26,6 +26,8 @@ _`SNS`，就是 `Simple Notification Service` 的縮寫；在這個任務中，�
 
 2. 在 `Topic ARN` 對話框中會自動填寫無需更改；在 `Protocol` 選擇 `Email`；在 `Endpoint` 輸入一個有效的電子郵件地址，這將是在 Lab 期間接收通知的地址，這裡我輸入自己的 Email 信箱 `gsam6238@gmail.com`。
 
+    
+
 <br>
 
 3. 點擊右下角 `Create subscription`。
