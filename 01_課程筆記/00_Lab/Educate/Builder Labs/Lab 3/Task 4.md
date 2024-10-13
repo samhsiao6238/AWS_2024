@@ -46,7 +46,7 @@ _返回 Cloud9，將報告上傳至 S3 並測試訪問_
 
 <br>
 
-## 測試訪問範例報告
+## 測試訪問網頁
 
 1. 回到前面步驟所進入的 Bucket 中，找到並點擊進入前面步驟上傳的 `report.html` 文件。
 
@@ -99,6 +99,8 @@ _查看 Lambda 函數的 IAM 角色_
 <br>
 
 1. 打開 IAM 控制台，搜尋並點擊進入 `RoleForAllLambdas` 角色。
+
+    ![](images/img_33.png)
 
 <br>
 
