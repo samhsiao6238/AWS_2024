@@ -1,22 +1,24 @@
 # Task 6：將 `getRealData` Lambda 函數添加到狀態機
 
-在這個任務中，將測試並加入一個 Lambda 函數來從 DynamoDB 表中檢索實際的鳥類觀察紀錄，並將該函數集成到現有的狀態機中，讓 `generateHTML` 狀態使用真實的數據來生成報告。
+_在這個任務中，將測試並加入一個 Lambda 函數來從 DynamoDB 表中檢索實際的鳥類觀察紀錄，並將該函數集成到現有的狀態機中，讓 `generateHTML` 狀態使用真實的數據來生成報告。_
 
-#### 1. 測試 `getRealData` Lambda 函數
+## 測試 `getRealData` Lambda 函數
 
-1. 查看並測試 `getRealData` Lambda 函數：
-   - 在 AWS 管理控制台中，搜尋並選擇 Lambda 服務。
-   - 選擇名為 `getRealData` 的 Lambda 函數。
-   - 檢查該函數的 IAM Role，確認它使用的是 `RoleForAllLambdas`，這個角色允許 Lambda 與 Amazon S3、Amazon SNS 和 Amazon DynamoDB 互動。
-   - 該函數的代碼將從 DynamoDB 中檢索所有鳥類觀察紀錄，並以 JSON 格式返回。
+1. 首先進行查看並測試 `getRealData` Lambda 函數；搜尋並進入 `Lambda` 服務。
 
-2. 測試 `getRealData` Lambda 函數：
-   - 選擇 Code 標籤，然後選擇 Test。
-   - 將事件名稱設為 `test3`，並將測試事件輸入設為 `{}`。
-   - 選擇 Save 並再次選擇 Test。
-   - 在執行結果中，應該會看到返回的鳥類觀察紀錄數據。
+2. 選擇名為 `getRealData` 的 Lambda 函數。檢查該函數的 IAM Role，確認它使用的是 `RoleForAllLambdas`，這個角色允許 Lambda 與 Amazon S3、Amazon SNS 和 Amazon DynamoDB 互動。該函數的代碼將從 DynamoDB 中檢索所有鳥類觀察紀錄，並以 JSON 格式返回。
 
-#### 2. 將 `getRealData` Lambda 函數添加到狀態機
+## 測試 `getRealData` Lambda 函數：
+
+1. 選擇 Code 標籤，然後選擇 Test。
+
+2. 將事件名稱設為 `test3`，並將測試事件輸入設為 `{}`。
+
+3. 選擇 Save 並再次選擇 Test。
+
+4. 在執行結果中，應該會看到返回的鳥類觀察紀錄數據。
+
+## 將 `getRealData` Lambda 函數添加到狀態機
 
 1. 編輯狀態機以添加 `getRealData` 函數：
    - 返回 Step Functions 控制台，選擇 MyStateMachine，然後選擇 Edit。
