@@ -123,28 +123,9 @@ _回到 Cloud9_
 
 <br>
 
-3. 確認輸出結果；輸出的記錄會根據 Task 6 中的 `Report` 頁面輸入的資料而有所不同。如果在過去 7 天內有輸入觀察記錄，這些記錄將顯示在輸出中。
+3. 查看輸出結果，如果在過去 7 天內有輸入觀察記錄，這些記錄將顯示在輸出中；輸出的記錄會根據 Task 6 中的 `Report` 頁面輸入的資料而有所不同。
 
-    ```bash
-    {
-        class_level_str: '3rd Grade',
-        location_str: 'Home',
-        bird_name_str: 'Eastern Bluebird',
-        student_name_str: 'Maria Garcia',
-        date_int: 1645401600,
-        id: '0bdf1bdd-185b-4a66-b3d3-51926c7bbc0b',
-        count_int: 2
-    }
-    {
-        class_level_str: '3rd Grade',
-        location_str: 'Home',
-        bird_name_str: 'Eastern Bluebird',
-        student_name_str: 'Maria Garcia',
-        date_int: 1645401600,
-        id: 'cdb2243e-d11e-4e6c-83fb-dd3772c4ecaf',
-        count_int: 2
-    }
-    ```
+    ![](images/img_55.png)
 
 <br>
 
