@@ -12,13 +12,23 @@ _在此任務中，將測試用於生成 HTML 報告的 Lambda 函數，該函�
 
 <br>
 
-2. 切換到 `Configuration` 頁籤，選擇 `Permissions`，確認該函數使用的角色為 `RoleForAllLambdas`，這與之前的 `GeneratePresignedURL` 函數使用的角色相同，這個 Role 允許 Lambda 函數與 Amazon S3、Amazon SNS 以及 DynamoDB 進行互動。
+2. 切換到 `Configuration` 頁籤，選擇 `Permissions`。
+
+    ![](images/img_40.png)
 
 <br>
 
-## 測試 generateHTML Lambda 函數
+3. 確認該函數使用的角色為 `RoleForAllLambdas`，這與之前的 `GeneratePresignedURL` 函數使用的角色相同，這個 Role 允許 Lambda 函數與 Amazon S3、Amazon SNS 以及 DynamoDB 進行互動。
 
-1. 切換到 `Code` 標籤，然後選擇 `Test`。
+    ![](images/img_41.png)
+
+<br>
+
+## 測試 Lambda 函數
+
+1. 切換到 `Code` 標籤，然後點擊 `Test`。
+
+    ![](images/img_42.png)
 
 <br>
 
