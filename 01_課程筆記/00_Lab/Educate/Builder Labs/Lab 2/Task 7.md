@@ -90,29 +90,17 @@ _先不急著操作，這裡簡單說明一下代碼內容_
 
 <br>
 
-4. 更新後的程式碼應類似於以下內容；儲存更改並關閉檔案。
+4. 更新後的程式碼如下；記得儲存更改。
 
-    ```javascript
-    var params = {
-        TableName: "BirdSightings",
-        IndexName: "class-date-index",
-        KeyConditionExpression: "#class = :class and #date > :begin_date",
-        ExpressionAttributeNames:{
-            "#class": "class_level_str",
-            "#date": "date_int"
-        },
-        ExpressionAttributeValues: {
-            ":class": "3rd Grade",
-            ":begin_date": begin_date
-        }
-    };
-    ```
+    ![](images/img_53.png)
 
 <br>
 
 ## 測試 `ddb_query.js` 腳本
 
-1. 在執行查詢之前，確保 GSI `class-date-index` 的狀態顯示為 `Active`。
+1. 在執行查詢之前，進入 Tables 並點擊進入 `BirdSightings`，然後切換到 `Indexes` 頁籤中觀察，確保 GSI `class-date-index` 的狀態顯示為 `Active`。
+
+    ![](images/img_54.png)
 
 <br>
 
