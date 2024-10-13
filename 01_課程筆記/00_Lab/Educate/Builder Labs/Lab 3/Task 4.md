@@ -110,25 +110,23 @@ _預簽名 `Presigned URL` 是指在 AWS S3 中生成的一種具有臨時訪問
 
 ## 測試 Lambda 函數
 
-1. 搜尋並進入 `Lambda` 服務。
+1. 搜尋並進入 `Lambda` 服務，點擊進入 `GeneratePresignedURL` 函數。
+
+    ![](images/img_34.png)
 
 <br>
 
-2. 搜尋並點擊進入 `GeneratePresignedURL` 函數。
+2. 切換到 `Test` 頁籤，設置 `Event name` 為 `test1`，並點擊右上角的 `Test`。
 
 <br>
 
-3. 切換到 `Test` 頁籤，設置 `Event name` 為 `test1`，並點擊右上角的 `Test`。
-
-<br>
-
-4. 展開 `Details` 可看到返回值中包含預簽名 URL。
+3. 展開 `Details` 可看到返回值中包含預簽名 URL。
 
     ![](images/img_19.png)
 
 <br>
 
-5. 複製這個網址，然後在瀏覽器中進行訪問，確認這能夠正確加載 `report.html`。
+4. 複製這個網址，然後在瀏覽器中進行訪問，確認這能夠正確加載 `report.html`。
 
     ![](images/img_20.png)
 
