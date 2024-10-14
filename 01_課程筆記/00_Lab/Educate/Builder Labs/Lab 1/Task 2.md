@@ -22,9 +22,13 @@ _在這個任務中，將訂閱一個 SNS 主題，當應用程式用戶請求�
 
 1. 在 `Subscription` 選擇 `Create subscription`。
 
+    ![](images/img_07.png)
+
 <br>
 
-2. 進行配置，在 Topic ARN 部分已自動填入前面步驟建立主題的 `ARN`。
+2. 進行配置，在 `Topic ARN` 部分已 _自動填入_ 前面步驟建立主題的 `ARN`。
+
+    ![](images/img_08.png)
 
 <br>
 
@@ -32,7 +36,9 @@ _在這個任務中，將訂閱一個 SNS 主題，當應用程式用戶請求�
 
 <br>
 
-4. `Endpoint` 輸入一個電子郵件的地址，這將在本 Lab 後續步驟中接收通知。
+4. `Endpoint` 輸入自己的電子郵件的地址，這在本 Lab 後續步驟中用來接收信件通知。
+
+    ![](images/img_09.png)
 
 <br>
 
