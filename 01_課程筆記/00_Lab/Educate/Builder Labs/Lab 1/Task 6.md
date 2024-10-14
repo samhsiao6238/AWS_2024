@@ -106,7 +106,7 @@ _以包含 `getRealData` Lambda 函數_
 
 <br>
 
-4. 將 `AWS Lambda Invoke` 拖曳至 `Parallel` 狀態 `Process Report` 之上的畫布區域。
+1. 將 `Invoke` 拖曳至 `Parallel` 狀態 `Process Report` 之上的畫布區域。
 
 <br>
 
@@ -149,7 +149,7 @@ _以包含 `getRealData` Lambda 函數_
         "Type": "Task",
         "Resource": "arn:aws:states:::sns:publish",
         "Parameters": {
-            "Message.$": "States.Format('The report has completed successfully! Here is your secure URL:\\n\\n{}', $[1].presigned_url_str)",
+            "Message.$": "States.Format('The report has completed successfully! Here is your secure URL:\n\n{}', $[1].presigned_url_str)",
             "TopicArn": "arn:aws:sns:us-east-1:1234567890:EmailReport"
         },
         "End": true
@@ -168,11 +168,7 @@ _以包含 `getRealData` Lambda 函數_
 
 <br>
 
-2. 進行配置，在 `Type` 選擇 `Synchronous`。
-
-<br>
-
-3. 在代碼編輯器中，將現有的 JSON 請求代碼清空，只保留如下格式。
+2. 在代碼編輯器中，將現有的 JSON 請求代碼清空，只保留如下格式。
 
     ```json
     {}
@@ -180,17 +176,11 @@ _以包含 `getRealData` Lambda 函數_
 
 <br>
 
-4. 選擇 `Start execution` 開始執行。
+3. 選擇 `Start execution` 開始執行。
 
 <br>
 
 5. 檢查電子郵件中的通知，確認該郵件包含生成的報告的預簽名 URL。
-
-<br>
-
-## 故障排除提示
-
-1. 若電子郵件客戶端未能將整個 URL 設置為可點擊的鏈接，請複製電子郵件中的整個 URL，並將其粘貼到瀏覽器標籤中進行測試。
 
 <br>
 
