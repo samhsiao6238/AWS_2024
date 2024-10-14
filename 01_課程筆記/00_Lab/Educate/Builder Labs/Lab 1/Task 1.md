@@ -35,7 +35,7 @@ _在開始此 Lab 之前，必須先在為您準備的 AWS Cloud9 統合開發�
 
 ## 下載並執行應用程式代碼
 
-1. 在 Cloud9 終端中，運行以下指令以檢索將在此 Lab 中使用的應用程式代碼。
+1. 在 Cloud9 終端中運行以下指令。
 
     ```bash
     wget https://aws-tc-largeobjects.s3.us-west-2.amazonaws.com/CUR-TF-100-EDBLDR-1-107430/01-lab-cognito/code.zip
