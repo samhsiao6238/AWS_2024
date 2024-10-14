@@ -144,6 +144,34 @@ _對官方指引稍作修改_
 
 <br>
 
+## 檢查是否正確執行
+
+_補充說明_
+
+<br>
+
+1. 執行指令後可以檢查 `$?`，它會回傳上一個指令的執行狀態碼，若為 `0` 表示成功。
+
+    ```bash
+    cd /home/ec2-user/environment
+    aws s3 cp website s3://$S3_BUCKET/ --recursive --cache-control "max-age=0"
+    if [ $? -eq 0 ]; then
+        echo "Command executed successfully"
+    else
+        echo "Command failed"
+    fi
+    ```
+
+<br>
+
+2. 可以快速確認指令是否正確執行並將檔案上傳至 S3。
+
+    ```bash
+    aws s3 ls s3://$S3_BUCKET/ --recursive
+    ```
+
+<br>
+
 ## 啟動 Node 伺服器
 
 1. 運行指令啟動 Node 伺服器；切記在 Lab 運行過程中不要關閉這個終端機。
