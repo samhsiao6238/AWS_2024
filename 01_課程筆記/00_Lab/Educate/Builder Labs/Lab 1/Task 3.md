@@ -198,17 +198,19 @@ _這個日誌組將捕獲每次運行狀態機器時的資訊，用於檢查和�
 
 <br>
 
-3. 點擊 `Start execution`。
+3. 點擊右下角 `Start execution`。
 
 <br>
 
 ## 查看執行結果
 
-1. 開啟 `Execution Details` 頁面，檢視執行細節。
+1. 在 `Execution` 頁面中查看 `Details` 頁籤中的資訊。
 
 <br>
 
-2. 幾分鐘內應收到一封通知，該通知包含訊息內容 `Testing that my email message works`；以上成功建立一個基本的狀態機器，該狀態機器調用了 SNS 主題並發送了一封電子郵件。
+2. 同時會收到一封通知，該通知包含訊息內容 `Testing that my email message works`；以上成功建立一個基本的狀態機器，該狀態機器調用了 SNS 主題並發送了一封電子郵件。
+
+    ![](images/img_23.png)
 
 <br>
 
