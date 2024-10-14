@@ -42,27 +42,35 @@ _在這個任務中，將訂閱一個 SNS 主題，當應用程式用戶請求�
 
 <br>
 
-5. 點擊 `Create subscription`。
+5. 點擊右下角 `Create subscription`。
 
 <br>
 
 ## 確認電子郵件訂閱
 
-1. 檢查電子郵件收件箱，會收到來自 AWS Notifications 的郵件，並在郵件正文中點擊 `Confirm subscription`。
+1. 檢查電子郵件收件箱，會收到來自 `AWS Notifications` 的郵件，並在郵件正文中點擊 `Confirm subscription`。
+
+    ![](images/img_10.png)
 
 <br>
 
-2. 打開的網頁會顯示 `訂閱確認成功`；關閉該網頁。
+2. 打開的網頁會顯示 `ubscription confirmed!`；可關閉這個網頁。
+
+    ![](images/img_11.png)
 
 <br>
 
 ## 發佈測試消息以驗證 SNS 訂閱
 
-1. 返回 Amazon SNS 控制台中 `EmailReport` 主題頁面。
+1. 返回 `Amazon SNS` 控制台中，點擊 `EmailReport` 進入主題頁面。
+
+    ![](images/img_12.png)
 
 <br>
 
 2. 點擊 `Publish message` 後進行配置。
+
+    ![](images/img_13.png)
 
 <br>
 
@@ -70,7 +78,9 @@ _在這個任務中，將訂閱一個 SNS 主題，當應用程式用戶請求�
 
 <br>
 
-4. 在 `Message body` 輸入 `Hello! This is a test.`。
+4. 在 `Message body` 輸入 `這是 Lab Task 2 的測試信件。`。
+
+    ![](images/img_14.png)
 
 <br>
 
@@ -79,6 +89,8 @@ _在這個任務中，將訂閱一個 SNS 主題，當應用程式用戶請求�
 <br>
 
 6. 檢查電子郵件，確認已收到來自 SNS 的測試消息；以上已成功訂閱 SNS 主題，並驗證 SNS 通知功能能夠正常運作。
+
+    ![](images/img_15.png)
 
 <br>
 

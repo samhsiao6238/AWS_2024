@@ -10,7 +10,7 @@ _Step Functions 的 Role_
 
 <br>
 
-1. 搜尋並點擊 `IAM`。
+1. 搜尋並進入 `IAM`。
 
 <br>
 
@@ -18,31 +18,65 @@ _Step Functions 的 Role_
 
 <br>
 
-3. 搜尋並點擊 `RoleForStepToCreateAReport`。
+3. 搜尋並點擊進入 `RoleForStepToCreateAReport`。
+
+    ![](images/img_16.png)
 
 <br>
 
 ## 檢視角色的權限
 
-1. 在 `Permissions` 頁籤中，展開 `stepPolicyForCreateReport` 策略。
+1. 預設會進入 `Permissions` 頁籤，展開 `stepPolicyForCreateReport` 策略。
+
+    ![](images/img_17.png)
 
 <br>
 
 2. 這個角色允許對多個 Lambda 函數執行多個 Lambda 操作，並對所有資源執行記錄操作。
 
+    ```json
+    {
+        "Version": "2012-10-17",
+        "Statement": [
+            {
+                "Action": [
+                    "lambda:Get*",
+                    "lambda:Invoke*",
+                    "lambda:List*"
+                ],
+                "Resource": [
+                    "arn:aws:lambda:us-east-1:084927720127:function:GeneratePresignedURL",
+                    "arn:aws:lambda:us-east-1:084927720127:function:generateHTML",
+                    "arn:aws:lambda:us-east-1:084927720127:function:getRealData"
+                ],
+                "Effect": "Allow"
+            },
+            {
+                "Action": [
+                    "logs:*"
+                ],
+                "Resource": "*",
+                "Effect": "Allow"
+            }
+        ]
+    }
+    ```
+
 <br>
 
-3. 同時展開附加的 AWSLambdaRole 管理策略，該策略允許對所有資源執行 `lambda:InvokeFunction` 操作，這將允許在 Lambda 控制台測試函數。
+3. 接著展開 `AWSLambdaRole` 策略，這是一個 `AWS managed` 管理策略；該策略允許對所有資源執行 `lambda:InvokeFunction` 操作，所以將允許在 Lambda 控制台測試函數。
+
+    ![](images/img_18.png)
 
 <br>
 
 ## 檢視信任關係
 
-1. 選擇 `Trust relationships`。
+1. 切換到 `Trust relationships` 頁籤。
 
 <br>
 
-2. 該信任關係允許 Step Functions 服務（`states.amazonaws.com`）來假設此角色。
+2. 該信任關係 _允許 `Step Functions` 服務（`states.amazonaws.com`）來假設此角色_；再次強調這句描述：_允許 `Step Functions` 服務來假設此角色，這個服務就是 `states.amazonaws.com`_。
 
 <br>
 
