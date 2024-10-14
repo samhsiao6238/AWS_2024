@@ -18,15 +18,17 @@
 
 ## 查看並檢查 Lambda 函數的 IAM 角色
 
-1. 進入 Lambda，並搜尋選擇名為 `generateHTML` 的 Lambda 函數。
+1. 進入 `Lambda`，點擊名為 `generateHTML` 的 Lambda 函數。
 
 <br>
 
-2. 在函數界面，選擇 `Configuration`。
+2. 在函數界面切換到 `Configuration` 頁面。
 
 <br>
 
-3. 選擇 `Permissions`，在 `Execution Role` 下確認該函數使用的是 `RoleForAllLambdas` 角色。
+3. 切換左側頁籤到 `Permissions`，在 `Execution Role` 下確認該函數使用的是 `RoleForAllLambdas` 角色。
+
+    ![](images/img_33.png)
 
 <br>
 
@@ -36,7 +38,7 @@
 
 ## 測試 `generateHTML` Lambda 函數
 
-1. 進入 `Code`，然後選擇 `Test`。
+1. 進入 `Code`，然後點擊 `Test`。
 
 <br>
 
