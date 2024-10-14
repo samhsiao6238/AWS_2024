@@ -127,11 +127,7 @@ _對官方指引稍作修改_
 
 2. 伺服器啟動後，終端中會顯示如下輸出。
 
-    ```bash
-    > start
-    > REGION_STR=us-east-1 node index.js
-    Live on port: 8080
-    ```
+    ![](images/img_05.png)
 
 <br>
 
