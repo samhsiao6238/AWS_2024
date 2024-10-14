@@ -120,7 +120,7 @@ _對官方指引稍作修改_
 
 ## 啟動 Node 伺服器
 
-1. 運行指令啟動 Node 伺服器。
+1. 運行指令啟動 Node 伺服器；切記在 Lab 運行過程中不要關閉這個終端機。
 
     ```bash
     cd /home/ec2-user/environment/node_server
