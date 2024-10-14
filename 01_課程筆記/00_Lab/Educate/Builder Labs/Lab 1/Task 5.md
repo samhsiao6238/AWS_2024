@@ -238,6 +238,14 @@ _配置新加入的 Invoke_
 
 4. 點擊 `Start execution`，並檢查電子郵件中的通知；在電子郵件內容應包含兩個鍵值對：`msg_str` 和 `presigned_url`；其中 `msg_str` 是來自 `generateHTML` 狀態的數據，而 `presigned_url` 則是來自 `GeneratePresignedURL` 狀態。
 
+    ![](images/img_39.png)
+
+<br>
+
+5. 點擊會看到以下內容。
+
+    ![](images/img_40.png)
+
 <br>
 
 ___
