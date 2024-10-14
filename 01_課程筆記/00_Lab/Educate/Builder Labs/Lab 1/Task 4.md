@@ -22,27 +22,25 @@
 
 ## 建立範例文本文件
 
-_以下將建立範例文本，將其上傳至 S3 並測試訪問_
+_返回 Cloud9 IDE；以下將建立範例文本，將其上傳至 S3 並測試訪問_
 
 <br>
 
-1. 返回 AWS Cloud9 IDE。
+1. 在上方功能列展開 `File` 並點擊 `New File`。
 
 <br>
 
-2. 在上方功能列展開 `File` 並點擊 `New File`。
-
-<br>
-
-3. 在新增的文件中貼上以下內容。
+2. 在新增的文件中貼上以下內容。
 
     ```html
-    <output>Hello! This is some sample HTML.</output>
+    <output>你好！這是一個範例 HTML.</output>
     ```
 
 <br>
 
-4. 使用組合鍵進行儲存，並命名為 `report.html`。
+3. 使用組合鍵進行儲存，並命名為 `report.html`；務必確保文本位置在環境的根目錄中。
+
+    ![](images/img_24.png)
 
 <br>
 
