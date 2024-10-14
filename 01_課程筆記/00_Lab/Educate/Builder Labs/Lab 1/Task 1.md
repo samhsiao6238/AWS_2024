@@ -6,21 +6,19 @@ _在開始此 Lab 之前，必須先在為您準備的 AWS Cloud9 統合開發�
 
 ## 連接到 Cloud9 IDE
 
-1. 搜尋並進入 `Cloud9`，注意到現有的 IDE，名為 `Cloud9 Instance`。
+1. 搜尋並進入 `Cloud9`。
 
 <br>
 
-2. 對此 IDE，選擇「Open IDE」。
-
-<br>
-
-3. AWS Cloud9 IDE 會在新的瀏覽器標籤中加載。
+2. 點擊 `Cloud9 Instance` 右側的 `Open`；這會開啟新的頁面。
 
 <br>
 
 ## 記錄所需資訊
 
-1. 開啟新文件，並儲存為 `MyDoc.txt`，貼上以下內容，在接下來步驟中將紀錄各項資訊。
+1. 開啟新文件，並儲存為 `MyDoc.txt`。
+
+2. 貼上以下內容，在接下來步驟中將紀錄各項資訊。
 
     ```bash
     S3 bucket:
