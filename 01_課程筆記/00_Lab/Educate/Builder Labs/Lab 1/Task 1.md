@@ -1,6 +1,6 @@
 # Task 1：準備 Lab 環境
 
-_在開始此 Lab 之前，必須先在預先準備的 AWS Cloud9 IDE 中導入一些檔案並執行腳本。_
+_在一開始 Lab 時，先在預先準備的 AWS Cloud9 IDE 中導入一些檔案並執行預設腳本。_
 
 <br>
 
@@ -10,11 +10,15 @@ _在開始此 Lab 之前，必須先在預先準備的 AWS Cloud9 IDE 中導入�
 
 <br>
 
-2. 點擊 `Cloud9 Instance` 右側的 `Open`；這會開啟新的頁面。
+2. 在 Lab 預先建立好的實例 `Cloud9 Instance` 右側點擊 `Open` 開啟 IDE。
 
 <br>
 
 ## 記錄所需資訊
+
+_準備一個文件用來記錄各項資訊_
+
+<br>
 
 1. 開啟新文件，並儲存為 `MyDoc.txt`。
 
@@ -52,7 +56,7 @@ _在開始此 Lab 之前，必須先在預先準備的 AWS Cloud9 IDE 中導入�
 
 <br>
 
-3. 在 `MyDoc.txt` 中記錄其中的 S3 及 CloudFront 輸出資訊。
+3. 在 `MyDoc.txt` 中記錄其中的 S3 及 CloudFront 輸出資訊；切記要存檔。
 
     ```bash
     S3 bucket:c1234567890abcdefghi-s3bucket-123456abcd3
@@ -71,7 +75,7 @@ _用以指向 Node 伺服器的 API 端點；以下繼續在終端機中操作_
 
 <br>
 
-2. 將 `<cloudfront-domain>` 佔位符替換為記錄在 `MyDoc.txt` 中的 `CloudFront distribution domain`。
+2. 將 `<cloudfront-domain>` 佔位符替換為記錄在 `MyDoc.txt` 中的 `CloudFront distribution domain`；特別注意，要保留前綴 `https://` 以及前後雙引號。
 
     ![](images/img_02.png)
 
