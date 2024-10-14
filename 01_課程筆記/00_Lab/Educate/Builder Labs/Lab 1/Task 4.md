@@ -33,7 +33,16 @@ _返回 Cloud9 IDE；以下將建立範例文本，將其上傳至 S3 並測試�
 2. 在新增的文件中貼上以下內容。
 
     ```html
-    <output>你好！這是一個範例 HTML.</output>
+    <!DOCTYPE html>
+    <html lang="zh-Hant">
+    <head>
+        <meta charset="UTF-8">
+        <title>範例 HTML</title>
+    </head>
+    <body>
+        <output>你好！這是一個範例 HTML.</output>
+    </body>
+    </html>
     ```
 
 <br>
@@ -60,7 +69,17 @@ _在 Cloud9 終端機中_
 
 <br>
 
-2. 進入 S3 查看上傳到 Bucket 的文件，驗證 `report.html` 文件已存在於 Bucket 中，並選擇 `Permissions` 標籤。
+2. 進入 `S3`，在 `Buckets` 並點擊預設的 Bucket。
+
+    ![](images/img_25.png)
+
+<br>
+
+3. 查看文件 `report.html` 文件已存在於 Bucket 中。
+
+<br>
+
+4. 切換到 `Permissions` 標籤。
 
 <br>
 
@@ -83,17 +102,27 @@ _在 Cloud9 終端機中_
 
 <br>
 
+4. 會出現在最下方。
+
+    ![](images/img_26.png)
+
+<br>
+
 ## 測試直接訪問
 
-1. 在 S3 控制台中選擇 `Objects` 然後選擇 `report.html`。
+1. 切換到 `Objects` 頁籤，然後點擊 `report.html`。
 
 <br>
 
 2. 複製 `Object URL` 並在瀏覽器中打開。
 
+    ![](images/img_27.png)
+
 <br>
 
 3. 會收到 `AccessDenied` 錯誤，這是由於 `Bucket` 策略阻止了直接訪問。
+
+    ![](images/img_28.png)
 
 <br>
 
@@ -111,21 +140,25 @@ _返回 AWS Cloud9 終端機_
 
 <br>
 
-2. 複製返回的預簽名 URL 並在瀏覽器中打開，將會成功加載報告。
+2. 複製返回的 `預簽名 URL`，並在瀏覽器中打開，將會成功加載報告。
+
+    ![](images/img_29.png)
 
 <br>
 
-3. 等待 30 秒後刷新頁面，會再次看到 AccessDenied 錯誤，這是預期的行為。
+3. 等待 `30` 秒後刷新頁面，會再次看到 `AccessDenied` 錯誤，這是預期的行為。
 
 <br>
 
-4. 以上成功測試預簽名 URL，並確認該文件只能通過預簽名 URL 訪問。
+4. 以上成功測試 `預簽名 URL`，並確認該文件只能通過 `預簽名 URL` 訪問。
 
 <br>
 
 ## 查看 Lambda 函數的 IAM 角色
 
-1. 進入 IAM 選擇 Roles，搜尋並點擊 `RoleForAllLambdas`。
+1. 進入 IAM 選擇 Roles，搜尋並點擊進入 `RoleForAllLambdas`。
+
+    ![](images/img_30.png)
 
 <br>
 
