@@ -86,7 +86,7 @@ _Step Functions 的 Role_
 
 ## 建立 State Machine
 
-_發送電子郵件的_
+_發送電子郵件_
 
 <br>
 
@@ -98,27 +98,33 @@ _發送電子郵件的_
 
 <br>
 
-3. 在 `Choose a template` 頁面中，選擇 `Blank`，然後點擊 `Select`。
+3. 在彈窗 `Choose a template` 頁面中，使用預設選擇的 `Blank`，然後點擊 `Select`。
 
 <br>
 
 ## 設計工作流程
 
-1. 在 `States browser` 的搜尋框中輸入 `SNS`。
+1. 在左側搜尋框中輸入 `SNS`。
 
 <br>
 
-2. 將 `Amazon SNS Publish` 對象拖曳到畫布上的 `Drag first state here` 框中。
+2. 將 `Publish` 拖曳到畫布上的 `Drag first state here` 框中。
 
 <br>
 
 ## 配置 SNS 發布狀態
 
-1. 在 `SNS Publish` 中進行配置，在 `Topic ARN` 選擇先前建立的 `EmailReport SNS` 主題的 `ARN`。
+1. 使用滑鼠選取 `SNS Publish`，並在右側的面版中進行配置。
 
 <br>
 
-2. 在 `Message` 設置為 `Use state input as message`。
+2. 在 `Topic` 選擇先前建立的 `EmailReport` 主題的 `ARN`。
+
+    ![](images/img_19.png)
+
+<br>
+
+3. 在 `Message` 使用預設的 `Use state input as message` 即可。
 
 <br>
 
@@ -128,15 +134,23 @@ _Amazon States Language_
 
 <br>
 
-1. 點擊上方的 `Code` 頁籤進入代碼模式。
+1. 切換上方頁籤為 `Code` 進入 _代碼模式_。
 
 <br>
 
-2. 在生成的 `ASL` 代碼中找到 `"Message.$": "$"`，並修改為 `"Message.$": "$.presigned_url_str"`。
+2. 在生成的 `ASL` 代碼中找到 `"Message.$": "$"`。
+
+    ![](images/img_20.png)
 
 <br>
 
-3. 此操作確保應用程序會將一個包含 `presigned_url_str` 的 JSON payload 作為郵件內容發送。
+3. 修改為 `"Message.$": "$.presigned_url_str"`。
+
+    ![](images/img_21.png)
+
+<br>
+
+4. 此操作確保應用程序會將一個包含 `presigned_url_str` 的 JSON payload 作為郵件內容發送。
 
 <br>
 
@@ -146,41 +160,39 @@ _這個日誌組將捕獲每次運行狀態機器時的資訊，用於檢查和�
 
 <br>
 
-1. 點擊 `Config` 返回配置模式。
+1. 切換當 `Config` 頁籤進入 _配置模式_。
 
 <br>
 
-2. 設置狀態機器名稱為 `MyStateMachine`。
+1. 設置 `State machine name` 為 `MyStateMachine`。
 
 <br>
 
-3. 在 `Execution role` 部分選擇 `Choose an existing role`。
+3. 在 `Execution role` 部分，滑到 `Choose a recently used role` 區塊並選取下方的 `RoleForStepToCreateAReport`。
+
+    ![](images/img_22.png)
 
 <br>
 
-4. 在 `Existing roles` 中選擇 `RoleForStepToCreateAReport` 角色。
+4. 將 `Log level` 設置為 `ALL`。
 
 <br>
 
-5. 將 `Log level` 設置為 `ALL`。
-
-<br>
-
-6. 保留其他設置的默認值，選擇 `Create`。
+5. 保留其他設置的預設值，點擊右上角 `Create`。
 
 <br>
 
 ## 測試 State Machine
 
-1. 點擊 `Start execution` 並進行配置。
+1. 點擊右上角 `Execute` 進行配置。
 
 <br>
 
-2. 在代碼編輯器中，替換現有的 JSON 代碼為。
+2. 在代碼編輯器中，替換現有的 JSON 代碼如下。
 
     ```json
     {
-    "presigned_url_str": "Testing that my email message works"
+        "presigned_url_str": "Testing that my email message works"
     }
     ```
 
