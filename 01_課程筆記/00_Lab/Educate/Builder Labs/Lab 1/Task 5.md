@@ -178,7 +178,7 @@ _配置新加入的 Invoke_
 
 <br>
 
-2. 將該行的值 `$"presigned_url_str"` 替換為 `$`，以允許將 `generateHTML` 和 `GeneratePresignedURL` 狀態的數據一併傳遞至 SNS Publish 狀態。
+2. 將該行的值 `"$.presigned_url_str"` 替換為 `$`，以允許將 `generateHTML` 和 `GeneratePresignedURL` 狀態的數據一併傳遞至 SNS Publish 狀態。
 
 <br>
 
