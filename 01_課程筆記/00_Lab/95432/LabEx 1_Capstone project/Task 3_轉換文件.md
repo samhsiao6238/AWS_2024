@@ -642,13 +642,13 @@ _內容複雜的代碼在互動環境中常因縮排問題而出錯，可改為�
     glue_client = boto3.client("glue")
 
 
-    # 1. 刪除 S3 存儲桶
+    # 1. 刪除 S3 Bucket 
     def delete_s3_buckets():
         buckets = s3_client.list_buckets()["Buckets"]
         for bucket in buckets:
             bucket_name = bucket["Name"]
             try:
-                # 刪除存儲桶中的對象
+                # 刪除Bucket 中的對象
                 s3_client.delete_objects(
                     Bucket=bucket_name,
                     Delete={
@@ -661,11 +661,11 @@ _內容複雜的代碼在互動環境中常因縮排問題而出錯，可改為�
                         ]
                     },
                 )
-                # 刪除存儲桶
+                # 刪除Bucket 
                 s3_client.delete_bucket(Bucket=bucket_name)
                 print(f"S3 Bucket {bucket_name} 刪除成功。")
             except Exception as e:
-                print(f"無法刪除存儲桶 {bucket_name}: {e}")
+                print(f"無法刪除Bucket  {bucket_name}: {e}")
 
 
     # 2. 刪除 RDS 資料庫實例
@@ -695,7 +695,7 @@ _內容複雜的代碼在互動環境中常因縮排問題而出錯，可改為�
 
     # 執行自動化刪除資源的腳本
     if __name__ == "__main__":
-        # 刪除 S3 存儲桶
+        # 刪除 S3 Bucket 
         delete_s3_buckets()
 
         # 刪除 RDS 資料庫實例

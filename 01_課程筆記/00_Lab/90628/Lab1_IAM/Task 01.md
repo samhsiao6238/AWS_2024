@@ -110,7 +110,7 @@ _延續之前的 Policy，IAM Policy 中 Statement 的基本結構包含三部�
 
 <br>
 
-3. Resource 定義了策略規則所涵蓋的實體範圍（例如特定的 Amazon S3 存儲桶或 Amazon EC2 實例，或 * 表示任何資源）。
+3. Resource 定義了策略規則所涵蓋的實體範圍（例如特定的 Amazon S3 Bucket 或 Amazon EC2 實例，或 * 表示任何資源）。
 
 <br>
 

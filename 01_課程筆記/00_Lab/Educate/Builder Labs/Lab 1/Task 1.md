@@ -35,7 +35,7 @@ _在開始此 Lab 之前，必須先在為您準備的 AWS Cloud9 統合開發�
 
 ## 下載並執行應用程式代碼
 
-1. 在 Cloud9 終端中，運行以下命令以檢索將在此 Lab 中使用的應用程式代碼。
+1. 在 Cloud9 終端中，運行以下指令以檢索將在此 Lab 中使用的應用程式代碼。
 
     ```bash
     wget https://aws-tc-largeobjects.s3.us-west-2.amazonaws.com/CUR-TF-100-EDBLDR-1-107430/01-lab-cognito/code.zip
@@ -100,7 +100,7 @@ _以指向 Node 伺服器的 API 端點_
 
 <br>
 
-2. 帶入後實際的命令如下。
+2. 帶入後實際的指令如下。
 
     ```bash
     cd /home/ec2-user/environment
@@ -109,13 +109,13 @@ _以指向 Node 伺服器的 API 端點_
 
 <br>
 
-3. 運行更新後的命令來完成代碼上傳。
+3. 運行更新後的指令來完成代碼上傳。
 
 <br>
 
 ## 啟動 Node 伺服器
 
-1. 運行命令啟動 Node 伺服器。
+1. 運行指令啟動 Node 伺服器。
 
     ```bash
     cd /home/ec2-user/environment/node_server
