@@ -74,7 +74,7 @@ _發送電子郵件的_
 
 <br>
 
-2. 將 `Amazon SNS Publish` 對象拖放到畫布上的 `Drag first state here` 框中。
+2. 將 `Amazon SNS Publish` 對象拖曳到畫布上的 `Drag first state here` 框中。
 
 <br>
 
