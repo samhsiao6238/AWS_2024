@@ -65,6 +65,32 @@ _準備一個文件用來記錄各項資訊_
 
 <br>
 
+## 這個 Bash 腳本執行了以下工作
+
+_僅補充說明，無操作_
+
+<br>
+
+1. 刪除舊版的 AWS CLI，並且從官方下載 AWS CLI v2 安裝檔，解壓縮後進行安裝。
+
+<br>
+
+2. 安裝 Python 的 Boto3 庫，這是 AWS SDK for Python，用來與 AWS 服務互動。
+
+<br>
+
+3. 執行 `npm install` 來安裝 Node.js 相關的依賴模組。
+
+<br>
+
+4. 並運行 `setup.py` 腳本，用於配置 EC2 安全群組和部署 CloudFront。
+
+<br>
+
+5. 使用 AWS CLI 列出第一個 S3 bucket 的名稱，以及列出 CloudFront 發行的第一個分佈的域名。
+
+<br>
+
 ## 更新 Web 代碼
 
 _用以指向 Node 伺服器的 API 端點；以下繼續在終端機中操作_
