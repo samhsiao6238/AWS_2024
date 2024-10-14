@@ -85,11 +85,23 @@ _用以指向 Node 伺服器的 API 端點；以下繼續在終端機中操作_
 
 ## 上傳更新後的網站代碼
 
-1. 使用指令上傳更新的網站代碼，並將 `<s3-bucket>` 佔位符替換為前面紀錄的 `S3 bucket`。
+_對官方指引稍作修改_
+
+<br>
+
+1. 先在終端機中將前面紀錄的 `S3 bucket` 存入變數中，也就是替換以下 `<s3-bucket>` 佔位符；特別注意，變數名稱不要使用 `-`，但可以使用底線 `_`。
+
+    ```bash
+    S3_BUCKET=<s3-bucket>
+    ```
+
+<br>
+
+2. 使用指令上傳更新的網站代碼，並將 `<s3-bucket>` 佔位符替換為前面紀錄的 `S3 bucket`。
 
     ```bash
     cd /home/ec2-user/environment
-    aws s3 cp website s3://<s3-bucket>/ --recursive --cache-control "max-age=0"
+    aws s3 cp website s3://$S3_BUCKET/ --recursive --cache-control "max-age=0"
     ```
 
 <br>
