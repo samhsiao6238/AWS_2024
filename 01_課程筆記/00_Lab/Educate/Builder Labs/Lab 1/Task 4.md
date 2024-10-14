@@ -171,7 +171,7 @@ _`GeneratePresignedURL`_
 
 <br>
 
-2. 在 `States browser` 搜尋框中輸入 `Lambda`，將 `AWS Lambda Invoke` 對象拖動到 `SNS Publish` 對象上方的箭頭處。
+2. 在 `States browser` 搜尋框中輸入 `Lambda`，將 `AWS Lambda Invoke` 對象拖曳到 `SNS Publish` 對象上方的箭頭處。
 
 <br>
 
