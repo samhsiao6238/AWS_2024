@@ -48,17 +48,11 @@ _在開始此 Lab 之前，必須先在為您準備的 AWS Cloud9 統合開發�
 
 2. 當 `setup.sh` 腳本執行完成後，最後四行會輸出如下內容。
 
-    ```bash
-    ...
-    # The S3 bucket name is: 
-    "c42885a571457l1365962t1w991727102856-s3bucket-1s4xxypc1ttq8"
-    # The CloudFront distribution domain is: 
-    "drhx6krwefmhd.cloudfront.net"
-    ```
+    ![](images/img_01.png)
 
 <br>
 
-3. 在 `MyDoc.txt` 中記錄下列值。
+3. 在 `MyDoc.txt` 中記錄其中的 S3 及 CloudFront 輸出資訊。
 
     ```bash
     S3 bucket:c1234567890abcdefghi-s3bucket-123456abcd3
