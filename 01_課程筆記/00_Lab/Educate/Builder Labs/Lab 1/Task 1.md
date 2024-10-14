@@ -71,11 +71,9 @@ _用以指向 Node 伺服器的 API 端點；以下繼續在終端機中操作_
 
 <br>
 
-2. 將第一行中的 `<cloudfront-domain>` 佔位符替換為記錄在 `MyDoc.txt` 中的 `CloudFront distribution domain`。
+2. 將 `<cloudfront-domain>` 佔位符替換為記錄在 `MyDoc.txt` 中的 `CloudFront distribution domain`。
 
-    ```javascript
-    CONFIG.BASE_NODE_SERVER_STR = "https://d123456acbdef.cloudfront.net";
-    ```
+    ![](images/img_02.png)
 
 <br>
 
