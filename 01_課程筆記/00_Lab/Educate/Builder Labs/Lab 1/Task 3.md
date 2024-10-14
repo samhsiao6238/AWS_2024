@@ -80,7 +80,7 @@ _Step Functions 的 Role_
 
 <br>
 
-3. 特別注意，在這個 Lab 中是無法建立 IAM 角色。
+3. 官方在此特別提示了在這個 Lab 中是無法建立 IAM 角色。
 
 <br>
 
