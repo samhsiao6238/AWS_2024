@@ -97,20 +97,11 @@ _對官方指引稍作修改_
 
 <br>
 
-2. 使用指令上傳更新的網站代碼，並將 `<s3-bucket>` 佔位符替換為前面紀錄的 `S3 bucket`。
+2. 使用指令上傳更新的網站代碼，這裡會自動帶入變數值。
 
     ```bash
     cd /home/ec2-user/environment
     aws s3 cp website s3://$S3_BUCKET/ --recursive --cache-control "max-age=0"
-    ```
-
-<br>
-
-2. 帶入後實際的指令如下。
-
-    ```bash
-    cd /home/ec2-user/environment
-    aws s3 cp website s3://c1234567890abcdefghi-s3bucket-123456abcd3/ --recursive --cache-control "max-age=0"
     ```
 
 <br>
