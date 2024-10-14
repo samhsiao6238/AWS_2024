@@ -84,7 +84,7 @@
 
 <br>
 
-4. 選擇 `Save`，然後再次選擇 `Test` 以運行函數。
+4. 點擊右下角 `Save`；返回後再次點擊 `Test` 以運行函數。
 
 <br>
 
@@ -95,6 +95,8 @@
     "msg_str": "Report published to S3"
     }
     ```
+
+    ![](images/img_34.png)
 
 <br>
 
@@ -112,15 +114,19 @@
 
 <br>
 
-3. 在左側欄點擊 `Flow`。
+3. 在左側欄切換到 `Flow` 頁籤。
 
 <br>
 
 4. 將 `Parallel` 拖曳至 `Lambda: Invoke GeneratePresignedURL` 上方。
 
+    ![](images/img_35.png)
+
 <br>
 
 5. 將 `Lambda: Invoke GeneratePresignedURL` 拖曳至 `Parallel` 狀態的右側 `Drop state here` 區域。
+
+    ![](images/img_36.png)
 
 <br>
 
@@ -130,11 +136,17 @@
 
 <br>
 
-2. 將 `AWS Lambda Invoke` 拖曳至 `Parallel` 狀態的左側 `Drop state here` 區域。
+2. 新增一個 `Invoke` 並拖曳至 `Parallel` 狀態的左側 `Drop state here` 區域。
+
+    ![](images/img_37.png)
 
 <br>
 
 ## 配置 Lambda Invoke 對象的參數
+
+_配置新加入的 Invoke_
+
+<br>
 
 1. `State name` 輸入 `generateHTML`。
 
@@ -144,15 +156,19 @@
 
 <br>
 
-3. `Payload` 選擇 `Use state input as payload`。
+3. `Payload` 使用預設的 `Use state input as payload`。
 
 <br>
 
-4. `Next state` 選擇 `Go to end`。
+4. `Next state` 使用預設的 `Go to end`。
 
 <br>
 
-5. 保存更改，並在畫布上選擇 `Parallel` 狀態，將 `State name` 設為 `Process Report`。
+5. 選取 `Parallel`， 將預設的 `State name` 改為 `Process Report`。
+
+<br>
+
+6. 點擊右上角 `Save` 保存更改。
 
 <br>
 
@@ -168,17 +184,7 @@
 
 3. 更新後的代碼應如下。
 
-    ```json
-        "SNS Publish": {
-        "Type": "Task",
-        "Resource": "arn:aws:states:::sns:publish",
-        "Parameters": {
-            "Message.$": "$",
-            "TopicArn": "arn:aws:sns:us-east-1:1234567890:EmailReport"
-        },
-        "End": true
-    }
-    ```
+    ![](images/img_38.png)
 
 <br>
 
@@ -188,15 +194,11 @@
 
 ## 測試更新後的狀態機器
 
-1. 選擇 `Start execution` 並配置以下選項。
+1. 點擊 `Execution` 並配置以下選項。
 
 <br>
 
-2. 在 `Type` 選擇 `Synchronous`。
-
-<br>
-
-3. 在代碼編輯器中，將現有 JSON 代碼替換為以下內容。
+2. 在代碼編輯器中，將現有 JSON 代碼替換為以下內容。
 
     ```json
     {
