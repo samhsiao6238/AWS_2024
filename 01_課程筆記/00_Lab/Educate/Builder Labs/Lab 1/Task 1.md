@@ -6,7 +6,7 @@ _在開始此 Lab 之前，必須先在為您準備的 AWS Cloud9 統合開發�
 
 ## 連接到 Cloud9 IDE
 
-1. 搜尋並進入 `Cloud9`，注意到現有的 IDE，名為「Cloud9 Instance」。
+1. 搜尋並進入 `Cloud9`，注意到現有的 IDE，名為 `Cloud9 Instance`。
 
 <br>
 
