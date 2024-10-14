@@ -137,7 +137,9 @@ _對官方指引稍作修改_
 
 <br>
 
-2. 查看發行的 `狀態`，如果狀態為 `Deploying`，等待狀態變為 `Enabled`，然後再進行下一個 Task。
+2. 查看 `Distributions` 的 `Status`，如果狀態為 `Deploying`，等待狀態變為 `Enabled`，然後再進行下一個 Task。
+
+    ![](images/img_06.png)
 
 <br>
 
