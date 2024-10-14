@@ -6,7 +6,7 @@ _在這個任務中，將測試一個名為 `getRealData` 的 Lambda 函數，�
 
 ## 查看並檢查 Lambda 函數的 IAM 角色
 
-1. 進入 Lambda。
+1. 進入 `Lambda`，點擊左側 `Functions` 進入清單中。
 
 <br>
 
