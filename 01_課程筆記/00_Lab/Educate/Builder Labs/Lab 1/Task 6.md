@@ -10,7 +10,7 @@ _在這個任務中，將測試一個名為 `getRealData` 的 Lambda 函數，�
 
 <br>
 
-2. 搜尋並選擇名為 `getRealData` 的 Lambda 函數。
+2. 點擊名為 `getRealData` 的 Lambda 函數。
 
 <br>
 
@@ -20,6 +20,8 @@ _在這個任務中，將測試一個名為 `getRealData` 的 Lambda 函數，�
 
 4. 選擇 `Permissions`，在 `Execution Role` 下確認此函數使用的是 `RoleForAllLambdas` 角色。
 
+    ![](images/img_41.png)
+
 <br>
 
 5. 該角色允許 Lambda 函數與 Amazon S3、SNS 以及 DynamoDB 進行交互，與 `GeneratePresignedURL` 函數使用的角色相同。
@@ -28,7 +30,7 @@ _在這個任務中，將測試一個名為 `getRealData` 的 Lambda 函數，�
 
 ## 測試 `getRealData` Lambda 函數
 
-1. 進入 `Code`標籤，然後選擇 `Test`。
+1. 進入 `Code`標籤，然後點擊 `Test`。
 
 <br>
 
@@ -44,7 +46,7 @@ _在這個任務中，將測試一個名為 `getRealData` 的 Lambda 函數，�
 
 <br>
 
-4. 選擇 `Save`，然後再次選擇 `Test` 以運行函數。
+4. 點擊 `Save`，然後再次點擊 `Test` 以運行函數。
 
 <br>
 
