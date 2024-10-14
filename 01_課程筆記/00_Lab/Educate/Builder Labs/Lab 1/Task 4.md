@@ -1,10 +1,10 @@
 # Task 4: 在狀態機器中新增 `GeneratePresignedURL` Lambda 函數
 
-在此任務中，將創建一個簡單的 `report.html` 文件並上傳至 Amazon S3，然後透過 AWS CLI 生成並測試一個預簽名 URL。接著，將檢查 S3 存儲桶的策略，確認該文件只能透過預簽名 URL 訪問。之後，會測試一個已創建的 Lambda 函數來生成預簽名 URL 並傳遞該報告，最終會將此 Lambda 函數新增至先前創建的 Step Functions 狀態機器中。
+在此任務中，將建立一個簡單的 `report.html` 文件並上傳至 Amazon S3，然後透過 AWS CLI 生成並測試一個預簽名 URL。接著，將檢查 S3 存儲桶的策略，確認該文件只能透過預簽名 URL 訪問。之後，會測試一個已建立的 Lambda 函數來生成預簽名 URL 並傳遞該報告，最終會將此 Lambda 函數新增至先前建立的 Step Functions 狀態機器中。
 
-## 創建示例報告，將其上傳至 Amazon S3 並測試訪問
+## 建立示例報告，將其上傳至 Amazon S3 並測試訪問
 
-### 創建示例報告文件
+### 建立示例報告文件
 1. 返回 AWS Cloud9 IDE。
 2. 在 Environment 窗口中，選擇 Cloud9 Instance 資料夾，然後選擇 File > New File。
 3. 在打開的文件中粘貼以下內容：
@@ -20,7 +20,7 @@
    bucket=`aws s3api list-buckets --query "Buckets[].Name" | grep s3bucket | tr -d ',' | sed -e 's/"//g' | xargs`
    aws s3 cp report.html s3://$bucket/ --cache-control "max-age=0"
    ```
-2. 打開 AWS 管理控制台，搜索並選擇 S3，然後選擇上傳文件的 S3 存儲桶。
+2. 打開 AWS 管理控制台，搜尋並選擇 S3，然後選擇上傳文件的 S3 存儲桶。
 3. 驗證 `report.html` 文件已存在於存儲桶中，並選擇 Permissions（權限）標籤。
 4. 在 Bucket policy（存儲桶策略）部分檢查策略，確認以下策略存在：
    ```json
@@ -42,7 +42,7 @@
 1. 在 Amazon S3 控制台中，選擇 Objects（對象）標籤，然後選擇 `report.html`。
 2. 複製對象 URL 並在瀏覽器中打開。會收到 AccessDenied 錯誤，這是由於存儲桶策略阻止了直接訪問。
 
-### 創建並測試預簽名 URL
+### 建立並測試預簽名 URL
 1. 返回 AWS Cloud9 終端機，運行以下命令生成一個有效期 30 秒的預簽名 URL：
    ```bash
    aws s3 presign s3://$bucket/report.html --expires-in 30
@@ -54,13 +54,13 @@
 
 ## 測試 `GeneratePresignedURL` Lambda 函數
 ### 查看 Lambda 函數的 IAM 角色
-1. 打開 AWS 管理控制台，搜索並選擇 IAM。
-2. 選擇 Roles（角色），搜索並選擇 RoleForAllLambdas 角色。
+1. 打開 AWS 管理控制台，搜尋並選擇 IAM。
+2. 選擇 Roles（角色），搜尋並選擇 RoleForAllLambdas 角色。
 3. 在 Permissions（權限）標籤下展開 lambdaPolicyForAllLambdaSteps 策略，該角色允許對 Amazon S3、SNS 和 DynamoDB 的操作。
 4. 在 Trust relationships（信任關係）標籤中，確認 Lambda 服務 (`lambda.amazonaws.com`) 被授權假設此角色。
 
 ### 測試 `GeneratePresignedURL` Lambda 函數
-1. 在 AWS 管理控制台中，搜索並選擇 Lambda。
+1. 在 AWS 管理控制台中，搜尋並選擇 Lambda。
 2. 選擇名為 `GeneratePresignedURL` 的 Lambda 函數。
 3. 選擇 Test，輸入事件名稱 `test1`，然後選擇 Create。
 4. 選擇 Test 以運行函數，結果將返回一個預簽名 URL。

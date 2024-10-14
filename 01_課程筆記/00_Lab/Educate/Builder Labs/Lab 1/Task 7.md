@@ -6,16 +6,16 @@
 
 ### 步驟 1：進入 Cognito 使用者池
 
-1. 登入 AWS 管理控制台，從服務選單中搜索並選擇 Cognito。
+1. 登入 AWS 管理控制台，從服務選單中搜尋並選擇 Cognito。
 2. 在使用者池面板中，選擇 `bird_app` 連結。
 3. 選擇 Groups（群組）標籤，並點擊 teachers 群組。
 4. 在群組資訊窗格中，檢視分配給該群組的 IAM 角色。該角色名為 bird-app-teacher-role。
 
 ### 步驟 2：分析 `bird-app-teacher-role` IAM 角色詳細信息
 
-1. 返回 AWS 管理控制台，搜索並選擇 IAM 服務。
+1. 返回 AWS 管理控制台，搜尋並選擇 IAM 服務。
 2. 在左側導航窗格中，選擇 Roles（角色）。
-3. 在角色搜索框中，輸入並選擇 bird-app-teacher-role 角色。
+3. 在角色搜尋框中，輸入並選擇 bird-app-teacher-role 角色。
 4. 在 Permissions（權限）標籤下，展開 bird-app-teacher-policy 策略。
    - 該策略允許對 Amazon DynamoDB 中的 BirdSightings 資料表以及 MyStateMachine 狀態機器執行相關操作。
 5. 選擇 Trust relationships（信任關係）標籤，確認該角色允許 Amazon Cognito 身份服務通過 Web 身份驗證來假設此角色。

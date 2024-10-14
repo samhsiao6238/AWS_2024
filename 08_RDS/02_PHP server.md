@@ -177,7 +177,7 @@ _配置後可使用全局安裝的 phpcs_
 
 <br>
 
-2. 打開 VSCode 設定，搜索 `phpcs`，找到 `phpcs: Executable Path` 設定，填入全局安裝的 phpcs 路徑。
+2. 打開 VSCode 設定，搜尋 `phpcs`，找到 `phpcs: Executable Path` 設定，填入全局安裝的 phpcs 路徑。
 
     ```bash
     ~/.composer/vendor/bin/phpcs

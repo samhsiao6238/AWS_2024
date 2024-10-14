@@ -7,7 +7,7 @@
 ### 查看並檢查 Lambda 函數的 IAM 角色
 
 1. 登錄 AWS 管理控制台，從服務列表中選擇 Lambda。
-2. 搜索並選擇名為 `getRealData` 的 Lambda 函數。
+2. 搜尋並選擇名為 `getRealData` 的 Lambda 函數。
 3. 選擇 Configuration（配置）標籤。
 4. 選擇 Permissions（權限），在 Execution Role（執行角色）下確認此函數使用的是 RoleForAllLambdas 角色。
    - 該角色允許 Lambda 函數與 Amazon S3、SNS 以及 DynamoDB 進行交互，與 `GeneratePresignedURL` 函數使用的角色相同。
@@ -63,7 +63,7 @@
 
 1. 登錄 AWS 管理控制台，從服務列表中選擇 Step Functions。
 2. 選擇 MyStateMachine，然後選擇 Edit（編輯）。
-3. 在左側的 States browser（狀態瀏覽器）中，搜索 Lambda。
+3. 在左側的 States browser（狀態瀏覽器）中，搜尋 Lambda。
 4. 將 AWS Lambda Invoke 對象拖放至並行狀態 `Process Report` 之上的畫布區域。
 
 ### 配置 `getRealData` Lambda 函數的調用參數

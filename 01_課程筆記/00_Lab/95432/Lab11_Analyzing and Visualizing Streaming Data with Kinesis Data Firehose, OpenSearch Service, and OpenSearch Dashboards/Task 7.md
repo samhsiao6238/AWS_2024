@@ -34,7 +34,7 @@
 
 <br>
 
-6. `OpenSearch Dashboards` 傳回 `OpenSearch` 服務中記錄的 `欄位` 和 `資料類型` 的列表，並顯示哪些欄位可搜索，如下圖所示。
+6. `OpenSearch Dashboards` 傳回 `OpenSearch` 服務中記錄的 `欄位` 和 `資料類型` 的列表，並顯示哪些欄位可搜尋，如下圖所示。
 
     ![](images/img_54.png)
 

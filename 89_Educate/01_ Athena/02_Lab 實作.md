@@ -30,7 +30,7 @@ _在此 [Lab](https://awseducate.instructure.com/courses/990/modules) 中會使�
 
 ## 開啟 Amazon Athena
 
-1. 在控制台搜索 `Athena`。
+1. 在控制台搜尋 `Athena`。
 
    ![](images/img_02.png)
 

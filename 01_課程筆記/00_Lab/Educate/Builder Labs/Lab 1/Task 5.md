@@ -6,7 +6,7 @@
 
 ### 查看並檢查 Lambda 函數的 IAM 角色
 1. 打開 AWS 管理控制台，從服務列表中選擇 Lambda。
-2. 搜索並選擇名為 `generateHTML` 的 Lambda 函數。
+2. 搜尋並選擇名為 `generateHTML` 的 Lambda 函數。
 3. 在函數界面，選擇 Configuration（配置）標籤。
 4. 選擇 Permissions（權限），在 Execution Role（執行角色）下確認該函數使用的是 RoleForAllLambdas 角色。
    - 此角色允許 Lambda 函數與 Amazon S3、SNS 和 DynamoDB 進行交互，這與 `GeneratePresignedURL` 函數使用的角色相同。
@@ -60,14 +60,14 @@
 ## 將 `generateHTML` Lambda 函數加入狀態機器
 
 ### 新增並行狀態至狀態機器
-1. 在 AWS 管理控制台中，搜索並選擇 Step Functions。
+1. 在 AWS 管理控制台中，搜尋並選擇 Step Functions。
 2. 選擇 MyStateMachine，然後選擇 Edit（編輯）。
 3. 在 States browser 左側窗格中選擇 Flow（流程）標籤。
 4. 將 Parallel（並行）對象拖動至 Lambda: Invoke GeneratePresignedURL 對象上方。
 5. 將 Lambda: Invoke GeneratePresignedURL 對象拖動至並行狀態的右側 Drop state here 區域。
 
 ### 新增 `generateHTML` Lambda 函數至狀態機器
-1. 在左側窗格中選擇 Actions（操作）標籤，搜索 Lambda。
+1. 在左側窗格中選擇 Actions（操作）標籤，搜尋 Lambda。
 2. 將 AWS Lambda Invoke 對象拖動至並行狀態的左側 Drop state here 區域。
 3. 配置 Lambda Invoke 對象的參數：
    - State name：輸入 `generateHTML`。
