@@ -164,9 +164,64 @@ _返回 AWS Cloud9 終端機_
 
 2. 在 `Permissions` 標籤下展開 `lambdaPolicyForAllLambdaSteps` 策略，該角色允許對 S3、SNS、DynamoDB 的操作。
 
+    ```json
+    {
+        "Version": "2012-10-17",
+        "Statement": [
+            {
+                "Action": [
+                    "s3:Get*",
+                    "s3:List*",
+                    "s3:PutObject*"
+                ],
+                "Resource": "arn:aws:s3:::c107432a2525765l7940980t1w084927720127-s3bucket-a1rfodg7c9lz/*",
+                "Effect": "Allow"
+            },
+            {
+                "Action": [
+                    "dynamodb:Scan"
+                ],
+                "Resource": [
+                    "arn:aws:dynamodb:us-east-1:084927720127:table/BirdSightings"
+                ],
+                "Effect": "Allow"
+            },
+            {
+                "Action": [
+                    "logs:*"
+                ],
+                "Resource": "*",
+                "Effect": "Allow"
+            },
+            {
+                "Action": [
+                    "sns:Publish"
+                ],
+                "Resource": "arn:aws:sns:us-east-1:084927720127:EmailReport",
+                "Effect": "Allow"
+            }
+        ]
+    }
+    ```
+
 <br>
 
-3. 在 `Trust relationships` 中，確認 Lambda 服務 (`lambda.amazonaws.com`) 被授權假設此角色。
+3. 切換到 `Trust relationships` 頁籤，確認 Lambda 服務 (`lambda.amazonaws.com`) 被授權假設此角色。
+
+    ```json
+    {
+        "Version": "2012-10-17",
+        "Statement": [
+            {
+                "Effect": "Allow",
+                "Principal": {
+                    "Service": "lambda.amazonaws.com"
+                },
+                "Action": "sts:AssumeRole"
+            }
+        ]
+    }
+    ```
 
 <br>
 
@@ -176,15 +231,17 @@ _`GeneratePresignedURL`_
 
 <br>
 
-1. 點擊進入 Lambda，選擇名為 `GeneratePresignedURL` 的 Lambda 函數。
+1. 進入 `Lambda`，點擊進入 Lambda 函數 `GeneratePresignedURL`。
 
 <br>
 
-2. 選擇 `Test` 輸入事件名稱 `test1`，然後選擇 `Create`。
+2. 點擊 `Test`，輸入 `Event name` 為 `test1`，其餘不變，然後點擊右下角 `Save`。
 
 <br>
 
-3. 選擇 `Test` 以運行函數，結果將返回一個 `預簽名 URL`。
+3. 再次點擊 `Test` 會測試，結果將返回一個 `預簽名 URL`。
+
+    ![](images/img_31.png)
 
 <br>
 
@@ -198,17 +255,23 @@ _`GeneratePresignedURL`_
 
 <br>
 
-1. 進入 `Step Functions` 並選擇 `MyStateMachine`，然後點擊 `Edit`。
+1. 進入 `Step Functions` 並點擊 `State machines`，然後選擇 `MyStateMachine`，接著點擊右上方 `Edit`。
 
 <br>
 
-2. 在 `States browser` 搜尋框中輸入 `Lambda`，將 `AWS Lambda Invoke` 對象拖曳到 `SNS Publish` 對象上方的箭頭處。
+2. 在搜尋框中輸入 `Lambda`，將 `Invoke` 對象拖曳到 `SNS Publish` 對象上方的箭頭處。
+
+    ![](images/img_32.png)
 
 <br>
 
 ## 配置以下選項
 
-1. 在 `State name` 輸入 `GeneratePresignedURL`。
+_選取 `Lambda Invoke`，並在右側欄位中進行設置_
+
+<br>
+
+1. 在 `State name` 輸入 `GeneratePresignedURL`；輸入後按下 `ENTER` 會看到左側圖框中的物件立即變更名稱。
 
 <br>
 
@@ -220,15 +283,19 @@ _`GeneratePresignedURL`_
 
 <br>
 
-4. 在 `Next state` 選擇 `SNS Publish`。
+4. 在 `Next state` 使用預設的 `SNS Publish`。
 
 <br>
 
-5. 點擊 `Save` 後，點擊 `Execute` 以測試狀態機器。
+5. 點擊右上角 `Save`。
 
 <br>
 
-6. 在代碼編輯器中刪除內容，只保留一個大括號。
+6. 點擊 `Execute` 以測試狀態機器。
+
+<br>
+
+7. 名稱使用預設即可，在代碼編輯器中刪除內容，只保留一個大括號。
 
     ```json
     {}
@@ -236,11 +303,11 @@ _`GeneratePresignedURL`_
 
 <br>
 
-7. 點擊 `Start execution`，然後檢查電子郵件中的預簽名 URL，確認可以加載生成的報告。
+8. 點擊右下角 `Start execution`。
 
 <br>
 
-8. 若電子郵件客戶端未識別完整的預簽名 URL，需手動複製整個 URL 並粘貼至瀏覽器進行測試。
+9. 然後檢查收到的電子郵件中的預簽名 URL，確認可以加載生成的報告。
 
 <br>
 
