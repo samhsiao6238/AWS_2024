@@ -1,16 +1,16 @@
 # Task 7：配置 Amazon Cognito Identity Pool
 
-_此任務中，將會配置已經在 Lab 環境中預先建立的 Amazon Cognito Identity Pool，並使其與 Birds 應用程式整合。_
+_此任務中，將會配置已經在 Lab 環境中預先建立的 `Amazon Cognito Identity Pool`，並使其與 `Birds 應用程式` 整合。_
 
 <br>
 
-## 進入Identity Pool配置頁面
+## 進入 `Identity Pool` 配置頁面
 
 1. 返回 AWS 管理控制台，從頁面左側選單中選擇 `Federated identities`。
 
 <br>
 
-2. 選擇 `bird_app_id_pool`，這是預先建立的Identity Pool。
+2. 選擇 `bird_app_id_pool`，這是預先建立的 `Identity Pool`。
 
 <br>
 
@@ -18,7 +18,7 @@ _此任務中，將會配置已經在 Lab 環境中預先建立的 Amazon Cognit
 
 <br>
 
-4. 記錄Identity Pool ID 到文本編輯器中，稍後在更新網站配置時需要使用。
+4. 記錄 `Identity Pool ID` 到文本編輯器中，稍後在更新網站配置時需要使用。
 
 <br>
 
@@ -28,11 +28,11 @@ _在 `Edit identity pool` 頁面上，檢查以下角色配置_
 
 <br>
 
-1. `Unauthenticated role (未認證角色)`：`bird-app-id-poolUnauth_Role`，此角色會分配給尚未通過身份驗證的使用者，這些使用者在 Birds 應用程式中的訪問權限有限。
+1. `Unauthenticated role (未認證角色)`：`bird-app-id-poolUnauth_Role`，此角色會分配給尚未通過身份驗證的使用者，這些使用者在 `Birds 應用程式` 中的訪問權限有限。
 
 <br>
 
-2. Authenticated role (已認證角色)：`bird-app-student-role`，當使用者通過身份驗證後，會自動被分配此角色。對於 Birds 應用程式，該角色已配置為允許學生添加和選擇 DynamoDB 表中的記錄。
+2. `Authenticated role (已認證角色)`：`bird-app-student-role`，當使用者通過身份驗證後，會自動被分配此角色。對於 Birds 應用程式，該角色已配置為允許學生添加和選擇 DynamoDB 表中的記錄。
 
 <br>
 
@@ -42,7 +42,7 @@ _在 `Edit identity pool` 頁面上，檢查以下角色配置_
 
 <br>
 
-2. 進行配置，在 `User Pool ID` 輸入 `bird_app` user pool ID，在 `App client ID` 輸入 `bird_app_client` ID。
+2. 進行配置，在 `User Pool ID` 輸入 `bird_app` 的 `user pool ID`，在 `App client ID` 輸入 `bird_app_client` ID。
 
 <br>
 
