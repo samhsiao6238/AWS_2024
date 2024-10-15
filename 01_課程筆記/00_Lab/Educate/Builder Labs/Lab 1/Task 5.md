@@ -48,7 +48,7 @@ _在此任務中，將會更新 Birds 應用程式的設定，使其與 Amazon C
 
 <br>
 
-2. 運行命令。
+2. 運行指令。
 
     ```bash
     cd /home/ec2-user/environment
@@ -59,7 +59,7 @@ _在此任務中，將會更新 Birds 應用程式的設定，使其與 Amazon C
 
 ## 更新 Node 伺服器配置
 
-1. 運行命令更新 Node 伺服器文件。
+1. 運行指令更新 Node 伺服器文件。
 
     ```bash
     cd /home/ec2-user/environment/node_server

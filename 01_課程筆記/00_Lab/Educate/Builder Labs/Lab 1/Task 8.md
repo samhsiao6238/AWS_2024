@@ -54,9 +54,9 @@ _為了使 Birds 應用程式能夠與 Amazon Cognito 身份池進行互動，�
 ## 將更新後的網站代碼推送至 S3 Bucket
 
 1. 替換 S3 Bucket 的佔位符：
-   - 在以下命令中，將 `<s3-bucket>` 替換為記錄的 S3 Bucket 名稱。
+   - 在以下指令中，將 `<s3-bucket>` 替換為記錄的 S3 Bucket 名稱。
 
-2. 運行以下命令將網站代碼上傳到 S3：
+2. 運行以下指令將網站代碼上傳到 S3：
 
     ```bash
     cd /home/ec2-user/environment
@@ -66,7 +66,7 @@ _為了使 Birds 應用程式能夠與 Amazon Cognito 身份池進行互動，�
 ## 確認 Node 伺服器是否正在運行
 
 1. 確認 Node 伺服器是否仍在運行：
-   - 如果伺服器未在運行，運行以下命令重新啟動伺服器：
+   - 如果伺服器未在運行，運行以下指令重新啟動伺服器：
 
     ```bash
     cd /home/ec2-user/environment/node_server
