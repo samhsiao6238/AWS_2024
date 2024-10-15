@@ -16,35 +16,45 @@
 
 1. 進入 `Cognito`。
 
+    ![](images/img_11.png)
+
 <br>
 
-2. 在頁面頂部選擇 `User Pools`。
+2. 點擊 `User Pools`。
+
+    ![](images/img_12.png)
 
 <br>
 
 3. 點擊 `Create user pool` 建立新的 `user pool`。
 
+    ![](images/img_13.png)
+
 <br>
 
 ## 配置登入體驗
 
-_在 `Configure sign-in experience=` 頁面中配置以下設定_
+_在 `Configure sign-in experience` 頁面中進行配置_
 
 <br>
 
-1. `Authentication providers` 選擇 `Cognito user pool`。
+1. `Authentication providers` 預設已經反白選取 `Cognito user pool`。
+
+    ![](images/img_14.png)
 
 <br>
 
-2. `Cognito user pool sign-in options` 選擇 `User name`。
+2. 在 `Cognito user pool sign-in options` 選擇 `User name`。
 
 <br>
 
-3. `User name requirements` 勾選 `Make user name case sensitive`。
+3. 在 `User name requirements` 勾選 `Make user name case sensitive`。
 
 <br>
 
 4. 點擊 `Next`。
+
+    ![](images/img_15.png)
 
 <br>
 
