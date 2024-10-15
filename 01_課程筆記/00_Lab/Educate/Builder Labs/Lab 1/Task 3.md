@@ -160,7 +160,7 @@ _在 `Integrate your app` 頁面中進行配置_
 
 <br>
 
-3. 在 `Allowed callback URLs` 欄位中，輸入 `https://<cloudfront-domain>/callback.html`，將其中 `<cloudfront-domain>` 替換為記錄在 `MyDoc.txt` 中的 CloudFront 網域名。
+3. 在 `Allowed callback URLs` 欄位中，將記錄在 `MyDoc.txt` 中的 CloudFront 網域名貼在預設的字串 `https://` 之後，並加上尾綴 `/callback.html`，完成時顯示類似如下的網址。
 
     ![](images/img_28.png)
 
