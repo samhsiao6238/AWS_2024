@@ -14,46 +14,57 @@ _返回 AWS Cloud9 IDE_
 
 <br>
 
-2. 取消最後一行代碼的註解，並將 `<cognito-identity-pool-id>` 佔位符替換為之前記錄的Identity Pool ID；保存變更。
+2. 修正最後一行代碼，並將 `<cognito-identity-pool-id>` 佔位符替換為記錄在 `MyDoc.txt` 中的 `Identity Pool ID`；保存變更。
 
-    ```javascript
-    //CONFIG.COGNITO_IDENTITY_POOL_ID_STR = "<cognito-identity-pool-id>";
-    CONFIG.COGNITO_IDENTITY_POOL_ID_STR = "us-east-1:example-identity-pool-id";
-    ```
+    ![](images/img_82.png)
 
 <br>
 
 3. 在 `website/scripts` 資料夾中打開 `auth.js` 文件。
 
-<br>
-
-4. 將 `<cognito-user-pool-id>` 佔位符替換為 `user pool ID`，注意這裡要使用user pool ID，而不是Identity Pool ID。
-
     ```javascript
-    AWS.config.credentials = new AWS.CognitoIdentityCredentials({
-        IdentityPoolId : CONFIG.COGNITO_IDENTITY_POOL_ID_STR,
-        Logins : {
-            "cognito-idp.us-east-1.amazonaws.com/<cognito-user-pool-id>": token_str_or_null
-        }
-    });
+    var AUTH = (function(){
+
+        // 以上省略 ...
+
+        async function validateCredentials(){
+            var msg_str = "We are verifying that your temporary AWS credentials can access dynamoDB. One moment...";
+            $("[data-role='validate_credentials_output']").text(msg_str);
+            var token_str_or_null = localStorage.getItem("bearer_str");
+            console.log('Getting token from Local Storage');
+            AWS.config.update({region: "us-east-1"});
+            AWS.config.credentials = new AWS.CognitoIdentityCredentials({
+                IdentityPoolId : CONFIG.COGNITO_IDENTITY_POOL_ID_STR,
+                Logins : {
+                "cognito-idp.us-east-1.amazonaws.com/<cognito-user-pool-id>": token_str_or_null
+                }
+            });
+            
+            var docClient = new AWS.DynamoDB.DocumentClient({region: "us-east-1"});
+            
+            var params = {
+                TableName: "BirdSightings"
+            };
+            
+            // 以下省略 ...
+    })();
     ```
 
 <br>
 
-5. 更新後的代碼應類似如下，保存變更。
+4. 找到 `<cognito-user-pool-id>`。
 
-    ```javascript
-    AWS.config.credentials = new AWS.CognitoIdentityCredentials({
-        IdentityPoolId : CONFIG.COGNITO_IDENTITY_POOL_ID_STR,
-        Logins : {
-            "cognito-idp.us-east-1.amazonaws.com/us-east-1_AAAA1111": token_str_or_null
-        }
-    });
-    ```
+    ![](images/img_83.png)
 
 <br>
 
-6. 此代碼片段使用 `COGNITO_IDENTITY_POOL_ID_STR` 變數來請求Identity Pool中的 AWS 憑證。該代碼還傳遞了user pool ID 和 `token_str_or_null`（保存身份驗證憑證）。Identity Pool會使用這些資訊來驗證使用者，如果驗證通過，Identity Pool會向應用程式返回 AWS 憑證。
+5. 將 `<cognito-user-pool-id>` 佔位符替換為 `user pool ID`；特別注意，這裡要使用 `user pool ID`，而不是 `Identity Pool ID`。
+
+    ![](images/img_84.png)
+
+<br>
+
+5. 更新後務必確認儲存修正；此代碼片段使用 `COGNITO_IDENTITY_POOL_ID_STR` 變數來請求 `Identity Pool` 中的 `AWS 憑證`，該代碼還傳遞了 `user pool ID` 和 `token_str_or_null`，`Identity Pool` 會使用這些資訊來驗證使用者，如果驗證通過，`Identity Pool` 會向應用程式返回 `AWS 憑證`。
 
 <br>
 
