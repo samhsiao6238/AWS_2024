@@ -133,16 +133,12 @@ _對官方指引稍作修改_
 
 <br>
 
-2. 使用指令自動帶入變數值，然後將本地的 `website` 資料夾內容複製到指定的 S3 Bucket。
+2. 使用指令自動帶入變數值，然後將本地的 `website` 資料夾內容複製到指定的 S3 Bucket；運行指令完成代碼上傳。
 
     ```bash
     cd /home/ec2-user/environment
     aws s3 cp website s3://$S3_BUCKET/ --recursive --cache-control "max-age=0"
     ```
-
-<br>
-
-3. 運行更新後的指令來完成代碼上傳。
 
 <br>
 
