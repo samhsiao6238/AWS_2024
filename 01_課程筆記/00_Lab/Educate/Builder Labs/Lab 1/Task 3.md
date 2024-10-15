@@ -184,7 +184,7 @@ _在 `Integrate your app` 頁面中進行配置_
 
 <br>
 
-## 檢查設定並建立user pool
+## 檢查設定並建立 user pool
 
 1. 檢查所有設定是否正確，然後滾動到最下方點擊 `Create user pool`。
 
@@ -213,6 +213,8 @@ _在 `Integrate your app` 頁面中進行配置_
 <br>
 
 3. 滾動至頁面底部找到 `App clients and analytics` 區域，找到 `bird_app_client`，將 `Client ID` 紀錄到 `MyDoc.txt`；至此成功設置 `Cognito user pool` 與應用程式客戶端，接下來將會建立測試用戶。
+
+    ![](images/img_40.png)
 
 <br>
 
