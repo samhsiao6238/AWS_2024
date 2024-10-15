@@ -134,19 +134,17 @@ _在 `Integrate your app` 頁面中進行配置_
 
 <br>
 
-3. 在 `Domain` 區域中，選擇 `Use a Cognito domain`。
-
-<br>
-
-4. 在 `Cognito domain` 欄位中輸入唯一的域名如 `MyDomain2024`；可將此紀錄在 `MyDoc.txt`。
+3. 在 `Domain` 區域中，選擇 `Use a Cognito domain`；
 
     ![](images/img_24.png)
 
 <br>
 
-5. 當命名不合法，會提示錯誤原因；命名只可使用小寫字母開頭前綴，所以改為 `mydomain2024`。
+4. 在下方 `Cognito domain` 欄位中輸入唯一的域名如 `mydomain2024`；可將此紀錄在 `MyDoc.txt`。
 
     ![](images/img_32.png)
+
+<br>
 
 ## 配置應用程式客戶端
 
