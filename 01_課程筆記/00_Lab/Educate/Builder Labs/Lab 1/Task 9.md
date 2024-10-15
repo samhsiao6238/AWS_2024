@@ -38,9 +38,17 @@ _返回 Birds 應用程式的瀏覽器分頁_
 
 3. 接著訊息會更新為：`Your temporary AWS credentials have been configured.`
 
+    ![](images/img_86.png)
+
 <br>
 
-4. 這個測試確認了應用程式與 `Amazon Cognito Identity Pool` 已正確配置。經過身份驗證的使用者將能夠獲取臨時 AWS 憑證，並藉此與 DynamoDB 資料庫進行交互。
+4. 至此確認應用程式與 `Amazon Cognito Identity Pool` 已正確配置；經過身份驗證的使用者將能夠獲取臨時 AWS 憑證，並藉此與 DynamoDB 資料庫進行交互。
+
+<br>
+
+5. 可透過開發者工具進行觀察。
+
+    ![](images/img_87.png)
 
 <br>
 
