@@ -64,19 +64,24 @@ _在此任務中，將會更新 Birds 應用程式的設定，使其與 Amazon C
 <br>
 
 2. 在左側欄展開 `node_server` 資料夾，點擊打開 `package.json` 文件。
-將 `<cognito_user_pool_id>` 替換為 `MyDoc.txt` 中記錄的 `Amazon Cognito user pool ID`。
+
+    ![](images/img_61.png)
 
 <br>
 
-3. 代碼範例；切記保存修改後的 `package.json` 文件。。
+3. 將 `<cognito_user_pool_id>` 替換為 `MyDoc.txt` 中記錄的 `Amazon Cognito user pool ID`。
 
-    ```json
-    "start": "REGION_STR=us-east-1 USER_POOL_ID_STR=us-east-1_AAAA1111 node index.js"
-    ```
+    ![](images/img_62.png)
 
 <br>
 
-4. 至此，已成功將應用程式與 Amazon Cognito user pool進行集成，並完成了必要的配置。接下來，可以重新啟動 Node 伺服器並測試應用程式的身份驗證功能。
+3. 完成修改後顯示如下，切記保存修改後的 `package.json` 文件。
+
+    ![](images/img_63.png)
+
+<br>
+
+4. 至此，已成功將應用程式與 `Amazon Cognito user pool` 進行集成，並完成了必要的配置；接下來，可以重新啟動 Node 伺服器並測試應用程式的身份驗證功能。
 
 <br>
 
