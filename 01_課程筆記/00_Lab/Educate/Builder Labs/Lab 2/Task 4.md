@@ -61,7 +61,7 @@ _返回 Cloud9 IDE_
             AWS.config.update({region: "us-east-1"});
             // 使用 Cognito Identity 憑證來取得臨時 AWS 憑證
             AWS.config.credentials = new AWS.CognitoIdentityCredentials({
-                // 使用者池 ID
+                // user pool ID
                 IdentityPoolId : CONFIG.COGNITO_IDENTITY_POOL_ID_STR,
                 Logins : {
                     // 用於身份驗證的 Bearer Token
@@ -236,7 +236,7 @@ _進入 Cloud9 IDE 中_
             AWS.config.update({region: "us-east-1"});
             // 使用 Cognito Identity 憑證來取得臨時 AWS 憑證
             AWS.config.credentials = new AWS.CognitoIdentityCredentials({
-                // 使用者池 ID
+                // user pool ID
                 IdentityPoolId : CONFIG.COGNITO_IDENTITY_POOL_ID_STR,
                 Logins : {
                     // 用於身份驗證的 Bearer Token

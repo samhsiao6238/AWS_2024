@@ -8,7 +8,7 @@
 
 <br>
 
-2. 使用 `Cognito` 使用者池，要求用戶登入才能訪問 `Sightings` 和 `Report` 頁面，並驗證 Cognito 身份池能為登入的用戶提供應用程式所需的 AWS 服務憑證（如與 DynamoDB 互動）。
+2. 使用 `Cognito` user pool，要求用戶登入才能訪問 `Sightings` 和 `Report` 頁面，並驗證 Cognito 身份池能為登入的用戶提供應用程式所需的 AWS 服務憑證（如與 DynamoDB 互動）。
 
 <br>
 

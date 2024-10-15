@@ -1,189 +1,46 @@
-# Task 6: 將 `getRealData` Lambda 函數加入狀態機器
+# Task 6：測試應用程式與user pool的整合
 
-_在這個任務中，將測試一個名為 `getRealData` 的 Lambda 函數，此函數從 DynamoDB 表中檢索鳥類觀察記錄，並將其以 JSON 格式返回。接著，將此 Lambda 函數新增至 Step Functions 狀態機器，以便 `generateHTML` 狀態使用真實的資料庫數據來生成 HTML 報告，而不再使用模擬的測試數據。_
+_在此任務中，將測試更新後的應用程式，確保其能正確使用 Amazon Cognito user pool進行身份驗證。首先，必須重新啟動 Node 伺服器，使其使用更新後的配置。_
 
-<br>
+## 重新啟動 Node 伺服器
 
-## 查看並檢查 Lambda 函數的 IAM 角色
+1. 在終端機中運行以下命令來啟動 Node 伺服器：
 
-1. 進入 `Lambda`，點擊左側 `Functions` 進入清單中。
-
-<br>
-
-2. 點擊名為 `getRealData` 的 Lambda 函數。
-
-<br>
-
-3. 選擇 `Configuration`。
-
-<br>
-
-4. 選擇 `Permissions`，在 `Execution Role` 下確認此函數使用的是 `RoleForAllLambdas` 角色。
-
-    ![](images/img_41.png)
-
-<br>
-
-5. 該角色允許 Lambda 函數與 Amazon S3、SNS 以及 DynamoDB 進行交互，與 `GeneratePresignedURL` 函數使用的角色相同。
-
-<br>
-
-## 測試 `getRealData` Lambda 函數
-
-1. 進入 `Code`標籤，然後點擊 `Test`。
-
-<br>
-
-2. 在 `Event name` 欄位中輸入 `test3`。
-
-<br>
-
-3. 輸入以下空的 JSON 請求作為測試事件的輸入。
-
-    ```json
-    {}
+    ```bash
+    npm start
     ```
 
-<br>
+2. 返回已開啟 Birds 應用程式的瀏覽器分頁，並刷新頁面。
 
-4. 點擊 `Save`，然後再次點擊 `Test` 以運行函數。
+## 測試應用程式的行為
 
-<br>
+1. 選擇 "SIGHTINGS" 標籤：
+   - 這將顯示學生提交的鳥類目擊記錄。
 
-5. 檢查 `Execution results`，顯示如下輸出。
+### 測試應用程式的 Token 驗證功能
 
-    ```json
-    {
-        "bird_obj_arr": [
-        {
-            "class_level_str": "3rd Grade",
-            "location_str": "Home",
-            "bird_name_str": "Northern Cardinal",
-            "student_name_str": "Maria Garcia",
-            "date_str": "2-21-2022",
-            "id_str": "373453bd-722d-454f-8b4b-1ec53e2df9b0",
-            "count_int": 2
-        },
-        {
-            "class_level_str": "3rd Grade",
-            "location_str": "Home",
-            "bird_name_str": "Baltimore Oriole",
-            "student_name_str": "Li Juan",
-            "date_str": "12-20-2021",
-            "id_str": "bd6560ac-ee19-4ef4-ac73-8deb61520601",
-            "count_int": 1
-        },
-        {
-            "class_level_str": "3rd Grade",
-            "location_str": "Lake",
-            "bird_name_str": "American Kestrel",
-            "student_name_str": "Jorge Souza",
-            "date_str": "01-30-2022",
-            "id_str": "591d0b66-87ba-4e15-aadf-b0db6e63f089",
-            "count_int": 5
-        }
-        ]
-    }
-    ```
+1. 嘗試使用偽造的 Token：
+   - 在開發者工具中，找到 CloudFront 分發對應的 Local Storage。
+   - 找到 `bearer_str`，雙擊該值，並隨意修改字串內容（例如，添加或刪除幾個字符）。
+   
+2. 再次選擇 "SIGHTINGS" 標籤：
+   - 此時，應用程式會顯示一條訊息，指出 Token 無效。這表明應用程式能夠評估並確保 Token 的合法性。
 
-<br>
+3. 注意：
+   - 若觀察開發者工具中的 Local Storage，可能會發現 `bearer_str` 已被移除，這是應用程式中的一段代碼所實現的。
 
-## 更新狀態機器
+4. 選擇 "DISMISS" 來關閉訊息。
 
-_以包含 `getRealData` Lambda 函數_
+### 測試沒有 Token 的情況
 
-<br>
+1. 再次選擇 "SIGHTINGS" 標籤：
+   - 此時，應用程式會顯示訊息，要求使用者進行登入。
+   - 這證明若使用者沒有經過身份驗證（沒有 Token），將無法訪問受保護的頁面。
 
-1. 進入 `Step Functions`。
+## 測試結論
 
-<br>
+此次測試表明，只有經過 Amazon Cognito user pool驗證的使用者才能訪問應用程式的受保護頁面。Cognito user pool集中管理應用程式的使用者名稱和密碼，確保使用者的身份驗證資訊更安全且易於管理。
 
-2. 選擇 `MyStateMachine` 然後點擊 `Edit`。
+## 下一步
 
-<br>
-
-3. 在左側欄搜尋 `Lambda`。
-
-<br>
-
-1. 將 `Invoke` 拖曳至 `Parallel` 狀態 `Process Report` 之上的畫布區域。
-
-<br>
-
-## 在 Lambda Invoke 窗格中配置以下參數：
-
-1. 在 `State name` 輸入 `getRealData`。
-
-<br>
-
-2. `Function name` 選擇 `getRealData:$LATEST`。
-
-<br>
-
-3. `Payload` 選擇 `No payload`。
-
-<br>
-
-4. 在右上角點擊 `Save`。
-
-<br>
-
-## 更新 SNS Publish 對象的消息格式
-
-1. 進入 `Code` 模式，找到接近 JSON 文檔底部的 `"Message.$": "$"`。
-
-<br>
-
-2. 使用 ASL 內置函數 `States.Format` 來格式化 SNS 消息文本，將其替換為以下內容。
-
-    ```json
-    "Message.$": "States.Format('The report has completed successfully! Here is your secure URL:\\n\\n{}', $[1].presigned_url_str)"
-    ```
-
-<br>
-
-3. 更新後的代碼如下。
-
-    ```json
-    "SNS Publish": {
-        "Type": "Task",
-        "Resource": "arn:aws:states:::sns:publish",
-        "Parameters": {
-            "Message.$": "States.Format('The report has completed successfully! Here is your secure URL:\n\n{}', $[1].presigned_url_str)",
-            "TopicArn": "arn:aws:sns:us-east-1:1234567890:EmailReport"
-        },
-        "End": true
-    }
-    ```
-
-<br>
-
-4. 點擊 `Save` 保存更改，並在 IAM 角色彈出窗口中選擇 `Save anyway`。
-
-<br>
-
-## 測試更新後的狀態機器
-
-1. 在 `Step Functions` 控制台中選擇 `Execute`。
-
-<br>
-
-2. 在代碼編輯器中，將現有的 JSON 請求代碼清空，只保留如下格式。
-
-    ```json
-    {}
-    ```
-
-<br>
-
-3. 選擇 `Start execution` 開始執行。
-
-<br>
-
-4. 檢查電子郵件中的通知，確認該郵件包含生成的報告的預簽名 URL。
-
-<br>
-
-___
-
-_END_
+為了讓學生報告鳥類目擊情況，必須授予他們臨時訪問資料庫的權限。除了身份驗證外，這些使用者還需要授權。這將使用 Amazon Cognito 身份池來完成。在接下來的任務中，將更新並整合身份池與user pool。

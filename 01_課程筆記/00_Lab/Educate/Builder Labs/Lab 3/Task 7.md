@@ -1,10 +1,10 @@
 # Task 7：審查 Amazon Cognito 群組配置
 
-_在這個任務中，將審查 Amazon Cognito 使用者池中的群組配置，並瞭解如何通過 IAM 角色來控制應用程式訪問 Step Functions 狀態機。接著，您將更新應用程式代碼以調用狀態機。_
+_在這個任務中，將審查 Amazon Cognito user pool中的群組配置，並瞭解如何通過 IAM 角色來控制應用程式訪問 Step Functions 狀態機。接著，您將更新應用程式代碼以調用狀態機。_
 
 <br>
 
-## 審查 Amazon Cognito 使用者池群組配置
+## 審查 Amazon Cognito user pool群組配置
 
 1. 搜尋並進入 `Cognito` 服務。
 
@@ -79,7 +79,7 @@ _返回 AWS Cloud9 IDE_
 
 <br>
 
-3. 確認 `<cognito-user-pool-id>` 已被替換為真實的 `Cognito` 使用者池 ID，這是在 Lab 環境中已自動設置的。
+3. 確認 `<cognito-user-pool-id>` 已被替換為真實的 `Cognito` user pool ID，這是在 Lab 環境中已自動設置的。
 
 <br>
 

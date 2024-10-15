@@ -26,21 +26,21 @@ _用於身份驗證和用戶管理的服務，專為行動應用程式和網頁�
 
 ## Lab 概述與目標
 
-_在本 Lab 中，將會配置一個 Amazon Cognito `使用者池（User Pool）`，用來管理使用者及其對現有 Web 應用程式的存取。接著，將會建立一個 Amazon Cognito `身分池（Identity Pool）`，當應用程式呼叫 Amazon DynamoDB 服務時，身分池將授權使用者進行存取。_
+_在本 Lab 中，將會配置一個 Amazon Cognito `user pool（User Pool）`，用來管理使用者及其對現有 Web 應用程式的存取。接著，將會建立一個 Amazon Cognito `身分池（Identity Pool）`，當應用程式呼叫 Amazon DynamoDB 服務時，身分池將授權使用者進行存取。_
 
 <br>
 
 ## Lab 的目的
 
-1. 建立一個 Amazon Cognito 使用者池。
+1. 建立一個 Amazon Cognito user pool。
 
 <br>
 
-2. 使用使用者池建立一個使用者。
+2. 使用user pool建立一個使用者。
 
 <br>
 
-3. 更新範例應用程式以使用使用者池進行身份驗證。
+3. 更新範例應用程式以使用user pool進行身份驗證。
 
 <br>
 
@@ -76,7 +76,7 @@ _在此 Lab 中，將實施 Web 應用程式的使用者認證功能。具體步
 
 <br>
 
-1. 建立並配置 Amazon Cognito 使用者池，使用者池用來管理使用者及其密碼，幫助應用程式實現身份驗證機制。
+1. 建立並配置 Amazon Cognito user pool，user pool用來管理使用者及其密碼，幫助應用程式實現身份驗證機制。
 
 <br>
 
@@ -86,11 +86,11 @@ _在此 Lab 中，將實施 Web 應用程式的使用者認證功能。具體步
 
 ## 整合步驟
 
-_在進行本 Lab 的過程中，將整合使用者池與身分池到 Web 應用程式中，使其具備完整的身份驗證與授權功能_
+_在進行本 Lab 的過程中，將整合user pool與身分池到 Web 應用程式中，使其具備完整的身份驗證與授權功能_
 
 <br>
 
-1. 使用者池：幫助應用程式實現登入及使用者管理功能。
+1. user pool：幫助應用程式實現登入及使用者管理功能。
 
 <br>
 
