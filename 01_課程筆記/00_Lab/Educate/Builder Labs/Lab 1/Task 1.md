@@ -29,12 +29,12 @@ _準備一個文件用來記錄各項資訊_
 2. 貼上以下內容，在接下來步驟中將紀錄各項資訊。
 
     ```bash
-    S3 bucket:
-    CloudFront distribution domain:
-    User pool ID:
-    App client ID:
-    Amazon Cognito domain prefix:
-    Identity pool ID:
+    S3 bucket:""
+    CloudFront distribution domain:""
+    User pool ID:""
+    App client ID:""
+    Amazon Cognito domain prefix:""
+    Identity pool ID:""
     ```
 
 <br>
