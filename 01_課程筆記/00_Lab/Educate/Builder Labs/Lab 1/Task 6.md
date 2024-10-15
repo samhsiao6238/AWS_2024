@@ -29,23 +29,37 @@ _在此任務中，將測試更新後的應用程式，確保其能正確使用 
 
 ## 測試應用程式的 Token 驗證功能
 
-_嘗試使用偽造的 Token_
+_回到網頁應用瀏覽中，在瀏覽器的 `開發者工具` 中嘗試使用 `偽造的 Token`_
 
 <br>
 
-1. 在開發者工具中，找到 CloudFront 分發對應的 Local Storage，找到 `bearer_str`，雙擊該值，並隨意修改字串內容，例如添加或刪除幾個字符。
+1. 在開發者工具中，找到 CloudFront 分發對應的 `Local Storage`，找到 `bearer_str`，雙擊該值，並隨意修改字串內容，這裡是飯加入前綴 `xx_`。
+
+    ![](images/img_65.png)
 
 <br>
 
-2. 再次選擇 `SIGHTINGS` 頁籤，此時應用程式會顯示一條訊息，指出 Token 無效，這表明應用程式能夠評估並確保 Token 的合法性。
+2. 再次點擊 `SIGHTINGS` 頁籤，此時應用程式會顯示一條訊息指出 Token 無效，如此便驗證了應用程式目前是可以能評估並確保 Token 的合法性。
+
+    ![](images/img_66.png)
 
 <br>
 
-3. 注意，若觀察開發者工具中的 `Local Storage`，可能會發現 `bearer_str` 已被移除，這是應用程式中的一段代碼所實現的。
+3. 注意，此時在開發者工具的 `Local Storage` 中會發現 `bearer_str` 已被強製移除。
+
+![](images/img_67.png)
 
 <br>
 
-4. 選擇 `DISMISS` 關閉訊息。
+4. 延續上一點，關於這個移除的機制，官方說明提到 _這是應用程式中的一段代碼所實現的_，經查詢確實在 `auth.js` 中可看到處理這個行為的函數 `handleLogout()`。
+
+    ![](images/img_68.png)
+
+<br>
+
+5. 選擇 `DISMISS` 關閉訊息，會自動回到應用的首頁。
+
+    ![](images/img_69.png)
 
 <br>
 
