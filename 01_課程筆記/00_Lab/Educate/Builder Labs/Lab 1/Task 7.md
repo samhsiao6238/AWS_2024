@@ -40,18 +40,23 @@ _返回 `Cognito` 主控台_
 
 <br>
 
-2. 在 `Authenticated role` 項目會顯示 `bird-app-student-role`，這是當使用者通過身份驗證後，會自動被分配的角色；對於 `Birds 應用程式`，該角色已配置為允許學生添加和選擇 DynamoDB 表中的記錄。
+2. 在開始設定之前，先確認一下跟這張完成圖是否不同，這張完成圖是完成後截圖的，若下一次練習有所不同再進行更換。
+
+    ![](images/img_81.png)
+
+<br>
+
+3. 在 `Authenticated role` 項目會顯示 `bird-app-student-role`，這是當使用者通過身份驗證後，會自動被分配的角色；對於 `Birds 應用程式`，該角色已配置為允許學生添加和選擇 DynamoDB 表中的記錄。
 
     ![](images/img_73.png)
 
 <br>
 
-3. 向下滑動到 `Guest` 區塊，在 `Guest role` 項目下顯示 `bird_app_id_poolUnauth_Role`，此角色會分配給尚未通過身份驗證的使用者，並規範了這些使用者在 `Birds 應用程式` 中的訪問權限。
+4. 向下滑動到 `Guest` 區塊，在 `Guest role` 項目下顯示 `bird_app_id_poolUnauth_Role`，此角色會分配給尚未通過身份驗證的使用者，並規範了這些使用者在 `Birds 應用程式` 中的訪問權限。
 
     ![](images/img_75.png)
 
 <br>
-
 
 ## 更新 Identity Pool 配置
 
@@ -85,17 +90,9 @@ _返回 `Cognito` 主控台_
 
 <br>
 
-## 檢查Identity Pool角色配置
+## 結論
 
-1. 再次檢查 `Authentication providers` 區域，確認已認證角色 (`Authenticated role`) 配置為預設角色，該角色會在使用者成功登入後自動分配。
-
-<br>
-
-2. 雖然可以設置額外的規則來為不同使用者分配不同的 AWS 身份與存取管理 (IAM) 角色，但在此階段，將保持簡單配置。
-
-<br>
-
-3. 至此，Identity Pool已成功配置，Birds 應用程式現在可以使用 Cognito 的身份驗證和授權功能來管理不同使用者的訪問權限。
+1. 至此 `Identity Pool` 已成功配置，`Birds 應用程式` 可以使用 `Cognito` 的身份驗證和授權功能來管理不同使用者的訪問權限。
 
 <br>
 
