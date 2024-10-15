@@ -30,13 +30,19 @@ _訪問失敗有時候可能是需要稍等一下_
 
 ## 瀏覽需要身份驗證的頁面
 
-1. 切換到 `SIGHTINGS` 頁籤，點擊 `LOGIN` 按鈕進行登入，系統會顯示無法訪問，原因是應用程式的 `Amazon Cognito user pool` 尚未完成設定。
+1. 切換到 `SIGHTINGS` 頁籤，點擊 `LOGIN` 按鈕進行登入。
+
+    ![](images/img_56.png)
+
+<br>
+
+2. 系統會顯示無法訪問，原因是應用程式的 `Amazon Cognito user pool` 尚未完成設定。
 
     ![](images/img_10.png)
 
 <br>
 
-2. 可關閉訪問中的瀏覽器分頁，但要保留 Cloud9 IDE 中運行的 Node 伺服器運行；接下來會建立並配置 `Amazon Cognito user pool` 以管理應用程式的使用者及其密碼。
+3. 可關閉訪問中的瀏覽器分頁，但要保留 Cloud9 IDE 中運行的 Node 伺服器運行；接下來會建立並配置 `Amazon Cognito user pool` 以管理應用程式的使用者及其密碼。
 
 <br>
 
