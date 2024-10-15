@@ -10,7 +10,7 @@ _訪問失敗有時候可能是需要稍等一下_
 
 <br>
 
-1. 開啟新的瀏覽器分頁，輸入 CloudFront 發佈的網域名，就是紀錄在 `MyDoc.txt` ˋ中的 `CloudFront distribution domain`。
+1. 開啟新的瀏覽器分頁，輸入 CloudFront 發佈的網域名，就是紀錄在 `MyDoc.txt` 中的 `CloudFront distribution domain`。
 
     ![](images/img_07.png)
 
