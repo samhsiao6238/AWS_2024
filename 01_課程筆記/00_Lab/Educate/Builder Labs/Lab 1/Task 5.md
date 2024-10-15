@@ -28,12 +28,7 @@ _在此任務中，將會更新 Birds 應用程式的設定，使其與 Amazon C
 
 3. 編輯完成後，切記保存修改。
 
-    ```javascript
-    CONFIG.COGNITO_DOMAIN_STR = "abc-10-12-2021";
-    CONFIG.COGNITO_USER_POOL_ID_STR = "us-east-1_AAAA1111";
-    CONFIG.COGNITO_USER_POOL_CLIENT_ID_STR = "1a1a1a12b2b2b2b3c3c3c3c";
-    CONFIG.CLOUDFRONT_DISTRO_STR = "d123456acbdef";
-    ```
+    ![](images/img_60.png)
 
 <br>
 
