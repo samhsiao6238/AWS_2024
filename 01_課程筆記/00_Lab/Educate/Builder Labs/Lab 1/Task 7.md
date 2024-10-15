@@ -6,7 +6,13 @@ _此任務中，將會配置已經在 Lab 環境中預先建立的 `Amazon Cogni
 
 ## 進入 `Identity Pool` 配置頁面
 
-1. 返回 AWS 管理控制台，從頁面左側選單中選擇 `Federated identities`。
+_返回 `Cognito` 主控台_
+
+<br>
+
+1. 從左側選單中選擇 `Identity pools`；補充說明，這個選項的名稱本來是 `Federated identities`，現在已經更名。
+
+    ![](images/img_70.png)
 
 <br>
 
