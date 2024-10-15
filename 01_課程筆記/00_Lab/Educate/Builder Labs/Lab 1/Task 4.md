@@ -18,15 +18,23 @@ _繼續在 `User pools` 的 `bird_app` 詳細頁面中操作_
 
 <br>
 
-1. 進入 `Users` 頁籤，在 `Cognito user pool` 的管理介面中，點擊上方的 `Users` 頁籤。
+1. 切換到 `Users` 頁籤。
+
+    ![](images/img_38.png)
 
 <br>
 
-2. 在 `Users` 面板中選擇 `Create user`；`Username` 輸入 `teststudent`、`Temporary password` 選擇 `Set a password`、`Password` 輸入 `Welcome1!`。
+2. 在 `Users` 面板中選擇 `Create user`。
+
+    ![](images/img_39.png)
 
 <br>
 
-3. 點擊 `Create user` 完成建立。
+3. 在 `Username` 輸入 `teststudent`、`Temporary password` 選擇 `Set a password`、`Password` 輸入 `Welcome1!`。
+
+<br>
+
+4. 點擊 `Create user` 完成建立。
 
 <br>
 
