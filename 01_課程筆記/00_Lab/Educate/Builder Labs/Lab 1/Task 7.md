@@ -1,16 +1,16 @@
-# Task 7：配置 Amazon Cognito 身份池
+# Task 7：配置 Amazon Cognito Identity Pool
 
-_此任務中，將會配置已經在 Lab 環境中預先建立的 Amazon Cognito 身份池，並使其與 Birds 應用程式整合。_
+_此任務中，將會配置已經在 Lab 環境中預先建立的 Amazon Cognito Identity Pool，並使其與 Birds 應用程式整合。_
 
 <br>
 
-## 進入身份池配置頁面
+## 進入Identity Pool配置頁面
 
 1. 返回 AWS 管理控制台，從頁面左側選單中選擇 `Federated identities`。
 
 <br>
 
-2. 選擇 `bird_app_id_pool`，這是預先建立的身份池。
+2. 選擇 `bird_app_id_pool`，這是預先建立的Identity Pool。
 
 <br>
 
@@ -18,11 +18,11 @@ _此任務中，將會配置已經在 Lab 環境中預先建立的 Amazon Cognit
 
 <br>
 
-4. 記錄身份池 ID 到文本編輯器中，稍後在更新網站配置時需要使用。
+4. 記錄Identity Pool ID 到文本編輯器中，稍後在更新網站配置時需要使用。
 
 <br>
 
-## 配置身份池角色
+## 配置Identity Pool角色
 
 _在 `Edit identity pool` 頁面上，檢查以下角色配置_
 
@@ -36,7 +36,7 @@ _在 `Edit identity pool` 頁面上，檢查以下角色配置_
 
 <br>
 
-## 更新身份池配置
+## 更新Identity Pool配置
 
 1. 展開 `Authentication providers` 區域，選擇 `Cognito` 標籤。
 
@@ -54,7 +54,7 @@ _在 `Edit identity pool` 頁面上，檢查以下角色配置_
 
 <br>
 
-## 檢查身份池角色配置
+## 檢查Identity Pool角色配置
 
 1. 再次檢查 `Authentication providers` 區域，確認已認證角色 (`Authenticated role`) 配置為預設角色，該角色會在使用者成功登入後自動分配。
 
@@ -64,7 +64,7 @@ _在 `Edit identity pool` 頁面上，檢查以下角色配置_
 
 <br>
 
-3. 至此，身份池已成功配置，Birds 應用程式現在可以使用 Cognito 的身份驗證和授權功能來管理不同使用者的訪問權限。
+3. 至此，Identity Pool已成功配置，Birds 應用程式現在可以使用 Cognito 的身份驗證和授權功能來管理不同使用者的訪問權限。
 
 <br>
 

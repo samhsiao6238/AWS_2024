@@ -1,6 +1,6 @@
-# Task 8：更新應用程式以使用身份池進行授權
+# Task 8：更新應用程式以使用Identity Pool進行授權
 
-_為了使 Birds 應用程式能夠與 Amazon Cognito 身份池進行互動，必須進行一些必要的更新。這些更新將使應用程式能夠正確處理授權並確保使用者擁有適當的 AWS 憑證來訪問受保護的資源。_
+_為了使 Birds 應用程式能夠與 Amazon Cognito Identity Pool進行互動，必須進行一些必要的更新。這些更新將使應用程式能夠正確處理授權並確保使用者擁有適當的 AWS 憑證來訪問受保護的資源。_
 
 <br>
 
@@ -14,7 +14,7 @@ _返回 AWS Cloud9 IDE_
 
 <br>
 
-2. 取消最後一行代碼的註解，並將 `<cognito-identity-pool-id>` 佔位符替換為之前記錄的身份池 ID；保存變更。
+2. 取消最後一行代碼的註解，並將 `<cognito-identity-pool-id>` 佔位符替換為之前記錄的Identity Pool ID；保存變更。
 
     ```javascript
     //CONFIG.COGNITO_IDENTITY_POOL_ID_STR = "<cognito-identity-pool-id>";
@@ -27,7 +27,7 @@ _返回 AWS Cloud9 IDE_
 
 <br>
 
-4. 將 `<cognito-user-pool-id>` 佔位符替換為 `user pool ID`，注意這裡要使用user pool ID，而不是身份池 ID。
+4. 將 `<cognito-user-pool-id>` 佔位符替換為 `user pool ID`，注意這裡要使用user pool ID，而不是Identity Pool ID。
 
     ```javascript
     AWS.config.credentials = new AWS.CognitoIdentityCredentials({
@@ -53,7 +53,7 @@ _返回 AWS Cloud9 IDE_
 
 <br>
 
-6. 此代碼片段使用 `COGNITO_IDENTITY_POOL_ID_STR` 變數來請求身份池中的 AWS 憑證。該代碼還傳遞了user pool ID 和 `token_str_or_null`（保存身份驗證憑證）。身份池會使用這些資訊來驗證使用者，如果驗證通過，身份池會向應用程式返回 AWS 憑證。
+6. 此代碼片段使用 `COGNITO_IDENTITY_POOL_ID_STR` 變數來請求Identity Pool中的 AWS 憑證。該代碼還傳遞了user pool ID 和 `token_str_or_null`（保存身份驗證憑證）。Identity Pool會使用這些資訊來驗證使用者，如果驗證通過，Identity Pool會向應用程式返回 AWS 憑證。
 
 <br>
 
@@ -79,7 +79,7 @@ _返回 AWS Cloud9 IDE_
 
 <br>
 
-2. 經過這些更新，Birds 應用程式現在可以正確與 Cognito 身份池進行整合，確保使用者在身份驗證後能夠獲得 AWS 憑證並進行授權。
+2. 經過這些更新，Birds 應用程式現在可以正確與 Cognito Identity Pool進行整合，確保使用者在身份驗證後能夠獲得 AWS 憑證並進行授權。
 
 <br>
 
