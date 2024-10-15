@@ -100,9 +100,11 @@ _返回 AWS Cloud9 IDE_
     npm start
     ```
 
+    ![](images/img_85.png)
+
 <br>
 
-2. 經過這些更新，Birds 應用程式現在可以正確與 Cognito Identity Pool進行整合，確保使用者在身份驗證後能夠獲得 AWS 憑證並進行授權。
+2. 經過這些更新，`Birds 應用程式` 現在可以正確與 `Cognito Identity Pool` 進行整合，確保使用者在身份驗證後能夠獲得 AWS 憑證並進行授權。
 
 <br>
 
