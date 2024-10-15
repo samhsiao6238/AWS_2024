@@ -31,9 +31,9 @@ _準備一個文件用來記錄各項資訊_
     ```bash
     S3 bucket:""
     CloudFront distribution domain:""
+    Amazon Cognito domain prefix:""
     User pool ID:""
     App client ID:""
-    Amazon Cognito domain prefix:""
     Identity pool ID:""
     ```
 

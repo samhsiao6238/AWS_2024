@@ -140,7 +140,7 @@ _在 `Integrate your app` 頁面中進行配置_
 
 <br>
 
-4. 在下方 `Cognito domain` 欄位中輸入唯一的域名如 `mydomain2024`；可將此紀錄在 `MyDoc.txt`。
+4. 在下方 `Cognito domain` 欄位中輸入唯一的域名如 `mydomain2024`；完成後將此名稱紀錄在 `MyDoc.txt`。
 
     ![](images/img_32.png)
 
@@ -148,13 +148,13 @@ _在 `Integrate your app` 頁面中進行配置_
 
 ## 配置應用程式客戶端
 
-1. 在 `Initial app client` 區域中，選擇 `Public client`。
+1. 在 `Initial app client` 區域中，保留預設選擇的 `Public client`。
 
     ![](images/img_26.png)
 
 <br>
 
-2. 在 `App client name` 欄位中輸入 `bird_app_client`。
+2. 在 `App client name` 欄位中輸入命名 `bird_app_client`。
 
     ![](images/img_27.png)
 
