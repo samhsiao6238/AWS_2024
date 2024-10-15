@@ -6,7 +6,7 @@ _在此任務中，將會更新 Birds 應用程式的設定，使其與 Amazon C
 
 ## 更新 Web 應用程式配置
 
-1. 返回Cloud9 IDE，在終端機中，按下 `Ctrl+C` 停止運行中的 Node 伺服器。
+1. 返回 Cloud9 IDE，在終端機中，按下組合鍵 `Ctrl+C` 停止運行中的 Node 伺服器。
 
 <br>
 
