@@ -38,7 +38,13 @@ _繼續在 `User pools` 的 `bird_app` 詳細頁面中操作_
 
 ## 測試 `teststudent` 使用者登入
 
-1. 返回 `App integration` 標籤，滾動至底部 `App clients and analytics` 區域，點擊 `bird_app_client`。
+1. 切換回 `App integration` 頁籤。
+
+    ![](images/img_48.png)
+
+<br>
+
+2. 滾動至底部 `App clients and analytics` 區域，點擊 `bird_app_client`。
 
     ![](images/img_42.png)
 
