@@ -44,15 +44,7 @@ _在 `Configure sign-in experience` 頁面中進行配置_
 
 <br>
 
-2. 在 `Cognito user pool sign-in options` 選擇 `User name`。
-
-<br>
-
-3. 在 `User name requirements` 勾選 `Make user name case sensitive`。
-
-<br>
-
-4. 點擊 `Next`。
+2. 在 `Cognito user pool sign-in options` 選擇 `User name`、在 `User name requirements` 勾選 `Make user name case sensitive`；然後點擊 `Next`。
 
     ![](images/img_15.png)
 
