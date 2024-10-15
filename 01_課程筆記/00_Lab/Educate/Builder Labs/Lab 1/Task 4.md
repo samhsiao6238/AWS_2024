@@ -56,7 +56,9 @@ _繼續在 `User pools` 的 `bird_app` 詳細頁面中操作_
 
 <br>
 
-4. 在新打開的瀏覽器分頁中，輸入剛剛建立的使用者名稱 `teststudent` 及密碼 `Welcome1!`，點擊 `Login`。
+4. 在新打開的瀏覽器分頁中，輸入剛剛建立的使用者名稱 `teststudent` 及密碼 `Welcome1!`，點擊 `Sign In`。
+
+    ![](images/img_49.png)
 
 <br>
 
