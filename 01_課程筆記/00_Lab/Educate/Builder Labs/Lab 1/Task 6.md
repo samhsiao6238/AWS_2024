@@ -47,7 +47,7 @@ _回到網頁應用瀏覽中，在瀏覽器的 `開發者工具` 中嘗試使用
 
 3. 注意，此時在開發者工具的 `Local Storage` 中會發現 `bearer_str` 已被強製移除。
 
-![](images/img_67.png)
+    ![](images/img_67.png)
 
 <br>
 
