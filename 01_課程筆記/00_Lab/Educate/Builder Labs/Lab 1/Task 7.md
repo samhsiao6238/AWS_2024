@@ -16,15 +16,19 @@ _返回 `Cognito` 主控台_
 
 <br>
 
-2. 選擇 `bird_app_id_pool`，這是預先建立的 `Identity Pool`。
+2. 點擊進入 `bird_app_id_pool`，這是預先建立的 `Identity Pool`。
 
 <br>
 
-3. 點擊右上角的 `Edit identity pool` 進行編輯。
+3. 在 `MyDoc.txt` 中記錄 `Identity Pool ID`。
+
+    ![](images/img_71.png)
 
 <br>
 
-4. 記錄 `Identity Pool ID` 到文本編輯器中，稍後在更新網站配置時需要使用。
+4. 至此 `MyDoc.txt` 所需記錄的資訊都已完成。
+
+    ![](images/img_72.png)
 
 <br>
 
