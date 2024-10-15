@@ -62,9 +62,15 @@ _繼續在 `User pools` 的 `bird_app` 詳細頁面中操作_
 
 <br>
 
-5. 第一次登入系統會要求更改密碼，在 `New Password` 統一輸入 `Welcome123!`。
+5. 第一次登入系統會要求更改密碼，在 `New Password` 統一輸入 `Welcome123!`，然後點擊 `Send`；特別注意，這是在 Lab 環境中，僅基於便於操作紀錄所以統一密碼。
 
     ![](images/img_44.png)
+
+<br>
+
+6. 完成以上操作會重回網站應用首頁。
+
+    ![](images/img_50.png)
 
 <br>
 
