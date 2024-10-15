@@ -198,6 +198,12 @@ _在 `Integrate your app` 頁面中進行配置_
 
 <br>
 
+3. 這裡補充紀錄，至此在 `MyDoc.txt` 中已紀錄如下內容。
+
+    ![](images/img_58.png)
+
+<br>
+
 ## 配置應用整合
 
 1. 在 `user pool` 建立後，點擊進入 `bird-app`。
@@ -212,9 +218,15 @@ _在 `Integrate your app` 頁面中進行配置_
 
 <br>
 
-3. 滾動至頁面底部找到 `App clients and analytics` 區域，找到 `bird_app_client`，將 `Client ID` 紀錄到 `MyDoc.txt`；至此成功設置 `Cognito user pool` 與應用程式客戶端，接下來將會建立測試用戶。
+3. 滾動至頁面底部找到 `App clients and analytics` 區域，找到 `bird_app_client`。
 
     ![](images/img_40.png)
+
+<br>
+
+4. 將 `Client ID` 紀錄到 `MyDoc.txt`；至此成功設置 `Cognito user pool` 與應用程式客戶端，接下來將會建立測試用戶。
+
+    ![](images/img_59.png)
 
 <br>
 
