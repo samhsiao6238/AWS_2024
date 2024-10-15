@@ -91,9 +91,9 @@ _返回 AWS Cloud9 IDE_
 
 <br>
 
-## 確認 Node 伺服器是否正在運行
+## 重新啟動 Node 伺服器
 
-1. 如果伺服器未在運行，運行以下指令重新啟動伺服器：
+1. 切換路徑並運行指令重新啟動伺服器。
 
     ```bash
     cd /home/ec2-user/environment/node_server
