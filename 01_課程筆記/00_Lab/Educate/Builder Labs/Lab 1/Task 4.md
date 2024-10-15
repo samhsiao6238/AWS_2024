@@ -1,43 +1,30 @@
 # Task 4：新增測試使用者
 
-_在使用 Amazon Cognito user pool訪問應用程式之前，必須先在user pool中建立使用者帳戶。在此任務中，將會建立一個名為 `teststudent` 的使用者，並使用該帳戶來測試應用程式與 Amazon Cognito user pool的整合。_
+## 說明
+
+1. 在使用 `Amazon Cognito user pool` 訪問應用程式之前，必須先在 `user pool` 中建立使用者帳戶。
+
+2. 此任務會建立一個使用者 `teststudent`，並使用該帳戶來測試應用程式與 `Amazon Cognito user pool` 的整合。
 
 ## 建立測試使用者
 
-1. 進入 Users 標籤頁：
-   - 在 Cognito user pool的管理介面中，找到並點擊上方的 `Users` 標籤。
+1. 進入 `Users` 頁籤，在 `Cognito user pool` 的管理介面中，點擊上方的 `Users` 頁籤。
 
-2. 創建新使用者：
-   - 在 `Users` 面板中選擇 `Create user`。
-   - 配置以下設置：
-     - Username：輸入 `teststudent`
-     - Temporary password：選擇 `Set a password`
-     - Password：輸入 `Welcome1!`
+2. 在 `Users` 面板中選擇 `Create user`；`Username` 輸入 `teststudent`、`Temporary password` 選擇 `Set a password`、`Password` 輸入 `Welcome1!`。
 
-3. 創建使用者：
-   - 點擊 `Create user` 完成建立。
+3. 點擊 `Create user` 完成建立。
 
 ## 測試 `teststudent` 使用者登入
 
-1. 返回 App integration 標籤：
-   - 滾動至 `App clients and analytics` 區域。
+1. 返回 App integration 標籤，滾動至 `App clients and analytics` 區域。
 
-2. 打開 Hosted UI：
-   - 點擊 `bird_app_client` 連結。
-   - 在 `Hosted UI` 區域中，選擇 `View Hosted UI`。
+2. 點擊 `bird_app_client` 連結，在 `Hosted UI` 區域中，選擇 `View Hosted UI`。
 
-3. 登入 Hosted UI：
-   - 在新打開的瀏覽器分頁中，輸入剛剛創建的使用者名稱 `teststudent` 及密碼 `Welcome1!`，點擊登入。
+3. 在新打開的瀏覽器分頁中，輸入剛剛建立的使用者名稱 `teststudent` 及密碼 `Welcome1!`，點擊登入。
 
-4. 提示更改密碼：
-   - 登入後系統會要求更改密碼，設定如下：
-     - New Password：輸入 `Welcome123!`
-     - Enter New Password Again：再次輸入 `Welcome123!`
-     - Email：輸入有效的電子郵件地址。
-   - 點擊 `Send`。
+4. 登入後系統會要求更改密碼，在 `New Password` 輸入 `Welcome123!`，`Email` 輸入自己的電子郵件地址，點擊 `Send`。
 
-5. 完成登入並重定向至 Birds Web 應用程式：
-   - 成功登入後，會自動重定向到 Birds 應用程式的主頁。
+5. 成功登入後，會自動進入網頁應用程式的主頁。
 
 ## 獲取 Cognito 發送的憑證 (Token)
 

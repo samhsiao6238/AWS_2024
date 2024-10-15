@@ -38,7 +38,7 @@ _這裡是使用 root 權限，所以不存在使用者權限問題，僅作一�
 
 ## 檢查並更新 S3 Bucket 政策
 
-1. 登入 `S3` 服務，對於要刪除的 Bucket，進入 `Permissions` 標籤頁。
+1. 登入 `S3` 服務，對於要刪除的 Bucket，進入 `Permissions` 頁籤。
 
     ![](images/img_33.png)
 

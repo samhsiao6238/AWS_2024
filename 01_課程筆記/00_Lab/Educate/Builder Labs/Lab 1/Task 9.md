@@ -10,7 +10,7 @@ _此任務將測試更新後的 Birds 應用程式，以確保能夠獲取臨時
 
 3. 選擇 "REPORT" 標籤。
 
-4. 選擇 "LOGIN"，並使用先前在user pool中創建的 `teststudent` 帳戶登入。
+4. 選擇 "LOGIN"，並使用先前在user pool中建立的 `teststudent` 帳戶登入。
 
 5. 登入後，再次選擇 "REPORT" 標籤。
 
