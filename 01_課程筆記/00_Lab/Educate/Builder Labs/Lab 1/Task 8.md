@@ -70,7 +70,11 @@ _返回 AWS Cloud9 IDE_
 
 ## 推送更新至 S3 Bucket
 
-1. 在之前的步驟中已經輸入變數 `S3_BUCKET`，若使用相同終端機，可以不用再次輸入。
+1. 使用組合鍵 `control+C` 停止 Node 伺服器運行。
+
+<br>
+
+2. 在之前的步驟中已經輸入變數 `S3_BUCKET`，若使用相同終端機，可以不用再次輸入。
 
     ```bash
     S3_BUCKET=<s3-bucket>
@@ -78,7 +82,7 @@ _返回 AWS Cloud9 IDE_
 
 <br>
 
-2. 切換路徑並運行以下指令完成上傳。
+3. 切換路徑並運行以下指令完成上傳。
 
     ```bash
     cd /home/ec2-user/environment
