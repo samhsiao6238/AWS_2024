@@ -6,24 +6,23 @@ _在此任務中，將會更新 Birds 應用程式的設定，使其與 Amazon C
 
 ## 更新 Web 應用程式配置
 
-1. 返回 Cloud9 IDE，在終端機中，按下組合鍵 `Ctrl+C` 停止運行中的 Node 伺服器。
+1. 返回 Cloud9 IDE，在終端機中，按下組合鍵 `control+C` 停止運行中的 Node 伺服器。
+
+    ![](images/img_52.png)
 
 <br>
 
 ## 編輯設定文件
 
-1. 在左側欄中，點擊打開 `config.js` 文件。
+1. 在左側欄中，在 `website/scripts` 路徑中點擊打開 `config.js` 文件。
+
+    ![](images/img_53.png)
 
 <br>
 
-2. 取消以下代碼的註解，並將每個佔位符替換為之前記錄的相應值。
+2. 取消以下代碼的註解，並將每個佔位符替換為記錄在 `MyDoc.txt` 中的相應值；其中 `CONFIG.CLOUDFRONT_DISTRO_STR` 僅需填入 `.cloudfront.net` 前的字串。
 
-    ```javascript
-    Cognito Domain (`CONFIG.COGNITO_DOMAIN_STR`)
-    User Pool ID (`CONFIG.COGNITO_USER_POOL_ID_STR`)
-    App Client ID (`CONFIG.COGNITO_USER_POOL_CLIENT_ID_STR`)
-    CloudFront Distribution Prefix (`CONFIG.CLOUDFRONT_DISTRO_STR`)：僅需填入 `.cloudfront.net` 前的字串。
-    ```
+    ![](images/img_54.png)
 
 <br>
 
