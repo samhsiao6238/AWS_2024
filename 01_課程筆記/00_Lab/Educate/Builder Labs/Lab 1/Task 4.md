@@ -94,7 +94,7 @@ _繼續在 `User pools` 的 `bird_app` 詳細頁面中操作_
 
 <br>
 
-4. 在右側區域中可看到名為 `bearer_str` 的 `Key`，這個 `bearer_str` 的 `Value` 即是 `Amazon Cognito user pool` 產生的 `憑證 (Token)`。
+4. 在右側區域中可看到名為 `bearer_str` 的 `Key`，這個 `bearer_str` 的 `Value` 即是 `Amazon Cognito user pool` 產生的 `Token`。
 
     ![](images/img_51.png)
 
