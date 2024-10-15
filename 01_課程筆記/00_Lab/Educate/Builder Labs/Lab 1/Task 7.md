@@ -32,19 +32,26 @@ _返回 `Cognito` 主控台_
 
 <br>
 
-## 配置Identity Pool角色
+## 查看 Identity Pool 角色
 
-_在 `Edit identity pool` 頁面上，檢查以下角色配置_
+1. 切換到 `User access` 頁籤。
 
-<br>
-
-1. `Unauthenticated role (未認證角色)`：`bird-app-id-poolUnauth_Role`，此角色會分配給尚未通過身份驗證的使用者，這些使用者在 `Birds 應用程式` 中的訪問權限有限。
+    ![](images/img_74.png)
 
 <br>
 
-2. `Authenticated role (已認證角色)`：`bird-app-student-role`，當使用者通過身份驗證後，會自動被分配此角色。對於 Birds 應用程式，該角色已配置為允許學生添加和選擇 DynamoDB 表中的記錄。
+2. 在 `Authenticated role` 項目會顯示 `bird-app-student-role`，這是當使用者通過身份驗證後，會自動被分配的角色；對於 `Birds 應用程式`，該角色已配置為允許學生添加和選擇 DynamoDB 表中的記錄。
+
+    ![](images/img_73.png)
 
 <br>
+
+3. 向下滑動到 `Guest` 區塊，在 `Guest role` 項目下顯示 `bird_app_id_poolUnauth_Role`，此角色會分配給尚未通過身份驗證的使用者，並規範了這些使用者在 `Birds 應用程式` 中的訪問權限。
+
+    ![](images/img_75.png)
+
+<br>
+
 
 ## 更新Identity Pool配置
 
