@@ -60,51 +60,61 @@ _在 `Configure sign-in experience` 頁面中進行配置_
 
 ## 配置安全性要求
 
-_在 "Configure security requirements" 頁面中配置以下設定_
+_在 `Configure security requirements` 頁面中進行配置_
 
 <br>
 
-1. `Password policy mode`  使用 `Cognito defaults`。
+1. `Password policy mode` 使用預設選取的 `Cognito defaults`。
+
+    ![](images/img_16.png)
 
 <br>
 
 2. `Multi-factor authentication` 選擇 `No MFA`。
 
-<br>
-
-3. `User account recovery` 取消選擇 `Enable self-service account recovery - Recommended`。
+    ![](images/img_17.png)
 
 <br>
 
-4. 點擊 `Next`。
+3. `User account recovery` 取消選擇 `Enable self-service account recovery - Recommended`；然後點擊 `Next`。
+
+    ![](images/img_18.png)
 
 <br>
 
 ## 配置註冊體驗
 
-_在 "Configure sign-up experience" 頁面中配置以下設定_
+_在 `Configure sign-up experience` 頁面中進行配置_
 
 <br>
 
 1. 取消選擇 `Enable self-registration`。
 
+    ![](images/img_19.png)
+
 <br>
 
-2. 取消選擇 `Allow Cognito to automatically send messages to verify and confirm - Recommended`。
+2. 在 `Cognito-assisted verification and confirmation`，選擇 `Don’t automatically send messages`。
+
+    ![](images/img_20.png)
 
 <br>
 
 3. 點擊 `Next`。
 
+    ![](images/img_21.png)
+
 <br>
 
 ## 配置訊息傳遞
 
-_在 "Configure message delivery" 頁面中配置以下設定_
+_在 `Configure message delivery` 頁面中進行配置_
 
 <br>
 
-1. 選擇 `Send email with Cognito`。
+1. 在 `Email` 切換選擇為 `Send email with Cognito`。
+
+    ![](images/img_22.png)
 
 <br>
 
@@ -114,15 +124,19 @@ _在 "Configure message delivery" 頁面中配置以下設定_
 
 ## 應用程式整合
 
-_在 "Integrate your app" 頁面中配置以下設定_
+_在 `Integrate your app` 頁面中進行配置_
 
 <br>
 
 1. `User pool name` 輸入 `bird_app`
 
+    ![](images/img_23.png)
+
 <br>
 
 2. 勾選 `Use the Cognito Hosted UI`
+
+    ![](images/img_25.png)
 
 <br>
 
@@ -132,31 +146,49 @@ _在 "Integrate your app" 頁面中配置以下設定_
 
 4. 在 `Cognito domain` 欄位中輸入唯一的域名如 `MyDomain2024`；可將此紀錄在 `MyDoc.txt`。
 
+    ![](images/img_24.png)
+
 <br>
+
+5. 會提示只可使用小寫字母開頭前綴，以及其他相關規範，出現錯誤時可查看錯誤提示；這裡修改為 `mydomain2024`。
+
+    ![](images/img_32.png)
 
 ## 配置應用程式客戶端
 
 1. 在 `Initial app client` 區域中，選擇 `Public client`。
 
+    ![](images/img_26.png)
+
 <br>
 
 2. 在 `App client name` 欄位中輸入 `bird_app_client`。
+
+    ![](images/img_27.png)
 
 <br>
 
 3. 在 `Allowed callback URLs` 欄位中，輸入 `https://<cloudfront-domain>/callback.html`，將其中 `<cloudfront-domain>` 替換為記錄在 `MyDoc.txt` 中的 CloudFront 網域名。
 
+    ![](images/img_28.png)
+
 <br>
 
-4. 在 `Advanced app client settings` 區域中已選取確保以下選項，`ALLOW_USER_PASSWORD_AUTH`、`ALLOW_REFRESH_TOKEN_AUTH`。
+4. 展開 `Advanced app client settings` 區域，在下拉選單 `Authentication flows` 中，使用預設選取的 `ALLOW_USER_PASSWORD_AUTH`、`ALLOW_REFRESH_TOKEN_AUTH`。
+
+    ![](images/img_29.png)
 
 <br>
 
 5. 在 `OAuth 2.0 Grant Types` 區域中，取消選取 `Authorization code grant`，然後選取 `Implicit grant`。
 
+    ![](images/img_30.png)
+
 <br>
 
 6. 點擊 `Next`。
+
+    ![](images/img_31.png)
 
 <br>
 
