@@ -50,17 +50,17 @@ _繼續在 `User pools` 的 `bird_app` 詳細頁面中操作_
 
 <br>
 
-2. 在 `Hosted UI` 區域中，選擇 `View Hosted UI`。
+3. 在 `Hosted UI` 區域中，選擇 `View Hosted UI`。
 
     ![](images/img_43.png)
 
 <br>
 
-3. 在新打開的瀏覽器分頁中，輸入剛剛建立的使用者名稱 `teststudent` 及密碼 `Welcome1!`，點擊 `Login`。
+4. 在新打開的瀏覽器分頁中，輸入剛剛建立的使用者名稱 `teststudent` 及密碼 `Welcome1!`，點擊 `Login`。
 
 <br>
 
-4. 第一次登入系統會要求更改密碼，在 `New Password` 統一輸入 `Welcome123!`。
+5. 第一次登入系統會要求更改密碼，在 `New Password` 統一輸入 `Welcome123!`。
 
     ![](images/img_44.png)
 
