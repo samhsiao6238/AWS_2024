@@ -6,9 +6,10 @@ _在此任務中，將測試更新後的應用程式，確保其能正確使用 
 
 ## 重新啟動 Node 伺服器
 
-1. 運行指令啟動 Node 伺服器。
+1. 運行指令啟動 Node 伺服器；官方教程未提及切換路徑，假如路徑並非在腳本所在資料夾，要先進行路徑切換。
 
     ```bash
+    cd /home/ec2-user/environment/node_server
     npm start
     ```
 
