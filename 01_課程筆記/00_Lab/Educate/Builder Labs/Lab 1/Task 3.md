@@ -112,6 +112,8 @@ _在 `Configure message delivery` 頁面中進行配置_
 
 2. 點擊 `Next`。
 
+    ![](images/img_57.png)
+
 <br>
 
 ## 應用程式整合
