@@ -12,6 +12,8 @@ _在一開始 Lab 時，先在預先準備的 AWS Cloud9 IDE 中導入一些檔�
 
 2. 在 Lab 預先建立好的實例 `Cloud9 Instance` 右側點擊 `Open` 開啟 IDE。
 
+    ![](images/img_55.png)
+
 <br>
 
 ## 記錄所需資訊
