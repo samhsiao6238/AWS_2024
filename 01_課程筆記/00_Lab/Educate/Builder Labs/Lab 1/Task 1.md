@@ -56,7 +56,7 @@ _準備一個文件用來記錄各項資訊_
 
 <br>
 
-3. 在 `MyDoc.txt` 中記錄其中的 S3 及 CloudFront 輸出資訊；切記要存檔。
+3. 在 `MyDoc.txt` 中記錄其中的 S3 及 CloudFront 輸出資訊；字串很長且字形很小，可斟酌加入引號作為識別，另外，切記要存檔。
 
     ```bash
     S3 bucket:c1234567890abcdefghi-s3bucket-123456abcd3
@@ -131,7 +131,7 @@ _對官方指引稍作修改_
 
 <br>
 
-2. 使用指令上傳更新的網站代碼，這裡會自動帶入變數值。
+2. 使用指令自動帶入變數值，然後將本地的 `website` 資料夾內容複製到指定的 S3 Bucket。
 
     ```bash
     cd /home/ec2-user/environment
@@ -174,7 +174,7 @@ _補充說明_
 
 ## 啟動 Node 伺服器
 
-1. 運行指令啟動 Node 伺服器；切記在 Lab 運行過程中不要關閉這個終端機。
+1. 運行指令進入 node_server 目錄並啟動 Node.js 伺服器；切記，在 Lab 運行過程中不要關閉這個終端機。
 
     ```bash
     cd /home/ec2-user/environment/node_server
