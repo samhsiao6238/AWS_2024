@@ -70,11 +70,19 @@ _返回 AWS Cloud9 IDE_
 
 ## 推送更新至 S3 Bucket
 
-1. 運行以下指令將網站代碼上傳到 S3，將 `<s3-bucket>` 替換為記錄的 S3 Bucket 名稱。
+1. 在之前的步驟中已經輸入變數 `S3_BUCKET`，若使用相同終端機，可以不用再次輸入。
+
+    ```bash
+    S3_BUCKET=<s3-bucket>
+    ```
+
+<br>
+
+2. 切換路徑並運行以下指令完成上傳。
 
     ```bash
     cd /home/ec2-user/environment
-    aws s3 cp website s3://<s3-bucket>/ --recursive --cache-control "max-age=0"
+    aws s3 cp website s3://$S3_BUCKET/ --recursive --cache-control "max-age=0"
     ```
 
 <br>
