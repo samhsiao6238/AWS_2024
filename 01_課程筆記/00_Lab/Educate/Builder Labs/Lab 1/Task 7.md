@@ -79,11 +79,9 @@ _返回 `Cognito` 主控台_
 
 <br>
 
-3. 點擊 `Save Changes` 保存配置。若出現提示 `Some edits will not be saved due to warnings. Are you sure you want to continue?`，選擇 `Continue`。
+5. 點擊 `Save Changes` 保存配置。
 
-<br>
-
-4. 注意，若出現錯誤訊息 `There was a problem modifying this identity pool. Please try again.`，可以忽略該錯誤訊息。
+    ![](images/img_80.png)
 
 <br>
 
