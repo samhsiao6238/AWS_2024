@@ -1,5 +1,7 @@
 # Task 1：Preparing the lab
 
+_特別強調，這個 Lab 雖然內容是延續了前一個 Lab，但必須重新啟動，不可沿用 `Lab 1` 的資源。_
+
 <br>
 
 ## 連接到 AWS Cloud9 IDE
