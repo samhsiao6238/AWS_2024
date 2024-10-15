@@ -53,13 +53,29 @@ _返回 `Cognito` 主控台_
 <br>
 
 
-## 更新Identity Pool配置
+## 更新 Identity Pool 配置
 
-1. 展開 `Authentication providers` 區域，選擇 `Cognito` 標籤。
+1. 在 `User access` 頁籤，進入 `Identity providers` 區域，點擊 `Add identity provider`。
+
+    ![](images/img_76.png)
 
 <br>
 
-2. 進行配置，在 `User Pool ID` 輸入 `bird_app` 的 `user pool ID`，在 `App client ID` 輸入 `bird_app_client` ID。
+2. 選取 `Amazon Cognito user pool`。
+
+    ![](images/img_77.png)
+
+<br>
+
+3. 在 `User pool details` 區塊中進行配置，下拉 `User Pool ID` 選單，點擊 `bird_app` 的 `user pool ID`。
+
+    ![](images/img_78.png)
+
+<br>
+
+4. 同樣地，下拉 `App client ID` 選單並選擇 `bird_app_client` 的 ID。
+
+    ![](images/img_79.png)
 
 <br>
 
