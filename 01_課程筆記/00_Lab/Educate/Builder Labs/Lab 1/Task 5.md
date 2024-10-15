@@ -20,13 +20,13 @@ _在此任務中，將會更新 Birds 應用程式的設定，使其與 Amazon C
 
 <br>
 
-2. 取消以下代碼的註解，並將每個佔位符替換為記錄在 `MyDoc.txt` 中的相應值；其中 `CONFIG.CLOUDFRONT_DISTRO_STR` 僅需填入 `.cloudfront.net` 前的字串。
+2. 取消以下代碼的註解，並將每個佔位符替換為記錄在 `MyDoc.txt` 中的相應值；其中 `CONFIG.CLOUDFRONT_DISTRO_STR` 僅需填入 `.cloudfront.net` 前的字串；另外，`CONFIG.COGNITO_IDENTITY_POOL_ID_STR` 目前尚未紀錄。
 
     ![](images/img_54.png)
 
 <br>
 
-3. 完成範例；切記保存修改後的 `config.js` 文件。。
+3. 編輯完成後，切記保存修改。
 
     ```javascript
     CONFIG.COGNITO_DOMAIN_STR = "abc-10-12-2021";
