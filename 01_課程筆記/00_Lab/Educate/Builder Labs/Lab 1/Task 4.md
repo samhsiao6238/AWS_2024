@@ -30,11 +30,9 @@ _繼續在 `User pools` 的 `bird_app` 詳細頁面中操作_
 
 <br>
 
-3. 在 `Username` 輸入 `teststudent`、`Temporary password` 選擇 `Set a password`、`Password` 輸入 `Welcome1!`。
+3. 在 `Username` 輸入 `teststudent`、`Temporary password` 選擇 `Set a password`、`Password` 輸入 `Welcome1!`；點擊 `Create user` 完成建立。
 
-<br>
-
-4. 點擊 `Create user` 完成建立。
+    ![](images/img_41.png)
 
 <br>
 
