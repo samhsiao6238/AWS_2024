@@ -122,19 +122,19 @@ _在 `Integrate your app` 頁面中進行配置_
 
 <br>
 
-1. `User pool name` 輸入 `bird_app`
+1. `User pool name` 輸入 `bird_app`。
 
     ![](images/img_23.png)
 
 <br>
 
-2. 勾選 `Use the Cognito Hosted UI`
+2. 勾選 `Use the Cognito Hosted UI`。
 
     ![](images/img_25.png)
 
 <br>
 
-3. 在 `Domain` 區域中，選擇 `Use a Cognito domain`
+3. 在 `Domain` 區域中，選擇 `Use a Cognito domain`。
 
 <br>
 
