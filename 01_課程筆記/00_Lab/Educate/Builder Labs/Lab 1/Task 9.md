@@ -18,7 +18,7 @@ _返回 Birds 應用程式的瀏覽器分頁_
 
 <br>
 
-3. 選擇 `LOGIN`，並使用先前在user pool中建立的 `teststudent` 帳戶登入。
+3. 選擇 `LOGIN`，並使用先前在 `user pool` 中建立的 `teststudent` 帳戶登入。
 
 <br>
 
@@ -40,13 +40,13 @@ _返回 Birds 應用程式的瀏覽器分頁_
 
 <br>
 
-4. 這個測試確認了應用程式與 Amazon Cognito Identity Pool已正確配置。經過身份驗證的使用者將能夠獲取臨時 AWS 憑證，並藉此與 DynamoDB 資料庫進行交互。
+4. 這個測試確認了應用程式與 `Amazon Cognito Identity Pool` 已正確配置。經過身份驗證的使用者將能夠獲取臨時 AWS 憑證，並藉此與 DynamoDB 資料庫進行交互。
 
 <br>
 
 ## 任務總結
 
-1. 以上成功完成Identity Pool與應用程式的整合測試。
+1. 以上成功完成 `Identity Pool` 與應用程式的整合測試。
 
 <br>
 
