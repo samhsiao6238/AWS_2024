@@ -14,6 +14,10 @@
 
 ## 建立測試使用者
 
+_繼續在 `User pools` 的 `bird_app` 詳細頁面中操作_
+
+<br>
+
 1. 進入 `Users` 頁籤，在 `Cognito user pool` 的管理介面中，點擊上方的 `Users` 頁籤。
 
 <br>
