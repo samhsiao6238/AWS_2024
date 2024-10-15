@@ -39,7 +39,7 @@ _準備一個文件用來記錄各項資訊_
 
 ## 下載並執行應用程式代碼
 
-1. 在 Cloud9 終端中運行以下指令；下載並解壓縮 `code.zip` 文件，接著進入解壓縮的 `resources` 目錄，並執行 `setup.sh` 腳本進行設置。
+1. 在 Cloud9 終端中運行以下指令；這個指令會先下載並解壓縮 `code.zip` 文件到資料夾 `resources`，接著進入解壓縮的目錄中執行 `setup.sh` 腳本進行相關設置；關於指令的詳細說明詳後一小段。
 
     ```bash
     wget https://aws-tc-largeobjects.s3.us-west-2.amazonaws.com/CUR-TF-100-EDBLDR-1-107430/01-lab-cognito/code.zip
