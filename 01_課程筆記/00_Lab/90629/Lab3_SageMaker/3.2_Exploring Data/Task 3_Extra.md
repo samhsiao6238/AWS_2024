@@ -101,6 +101,12 @@ _每位患者以六個生物力學特徵來表示，這些特徵依骨盆和腰�
     df.shape
     ```
 
+    _輸出_
+
+    ```bash
+    (310, 7)
+    ```
+
 <br>
 
 2. 接著獲取列的列表。
@@ -109,12 +115,39 @@ _每位患者以六個生物力學特徵來表示，這些特徵依骨盆和腰�
     df.columns
     ```
 
+    _輸出_
+
+    ```bash
+    Index(
+        [
+            'pelvic_incidence', 'pelvic_tilt',
+            'lumbar_lordosis_angle',
+            'sacral_slope', 'pelvic_radius',
+            'degree_spondylolisthesis', 'class'
+        ],
+        dtype='object'
+    )
+    ```     
+
 <br>
 
 3. 接下來，查看各列的數據類型。
 
     ```python
     df.dtypes
+    ```
+
+    _輸出_
+
+    ```bash
+    pelvic_incidence            float64
+    pelvic_tilt                 float64
+    lumbar_lordosis_angle       float64
+    sacral_slope                float64
+    pelvic_radius               float64
+    degree_spondylolisthesis    float64
+    class                        object
+    dtype: object
     ```
 
 <br>
@@ -125,6 +158,20 @@ _每位患者以六個生物力學特徵來表示，這些特徵依骨盆和腰�
     df['pelvic_incidence'].describe()
     ```
 
+    _輸出_
+
+    ```bash
+    count    310.000000
+    mean      60.496653
+    std       17.236520
+    min       26.147921
+    25%       46.430294
+    50%       58.691038
+    75%       72.877696
+    max      129.834041
+    Name: pelvic_incidence, dtype: float64
+    ```
+
 <br>
 
 5. 挑戰任務：嘗試查看其他特徵的統計數據，並找出可能需要檢查的異常值。
@@ -132,6 +179,8 @@ _每位患者以六個生物力學特徵來表示，這些特徵依骨盆和腰�
     ```python
     df.describe()
     ```
+
+    ![](images/img_08.png)
 
 <br>
 
@@ -142,6 +191,8 @@ _每位患者以六個生物力學特徵來表示，這些特徵依骨盆和腰�
     %matplotlib inline
     df.plot()
     ```
+
+    ![](images/img_09.png)
 
 <br>
 
@@ -158,6 +209,8 @@ _KDE_
     plt.show()
     ```
 
+    ![](images/img_10.png)
+
 <br>
 
 ## 深入調查 `degree_spondylolisthesis`
@@ -168,6 +221,8 @@ _KDE_
     df['degree_spondylolisthesis'].plot.density()
     ```
 
+    ![](images/img_11.png)
+
 <br>
 
 2. 接著使用直方圖來可視化數據。
@@ -176,6 +231,8 @@ _KDE_
     df['degree_spondylolisthesis'].plot.hist()
     ```
 
+    ![](images/img_12.png)
+
 <br>
 
 3. 透過箱線圖來觀察是否存在異常值。
@@ -183,6 +240,8 @@ _KDE_
     ```python
     df['degree_spondylolisthesis'].plot.box()
     ```
+
+    ![](images/img_13.png)
 
 <br>
 
@@ -194,6 +253,15 @@ _KDE_
 
     ```python
     df['class'].value_counts()
+    ```
+
+    _輸出_
+
+    ```bash
+    class
+    b'Abnormal'    210
+    b'Normal'      100
+    Name: count, dtype: int64
     ```
 
 <br>
@@ -215,6 +283,8 @@ _KDE_
     df.plot.scatter(y='degree_spondylolisthesis', x='class')
     ```
 
+    ![](images/img_14.png)
+
 <br>
 
 2. 雖然高值與異常值之間似乎存在某種關聯，但還需進一步分析其他特徵。
@@ -229,18 +299,51 @@ _KDE_
     df.groupby('class').boxplot(fontsize=20, rot=90, figsize=(20,10), patch_artist=True)
     ```
 
+    ![](images/img_15.png)
+
 <br>
 
 2. 生成相關矩陣並繪製熱圖以進一步了解特徵之間的關聯性。
 
     ```python
     corr_matrix = df.corr()
+    corr_matrix["class"].sort_values(ascending=False)
+    ```
+
+    _輸出_
+
+    ```bash
+    class                       1.000000
+    degree_spondylolisthesis    0.443687
+    pelvic_incidence            0.353336
+    pelvic_tilt                 0.326063
+    lumbar_lordosis_angle       0.312484
+    sacral_slope                0.210602
+    pelvic_radius              -0.309857
+    Name: class, dtype: float64
+    ```
+
+
+3. 繪製此數據的圖。
+
+    ```python
+    pd.plotting.scatter_matrix(df,figsize=(12,12))
+    plt.show()
+    ```
+
+    ![](images/img_16.png)
+
+4. 透過使用 seaborn，您可以將相關性視覺化為熱圖。
+
+    ```python
     import seaborn as sns
     fig, ax = plt.subplots(figsize=(10, 10))
     colormap = sns.color_palette("BrBG", 10)
     sns.heatmap(corr_matrix, cmap=colormap, annot=True, fmt=".2f")
     plt.show()
     ```
+
+    ![](images/img_17.png)
 
 <br>
 
