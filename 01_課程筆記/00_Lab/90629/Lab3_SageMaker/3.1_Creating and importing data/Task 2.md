@@ -26,7 +26,7 @@ _當 Notebook 實例變為 `InService` 後_
 
 <br>
 
-2. 點擊開啟 Lab 預先準備好的腳北 `PythonCheatSheet.ipynb`，可自行運行、操作腳本，此處不做贅述。
+2. 點擊開啟 Lab 預先準備好的腳北 `PythonCheatSheet.ipynb`，相關基本操作可自行測試，此處不做贅述。
 
     ![](images/img_13.png)
 
