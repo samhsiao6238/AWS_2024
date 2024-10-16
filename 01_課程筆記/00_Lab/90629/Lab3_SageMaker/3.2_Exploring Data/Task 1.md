@@ -4,7 +4,7 @@ _啟動並進入 Lab；並對上一次 Lab 下載的椎骨數據集進行以下�
 
 <br>
 
-1. 在控制台搜尋並進入 `Amazon SageMaker`，然後在左側欄中點擊進入 Notebooks，預設會在 `Notebook instances` 頁籤中。
+1. 搜尋並進入 `Amazon SageMaker`，然後在左側欄中點擊進入 Notebooks，預設會在 `Notebook instances` 頁籤中。
 
     ![](images/img_02.png)
 
