@@ -32,11 +32,19 @@
 
 <br>
 
-6. 若是操作 `Lab`，展開 `Additional configuration`，選擇包含 `ml-pipeline` 的生命週期配置；這個生命週期是指自動化建立名為 `ml-pipeline` 的工作環境，包括安裝和配置所需的軟體和依賴項，確保環境啟動時已經準備好進行機器學習流水線操作。
+## 設置 Additional configuration
+
+_在這個 `Lab` 中已經準備好一個 `pipeline` 設置_
 
 <br>
 
-7. 保持其他設置為預設值，點擊 `Create notebook instance`。
+1. 展開 `Additional configuration`，在下拉選單 `Lifecycle configuration` 中選擇 `ml-pipeline`；這個 `Lifecycle` 是指自動化建立名為 `ml-pipeline` 的工作環境，包括安裝和配置所需的軟體和依賴項，確保環境啟動時已經準備好進行機器學習流水線操作。
+
+    ![](images/img_08.png)
+
+<br>
+
+2. 保持其他設置為預設值，點擊 `Create notebook instance`。
 
     ![](images/img_06.png)
 
