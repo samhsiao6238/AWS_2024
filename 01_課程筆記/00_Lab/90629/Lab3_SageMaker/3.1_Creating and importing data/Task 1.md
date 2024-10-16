@@ -10,7 +10,7 @@
 
 <br>
 
-2. 展開左側選單中的 `Notebook` 區塊，選擇 `Notebook instances`，點擊 `Create notebook instance`。
+2. 展開左側選單中的 `Notebooks` 區塊，預設會開啟頁籤 `Notebook instances`，點擊右側的 `Create notebook instance`。
 
     ![](images/img_02.png)
 
