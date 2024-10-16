@@ -6,13 +6,19 @@
 
 1. 在 JupyterLab 中選擇 `File > New > Notebook` 建立一個新筆記本。
 
-<br>
-
-2. 選擇 `conda_python3` 作為 Kernel 來運行 Python 代碼。
+    ![](images/img_22.png)
 
 <br>
 
-3. 在第一個單元格中輸入以下 Markdown 內容作為標題：
+2. 選擇 `conda_python3` 作為 `Kernel` 運行 Python 代碼。
+
+    ![](images/img_18.png)
+
+<br>
+
+## 基礎實作
+
+1. 在第一個單元格中輸入以下 Markdown 內容作為標題。
 
     ```markdown
     # Importing the data
@@ -20,7 +26,7 @@
 
 <br>
 
-4. 在單元格中輸入以下代碼。
+2. 在單元格中輸入以下代碼。
 
     ```python
     import warnings, requests, zipfile, io
