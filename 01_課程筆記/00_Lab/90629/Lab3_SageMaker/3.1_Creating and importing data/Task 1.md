@@ -50,7 +50,7 @@ _在這個 `Lab` 中已經準備好一個 `pipeline` 設置_
 
 <br>
 
-8. 建立後，`Notebook 實例` 的狀態會先顯示為灰色的 `Pending`，當狀態變為綠色的 `InService` 時，便可繼續進行下一步。
+3. 建立後，`Notebook 實例` 的狀態會先顯示為灰色的 `Pending`，當狀態變為綠色的 `InService` 時，便可繼續進行下一步。
 
     ![](images/img_01.png)
 
