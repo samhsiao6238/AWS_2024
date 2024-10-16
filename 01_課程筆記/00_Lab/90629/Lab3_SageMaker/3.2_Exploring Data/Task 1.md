@@ -22,18 +22,6 @@ _啟動並進入 Lab；並對上一次 Lab 下載的椎骨數據集進行以下�
 
 <br>
 
-4. 進入後會有一個腳本 `3_2-machinelearning.jpynb`。
-
-    ![](images/img_05.png)
-
-<br>
-
-5. 雙擊可開啟文件，預設會使用核心 `conda_python3`，若要切換可點擊核心進行選擇。
-
-    ![](images/img_06.png)
-
-<br>
-
 ___
 
 _END_
