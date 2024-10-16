@@ -51,7 +51,7 @@
 4. 運行全部代碼後，點擊左側欄位上方的刷新功能圖標，則會在左側文件瀏覽器中看到以下文件。
 
     ```bash
-    `column_2C_weka.arff`、`column_2C.dat`、`column_3C_weka.arff`、`column_3C.dat`。
+    column_2C_weka.arff、column_2C.dat、column_3C_weka.arff、column_3C.dat
     ```
 
 <br>
