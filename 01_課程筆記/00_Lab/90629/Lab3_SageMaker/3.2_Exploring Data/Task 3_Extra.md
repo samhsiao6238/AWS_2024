@@ -60,19 +60,27 @@ _每位患者以六個生物力學特徵來表示，這些特徵依骨盆和腰�
 
 ## 實驗設置
 
-1. 由於此解決方案分散在多個實驗模組中，首先需要載入數據。
+1. 由於此解決方案分散在多個實驗模組中，首先需要導入庫。
 
     ```python
     import warnings, requests, zipfile, io
     warnings.simplefilter('ignore')
     import pandas as pd
     from scipy.io import arff
+    ```
 
+2. 載入數據。
+
+    ```python
     f_zip = 'http://archive.ics.uci.edu/ml/machine-learning-databases/00212/vertebral_column_data.zip'
     r = requests.get(f_zip, stream=True)
     Vertebral_zip = zipfile.ZipFile(io.BytesIO(r.content))
     Vertebral_zip.extractall()
+    ```
 
+3. 輸出。
+
+    ```python
     data = arff.loadarff('column_2C_weka.arff')
     df = pd.DataFrame(data[0])
     ```
