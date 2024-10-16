@@ -26,7 +26,7 @@
 
 <br>
 
-5. 將平台類型設置為 `notebook-al2-v1`。
+5. 將 `Platform identifier` 設置為 `notebook-al2-v1`；這是 Lab 準備好的。
 
     ![](images/img_05.png)
 
