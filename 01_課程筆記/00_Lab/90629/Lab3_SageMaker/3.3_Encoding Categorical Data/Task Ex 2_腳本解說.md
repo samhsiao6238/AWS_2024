@@ -98,31 +98,41 @@
     df_car.head()
     ```
 
+    ![](images/img_06.png)
+
 <br>
 
-8. 大多數機器學習算法要求輸入的是數值；其中 `num-of-cylinders` 和 `num-of-doors` 特徵具有序數值，可以將這些特徵的值轉換為對應的數值；但是，`aspiration` 和 `drive-wheels` 沒有序數值，這些特徵必須進行不同的轉換。
+8. 大多數機器學習算法要求輸入的是 `數值型` 的；其中 `num-of-cylinders` 和 `num-of-doors` 特徵具有序數值，可以將這些特徵的值轉換為對應的數值；但是，`aspiration` 和 `drive-wheels` 沒有序數值，這些特徵必須進行其他的轉換方式。
 
 <br>
 
 ## 對序數特徵進行編碼
 
-1. 在此步驟中，將使用映射器函數將序數特徵轉換為有序的數值。首先從 DataFrame 中獲取新的欄類型。
+_在此步驟中，將使用映射器函數將序數特徵轉換為有序的數值。_
+
+<br>
+
+1. 從 DataFrame 中獲取新的欄類型。
 
     ```python
     df_car.info()
     ```
 
+    ![](images/img_07.png)
+
 <br>
 
-2. 從 `num-of-doors` 特徵開始，可使用 `value_counts` 來發現值。
+2. 使用 `value_counts` 統計 `num-of-doors` 的 Value 出現的頻率，也就是個別內容的累計次數。
 
     ```python
     df_car['num-of-doors'].value_counts()
     ```
 
+    ![](images/img_08.png)
+
 <br>
 
-3. 此特徵只有兩個值 `two` 和 `four`，可建立一個包含字典的簡單映射器。
+3. 此特徵只有兩個值 `two` 和 `four`，使用字典建立 `映射器`。
 
     ```python
     door_mapper = {
@@ -133,7 +143,7 @@
 
 <br>
 
-4. 然後可使用 pandas 的 `replace` 方法基於 `num-of-doors` 欄生成一個新的數值欄。
+4. 然後使用 pandas 的 `replace` 方法對 `num-of-doors` 欄生成一個新的數值型欄位。
 
     ```python
     df_car['doors'] = df_car["num-of-doors"].replace(door_mapper)
@@ -147,9 +157,13 @@
     df_car.head()
     ```
 
+    ![](images/img_09.png)
+
 <br>
 
-6. 對 `num-of-cylinders` 欄重複該過程。首先獲取值。
+## 重複前面步驟轉換變數
+
+1. 對 `num-of-cylinders` 欄重複該過程。
 
     ```python
     df_car['num-of-cylinders'].value_counts()
@@ -157,7 +171,7 @@
 
 <br>
 
-7. 接下來，建立映射器。
+2. 建立 `映射器`。
 
     ```python
     cylinder_mapper = {
@@ -173,7 +187,7 @@
 
 <br>
 
-8. 使用 `replace` 方法應用映射器。
+3. 使用 `replace` 方法套用 `映射器`。
 
     ```python
     df_car['cylinders'] = df_car['num-of-cylinders'].replace(
@@ -184,9 +198,13 @@
 
 <br>
 
-## 對無序分類數據進行編碼
+## one-hot 編碼
 
-1. 在此步驟中，將使用 pandas 的 `get_dummies` 方法對無序分類數據進行編碼。根據屬性描述，存在以下可能的值：
+_統計學中的 `虛擬變數`_
+
+<br>
+
+1. 使用 pandas 的 `get_dummies` 方法對 `無序分類數據` 進行編碼；根據屬性描述存在以下的值。
 
     ```bash
     aspiration：標準、渦輪。
@@ -195,48 +213,59 @@
 
 <br>
 
-2. 可能會認為正確的策略是將這些值轉換為數值。以 `drive-wheels` 為例，可以使用 `4wd = 1`、`fwd = 2` 和 `rwd = 3`。但是，`fwd` 並不小於 `rwd`。這些值沒有順序，通過分配這些數值為它們引入了順序；正確的策略是將原始特徵中的每個值轉換為 _二元特徵_，這個過程在機器學習中通常被稱為 _one-hot 編碼_，而在統計學中則稱為 `虛擬變量`。
+2. 假如直接將變數 `drive-wheels` 進行映射為 `4wd = 1`、`fwd = 2` 和 `rwd = 3`，可能在機器學習過程中讓模型誤判這些值是有順序的，因為這樣的簡單映射為它們引入了順序；正確的轉換策略是將原始特徵中的每個值轉換為 `二元特徵`，這個過程在機器學習中通常被稱為 `one-hot 編碼`，也就是統計學中的 `虛擬變量`。
 
 <br>
 
-3. 根據屬性描述，`drive-wheels` 具有三個可能的值。
+## 對 `無序分類數據` 進行編碼
+
+1. 根據屬性描述，`drive-wheels` 具有三個可能的值。
 
     ```python
     df_car['drive-wheels'].value_counts()
     ```
 
+    ![](images/img_10.png)
+
 <br>
 
-4. 使用 `get_dummies` 方法向 DataFrame 添加新的二元特徵。
+2. 使用 `get_dummies` 方法向 DataFrame 添加新的二元特徵。
 
     ```python
     df_car = pd.get_dummies(df_car, columns=['drive-wheels'])
+    ```
+
+<br>
+
+3. 可在右側看到三個新的 Column，這些二元特徵，能夠以數字方式表示這些信息，無需考慮順序；特別注意，雖然 pandas 在顯示時可能使用布林值 False 和 True，但這些值在底層實際上是數字 `0` 和 `1`，因此它們仍可用於機器學習模型或其他需要數字輸入的算法。
+
+    ```python
     df_car.head()
     ```
 
-<br>
-
-5. 檢查數據集時，應該可以在右側看到三個新的 Column；編碼很簡單，如果 `drive-wheels` 欄中的值為 *4wd*，則 `drive-wheels_4wd` 欄中的值為 *1*，其他欄的值則為 *0*。如果 `drive-wheels` 欄中的值為 *fwd*，則 `drive-wheels_fwd` 欄中的值為 *1*，依此類推。
-
-    ```bash
-    drive-wheels_4wd
-    drive-wheels_fwd
-    drive-wheels_rwd
-    ```
+    ![](images/img_11.png)
 
 <br>
 
-6. 藉助這些二元特徵，能夠以數字方式表示這些信息，無需考慮順序。
+4. 。
 
 <br>
 
-7. 檢查將編碼的最後一個欄；`aspiration` 欄中的數據只有兩個值：*標準* 和 *渦輪*。可以將此欄編碼為兩個二元特徵。不過，也可以忽略 *標準* 值並記錄是否為 *渦輪*。為此，仍將使用 `get_dummies` 方法，但這時將 `drop_first` 指定為 *True*。
+## 重複前面的步驟
+
+_不贅述_
+
+<br>
+
+1. 檢查將 `aspiration` 欄並編碼為兩個 `二元特徵`。
 
     ```python
     df_car['aspiration'].value_counts()
     df_car = pd.get_dummies(df_car, columns=['aspiration'], drop_first=True)
     df_car.head()
     ```
+
+    ![](images/img_12.png)
 
 <br>
 
