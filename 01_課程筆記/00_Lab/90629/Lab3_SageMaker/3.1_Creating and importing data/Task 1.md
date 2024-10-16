@@ -4,7 +4,9 @@
 
 ## 步驟
 
-1. 登錄控制台選擇 `Amazon SageMaker`。
+1. 在控制台搜尋並進入 `Amazon SageMaker`。
+
+    ![](images/img_10.png)
 
 <br>
 
