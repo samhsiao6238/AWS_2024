@@ -26,7 +26,7 @@
 
 <br>
 
-2. 在單元格中輸入以下代碼。
+2. 在新的單元格中輸入以下代碼，導入所需函式庫。
 
     ```python
     import warnings, requests, zipfile, io
@@ -37,7 +37,7 @@
 
 <br>
 
-5. 在下一個單元格中輸入下載和解壓資料的代碼。
+3. 在下一個單元格中，下載和解壓資料的代碼。
 
     ```python
     f_zip = 'http://archive.ics.uci.edu/ml/machine-learning-databases/00212/vertebral_column_data.zip'
@@ -48,11 +48,11 @@
 
 <br>
 
-6. 運行全部代碼後，點擊左側欄位上方的刷新功能圖標，則會在左側文件瀏覽器中看到以下文件：`column_2C_weka.arff`、`column_2C.dat`、`column_3C_weka.arff`、`column_3C.dat`。
+4. 運行全部代碼後，點擊左側欄位上方的刷新功能圖標，則會在左側文件瀏覽器中看到以下文件：`column_2C_weka.arff`、`column_2C.dat`、`column_3C_weka.arff`、`column_3C.dat`。
 
 <br>
 
-7. 以下代碼可加載和查看資料。
+5. 以下代碼可加載和查看資料。
 
     ```python
     data = arff.loadarff('column_2C_weka.arff')
