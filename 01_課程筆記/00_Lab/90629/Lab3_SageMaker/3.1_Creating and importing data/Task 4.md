@@ -62,6 +62,10 @@
     df.head()
     ```
 
+    _輸出_
+
+    ![](images/img_24.png)
+
 <br>
 
 ___
