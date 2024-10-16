@@ -6,15 +6,17 @@
 
     ```python
     import pandas as pd
-
+    # 最大烈數
     pd.set_option('display.max_rows', 500)
+    # 最大欄位數
     pd.set_option('display.max_columns', 500)
+    # 把寬度加大，避免自動換行
     pd.set_option('display.width', 1000)
     ```
 
 <br>
 
-2. 將數據集加載到 pandas DataFrame 中；數據不包含標題，因此在名為 `col_names` 的變數中為數據集描述中的屬性定義欄名稱。
+2. 將數據集加載到 pandas DataFrame 中；因為數據不包含標題，因此在名為 `col_names` 的變數中為數據集定義欄名稱，將列表傳遞給參數 `names`。
 
     ```python
     url = "imports-85.csv"
@@ -28,8 +30,10 @@
     ]
 
     df_car = pd.read_csv(
-        url, sep=',', names=col_names,
-        na_values="?", header=None
+        url, sep=',',
+        names=col_names,
+        na_values="?",
+        header=None
     )
     ```
 
@@ -41,13 +45,19 @@
     df_car.shape
     ```
 
+    ```bash
+    (205, 25)
+    ```
+
 <br>
 
-4. 使用 `head` 方法檢查數據。
+4. 使用 `head` 查看前五筆數據。
 
     ```python
     df_car.head(5)
     ```
+
+    ![](images/img_04.png)
 
 <br>
 
@@ -57,13 +67,27 @@
     df_car.info()
     ```
 
+    ![](images/img_05.png)
+
 <br>
 
-6. 為使在開始編碼時能夠更方便地查看數據集，可刪除不需要的欄。
+6. 查看有哪些欄。
 
     ```python
     df_car.columns
-    df_car = df_car[[ 'aspiration', 'num-of-doors',  'drive-wheels',  'num-of-cylinders']].copy()
+    ```
+
+<br>
+
+7. 可刪除不需要的欄；特別注意，在官方的腳本中，提取數據後先進行複製副本，然後再覆蓋原始變數 `df_car`，這是基於避免潛在錯誤的做法，並非絕對必要。
+
+    ```python
+    df_car = df_car[[
+        'aspiration',
+        'num-of-doors',
+        'drive-wheels',
+        'num-of-cylinders']
+    ].copy()
     ```
 
 <br>
