@@ -6,7 +6,7 @@ _當 Notebook 實例變為 `InService` 後_
 
 ## 步驟
 
-1. 點擊 `Open JupyterLab`；其中 `Jupyter` 就是指傳統的 `Jupyter Notebook`，而 `JupyterLab` 則是進階版，提供更多功能，適用於複雜的工作流程。
+1. 點擊實例右側的 `Open JupyterLab`；其中 `Jupyter` 就是指傳統的 `Jupyter Notebook`，而 `JupyterLab` 則是進階版，提供更多功能，適用於複雜的工作流程。
 
     ![](images/img_07.png)
 
