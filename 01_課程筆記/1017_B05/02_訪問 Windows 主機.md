@@ -62,150 +62,202 @@ _先分享 Windows 主機的磁區 C_
 
 _示範環境是 macOS 系統，Linux 相同_
 
+<br>
+
 1. 先使安裝 smbclient；特別注意，這個安裝步驟很久，可先去忙別的。
 
-```bash
-brew install samba
-```
+    ```bash
+    brew install samba
+    ```
+
+<br>
 
 2. 使用指令連線。
 
-```bash
-smbclient //<EC2-公共-IP>/C$ -U Administrator
-```
+    ```bash
+    smbclient //<EC2-公共-IP>/C$ -U Administrator
+    ```
+
+<br>
 
 3. 輸入密碼；特別注意，這個密碼是看不到的。
 
-![](images/img_38.png)
+    ![](images/img_38.png)
+
+<br>
 
 ## 檢查 smb.conf 文件是否存在
 
 1. 檢查該文件是否存在於指定路徑；如果文件不存在會導致 `testparm` 錯誤。
 
-```bash
-ls /opt/homebrew/etc/smb.conf
-```
+    ```bash
+    ls /opt/homebrew/etc/smb.conf
+    ```
+
+<br>
 
 2. 手動建立 `smb.conf`。
 
-```bash
-sudo nano /opt/homebrew/etc/smb.conf
-```
+    ```bash
+    sudo nano /opt/homebrew/etc/smb.conf
+    ```
+
+<br>
 
 3. 添加以下內容到文件中；這是一個基本的 SMB 設置，它將 `/tmp` 目錄作為共享目錄並允許訪客訪問。。
 
-```bash
-[global]
-    workgroup = WORKGROUP
-    security = user
-    map to guest = Bad User
+    ```bash
+    [global]
+        workgroup = WORKGROUP
+        security = user
+        map to guest = Bad User
 
-[shared]
-    path = /tmp
-    read only = no
-    guest ok = yes
-```
+    [shared]
+        path = /tmp
+        read only = no
+        guest ok = yes
+    ```
 
-3. 再次運行 `testparm` 測試配置；如果配置文件正確，應該會顯示 `Loaded services file OK.` 的相關訊息。
+<br>
 
-```bash
-testparm
-```
+4. 再次運行 `testparm` 測試配置；如果配置文件正確，應該會顯示 `Loaded services file OK.` 的相關訊息。
 
+    ```bash
+    testparm
+    ```
+
+<br>
 
 ## Windows Server 防火牆設置
 
 1. 搜尋進入 `Check firewall status`。
 
-![](images/img_39.png)
+    ![](images/img_39.png)
+
+<br>
 
 2. 點擊 `Advanced Settings`。
 
-![](images/img_40.png)
+    ![](images/img_40.png)
+
+<br>
 
 3. 點擊 `Action Properties`。
 
-![](images/img_41.png)
+    ![](images/img_41.png)
+
+<br>
 
 4. 把三個 Profile 的 Inbound connections 都設定為 `Allow`，然後點擊 `OK`。
 
-![](images/img_42.png)
+    ![](images/img_42.png)
+
+<br>
 
 5. 設定完成如下。
 
-![](images/img_43.png)
+    ![](images/img_43.png)
+
+<br>
 
 ## 在 Windows 安裝 OpenSSH Server
 
 1. 在 Windows CMD 中運行以下指令安裝 OpenSSH Server。
 
-```bash
-powershell -Command "Get-WindowsCapability -Online | Where-Object Name -like 'OpenSSH.Server*'"
-powershell -Command "Add-WindowsCapability -Online -Name OpenSSH.Server~~~~0.0.1.0"
-```
+    ```bash
+    powershell -Command "Get-WindowsCapability -Online | Where-Object Name -like 'OpenSSH.Server*'"
+    powershell -Command "Add-WindowsCapability -Online -Name OpenSSH.Server~~~~0.0.1.0"
+    ```
+
+<br>
 
 2. 啟動並設置 SSH 服務自動啟動。
 
-```bash
-powershell -Command "Start-Service sshd"
-powershell -Command "Set-Service -Name sshd -StartupType 'Automatic'"
-```
+    ```bash
+    powershell -Command "Start-Service sshd"
+    powershell -Command "Set-Service -Name sshd -StartupType 'Automatic'"
+    ```
+
+<br>
 
 3. 假如需要手動開放防火牆上的 22 端口。
 
-```bash
-powershell -Command "New-NetFirewallRule -Name sshd -DisplayName 'OpenSSH Server (sshd)' -Enabled True -Direction Inbound -Protocol TCP -Action Allow -LocalPort 22"
-```
+    ```bash
+    powershell -Command "New-NetFirewallRule -Name sshd -DisplayName 'OpenSSH Server (sshd)' -Enabled True -Direction Inbound -Protocol TCP -Action Allow -LocalPort 22"
+    ```
+
+<br>
 
 ## 透過 SCP 傳送文件
 
 1. 在 主控台中編輯 Inbound Rule 添加 SSH。
 
-![](images/img_44.png)
+    ![](images/img_44.png)
+
+<br>
 
 2. 傳送本機建立任意文件到 Windows，這裡示範使用 `~/Downloads` 中的 `test.txt`，傳送到 Windows C 槽的 `test` 目錄。
 
-```bash
-scp test.txt Administrator@<EC2-公共-IP>:C:/test
-```
+    ```bash
+    scp test.txt Administrator@<EC2-公共-IP>:C:/test
+    ```
+
+<br>
 
 3. 第一次連線會詢問是否確定，輸入密碼後會立即傳送文件。
 
-![](images/img_45.png)
+    ![](images/img_45.png)
+
+<br>
 
 4. 透過 smb 連線並查看。
 
-![](images/img_46.png)
+    ![](images/img_46.png)
 
+<br>
 
 ## MacOS 使用 Finder 連線
 
 1. `Finder` > `前往` > `連接到伺服器`。
 
-![](images/img_47.png)
+    ![](images/img_47.png)
+
+<br>
 
 2. 輸入並連線。
 
-   ```bash
-   smb://<EC2-公共-IP>
-   ```
+    ```bash
+    smb://<EC2-公共-IP>
+    ```
 
-   ![](images/img_48.png)
+    ![](images/img_48.png)
 
+<br>
 
 3. 再次點擊連線。
 
-![](images/img_49.png)
+    ![](images/img_49.png)
+
+<br>
 
 4. 輸入帳戶 `Administrator` 及密碼。
 
-![](images/img_50.png)
+    ![](images/img_50.png)
+
+<br>
 
 5. 加載卷宗。
 
-![](images/img_51.png)
+    ![](images/img_51.png)
+
+<br>
 
 6. 完成時可在 Finder 中查看。
 
-![](images/img_52.png)
+    ![](images/img_52.png)
 
+<br>
+
+___
+
+_END_
