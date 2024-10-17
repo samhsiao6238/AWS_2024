@@ -46,9 +46,11 @@
 
 <br>
 
-8. 手動設定 Token。
+8. 手動設定 Token；特別注意，即便運行過 `AWS configure` 設置 `id` 及 `key`，一樣要運行以下三行指令才能順利完城。
 
     ```bash
+    export AWS_ACCESS_KEY_ID=<複製-ID-貼上>
+    export AWS_SECRET_ACCESS_KEY=<複製-KEY-貼上>
     export AWS_SESSION_TOKEN=<複製-TOKEN-貼上>
     ```
 
