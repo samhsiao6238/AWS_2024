@@ -8,13 +8,10 @@
 
 3. 欄NaN 和 Inf 值的檢查欄；修正 `plot_roc()` 函數時，應添加 NaN 和 Inf 的值檢查，確保在設置 y 軸時數據有效，防止「Axis limits cannot be NaN or Inf」的錯誤。刪除重複的 `test_labels` 提取，因為它已經作為參數傳入，不需要從 DataFrame 中再次提取。
 
-4. 欄完整修正代碼欄。
+4. 完整修正代碼。
 
     ```python
     import numpy as np
-    from sklearn.metrics import roc_curve, auc, confusion_matrix, roc_auc_score
-    import matplotlib.pyplot as plt
-    import seaborn as sns
 
     # 檢查數據中是否有 NaN 或 Inf，並進行替換
     if target_predicted_binary.isnull().any() or test_labels.isnull().any():
