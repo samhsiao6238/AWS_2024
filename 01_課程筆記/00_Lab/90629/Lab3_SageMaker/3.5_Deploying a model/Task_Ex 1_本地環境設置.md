@@ -49,7 +49,7 @@
 8. 手動設定 Token。
 
     ```bash
-    export=<複製-TOKEN-貼上>
+    export AWS_SESSION_TOKEN=<複製-TOKEN-貼上>
     ```
 
     ![](images/img_06.png)
