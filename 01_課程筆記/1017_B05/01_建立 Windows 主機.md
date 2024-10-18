@@ -48,6 +48,10 @@ _進入 AWS 主控台_
 
 ## 關於 Advanced details
 
+_實作 User data；進階操作_
+
+<br>
+
 1. 展開 `Advanced details` 並滑動到該區塊最下方會看到 `User data`，可用於自動化伺服器配置，節省手動安裝和設定的時間；特別注意，`User data` 預設有 `16KB` 的大小限制，並且只會在實例第一次啟動時執行，如果想讓指令每次重啟時都執行，需要將腳本放入 `C:\ProgramData\Amazon\EC2-Windows\Launch\Scripts\.`。
 
     ![](images/img_10.png)
@@ -134,7 +138,7 @@ _進入 AWS 主控台_
 
 ## 建立並預覽指令
 
-1. 點擊 `Launch instance` 之前，下方有個 `Prevuew code`，先點擊查看；右側會顯示指令預覽，這裡先做紀錄，之後再來透過指令重新建立一次。
+1. 點擊 `Launch instance` 之前，下方有個 `Preview code`，先點擊查看；右側會顯示指令預覽，這裡先做紀錄，之後再來透過指令重新建立一次。
 
     ![](images/img_21.png)
 
@@ -331,7 +335,13 @@ _回到 EC2 實例，這時應該已經完成 `Running`_
 
 <br>
 
-4. 點擊 `Yes` 後會顯示相關資訊。
+4. 點擊 `Yes` 後完成啟動。
+
+    ![](images/img_16.png)
+
+<br>
+
+5. 特別說明，假如並未撰寫 `User data`，啟動後會顯示相關資訊。
 
     ![](images/img_13.png)
 
