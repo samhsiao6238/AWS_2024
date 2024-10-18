@@ -22,7 +22,7 @@ _進入 AWS 主控台_
 
 <br>
 
-1. OS 選擇 `Windows`，`Amazon Machine Image` 選用 `Microsoft Windows Server 2022 Base`。
+3. OS 選擇 `Windows`，`Amazon Machine Image` 選用 `Microsoft Windows Server 2022 Base`。
 
     ![](images/img_01.png)
 
