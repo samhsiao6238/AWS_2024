@@ -70,14 +70,27 @@ _實作 User data；進階操作_
 
 <br>
 
-3. 安裝 XAMPP，完成後同樣刪除安裝檔。
+3. 安裝 XAMPP。
 
     ```bash
-    <powershell>
-    Invoke-WebRequest -Uri "https://downloadsapachefriends.global.ssl.fastly.net/xampp-files/8.1.10/xampp-windows-x64-8.1.10-0-VS16-installer.exe" -OutFile "C:\xampp-installer.exe"
-    Start-Process -FilePath "C:\xampp-installer.exe" -ArgumentList "/S" -Wait
-    Remove-Item -Path "C:\xampp-installer.exe"
-    </powershell>
+    <persist>
+    @echo off
+    rem 這是 CMD 指令區塊
+    rem 下載 XAMPP 安裝程式
+    curl -L -o C:\xampp-installer.exe https://sourceforge.net/projects/xampp/files/XAMPP%20Windows/8.0.30/xampp-windows-x64-8.0.30-0-VS16-installer.exe/download
+
+    rem 靜默安裝 XAMPP 到 C:\xampp
+    C:\xampp-installer.exe --mode unattended --unattendedmodeui none --prefix C:\xampp
+
+    rem 刪除安裝檔
+    del C:\xampp-installer.exe
+
+    rem 啟動 Apache 和 MySQL
+    cd C:\xampp
+    apache_start.bat
+    mysql_start.bat
+
+    </persist>
     ```
 
 <br>
@@ -109,7 +122,39 @@ _實作 User data；進階操作_
 
 <br>
 
-6. 只需要添加一次 Section 語句，如下安裝。
+6. 更新防火牆。
+
+    ```bash
+    <persist>
+    @echo off
+    rem 這是 CMD 指令區塊
+    rem 下載 XAMPP 安裝程式
+    curl -L -o C:\xampp-installer.exe https://sourceforge.net/projects/xampp/files/XAMPP%20Windows/8.0.30/xampp-windows-x64-8.0.30-0-VS16-installer.exe/download
+
+    rem 靜默安裝 XAMPP 到 C:\xampp
+    C:\xampp-installer.exe --mode unattended --unattendedmodeui none --prefix C:\xampp
+
+    rem 刪除安裝檔
+    del C:\xampp-installer.exe
+
+    rem 啟動 Apache 和 MySQL
+    cd C:\xampp
+    apache_start.bat
+    mysql_start.bat
+    
+    rem 設定防火牆規則，允許 HTTP (80), HTTPS (443) 和 MySQL (3306) 的入站連接
+    netsh advfirewall firewall add rule name="Allow HTTP" dir=in action=allow protocol=TCP localport=80
+    netsh advfirewall firewall add rule name="Allow HTTPS" dir=in action=allow protocol=TCP localport=443
+    netsh advfirewall firewall add rule name="Allow MySQL" dir=in action=allow protocol=TCP localport=3306
+
+    rem 顯示防火牆狀態以確認
+    netsh advfirewall show allprofiles state
+    </persist>
+    ```
+
+<br>
+
+7. 只需要添加一次 Section 語句，如下安裝。
 
     ```bash
     <powershell>
@@ -121,17 +166,22 @@ _實作 User data；進階操作_
     Start-Process -FilePath "C:\python-installer.exe" -ArgumentList "/quiet InstallAllUsers=1 PrependPath=1" -Wait
     Remove-Item -Path "C:\python-installer.exe"
 
-    # 安裝 XAMPP
-    Invoke-WebRequest -Uri "https://downloadsapachefriends.global.ssl.fastly.net/xampp-files/8.1.10/xampp-windows-x64-8.1.10-0-VS16-installer.exe" -OutFile "C:\xampp-installer.exe"
-    Start-Process -FilePath "C:\xampp-installer.exe" -ArgumentList "/S" -Wait
-    Remove-Item -Path "C:\xampp-installer.exe"
-
     # 安裝 Google Chrome
     Invoke-WebRequest -Uri "https://dl.google.com/chrome/install/375.126/chrome_installer.exe" -OutFile "C:\chrome_installer.exe"
     Start-Process -FilePath "C:\chrome_installer.exe" -ArgumentList "/silent /install" -Wait
     Remove-Item -Path "C:\chrome_installer.exe"
 
     </powershell>
+
+    <persist>
+    rem 設定防火牆規則，允許 HTTP (80), HTTPS (443) 和 MySQL (3306) 的入站連接
+    netsh advfirewall firewall add rule name="Allow HTTP" dir=in action=allow protocol=TCP localport=80
+    netsh advfirewall firewall add rule name="Allow HTTPS" dir=in action=allow protocol=TCP localport=443
+    netsh advfirewall firewall add rule name="Allow MySQL" dir=in action=allow protocol=TCP localport=3306
+
+    rem 顯示防火牆狀態以確認
+    netsh advfirewall show allprofiles state
+    </persist>
     ```
 
 <br>
