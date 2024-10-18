@@ -1,6 +1,6 @@
 # 建立 Windows Server
 
-_使用 Learner Lab 資源建立一個 Windows Server 的 EC2 實例，後便步驟將用於架設網站_
+_使用 Learner Lab 資源建立一個 Windows Server 的 EC2 實例，將在後續步驟中用於架設網站_
 
 <br>
 
