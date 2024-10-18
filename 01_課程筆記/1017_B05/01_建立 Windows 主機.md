@@ -268,15 +268,15 @@ _回到 EC2 實例，這時應該已經完成 `Running`_
 
     ```bash
     [default]
-    aws_access_key_id=
-    aws_secret_access_key=
-    aws_session_token=
+    aws_access_key_id=""
+    aws_secret_access_key=""
+    aws_session_token=""
 
-    Instance ID=
-    Public IPv4 address=
-    Security groups=
-    Username=Administrator
-    Password=
+    Instance ID=""
+    Public IPv4 address=""
+    Security groups=""
+    Username="Administrator"
+    Password=""
     ```
 
 <br>
