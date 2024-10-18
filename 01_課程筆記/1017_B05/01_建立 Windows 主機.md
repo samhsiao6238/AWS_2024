@@ -335,7 +335,7 @@ _回到 EC2 實例，這時應該已經完成 `Running`_
 
 <br>
 
-4. 點擊 `Yes` 後完成啟動。
+4. 點擊 `Yes` 後完成啟動；可以看到桌面已經安裝了 Google Chrome。
 
     ![](images/img_16.png)
 
@@ -344,6 +344,12 @@ _回到 EC2 實例，這時應該已經完成 `Running`_
 5. 特別說明，假如並未撰寫 `User data`，啟動後會顯示相關資訊。
 
     ![](images/img_13.png)
+
+<br>
+
+6. 透過在終端機中查詢 Python 版本以確定完成安裝。
+
+    ![](images/img_17.png)
 
 <br>
 
