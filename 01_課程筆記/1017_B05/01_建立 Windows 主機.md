@@ -28,19 +28,19 @@ _進入 AWS 主控台_
 
 <br>
 
-4. 在 Instance type 部分，選擇 `t2.micro` 即可，這裡我為了提升效能，所以選擇 `t3.large`。
+4. 在 Instance type 部分，選擇 `t2.micro` 即可，這裡為了提升效能，所以選擇 `t3.large`。
 
     ![](images/img_20.png)
 
 <br>
 
-5. 點擊 `Create new key pair` 建立新的 Key pair；命名 `MyKey1018`，其餘採用預設。
+5. 點擊 `Create new key pair` 建立新的 Key pair；命名 `MyKey1018`，其餘採用預設；點擊右下角 `Create key pair` 完成建立，此時會自動下載同名密鑰文件到本地電腦。
 
     ![](images/img_02.png)
 
 <br>
 
-6. `Firewall (security groups)` 的設定全部點選。
+6. `Firewall (security groups)` 的設定全部點選，也就是開啟 HTTPS 及 HTTP 的進站規則。
 
     ![](images/img_03.png)
 
