@@ -46,6 +46,92 @@ _進入 AWS 主控台_
 
 <br>
 
+## 關於 Advanced details
+
+1. 展開 `Advanced details` 並滑動到該區塊最下方會看到 `User data`，可用於自動化伺服器配置，節省手動安裝和設定的時間；特別注意，`User data` 預設有 `16KB` 的大小限制，並且只會在實例第一次啟動時執行，如果想讓指令每次重啟時都執行，需要將腳本放入 `C:\ProgramData\Amazon\EC2-Windows\Launch\Scripts\.`。
+
+    ![](images/img_10.png)
+
+<br>
+
+2. 透過 `PowerShell` 指令在實例啟動時自動安裝 `Python`，並將 Python 加入環境變數路徑，最後刪除安裝檔。
+
+    ```bash
+    <powershell>
+    Invoke-WebRequest -Uri "https://www.python.org/ftp/python/3.10.0/python-3.10.0-amd64.exe" -OutFile "C:\python-installer.exe"
+    Start-Process -FilePath "C:\python-installer.exe" -ArgumentList "/quiet InstallAllUsers=1 PrependPath=1" -Wait
+    Remove-Item -Path "C:\python-installer.exe"
+    </powershell>
+    ```
+
+<br>
+
+3. 安裝 XAMPP，完成後同樣刪除安裝檔。
+
+    ```bash
+    <powershell>
+    Invoke-WebRequest -Uri "https://downloadsapachefriends.global.ssl.fastly.net/xampp-files/8.1.10/xampp-windows-x64-8.1.10-0-VS16-installer.exe" -OutFile "C:\xampp-installer.exe"
+    Start-Process -FilePath "C:\xampp-installer.exe" -ArgumentList "/S" -Wait
+    Remove-Item -Path "C:\xampp-installer.exe"
+    </powershell>
+    ```
+
+<br>
+
+4. 安裝 Google Chrome。 
+
+    ```bash
+    <powershell>
+    Invoke-WebRequest -Uri "https://dl.google.com/chrome/install/375.126/chrome_installer.exe" -OutFile "C:\chrome_installer.exe"
+    Start-Process -FilePath "C:\chrome_installer.exe" -ArgumentList "/silent /install" -Wait
+    Remove-Item -Path "C:\chrome_installer.exe"
+    </powershell>
+    ```
+
+<br>
+
+5. 其他更新與安裝。
+
+    ```bash
+    <powershell>
+    # 更新系統
+    Install-WindowsUpdate -AcceptAll -AutoReboot
+
+    # 安裝 IIS (網頁伺服器)
+    Install-WindowsFeature -name Web-Server -IncludeManagementTools
+
+    </powershell>
+    ```
+
+<br>
+
+6. 只需要添加一次 Section 語句，如下安裝。
+
+    ```bash
+    <powershell>
+    # 更新系統
+    Install-WindowsUpdate -AcceptAll -AutoReboot
+
+    # 安裝 Python
+    Invoke-WebRequest -Uri "https://www.python.org/ftp/python/3.10.0/python-3.10.0-amd64.exe" -OutFile "C:\python-installer.exe"
+    Start-Process -FilePath "C:\python-installer.exe" -ArgumentList "/quiet InstallAllUsers=1 PrependPath=1" -Wait
+    Remove-Item -Path "C:\python-installer.exe"
+
+    # 安裝 XAMPP
+    Invoke-WebRequest -Uri "https://downloadsapachefriends.global.ssl.fastly.net/xampp-files/8.1.10/xampp-windows-x64-8.1.10-0-VS16-installer.exe" -OutFile "C:\xampp-installer.exe"
+    Start-Process -FilePath "C:\xampp-installer.exe" -ArgumentList "/S" -Wait
+    Remove-Item -Path "C:\xampp-installer.exe"
+
+    # 安裝 Google Chrome
+    Invoke-WebRequest -Uri "https://dl.google.com/chrome/install/375.126/chrome_installer.exe" -OutFile "C:\chrome_installer.exe"
+    Start-Process -FilePath "C:\chrome_installer.exe" -ArgumentList "/silent /install" -Wait
+    Remove-Item -Path "C:\chrome_installer.exe"
+    
+    </powershell>
+    ```
+
+<br>
+
 ## 建立並預覽指令
 
 1. 點擊 `Launch instance` 之前，下方有個 `Prevuew code`，先點擊查看；右側會顯示指令預覽，這裡先做紀錄，之後再來透過指令重新建立一次。
@@ -54,7 +140,13 @@ _進入 AWS 主控台_
 
 <br>
 
-2. CreateSecurityGroup。
+2. 包含了三個部分，分別是 `CreateSecurityGroup`、`AuthorizeSecurityGroupIngress`、`RunInstances`。
+
+    ![](images/img_09.png)
+
+<br>
+
+3. CreateSecurityGroup：建立名為 `launch-wizard-1` 的安全群組，並附加到指定的 `VPC`。
 
     ```bash
     aws ec2 create-security-group --group-name "launch-wizard-1" --description "launch-wizard-1 created 2024-10-17T16:52:15.514Z" --vpc-id "vpc-0c46350047f5fa6e4"
@@ -62,7 +154,7 @@ _進入 AWS 主控台_
 
 <br>
 
-3. AuthorizeSecurityGroupIngress。
+4. AuthorizeSecurityGroupIngress：為 `sg-preview-1` 安全群組設置 `入口規則（Ingress Rules）`，也可稱為 `進站規則（Inbound Rules）`。
 
     ```bash
     aws ec2 authorize-security-group-ingress --group-id "sg-preview-1" --ip-permissions '{"IpProtocol":"tcp","FromPort":3389,"ToPort":3389,"IpRanges":[{"CidrIp":"0.0.0.0/0"}]}' '{"IpProtocol":"tcp","FromPort":443,"ToPort":443,"IpRanges":[{"CidrIp":"0.0.0.0/0"}]}' '{"IpProtocol":"tcp","FromPort":80,"ToPort":80,"IpRanges":[{"CidrIp":"0.0.0.0/0"}]}' 
@@ -70,7 +162,7 @@ _進入 AWS 主控台_
 
 <br>
 
-4. RunInstances。
+5. RunInstances：啟動 EC2 實例。
 
     ```bash
     aws ec2 run-instances --image-id "ami-0324a83b82023f0b3" --instance-type "t3.large" --key-name "Mykey1018" --network-interfaces '{"AssociatePublicIpAddress":true,"DeviceIndex":0,"Groups":["sg-preview-1"]}' --credit-specification '{"CpuCredits":"unlimited"}' --tag-specifications '{"ResourceType":"instance","Tags":[{"Key":"Name","Value":"MyInstance1018"}]}' --metadata-options '{"HttpEndpoint":"enabled","HttpPutResponseHopLimit":2,"HttpTokens":"required"}' --private-dns-name-options '{"HostnameType":"ip-name","EnableResourceNameDnsARecord":true,"EnableResourceNameDnsAAAARecord":false}' --count "1"
