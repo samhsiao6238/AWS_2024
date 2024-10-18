@@ -16,13 +16,13 @@ _進入 AWS 主控台_
 
 <br>
 
-2. 點擊 `Launch instance`，命名為 `MyInstance1018`。
+2. 點擊 `Launch instance`，任意命名如 `MyInstance1018`。
 
     ![](images/img_19.png)
 
 <br>
 
-3. 建立一個 Windows 的 Instance，Image 選用 `Microsoft Windows Server 2022 Base`。
+1. OS 選擇 `Windows`，`Amazon Machine Image` 選用 `Microsoft Windows Server 2022 Base`。
 
     ![](images/img_01.png)
 
