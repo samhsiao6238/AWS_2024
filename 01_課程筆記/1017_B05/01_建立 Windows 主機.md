@@ -256,13 +256,19 @@ _在等待實例初始化同時，可先進行 CLI 環境設置_
 
 <br>
 
-2. 紀錄 AWS CLI 所需資訊，包含 ID、Key、Token。
+2. 在 `AWS CL` 尾端點擊 `Show` 展開內容。
+
+    ![](images/img_60.png)
+
+<br>
+
+3. 紀錄 AWS CLI 所需資訊，包含 ID、Key、Token。
 
     ![](images/img_24.png)
 
 <br>
 
-3. 在本機開啟終端機進行設置；特別說明，在 Lab 環境中其實可不用執行 `aws configure`，因為環境變數的優先權是在設定檔之前，而 Token 必須透過環境變數設定，如果只設置 `TOKEN` 但沒有設置相應的 `ID` 和 `KEY` 到環境變數，AWS CLI 會無法進行身份驗證。
+4. 在本機開啟終端機進行設置；特別說明，在 Lab 環境中其實可不用執行 `aws configure`，因為環境變數的優先權是在設定檔之前，而 Token 必須透過環境變數設定，如果只設置 `TOKEN` 但沒有設置相應的 `ID` 和 `KEY` 到環境變數，AWS CLI 會無法進行身份驗證。
 
     ```bash
     aws configure
@@ -272,7 +278,7 @@ _在等待實例初始化同時，可先進行 CLI 環境設置_
 
 <br>
 
-4. 還要進行環境參數設置。
+5. 還要進行環境參數設置。
 
     ```bash
     export AWS_ACCESS_KEY_ID=<複製-ID-貼上>
