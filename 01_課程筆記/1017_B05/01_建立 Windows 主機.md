@@ -250,7 +250,7 @@ _在等待實例初始化同時，可先進行 CLI 環境設置_
 
 <br>
 
-1. 回到 Lab 主頁面，點擊 `! AWS Details`。
+1. 回到 Lab 主頁面，點擊右上角的文字圖標 `! AWS Details`。
 
     ![](images/img_23.png)
 
