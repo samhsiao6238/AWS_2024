@@ -225,7 +225,9 @@ _回到 Windows 伺服器中_
     ```bash
     netsh advfirewall set domainprofile state on
     ```
+
 <br>
+
 7. 開啟 Private Profile 防火牆。
 
     ```bash
@@ -242,6 +244,12 @@ _回到 Windows 伺服器中_
 <br>
 
 9. 設定完成如下。
+
+    ![](images/img_82.png)
+
+<br>
+
+10. 或進入防火牆設定中查看。
 
     ![](images/img_43.png)
 
