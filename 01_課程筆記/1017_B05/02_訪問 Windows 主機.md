@@ -250,7 +250,7 @@ _回到 Windows 伺服器中_
 
 <br>
 
-1.  或進入防火牆設定中查看。
+10. 或進入防火牆設定中查看。
 
     ![](images/img_43.png)
 
@@ -267,7 +267,13 @@ _回到 Windows 伺服器中_
 
 <br>
 
-2. 啟動並設置 SSH 服務自動啟動。
+2. 等待上方進度條顯示完成。
+
+    ![](images/img_83.png)
+
+<br>
+
+3. 啟動並設置 SSH 服務自動啟動。
 
     ```bash
     powershell -Command "Start-Service sshd"
@@ -276,11 +282,37 @@ _回到 Windows 伺服器中_
 
 <br>
 
-3. 假如需要手動開放防火牆上的 22 端口。
+3. 查詢當前端口。
+
+    ```bash
+    netsh advfirewall firewall show rule name=all | findstr 22
+    ```
+
+<br>
+
+4. 結果顯示目前 22 端口沒有對應的防火牆規則，或者該端口的防火牆規則並未設置為允許入站流量。
+
+    ![](images/img_84.png)
+
+<br>
+
+5. 手動開放防火牆上的 22 端口。
 
     ```bash
     powershell -Command "New-NetFirewallRule -Name sshd -DisplayName 'OpenSSH Server (sshd)' -Enabled True -Direction Inbound -Protocol TCP -Action Allow -LocalPort 22"
     ```
+
+    ![](images/img_85.png)
+
+<br>
+
+6. 再次查詢。
+
+    ```bash
+    netsh advfirewall firewall show rule name="OpenSSH Server (sshd)"
+    ```
+
+    ![](images/img_86.png)
 
 <br>
 
