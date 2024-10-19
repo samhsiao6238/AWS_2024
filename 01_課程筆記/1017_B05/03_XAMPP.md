@@ -40,27 +40,63 @@ _在前面的步驟中，已示範進入伺服器終端機進行安裝，這裡�
 
 <br>
 
-3. 可瀏覽 C 槽中的 `xampp` 目錄中看到子目錄 `htdocs`，這就是用來存放網頁的目錄。
+## 建立網站文件
+
+1. 這個目錄 `C > xampp > htdocs` 就是 XAMPP 預設用來存放網頁的位置。
 
     ![](images/img_15.png)
 
 <br>
 
-4. 編輯任意 index.html 文本。
+2. 在本地編輯任意 index.html 文本。
+
+    ```bash
+    code ~/Downloads/index.html
+    ```
 
 <br>
 
-5. 複製到 `htdocs`。
+3. 使用快速鍵 `!` 簡單編輯。
+
+    ```html
+    <!DOCTYPE html>
+    <html lang="en">
+        <head>
+            <meta charset="UTF-8">
+            <meta name="viewport" content="width=device-width, initial-scale=1.0">
+            <title>測試網頁</title>
+        </head>
+        <body>
+            <H1>這是測試網頁內容 1018。</H1>
+        </body>
+    </html>
+    ```
+
+<br>
+
+4. 複製到 `htdocs`，要輸入密碼。
 
     ```bash
-    scp index.html Administrator@34.237.2.154:C:/xampp/htdocs
+    scp ~/Downloads/index.html Administrator@<實例-公共-IP>:C:/xampp/htdocs
     ```
+
+<br>
+
+5. 這時若進行訪問 `公共 IP`，會看到以下預設的內容，但並非前面步驟上傳的文本，這是因為 `XAMPP` 管理站台預設以 `index.php` 為優先，這部分與 `Apache` 預設不同。
+
+    ![](images/img_94.png)
 
 <br>
 
 ## XAMPP 的 Apache Web 設定文件
 
-1. 位於 `XAMPP` 安裝目錄下的 `apache/conf` 資料夾中，主要的設定文件是 `httpd.conf`；另外，與虛擬主機相關的設定通常會放在 `apache/conf/extra/` 目錄下的 `httpd-vhosts.conf` 文件中。
+_設定優先權_
+
+<br>
+
+1. 設定文件位於 `XAMPP` 安裝目錄下的 `apache/conf` 資料夾中，主要的設定文件是 `httpd.conf`；另外，與虛擬主機相關的設定通常會放在 `apache/conf/extra/` 目錄下的 `httpd-vhosts.conf` 文件中；因為前面已經設置了 SMB，所以可直接在本地用 VSCode 開啟編輯。
+
+    ![](images/img_95.png)
 
 <br>
 
@@ -70,10 +106,12 @@ _在前面的步驟中，已示範進入伺服器終端機進行安裝，這裡�
 
 <br>
 
-3. 可以簡單修改如下。
+3. 可以簡單修改如下，其他先刪除無妨。
 
     ```bash
-    DirectoryIndex index.html index.php
+    <IfModule dir_module>
+        DirectoryIndex index.html index.php
+    </IfModule>
     ```
 
 <br>
