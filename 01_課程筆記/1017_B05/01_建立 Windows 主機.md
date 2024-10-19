@@ -244,6 +244,29 @@ _實作 User data；進階操作_
 
 <br>
 
+## 準備紀錄用文檔
+
+_接下來會有一些資訊需要記錄備用，在一般正式的 Lab 中會建議使用 Cloud9 做紀錄，但這個 Lab 並未授權，請自行使用任意文件編輯器做紀錄。_
+
+<br>
+
+1. 建立文檔後，先貼上以下內容；這裡特別使用全形的引號 `【】` 是便於區別字串資訊內容。
+
+    ```bash
+    [default]
+    aws_access_key_id=【】
+    aws_secret_access_key=【】
+    aws_session_token=【】
+
+    Instance ID=【】
+    Public IPv4 address=【】
+    Security groups=【】
+    Username=【Administrator】
+    Password=【】
+    ```
+
+<br>
+
 ## 使用 AWS CLI 連線
 
 _在等待實例初始化同時，可先進行 CLI 環境設置_
@@ -338,22 +361,7 @@ _回到 EC2 實例，這時應該已經完成 `Running`_
 
 <br>
 
-1. 選取後，可在下方的 `Details` 及 `Security` 頁籤中紀錄幾項資訊。
 
-    ```bash
-    [default]
-    aws_access_key_id=""
-    aws_secret_access_key=""
-    aws_session_token=""
-
-    Instance ID=""
-    Public IPv4 address=""
-    Security groups=""
-    Username="Administrator"
-    Password=""
-    ```
-
-<br>
 
 2. 接著點擊上方 `Connect`。
 
