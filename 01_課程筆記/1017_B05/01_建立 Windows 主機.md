@@ -154,7 +154,7 @@ _實作 User data；進階操作_
 
 <br>
 
-7. 若運行多項功能，只需要添加一次 Section 語句；以下將預設進行系統更新，並安裝 Python、Chrome 及 XAMPP。
+7. 若運行多項功能，只需要添加一次 Section 語句；以下將預設進行系統更新，並安裝 Python、Chrome 及 XAMPP；另外，在此先不進行啟動應用，也不要設置防火牆。
 
     ```bash
     <powershell>
