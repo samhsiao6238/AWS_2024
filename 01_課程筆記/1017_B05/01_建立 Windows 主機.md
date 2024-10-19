@@ -373,7 +373,7 @@ _回到 EC2 實例，這時應該已經完成 `Running`_
 
 <br>
 
-3. 接著切換到 `Security` 頁籤，複製 `Security groups` 的 `ID` 到紀錄中；特別注意，`ID` 並不包含尾端括號及括號內字串。
+3. 接著切換到 `Security` 頁籤，複製 `Security groups` 的 `ID` 到紀錄中；特別注意，`ID` 並不包含尾端括號及括號內字串，點擊複製圖標時，也不會將其複製。
 
     ![](images/img_65.png)
 
