@@ -76,7 +76,7 @@ _先分享 Windows 主機的磁區 C_
 
 ## 建立新的入站規則
 
-_接下來要安裝 SMB，所以要添加進站規則；回到 EC2 主控台_
+_接下來要安裝 SMB，所以要添加進站規則；回到本地電腦的終端機。_
 
 <br>
 
@@ -156,7 +156,7 @@ _確認已經退回到本地終端機中_
 
 <br>
 
-2. 假如文件已經存在可跳過這個步驟，否則進行手動建立 `smb.conf`，這裡使用 `VSCode`，若使用 Nano 則將 `code` 改為 `nano` 即可。
+2. 無論文件是否存在，皆可使用以下指令對文件 `smb.conf` 進行編輯，不存在就會先建立；這裡使用 `VSCode`，若使用 `Nano` 則將 `code` 改為 `nano` 即可。
 
     ```bash
     code /opt/homebrew/etc/smb.conf
@@ -164,7 +164,7 @@ _確認已經退回到本地終端機中_
 
 <br>
 
-3. 添加以下內容到文件中；這是一個基本的 SMB 設置，它將 `/tmp` 目錄作為共享目錄並允許訪客訪問。
+3. 確認或添加以下內容到文件中；這是一個基本的 `SMB` 設置，它將 `/tmp` 目錄作為共享目錄並允許訪客訪問。
 
     ```bash
     [global]
@@ -180,7 +180,7 @@ _確認已經退回到本地終端機中_
 
 <br>
 
-4. 再次運行 `testparm` 測試配置；如果配置文件正確，應該會顯示 `Loaded services file OK.` 的相關訊息。
+4. 運行指令 `testparm` 測試配置；如果配置文件正確，應該會顯示 `Loaded services file OK.` 的相關訊息；按下 `ENTER` 可以退出測試狀態。
 
     ```bash
     testparm
@@ -196,7 +196,7 @@ _回到 Windows 伺服器中_
 
 <br>
 
-1. 搜尋進入 `Check firewall status`。
+1. 在 Windows 系統搜尋欄中搜尋並點擊 `Check firewall status` 進入設定。
 
     ![](images/img_39.png)
 
@@ -220,11 +220,13 @@ _回到 Windows 伺服器中_
 
 <br>
 
-5. 或使用指令進行查看防火牆狀態。
+5. 以上設定可使用指令進行，首先查看防火牆狀態。
 
     ```bash
     netsh advfirewall show allprofiles
     ```
+
+    ![](images/img_91.png)
 
 <br>
 
@@ -290,7 +292,7 @@ _回到 Windows 伺服器中_
 
 <br>
 
-3. 查詢當前端口。
+4. 查詢當前端口。
 
     ```bash
     netsh advfirewall firewall show rule name=all | findstr 22
@@ -298,13 +300,13 @@ _回到 Windows 伺服器中_
 
 <br>
 
-4. 結果顯示目前 22 端口沒有對應的防火牆規則，或者該端口的防火牆規則並未設置為允許入站流量。
+5. 結果顯示目前 22 端口沒有對應的防火牆規則，或者該端口的防火牆規則並未設置為允許入站流量。
 
     ![](images/img_84.png)
 
 <br>
 
-5. 手動開放防火牆上的 22 端口。
+6. 手動開放防火牆上的 22 端口。
 
     ```bash
     powershell -Command "New-NetFirewallRule -Name sshd -DisplayName 'OpenSSH Server (sshd)' -Enabled True -Direction Inbound -Protocol TCP -Action Allow -LocalPort 22"
@@ -314,7 +316,7 @@ _回到 Windows 伺服器中_
 
 <br>
 
-6. 再次查詢。
+7. 再次查詢。
 
     ```bash
     netsh advfirewall firewall show rule name="OpenSSH Server (sshd)"
