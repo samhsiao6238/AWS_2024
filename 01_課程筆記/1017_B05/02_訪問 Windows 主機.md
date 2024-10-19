@@ -136,6 +136,10 @@ _示範環境是 macOS 系統，Linux 相同_
 
 ## 檢查 smb.conf 文件是否存在
 
+_確認已經退回到本地終端機中_
+
+<br>
+
 1. 檢查該文件是否存在於指定路徑；如果文件不存在會導致 `testparm` 錯誤。
 
     ```bash
@@ -144,15 +148,15 @@ _示範環境是 macOS 系統，Linux 相同_
 
 <br>
 
-2. 手動建立 `smb.conf`。
+2. 假如文件已經存在可跳過這個步驟，否則進行手動建立 `smb.conf`，這裡使用 `VSCode`，若使用 Nano 則將 `code` 改為 `nano` 即可。
 
     ```bash
-    sudo nano /opt/homebrew/etc/smb.conf
+    code /opt/homebrew/etc/smb.conf
     ```
 
 <br>
 
-3. 添加以下內容到文件中；這是一個基本的 SMB 設置，它將 `/tmp` 目錄作為共享目錄並允許訪客訪問。。
+3. 添加以下內容到文件中；這是一個基本的 SMB 設置，它將 `/tmp` 目錄作為共享目錄並允許訪客訪問。
 
     ```bash
     [global]
