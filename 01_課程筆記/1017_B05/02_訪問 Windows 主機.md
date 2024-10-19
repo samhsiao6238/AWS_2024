@@ -110,10 +110,10 @@ _示範環境是 macOS 系統，Linux 相同_
 
 <br>
 
-2. 使用指令連線。
+2. 使用指令連線，請務必確認 `共享名稱`，在前面步驟中，將 C 的共享名稱設定為 `C-Drive`。
 
     ```bash
-    smbclient //<EC2-公共-IP>/C$ -U Administrator
+    smbclient //<EC2-公共-IP>/<共享名稱-C-槽> -U Administrator
     ```
 
 <br>
