@@ -141,7 +141,7 @@ _實作 User data；進階操作_
     cd C:\xampp
     apache_start.bat
     mysql_start.bat
-    
+
     rem 設定防火牆規則，允許 HTTP (80), HTTPS (443) 和 MySQL (3306) 的入站連接
     netsh advfirewall firewall add rule name="Allow HTTP" dir=in action=allow protocol=TCP localport=80
     netsh advfirewall firewall add rule name="Allow HTTPS" dir=in action=allow protocol=TCP localport=443
@@ -154,7 +154,7 @@ _實作 User data；進階操作_
 
 <br>
 
-7. 只需要添加一次 Section 語句，如下安裝。
+7. 若運行多項功能，只需要添加一次 Section 語句；以下將預設進行系統更新，並安裝 Python、Chrome 及 XAMPP。
 
     ```bash
     <powershell>
@@ -174,13 +174,15 @@ _實作 User data；進階操作_
     </powershell>
 
     <persist>
-    rem 設定防火牆規則，允許 HTTP (80), HTTPS (443) 和 MySQL (3306) 的入站連接
-    netsh advfirewall firewall add rule name="Allow HTTP" dir=in action=allow protocol=TCP localport=80
-    netsh advfirewall firewall add rule name="Allow HTTPS" dir=in action=allow protocol=TCP localport=443
-    netsh advfirewall firewall add rule name="Allow MySQL" dir=in action=allow protocol=TCP localport=3306
+    @echo off
+    curl -L -o C:\xampp-installer.exe https://sourceforge.net/projects/xampp/files/XAMPP%20Windows/8.0.30/xampp-windows-x64-8.0.30-0-VS16-installer.exe/download
 
-    rem 顯示防火牆狀態以確認
-    netsh advfirewall show allprofiles state
+    rem 靜默安裝 XAMPP 到 C:\xampp
+    C:\xampp-installer.exe --mode unattended --unattendedmodeui none --prefix C:\xampp
+
+    rem 刪除安裝檔
+    del C:\xampp-installer.exe
+
     </persist>
     ```
 
