@@ -312,7 +312,7 @@ _在等待實例初始化同時，可先進行 CLI 環境設置_
 
 <br>
 
-1. 列出角色的附加權限。
+3. 列出角色的附加權限。
 
     ```bash
     aws iam list-attached-role-policies --role-name voclabs
