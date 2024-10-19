@@ -451,36 +451,48 @@ _回到 EC2 實例，這時應該已經完成 `Status check`，特別注意，�
 
 1. 停止實例。
 
+<br>
+
 2. 點擊 `Edit user data`。
 
-![](images/img_66.png)
+    ![](images/img_66.png)
+
+<br>
 
 3. 預設以編輯方式進行修正 `Modify user data text`，完成後點擊 `Save`。
 
-![](images/img_67.png)
+    ![](images/img_67.png)
+
+<br>
 
 4. 重新啟動實例。
 
-![](images/img_68.png)
+    ![](images/img_68.png)
+
+<br>
 
 5. 下載新的 `remote desktop file`。
 
-![](images/img_69.png)
+    ![](images/img_69.png)
+
+<br>
 
 ## 使用例外捕捉
 
 1. 在 `PowerShell`  中可加入簡單的錯誤處理，確保過程中出現問題使腳本中斷。
 
-```bash
-try {
-    # 安裝 Python
-    Invoke-WebRequest -Uri "https://www.python.org/ftp/python/3.10.0/python-3.10.0-amd64.exe" -OutFile "C:\python-installer.exe"
-    Start-Process -FilePath "C:\python-installer.exe" -ArgumentList "/quiet InstallAllUsers=1 PrependPath=1" -Wait
-    Remove-Item -Path "C:\python-installer.exe"
-} catch {
-    Write-Host "Python 安裝失敗: $_"
-}
-```
+    ```bash
+    try {
+        # 安裝 Python
+        Invoke-WebRequest -Uri "https://www.python.org/ftp/python/3.10.0/python-3.10.0-amd64.exe" -OutFile "C:\python-installer.exe"
+        Start-Process -FilePath "C:\python-installer.exe" -ArgumentList "/quiet InstallAllUsers=1 PrependPath=1" -Wait
+        Remove-Item -Path "C:\python-installer.exe"
+    } catch {
+        Write-Host "Python 安裝失敗: $_"
+    }
+    ```
+
+<br>
 
 ___
 
