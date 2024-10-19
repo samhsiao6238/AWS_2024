@@ -220,27 +220,28 @@ _回到 Windows 伺服器中_
 
 <br>
 
-6. 開啟 Domain Profile 防火牆。
+6. 允許 Domain Profile 的入站連接。
 
     ```bash
-    netsh advfirewall set domainprofile state on
+    netsh advfirewall set domainprofile firewallpolicy allowinbound,allowoutbound
     ```
 
 <br>
 
-7. 開啟 Private Profile 防火牆。
+7. 允許 Private Profile 的入站連接。
 
     ```bash
-    netsh advfirewall set privateprofile state on
+    netsh advfirewall set privateprofile firewallpolicy allowinbound,allowoutbound
     ```
 
 <br>
 
-8. 開啟 Public Profile 防火牆。
+8. 允許 Public Profile 的入站連接。
 
     ```bash
-    netsh advfirewall set publicprofile state on
+    netsh advfirewall set publicprofile firewallpolicy allowinbound,allowoutbound
     ```
+
 <br>
 
 9. 設定完成如下。
@@ -249,7 +250,7 @@ _回到 Windows 伺服器中_
 
 <br>
 
-10. 或進入防火牆設定中查看。
+1.  或進入防火牆設定中查看。
 
     ![](images/img_43.png)
 
