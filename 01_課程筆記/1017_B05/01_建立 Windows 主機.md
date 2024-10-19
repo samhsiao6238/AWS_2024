@@ -367,31 +367,43 @@ _回到 EC2 實例，這時應該已經完成 `Running`_
 
 <br>
 
-2. 勾選實例，接著點擊上方 `Connect`。
+2. 勾選實例，先複製下方 `ID` 及 `IP` 到紀錄中。
+
+    ![](images/img_64.png)
+
+<br>
+
+3. 接著切換到 `Security` 頁籤，複製 `Security groups` 的 `ID` 到紀錄中；特別注意，`ID` 並不包含尾端括號及括號內字串。
+
+    ![](images/img_65.png)
+
+<br>
+
+4. 點擊上方 `Connect`。
 
     ![](images/img_05.png)
 
 <br>
 
-3. 切換到 `RDP client` 頁籤，點擊下方 `Get password`。
+5. 切換到 `RDP client` 頁籤，點擊下方 `Get password`。
 
     ![](images/img_06.png)
 
 <br>
 
-4. 點擊 `Upload private key file` 上傳密鑰，選取前面步驟下載到本地的密鑰文件 `*.pem`，選取後點擊右下角 `Decrypt password` 將 `Private Key` 解密成密碼。
+6. 點擊 `Upload private key file` 上傳密鑰，選取前面步驟下載到本地的密鑰文件 `*.pem`，選取後點擊右下角 `Decrypt password` 將 `Private Key` 解密成密碼。
 
     ![](images/img_07.png)
 
 <br>
 
-5. 解密後可看到這組密碼是可讀的；紀錄其中 `Username`、`Password`。
+7. 解密後可看到這組密碼是可讀的；紀錄其中 `Username`、`Password`。
 
     ![](images/img_04.png)
 
 <br>
 
-6. 點擊 `Download remote desktop file` 下載連線遠端桌面所需連結。
+8. 點擊 `Download remote desktop file` 下載連線遠端桌面所需連結。
 
     ![](images/img_11.png)
 
