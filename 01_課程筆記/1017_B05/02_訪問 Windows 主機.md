@@ -124,6 +124,16 @@ _示範環境是 macOS 系統，Linux 相同_
 
 <br>
 
+4. 退回本地電腦終端。
+
+    ```bash
+    exit
+    ```
+
+    ![](images/img_37.png)
+
+<br>
+
 ## 檢查 smb.conf 文件是否存在
 
 1. 檢查該文件是否存在於指定路徑；如果文件不存在會導致 `testparm` 錯誤。
