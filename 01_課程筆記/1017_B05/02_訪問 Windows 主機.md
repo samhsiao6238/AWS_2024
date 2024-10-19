@@ -178,9 +178,15 @@ _確認已經退回到本地終端機中_
     testparm
     ```
 
+    ![](images/img_81.png)
+
 <br>
 
 ## Windows Server 防火牆設置
+
+_回到 Windows 伺服器中_
+
+<br>
 
 1. 搜尋進入 `Check firewall status`。
 
@@ -206,7 +212,36 @@ _確認已經退回到本地終端機中_
 
 <br>
 
-5. 設定完成如下。
+5. 或使用指令進行查看防火牆狀態。
+
+    ```bash
+    netsh advfirewall show allprofiles
+    ```
+
+<br>
+
+6. 開啟 Domain Profile 防火牆。
+
+    ```bash
+    netsh advfirewall set domainprofile state on
+    ```
+<br>
+7. 開啟 Private Profile 防火牆。
+
+    ```bash
+    netsh advfirewall set privateprofile state on
+    ```
+
+<br>
+
+8. 開啟 Public Profile 防火牆。
+
+    ```bash
+    netsh advfirewall set publicprofile state on
+    ```
+<br>
+
+9. 設定完成如下。
 
     ![](images/img_43.png)
 
