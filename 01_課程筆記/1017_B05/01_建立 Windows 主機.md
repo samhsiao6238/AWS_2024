@@ -357,7 +357,7 @@ _在等待實例初始化同時，可先進行 CLI 環境設置_
 
 ## 取得帳號密碼
 
-_回到 EC2 實例，這時應該已經完成 `Running`_
+_回到 EC2 實例，這時應該已經完成 `Status check`，特別注意，並非以 `Instance state` 的 `Running` 作為確認資訊。_
 
 <br>
 
@@ -446,6 +446,41 @@ _回到 EC2 實例，這時應該已經完成 `Running`_
     ![](images/img_17.png)
 
 <br>
+
+## 無法順利連線
+
+1. 停止實例。
+
+2. 點擊 `Edit user data`。
+
+![](images/img_66.png)
+
+3. 預設以編輯方式進行修正 `Modify user data text`，完成後點擊 `Save`。
+
+![](images/img_67.png)
+
+4. 重新啟動實例。
+
+![](images/img_68.png)
+
+5. 下載新的 `remote desktop file`。
+
+![](images/img_69.png)
+
+## 使用例外捕捉
+
+1. 在 `PowerShell`  中可加入簡單的錯誤處理，確保過程中出現問題使腳本中斷。
+
+```bash
+try {
+    # 安裝 Python
+    Invoke-WebRequest -Uri "https://www.python.org/ftp/python/3.10.0/python-3.10.0-amd64.exe" -OutFile "C:\python-installer.exe"
+    Start-Process -FilePath "C:\python-installer.exe" -ArgumentList "/quiet InstallAllUsers=1 PrependPath=1" -Wait
+    Remove-Item -Path "C:\python-installer.exe"
+} catch {
+    Write-Host "Python 安裝失敗: $_"
+}
+```
 
 ___
 
