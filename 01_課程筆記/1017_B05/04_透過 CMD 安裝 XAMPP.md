@@ -92,6 +92,16 @@
     rem 刪除安裝檔
     del C:\xampp-installer.exe
 
+    </persist>
+    ```
+
+<br>
+
+
+2. 關於防火牆的相關設置暫時不加入。
+
+    ```bash
+    <persist>
     rem 啟動 Apache 和 MySQL
     cd C:\xampp
     apache_start.bat
