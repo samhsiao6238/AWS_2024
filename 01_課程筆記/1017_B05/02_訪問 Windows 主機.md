@@ -26,7 +26,47 @@ _先分享 Windows 主機的磁區 C_
 
 <br>
 
-4. 設置 EC2 安全組以允許 SMB 流量，端口是 `445`。
+4. 若使用指令建立磁區分享。
+
+    ```bash
+    net share C_Drive=C:\ /grant:everyone,full
+    ```
+
+    ![](images/img_77.png)
+
+<br>
+
+5. 查詢磁區分享狀態。
+
+    ```bash
+    net share
+    ```
+
+    ![](images/img_78.png)
+
+<br>
+
+6. 刪除指定磁區分享，例如刪除 `C$`。
+
+    ```bash
+    net share C$ /delete
+    ```
+
+    ![](images/img_79.png)
+
+<br>
+
+7. 刪除 C_Drive 共享。
+
+    ```bash
+    net share C_Drive /delete
+    ```
+
+    ![](images/img_80.png)
+
+<br>
+
+8. 設置 EC2 安全組以允許 SMB 流量，端口是 `445`。
 
     ```bash
     aws ec2 authorize-security-group-ingress --group-id <EC2-安全群組-ID> --protocol tcp --port 445 --cidr <EC2-公共-IP>/32
@@ -36,19 +76,25 @@ _先分享 Windows 主機的磁區 C_
 
 <br>
 
-5. 可進入安全群組查看入站規則。
+## 查看入站規則
+
+_回到 EC2 主控台_
+
+<br>
+
+1. 可進入安全群組查看入站規則。
 
     ![](images/img_35.png)
 
 <br>
 
-6. 修改為 `0.0.0.0`，然後點擊 `Save rules`。
+2. 修改為 `0.0.0.0`，然後點擊 `Save rules`。
 
     ![](images/img_37.png)
 
 <br>
 
-7. 通過以下 AWS CLI 指令獲取 EC2 公共 IP
+3. 通過以下 AWS CLI 指令獲取 EC2 公共 IP。
 
     ```bash
     aws ec2 describe-instances --instance-ids <EC2-實例-ID> --query "Reservations[*].Instances[*].PublicIpAddress"
