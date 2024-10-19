@@ -367,7 +367,7 @@ _回到 EC2 實例，這時應該已經完成 `Running`_
 
 <br>
 
-2. 接著點擊上方 `Connect`。
+2. 勾選實例，接著點擊上方 `Connect`。
 
     ![](images/img_05.png)
 
