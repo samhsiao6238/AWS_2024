@@ -64,10 +64,6 @@ _實作 User data；進階操作_
     <powershell>
     # 更新系統
     Install-WindowsUpdate -AcceptAll -AutoReboot
-
-    # 安裝 IIS (網頁伺服器)
-    Install-WindowsFeature -name Web-Server -IncludeManagementTools
-
     </powershell>
     ```
 
