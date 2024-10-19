@@ -96,19 +96,18 @@ _實作 User data；進階操作_
 
     ```bash
     <powershell>
-    # 使用 curl 下載 XAMPP
-    curl -L -o C:\xampp-installer.exe https://sourceforge.net/projects/xampp/files/XAMPP%20Windows/8.2.12/xampp-windows-x64-8.2.12-0-VS16-installer.exe/download
+    # 使用 Invoke-WebRequest 代替 curl 來下載 XAMPP，適合 PowerShell 環境
+    Invoke-WebRequest -Uri "https://sourceforge.net/projects/xampp/files/XAMPP%20Windows/8.2.12/xampp-windows-x64-8.2.12-0-VS16-installer.exe/download" -OutFile "C:\xampp-installer.exe"
 
-    # 靜默安裝 XAMPP 到指定目錄
+    # 靜默安裝 XAMPP
     Start-Process -FilePath "C:\xampp-installer.exe" -ArgumentList "--mode unattended --unattendedmodeui none --prefix C:\xampp" -Wait
 
-    # 刪除 XAMPP 安裝程式
+    # 刪除安裝檔案
     Remove-Item -Path "C:\xampp-installer.exe"
 
-    # 啟動 Apache 和 MySQL
+    # 啟動 Apache 和 MySQL 服務，使用 Start-Process 啟動批處理文件
     Start-Process -FilePath "C:\xampp\apache_start.bat" -Wait
     Start-Process -FilePath "C:\xampp\mysql_start.bat" -Wait
-
     </powershell>
     ```
 
@@ -150,26 +149,31 @@ _實作 User data；進階操作_
 
     ```bash
     <powershell>
+    # 更新系統並自動重啟
     Install-WindowsUpdate -AcceptAll -AutoReboot
 
+    # 下載並安裝 Python
     Invoke-WebRequest -Uri "https://www.python.org/ftp/python/3.10.0/python-3.10.0-amd64.exe" -OutFile "C:\python-installer.exe"
     Start-Process -FilePath "C:\python-installer.exe" -ArgumentList "/quiet InstallAllUsers=1 PrependPath=1" -Wait
     Remove-Item -Path "C:\python-installer.exe"
 
+    # 下載並安裝 Google Chrome
     Invoke-WebRequest -Uri "https://dl.google.com/chrome/install/375.126/chrome_installer.exe" -OutFile "C:\chrome_installer.exe"
     Start-Process -FilePath "C:\chrome_installer.exe" -ArgumentList "/silent /install" -Wait
     Remove-Item -Path "C:\chrome_installer.exe"
 
-    curl -L -o C:\xampp-installer.exe https://sourceforge.net/projects/xampp/files/XAMPP%20Windows/8.2.12/xampp-windows-x64-8.2.12-0-VS16-installer.exe/download
+    # 使用 Invoke-WebRequest 代替 curl 來下載 XAMPP，適合 PowerShell 環境
+    Invoke-WebRequest -Uri "https://sourceforge.net/projects/xampp/files/XAMPP%20Windows/8.2.12/xampp-windows-x64-8.2.12-0-VS16-installer.exe/download" -OutFile "C:\xampp-installer.exe"
 
-    C:\xampp-installer.exe --mode unattended --unattendedmodeui none --prefix C:\xampp
+    # 靜默安裝 XAMPP
+    Start-Process -FilePath "C:\xampp-installer.exe" -ArgumentList "--mode unattended --unattendedmodeui none --prefix C:\xampp" -Wait
 
-    del C:\xampp-installer.exe
+    # 刪除安裝檔案
+    Remove-Item -Path "C:\xampp-installer.exe"
 
-    cd C:\xampp
-    apache_start.bat
-    mysql_start.bat
-
+    # 啟動 Apache 和 MySQL 服務，使用 Start-Process 啟動批處理文件
+    Start-Process -FilePath "C:\xampp\apache_start.bat" -Wait
+    Start-Process -FilePath "C:\xampp\mysql_start.bat" -Wait
     </powershell>
     ```
 
