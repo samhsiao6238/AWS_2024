@@ -162,20 +162,12 @@ _實作 User data；進階操作_
     Start-Process -FilePath "C:\chrome_installer.exe" -ArgumentList "/silent /install" -Wait
     Remove-Item -Path "C:\chrome_installer.exe"
 
-    # 使用 Invoke-WebRequest 代替 curl 來下載 XAMPP，適合 PowerShell 環境
-    Invoke-WebRequest -Uri "https://sourceforge.net/projects/xampp/files/XAMPP%20Windows/8.2.12/xampp-windows-x64-8.2.12-0-VS16-installer.exe/download" -OutFile "C:\xampp-installer.exe"
-
-    # 靜默安裝 XAMPP
-    Start-Process -FilePath "C:\xampp-installer.exe" -ArgumentList "--mode unattended --unattendedmodeui none --prefix C:\xampp" -Wait
-
-    # 刪除安裝檔案
-    Remove-Item -Path "C:\xampp-installer.exe"
-
-    # 啟動 Apache 和 MySQL 服務，使用 Start-Process 啟動批處理文件
-    Start-Process -FilePath "C:\xampp\apache_start.bat" -Wait
-    Start-Process -FilePath "C:\xampp\mysql_start.bat" -Wait
     </powershell>
     ```
+
+<br>
+
+9. 特別說明，`EC2 User Data` 腳本有預設的執行時間限制，通常是 `20 秒`，如果腳本過長或過於複雜，某些命令可能無法完全執行。
 
 <br>
 
@@ -490,6 +482,70 @@ _假如無法連線_
 1. 查看實例運行中的日誌。
 
     ![](images/img_74.png)
+
+<br>
+
+## 完成 XAMPP 安裝
+
+1. 下載 XAMPP 安裝程式。
+
+    ```bash
+    curl -L -o C:\xampp-installer.exe https://sourceforge.net/projects/xampp/files/XAMPP%20Windows/8.2.12/xampp-windows-x64-8.2.12-0-VS16-installer.exe/download
+    ```
+
+<br>
+
+2. 使用無人值守模式自動化部署、安裝 `XAMPP` 到 `C:\xampp` 目錄；`unattended` 模式下安裝過程不會提示用戶進行任何輸入或確認。這對於自動化部署來說非常有用。
+無人值守安裝會自動使用默認選項進行安裝，並不需要用戶手動介入。
+
+    ```bash
+    C:\xampp-installer.exe --mode unattended --unattendedmodeui none --prefix C:\xampp
+    ```
+
+<br>
+
+3. 使用指令查詢安裝進程是否消失來確定安裝是否完成。
+
+    ```bash
+    tasklist | findstr /I "xampp-installer"
+    ```
+
+<br>
+
+4. 直到確認進程已經結束。
+
+    ![](images/img_75.png)
+
+<br>
+
+5. 刪除安裝檔案。
+
+    ```bash
+    del C:\xampp-installer.exe
+    ```
+
+<br>
+
+6. 啟動 Apache 和 MySQL 服務；使用 `start` 指令載不阻塞終端的情況下同時啟動以下兩個服務，`""` 是提供給 `start` 指令的終端機空標題；`/min` 參數來最小化批次運行，這樣第二個指令視窗不會等待使用者按下 `ENTER`。
+
+    ```bash
+    start /min "" C:\xampp\apache_start.bat
+    start /min "" C:\xampp\mysql_start.bat
+    ```
+
+<br>
+
+7. 啟動 XAMPP 應用。
+
+    ```bash
+    start "" C:\xampp\xampp-control.exe
+    ```
+
+<br>
+
+8. 應用程式視窗。
+
+    ![](images/img_76.png)
 
 <br>
 
