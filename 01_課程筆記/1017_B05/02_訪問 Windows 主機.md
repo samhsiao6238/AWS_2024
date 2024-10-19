@@ -327,24 +327,22 @@ _回到 Windows 伺服器中_
 2. 可使用 CLI。
 
     ```bash
-    aws ec2 authorize-security-group-ingress \
-        --group-id <安全群組-ID> \
-        --protocol tcp \
-        --port 22 \
-        --cidr 0.0.0.0/0
+    aws ec2 authorize-security-group-ingress --group-id <安全群組-ID> --protocol tcp --port 22 --cidr 0.0.0.0/0
     ```
+
+    ![](images/img_87.png)
 
 <br>
 
-3. 傳送本機建立任意文件到 Windows，這裡示範使用 `~/Downloads` 中的 `test.txt`，傳送到 Windows C 槽的 `test` 目錄。
+3. 傳送本機建立任意文件到 Windows，這裡示範使用 `~/Downloads` 中的 `test.txt`，傳送到 Windows C 槽的根目錄。
 
     ```bash
-    scp test.txt Administrator@<EC2-公共-IP>:C:/test
+    scp test.txt Administrator@<EC2-公共-IP>:C:
     ```
 
 <br>
 
-4. 第一次連線會詢問是否確定，輸入密碼後會立即傳送文件。
+4. 第一次連線會詢問是否確定，輸入 `yes` 後還要輸入密碼，然後就會立即傳送文件。
 
     ![](images/img_45.png)
 
@@ -352,19 +350,31 @@ _回到 Windows 伺服器中_
 
 5. 透過 smb 連線並查看。
 
+    ```bash
+    smbclient //<EC2-公共-IP>/<共享名稱-C-槽> -U Administrator
+    ```
+
     ![](images/img_46.png)
 
 <br>
 
+6. 下載為指定名稱；在 smb 中並無查看內容的指令，但是可以透過指令下載查看。
+
+    ```bash
+    get test.txt test02.txt
+    ```
+
+    <br>
+
 ## MacOS 使用 Finder 連線
 
-1. `Finder` > `前往` > `連接到伺服器`。
+1. `Finder` > `前往` > `連接伺服器`。
 
     ![](images/img_47.png)
 
 <br>
 
-2. 輸入並連線。
+2. 輸入 IP 後點擊 `連線`。
 
     ```bash
     smb://<EC2-公共-IP>
@@ -380,35 +390,21 @@ _回到 Windows 伺服器中_
 
 <br>
 
-4. 輸入帳戶 `Administrator` 及密碼。
+4. 帳戶會預設為本地使用者名稱，要改為 `Administrator`，並且輸入連線密碼。
 
     ![](images/img_50.png)
 
 <br>
 
-5. 加載卷宗。
+5. 確認名稱正確，點擊右下角 `好` 來進行裝載卷宗。
 
     ![](images/img_51.png)
 
 <br>
 
-6. 完成時可在 Finder 中查看。
+6. 完成時可在 Finder 中查看到這個裝載的卷宗。
 
     ![](images/img_52.png)
-
-<br>
-
-## 關於防火牆
-
-_後補_
-
-<br>
-
-1. 透過終端機查詢防火牆狀態。
-
-    ```bash
-    netsh advfirewall show allprofiles state
-    ```
 
 <br>
 
