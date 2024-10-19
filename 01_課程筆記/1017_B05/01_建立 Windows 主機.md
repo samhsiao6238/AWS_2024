@@ -230,11 +230,18 @@ _接下來會有一些資訊需要記錄備用，在一般正式的 Lab 中會�
 1. 建立文檔後，先貼上以下內容；這裡特別使用全形的引號 `【】`，僅是基於有利於區別字串資訊內容與引號，無其他用意，`Username` 部分已填入預設的內容 `Administrator`，共享名稱部分如為變動則是設定為 `C_Drive`。
 
     ```bash
+    # 複製 AWS CLI 貼上
     [default]
     aws_access_key_id=【】
     aws_secret_access_key=【】
     aws_session_token=【】
 
+    # 複製以上 Value 貼上
+    export AWS_ACCESS_KEY_ID=<複製-ID-貼上>
+    export AWS_SECRET_ACCESS_KEY=<複製-KEY-貼上>
+    export AWS_SESSION_TOKEN=<複製-TOKEN-貼上>
+
+    # 在操作步驟中複製
     Instance ID=【】
     Public IPv4 address=【】
     Security groups=【】
