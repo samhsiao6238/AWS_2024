@@ -338,13 +338,17 @@ _回到 Windows 伺服器中_
 
 ## 透過 SCP 傳送文件
 
-1. 在實例中編輯 `Inbound Rule` 添加 `SSH`。
+_需添加實例的進站規則_
+
+<br>
+
+1. 可在實例中編輯 `Inbound Rule` 添加 `SSH`。
 
     ![](images/img_44.png)
 
 <br>
 
-2. 可使用 CLI。
+2. 或使用 CLI 快速建立。
 
     ```bash
     aws ec2 authorize-security-group-ingress --group-id <安全群組-ID> --protocol tcp --port 22 --cidr 0.0.0.0/0
