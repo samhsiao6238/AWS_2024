@@ -90,7 +90,7 @@ _在前面的步驟中，已示範進入伺服器終端機進行安裝，這裡�
 
 ## XAMPP 的 Apache Web 設定文件
 
-_設定優先權_
+_以下將進行優先權設定；假如只是要進行測試且不編輯優先權，可將 `index.php` 更名為 `index1.php`，此處不贅述。_
 
 <br>
 
@@ -100,7 +100,7 @@ _設定優先權_
 
 <br>
 
-2. Apache 伺服器會根據 `DirectoryIndex` 指令來設定當訪問主機時應該載入哪個 `index` 檔案；預設順序如下，可自訂優先順序。
+2. Apache 伺服器會根據 `DirectoryIndex` 指令來設定當訪問主機時應該載入哪個 `index` 檔案；預設順序如下，可透變編輯自訂優先順位。
 
     ![](images/img_55.png)
 
@@ -116,17 +116,18 @@ _設定優先權_
 
 <br>
 
-4. 儲存變更後，重新啟動 Apache 服務以應用更改；使用 XAMPP 控制面板來重啟 Apache 伺服器。
+4. 儲存變更後，重新啟動 Apache 服務以應用更改；可使用 `XAMPP` 控制面板來重啟 Apache 伺服器，或使用以下指令進行，強制終止所有 httpd.exe 進程，然後重啟服務，並透過 `/b` 參數指定在背景運行。
+
+    ```bash
+    start "" /b taskkill /IM httpd.exe /F
+    start "" /b C:\xampp\apache_start.bat
+    ```
 
 <br>
 
 5. 使用 EC2 公共 IP 進行訪問。
 
     ![](images/img_56.png)
-
-<br>
-
-6. 假如沒有編輯優先權，可將 `index.php` 更名為 `index1.php`。
 
 <br>
 
