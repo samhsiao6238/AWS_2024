@@ -278,7 +278,7 @@ _回到 Windows 伺服器中_
 
 ## 在 Windows 安裝 OpenSSH Server
 
-1. 在 Windows CMD 中運行以下指令安裝 OpenSSH Server。
+1. 在 Windows 伺服器的 CMD 中運行以下指令安裝 `OpenSSH Server`。
 
     ```bash
     powershell -Command "Get-WindowsCapability -Online | Where-Object Name -like 'OpenSSH.Server*'"
@@ -287,7 +287,7 @@ _回到 Windows 伺服器中_
 
 <br>
 
-2. 等待上方進度條顯示完成。
+2. 等待上方進度條顯示完成；這約略需要一分鐘。
 
     ![](images/img_83.png)
 
@@ -310,7 +310,7 @@ _回到 Windows 伺服器中_
 
 <br>
 
-5. 結果顯示目前 22 端口沒有對應的防火牆規則，或者該端口的防火牆規則並未設置為允許入站流量。
+5. 結果代表防火牆中有與端口 `22` 相關的規則存在，但沒有更多詳細的信息顯示。
 
     ![](images/img_84.png)
 
@@ -326,7 +326,7 @@ _回到 Windows 伺服器中_
 
 <br>
 
-7. 再次查詢。
+7. 查詢設定結果。
 
     ```bash
     netsh advfirewall firewall show rule name="OpenSSH Server (sshd)"
