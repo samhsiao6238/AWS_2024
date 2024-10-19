@@ -357,7 +357,7 @@ _在等待實例初始化同時，可先進行 CLI 環境設置_
 
 ## 取得帳號密碼
 
-_回到 EC2 實例，這時應該已經完成 `Status check`，特別注意，並非以 `Instance state` 的 `Running` 作為確認資訊。_
+_回到 EC2 實例，這時應該已經完成 `Status check`，特別注意，並非以 `Instance state` 的 `Running` 作為確認資訊，而是要確認實例已經功過檢查。_
 
 <br>
 
