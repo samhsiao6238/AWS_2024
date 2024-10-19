@@ -66,41 +66,33 @@ _先分享 Windows 主機的磁區 C_
 
 <br>
 
-8. 設置 EC2 安全組以允許 SMB 流量，端口是 `445`。
+## 建立新的入站規則
+
+_接下來要安裝 SMB，所以要添加進站規則；回到 EC2 主控台_
+
+<br>
+
+1. 設置安全組允許 SMB 進站規則，預設端口是 `445`；以下指令開放所有IP訪問伺服器上的 445 端口。
 
     ```bash
-    aws ec2 authorize-security-group-ingress --group-id <EC2-安全群組-ID> --protocol tcp --port 445 --cidr <EC2-公共-IP>/32
+    aws ec2 authorize-security-group-ingress --group-id <EC2-安全群組-ID> --protocol tcp --port 445 --cidr 0.0.0.0/0
+    ```
+
+<br>
+
+2. 假如要針對指定設備開放，設定如下。
+
+    ```bash
+    aws ec2 authorize-security-group-ingress --group-id <EC2-安全群組-ID> --protocol tcp --port 445 --cidr <指定設備-IP>/32
     ```
 
     ![](images/img_34.png)
 
 <br>
 
-## 查看入站規則
-
-_回到 EC2 主控台_
-
-<br>
-
-1. 可進入安全群組查看入站規則。
+3. 可進入安全群組查看設定是否完成。
 
     ![](images/img_35.png)
-
-<br>
-
-2. 修改為 `0.0.0.0`，然後點擊 `Save rules`。
-
-    ![](images/img_37.png)
-
-<br>
-
-3. 通過以下 AWS CLI 指令獲取 EC2 公共 IP。
-
-    ```bash
-    aws ec2 describe-instances --instance-ids <EC2-實例-ID> --query "Reservations[*].Instances[*].PublicIpAddress"
-    ```
-
-    ![](images/img_36.png)
 
 <br>
 
