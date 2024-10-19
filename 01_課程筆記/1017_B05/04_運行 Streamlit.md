@@ -67,6 +67,34 @@ _既然前面已經安裝了 Python，這裡簡單做一個 Streamlit 網站_
 
 <br>
 
+## 關於使用 VSCode 連線
+
+_在前面的步驟中，透過 SMB 的連線開啟了 VSCode，但這樣的運作顯得有點效率不佳，以下改用 SSH。_
+
+<br>
+
+1. 開啟 VSCode，選取左側 `遠端總管`。
+
+    ![](images/img_97.png)
+
+<br>
+
+2. 在上方彈窗中輸入 `ssh` 連線指令。
+
+    ```bash
+    ssh Administrator@<EC2-公共-IP>
+    ```
+
+    ![](images/img_98.png)
+
+<br>
+
+3. 點擊 `開啟資料夾`，然後選取路徑後點擊 `確定`；進入後即可進行編輯，另外會有許多彈窗通知，該確認的確認、該安裝的安裝即可。
+
+    ![](images/img_99.png)
+
+<br>
+
 ___
 
 _END_
