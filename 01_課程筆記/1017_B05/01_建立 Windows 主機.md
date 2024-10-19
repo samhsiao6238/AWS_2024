@@ -58,7 +58,22 @@ _實作 User data；進階操作_
 
 <br>
 
-2. 透過 `PowerShell` 指令在實例啟動時自動安裝 `Python`，並將 Python 加入環境變數路徑，最後刪除安裝檔。
+2. 透過 `PowerShell` 指令在實例啟動時自動更新。
+
+    ```bash
+    <powershell>
+    # 更新系統
+    Install-WindowsUpdate -AcceptAll -AutoReboot
+
+    # 安裝 IIS (網頁伺服器)
+    Install-WindowsFeature -name Web-Server -IncludeManagementTools
+
+    </powershell>
+    ```
+
+<br>
+
+3. 安裝 `Python`，並將 Python 加入環境變數路徑，最後刪除安裝檔。
 
     ```bash
     <powershell>
@@ -70,7 +85,19 @@ _實作 User data；進階操作_
 
 <br>
 
-3. 安裝 XAMPP。
+4. 安裝 Google Chrome。 
+
+    ```bash
+    <powershell>
+    Invoke-WebRequest -Uri "https://dl.google.com/chrome/install/375.126/chrome_installer.exe" -OutFile "C:\chrome_installer.exe"
+    Start-Process -FilePath "C:\chrome_installer.exe" -ArgumentList "/silent /install" -Wait
+    Remove-Item -Path "C:\chrome_installer.exe"
+    </powershell>
+    ```
+
+<br>
+
+5. 安裝 XAMPP。
 
     ```bash
     <persist>
@@ -95,25 +122,11 @@ _實作 User data；進階操作_
 
 <br>
 
-4. 安裝 Google Chrome。 
+
+6. 其他安裝。
 
     ```bash
     <powershell>
-    Invoke-WebRequest -Uri "https://dl.google.com/chrome/install/375.126/chrome_installer.exe" -OutFile "C:\chrome_installer.exe"
-    Start-Process -FilePath "C:\chrome_installer.exe" -ArgumentList "/silent /install" -Wait
-    Remove-Item -Path "C:\chrome_installer.exe"
-    </powershell>
-    ```
-
-<br>
-
-5. 其他更新與安裝。
-
-    ```bash
-    <powershell>
-    # 更新系統
-    Install-WindowsUpdate -AcceptAll -AutoReboot
-
     # 安裝 IIS (網頁伺服器)
     Install-WindowsFeature -name Web-Server -IncludeManagementTools
 
@@ -122,7 +135,7 @@ _實作 User data；進階操作_
 
 <br>
 
-6. 更新防火牆。
+7. 更新防火牆。
 
     ```bash
     <persist>
@@ -154,7 +167,7 @@ _實作 User data；進階操作_
 
 <br>
 
-7. 若運行多項功能，只需要添加一次 Section 語句；以下將預設進行系統更新，並安裝 Python、Chrome 及 XAMPP；另外，在此先不進行啟動應用，也不要設置防火牆。
+8. 若運行多項功能，只需要添加一次 Section 語句；以下將預設進行系統更新，並安裝 Python、Chrome 及 XAMPP；另外，在此先不進行啟動應用，也不要設置防火牆。
 
     ```bash
     <powershell>
