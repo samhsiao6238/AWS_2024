@@ -308,17 +308,11 @@ _在等待實例初始化同時，可先進行 CLI 環境設置_
 
 2. 返回的結果中會顯示角色 ARN，角色名稱就是 `voclabs`；特別注意，其中 `user2069478` 是當前 AWS 會話中的一個具體用戶身份，附加在 `voclabs` 角色之下，用來追蹤和標識用戶的操作。
 
-    ```json
-    {
-        "UserId": "AROARVNR2UBM6YZZVY4SF:user2069478=_________",
-        "Account": "114726445145",
-        "Arn": "arn:aws:sts::114726445145:assumed-role/voclabs/user2069478=_________"
-    }
-    ```
+    ![](images/img_62.png)
 
 <br>
 
-3. 列出角色的附加權限。
+1. 列出角色的附加權限。
 
     ```bash
     aws iam list-attached-role-policies --role-name voclabs
