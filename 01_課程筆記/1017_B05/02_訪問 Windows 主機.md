@@ -26,7 +26,7 @@ _先分享 Windows 主機的磁區 C_
 
 <br>
 
-4. 若使用指令建立磁區分享。
+4. 以下是在 Windows Server 上使用指令建立磁區 C 的分享，並設定名稱為 `C_Drive`。
 
     ```bash
     net share C_Drive=C:\ /grant:everyone,full
@@ -63,6 +63,14 @@ _先分享 Windows 主機的磁區 C_
     ```
 
     ![](images/img_80.png)
+
+<br>
+
+8. 務必記得再次建立分享。
+
+    ```bash
+    net share C_Drive=C:\ /grant:everyone,full
+    ```
 
 <br>
 
