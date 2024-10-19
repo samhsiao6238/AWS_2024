@@ -134,17 +134,6 @@ _實作 User data；進階操作_
 
     ```bash
     <persist>
-    @echo off
-    rem 這是 CMD 指令區塊
-    rem 下載 XAMPP 安裝程式
-    curl -L -o C:\xampp-installer.exe https://sourceforge.net/projects/xampp/files/XAMPP%20Windows/8.0.30/xampp-windows-x64-8.0.30-0-VS16-installer.exe/download
-
-    rem 靜默安裝 XAMPP 到 C:\xampp
-    C:\xampp-installer.exe --mode unattended --unattendedmodeui none --prefix C:\xampp
-
-    rem 刪除安裝檔
-    del C:\xampp-installer.exe
-
     rem 啟動 Apache 和 MySQL
     cd C:\xampp
     apache_start.bat
@@ -155,8 +144,6 @@ _實作 User data；進階操作_
     netsh advfirewall firewall add rule name="Allow HTTPS" dir=in action=allow protocol=TCP localport=443
     netsh advfirewall firewall add rule name="Allow MySQL" dir=in action=allow protocol=TCP localport=3306
 
-    rem 顯示防火牆狀態以確認
-    netsh advfirewall show allprofiles state
     </persist>
     ```
 

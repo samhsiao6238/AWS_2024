@@ -258,6 +258,20 @@ _示範環境是 macOS 系統，Linux 相同_
 
 <br>
 
+## 關於防火牆
+
+_後補_
+
+<br>
+
+1. 透過終端機查詢防火牆狀態。
+
+    ```bash
+    netsh advfirewall show allprofiles state
+    ```
+
+<br>
+
 ___
 
 _END_
