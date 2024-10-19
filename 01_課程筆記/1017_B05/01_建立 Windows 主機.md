@@ -62,7 +62,6 @@ _實作 User data；進階操作_
 
     ```bash
     <powershell>
-    # 更新系統
     Install-WindowsUpdate -AcceptAll -AutoReboot
     </powershell>
     ```
@@ -211,31 +210,25 @@ _實作 User data；進階操作_
 
 <br>
 
-3. CreateSecurityGroup：建立名為 `launch-wizard-1` 的安全群組，並附加到指定的 `VPC`。
+3. `CreateSecurityGroup` 區塊預設會建立名為 `launch-wizard-1` 的安全群組，並附加到指定的 `VPC`。
 
-    ```bash
-    aws ec2 create-security-group --group-name "launch-wizard-1" --description "launch-wizard-1 created 2024-10-17T16:52:15.514Z" --vpc-id "vpc-0c46350047f5fa6e4"
-    ```
+    ![](images/img_71.png)
 
 <br>
 
-4. AuthorizeSecurityGroupIngress：為 `sg-preview-1` 安全群組設置 `入口規則（Ingress Rules）`，也可稱為 `進站規則（Inbound Rules）`。
+4. `AuthorizeSecurityGroupIngress` 會自動依據安全群組為 `ID` 為 `sg-preview-1` 的安全群組設置 `入口規則（Ingress Rules）`，也可稱為 `進站規則（Inbound Rules）`。
 
-    ```bash
-    aws ec2 authorize-security-group-ingress --group-id "sg-preview-1" --ip-permissions '{"IpProtocol":"tcp","FromPort":3389,"ToPort":3389,"IpRanges":[{"CidrIp":"0.0.0.0/0"}]}' '{"IpProtocol":"tcp","FromPort":443,"ToPort":443,"IpRanges":[{"CidrIp":"0.0.0.0/0"}]}' '{"IpProtocol":"tcp","FromPort":80,"ToPort":80,"IpRanges":[{"CidrIp":"0.0.0.0/0"}]}' 
-    ```
+    ![](images/img_70.png)
 
 <br>
 
-5. RunInstances：啟動 EC2 實例。
+5. `RunInstances` 進行啟動 EC2 實例；這段指令很長，會依據各項設定自動生成。
 
-    ```bash
-    aws ec2 run-instances --image-id "ami-0324a83b82023f0b3" --instance-type "t3.large" --key-name "MyKey1018" --user-data "PHBvd2Vyc2hlbGw+CiMg5pu05paw57O757WxCkluc3RhbGwtV2luZG93c1VwZGF0ZSAtQWNjZXB0QWxsIC1BdXRvUmVib290CgojIOWuieijnSBQeXRob24KSW52b2tlLVdlYlJlcXVlc3QgLVVyaSAiaHR0cHM6Ly93d3cucHl0aG9uLm9yZy9mdHAvcHl0aG9uLzMuMTAuMC9weXRob24tMy4xMC4wLWFtZDY0LmV4ZSIgLU91dEZpbGUgIkM6XHB5dGhvbi1pbnN0YWxsZXIuZXhlIgpTdGFydC1Qcm9jZXNzIC1GaWxlUGF0aCAiQzpccHl0aG9uLWluc3RhbGxlci5leGUiIC1Bcmd1bWVudExpc3QgIi9xdWlldCBJbnN0YWxsQWxsVXNlcnM9MSBQcmVwZW5kUGF0aD0xIiAtV2FpdApSZW1vdmUtSXRlbSAtUGF0aCAiQzpccHl0aG9uLWluc3RhbGxlci5leGUiCgojIOWuieijnSBYQU1QUApJbnZva2UtV2ViUmVxdWVzdCAtVXJpICJodHRwczovL2Rvd25sb2Fkc2FwYWNoZWZyaWVuZHMuZ2xvYmFsLnNzbC5mYXN0bHkubmV0L3hhbXBwLWZpbGVzLzguMS4xMC94YW1wcC13aW5kb3dzLXg2NC04LjEuMTAtMC1WUzE2LWluc3RhbGxlci5leGUiIC1PdXRGaWxlICJDOlx4YW1wcC1pbnN0YWxsZXIuZXhlIgpTdGFydC1Qcm9jZXNzIC1GaWxlUGF0aCAiQzpceGFtcHAtaW5zdGFsbGVyLmV4ZSIgLUFyZ3VtZW50TGlzdCAiL1MiIC1XYWl0ClJlbW92ZS1JdGVtIC1QYXRoICJDOlx4YW1wcC1pbnN0YWxsZXIuZXhlIgoKIyDlronoo50gR29vZ2xlIENocm9tZQpJbnZva2UtV2ViUmVxdWVzdCAtVXJpICJodHRwczovL2RsLmdvb2dsZS5jb20vY2hyb21lL2luc3RhbGwvMzc1LjEyNi9jaHJvbWVfaW5zdGFsbGVyLmV4ZSIgLU91dEZpbGUgIkM6XGNocm9tZV9pbnN0YWxsZXIuZXhlIgpTdGFydC1Qcm9jZXNzIC1GaWxlUGF0aCAiQzpcY2hyb21lX2luc3RhbGxlci5leGUiIC1Bcmd1bWVudExpc3QgIi9zaWxlbnQgL2luc3RhbGwiIC1XYWl0ClJlbW92ZS1JdGVtIC1QYXRoICJDOlxjaHJvbWVfaW5zdGFsbGVyLmV4ZSIKCjwvcG93ZXJzaGVsbD4K" --network-interfaces '{"AssociatePublicIpAddress":true,"DeviceIndex":0,"Groups":["sg-preview-1"]}' --credit-specification '{"CpuCredits":"unlimited"}' --tag-specifications '{"ResourceType":"instance","Tags":[{"Key":"Name","Value":"MyInstance1018"}]}' --metadata-options '{"HttpEndpoint":"enabled","HttpPutResponseHopLimit":2,"HttpTokens":"required"}' --private-dns-name-options '{"HostnameType":"ip-name","EnableResourceNameDnsARecord":true,"EnableResourceNameDnsAAAARecord":false}' --count "1"
-    ```
+    ![](images/img_72.png)
 
 <br>
 
-6. 點擊 `Download` 下載備用。
+6. 點擊 `Download` 下載語法備用。
 
     ![](images/img_58.png)
 
