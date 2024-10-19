@@ -95,30 +95,27 @@ _實作 User data；進階操作_
 5. 安裝 XAMPP。
 
     ```bash
-    <persist>
-    @echo off
-    rem 這是 CMD 指令區塊
-    rem 下載 XAMPP 安裝程式
-    curl -L -o C:\xampp-installer.exe https://sourceforge.net/projects/xampp/files/XAMPP%20Windows/8.0.30/xampp-windows-x64-8.0.30-0-VS16-installer.exe/download
+    <powershell>
+    # 使用 curl 下載 XAMPP
+    curl -L -o C:\xampp-installer.exe https://sourceforge.net/projects/xampp/files/XAMPP%20Windows/8.2.12/xampp-windows-x64-8.2.12-0-VS16-installer.exe/download
 
-    rem 靜默安裝 XAMPP 到 C:\xampp
-    C:\xampp-installer.exe --mode unattended --unattendedmodeui none --prefix C:\xampp
+    # 靜默安裝 XAMPP 到指定目錄
+    Start-Process -FilePath "C:\xampp-installer.exe" -ArgumentList "--mode unattended --unattendedmodeui none --prefix C:\xampp" -Wait
 
-    rem 刪除安裝檔
-    del C:\xampp-installer.exe
+    # 刪除 XAMPP 安裝程式
+    Remove-Item -Path "C:\xampp-installer.exe"
 
-    rem 啟動 Apache 和 MySQL
-    cd C:\xampp
-    apache_start.bat
-    mysql_start.bat
+    # 啟動 Apache 和 MySQL
+    Start-Process -FilePath "C:\xampp\apache_start.bat" -Wait
+    Start-Process -FilePath "C:\xampp\mysql_start.bat" -Wait
 
-    </persist>
+    </powershell>
     ```
 
 <br>
 
 
-6. 其他安裝。
+6. 其他安裝；暫時不用加入 `user data`，持續補充。
 
     ```bash
     <powershell>
@@ -130,7 +127,7 @@ _實作 User data；進階操作_
 
 <br>
 
-7. 更新防火牆。
+7. 更新防火牆，暫時不用加入 `user data`。
 
     ```bash
     <persist>
@@ -153,32 +150,27 @@ _實作 User data；進階操作_
 
     ```bash
     <powershell>
-    # 更新系統
     Install-WindowsUpdate -AcceptAll -AutoReboot
 
-    # 安裝 Python
     Invoke-WebRequest -Uri "https://www.python.org/ftp/python/3.10.0/python-3.10.0-amd64.exe" -OutFile "C:\python-installer.exe"
     Start-Process -FilePath "C:\python-installer.exe" -ArgumentList "/quiet InstallAllUsers=1 PrependPath=1" -Wait
     Remove-Item -Path "C:\python-installer.exe"
 
-    # 安裝 Google Chrome
     Invoke-WebRequest -Uri "https://dl.google.com/chrome/install/375.126/chrome_installer.exe" -OutFile "C:\chrome_installer.exe"
     Start-Process -FilePath "C:\chrome_installer.exe" -ArgumentList "/silent /install" -Wait
     Remove-Item -Path "C:\chrome_installer.exe"
 
-    </powershell>
+    curl -L -o C:\xampp-installer.exe https://sourceforge.net/projects/xampp/files/XAMPP%20Windows/8.2.12/xampp-windows-x64-8.2.12-0-VS16-installer.exe/download
 
-    <persist>
-    @echo off
-    curl -L -o C:\xampp-installer.exe https://sourceforge.net/projects/xampp/files/XAMPP%20Windows/8.0.30/xampp-windows-x64-8.0.30-0-VS16-installer.exe/download
-
-    rem 靜默安裝 XAMPP 到 C:\xampp
     C:\xampp-installer.exe --mode unattended --unattendedmodeui none --prefix C:\xampp
 
-    rem 刪除安裝檔
     del C:\xampp-installer.exe
 
-    </persist>
+    cd C:\xampp
+    apache_start.bat
+    mysql_start.bat
+
+    </powershell>
     ```
 
 <br>
