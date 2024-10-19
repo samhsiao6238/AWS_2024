@@ -220,7 +220,7 @@ _回到 Windows 伺服器中_
 
 <br>
 
-5. 以上設定可使用指令進行，首先查看防火牆狀態。
+5. 以上設定可使用指令進行，首先查看防火牆詳細資訊。
 
     ```bash
     netsh advfirewall show allprofiles
@@ -260,9 +260,19 @@ _回到 Windows 伺服器中_
 
 <br>
 
-10. 或進入防火牆設定中查看。
+10. 進入防火牆設定中查看。
 
     ![](images/img_43.png)
+
+<br>
+
+11. 檢查設定後的防火牆狀態。
+
+    ```bash
+    netsh advfirewall show allprofiles state
+    ```
+
+    ![](images/img_92.png)
 
 <br>
 
