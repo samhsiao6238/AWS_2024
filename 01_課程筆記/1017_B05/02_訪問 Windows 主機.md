@@ -361,7 +361,7 @@ _需添加實例的進站規則_
 3. 傳送本機建立任意文件到 Windows，這裡示範使用 `~/Downloads` 中的 `test.txt`，傳送到 Windows C 槽的根目錄。
 
     ```bash
-    scp test.txt Administrator@<EC2-公共-IP>:C:
+    scp ~/Downloads/test.txt Administrator@<EC2-公共-IP>:C:
     ```
 
 <br>
@@ -382,13 +382,19 @@ _需添加實例的進站規則_
 
 <br>
 
-6. 下載為指定名稱；在 smb 中並無查看內容的指令，但是可以透過指令下載查看。
+6. 下載為指定名稱；在 smb 中並無查看內容的指令，但是可以透過指令下載查看，特別注意，下載的文件會在使用 `smbclient` 登入的路徑中。
 
     ```bash
     get test.txt test02.txt
     ```
 
     <br>
+
+7. 使用 `exit` 指令退出連線，並在路徑中使用 `ls` 指令查詢，就會看到下載的文件了。
+
+    ![](images/img_93.png)
+
+<br>
 
 ## MacOS 使用 Finder 連線
 
