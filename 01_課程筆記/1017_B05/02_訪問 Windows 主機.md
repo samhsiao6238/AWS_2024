@@ -318,13 +318,25 @@ _回到 Windows 伺服器中_
 
 ## 透過 SCP 傳送文件
 
-1. 在 主控台中編輯 Inbound Rule 添加 SSH。
+1. 在實例中編輯 `Inbound Rule` 添加 `SSH`。
 
     ![](images/img_44.png)
 
 <br>
 
-2. 傳送本機建立任意文件到 Windows，這裡示範使用 `~/Downloads` 中的 `test.txt`，傳送到 Windows C 槽的 `test` 目錄。
+2. 可使用 CLI。
+
+    ```bash
+    aws ec2 authorize-security-group-ingress \
+        --group-id <安全群組-ID> \
+        --protocol tcp \
+        --port 22 \
+        --cidr 0.0.0.0/0
+    ```
+
+<br>
+
+3. 傳送本機建立任意文件到 Windows，這裡示範使用 `~/Downloads` 中的 `test.txt`，傳送到 Windows C 槽的 `test` 目錄。
 
     ```bash
     scp test.txt Administrator@<EC2-公共-IP>:C:/test
@@ -332,13 +344,13 @@ _回到 Windows 伺服器中_
 
 <br>
 
-3. 第一次連線會詢問是否確定，輸入密碼後會立即傳送文件。
+4. 第一次連線會詢問是否確定，輸入密碼後會立即傳送文件。
 
     ![](images/img_45.png)
 
 <br>
 
-4. 透過 smb 連線並查看。
+5. 透過 smb 連線並查看。
 
     ![](images/img_46.png)
 
