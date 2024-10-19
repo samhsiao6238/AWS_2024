@@ -226,7 +226,13 @@ _實作 User data；進階操作_
 
 <br>
 
-5. 點擊 `Launch instance`。
+6. 點擊 `Download` 下載備用。
+
+    ![](images/img_58.png)
+
+<br>
+
+7. 點擊 `Launch instance`。
 
     ![](images/img_22.png)
 
