@@ -8,7 +8,6 @@
 
     ```bash
     curl -L -o C:\xampp-installer.exe https://sourceforge.net/projects/xampp/files/XAMPP%20Windows/8.2.12/xampp-windows-x64-8.2.12-0-VS16-installer.exe/download
-
     ```
 
 <br>
@@ -85,7 +84,7 @@
     ```bash
     <persist>
     @echo off
-    curl -L -o C:\xampp-installer.exe https://sourceforge.net/projects/xampp/files/XAMPP%20Windows/8.0.30/xampp-windows-x64-8.0.30-0-VS16-installer.exe/download
+    curl -L -o C:\xampp-installer.exe https://sourceforge.net/projects/xampp/files/XAMPP%20Windows/8.2.12/xampp-windows-x64-8.2.12-0-VS16-installer.exe/download
 
     rem 靜默安裝 XAMPP 到 C:\xampp
     C:\xampp-installer.exe --mode unattended --unattendedmodeui none --prefix C:\xampp
