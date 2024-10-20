@@ -314,7 +314,7 @@ _在 Windows 伺服器安裝 `OpenSSH Server` 可提供基於 `SSH` 協議的遠
 
 <br>
 
-4. 查詢當前端口。
+4. 查詢當前 `端口 22` 的規則。
 
     ```bash
     netsh advfirewall firewall show rule name=all | findstr 22
@@ -328,10 +328,10 @@ _在 Windows 伺服器安裝 `OpenSSH Server` 可提供基於 `SSH` 協議的遠
 
 <br>
 
-6. 手動開放防火牆上的 22 端口。
+6. 手動設置 `22 端口` 的防火牆規則，並任意命名如 `OpenSSH Server`。
 
     ```bash
-    powershell -Command "New-NetFirewallRule -Name sshd -DisplayName 'OpenSSH Server (sshd)' -Enabled True -Direction Inbound -Protocol TCP -Action Allow -LocalPort 22"
+    powershell -Command "New-NetFirewallRule -Name sshd -DisplayName 'OpenSSH Server' -Enabled True -Direction Inbound -Protocol TCP -Action Allow -LocalPort 22"
     ```
 
     ![](images/img_85.png)
@@ -341,7 +341,7 @@ _在 Windows 伺服器安裝 `OpenSSH Server` 可提供基於 `SSH` 協議的遠
 7. 查詢設定結果。
 
     ```bash
-    netsh advfirewall firewall show rule name="OpenSSH Server (sshd)"
+    netsh advfirewall firewall show rule name="OpenSSH Server"
     ```
 
     ![](images/img_86.png)
@@ -354,37 +354,43 @@ _需添加實例的進站規則_
 
 <br>
 
-1. 可在實例中編輯 `Inbound Rule` 添加 `SSH`。
+1. 可在實例中手動編輯 `Inbound Rule` 添加 `SSH`。
 
     ![](images/img_44.png)
 
 <br>
 
-2. 或使用 CLI 快速建立。
+2. 這裡示範使用 CLI 快速建立；以下 AWS CLI 指令要在本地電腦運行。
 
     ```bash
-    aws ec2 authorize-security-group-ingress --group-id <安全群組-ID> --protocol tcp --port 22 --cidr 0.0.0.0/0
+    aws ec2 authorize-security-group-ingress --group-id $Security_groups --protocol tcp --port 22 --cidr 0.0.0.0/0
     ```
 
     ![](images/img_87.png)
 
 <br>
 
-3. 傳送本機建立任意文件到 Windows，這裡示範使用 `~/Downloads` 中的 `test.txt`，傳送到 Windows C 槽的根目錄。
+3. 傳送本機建立任意文件到 Windows，這裡示範使用 `~/Downloads` 中的 `test.txt`，文件內僅有簡單字串如下。
+
+    ![](images/img_112.png)
+
+<br>
+
+4. ，傳送到 Windows C 槽的根目錄。
 
     ```bash
-    scp ~/Downloads/test.txt Administrator@<EC2-公共-IP>:C:
+    scp ~/Downloads/test.txt Administrator@$Public_IPv4_address:C:
     ```
 
 <br>
 
-4. 第一次連線會詢問是否確定，輸入 `yes` 後還要輸入密碼，然後就會立即傳送文件。
+5. 第一次連線會詢問是否確定，輸入 `yes` 後還要輸入密碼，然後就會立即傳送文件。
 
     ![](images/img_45.png)
 
 <br>
 
-5. 透過 smb 連線並查看。
+6. 透過 smb 連線並查看。
 
     ```bash
     smbclient //<EC2-公共-IP>/<共享名稱-C-槽> -U Administrator
@@ -394,7 +400,7 @@ _需添加實例的進站規則_
 
 <br>
 
-6. 下載為指定名稱；在 smb 中並無查看內容的指令，但是可以透過指令下載查看，特別注意，下載的文件會在使用 `smbclient` 登入的路徑中。
+7. 下載為指定名稱；在 smb 中並無查看內容的指令，但是可以透過指令下載查看，特別注意，下載的文件會在使用 `smbclient` 登入的路徑中。
 
     ```bash
     get test.txt test02.txt
@@ -402,7 +408,7 @@ _需添加實例的進站規則_
 
     <br>
 
-7. 使用 `exit` 指令退出連線，並在路徑中使用 `ls` 指令查詢，就會看到下載的文件了。
+8. 使用 `exit` 指令退出連線，並在路徑中使用 `ls` 指令查詢，就會看到下載的文件了。
 
     ![](images/img_93.png)
 
