@@ -90,7 +90,7 @@ _後續步驟也會安裝 `SMB`，所以要添加進站規則；回到本地電�
 
 <br>
 
-2. 假如要針對指定設備開放，設定如下。
+2. 假如要針對指定設備開放設定如下，僅需替換其中 `<指定設備-IP>`。
 
     ```bash
     aws ec2 authorize-security-group-ingress --group-id <EC2-安全群組-ID> --protocol tcp --port 445 --cidr <指定設備-IP>/32
@@ -120,15 +120,15 @@ _示範環境是 macOS 系統，Linux 相同_
 
 <br>
 
-2. 使用指令連線，請務必確認 `共享名稱`，在前面步驟中，將 C 的共享名稱設定為 `C-Drive`。
+2. 使用指令連線，請務必確認 `共享名稱`，在前面步驟中，將 C 的共享名稱設定為 `C-Drive`；。
 
     ```bash
-    smbclient //<EC2-公共-IP>/<共享名稱-C-槽> -U Administrator
+    smbclient //$Public_IPv4_address/$Shared_Name_of_Drive_C -U Administrator
     ```
 
 <br>
 
-3. 輸入密碼；特別注意，這個密碼是看不到的。
+3. 輸入密碼；特別注意，這個密碼是看不到的，除此之外，密碼的部分就是字串，無法以變數替代。
 
     ![](images/img_38.png)
 
