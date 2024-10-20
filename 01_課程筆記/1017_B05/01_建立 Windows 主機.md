@@ -145,7 +145,15 @@ _實作 User data；進階操作_
 
 <br>
 
-8. 若運行多項功能，只需要添加一次 Section 語句；以下將預設進行系統更新，並安裝 Python、Chrome 及 XAMPP；另外，在此先不進行啟動應用，也不要設置防火牆。
+8. 指定腳本在每次啟動實例時都執行。
+
+    ```bash
+    <persist>true</persist>
+    ```
+
+<br>
+
+9. 若運行多項功能，只需要添加一次 Section 語句；以下將預設進行系統更新，並安裝 Python、Chrome 及 XAMPP；另外，在此先不進行啟動應用，也不要設置防火牆。
 
     ```bash
     <powershell>
@@ -163,11 +171,13 @@ _實作 User data；進階操作_
     Remove-Item -Path "C:\chrome_installer.exe"
 
     </powershell>
+
+    <persist>true</persist>
     ```
 
 <br>
 
-9. 特別說明，`EC2 User Data` 腳本有預設的執行時間限制，通常是 `20 秒`，如果腳本過長或過於複雜，某些命令可能無法完全執行。
+10. 特別說明，`EC2 User Data` 腳本有預設的執行時間限制，通常是 `20 秒`，如果腳本過長或過於複雜，某些命令可能無法完全執行。
 
 <br>
 
