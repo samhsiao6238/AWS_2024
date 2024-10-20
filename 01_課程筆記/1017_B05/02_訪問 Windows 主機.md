@@ -284,9 +284,13 @@ _與前面步驟相同，是在 Windows 伺服器中設定_
 
 <br>
 
-## 在 Windows 安裝 OpenSSH Server
+## 安裝 OpenSSH Server
 
-1. 在 Windows 伺服器的 CMD 中運行以下指令安裝 `OpenSSH Server`。
+_在 Windows 伺服器安裝 `OpenSSH Server` 可提供基於 `SSH` 協議的遠程連接方式；以下在 Windows CMD 運行。_
+
+<br>
+
+1. 安裝 `OpenSSH Server`。
 
     ```bash
     powershell -Command "Get-WindowsCapability -Online | Where-Object Name -like 'OpenSSH.Server*'"
