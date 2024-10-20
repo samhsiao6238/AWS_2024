@@ -587,8 +587,8 @@ _在 Windows 伺服器中安裝 XAMPP 來管理 Apache 服務_
 
 <br>
 
-3. 使用無人值守模式自動化部署、安裝 `XAMPP` 到 `C:\xampp` 目錄；`unattended` 模式下安裝過程不會提示用戶進行任何輸入或確認。這對於自動化部署來說非常有用。
-無人值守安裝會自動使用默認選項進行安裝，並不需要用戶手動介入。
+3. 使用無人值守模式自動化部署、安裝 `XAMPP` 到 `C:\xampp` 目錄；`unattended` 模式下安裝過程不會提示用戶進行任何輸入或確認；`無人值守` 模式對於自動化部署來說非常實用，
+安裝會在完全無需手動的看框下使用預設選項進行。
 
     ```bash
     C:\xampp-installer.exe --mode unattended --unattendedmodeui none --prefix C:\xampp
