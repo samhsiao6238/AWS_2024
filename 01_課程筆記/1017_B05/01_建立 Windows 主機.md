@@ -249,7 +249,7 @@ _接下來會有一些資訊需要記錄備用，在一般正式的 Lab 中會�
     Public_IPv4_address=
     Security_groups=
     Username=Administrator
-    Password=
+    Password=""
     Shared_Name_of_Drive_C=C_Drive
     ```
 
