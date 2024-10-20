@@ -571,7 +571,13 @@ _在 Windows 伺服器中安裝 XAMPP 來管理 Apache 服務_
 
 <br>
 
-1. 開啟 Windows 伺服器的 CMD，使用指令下載 XAMPP 安裝程式，版本資訊可參考 [官網](https://www.apachefriends.org/zh_tw/download.html)，這裡下載的是 `8.2.12`。
+1. 進入 Windows 伺服器的檔案總管，在 `Downloads` 資料夾的路徑欄中輸入 `cmd` 開啟 CMD。
+
+    ![](images/img_109.png)
+
+<br>
+
+2. 開啟的 CMD 所在路徑就是 `Downloads`，接著使用指令下載 XAMPP 安裝程式，版本資訊可參考 [官網](https://www.apachefriends.org/zh_tw/download.html)，這裡下載的是 `8.2.12`。
 
     ```bash
     curl -L -o C:\xampp-installer.exe https://sourceforge.net/projects/xampp/files/XAMPP%20Windows/8.2.12/xampp-windows-x64-8.2.12-0-VS16-installer.exe/download
