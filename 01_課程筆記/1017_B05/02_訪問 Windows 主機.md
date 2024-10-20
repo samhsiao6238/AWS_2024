@@ -1,5 +1,7 @@
 # 訪問 Windows Server 磁區
 
+_以下將 SMB 及 SSH 訪問伺服器磁區_
+
 <br>
 
 ## 設定磁區共享
