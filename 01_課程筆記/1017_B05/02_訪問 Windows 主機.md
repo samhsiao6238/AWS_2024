@@ -376,7 +376,7 @@ _需添加實例的進站規則_
 
 <br>
 
-4. ，傳送到 Windows C 槽的根目錄。
+4. 傳送到 `Windows` 伺服器 `C 磁區` 根目錄。
 
     ```bash
     scp ~/Downloads/test.txt Administrator@$Public_IPv4_address:C:
@@ -384,37 +384,43 @@ _需添加實例的進站規則_
 
 <br>
 
-5. 第一次連線會詢問是否確定，輸入 `yes` 後還要輸入密碼，然後就會立即傳送文件。
+5. 第一次連線到遠端主機時會詢問 `Are you sure you want to continue connecting?`，輸入 `yes` 後還要輸入密碼，然後就會立即傳送文件。
 
     ![](images/img_45.png)
 
 <br>
 
-6. 透過 smb 連線並查看。
+6. 透過 smb 連線並運行指令 `ls test.txt` 查看文件是否確實存在，會提示輸入密碼。
 
     ```bash
-    smbclient //<EC2-公共-IP>/<共享名稱-C-槽> -U Administrator
+    smbclient //$Public_IPv4_address/$Shared_Name_of_Drive_C -U $Username
     ```
 
     ![](images/img_46.png)
 
 <br>
 
-7. 下載為指定名稱；在 smb 中並無查看內容的指令，但是可以透過指令下載查看，特別注意，下載的文件會在使用 `smbclient` 登入的路徑中。
+7. 下載這個文件並儲存為新名稱 `test02.txt`；特別說明，在 `SMB` 中並無查看內容的指令，所以這裡透過下載來查看，另外，若無特別指定路徑，下載的文件會在儲存在 `smbclient` 登入時的當前路徑中。
 
     ```bash
     get test.txt test02.txt
     ```
 
+    ![](images/img_113.png)
+
     <br>
 
-8. 使用 `exit` 指令退出連線，並在路徑中使用 `ls` 指令查詢，就會看到下載的文件了。
+8. 使用 `exit` 指令退出連線後，在當前路徑使用 `ls test02.txt` 指令查詢，就會看到下載的文件了。
 
     ![](images/img_93.png)
 
 <br>
 
-## MacOS 使用 Finder 連線
+## 在 Finder 中建立連線磁碟
+
+_在本地電腦上操作_
+
+<br>
 
 1. `Finder` > `前往` > `連接伺服器`。
 
