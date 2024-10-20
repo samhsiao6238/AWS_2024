@@ -486,7 +486,7 @@ _以下步驟可能因為使用的遠端工具不同而不同_
 
 <br>
 
-6. 點擊 `Yes` 後完成啟動；可以看到桌面已經安裝了 Google Chrome。
+6. 點擊 `Yes` 後完成啟動；可以看到桌面已經安裝了 `Google Chrome`，這代表 `User data` 有順利進行。
 
     ![](images/img_16.png)
 
@@ -498,7 +498,7 @@ _以下步驟可能因為使用的遠端工具不同而不同_
 
 <br>
 
-8. 透過在終端機中查詢 Python 版本以確定完成安裝。
+8. 開啟 Windows 的 CMD，透過指令 `python --version` 驗證 `Python` 版本以確定完成安裝。
 
     ![](images/img_17.png)
 
