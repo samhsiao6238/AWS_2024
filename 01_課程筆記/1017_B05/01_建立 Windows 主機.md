@@ -260,7 +260,7 @@ _接下來會有一些資訊需要記錄備用，在一般正式的 Lab 中會�
 2. 在前一點所建立的文件底部貼上以下終端機指令，並且立即在終端機內貼上運行；這是用於建立環境變數提供 AWS CLI 及 AWS SDK 使用，這是由 AWS 內定的，所以讀取區域變數進行設定即可。
 
     ```bash
-    # 指令：建立環境變數
+    # 第三部分：建立環境變數
     export AWS_ACCESS_KEY_ID=$aws_access_key_id
     export AWS_SECRET_ACCESS_KEY=$aws_secret_access_key
     export AWS_SESSION_TOKEN=$aws_session_token
@@ -298,7 +298,13 @@ _在等待實例初始化同時，可先進行 CLI 環境設置_
 
 <br>
 
-5. 在終端機運行以下指令，透過 `export` 指令加上符號 `$` 來 `引用` 這些 `區域變數` 進行環境參數設置；特別注意，因為暫時未使用 AWS SDK，所以不對其他變數進行設置，僅針對 CLI 中會使用到的這三個變數進行設置。
+5. 先將第一部分指令從 `[default]` 以下進行複製並貼在終端機中。
+
+    ![](images/img_89.png)
+
+<br>
+
+6. 接著複製第三部分在終端機中運行；這是透過 `export` 指令加上符號 `$` 來 `引用` 第一部分的 `區域變數` 進行環境變數設置；特別注意，因為暫時未使用 AWS SDK，所以不對其他變數進行設置，僅針對 CLI 中會使用到的這三個變數進行設置。
 
     ```bash
     export AWS_ACCESS_KEY_ID=$aws_access_key_id
