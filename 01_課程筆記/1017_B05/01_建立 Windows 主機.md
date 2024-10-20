@@ -227,16 +227,16 @@ _接下來會有一些資訊需要記錄備用，在一般正式的 Lab 中會�
 
 <br>
 
-1. 建立文檔後，先貼上以下內容；其中 `Username` 及 `Shared_Name_of_Drive_C` 已填入預設的內容 `Administrator`、`C_Drive`，若沿用則無需更改；特別說明。
+1. 建立文檔後，先貼上以下內容，這將用於建立終端機視窗的 `區域變數`；其中 `Username` 及 `Shared_Name_of_Drive_C` 已填入預設的內容 `Administrator`、`C_Drive`，若沿用則無需更改。
 
     ```bash
-    # 複製 AWS CLI 貼上，第一部分格式不重要，稍後會直接覆蓋
+    # 第一部分：複製 AWS CLI 貼上，格式不重要，稍後會直接覆蓋
     [default]
     aws_access_key_id=
     aws_secret_access_key=
     aws_session_token=
 
-    # 在操作步驟中逐一複製，將用於建立區域變數
+    # 第二部分：在操作步驟中逐一複製
     Instance_ID=
     Public_IPv4_address=
     Security_groups=
@@ -244,6 +244,8 @@ _接下來會有一些資訊需要記錄備用，在一般正式的 Lab 中會�
     Password=
     Shared_Name_of_Drive_C=C_Drive
     ```
+
+<br>
 
 2. 在前一點所建立的文件底部貼上以下終端機指令，並且立即在終端機內貼上運行；這是用於建立環境變數提供 AWS CLI 及 AWS SDK 使用，這是由 AWS 內定的，所以讀取區域變數進行設定即可。
 
