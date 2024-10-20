@@ -169,7 +169,11 @@ _以下列舉 User data 的設定值，在這裡僅安裝 Python 及 Chrome 即�
 
 <br>
 
-10. 特別說明，`EC2 User Data` 腳本有預設的執行時間限制，如果腳本過長或過於複雜，某些命令可能無法完全執行。
+10. 特別說明，`EC2 User Data` 腳本有預設的執行時間限制，如果腳本過長或過於複雜，某些命令可能無法完全執行；安裝完成後可在實例中查看日誌，路徑如下。
+
+    ```bash
+    C:\ProgramData\Amazon\EC2-Windows\Launch\Log\UserdataExecution.log
+    ```
 
 <br>
 
