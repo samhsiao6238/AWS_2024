@@ -438,7 +438,13 @@ _回到 EC2 實例，這時應該已經完成 `Status check`，特別注意，�
 
 <br>
 
-8. 點擊 `Download remote desktop file` 下載連線遠端桌面所需連結。
+8. 至此 `第二部分` 與 `第三部分` 也完全填補完成。
+
+    ![](images/img_106.png)
+
+<br>
+
+9. 點擊 `Download remote desktop file` 下載連線遠端桌面所需連結。
 
     ![](images/img_11.png)
 
