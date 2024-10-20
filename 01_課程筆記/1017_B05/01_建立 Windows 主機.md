@@ -145,7 +145,7 @@ _實作 User data；進階操作_
 
 <br>
 
-8. 指定腳本在每次啟動實例時都執行。
+8. 指定腳本在每次啟動實例時都執行；暫時不安裝。
 
     ```bash
     <persist>true</persist>
@@ -171,8 +171,6 @@ _實作 User data；進階操作_
     Remove-Item -Path "C:\chrome_installer.exe"
 
     </powershell>
-
-    <persist>true</persist>
     ```
 
 <br>
