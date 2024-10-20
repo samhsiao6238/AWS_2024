@@ -6,7 +6,7 @@ _在前面的步驟中，已示範進入伺服器終端機進行安裝，這裡�
 
 ## 在本機下載並透過 SSH 傳送
 
-1. 在本機下載 `XAMPP`；選擇合適的版本下載。
+1. 在本機進入 [官網](https://www.apachefriends.org/zh_tw/download.html) 並下載 `XAMPP`；這裡主要是示範傳輸，所以改選 `8.0.30` 下載。
 
     ![](images/img_14.png)
 
