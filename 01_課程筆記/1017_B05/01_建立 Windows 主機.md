@@ -48,7 +48,7 @@ _進入 AWS 主控台_
 
 ## 關於 Advanced details
 
-_實作 User data；進階操作_
+_以下列舉 User data 的設定值，在這裡僅安裝 Python 及 Chrome 即可。_
 
 <br>
 
@@ -58,7 +58,7 @@ _實作 User data；進階操作_
 
 <br>
 
-2. 透過 `PowerShell` 指令在實例啟動時自動更新。
+2. 透過 `PowerShell` 指令在實例啟動時自動更新；避免過於耗時，先不要更新。
 
     ```bash
     <powershell>
@@ -68,7 +68,7 @@ _實作 User data；進階操作_
 
 <br>
 
-3. 安裝 `Python`，並將 Python 加入環境變數路徑，最後刪除安裝檔。
+3. 安裝 `Python`，並將 `Python` 加入環境變數路徑，最後刪除安裝檔。
 
     ```bash
     <powershell>
@@ -80,7 +80,7 @@ _實作 User data；進階操作_
 
 <br>
 
-4. 安裝 Google Chrome。 
+4. 安裝 `Google Chrome`。 
 
     ```bash
     <powershell>
@@ -92,7 +92,7 @@ _實作 User data；進階操作_
 
 <br>
 
-5. 安裝 XAMPP。
+5. 安裝 `XAMPP`；啟動後在手動安裝。
 
     ```bash
     <powershell>
@@ -114,19 +114,17 @@ _實作 User data；進階操作_
 <br>
 
 
-6. 其他安裝；暫時不用加入 `user data`，持續補充。
+6. 安裝 `IIS (網頁伺服器)`；暫時不加入。
 
     ```bash
     <powershell>
-    # 安裝 IIS (網頁伺服器)
     Install-WindowsFeature -name Web-Server -IncludeManagementTools
-
     </powershell>
     ```
 
 <br>
 
-7. 更新防火牆，暫時不用加入 `user data`。
+7. 更新防火牆；暫時不加入。
 
     ```bash
     <persist>
@@ -145,7 +143,7 @@ _實作 User data；進階操作_
 
 <br>
 
-8. 指定腳本在每次啟動實例時都執行；暫時不安裝。
+8. 指定腳本在每次啟動實例時都執行；暫時不設定。
 
     ```bash
     <persist>true</persist>
@@ -153,13 +151,10 @@ _實作 User data；進階操作_
 
 <br>
 
-9. 若運行多項功能，只需要添加一次 Section 語句；以下將預設進行系統更新，並安裝 Python、Chrome 及 XAMPP；另外，在此先不進行啟動應用，也不要設置防火牆。
+9. 若運行多項功能，只需要添加一次 `Section` 語句；以下預設安裝 `Python` 及 `Chrome`。
 
     ```bash
     <powershell>
-    # 更新系統並自動重啟
-    Install-WindowsUpdate -AcceptAll -AutoReboot
-
     # 下載並安裝 Python
     Invoke-WebRequest -Uri "https://www.python.org/ftp/python/3.10.0/python-3.10.0-amd64.exe" -OutFile "C:\python-installer.exe"
     Start-Process -FilePath "C:\python-installer.exe" -ArgumentList "/quiet InstallAllUsers=1 PrependPath=1" -Wait
@@ -169,13 +164,12 @@ _實作 User data；進階操作_
     Invoke-WebRequest -Uri "https://dl.google.com/chrome/install/375.126/chrome_installer.exe" -OutFile "C:\chrome_installer.exe"
     Start-Process -FilePath "C:\chrome_installer.exe" -ArgumentList "/silent /install" -Wait
     Remove-Item -Path "C:\chrome_installer.exe"
-
     </powershell>
     ```
 
 <br>
 
-10. 特別說明，`EC2 User Data` 腳本有預設的執行時間限制，通常是 `20 秒`，如果腳本過長或過於複雜，某些命令可能無法完全執行。
+10. 特別說明，`EC2 User Data` 腳本有預設的執行時間限制，如果腳本過長或過於複雜，某些命令可能無法完全執行。
 
 <br>
 
