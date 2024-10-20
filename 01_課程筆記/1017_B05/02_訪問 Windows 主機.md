@@ -144,13 +144,13 @@ _示範環境是 macOS 系統，Linux 相同_
 
 <br>
 
-## 檢查 smb.conf 文件是否存在
+## 檢查 Samba 伺服器配置文件
 
-_確認已經退回到本地終端機中_
+_確認已經退回到本地終端機中；這裡要檢查 `smb.conf` 是否已經存在，如果不存在會導致 `testparm` 錯誤。_
 
 <br>
 
-1. 檢查該文件是否存在於指定路徑；如果文件不存在會導致 `testparm` 錯誤。
+1. 檢查該文件是否存在於指定路徑；因為是由 `Homebrew` 管理，所以會在這個路徑中，若是其他安裝方式，也可能會在 `/etc/samba/smb.conf` 路徑中。
 
     ```bash
     ls /opt/homebrew/etc/smb.conf
@@ -182,7 +182,7 @@ _確認已經退回到本地終端機中_
 
 <br>
 
-4. 運行指令 `testparm` 測試配置；如果配置文件正確，應該會顯示 `Loaded services file OK.` 的相關訊息；按下 `ENTER` 可以退出測試狀態。
+4. 運行指令 `testparm` 測試配置，這是 `Samba 伺服器` 的一個診斷工具，用來驗證 `Samba` 的配置文件是否正確；如果配正確會顯示 `Loaded services file OK.` 等相關訊息；按下 `ENTER` 可以退出測試狀態。
 
     ```bash
     testparm
