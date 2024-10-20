@@ -12,10 +12,10 @@ _在前面的步驟中，已示範進入伺服器終端機進行安裝，這裡�
 
 <br>
 
-2. 使用 `SCP` 指令，將下載的執行檔案傳送到 Windwos 伺服器的 `C:/test`。
+2. 使用 `SCP` 指令，將下載的執行檔案傳送到 Windwos 伺服器的 `C:` 詞曲的下載文件夾中，運行後會詢問密碼。
 
     ```bash
-    scp xampp-windows-x64-8.0.30-0-VS16-installer.exe Administrator@34.237.2.154:C:/test
+    scp ~/Downloads/xampp-windows-x64-8.0.30-0-VS16-installer.exe $Username@$Public_IPv4_address:C:/Users/Administrator/Downloads/
     ```
 
 <br>
@@ -23,6 +23,38 @@ _在前面的步驟中，已示範進入伺服器終端機進行安裝，這裡�
 3. 速度實在有點慢。
 
     ![](images/img_53.png)
+
+<br>
+
+## 安裝 sshpass 輔助 SSH
+
+1. 使用 Homebrew 安裝 sshpass，這是非官方的 Homebrew tap。
+
+    ```bash
+    brew install esolitos/ipa/sshpass
+    ```
+
+<br>
+
+2. 檢查是否安裝成功。
+
+    ```bash
+    sshpass -V
+    ```
+
+<br>
+
+3. 使用 sshpass 傳遞密碼來執行 scp 指令，這樣比 scp 更加簡潔。
+
+    ```bash
+    sshpass -p $Password scp ~/Downloads/MyInstance1018.rdp $Username@$Public_IPv4_address:"C:/Users/Administrator/Downloads/"
+    ```
+
+<br>
+
+4. 進入 Windows 伺服器查看。
+
+    ![](images/img_114.png)
 
 <br>
 
