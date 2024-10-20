@@ -516,13 +516,13 @@ _對於實例來說，若無特別指定，`User Data` 只會在首次啟動時�
 
 <br>
 
-2. 點擊 `Edit user data`。
+2. 展開 `Actions` 選單，在 `Instance setting` 中點擊 `Edit user data`。
 
     ![](images/img_66.png)
 
 <br>
 
-3. 預設以編輯方式進行修正 `Modify user data text`，完成後點擊 `Save`。
+3. 使用預選的 `Modify user data text` 選項以編輯方式進行修正，將更新代碼填寫在下方輸入框中，完成後點擊 `Save`。
 
     ![](images/img_67.png)
 
@@ -534,7 +534,7 @@ _對於實例來說，若無特別指定，`User Data` 只會在首次啟動時�
 
 <br>
 
-5. 下載新的 `remote desktop file`。
+5. 實例重啟之後必須下載新的 `remote desktop file` 進行連線。
 
     ![](images/img_69.png)
 
@@ -542,7 +542,7 @@ _對於實例來說，若無特別指定，`User Data` 只會在首次啟動時�
 
 ## 使用例外捕捉
 
-1. 在 `PowerShell`  中可加入簡單的錯誤處理，確保過程中出現問題使腳本中斷。
+1. 在 `PowerShell` 中可加入簡單的錯誤處理，確保過程中出現問題使腳本中斷。
 
     ```bash
     try {
@@ -557,15 +557,19 @@ _對於實例來說，若無特別指定，`User Data` 只會在首次啟動時�
 
 <br>
 
-## 查看實例運行
+## 日誌中查看實例運行
 
-1. 查看實例運行中的日誌。
+1. 展開 `Actions` 選單，在 `Monitor and troubleshoot` 中點擊 `Get system log` 可查看實例運行的紀錄文件。
 
     ![](images/img_74.png)
 
 <br>
 
-## 完成 XAMPP 安裝
+## 安裝 XAMPP
+
+_在 Windows 伺服器中安裝 XAMPP 來管理 Apache 服務_
+
+<br>
 
 1. 下載 XAMPP 安裝程式。
 
