@@ -185,19 +185,19 @@ _在 User data 最下方_
 
 <br>
 
-1. 當使用面板進行生成實例時，這個勾選框可以不用選。
+1. 當使用面板進行生成實例時，因為輸入的指令是 `明文`，下方這個勾選框可以不用選。
 
     ![](images/img_119.png)
 
 <br>
 
-2. 但是點擊 `Preview code` 並使用代碼建立實例時，可以發現代碼自動將 `User data` 轉換成 `base64` 編碼，但並未設定勾選。
+2. 但若是使用 `Preview code` 所生成的指令建立實例，系統會自動將 `User data` 轉換成 `base64` 編碼。
 
     ![](images/img_120.png)
 
 <br>
 
-3. 所以建立後可在日誌中看到類似以下的訊息，表示 `User Data` 被編碼成為 `Base64` 格式，但沒有使用 `Base64` 解碼來解析它。
+3. 建立實例後，在日誌中會看到類似以下的訊息，表示 `User Data` 被編碼成為 `Base64` 格式，但沒有使用 `Base64` 解碼來解析它。
 
     ![](images/img_121.png)
 
@@ -211,7 +211,7 @@ _在 User data 最下方_
 
 <br>
 
-5. 查看內容。
+5. 查看內容，可以確認內容是正確的，但是 AWS 卻無法順利解析，這應該是 AWS 的一個 Bug。
 
     ```bash
     echo $USER_DATA_DECODE | base64 --decode
