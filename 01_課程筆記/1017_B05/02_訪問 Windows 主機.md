@@ -305,7 +305,7 @@ _在 Windows 伺服器安裝 `OpenSSH Server` 可提供基於 `SSH` 協議的遠
 
 <br>
 
-3. 啟動並設置 SSH 服務自動啟動。
+3. 立即啟動 SSH 服務，並設置為開機自動啟動。
 
     ```bash
     powershell -Command "Start-Service sshd"
