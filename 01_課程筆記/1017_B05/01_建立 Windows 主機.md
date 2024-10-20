@@ -282,24 +282,24 @@ _在等待實例初始化同時，可先進行 CLI 環境設置_
 
 <br>
 
-4. 複製貼上過程中要特別注意尾端不要添加多餘的空格或換行符號。
+4. 直接覆蓋原本 `第一部分` 的內容即可，貼上時特別注意尾端不要添加多餘的空格或換行符號，因為後續將直接用於建立環境變數。
 
     ![](images/img_61.png)
 
 <br>
 
-5. 將值貼到下方準備好的字串中。
+5. 在後續的指令中，這些 `區域變數` 將會使用 `$` 進行 `引用`，可理解為 `取值`。
 
     ![](images/img_89.png)
 
 <br>
 
-6. 開啟終端機進行環境參數設置；可以逐行輸入以下指令。
+6. 在終端機運行以下指令進行環境參數設置；特別注意，因為暫時未使用 AWS SDK，所以不對其他變數進行設置，僅針對 CLI 中會使用到的這三個變數進行設置。
 
     ```bash
-    export AWS_ACCESS_KEY_ID=<複製-ID-貼上>
-    export AWS_SECRET_ACCESS_KEY=<複製-KEY-貼上>
-    export AWS_SESSION_TOKEN=<複製-TOKEN-貼上>
+    export AWS_ACCESS_KEY_ID=$aws_access_key_id
+    export AWS_SECRET_ACCESS_KEY=$aws_secret_access_key
+    export AWS_SESSION_TOKEN=$aws_session_token
     ```
 
 <br>
