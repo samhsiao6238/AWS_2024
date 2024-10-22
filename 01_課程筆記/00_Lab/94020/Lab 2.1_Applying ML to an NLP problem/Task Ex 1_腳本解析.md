@@ -16,7 +16,7 @@ _使用 SageMaker 內建的機器學習模型 `LinearLearner` 來預測 `評論�
 
 ## 關於此數據集
 
-_`AMAZON-REVIEW-DATA-CLASSIFICATION.csv` _
+_`AMAZON-REVIEW-DATA-CLASSIFICATION.csv`_
 
 <br>
 
