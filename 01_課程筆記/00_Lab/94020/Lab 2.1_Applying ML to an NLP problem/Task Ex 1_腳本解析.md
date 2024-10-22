@@ -94,7 +94,7 @@ _特別說明，部分指令經過修改來排除預設腳本的錯誤_
 
 <br>
 
-1. 使用 `requests` 和 `zipfile` 下載並解壓縮文件。
+1. 使用 `requests` 和 `zipfile` 下載並解壓縮文件；下載的資源是 `NLP` 中的 `標記化` 工具，用來進行句子和詞語的切分。
 
     ```python
     import requests
@@ -251,7 +251,7 @@ _移除停用詞和詞幹提取_
 
     ```python
     import nltk
-    nltk.download('punkt')
+    # nltk.download('punkt')
     nltk.download('stopwords')
     ```
 
