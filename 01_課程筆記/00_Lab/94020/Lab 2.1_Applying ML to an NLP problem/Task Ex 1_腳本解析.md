@@ -74,9 +74,9 @@ _以下代碼將以這 `10` 個步驟依序進行_
 
 <br>
 
-## 安裝套件
+## 讀取數據
 
-1. 在 ipynb 中使用魔法指令 `!` 或 `%` 下達終端機指令，以下是安裝並升級所需套件。
+1. 安裝並升級所需套件；在 `.ipynb` 腳本的 CELL 中，可透過魔法指令 `!` 或 `%` 下達終端機指令。
 
     ```python
     !pip install --upgrade pip
@@ -90,14 +90,18 @@ _以下代碼將以這 `10` 個步驟依序進行_
 
 ## 開始進行
 
-1. 使用 requests 和 zipfile 模組來下載並解壓縮文件。
+_特別說明，部分指令經過修改來排除預設腳本的錯誤_
+
+<br>
+
+1. 使用 `requests` 和 `zipfile` 下載並解壓縮文件。
 
     ```python
     import requests
     import zipfile
     import os
 
-    # 下載文件的函數
+    # 自訂下載文件的函數
     def download_and_unzip(url, extract_to='.'):
         local_filename = url.split('/')[-1]
         
@@ -116,20 +120,20 @@ _以下代碼將以這 `10` 個步驟依序進行_
         # 刪除壓縮文件
         os.remove(local_filename)
 
-    # 文件下載 URL
+    # 文件下載的 URL
     punkt_url = "https://raw.githubusercontent.com/nltk/nltk_data/gh-pages/packages/tokenizers/punkt.zip"
     punkt_tab_url = "https://raw.githubusercontent.com/nltk/nltk_data/gh-pages/packages/tokenizers/punkt_tab.zip"
 
-    # 執行下載並解壓縮
+    # 調用自訂函數執行下載並解壓縮
     download_and_unzip(punkt_url)
     download_and_unzip(punkt_tab_url)
 
-    print("下載並解壓縮完成！")
+    print("下載並解壓縮完成。")
     ```
 
 <br>
 
-2. 設定 NLTK 資源的路徑，使用本地的 punkt 和 punkt_tab 資源。
+2. 設定 `NLTK` 資源的路徑，使用本地目錄 `punkt` 和 `punkt_tab`。
 
     ```python
     import nltk
@@ -145,6 +149,10 @@ _以下代碼將以這 `10` 個步驟依序進行_
     # nltk.download('punkt')
     ```
 
+    _輸出_
+
+    ![](images/img_06.png)
+
 <br>
 
 3. 讀取數據集。
@@ -152,54 +160,109 @@ _以下代碼將以這 `10` 個步驟依序進行_
     ```python
     import pandas as pd
 
+    # 這是 Lab 預設準備的數據
     df = pd.read_csv(
         '../data/AMAZON-REVIEW-DATA-CLASSIFICATION.csv'
     )
-
+    # 觀察數據
     print('數據集的形狀為：', df.shape)
     df.head(5)
+    ```
 
+    ![](images/img_05.png)
+
+<br>
+
+4. 顯示更完整的數據。
+
+    ```python
     # 顯示更多文本數據
     pd.set_option('display.max_colwidth', None)
     df.head()
+    ```
 
-    # 查詢具體條目
+    ![](images/img_07.png)
+    ```
+
+<br>
+
+5. 查詢具體條目。
+
+    ```python
     print(df.loc[[580]])
+    ```
 
-    # 檢查數據類型
+    ![](images/img_08.png)
+
+<br>
+
+6. 檢查數據類型。
+
+    ```python
     df.dtypes
     ```
 
+    ![](images/img_09.png)
+
 <br>
 
-4. 進行探索性數據分析。
+## 進行探索性數據分析
+
+1. 查看資料集的目標分佈。
 
     ```python
     df['isPositive'].value_counts()
-
-    # 交換正負分類值
-    df = df.replace({0:1, 1:0})
-    df['isPositive'].value_counts()
-
-    # 檢查缺失值
-    df.isna().sum()
     ```
+
+    ![](images/img_10.png)
 
 <br>
 
-5. 文本處理，移除停用詞和詞幹提取。
+2. 交換正負分類值，這是因為重點是搜尋原始標記為 `0` 的負面評論，然而 `Linear Learner` 模型預設是針對標記為 `1` 進行，所以將負面評論的標記從改為 1、正面評論改為 0，這可讓模型的調整過程更加順利。
+
+    ```python
+    df = df.replace({0:1, 1:0})
+    df['isPositive'].value_counts()
+    ```
+
+    ![](images/img_11.png)
+
+<br>
+
+3. 檢查缺失值。
+
+    ```python
+    df.isna().sum()
+    ```
+
+    ![](images/img_12.png)
+
+<br>
+
+## 文本處理
+
+_移除停用詞和詞幹提取_
+
+<br>
+
+1. 代碼。
 
     ```python
     import nltk
     nltk.download('punkt')
     nltk.download('stopwords')
+    ```
 
+<br>
+
+2. 設定停用詞。
+
+    ```python
     import nltk, re
     from nltk.corpus import stopwords
     from nltk.stem import SnowballStemmer
     from nltk.tokenize import word_tokenize
 
-    # 設定停用詞
     stop = stopwords.words('english')
 
     excluding = [
@@ -214,9 +277,19 @@ _以下代碼將以這 `10` 個步驟依序進行_
 
     # 新停用詞列表
     stopwords = [word for word in stop if word not in excluding]
+    ```
 
+<br>
+
+3. 滾雪球詞幹分析器會將單詞進行 `詞幹化（Stemming）` 處理，例如 `walking` 會被詞幹化為 `walk`；`詞幹` 就是通過去掉單詞的 `詞綴` 並還原為其基本形式。
+
+    ```python
     snow = SnowballStemmer('english')
+    ```
 
+4. 對資料做進一步處理，包含將缺失值替換為空字串、將文字轉換為小寫、刪除任何頭尾空格、刪除任何多餘的空格和製表符、刪除所有 HTML 標記；細節如下。
+
+    ```python
     def process_text(texts): 
         final_text_list=[]
         for sent in texts:
@@ -241,7 +314,9 @@ _以下代碼將以這 `10` 個步驟依序進行_
 
 <br>
 
-6. 拆分訓練、驗證和測試數據。
+## 分拆訓練、驗證和測試集
+
+1. 使用 `sklearn` 提供的函數進行分拆。
 
     ```python
     from sklearn.model_selection import train_test_split
@@ -259,7 +334,13 @@ _以下代碼將以這 `10` 個步驟依序進行_
         shuffle=True,
         random_state=324
     )
+    ```
 
+<br>
+
+2. 定義分拆後的數據集。
+
+    ```python
     print('處理 reviewText 欄位')
     X_train['reviewText'] = process_text(X_train['reviewText'].tolist())
     X_val['reviewText'] = process_text(X_val['reviewText'].tolist())
@@ -275,35 +356,44 @@ _以下代碼將以這 `10` 個步驟依序進行_
 
 ## 使用管道和 ColumnTransformer 處理數據
 
-1. 在開始訓練模型之前，需要對數據進行一些預處理，這些步驟對於訓練模型和推理都非常重要。
+_在開始訓練模型之前，需要對數據進行一些預處理，這些步驟對於訓練模型和推理都非常重要。_
 
 <br>
 
-2. 透過定義一個 `pipeline` 將不同的處理步驟有序地執行，對於不同的字段，可以建立不同的管道進行處理。
+1. 透過定義 `pipeline` 將不同的處理步驟有序地執行，對於不同的欄位，可以建立不同的管道進行處理。
 
 <br>
 
-3. 對於數值特徵，使用 numerical_processor 進行 MinMaxScaler 的縮放。縮放對於某些算法（例如線性模型）是重要的。
+1. 對於數值特徵，使用 `numerical_processor` 進行 `MinMaxScaler` 的縮放，這個步驟對於某些算法是重要的。
 
 <br>
 
-4. 對於文本特徵，使用 `CountVectorizer()` 將文本字段轉換為特徵向量。
+3. 對於文本特徵，使用 `CountVectorizer()` 將文本欄位轉換為 `特徵向量`。
 
 <br>
 
-5. 這些不同的預處理操作會被放入一個 `ColumnTransformer` 中，並最終放入一個完整的管道。這樣，無論在訓練或推理階段，都可以自動對數據進行正確的處理。
+4. 這些不同的預處理操作會被放入一個 `ColumnTransformer` 中，最終再放入一個完整的管道；這樣無論在訓練或推理階段，都可以自動對數據進行正確的處理。
 
 <br>
 
-6. 代碼。
+5. 設置模型的輸入特徵和目標變量。
 
     ```python
-    # 設定模型的特徵和目標變量
+    # 定義數值特徵，這些數值特徵將作為模型的輸入
     numerical_features = ['time', 'log_votes']
+    # 定義文本特徵
     text_features = ['summary', 'reviewText']
+    # 將數值和文本特徵合併，得到模型的全部輸入特徵
     model_features = numerical_features + text_features
+    # 定義模型的目標變量，也就是要預測的標籤
     model_target = 'isPositive'
+    ```
 
+<br>
+
+6. 對數據集中的數值與文本特徵進行預處理，並將它們轉換成模型可以使用的格式，`fit_transform` 對訓練集進行預處理，並應用到訓練數據中；`transform` 對驗證集和測試集進行相同的轉換，保持與訓練集一致的處理方式。
+
+    ```python
     from sklearn.impute import SimpleImputer
     from sklearn.preprocessing import MinMaxScaler
     from sklearn.feature_extraction.text import CountVectorizer
@@ -339,7 +429,12 @@ _以下代碼將以這 `10` 個步驟依序進行_
 
     '''準備數據'''
 
-    print('數據集處理前的形狀: ', X_train.shape, X_val.shape, X_test.shape)
+    print(
+        '數據集處理前的形狀: ',
+        X_train.shape,
+        X_val.shape,
+        X_test.shape
+    )
 
     X_train = data_preprocessor.fit_transform(X_train).toarray()
     X_val = data_preprocessor.transform(X_val).toarray()
@@ -348,11 +443,15 @@ _以下代碼將以這 `10` 個步驟依序進行_
     print('數據集處理後的形狀: ', X_train.shape, X_val.shape, X_test.shape)
     ```
 
-7. 可以看到，處理後數據集的特徵從 4 個增加到了 202 個。
+<br>
+
+7. 輸出 `訓練集 X_train` 的第一個樣本；前面的數值 `0.7561223` 是針對 `數值特徵` 進行標準化後的結果。
 
     ```python
     print(X_train[0])
     ```
+
+    ![](images/img_13.png)
 
 <br>
 
@@ -374,7 +473,7 @@ _使用 SageMaker 的 `LinearLearner()` 算法，設定以下選項_
 
 <br>
 
-4. 代碼。
+4. 這是 SageMaker 的內建演算法，用於 `線性分類` 和 `回歸模型` 的訓練；這段代碼是初始化一個使用線性學習演算法的分類器，並配置該模型的執行環境與資源，為後續的模型訓練作準備。
 
     ```python
     import sagemaker
@@ -388,9 +487,11 @@ _使用 SageMaker 的 `LinearLearner()` 算法，設定以下選項_
     )
     ```
 
+    ![](images/img_14.png)
+
 <br>
 
-5. 要將訓練、驗證和測試數據集設置到估計器中，可以使用 `record_set()` 函數。
+5. 代碼中的 `record_set()` 函數用於將數據轉換為 `SageMaker` 格式，如此便可以便可在 SageMaker 中進行訓練、驗證和測試；每個數據集會被設置到指定的 `channel` 中，也就是 `訓練`、`驗證` 或 `測試` 頻道。
 
     ```python
     train_records = linear_classifier.record_set(
@@ -414,17 +515,20 @@ _使用 SageMaker 的 `LinearLearner()` 算法，設定以下選項_
 
 <br>
 
-6. 使用 `fit()` 函數將數據傳遞給分佈式的隨機梯度下降 (SGD) 算法。此過程大約需要 3-4 分鐘。
+6. 使用 `fit()` 函數將數據傳遞給分佈式的 `隨機梯度下降 (SGD) 算法`；這個過程約要 `3-4` 分鐘。
 
     ```python
-    linear_classifier.fit([train_records, val_records, test_records], logs=False)
+    linear_classifier.fit(
+        [train_records, val_records, test_records],
+        logs=False
+    )
     ```
 
 <br>
 
 ## 評估模型
 
-1. 可使用 SageMaker 的分析工具來獲取模型的測試集性能指標，而不需要部署模型。SageMaker 提供了許多訓練過程中的指標，這些指標可以幫助您調整模型。對於二分類問題，可選擇以下指標。
+1. 可使用 SageMaker 的分析工具來獲取模型的測試集性能指標，而不需要部署模型。SageMaker 提供了許多訓練過程中的指標，這些指標有助於模型調整的工作；對於 `二分類` 的問題可選擇以下指標。
 
     ```bash
     1. objective_loss：二分類問題的平均邏輯損失值。
@@ -453,13 +557,15 @@ _使用 SageMaker 的 `LinearLearner()` 算法，設定以下選項_
 
 <br>
 
-3. 模型的準確率應該在 0.85 左右。您的數值可能有所不同，但應該接近此值。這代表模型約 85% 的時間能夠正確預測評論情感。
+3. 模型的準確率在 `0.85` 左右，這代表模型約 `85%` 的時間能夠正確預測評論情感。
+
+    ![](images/img_15.png)
 
 <br>
 
 ## 將模型部署到端點
 
-1. 最後要將模型部署到另一個實例中。在生產環境中，可以使用此模型。部署的端點還可以與其他 AWS 服務一起使用，例如 AWS Lambda 和 Amazon API Gateway。要部署模型，運行以下代碼。此過程大約需要 7-8 分鐘。
+1. 將模型部署到另一個實例中；部署的端點可與其他 AWS 服務一起使用，例如 `Lambda` 和 `API Gateway`。此過程約要 `7-8` 分鐘。
 
     ```python
     linear_classifier_predictor = linear_classifier.deploy(
@@ -467,6 +573,8 @@ _使用 SageMaker 的 `LinearLearner()` 算法，設定以下選項_
         instance_type='ml.c5.large'
     )
     ```
+
+    ![](images/img_16.png)
 
 <br>
 
@@ -492,6 +600,8 @@ _使用 SageMaker 的 `LinearLearner()` 算法，設定以下選項_
     ])
     ```
 
+    ![](images/img_17.png)
+
 <br>
 
 ## 清理模型資源
@@ -501,6 +611,8 @@ _使用 SageMaker 的 `LinearLearner()` 算法，設定以下選項_
     ```python
     linear_classifier_predictor.delete_endpoint()
     ```
+
+    ![](images/img_18.png)
 
 <br>
 
