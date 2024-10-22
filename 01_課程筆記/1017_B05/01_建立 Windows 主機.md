@@ -243,54 +243,6 @@ _使用相同的設置所下載的語法文件 `console-to-code.txt` 在本地�
 
 <br>
 
-5. 觀察日誌顯示系統嘗試解析 User Data 時，首先嘗試 YAML 格式，然後回退至 XML 格式，兩者皆失敗。
-
-    ![](images/img_125.png)
-
-<br>
-
-## 驗證 `base64` 編碼
-
-_透過反向編碼驗證_
-
-<br>
-
-1. 在前面步驟中，因為輸入的指令是 `明文` 的，下方這個勾選框可以不用選。
-
-    ![](images/img_119.png)
-
-<br>
-
-2. 在點擊 `Preview code` 後，在預覽視窗中可看到所生成的指令自動將 `Powershell` 指令轉換成 `base64` 編碼。
-
-    ![](images/img_120.png)
-
-<br>
-
-3. 實例建立後，卻會在日誌中會看到如下的訊息表示 `User Data` 被編碼成為 `Base64` 格式，但沒有使用 `Base64` 解碼來解析它。
-
-    ![](images/img_121.png)
-
-<br>
-
-4. 進一步透過指令從指定的實例中取得解碼後的 User Data 並儲存在變數 `UserDataDecoded` 中；特別注意，取回的內容雖已成功解碼，但仍是以 `Base64` 編碼的形式保存在變數中。
-
-    ```bash
-    USER_DATA_DECODE=$(aws ec2 describe-instance-attribute --instance-id $Instance_ID --attribute userData --query "UserData.Value" --output text | base64 --decode)
-    ```
-
-<br>
-
-5. 透過解碼來查看內容，可以確認內容是正確的，但是 AWS 卻無法順利解析，這應該是 AWS 的一個 Bug。
-
-    ```bash
-    echo $USER_DATA_DECODE | base64 --decode
-    ```
-
-    ![](images/img_122.png)
-
-<br>
-
 ## 準備紀錄用文檔
 
 _接下來會有一些資訊需要記錄備用，在一般正式的 Lab 中會建議使用 Cloud9 做紀錄，但這個 Lab 並未授權，請自行使用任意文件編輯器做紀錄。_
@@ -328,7 +280,7 @@ _接下來會有一些資訊需要記錄備用，在一般正式的 Lab 中會�
 
 <br>
 
-## 使用 AWS CLI 連線
+## 準備 AWS CLI 環境所需配置
 
 _在等待實例初始化同時，可先進行 CLI 環境設置_
 
@@ -380,7 +332,7 @@ _在等待實例初始化同時，可先進行 CLI 環境設置_
 
 <br>
 
-## 設置 AWS CLI 配置文件
+## 進行 AWS CLI 環境配置
 
 _在 Lab 環境中可以省略這個步驟_
 
@@ -402,7 +354,7 @@ _在 Lab 環境中可以省略這個步驟_
 
 <br>
 
-## 檢查並確認設置已完成
+## 檢查 AWS CLI 設置已完成
 
 _運行以下基本指令來確認設置_
 
@@ -450,7 +402,7 @@ _運行以下基本指令來確認設置_
 
 <br>
 
-## 取得帳號密碼
+## 取得實例連線的帳號與密碼
 
 _回到 EC2 實例，這時應該已經完成 `Status check`，特別注意，並非以 `Instance state` 的 `Running` 作為確認資訊，而是要確認實例已經功過檢查。_
 
@@ -570,9 +522,65 @@ _以下步驟可能因為使用的遠端工具不同而不同_
 
 <br>
 
+## 關於使用 AWS CLI 建立實例的錯誤
+
+1. 使用 CLI 建立並登入伺服器後，透過檢查 `Python` 安裝會發現並未順利安裝。
+
+    ![](images/img_126.png)
+
+<br>
+
+2. 觀察實例日誌文檔顯示系統嘗試解析 User Data 時，首先嘗試 YAML 格式，然後回退至 XML 格式，兩者皆失敗；文檔位置在 `C:\ProgramData\Amazon\EC2Launch\log\` 中。
+
+    ![](images/img_125.png)
+
+<br>
+
+## 驗證 `base64` 編碼
+
+_透過反向編碼驗證_
+
+<br>
+
+1. 在前面步驟中，因為輸入的指令是 `明文` 的，下方這個勾選框可以不用選。
+
+    ![](images/img_119.png)
+
+<br>
+
+2. 在點擊 `Preview code` 後，在預覽視窗中可看到所生成的指令自動將 `Powershell` 指令轉換成 `base64` 編碼。
+
+    ![](images/img_120.png)
+
+<br>
+
+3. 實例建立後，卻會在日誌中會看到如下的訊息表示 `User Data` 被編碼成為 `Base64` 格式，但沒有使用 `Base64` 解碼來解析它。
+
+    ![](images/img_121.png)
+
+<br>
+
+4. 進一步透過指令從指定的實例中取得解碼後的 User Data 並儲存在變數 `UserDataDecoded` 中；特別注意，取回的內容雖已成功解碼，但仍是以 `Base64` 編碼的形式保存在變數中。
+
+    ```bash
+    USER_DATA_DECODE=$(aws ec2 describe-instance-attribute --instance-id $Instance_ID --attribute userData --query "UserData.Value" --output text | base64 --decode)
+    ```
+
+<br>
+
+5. 透過解碼來查看內容，可以確認內容是正確的，但是 AWS 卻無法順利解析，這應該是 AWS 的一個 Bug。
+
+    ```bash
+    echo $USER_DATA_DECODE | base64 --decode
+    ```
+
+    ![](images/img_122.png)
+
+<br>
+
 ## 重新編輯 User Data
 
-_在預設情況下，`User Data` 只會在首次啟動時執行；如需在每次啟動皆運行 `User Data` 需添加語句 `<persist>true</persist>`；同理，當 `User Data` 只運行一次時，對其進行編輯後重啟並不會生效，所以有修改需求時，需在建立實例時便預先寫入語句 `Userdata`；特別說明，實例並無重啟的功能，所謂的重啟泛指停止之後再啟動。_
+_特別注意，這裡無法透過編輯 `User Data` 進行修正，因為在預設情況下，`User Data` 只會在首次啟動時執行；如需在每次啟動皆運行 `User Data` 需添加語句 `<persist>true</persist>`；同理，當 `User Data` 只運行一次時，對其進行編輯後重啟並不會生效，所以有修改需求時，需在建立實例時便預先寫入語句 `Userdata`；以下僅就修改方式做補充說明，另外，實例並無重啟的功能，所謂的重啟泛指停止之後再啟動。_
 
 <br>
 
