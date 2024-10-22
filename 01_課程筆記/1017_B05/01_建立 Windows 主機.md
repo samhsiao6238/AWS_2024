@@ -598,7 +598,7 @@ _可積極地進行例外捕捉，或在錯誤發生後觀察日誌_
 
 <br>
 
-3. 安裝完成後，可在實例的檔案管理中在以下路徑查看日誌，其中 `agent.log`、`bench.log`、`console.log` 皆紀錄了部分 `User Data` 相關資訊；值得一提的是，使用圖形化介面建立實例時，雖然日誌中記錄了部分 `Userdata` 的錯誤資訊，最終 Python 與 Chrome 都完成安裝，但是使用 CLI 進行安裝則會失敗。
+3. 安裝完成後，可在實例的檔案管理中在以下路徑查看日誌，其中 `agent.log`、`bench.log`、`console.log` 皆紀錄了部分 `User Data` 相關資訊。
 
     ```bash
     C:\ProgramData\Amazon\EC2Launch\log\
@@ -609,9 +609,9 @@ _可積極地進行例外捕捉，或在錯誤發生後觀察日誌_
 <br>
 
 
-## 安裝 XAMPP
+## 手動 安裝 XAMPP
 
-_在 Windows 伺服器中安裝 XAMPP 來管理 Apache 服務_
+_使用 CMD 指令在 Windows 伺服器中安裝 XAMPP 來管理 Apache 服務_
 
 <br>
 
