@@ -245,6 +245,20 @@ _在 User data 最下方_
 
 <br>
 
+## 使用圖形化介面建立實例
+
+1. 點擊 `Launch instance`。
+
+    ![](images/img_22.png)
+
+<br>
+
+2. 沒特殊狀況就會顯示 `Success`，但這僅是完成設定，實例尚未完成啟動，回到 EC2 清單查看。
+
+    ![](images/img_59.png)
+
+<br>
+
 ## 使用 CLI 建立實例
 
 _可使用下載的語法文件 `console-to-code.txt`，或使用預覽介面中的複製功能逐行複製指令，然後在本地的終端機中運行_
@@ -268,20 +282,6 @@ _可使用下載的語法文件 `console-to-code.txt`，或使用預覽介面中
     ```bash
     --no-paginate
     ```
-
-<br>
-
-## 使用圖形化介面建立實例
-
-1. 點擊 `Launch instance`。
-
-    ![](images/img_22.png)
-
-<br>
-
-2. 沒特殊狀況就會顯示 `Success`，但這僅是完成設定，實例尚未完成啟動，回到 EC2 清單查看。
-
-    ![](images/img_59.png)
 
 <br>
 
