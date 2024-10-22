@@ -46,9 +46,9 @@ _進入 AWS 主控台_
 
 <br>
 
-## 關於 Advanced details
+## 設置 Advanced details
 
-_以下列舉 User data 的設定值，在這裡僅安裝 Python 及 Chrome 即可。_
+_以下列舉 User data 的設定值，在這裡僅安裝 Python。_
 
 <br>
 
