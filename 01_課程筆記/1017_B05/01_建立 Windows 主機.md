@@ -289,18 +289,17 @@ _接下來會有一些資訊需要記錄備用，在一般正式的 Lab 中會�
     Username=Administrator
     Password=''
     Shared_Name_of_Drive_C=C_Drive
-    ```
 
-<br>
-
-2. 在前一點所建立的文件底部貼上以下終端機指令，並且立即在終端機內貼上運行；這是用於建立環境變數提供 AWS CLI 及 AWS SDK 使用，這是由 AWS 內定的，所以讀取區域變數進行設定即可。
-
-    ```bash
     # 第三部分：建立環境變數
     export AWS_ACCESS_KEY_ID=$aws_access_key_id
     export AWS_SECRET_ACCESS_KEY=$aws_secret_access_key
     export AWS_SESSION_TOKEN=$aws_session_token
     ```
+
+<br>
+
+2. 延續前一點，文件底部三行是終端機指令，用於建立環境變數提供 AWS CLI 及 AWS SDK 使用，在後續步驟複製後即可在終端機內貼上運行。
+
 
 <br>
 
