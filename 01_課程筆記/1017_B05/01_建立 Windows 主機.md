@@ -58,7 +58,26 @@ _以下列舉 User data 的設定值，在這裡僅安裝 Python 及 Chrome 即�
 
 <br>
 
-2. 透過 `PowerShell` 指令在實例啟動時自動更新；避免過於耗時，先不要更新。
+2. 這裡僅先嘗試安裝指定版本的 Python，安裝後將 `Python` 加入環境變數路徑，最後刪除安裝檔；在 `Powershell` 中使用 `Invoke-WebRequest` 下載 XAMPP，相關指引與規範可參考 [官網](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/user-data.html?icmpid=docs_ec2_console#user-data-powershell)。
+
+    ```bash
+    <powershell>
+    # 下載並安裝 Python
+    Invoke-WebRequest -Uri "https://www.python.org/ftp/python/3.10.0/python-3.10.0-amd64.exe" -OutFile "C:\python-installer.exe"
+    Start-Process -FilePath "C:\python-installer.exe" -ArgumentList "/quiet InstallAllUsers=1 PrependPath=1" -Wait
+    Remove-Item -Path "C:\python-installer.exe"
+    </powershell>
+    ```
+
+<br>
+
+## 補充說明 User Data 的設置
+
+_對於其他可透過 `PowerShell` 指令預先安裝的項目做簡單說明；特別說明，這些指令在實例啟動後皆可在 `Powershell` 中運行，假如使用 AWS 圖形化介面建立實例，也可以寫在 Userdata 中。_
+
+<br>
+
+1. 在實例啟動時自動更新。
 
     ```bash
     <powershell>
@@ -68,19 +87,7 @@ _以下列舉 User data 的設定值，在這裡僅安裝 Python 及 Chrome 即�
 
 <br>
 
-3. 安裝 `Python`，並將 `Python` 加入環境變數路徑，最後刪除安裝檔。
-
-    ```bash
-    <powershell>
-    Invoke-WebRequest -Uri "https://www.python.org/ftp/python/3.10.0/python-3.10.0-amd64.exe" -OutFile "C:\python-installer.exe"
-    Start-Process -FilePath "C:\python-installer.exe" -ArgumentList "/quiet InstallAllUsers=1 PrependPath=1" -Wait
-    Remove-Item -Path "C:\python-installer.exe"
-    </powershell>
-    ```
-
-<br>
-
-4. 安裝 `Google Chrome`。 
+2. 安裝 `Google Chrome`。 
 
     ```bash
     <powershell>
@@ -92,20 +99,16 @@ _以下列舉 User data 的設定值，在這裡僅安裝 Python 及 Chrome 即�
 
 <br>
 
-5. 安裝 `XAMPP`；啟動後在手動安裝。
+3. 安裝 `XAMPP`，設定為 `靜默模式`，安裝完畢刪除安裝檔案，然後使用 `Start-Process` 指令批次啟動 `XAMPP` 管理的 `Apache` 和 `MySQL` 服務。
 
     ```bash
     <powershell>
-    # 使用 Invoke-WebRequest 代替 curl 來下載 XAMPP，適合 PowerShell 環境
     Invoke-WebRequest -Uri "https://sourceforge.net/projects/xampp/files/XAMPP%20Windows/8.2.12/xampp-windows-x64-8.2.12-0-VS16-installer.exe/download" -OutFile "C:\xampp-installer.exe"
 
-    # 靜默安裝 XAMPP
     Start-Process -FilePath "C:\xampp-installer.exe" -ArgumentList "--mode unattended --unattendedmodeui none --prefix C:\xampp" -Wait
 
-    # 刪除安裝檔案
     Remove-Item -Path "C:\xampp-installer.exe"
 
-    # 啟動 Apache 和 MySQL 服務，使用 Start-Process 啟動批處理文件
     Start-Process -FilePath "C:\xampp\apache_start.bat" -Wait
     Start-Process -FilePath "C:\xampp\mysql_start.bat" -Wait
     </powershell>
@@ -114,7 +117,7 @@ _以下列舉 User data 的設定值，在這裡僅安裝 Python 及 Chrome 即�
 <br>
 
 
-6. 安裝 `IIS (網頁伺服器)`；暫時不加入。
+4. 安裝 `IIS 網頁伺服器`。
 
     ```bash
     <powershell>
@@ -124,7 +127,9 @@ _以下列舉 User data 的設定值，在這裡僅安裝 Python 及 Chrome 即�
 
 <br>
 
-7. 更新防火牆；暫時不加入。
+## Userdata 的 CMD 指令
+
+1. 更新防火牆規則。
 
     ```bash
     <persist>
@@ -143,7 +148,7 @@ _以下列舉 User data 的設定值，在這裡僅安裝 Python 及 Chrome 即�
 
 <br>
 
-8. 指定腳本在每次啟動實例時都執行；暫時不設定。
+2. 指定腳本在每次啟動實例時都執行。
 
     ```bash
     <persist>true</persist>
@@ -151,25 +156,17 @@ _以下列舉 User data 的設定值，在這裡僅安裝 Python 及 Chrome 即�
 
 <br>
 
-9. 若運行多項功能，只需要添加一次 `Section` 語句；以下預設安裝 `Python` 及 `Chrome`。
+## Userdata 補充說明
 
-    ```bash
-    <powershell>
-    # 下載並安裝 Python
-    Invoke-WebRequest -Uri "https://www.python.org/ftp/python/3.10.0/python-3.10.0-amd64.exe" -OutFile "C:\python-installer.exe"
-    Start-Process -FilePath "C:\python-installer.exe" -ArgumentList "/quiet InstallAllUsers=1 PrependPath=1" -Wait
-    Remove-Item -Path "C:\python-installer.exe"
-
-    # 下載並安裝 Google Chrome
-    Invoke-WebRequest -Uri "https://dl.google.com/chrome/install/375.126/chrome_installer.exe" -OutFile "C:\chrome_installer.exe"
-    Start-Process -FilePath "C:\chrome_installer.exe" -ArgumentList "/silent /install" -Wait
-    Remove-Item -Path "C:\chrome_installer.exe"
-    </powershell>
-    ```
+1. 若運行多項功能，只需要添加一次 `Section` 語句。
 
 <br>
 
-10. 特別說明，`EC2 User Data` 腳本有預設的執行時間限制，如果腳本過長或過於複雜，某些命令可能無法完全執行；安裝完成後可在實例中查看日誌，路徑如下，其中 `agent.log`、`bench.log`、`console.log` 皆紀錄了部分 `User Data` 相關資訊；值得一提的是，雖然日誌中記錄了部分 `User Data` 的錯誤資訊，但最終 Python 與 Chrome 都完成安裝。
+2. `Userdata` 腳本有預設的執行時間限制，如果腳本過長或過於複雜，某些命令可能無法完全執行。
+
+<br>
+
+3. 安裝完成後可在實例中查看日誌，路徑如下，其中 `agent.log`、`bench.log`、`console.log` 皆紀錄了部分 `User Data` 相關資訊；值得一提的是，使用圖形化介面建立實例時，雖然日誌中記錄了部分 `Userdata` 的錯誤資訊，最終 Python 與 Chrome 都完成安裝，但是使用 CLI 進行安裝則會失敗。
 
     ```bash
     C:\ProgramData\Amazon\EC2Launch\log\
