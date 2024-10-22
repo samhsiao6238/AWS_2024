@@ -260,7 +260,7 @@ _移除停用詞和詞幹提取_
 2. 設定停用詞。
 
     ```python
-    import nltk, re
+    import re
     from nltk.corpus import stopwords
     from nltk.stem import SnowballStemmer
     from nltk.tokenize import word_tokenize
