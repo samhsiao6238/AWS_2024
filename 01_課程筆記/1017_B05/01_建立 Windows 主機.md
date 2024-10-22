@@ -621,7 +621,13 @@ _使用 CMD 指令在 Windows 伺服器中安裝 XAMPP 來管理 Apache 服務_
 
 <br>
 
-2. 開啟的 CMD 所在路徑就是 `Downloads`，接著使用指令下載 XAMPP 安裝程式；版本資訊可參考 [官網](https://www.apachefriends.org/zh_tw/download.html)，這裡下載的是 `8.2.12`。
+2. 預設就會使用 `Administrator` 身份開啟。
+
+    ![](images/img_16.png)
+
+<br>
+
+3. 開啟的 CMD 所在路徑就是 `Downloads`，接著使用指令下載 XAMPP 安裝程式；版本資訊可參考 [官網](https://www.apachefriends.org/zh_tw/download.html)，這裡下載的是 `8.2.12`。
 
     ```bash
     curl -L -o C:\xampp-installer.exe https://sourceforge.net/projects/xampp/files/XAMPP%20Windows/8.2.12/xampp-windows-x64-8.2.12-0-VS16-installer.exe/download
@@ -631,7 +637,7 @@ _使用 CMD 指令在 Windows 伺服器中安裝 XAMPP 來管理 Apache 服務_
 
 <br>
 
-3. 使用無人值守模式自動化部署、安裝 `XAMPP` 到 `C:\xampp` 目錄；`unattended` 模式下安裝過程不會提示用戶進行任何輸入或確認；`無人值守` 模式對於自動化部署來說非常實用，
+4. 使用無人值守模式自動化部署、安裝 `XAMPP` 到 `C:\xampp` 目錄；`unattended` 模式下安裝過程不會提示用戶進行任何輸入或確認；`無人值守` 模式對於自動化部署來說非常實用，
 安裝會在完全無需手動的看框下使用預設選項進行。
 
     ```bash
@@ -640,7 +646,7 @@ _使用 CMD 指令在 Windows 伺服器中安裝 XAMPP 來管理 Apache 服務_
 
 <br>
 
-4. 因為畫面不會有任何顯示，若要查詢安裝進度，需查看 `安裝進程是否結束` 來確定安裝是否完成；這個過程約略需要五分鐘，甚至更多。
+5. 因為畫面不會有任何顯示，若要查詢安裝進度，需查看 `安裝進程是否結束` 來確定安裝是否完成；這個過程約略需要五分鐘，甚至更多。
 
     ```bash
     tasklist | findstr /I "xampp-installer"
@@ -648,13 +654,13 @@ _使用 CMD 指令在 Windows 伺服器中安裝 XAMPP 來管理 Apache 服務_
 
 <br>
 
-5. 直到確認進程消失代表安裝已經結束，然後再繼續後續步驟。
+6. 直到確認進程消失代表安裝已經結束，然後再繼續後續步驟。
 
     ![](images/img_75.png)
 
 <br>
 
-6. 刪除安裝檔案。
+7. 刪除安裝檔案。
 
     ```bash
     del C:\xampp-installer.exe
@@ -662,7 +668,7 @@ _使用 CMD 指令在 Windows 伺服器中安裝 XAMPP 來管理 Apache 服務_
 
 <br>
 
-7. 啟動 Apache 和 MySQL 服務；使用 `start` 指令載不阻塞終端的情況下同時啟動以下兩個服務，`""` 是提供給 `start` 指令的終端機空標題；`/min` 參數來最小化批次運行，這樣第二個指令視窗不會等待使用者按下 `ENTER`。
+8. 啟動 Apache 和 MySQL 服務；使用 `start` 指令載不阻塞終端的情況下同時啟動以下兩個服務，`""` 是提供給 `start` 指令的終端機空標題；`/min` 參數來最小化批次運行，這樣第二個指令視窗不會等待使用者按下 `ENTER`。
 
     ```bash
     start /min "" C:\xampp\apache_start.bat
@@ -671,7 +677,7 @@ _使用 CMD 指令在 Windows 伺服器中安裝 XAMPP 來管理 Apache 服務_
 
 <br>
 
-8. 啟動 XAMPP 應用。
+9. 啟動 XAMPP 應用。
 
     ```bash
     start "" C:\xampp\xampp-control.exe
@@ -679,7 +685,7 @@ _使用 CMD 指令在 Windows 伺服器中安裝 XAMPP 來管理 Apache 服務_
 
 <br>
 
-9. 應用程式視窗，可看到兩個服務已經啟動，並且顯示了運行端口。
+10. 應用程式視窗，可看到兩個服務已經啟動，並且顯示了運行端口。
 
     ![](images/img_76.png)
 
