@@ -165,16 +165,6 @@ _對於其他可透過 `PowerShell` 指令預先安裝的項目做簡單說明�
 
 <br>
 
-3. 安裝完成後可在實例中查看日誌，路徑如下，其中 `agent.log`、`bench.log`、`console.log` 皆紀錄了部分 `User Data` 相關資訊；值得一提的是，使用圖形化介面建立實例時，雖然日誌中記錄了部分 `Userdata` 的錯誤資訊，最終 Python 與 Chrome 都完成安裝，但是使用 CLI 進行安裝則會失敗。
-
-    ```bash
-    C:\ProgramData\Amazon\EC2Launch\log\
-    ```
-
-    ![](images/img_54.png)
-
-<br>
-
 ## 補充說明 `base64` 編碼
 
 _在 User data 最下方_
@@ -582,13 +572,16 @@ _在預設情況下，`User Data` 只會在首次啟動時執行；如需在每�
 
 <br>
 
-## 使用例外捕捉
+## 關於生成實例的錯誤處理
 
-1. 在 `PowerShell` 中可加入簡單的錯誤處理，確保過程中出現問題使腳本中斷。
+_可積極地進行例外捕捉，或在錯誤發生後觀察日誌_
+
+<br>
+
+1. 在 `PowerShell` 中可加入 `例外捕捉` 語句進行錯誤處理，確保初始化過程不會因為錯誤而中斷，以下就安裝 `Python` 作為示範，加入 `try...catch` 拋出可能的錯誤。
 
     ```bash
     try {
-        # 安裝 Python
         Invoke-WebRequest -Uri "https://www.python.org/ftp/python/3.10.0/python-3.10.0-amd64.exe" -OutFile "C:\python-installer.exe"
         Start-Process -FilePath "C:\python-installer.exe" -ArgumentList "/quiet InstallAllUsers=1 PrependPath=1" -Wait
         Remove-Item -Path "C:\python-installer.exe"
@@ -599,13 +592,22 @@ _在預設情況下，`User Data` 只會在首次啟動時執行；如需在每�
 
 <br>
 
-## 日誌中查看實例運行
-
-1. 展開 `Actions` 選單，在 `Monitor and troubleshoot` 中點擊 `Get system log` 可查看實例運行的紀錄文件。
+2. 若要在日誌中查看實例運行，展開 `Actions` 選單，在 `Monitor and troubleshoot` 中點擊 `Get system log` 可查看實例運行的紀錄文件。
 
     ![](images/img_74.png)
 
 <br>
+
+3. 安裝完成後，可在實例的檔案管理中在以下路徑查看日誌，其中 `agent.log`、`bench.log`、`console.log` 皆紀錄了部分 `User Data` 相關資訊；值得一提的是，使用圖形化介面建立實例時，雖然日誌中記錄了部分 `Userdata` 的錯誤資訊，最終 Python 與 Chrome 都完成安裝，但是使用 CLI 進行安裝則會失敗。
+
+    ```bash
+    C:\ProgramData\Amazon\EC2Launch\log\
+    ```
+
+    ![](images/img_54.png)
+
+<br>
+
 
 ## 安裝 XAMPP
 
