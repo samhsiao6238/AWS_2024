@@ -524,13 +524,13 @@ _以下步驟可能因為使用的遠端工具不同而不同_
 
 ## 關於使用 AWS CLI 建立實例的錯誤
 
-1. 使用 CLI 建立並登入伺服器後，透過檢查 `Python` 安裝會發現並未順利安裝。
+1. 使用 CLI 建立並登入伺服器後，透過查詢 `Python` 版本會發現 `Python` 並未順利完成安裝，這就代表 `User Data` 並未順利進行。
 
     ![](images/img_126.png)
 
 <br>
 
-2. 觀察實例日誌文檔顯示系統嘗試解析 User Data 時，首先嘗試 YAML 格式，然後回退至 XML 格式，兩者皆失敗；文檔位置在 `C:\ProgramData\Amazon\EC2Launch\log\` 中。
+2. 觀察實例日誌文檔顯示，系統在解析 `User Data` 時先嘗試 YAML 格式失敗，然後退回至 XML 格式也失敗；日誌文檔位置在 `C:\ProgramData\Amazon\EC2Launch\log\` 中。
 
     ![](images/img_125.png)
 
