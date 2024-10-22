@@ -96,7 +96,9 @@ _實例使用 EC2Launch 或 EC2Launch v2_
 
 <br>
 
-2. 創建一個計畫任務（Task Scheduler），設定為每次系統啟動時執行您的腳本。
+2. 建立一個計畫任務（Task Scheduler），設定為每次系統啟動時執行您的腳本。
+
+<br>
 
 ## Linux 手動配置自動運行機制
 
@@ -142,7 +144,7 @@ _使用 `rc.local`、`cron` 或 `cloud-init`；以下每種方式都是獨立的
 
 <br>
 
-2. Linux 實例使用 `systemd` 創建一個服務，設定為在系統啟動時執行腳本。
+2. Linux 實例使用 `systemd` 建立一個服務，設定為在系統啟動時執行腳本。
 
 <br>
 
