@@ -261,7 +261,7 @@ _在 User data 最下方_
 
 ## 使用 CLI 建立實例
 
-_可使用下載的語法文件 `console-to-code.txt`，或使用預覽介面中的複製功能逐行複製指令，然後在本地的終端機中運行_
+_使用相同的設置所下載的語法文件 `console-to-code.txt` 在本地的終端機中運行，並藉此比較相同設置卻出現的錯誤日誌；透過 CLI 建立實例時出現了錯誤，特別是在處理 User Data 部分。_
 
 <br>
 
@@ -282,6 +282,12 @@ _可使用下載的語法文件 `console-to-code.txt`，或使用預覽介面中
     ```bash
     --no-paginate
     ```
+
+<br>
+
+5. 觀察日誌顯示系統嘗試解析 User Data 時，首先嘗試 YAML 格式，然後回退至 XML 格式，兩者皆失敗。
+
+    ![](images/img_125.png)
 
 <br>
 
