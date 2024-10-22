@@ -621,13 +621,13 @@ _使用 CMD 指令在 Windows 伺服器中安裝 XAMPP 來管理 Apache 服務_
 
 <br>
 
-2. 預設就會使用 `Administrator` 身份開啟。
+2. 預設就會使用 `Administrator` 身份開啟，CMD 所在路徑就是 `Downloads`。
 
     ![](images/img_16.png)
 
 <br>
 
-3. 開啟的 CMD 所在路徑就是 `Downloads`，接著使用指令下載 XAMPP 安裝程式；版本資訊可參考 [官網](https://www.apachefriends.org/zh_tw/download.html)，這裡下載的是 `8.2.12`。
+3. 接著使用指令下載 XAMPP 安裝程式；版本資訊可參考 [官網](https://www.apachefriends.org/zh_tw/download.html)，這裡下載的是 `8.2.12`。
 
     ```bash
     curl -L -o C:\xampp-installer.exe https://sourceforge.net/projects/xampp/files/XAMPP%20Windows/8.2.12/xampp-windows-x64-8.2.12-0-VS16-installer.exe/download
