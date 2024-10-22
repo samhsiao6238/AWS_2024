@@ -96,7 +96,7 @@ _實例使用 EC2Launch 或 EC2Launch v2_
 
 <br>
 
-2. 建立一個計畫任務（Task Scheduler），設定為每次系統啟動時執行您的腳本。
+2. 建立一個 `計畫任務（Task Scheduler）`，設定為每次系統啟動時執行您的腳本。
 
 <br>
 
