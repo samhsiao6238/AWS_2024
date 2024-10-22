@@ -165,48 +165,6 @@ _對於其他可透過 `PowerShell` 指令預先安裝的項目做簡單說明�
 
 <br>
 
-## 補充說明 `base64` 編碼
-
-_在 User data 最下方_
-
-<br>
-
-1. 當使用面板進行生成實例時，因為輸入的指令是 `明文`，下方這個勾選框可以不用選。
-
-    ![](images/img_119.png)
-
-<br>
-
-2. 但若是使用 `Preview code` 所生成的指令建立實例，系統會自動將 `User data` 轉換成 `base64` 編碼。
-
-    ![](images/img_120.png)
-
-<br>
-
-3. 建立實例後，在日誌中會看到類似以下的訊息，表示 `User Data` 被編碼成為 `Base64` 格式，但沒有使用 `Base64` 解碼來解析它。
-
-    ![](images/img_121.png)
-
-<br>
-
-4. 從指定的 EC2 實例中取得解碼後的 User Data 並儲存在變數 `UserDataDecoded` 中，取回的內容雖已成功解碼，但仍然是以 `Base64` 編碼的形式保存。
-
-    ```bash
-    USER_DATA_DECODE=$(aws ec2 describe-instance-attribute --instance-id $Instance_ID --attribute userData --query "UserData.Value" --output text | base64 --decode)
-    ```
-
-<br>
-
-5. 查看內容，可以確認內容是正確的，但是 AWS 卻無法順利解析，這應該是 AWS 的一個 Bug。
-
-    ```bash
-    echo $USER_DATA_DECODE | base64 --decode
-    ```
-
-    ![](images/img_122.png)
-
-<br>
-
 ## 建立並預覽指令
 
 1. 點擊 `Launch instance` 之前，下方有個 `Preview code`，先點擊查看；右側會顯示指令預覽，這裡先做紀錄，之後再來透過指令重新建立一次。
@@ -288,6 +246,48 @@ _使用相同的設置所下載的語法文件 `console-to-code.txt` 在本地�
 5. 觀察日誌顯示系統嘗試解析 User Data 時，首先嘗試 YAML 格式，然後回退至 XML 格式，兩者皆失敗。
 
     ![](images/img_125.png)
+
+<br>
+
+## 驗證 `base64` 編碼
+
+_透過反向編碼驗證_
+
+<br>
+
+1. 當使用面板進行生成實例時，因為輸入的指令是 `明文`，下方這個勾選框可以不用選。
+
+    ![](images/img_119.png)
+
+<br>
+
+2. 但若是使用 `Preview code` 所生成的指令建立實例，系統會自動將 `User data` 轉換成 `base64` 編碼。
+
+    ![](images/img_120.png)
+
+<br>
+
+3. 建立實例後，在日誌中會看到類似以下的訊息，表示 `User Data` 被編碼成為 `Base64` 格式，但沒有使用 `Base64` 解碼來解析它。
+
+    ![](images/img_121.png)
+
+<br>
+
+4. 從指定的 EC2 實例中取得解碼後的 User Data 並儲存在變數 `UserDataDecoded` 中，取回的內容雖已成功解碼，但仍然是以 `Base64` 編碼的形式保存。
+
+    ```bash
+    USER_DATA_DECODE=$(aws ec2 describe-instance-attribute --instance-id $Instance_ID --attribute userData --query "UserData.Value" --output text | base64 --decode)
+    ```
+
+<br>
+
+5. 查看內容，可以確認內容是正確的，但是 AWS 卻無法順利解析，這應該是 AWS 的一個 Bug。
+
+    ```bash
+    echo $USER_DATA_DECODE | base64 --decode
+    ```
+
+    ![](images/img_122.png)
 
 <br>
 
