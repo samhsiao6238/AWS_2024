@@ -598,7 +598,7 @@ _可積極地進行例外捕捉，或在錯誤發生後觀察日誌_
 
 <br>
 
-3. 安裝完成後，可在實例的檔案管理中在以下路徑查看日誌，其中 `agent.log`、`bench.log`、`console.log` 皆紀錄了部分 `User Data` 相關資訊。
+3. 安裝完成後，可在實例的檔案管理中在以下路徑查看日誌，其中 `agent.log`、`bench.log`、`console.log` 皆紀錄了部分 `User Data` 相關資訊；其中 `agent` 說明 `EC2Launch agent` 操作，`bench` 部分紀錄系統與網路資源，`console` 部分是紀錄控制台訊息。
 
     ```bash
     C:\ProgramData\Amazon\EC2Launch\log\
