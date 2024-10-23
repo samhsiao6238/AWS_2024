@@ -1,6 +1,6 @@
 # 代碼解析
 
-_其實這就是個普通的爬蟲，使用 `Beautiful Soup` 和 `Amazon Textract` 從網頁和圖片中提取文本，並將結果轉換為 `pandas`。_
+_其實這就是個普通的爬蟲腳本，使用 `Beautiful Soup` 和 `Amazon Textract` 從網頁和圖片中提取文本，並將結果轉換為 `pandas`。_
 
 <br>
 
