@@ -305,6 +305,63 @@ _其實這就是個普通的爬蟲腳本，使用 `Beautiful Soup` 和 `Amazon T
 
 <br>
 
+## 修改代碼
+
+1. 安裝套件。
+
+```bash
+pip install pytesseract opencv-python
+```
+
+2. 代碼。
+
+```python
+'''匯入必要的模組'''
+# 用於 OCR 文本識別
+import pytesseract
+# 用於圖片處理
+import cv2
+# 用於讀取圖片
+from PIL import Image
+# 用於將數據轉為 DataFrame
+import pandas as pd
+
+# 設定 pytesseract 路徑
+# 如果 pytesseract 沒有預設安裝在環境中，需要指定路徑
+pytesseract.pytesseract.tesseract_cmd = r'/opt/homebrew/bin/tesseract'
+
+# 從本地加載 employmentapp.png 圖片
+# 使用本地圖片路徑
+img_path = "images/employmentapp.png"
+img = Image.open(img_path)
+
+# 使用 pytesseract 對表格進行文字提取
+text = pytesseract.image_to_string(img)
+
+# 打印提取的文字
+print("提取的文字內容：")
+print(text)
+
+# 假設提取的表格數據是以換行符和制表符分隔的，將其轉換為表格格式
+# 這裡假設表格數據每一行用換行符分隔，列數據用制表符分隔
+# 按行分割文本
+rows = text.split('\n')
+# 每行按制表符分割
+table_data = [row.split('\t') for row in rows] 
+
+# 將數據轉換為 DataFrame 進行結構化處理
+df = pd.DataFrame(table_data)
+
+# 打印處理後的 DataFrame
+print("\n轉換為 DataFrame 後的表格數據：")
+print(df)
+
+# 將 DataFrame 保存為 CSV 文件
+df.to_csv('extracted_table.csv', index=False)
+
+print("表格數據已提取並保存為 'extracted_table.csv'。")
+```
+
 ___
 
 _END_
