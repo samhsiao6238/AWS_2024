@@ -60,7 +60,7 @@ def plot_roc(test_labels, target_predicted_binary):
     # 總體準確度
     ACC = float(TP + TN) / (TP + FP + FN + TN) * 100
 
-    # 打印結果
+    # 輸出結果
     print(f"Sensitivity or TPR: {Sensitivity}%")
     print(f"Specificity or TNR: {Specificity}%")
     print(f"Precision: {Precision}%")

@@ -278,7 +278,7 @@ _使用 Python 腳本模擬數據並與 PostgreSQL 進行互動_
 
         conn.commit()
 
-        # 查詢並打印表中的數據
+        # 查詢並輸出表中的數據
         cursor.execute('SELECT * FROM employees;')
         rows = cursor.fetchall()
         for row in rows:

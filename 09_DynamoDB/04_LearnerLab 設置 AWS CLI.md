@@ -88,7 +88,7 @@ response = table.get_item(
     }
 )
 
-# 打印查詢結果
+# 輸出查詢結果
 item = response.get('Item')
 if item:
     print("查詢結果：", item)

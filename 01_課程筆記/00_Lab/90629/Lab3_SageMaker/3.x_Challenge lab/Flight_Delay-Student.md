@@ -213,7 +213,7 @@ IFrame(src=os.path.relpath(f"{csv_base_path}readme.html"), width=1000, height=60
 df_temp = pd.read_csv(f"{csv_base_path}On_Time_Reporting_Carrier_On_Time_Performance_(1987_present)_2018_9.csv")
 ```
 
-问题：打印数据集内的行数和列数，并打印列名。
+问题：輸出数据集内的行数和列数，并輸出列名。
 
 提示：要查看 DataFrame 的行和列，请使用 `<DataFrame>.shape` function. To view the column names, use the `` 函数。要查看列名，请使用 `<DataFrame>.columns` 函数。
 
@@ -231,16 +231,16 @@ print(f'Rows and columns in one CSV file is {df_shape}')
     ```
 
 
-问题：打印数据集的前 10 行。 
+问题：輸出数据集的前 10 行。 
 
-提示：要打印 `x` 行，请使用 pandas 内置函数 `head(x)`。
+提示：要輸出 `x` 行，请使用 pandas 内置函数 `head(x)`。
 
 
 ```python
 # Enter your code here
 ```
 
-问题：打印数据集里的所有列。要查看列名，使用 `<DataFrame>.columns`。
+问题：輸出数据集里的所有列。要查看列名，使用 `<DataFrame>.columns`。
 
 
 ```python
@@ -250,7 +250,7 @@ for col in <CODE>:# ENTER YOUR CODE HERE
     print(col)
 ```
 
-问题：打印数据集里包含 *Del* 一词的所有列。这可以让您了解包含*延误数据*的列有多少。
+问题：輸出数据集里包含 *Del* 一词的所有列。这可以让您了解包含*延误数据*的列有多少。
 
 提示：您可以使用 Python 的列表推导功能来列出符合特定 `if` 语句条件的值。
 
@@ -301,7 +301,7 @@ counts = pd.DataFrame({'Origin':<CODE>, 'Destination':<CODE>})
 counts
 ```
 
-问题：根据数据集里的航班数量，打印出前 15 个出发地和目的地机场。
+问题：根据数据集里的航班数量，輸出出前 15 个出发地和目的地机场。
 
 提示：您可以在 pandas 中使用 `sort_values` 函数（[pandas.DataFrame.sort_values 文档](https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.DataFrame.sort_values.html)）。
 
@@ -413,7 +413,7 @@ print(f'CSVs merged in {round((time.time() - start)/60,2)} minutes')
 data = pd.read_csv(combined_csv_filename)
 ```
 
-打印前五个记录。
+輸出前五个记录。
 
 
 ```python
@@ -902,7 +902,7 @@ def plot_roc(test_labels, target_predicted):
 # Enter your code here
 ```
 
-要打印统计数据并绘制受试者操作特征 (ROC) 曲线，对批处理作业的 `test_labels` 和 `target_predicted` 数据调用 `plot_roc` 函数：
+要輸出统计数据并绘制受试者操作特征 (ROC) 曲线，对批处理作业的 `test_labels` 和 `target_predicted` 数据调用 `plot_roc` 函数：
 
 
 ```python
@@ -1036,7 +1036,7 @@ weather.SNWD.fillna(0, inplace=True)
 weather.isna().sum()
 ```
 
-问题：打印 *TAVG*、*TMAX* 和 *TMIN* 缺少值的行的索引。
+问题：輸出 *TAVG*、*TMAX* 和 *TMIN* 缺少值的行的索引。
 
 提示：要查找缺少的行，请使用 `isna()` 函数。然后，在 *idx* 变量上使用该列表以获取索引。
 

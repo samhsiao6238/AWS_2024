@@ -38,7 +38,7 @@
         input=json.dumps(input_data)
     )
 
-    # 打印結果
+    # 輸出結果
     print("Execution ARN:", response['executionArn'])
     ```
 

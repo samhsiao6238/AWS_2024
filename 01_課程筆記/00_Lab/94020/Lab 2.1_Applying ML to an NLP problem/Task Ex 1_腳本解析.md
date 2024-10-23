@@ -179,19 +179,37 @@ _以下代碼將以這 `10` 個步驟依序進行_
 
 <br>
 
-## 開始進行
+## 讀取數據集
 
-3. 讀取數據集。
+_開始進行_
+
+<br>
+
+1. 讀取並觀察 Lab 預先準備的數據集 `AMAZON-REVIEW-DATA-CLASSIFICATION.csv`。
 
     ```python
     import pandas as pd
 
-    # 這是 Lab 預設準備的數據
     df = pd.read_csv(
         '../data/AMAZON-REVIEW-DATA-CLASSIFICATION.csv'
     )
-    # 觀察數據
+
     print('數據集的形狀為：', df.shape)
+    ```
+
+<br>
+
+2. 依據結果可知數據集有 70,000 列，列也就是樣本數，還有 6 欄位，而欄位就是特徵數；特別注意列與欄在繁簡的翻譯是剛好相反的。
+
+    ```bash
+    The shape of the dataset is: (70000, 6)
+    ```
+
+<br>
+
+3. 查看前五筆輸出。
+
+    ```python
     df.head(5)
     ```
 
@@ -199,16 +217,14 @@ _以下代碼將以這 `10` 個步驟依序進行_
 
 <br>
 
-4. 顯示更完整的數據。
+4. 顯示更完整的數據，參數 `display.max_colwidth` 指定單元格中可顯示文本的最大寬度，設為 `None` 表示 `無限制`，也就是 `完整顯示所有文本`，不會被截斷。
 
     ```python
-    # 顯示更多文本數據
     pd.set_option('display.max_colwidth', None)
     df.head()
     ```
 
     ![](images/img_07.png)
-    ```
 
 <br>
 
@@ -222,7 +238,7 @@ _以下代碼將以這 `10` 個步驟依序進行_
 
 <br>
 
-6. 檢查數據類型。
+6. 檢查數據類型；`dtypes` 是 `pandas` 的屬性。
 
     ```python
     df.dtypes
@@ -234,7 +250,7 @@ _以下代碼將以這 `10` 個步驟依序進行_
 
 ## 進行探索性數據分析
 
-1. 查看資料集的目標分佈。
+1. 查看資料集指定欄位的 `分佈`，或稱為 `頻率` 或 `次數`。
 
     ```python
     df['isPositive'].value_counts()
@@ -244,7 +260,7 @@ _以下代碼將以這 `10` 個步驟依序進行_
 
 <br>
 
-2. 交換正負分類值，這是因為重點是搜尋原始標記為 `0` 的負面評論，然而 `Linear Learner` 模型預設是針對標記為 `1` 進行，所以將負面評論的標記從改為 1、正面評論改為 0，這可讓模型的調整過程更加順利。
+2. 交換正負向評論的 `標籤值`，因為任務的重點是搜尋原始標籤為 `0` 的負面評論，但 `Linear Learner` 模型預設是針對標籤為 `1` 進行分類，因此將負面評論的標籤改為 `1`，正面評論改為 `0`，以便讓模型的訓練和調整過程更加順利。
 
     ```python
     df = df.replace({0:1, 1:0})
@@ -255,7 +271,7 @@ _以下代碼將以這 `10` 個步驟依序進行_
 
 <br>
 
-3. 檢查缺失值。
+3. 透過計算 `isna` 出現的頻率來檢查缺失值；這裡並未提示如何處理缺失值，暫時擱置無妨。
 
     ```python
     df.isna().sum()
@@ -271,26 +287,28 @@ _移除停用詞和詞幹提取_
 
 <br>
 
-1. 代碼。
+1. 從 `nltk` 資料庫下載兩個資源，`punkt` 是 `分詞器`，用來將文字分割成一個個單詞或標點符號；`stopwords` 是 `停用詞的列表`，例如 `the`、`is` 等，這些詞在自然語言處理任務中的分析價值很低，可進行移除。
 
     ```python
     import nltk
-    # nltk.download('punkt')
+    nltk.download('punkt')
     nltk.download('stopwords')
     ```
 
 <br>
 
-2. 設定停用詞。
+2. 從 `NLTK` 載入指定語言為 `英文` 的停用詞列表，並在設定排除項目後，建立新的停用詞列表。
 
     ```python
-    import re
+    import nltk, re
     from nltk.corpus import stopwords
     from nltk.stem import SnowballStemmer
     from nltk.tokenize import word_tokenize
-
+    
+    # 從 NLTK 提供的英文停用詞庫中載入一個預設的停用詞列表
     stop = stopwords.words('english')
 
+    # 定義例外列表，這些詞在情感分析中可能具有重要意義。
     excluding = [
         'against', 'not', 'don', 'don\'t','ain', 'are',
         'aren\'t', 'could', 'couldn\'t','did', 'didn\'t',
@@ -301,19 +319,19 @@ _移除停用詞和詞幹提取_
         'weren\'t', 'won\'t', 'would', 'wouldn\'t'
     ]
 
-    # 新停用詞列表
+    # 新的停用詞列表
     stopwords = [word for word in stop if word not in excluding]
     ```
 
 <br>
 
-3. 滾雪球詞幹分析器會將單詞進行 `詞幹化（Stemming）` 處理，例如 `walking` 會被詞幹化為 `walk`；`詞幹` 就是通過去掉單詞的 `詞綴` 並還原為其基本形式。
+3. 透過 `滾雪球詞幹分析器` 進行詞幹提取，或稱為 `詞幹化（Stemming）`，例如將 `walking` 詞幹化為 `walk`；也就是通過去掉單詞的 `詞綴` 將其還原為基本型態；特別注意，詞幹化主要針對像英文這類屈折語系比較有效，中文的語意通常是由不同的字組合構成詞語，因此詞幹化並不適用於中文的自然語言處理。
 
     ```python
     snow = SnowballStemmer('english')
     ```
 
-4. 對資料做進一步處理，包含將缺失值替換為空字串、將文字轉換為小寫、刪除任何頭尾空格、刪除任何多餘的空格和製表符、刪除所有 HTML 標記；細節如下。
+4. 自訂處理字串的函數，功能包含將缺失值替換為空字串、將文字轉換為小寫、刪除任何頭尾空格、刪除任何多餘的空格和製表符、刪除所有 HTML 標記；封裝的用意無非就是重用，代碼如下不做贅述。
 
     ```python
     def process_text(texts): 
@@ -342,40 +360,79 @@ _移除停用詞和詞幹提取_
 
 ## 分拆訓練、驗證和測試集
 
-1. 使用 `sklearn` 提供的函數進行分拆。
+1. 使用 `sklearn` 提供的函數進行分拆；先將資料集分成 `訓練集` 和 `驗證集`，再進一步將 `驗證集` 分成 `驗證集` 和 `測試集`，這樣的流程可確保模型有獨立的資料來進行測試，而不影響訓練和驗證過程。
 
     ```python
     from sklearn.model_selection import train_test_split
 
+    # 第一次分拆：將資料集拆分為訓練集和驗證集
     X_train, X_val, y_train, y_val = train_test_split(
+        # 選擇要用來訓練模型的特徵欄位
         df[['reviewText', 'summary', 'time', 'log_votes']],
-        df['isPositive'], test_size=0.20, shuffle=True, 
+        # 目標欄位，也就是是否為正面評論
+        df['isPositive'],
+        # 將 20% 的資料保留為驗證集，也就是 80% 做為訓練集
+        test_size=0.20,
+        # 將資料打亂順序後再進行分割
+        shuffle=True,
+        # 設定隨機種子，保證結果的可重現性
         random_state=324
     )
 
+    # 第二次分拆，將驗證集再分割為驗證集與測試集
     X_val, X_test, y_val, y_test = train_test_split(
+        # 使用第一次分割中剩下的驗證集資料
         X_val,
+        # 對應的標籤
         y_val,
+        # 將剩下的 50% 資料保留為測試集，其餘作為驗證集
         test_size=0.5,
+        # 同樣將資料打亂
         shuffle=True,
+        # 設定相同的隨機種子
         random_state=324
     )
     ```
 
 <br>
 
-2. 定義分拆後的數據集。
+2. 將分拆後的 `訓練集`、`驗證集` 和 `測試集` 中的 `reviewText` 和 `summary` 欄位進行文本處理，通過 `process_text()` 函數對這些文本數據進行 `分詞`、`去停用詞`、`詞幹化` 等操作。
 
     ```python
     print('處理 reviewText 欄位')
-    X_train['reviewText'] = process_text(X_train['reviewText'].tolist())
-    X_val['reviewText'] = process_text(X_val['reviewText'].tolist())
-    X_test['reviewText'] = process_text(X_test['reviewText'].tolist())
+
+    # 將訓練集中的 reviewText 欄位轉換為列表後進行文本處理
+    X_train['reviewText'] = process_text(
+        # 轉換為列表
+        X_train['reviewText'].tolist()
+    )
+
+    # 將驗證集中的 reviewText 欄位轉換為列表後，進行文本處理
+    X_val['reviewText'] = process_text(
+        X_val['reviewText'].tolist()
+    )
+
+    # 將測試集中的 reviewText 欄位轉換為列表後，進行文本處理
+    X_test['reviewText'] = process_text(
+        X_test['reviewText'].tolist()
+    )
 
     print('處理 summary 欄位')
-    X_train['summary'] = process_text(X_train['summary'].tolist())
-    X_val['summary'] = process_text(X_val['summary'].tolist())
-    X_test['summary'] = process_text(X_test['summary'].tolist())
+
+    # 將訓練集中的 summary 欄位轉換為列表後，進行文本處理
+    X_train['summary'] = process_text(
+        X_train['summary'].tolist()
+    )
+
+    # 將驗證集中的 summary 欄位轉換為列表後，進行文本處理
+    X_val['summary'] = process_text(
+        X_val['summary'].tolist()
+    )
+
+    # 將測試集中的 summary 欄位轉換為列表後，進行文本處理
+    X_test['summary'] = process_text(
+        X_test['summary'].tolist()
+    )
     ```
 
 <br>
@@ -488,32 +545,28 @@ _在開始訓練模型之前，需要對數據進行一些預處理，這些步�
 
 ## 使用 SageMaker 內建算法訓練分類器
 
-_使用 SageMaker 的 `LinearLearner()` 算法，設定以下選項_
+1. 使用 SageMaker 的 `LinearLearner()` 算法需進行參數設定，包含角色、實例規格、模型類型等，以下代碼設定使用 `ml.m4.xlarge` 進行訓練；`LinearLearner()` 是 SageMaker 內建的演算法，適用於 `線性分類` 和 `回歸模型` 的訓練。
 
 <br>
 
-1. 權限：使用當前環境的 AWS IAM 角色進行設定。
+2. 模型類型的選擇要適配要解決的問題，這個情境是進行 `二分類問題` 的預測，所以使用 `binary_classifier`；如果是 `多分類問題` 可使用 `multiclass_classifier`。
 
 <br>
 
-2. 計算能力：使用 `train_instance_count` 和 `train_instance_type` 參數來選擇實例。此範例使用 `ml.m4.xlarge` 執行資源進行訓練。
-
-<br>
-
-3. 模型類型：使用 `binary_classifier` 進行二分類問題的預測。如果問題是多分類問題，則可以使用 `multiclass_classifier`。
-
-<br>
-
-4. 這是 SageMaker 的內建演算法，用於 `線性分類` 和 `回歸模型` 的訓練；這段代碼是初始化一個使用線性學習演算法的分類器，並配置該模型的執行環境與資源，為後續的模型訓練作準備。
+3. 以下這段代碼初始化一個使用 `線性學習演算法` 的分類器，並配置模型的執行環境與資源，為後續的模型訓練作準備。
 
     ```python
     import sagemaker
 
     # 呼叫 LinearLearner 估計器
     linear_classifier = sagemaker.LinearLearner(
+        # 使用當前環境的角色
         role=sagemaker.get_execution_role(),
+        # 訓練使用的實例數量
         instance_count=1,
+        # 訓練使用的實例規格
         instance_type='ml.m4.xlarge',
+        # 模型類型
         predictor_type='binary_classifier'
     )
     ```
@@ -522,7 +575,7 @@ _使用 SageMaker 的 `LinearLearner()` 算法，設定以下選項_
 
 <br>
 
-5. 代碼中的 `record_set()` 函數用於將數據轉換為 `SageMaker` 格式，如此便可以便可在 SageMaker 中進行訓練、驗證和測試；每個數據集會被設置到指定的 `channel` 中，也就是 `訓練`、`驗證` 或 `測試` 頻道。
+4. 因為 `SageMaker` 內建的算法要求數據以特定的格式進行處理，所以接下來使用 `record_set()` 函數將數據轉換為 `SageMaker` 支援的格式，轉換後便可將數據發送到不同的 `channel` 中，分別用於 `訓練`、`驗證` 和 `測試`。每個數據集會被對應到適合的 `channel`，確保 `SageMaker` 能夠正確使用這些數據來進行後續的模型訓練和評估。
 
     ```python
     train_records = linear_classifier.record_set(
@@ -546,7 +599,7 @@ _使用 SageMaker 的 `LinearLearner()` 算法，設定以下選項_
 
 <br>
 
-6. 使用 `fit()` 函數將數據傳遞給分佈式的 `隨機梯度下降 (SGD) 算法`；這個過程約要 `3-4` 分鐘。
+5. 使用 `fit()` 函數將數據傳遞給分佈式的 `隨機梯度下降 (SGD) 算法`；這個過程約要 `3-4` 分鐘。
 
     ```python
     linear_classifier.fit(
@@ -554,6 +607,8 @@ _使用 SageMaker 的 `LinearLearner()` 算法，設定以下選項_
         logs=False
     )
     ```
+
+    ![](images/img_21.png)
 
 <br>
 
