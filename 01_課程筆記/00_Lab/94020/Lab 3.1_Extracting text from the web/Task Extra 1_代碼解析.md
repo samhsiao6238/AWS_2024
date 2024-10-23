@@ -301,6 +301,8 @@ _其實這就是個普通的爬蟲腳本，使用 `Beautiful Soup` 和 `Amazon T
                     print("Table[{}][{}] = {}".format(r, c, cell.text))
     ```
 
+    ![](images/img_10.png)
+
 <br>
 
 ___
