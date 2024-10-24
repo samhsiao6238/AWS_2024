@@ -61,7 +61,7 @@ os.environ['AWS_ACCESS_KEY_ID'] = ''
 os.environ['AWS_SECRET_ACCESS_KEY'] = ''
 os.environ['AWS_SESSION_TOKEN'] = ''
 
-# 創建一個 boto3 客戶端
+# 建立一個 boto3 客戶端
 s3 = boto3.client('s3')
 
 # 測試連接 (例如，列出 S3 存儲桶)
