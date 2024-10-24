@@ -1,2 +1,2 @@
 Master UserName:admin
-password: USCRDS20240713%
+password: <輸入資料庫密碼>
