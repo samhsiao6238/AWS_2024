@@ -4,7 +4,7 @@ db_settings = {
     "host": "database20230727.cor4lwuuxkis.us-east-1.rds.amazonaws.com",
     "port": 3306,
     "user": "admin",
-    "password": "2jjudxxuU",
+    "password": "<資料庫密碼>",
     "db": "db20270727",
     "charset": "utf8"
 }
