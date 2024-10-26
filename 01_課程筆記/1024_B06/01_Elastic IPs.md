@@ -560,7 +560,7 @@ _以下使用已儲存的 `EIP_ALLOC_ID` 變數進行解除綁定和釋放 Elast
 
 <br>
 
-6. 驗證 EC2 實例是否已刪除。
+6. 查看 EC2 實例的詳細資訊，可進一步確認刪除後的狀態。
 
     ```bash
     aws ec2 describe-instances --instance-ids $INSTANCE_ID
