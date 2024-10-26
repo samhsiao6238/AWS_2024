@@ -386,7 +386,7 @@ _建立並綁定到 EC2 實例_
 
 <br>
 
-2. 查詢指令。
+2. 查詢固定 IP 是否確實寫入變數。
 
     ```bash
     echo $EIP_ALLOC_ID
@@ -458,7 +458,7 @@ _以下使用已儲存的 `EIP_ALLOC_ID` 變數進行解除綁定和釋放 Elast
 
 <br>
 
-3. 查詢實例的公有 IP。
+3. 解除綁定後，查詢實例新的公有 IP。
 
     ```bash
     aws ec2 describe-instances \
@@ -469,13 +469,27 @@ _以下使用已儲存的 `EIP_ALLOC_ID` 變數進行解除綁定和釋放 Elast
 
 <br>
 
-4. 可知已經改變。
+4. 從輸出中可知 IP 已經改變。
 
     ![](images/img_42.png)
 
 <br>
 
-5. 釋放 Elastic IP。
+5. 查詢所有 Elastic IP 的當前狀態。
+
+    ```bash
+    aws ec2 describe-addresses \
+        --query "Addresses[*].{PublicIP:PublicIp, AllocationId:AllocationId, InstanceId:InstanceId}" \
+        --output table
+    ```
+
+    _已無關聯_
+
+    ![](images/img_48.png)
+
+<br>
+
+6. 釋放已無關聯的 Elastic IP。
 
     ```bash
     aws ec2 release-address --allocation-id $EIP_ALLOC_ID
@@ -483,7 +497,7 @@ _以下使用已儲存的 `EIP_ALLOC_ID` 變數進行解除綁定和釋放 Elast
 
 <br>
 
-6. 確認 Elastic IP 是否已成功釋放。
+7. 確認 Elastic IP 是否已成功釋放。
 
     ```bash
     aws ec2 describe-addresses \
@@ -494,7 +508,7 @@ _以下使用已儲存的 `EIP_ALLOC_ID` 變數進行解除綁定和釋放 Elast
 
 <br>
 
-7. 若已成功釋放，指令會無顯示錯誤 `InvalidAllocationID.NotFound`，表示該 Elastic IP 已經刪除。
+8. 若已成功釋放，指令會無顯示錯誤 `InvalidAllocationID.NotFound`，表示該 Elastic IP 已經刪除。
 
     ![](images/img_43.png)
 
