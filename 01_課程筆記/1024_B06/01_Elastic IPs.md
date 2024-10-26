@@ -475,7 +475,7 @@ _以下使用已儲存的 `EIP_ALLOC_ID` 變數進行解除綁定和釋放 Elast
 
 <br>
 
-5. 查詢所有 Elastic IP 的當前狀態。
+5. 再次運行以下指令，查詢所有 Elastic IP 的當前狀態。
 
     ```bash
     aws ec2 describe-addresses \
