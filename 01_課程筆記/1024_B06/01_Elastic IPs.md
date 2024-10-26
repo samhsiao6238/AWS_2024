@@ -38,7 +38,7 @@ _從準備文檔開始_
 
 <br>
 
-2. 複製 AWS Details 中的 `AWS CLI` 設定。
+2. 打開 Lab 入口畫面，點擊 `AWS Details` 中 `AWS CLI` 右側的 `show` 展開內容。
 
     ![](images/img_33.png)
 
