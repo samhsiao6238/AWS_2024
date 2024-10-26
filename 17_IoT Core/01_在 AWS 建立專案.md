@@ -104,14 +104,14 @@ _以下將結合樹莓派進行操作，但特別在最前面強調一下，AWS 
 
     ```json
     {
-    "Version": "2012-10-17",
-    "Statement": [
-        {
-        "Effect": "Allow",
-        "Action": "iot:*",
-        "Resource": "*"
-        }
-    ]
+        "Version": "2012-10-17",
+        "Statement": [
+            {
+            "Effect": "Allow",
+            "Action": "iot:*",
+            "Resource": "*"
+            }
+        ]
     }
     ```
 
