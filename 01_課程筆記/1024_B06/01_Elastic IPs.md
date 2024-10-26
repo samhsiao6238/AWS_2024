@@ -31,6 +31,7 @@
     INSTANCE_COUNT=1
     INSTANCE_ID=
     EIP_ALLOC_ID=
+    EIP_ASSOC_ID=
     ```
 
 <br>
@@ -363,39 +364,194 @@ _在之前步驟中，已經透過指令將實例 ID 存在在變數中，這裡
 
 _建立並綁定到 EC2 實例_
 
+<br>
+
 1. 使用 `allocate-address` 指令申請一個 Elastic IP，以下指令將返回的 `AllocationId` 儲存於變數 `EIP_ALLOC_ID`，以利後續用於綁定給 EC2。
 
-```bash
-EIP_ALLOC_ID=$(aws ec2 allocate-address --query 'AllocationId' --output text)
-```
+    ```bash
+    EIP_ALLOC_ID=$(aws ec2 allocate-address --query 'AllocationId' --output text)
+    ```
+
+<br>
 
 2. 查詢指令。
 
-```bash
-echo $EIP_ALLOC_ID
-```
+    ```bash
+    echo $EIP_ALLOC_ID
+    ```
 
-3. 使用 `associate-address` 指令將 Elastic IP 綁定到指定的 EC2 實例上，指令中會自動讀取已儲存變數這裡需要提供實例的 `InstanceId`，以及第一步取得的 `AllocationId`。
+<br>
 
-假設 EC2 實例的 ID 存在變數 `$INSTANCE_ID` 中，可以使用以下指令：
+3. 使用 `associate-address` 指令將 Elastic IP 綁定到指定的 EC2 實例上，指令中會自動讀取已儲存變數這裡需要提供實例的 `InstanceId`，以及第一步取得的 `AllocationId`；另外，EC2 實例的 ID 已存在變數 `$INSTANCE_ID` 中，假如不存在可手動存入，此處不贅述。
 
-```bash
-aws ec2 associate-address --instance-id $INSTANCE_ID --allocation-id $EIP_ALLOC_ID
-```
+    ```bash
+    aws ec2 associate-address --instance-id $INSTANCE_ID --allocation-id $EIP_ALLOC_ID
+    ```
 
-### 完整範例
-假設在執行建立 EC2 實例時，我們已將實例的 `InstanceId` 存入變數 `INSTANCE_ID`，那麼完整的流程如下：
+    ![](images/img_39.png)
 
-```bash
-# 1. 申請 Elastic IP 並取得 AllocationId
-EIP_ALLOC_ID=$(aws ec2 allocate-address --query 'AllocationId' --output text)
+<br>
 
-# 2. 將 Elastic IP 綁定到指定的 EC2 實例
-aws ec2 associate-address --instance-id $INSTANCE_ID --allocation-id $EIP_ALLOC_ID
-```
+4. 查看已分配的 Elastic IP 地址及其相關資訊。
 
-### 注意事項
-- `allocate-address` 預設會申請一個標準的 Elastic IP。如果需要申請到特定區域的 Elastic IP，可以加上 `--domain vpc`。
-- 綁定 Elastic IP 時，請確保實例和 Elastic IP 位於相同的 VPC（若有使用 VPC）。
+    ```bash
+    aws ec2 describe-addresses \
+        --query "Addresses[*].{PublicIP:PublicIp, AllocationId:AllocationId, InstanceId:InstanceId}" \
+        --output table
+    ```
 
-完成後，該 EC2 實例將使用新的 Elastic IP 地址來處理入站和出站流量。
+    ![](images/img_40.png)
+
+<br>
+
+5. 確認 EC2 實例是否已成功綁定 Elastic IP。
+
+    ```bash
+    aws ec2 describe-instances \
+        --instance-ids $INSTANCE_ID \
+        --query "Reservations[*].Instances[*].{InstanceId:InstanceId, PublicIpAddress:PublicIpAddress}" \
+        --output table
+    ```
+
+    ![](images/img_41.png)
+
+<br>
+
+6. 特別注意，`allocate-address` 預設會申請一個標準的 Elastic IP，如果需要申請指定區域的 Elastic IP，可以使用參數 `--domain vpc`，但在綁定 Elastic IP 時，務必確保實例和 Elastic IP 位於相同的 VPC。
+
+<br>
+
+## 解除綁定並刪除 Elastic IP
+
+_以下使用已儲存的 `EIP_ALLOC_ID` 變數進行解除綁定和釋放 Elastic IP_
+
+<br>
+
+1. 使用 `EIP_ALLOC_ID` 查詢對應的 `AssociationId` 並儲存到變數 `EIP_ASSOC_ID`。
+
+    ```bash
+    EIP_ASSOC_ID=$(aws ec2 describe-addresses \
+        --allocation-ids $EIP_ALLOC_ID \
+        --query "Addresses[0].AssociationId" \
+        --output text)
+    ```
+
+<br>
+
+2. 確保已取得有效的 `EIP_ASSOC_ID`，然後解除綁定。
+
+    ```bash
+    aws ec2 disassociate-address --association-id $EIP_ASSOC_ID
+    ```
+
+<br>
+
+3. 查詢實例的公有 IP。
+
+    ```bash
+    aws ec2 describe-instances \
+        --instance-ids $INSTANCE_ID \
+        --query "Reservations[0].Instances[0].PublicIpAddress" \
+        --output text
+    ```
+
+<br>
+
+4. 可知已經改變。
+
+    ![](images/img_42.png)
+
+<br>
+
+5. 釋放 Elastic IP。
+
+    ```bash
+    aws ec2 release-address --allocation-id $EIP_ALLOC_ID
+    ```
+
+<br>
+
+6. 確認 Elastic IP 是否已成功釋放。
+
+    ```bash
+    aws ec2 describe-addresses \
+        --allocation-ids $EIP_ALLOC_ID \
+        --query "Addresses[*].{PublicIp:PublicIp, AllocationId:AllocationId}" \
+        --output table
+    ```
+
+<br>
+
+7. 若已成功釋放，指令會無顯示錯誤 `InvalidAllocationID.NotFound`，表示該 Elastic IP 已經刪除。
+
+    ![](images/img_43.png)
+
+<br>
+
+## 刪除 EC2 實例和安全群組
+
+1. 停止 EC2 實例。
+
+    ```bash
+    aws ec2 stop-instances --instance-ids $INSTANCE_ID
+    ```
+
+    ![](images/img_44.png)
+
+<br>
+
+2. 確認實例已停止；特別注意，當狀態到達之前會持續等待，一旦狀態達成且沒有錯誤，CLI 就會安靜地退出，不回傳訊息。
+
+    ```bash
+    aws ec2 wait instance-stopped --instance-ids $INSTANCE_ID
+    ```
+
+<br>
+
+3. 刪除 EC2 實例。
+
+    ```bash
+    aws ec2 terminate-instances --instance-ids $INSTANCE_ID
+    ```
+
+    ![](images/img_45.png)
+
+<br>
+
+4. 確認實例已刪除。
+
+    ```bash
+    aws ec2 wait instance-terminated --instance-ids $INSTANCE_ID
+    ```
+
+<br>
+
+5. 刪除安全群組。
+
+    ```bash
+    aws ec2 delete-security-group --group-id $SECURITY_GROUP_ID
+    ```
+
+<br>
+
+6. 驗證 EC2 實例是否已刪除。
+
+    ```bash
+    aws ec2 describe-instances --instance-ids $INSTANCE_ID
+    ```
+
+<br>
+
+7. 驗證安全群組是否已刪除。
+
+    ```bash
+    aws ec2 describe-security-groups --group-ids $SECURITY_GROUP_ID
+    ```
+
+    ![](images/img_46.png)
+
+<br>
+
+___
+
+_END_
