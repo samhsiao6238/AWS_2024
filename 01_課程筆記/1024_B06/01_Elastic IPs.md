@@ -110,8 +110,8 @@
 ```bash
 My_AMI=$(aws ssm get-parameters \
     --names /aws/service/ami-amazon-linux-latest/al2023-ami-kernel-default-x86_64 \
-    --query 'Parameters[*].{Name:Name, Value:Value}' \
-    --outut table)
+    --query 'Parameters[0].Value' \
+    --output text)
 ```
 
 
