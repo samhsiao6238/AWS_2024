@@ -20,7 +20,7 @@
 
 <br>
 
-4. 在 `Firewall (security groups)` 部分選擇 `Create security group` 建立安全組，命名為 `Web Server security group`。
+4. 在 `Firewall (security groups)` 部分選擇 `Create security group` 建立安全群組，命名為 `Web Server security group`。
 
     ![](images/img_02.png)
 

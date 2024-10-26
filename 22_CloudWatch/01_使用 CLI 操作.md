@@ -638,7 +638,7 @@ _AWS 的多數服務如 EC2、CloudWatch 和 IAM 都可能產生費用，運行�
 
 <br>
 
-3. 刪除安全組。
+3. 刪除安全群組。
 
     ```bash
     aws ec2 delete-security-group --group-id $SECURITY_GROUP_ID

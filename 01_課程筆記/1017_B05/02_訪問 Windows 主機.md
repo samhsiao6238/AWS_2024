@@ -82,7 +82,7 @@ _後續步驟也會安裝 `SMB`，所以要添加進站規則；回到本地電�
 
 <br>
 
-1. 設置安全組允許 SMB 進站規則，預設端口是 `445`；以下指令開放所有IP訪問伺服器上的 `445` 端口；特別說明，指令中的 `$Security_groups` 就是儲存在變數中 `EC2` 安全群組的 `ID`，在後續的指令中也會這樣取值，不再贅述。
+1. 設置安全群組允許 SMB 進站規則，預設端口是 `445`；以下指令開放所有IP訪問伺服器上的 `445` 端口；特別說明，指令中的 `$Security_groups` 就是儲存在變數中 `EC2` 安全群組的 `ID`，在後續的指令中也會這樣取值，不再贅述。
 
     ```bash
     aws ec2 authorize-security-group-ingress --group-id $Security_groups --protocol tcp --port 445 --cidr 0.0.0.0/0

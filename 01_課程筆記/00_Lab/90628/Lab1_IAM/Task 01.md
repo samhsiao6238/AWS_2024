@@ -181,7 +181,7 @@ _延續之前的 Policy，IAM Policy 中 Statement 的基本結構包含三部�
 
 ## 商業場景
 
-1. 假設公司正在擴大對 `Amazon Web Services` 的使用，並且正在使用許多 `Amazon EC2` 實例和大量 `Amazon S3` 存儲，所以要根據工作職能授予新員工訪問權限，規劃如下。
+1. 假設公司正在擴大對 `Amazon Web Services` 的使用，並且正在使用許多 `Amazon EC2` 實例和大量 `Amazon S3` 儲存，所以要根據工作職能授予新員工訪問權限，規劃如下。
 
     ![](images/img_16.png)
 

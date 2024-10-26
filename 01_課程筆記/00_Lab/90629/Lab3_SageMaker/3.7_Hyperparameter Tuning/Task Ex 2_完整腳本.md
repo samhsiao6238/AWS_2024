@@ -171,7 +171,7 @@ s3_resource = boto3.Session().resource("s3")
 
 # 上傳 CSV 到 S3 的函數
 def upload_s3_csv(filename, folder, dataframe):
-    # 使用內存中的 StringIO 來存儲 CSV
+    # 使用內存中的 StringIO 來儲存 CSV
     csv_buffer = io.StringIO()
     # 將 DataFrame 轉換為 CSV
     dataframe.to_csv(csv_buffer, header=False, index=False)

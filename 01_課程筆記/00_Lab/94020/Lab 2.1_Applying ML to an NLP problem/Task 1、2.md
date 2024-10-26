@@ -64,7 +64,7 @@ os.environ['AWS_SESSION_TOKEN'] = ''
 # 建立一個 boto3 客戶端
 s3 = boto3.client('s3')
 
-# 測試連接 (例如，列出 S3 存儲桶)
+# 測試連接 (例如，列出 S3 儲存桶)
 response = s3.list_buckets()
 print(response)
 
