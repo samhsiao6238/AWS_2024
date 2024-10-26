@@ -544,7 +544,7 @@ _以下使用已儲存的 `EIP_ALLOC_ID` 變數進行解除綁定和釋放 Elast
 
 <br>
 
-4. 確認實例已刪除。
+4. 確認實例已刪除；使用 `wait` 進行等待，因為下一個步驟 `刪除安全群組` 必須在實例已經刪除下才能執行。
 
     ```bash
     aws ec2 wait instance-terminated --instance-ids $INSTANCE_ID
