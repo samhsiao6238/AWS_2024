@@ -22,7 +22,13 @@
 
 <br>
 
-4. AWS 主控台維持在這個畫面中。
+4. 在本機下載資料夾內會多一個壓縮文件 `connect_device_package.zip`。
+
+    ![](images/img_81.png)
+
+<br>
+
+5. AWS 主控台維持在這個畫面中。
 
     ![](images/img_80.png)
 
