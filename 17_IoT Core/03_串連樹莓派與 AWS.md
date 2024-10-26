@@ -50,15 +50,19 @@
 
 <br>
 
-## 在 `connect_01` 資料夾開啟終端機
+## 運行官方腳本
 
-1. 以下操作在 AWS 主控台皆有指引，可自行查看。
+_進入解壓縮的資料夾並開啟終端機_
+
+<br>
+
+1. 以下操作在 AWS 主控台皆有指引。
 
     ![](images/img_34.png)
 
 <br>
 
-2. 修改腳本權限。
+2. 先修改腳本權限。
 
     ```bash
     chmod +x start.sh
@@ -107,6 +111,24 @@
 9. 點擊右下角 `View thing`，會回到 `Raspi5_AWS_1`。
 
     ![](images/img_40.png)
+
+<br>
+
+## 回到訂閱測試畫面
+
+_細節自行參考_
+
+<br>
+
+1. 特別注意訂閱的路徑是 `sdk/test/python`，寫入記錄文檔中。
+
+    ![](images/img_82.png)
+
+<br>
+
+2. 運行 Python腳本。
+
+    ![](images/img_83.png)
 
 <br>
 
