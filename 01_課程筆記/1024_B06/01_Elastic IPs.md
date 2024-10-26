@@ -34,7 +34,21 @@ INSTANCE_COUNT=1
 
 1. 複製 AWS Details 中的 `AWS CLI` 設定。
 
-2. 使用命令建立安全群組，並將回傳的 `GroupId` 存入變數 `SECURITY_GROUP_ID` 中。
+    ![](images/img_33.png)
+
+2. 緊接著開啟新的終端機視窗，把三個變數直接貼上。
+
+    ![](images/img_34.png)
+
+3. 接著將三個變數寫入環境參數中，複製 `第二部分` 到終端機畫面中執行即可；相同步驟之後不再贅述。
+
+![](images/img_35.png)
+
+4. 將 `第三部分` 也貼上，其中兩個尚未有值的變數將在後續步驟中自動傳入變數。
+
+![](images/img_36.png)
+
+5. 使用命令建立安全群組，指令已經建立了變數，會自動將回傳的 `GroupId` 存入變數 `SECURITY_GROUP_ID` 中。
 
 ```bash
 SECURITY_GROUP_ID=$(aws ec2 create-security-group \
