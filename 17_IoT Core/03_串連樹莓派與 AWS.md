@@ -120,13 +120,13 @@ _細節自行參考_
 
 <br>
 
-1. 特別注意訂閱的路徑是 `sdk/test/python`，寫入記錄文檔中。
+1. 特別注意訂閱的節點是 `sdk/test/python`，寫入記錄文檔中。
 
     ![](images/img_82.png)
 
 <br>
 
-2. 運行 Python腳本。
+2. 編輯 Python腳本，寫入訂閱節點 `sdk/test/python`，然後運行腳本。
 
     ![](images/img_83.png)
 
