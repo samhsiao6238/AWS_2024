@@ -4,6 +4,44 @@ _以下將結合樹莓派進行操作，但特別在最前面強調一下，AWS 
 
 <br>
 
+## 安裝 Nodejs
+
+_進入樹莓派_
+
+<br>
+
+1. 安裝 NVM。
+
+    ```bash
+    curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.40.0/install.sh | bash
+    ```
+
+<br>
+
+2. 下載並執行 NVM 的安裝腳本，完成後執行以下指令使其立即生效。
+
+    ```bash
+    source ~/.bashrc
+    ```
+
+<br>
+
+4. 安裝 20.18.0。
+
+    ```bash
+    nvm install 20
+    ```
+
+<br>
+
+3. 檢查版本。
+
+    ```bash
+    node -v && npm -v
+    ```
+
+<br>
+
 ## 說明
 
 1. 進入 `IoT Core`。
