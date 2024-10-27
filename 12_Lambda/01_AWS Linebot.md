@@ -321,13 +321,13 @@ _以下步驟包含了 AWS Lambda、AWS API Gateway，另外結合 Linebot 及 P
 
 <br>
 
-3. 加入兩個環境參數，鍵的名稱要與代碼中相同，完成後點擊 `Save`。
+3. 加入兩個環境參數 `CHANNEL_ACCESS_TOKEN`、`CHANNEL_SECRET`，鍵的名稱要與代碼中相同，完成後點擊 `Save`。
 
     ![](images/img_34.png)
 
 <br>
 
-4. 驗證 Webhook 是否正確。
+4. 點擊 `Edit` 編輯 `Webhook`，填入 `Invoke URL`，完成後點擊 `Update` 上傳，接著點擊 `Verify` 驗證是否正確；出現 `Success` 就代表成功，有時候需要稍等幾秒鐘。
 
     ![](images/img_35.png)
 
