@@ -344,6 +344,95 @@ _以 LineBot 為例_
 
 <br>
 
+## 上傳腳本
+
+1. 編輯 `lambda_function.py` 腳本作為上傳使用。
+
+    ```bash
+    code -n lambda_function.py
+    ```
+
+<br>
+
+2. 編輯內容並儲存。
+
+    ```python
+    import json
+    import os
+
+    from linebot.v3 import WebhookHandler
+    from linebot.v3.messaging import (
+        ApiClient,
+        Configuration,
+        MessagingApi,
+        ReplyMessageRequest,
+        TextMessage,
+    )
+    from linebot.v3.webhooks import MessageEvent, TextMessageContent
+
+
+    configuration = Configuration(access_token=os.getenv("CHANNEL_ACCESS_TOKEN"))
+    handler = WebhookHandler(os.getenv("CHANNEL_SECRET"))
+
+
+    @handler.add(MessageEvent, message=TextMessageContent)
+    def handle_message(event):
+        with ApiClient(configuration) as api_client:
+            line_bot_api = MessagingApi(api_client)
+
+            line_bot_api.reply_message_with_http_info(
+                ReplyMessageRequest(
+                    reply_token=event.reply_token,
+                    messages=[TextMessage(text=event.message.text)],
+                )
+            )
+
+
+    def lambda_handler(event, context):
+        try:
+            body = event["body"]
+            signature = event["headers"]["x-line-signature"]
+            handler.handle(body, signature)
+            return {"statusCode": 200, "body": json.dumps("Hello from Lambda!")}
+        except Exception as e:
+            return {"statusCode": 500, "body": json.dumps(str(e))}
+    ```
+
+<br>
+
+3. 將其壓縮成 `function.zip`。
+
+    ```bash
+    zip function.zip lambda_function.py
+    ```
+
+    ![](images/img_64.png)
+
+<br>
+
+4. 上傳 ZIP 檔案。
+
+    ```bash
+    aws lambda update-function-code \
+        --function-name "$LAMBDA_FUNCTION_NAME" \
+        --zip-file "fileb://function.zip" \
+        --region "$REGION"
+    ```
+
+<br>
+
+5. 進入 Line Developer，編輯 Webhook，填入記錄中的 `INVOKE_URL`。
+
+    ![](images/img_66.png)
+
+<br>
+
+6. 驗證。
+
+    ![](images/img_65.png)
+
+<br>
+
 ___
 
 _END_
