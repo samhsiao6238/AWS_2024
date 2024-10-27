@@ -26,15 +26,7 @@ _這是在 MacOS 操作_
 
 <br>
 
-3. 特別說明，若想進行全局安裝必須確保已退出虛擬環境；這裡我依舊在虛擬環境 `envAWS` 中進行。
-
-    ```bash
-    deactivate
-    ```
-
-<br>
-
-4. 運行安裝腳本及相關依賴項目。
+3. 運行安裝腳本及相關依賴項目。
 
     ```bash
     python get-pip.py && pip install awsebcli --upgrade
@@ -42,25 +34,7 @@ _這是在 MacOS 操作_
 
 <br>
 
-5. 出現警告。
-
-    ```bash
-    WARNING: The scripts eb and ebp are installed in '/Users/samhsiao/Library/Python/3.10/bin' which is not on PATH.
-    Consider adding this directory to PATH or, if you prefer to suppress this warning, use --no-warn-script-location.
-    NOTE: The current PATH contains path(s) starting with `~`, which may not be expanded by all applications.
-    ```
-
-<br>
-
-6. 新增 EB CLI 環境變數；其餘不贅述。
-
-    ```bash
-    export PATH=$PATH:/Users/samhsiao/Library/Python/3.10/bin
-    ```
-
-<br>
-
-7. 驗證安裝。
+4. 驗證安裝。
 
     ```bash
     eb --version
@@ -70,6 +44,24 @@ _這是在 MacOS 操作_
 
     ```bash
     EB CLI 3.20.10 (Python 3.10.11 (v3.10.11:7d4cc5aa85, Apr  4 2023, 19:05:19) [Clang 13.0.0 (clang-1300.0.29.30)])
+    ```
+
+<br>
+
+## 若在全局安裝
+
+1. 若進行全局安裝必須確保已退出虛擬環境。
+
+    ```bash
+    deactivate
+    ```
+
+<br>
+
+2. 使用全局安裝 EB CLI 時，執行檔會安裝到使用者專用的 Python 執行路徑，先確定使用的 Python 版本後，將路徑加入環境變數；此處僅簡單說明不贅述。
+
+    ```bash
+    export PATH=$PATH:/Users/samhsiao/Library/Python/3.10/bin
     ```
 
 <br>
