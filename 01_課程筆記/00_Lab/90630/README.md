@@ -28,7 +28,7 @@
 
 <br>
 
-2. Elastic Beanstalk
+2. Elastic Beanstalk，可使用 90628。
 
 <br>
 
