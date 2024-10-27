@@ -23,7 +23,7 @@
 2. 建立記錄文件。
 
     ```bash
-    touch $LOG_FILE && code $LOG_FILE
+    touch $LOG_FILE && code -n $LOG_FILE
     ```
 
 <br>
