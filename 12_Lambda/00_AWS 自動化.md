@@ -2,41 +2,6 @@
 
 <br>
 
-## 建立 Lambda Layer
-
-1. 建立名為 `MyLayer-Bot` 的 `Lambda Layer`，並將本地文件 `python.zip` 上傳。
-
-    ```bash
-    aws lambda publish-layer-version \
-        --layer-name MyLayer-Bot \
-        --zip-file fileb://python.zip \
-        --compatible-runtimes python3.12 \
-        --compatible-architectures x86_64
-    ```
-
-<br>
-
-## 建立 Lambda Function
-
-_使用前一步驟建立的 Layer_
-
-<br>
-
-1. 建立名為 `MyFunction-Bot` 的 Lambda Function，使用 `Python 3.12` 運行環境、`x86_64` 架構和指定的 IAM 角色（`LabRole`），並將之前建立的 Layer 附加到該 Function 中。
-
-    ```bash
-    aws lambda create-function \
-        --function-name MyFunction-Bot \
-        --runtime python3.12 \
-        --role arn:aws:iam::114726445145:role/LabRole \
-        --handler lambda_function.lambda_handler \
-        --zip-file fileb://python.zip \
-        --architectures x86_64 \
-        --layers $(aws lambda list-layer-versions --layer-name MyLayer-Bot --query 'LayerVersions[0].LayerVersionArn' --output text)
-    ```
-
-<br>
-
 ## 設置記錄文件
 
 1. 設置變數並建立記錄文件。
@@ -95,6 +60,41 @@ _使用前一步驟建立的 Layer_
 
     ```bash
     sed -i '' "s/^ACCOUNT_ID=.*/ACCOUNT_ID=\"$ACCOUNT_ID\"/" $LOG_FILE
+    ```
+
+<br>
+
+## 建立 Lambda Layer
+
+1. 建立名為 `MyLayer-Bot` 的 `Lambda Layer`，並將本地文件 `python.zip` 上傳。
+
+    ```bash
+    aws lambda publish-layer-version \
+        --layer-name MyLayer-Bot \
+        --zip-file fileb://python.zip \
+        --compatible-runtimes python3.12 \
+        --compatible-architectures x86_64
+    ```
+
+<br>
+
+## 建立 Lambda Function
+
+_使用前一步驟建立的 Layer_
+
+<br>
+
+1. 建立名為 `MyFunction-Bot` 的 Lambda Function，使用 `Python 3.12` 運行環境、`x86_64` 架構和指定的 IAM 角色（`LabRole`），並將之前建立的 Layer 附加到該 Function 中。
+
+    ```bash
+    aws lambda create-function \
+        --function-name MyFunction-Bot \
+        --runtime python3.12 \
+        --role arn:aws:iam::114726445145:role/LabRole \
+        --handler lambda_function.lambda_handler \
+        --zip-file fileb://python.zip \
+        --architectures x86_64 \
+        --layers $(aws lambda list-layer-versions --layer-name MyLayer-Bot --query 'LayerVersions[0].LayerVersionArn' --output text)
     ```
 
 <br>
