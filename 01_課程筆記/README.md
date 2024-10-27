@@ -42,6 +42,27 @@ _可用作互聯的工具很多，可多比較_
 
 <br>
 
+## Lab 建立 AWS CLI 開發環境
+
+_兩步驟完成 AWS CLI 設定_
+
+<br>
+
+1. 複製 AWS Details 中的密鑰到終端機運行。
+
+    ![](images/img_05.png)
+
+<br>
+
+2. 在終端機運行以下指令完成環境變數設定。
+
+    ```bash
+    export AWS_ACCESS_KEY_ID=$aws_access_key_id
+    export AWS_SECRET_ACCESS_KEY=$aws_secret_access_key
+    export AWS_SESSION_TOKEN=$aws_session_token
+    ```
+
+<br>
 ___
 
 _未完_
