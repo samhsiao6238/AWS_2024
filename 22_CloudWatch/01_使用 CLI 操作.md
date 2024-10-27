@@ -12,6 +12,7 @@ _這裡直接實作，使用 AWS CLI 查詢 EC2 實例的相關資訊並設定 C
     LAST_VERSION=
     SECURITY_GROUP_ID=
     INSTANCE_ID=
+    MyPublicIP=
     ```
 
 <br>
@@ -221,7 +222,12 @@ _捕獲 EC2 實例的系統日誌，並設定 CloudWatch 警報來監控這些�
 1. 先取得 EC2 實例的公共 IP。
 
     ```bash
-    MyPublicIP=$(aws ec2 describe-instances --instance-ids $INSTANCE_ID --query "Reservations[*].Instances[*].PublicIpAddress" --output text) && echo $MyPublicIP
+    MyPublicIP=$(\
+    aws ec2 describe-instances \
+        --instance-ids $INSTANCE_ID \
+        --query "Reservations[*].Instances[*].PublicIpAddress" \
+        --output text) \
+    && echo $MyPublicIP
     ```
 
 <br>
