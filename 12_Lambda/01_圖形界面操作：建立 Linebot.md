@@ -6,7 +6,7 @@ _以下步驟包含了 AWS Lambda、AWS API Gateway，並使用 Python 建立一
 
 ## 步驟
 
-1. 進入桌面建立資料夾 `Python`。
+1. 進入桌面建立資料夾 `Python`；這是用來建立 Layer 使用。
 
     ```bash
     cd ~/Desktop && mkdir python && cd python
