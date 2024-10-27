@@ -1,4 +1,6 @@
-# 建立 Lambda Layer 和 Lambda Function
+# CLI 介面操作
+
+_使用 Lambda 建立 Linebot，包含 Layer、Function、API Gateway。_
 
 <br>
 
