@@ -240,7 +240,13 @@ _捕獲 EC2 實例的系統日誌，並設定 CloudWatch 警報來監控這些�
 
 <br>
 
-2. 在 EC2 下載和安裝 CloudWatch Logs Agent；在測試時可直接安裝，無需更新。
+3. 第一次連線會詢問是否確定要連線，輸入 `yes` 即可。
+
+    ![](images/img_26.png)
+
+<br>
+
+4. 在 EC2 下載和安裝 CloudWatch Logs Agent；在測試時可直接安裝，無需更新。
 
     ```bash
     sudo yum update -y && sudo yum install -y awslogs
@@ -248,7 +254,7 @@ _捕獲 EC2 實例的系統日誌，並設定 CloudWatch 警報來監控這些�
 
 <br>
 
-3. 配置 CloudWatch Logs Agent，編輯配置文件 `/etc/awslogs/awslogs.conf`。
+5. 配置 CloudWatch Logs Agent，編輯配置文件 `/etc/awslogs/awslogs.conf`。
 
     ```bash
     sudo nano /etc/awslogs/awslogs.conf
@@ -256,7 +262,7 @@ _捕獲 EC2 實例的系統日誌，並設定 CloudWatch 警報來監控這些�
 
 <br>
 
-4. 添加或修改如下內容。
+6. 添加或修改如下內容。
 
     ```bash
     # 修改
@@ -274,7 +280,7 @@ _捕獲 EC2 實例的系統日誌，並設定 CloudWatch 警報來監控這些�
 
 <br>
 
-5. 具體修正後的完整內容如下。
+7. 具體修正後的完整內容如下。
 
     ```bash
     [general]
@@ -297,7 +303,7 @@ _捕獲 EC2 實例的系統日誌，並設定 CloudWatch 警報來監控這些�
 
 <br>
 
-6. 啟動和設置 CloudWatch Logs Agent。
+8. 啟動和設置 CloudWatch Logs Agent。
 
     ```bash
     sudo systemctl start awslogsd && sudo systemctl enable awslogsd
@@ -305,7 +311,7 @@ _捕獲 EC2 實例的系統日誌，並設定 CloudWatch 警報來監控這些�
 
 <br>
 
-7. 確認 CloudWatch Logs Agent 已啟動。
+9. 確認 CloudWatch Logs Agent 已啟動。
 
     ```bash
     sudo systemctl status awslogsd
