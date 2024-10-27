@@ -67,7 +67,7 @@
 6. 設置 ROLE_ARN 並寫入 LOG_FILE。
 
     ```bash
-    ROLE_ARN="arn:aws:iam::$ACCOUNT_ID:role/$ROLE_NAME"
+    ROLE_ARN=$(printf "arn:aws:iam::%s:role/%s" "$ACCOUNT_ID" "$ROLE_NAME")
     echo "ROLE_ARN=\"$ROLE_ARN\"" | tee -a "$LOG_FILE"
     ```
 
