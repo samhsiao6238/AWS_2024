@@ -4,9 +4,13 @@ _這裡直接實作，使用 AWS CLI 查詢 EC2 實例的相關資訊並設定 C
 
 <br>
 
-## 建立 EC2 實例
+## 查詢鏡像
 
-1. 查詢最新的 Amazon Linux 2 AMI，並將查詢結果存入變數 `LAST_VERSION`。
+_Amazon Machine Image，AMI_
+
+<br>
+
+1. 查詢最新的 `Amazon Linux 2 AMI`，並將查詢結果存入變數 `LAST_VERSION`。
 
     ```bash
     LAST_VERSION=$(aws ssm get-parameters --names /aws/service/ami-amazon-linux-latest/amzn2-ami-hvm-x86_64-gp2 --region us-east-1 --query "Parameters[*].Value" --output text) && echo $LAST_VERSION
@@ -16,7 +20,17 @@ _這裡直接實作，使用 AWS CLI 查詢 EC2 實例的相關資訊並設定 C
 
 <br>
 
-2. _這是補充說明_，可透過以下指令查詢所有可用的 AMI（Amazon Machine Image）。
+2. 透過取得的 `AMI ID` 查詢有關此 AMI 的更多詳細資訊。
+
+    ```bash
+    aws ec2 describe-images --image-ids $LAST_VERSION --region us-east-1
+    ```
+
+    ![](images/img_22.png)
+
+<br>
+
+3. _這是補充說明_，可透過以下指令查詢所有可用的 AMI。
 
     ```bash
     aws ec2 describe-images --owners amazon --filters "Name=name,Values=amzn2-ami-hvm-*-x86_64-gp2" --query "Images[*].[ImageId,Name]" --output table
@@ -24,7 +38,9 @@ _這裡直接實作，使用 AWS CLI 查詢 EC2 實例的相關資訊並設定 C
 
 <br>
 
-3. 先建立密鑰對並命名為 `MyKeyPair`，並將結果輸出到文件 ` MyKeyPair.pem`，這將用於使用 SSH 連線 EC2；建立完成顯示內容。
+## 建立 EC2 實例
+
+1. 先建立密鑰對並命名為 `MyKeyPair`，並將結果輸出到文件 ` MyKeyPair.pem`，這將用於使用 SSH 連線 EC2；建立完成顯示內容。
 
     ```bash
     aws ec2 create-key-pair --key-name MyKeyPair --query "KeyMaterial" --output text > MyKeyPair.pem && cat MyKeyPair.pem
@@ -36,7 +52,7 @@ _這裡直接實作，使用 AWS CLI 查詢 EC2 實例的相關資訊並設定 C
 
 <br>
 
-4. 變更本地密鑰文件權限。
+2. 變更本地密鑰文件權限。
 
     ```bash
     chmod 400 MyKeyPair.pem
@@ -44,7 +60,7 @@ _這裡直接實作，使用 AWS CLI 查詢 EC2 實例的相關資訊並設定 C
 
 <br>
 
-5. 第二步，建立一個安全群組並命名為 `MySecurityGroup`；完成後同樣可在主控台 EC2 或 VPC 查看 `Security Groups`。
+3. 第二步，建立一個安全群組並命名為 `MySecurityGroup`；完成後同樣可在主控台 EC2 或 VPC 查看 `Security Groups`。
 
     ```bash
     SECURITY_GROUP_ID=$(aws ec2 create-security-group --group-name MySecurityGroup --description "My security group" --query 'GroupId' --output text) && echo $SECURITY_GROUP_ID
@@ -54,7 +70,7 @@ _這裡直接實作，使用 AWS CLI 查詢 EC2 實例的相關資訊並設定 C
 
 <br>
 
-6. 根據前一個步驟儲存的 `SECURITY_GROUP_ID` 建立群組規則，對以下兩個端口進行設置，無需指定 Type 是 SSH 或是 HTTP，系統會自動判斷。
+4. 根據前一個步驟儲存的 `SECURITY_GROUP_ID` 建立群組規則，對以下兩個端口進行設置，無需指定 Type 是 SSH 或是 HTTP，系統會自動判斷。
 
     ```bash
     aws ec2 authorize-security-group-ingress --group-id $SECURITY_GROUP_ID --protocol tcp --port 22 --cidr 0.0.0.0/0 && aws ec2 authorize-security-group-ingress --group-id $SECURITY_GROUP_ID --protocol tcp --port 80 --cidr 0.0.0.0/0
@@ -63,7 +79,7 @@ _這裡直接實作，使用 AWS CLI 查詢 EC2 實例的相關資訊並設定 C
     <img src="images/img_12.png" width="450px">
 <br>
 
-7. 建立並啟動 EC2 實例：以上完成建立密鑰、安全群組、啟動端口後，這裡進行建立並啟動，可在主控台中觀察其狀態。
+5. 建立並啟動 EC2 實例：以上完成建立密鑰、安全群組、啟動端口後，這裡進行建立並啟動，可在主控台中觀察其狀態。
 
     ```bash
     INSTANCE_ID=$(aws ec2 run-instances --image-id $LAST_VERSION --count 1 --instance-type t2.micro --key-name MyKeyPair --security-group-ids $SECURITY_GROUP_ID --query 'Instances[0].InstanceId' --output text) && echo $INSTANCE_ID
@@ -73,7 +89,7 @@ _這裡直接實作，使用 AWS CLI 查詢 EC2 實例的相關資訊並設定 C
 
 <br>
 
-8. 查詢特定實例的完整詳細資訊；剛建立完成時會一段時間進行 `initializing`。
+6. 查詢特定實例的完整詳細資訊；剛建立完成時會一段時間進行 `initializing`。
 
     ```bash
     aws ec2 describe-instances --instance-ids $INSTANCE_ID
