@@ -22,6 +22,12 @@
 
 5. CloudWatch
 
+<br>
+
+6. Lambda
+
+<br>
+
 ## 無權限
 
 1. Bedrock
