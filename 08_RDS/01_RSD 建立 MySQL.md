@@ -7,7 +7,11 @@
 1. 記錄文檔。
 
     ```bash
-    Endpoint=
+    Endpoint=mydatabase-01.cacwqxy1xikj.us-east-1.rds.amazonaws.com
+    DB_USERNAME=sam6238
+    DB_PASSWORD=
+    DB_SCHEMA=db20240718
+    DB_PORT=3306
     ```
 
 <br>

@@ -1,10 +1,28 @@
-# 瀏覽 `index.php`
+# 建立 PHP 站台訪問資料庫
+
+_`index.php`_
 
 <br>
 
 ## 編輯腳本
 
-1. 代碼如下，請填入資料庫確實資訊，更換自己的帳號密碼。
+1. 在桌面建立並進入專案資料夾；開啟終端機運行以下指令。
+
+    ```bash
+    cd ~/Desktop && mkdir _MyWebRDS_ && cd _MyWebRDS_
+    ```
+
+<br>
+
+2. 建立並編輯腳本。
+
+    ```bash
+    code -n index.php
+    ```
+
+<br>
+
+4. 代碼如下，請填入資料庫確實資訊，更換自己的帳號密碼。
 
     ```php
     <?php
@@ -75,7 +93,15 @@
 
 <br>
 
-2. 查詢結果顯示如下。
+5. 在專案所在資料夾開啟終端機，並運行以下指令啟動伺服器。
+
+    ```bash'
+    php -S localhost:3000 index.php
+    ```
+
+<br>
+
+6. 查詢結果顯示如下。
 
     ![](images/img_47.png)
 
@@ -109,7 +135,7 @@
 
 <br>
 
-3. 在 VSCode 中打開的 `index.php` 文件，然後按下 `Ctrl + Shift + P` 打開指令面板，輸入 `PHP Server: Serve Project` 並選擇此選項，這會啟動 PHP 的內建伺服器，並在瀏覽器中打開 `index.php`。
+3. 在 VSCode 中打開的 `index.php` 文件，然後按下 `command + Shift + P` 打開指令面板，輸入 `PHP Server: Serve Project` 並選擇此選項，這會啟動 PHP 的內建伺服器，並在瀏覽器中打開 `index.php`。
 
     ![](images/img_44.png)
 
