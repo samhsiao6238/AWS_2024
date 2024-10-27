@@ -188,6 +188,14 @@ _使用 VSCode_
 
 <br>
 
+## 壓縮文件備用
+
+1. 運行以下指令將資料夾 `my_simple_site` 壓縮為 `index.zip`。
+
+    ```bash
+    zip -r index.zip my_simple_site
+    ```
+
 <br>
 
 ___
