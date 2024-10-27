@@ -162,3 +162,134 @@ _建立 MySQL 資料庫_
 
 <br>
 
+## 準備連線
+
+_假如還未安裝客戶端，請先進行安裝；已經安裝則進行更新。_
+
+<br>
+
+1. MacOS。
+
+    ```bash
+    brew install mysql
+    ```
+
+<br>
+
+2. Ubuntu 或 Debian 系統。
+
+    ```bash
+    sudo apt-get install mysql-client
+    ```
+
+<br>
+
+3. 假如已經安裝，進行更新。
+
+    ```bash
+    brew upgrade mysql-client
+    ```
+
+<br>
+
+## 連線資料庫
+
+1. 因為 AWS 會使用 `mysql_native_password` 插件進行身份驗證，透過 Workbench 連線資料庫運行以下指令，更改 MySQL 用戶的身份驗證插件為 caching_sha2_password， MySQL 8 的新身份驗證方法。
+
+    ```bash
+    ALTER USER 'sam6238'@'%' IDENTIFIED WITH 'caching_sha2_password' BY 'sam112233';
+    ```
+
+<br>
+
+2. 連線指令；特別注意，參數 `-p` 與密碼 `$DB_PASSWORD` 是緊鄰的，不可分開。
+
+    ```bash
+    mysql -h "$DB_ENDPOINT" -P "$DB_PORT" -u "$DB_USERNAME" -p"$DB_PASSWORD"
+    ```
+
+<br>
+
+3. 將用戶的身份驗證方式切回 mysql_native_password。
+
+    ```bash
+    ALTER USER 'sam6238'@'%' IDENTIFIED WITH 'mysql_native_password' BY 'sam112233';
+    ```
+
+<br>
+
+## 
+
+1. 連線 `MySQL` 時，可在連線指令中加入參數 `--local-infile` 啟用本地文件加載功能。
+
+    ```bash
+    mysql -h "$DB_ENDPOINT" -P "$DB_PORT" -u "$DB_USERNAME" -p"$DB_PASSWORD" --local-infile=1
+    ```
+
+<br>
+
+2. 選擇資料庫 `db20240718`。
+
+    ```bash
+    USE db20240718;
+    ```
+
+<br>
+
+3. 建立 `test_movies` 資料表。
+
+    ```bash
+    CREATE TABLE test_movies (
+        movieId INT,
+        title VARCHAR(255),
+        genres VARCHAR(255)
+    );
+    ```
+
+<br>
+
+4. 從指定的本地文件中讀取資料 `test_movies.csv`，並將資料插入的目標資料表 `test_movies`，指定 CSV 文件中的分隔符號是逗號 `,`，每個欄位值被引號 `"` 包圍，指定文件中每一行的結束符號為 `\n`，並且忽略文件中的第一行，也就是說文件是有標題行的。
+
+    ```bash
+    LOAD DATA LOCAL INFILE '~/Downloads/test_movies.csv'
+    INTO TABLE test_movies
+    FIELDS TERMINATED BY ',' 
+    ENCLOSED BY '"' 
+    LINES TERMINATED BY '\n'
+    IGNORE 1 LINES 
+    (movieId, title, genres);
+    ```
+
+<br>
+
+5. 從資料表中讀取全部數據。
+
+    ```bash
+    SELECT * FROM test_movies;
+    ```
+
+<br>
+
+6. 返回 `title` 和 `genres` 兩個欄位的值，並篩選 `genres` 欄位中包含 `Action` 的記錄。
+
+    ```bash
+    SELECT title, genres FROM test_movies WHERE genres LIKE '%Action%';
+    ```
+
+    ![](images/img_61.png)
+
+<br>
+
+7. 如果只需要查詢少量記錄，可以在查詢結尾加上 \G，將結果轉換成垂直格式，避免橫向滾動和列錯位。
+
+    ```bash
+    SELECT title, genres FROM test_movies WHERE genres LIKE '%Action%' \G
+    ```
+
+    ![](images/img_60.png)
+
+<br>
+
+___
+
+_END_
