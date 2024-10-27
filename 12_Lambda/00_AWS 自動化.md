@@ -44,10 +44,29 @@ LOG_FILE="api_setup_log.txt"
 ```
 
 
-2. 建立記錄文件。
+1. 建立記錄文件。
 
 ```bash
-touch $LOG_FILE
+touch $LOG_FILE && open -e api_setup_log.txt
+```
+
+2. 使用文字編輯並不會自動刷新，要重啟才會看到文件，若想即時更新可使用 VSCode。
+
+```bash
+code api_setup_log.txt
+```
+
+3. 寫入初始內容。
+
+```bash
+LOG_FILE="api_setup_log.txt"
+echo "# 設置已知變數" > $LOG_FILE
+echo "API_NAME=\"$API_NAME\"" >> $LOG_FILE
+echo "LAMBDA_FUNCTION_NAME=\"$LAMBDA_FUNCTION_NAME\"" >> $LOG_FILE
+echo "REGION=\"$REGION\"" >> $LOG_FILE
+echo "ROLE_NAME=\"$ROLE_NAME\"" >> $LOG_FILE
+echo "ACCOUNT_ID=\"$ACCOUNT_ID\"" >> $LOG_FILE
+echo "LOG_FILE=\"$LOG_FILE\"" >> $LOG_FILE
 ```
 
 3. 取得 ACCOUNT_ID。
