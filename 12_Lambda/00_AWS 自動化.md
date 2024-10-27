@@ -173,7 +173,7 @@ _使用前一步驟建立的 Layer_
         --query 'items[?path==`/`].id' \
         --output text)
 
-    echo "RESOURCE_ID=$RESOURCE_ID" | tee -a $LOG_FILE
+    echo "RESOURCE_ID=\"$RESOURCE_ID\"" | tee -a $LOG_FILE
     ```
 
 <br>
