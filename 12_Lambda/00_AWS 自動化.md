@@ -145,8 +145,6 @@ _使用前一步驟建立的 Layer_
 
 1. 建立 `REST API`，同時將 `API_ID` 寫入變數。
 
-<br>
-
     ```bash
     API_ID=$(\
     aws apigateway create-rest-api \
