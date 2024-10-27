@@ -39,7 +39,6 @@ API_NAME="MyAPI-Bot"
 LAMBDA_FUNCTION_NAME="MyFunction-Bot"
 REGION="us-east-1"
 ROLE_NAME="LabRole"
-ACCOUNT_ID=
 LOG_FILE="api_setup_log.txt"
 ```
 
@@ -76,6 +75,12 @@ ACCOUNT_ID=$(\
 aws sts get-caller-identity \
     --query 'Account' \
     --output text)
+echo "ACCOUNT_ID=$ACCOUNT_ID" | tee -a $LOG_FILE
+```
+
+4. 這裡補充說明一下，假如原本已經寫在記錄文檔內，只是沒有值的變數，可使用以下語法進行更新，而不是直接寫入。
+
+```bash
 sed -i '' "s/^ACCOUNT_ID=.*/ACCOUNT_ID=\"$ACCOUNT_ID\"/" $LOG_FILE
 ```
 
