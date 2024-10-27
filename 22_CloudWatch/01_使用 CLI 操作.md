@@ -609,7 +609,11 @@ _使用 AWS CLI 建立 Log Group 和 Log Stream_
 
 ## 手動建立 Log Stream
 
-1. 建立 Log Stream。
+_將終端機退回到本機_
+
+<br>
+
+1. 建立 Log Stream，完成後可刷新主控台查看。
 
     ```bash
     aws logs create-log-stream \
@@ -645,7 +649,13 @@ _使用 AWS CLI 建立 Log Group 和 Log Stream_
 
 <br>
 
-3. 查看 `CloudWatch Logs Agent` 產生的日誌內容文件 `/var/log/awslogs.log` 可確保 Agent 正在運行並且沒有錯誤；按下組合鍵 `comtrol + C` 可退出。
+## 查看日誌
+
+_使用 SSH 進入 EC2 終端機_
+
+<br>
+
+1. 查看 `CloudWatch Logs Agent` 產生的日誌內容文件 `/var/log/awslogs.log` 可確保 Agent 正在運行並且沒有錯誤；按下組合鍵 `comtrol + C` 可退出。
 
     ```bash
     cat /var/log/awslogs.log
