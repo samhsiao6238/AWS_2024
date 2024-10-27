@@ -142,13 +142,13 @@ _建立 MySQL 資料庫_
 
 <br>
 
-3. 還會經過一個 `backing-up` 階段。
+3. 還會經過一個 `backing-up` 階段，表示 RDS 資料庫正在執行備份操作，這是過渡性狀態；RDS 自動備份完成後，狀態將更改為 `available`，屆時代表資料庫才可以接受連接；特別注意， `backing-up` 階段已經有端點資訊，可以繼續下一步。
 
     ![](images/img_59.png)
 
 <br>
 
-4. 一旦 RDS 可用，取得並記錄其終端點 `DB_ENDPOINT`。
+4. 取得並記錄其終端點 `DB_ENDPOINT`。
 
     ```bash
     DB_ENDPOINT=$(aws rds describe-db-instances \
