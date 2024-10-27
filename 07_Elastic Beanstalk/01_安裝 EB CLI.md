@@ -1,12 +1,16 @@
 # 安裝 EB CLI
 
-_自動安裝 EB CLI 及其依賴項目，包括 Python 和 pip，並為 EB CLI 建立一個虛擬環境_
+_`EB CLI` 是專為 `AWS Elastic Beanstalk` 設計，具備針對性更強的指令，安裝時會自動安裝依賴項目，包括 Python 和 pip。_
 
 <br>
 
-## MacOS 安裝 EB CLI
+## 安裝 EB CLI
 
-1. 在 `文件` 中建立安裝目錄。
+_這是在 MacOS 操作_
+
+<br>
+
+1. 在 `Documents` 中建立安裝目錄；並非強制規範，這僅是我個人習慣。
 
     ```bash
     cd ~/Documents && mkdir ~/ebcli && cd ~/ebcli
