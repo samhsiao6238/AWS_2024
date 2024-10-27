@@ -121,7 +121,7 @@ _使用前一步驟建立的 Layer_
         --zip-file $ZIP_FILE \
         --architectures $ARCHITECTURE \
         --layers $(\
-        aws lambda list-layer-versions \
+            aws lambda list-layer-versions \
             --layer-name $LAYER_NAME \
             --query 'LayerVersions[0].LayerVersionArn' \
             --output text)
