@@ -24,7 +24,7 @@ _以下步驟包含了 AWS Lambda、AWS API Gateway，並使用 Python 建立一
 
 <br>
 
-3. 使用指定版本安裝 Linebot SDK。
+3. 使用指定版本安裝 Linebot SDK；透過參數 `--platform` 指定安裝平台環境為 `manylinux2014_x86_64`。
 
     ```bash
     pip3 install --platform manylinux2014_x86_64 --target . --python-version 3.12 --only-binary=:all: line-bot-sdk
