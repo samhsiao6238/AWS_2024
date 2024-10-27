@@ -64,6 +64,15 @@
 
 <br>
 
+6. 設置 ROLE_ARN 並寫入 LOG_FILE。
+
+    ```bash
+    ROLE_ARN="arn:aws:iam::$ACCOUNT_ID:role/$ROLE_NAME"
+    echo "ROLE_ARN=\"$ROLE_ARN\"" | tee -a "$LOG_FILE"
+    ```
+
+<br>
+
 ## 建立 Lambda Layer
 
 _假設已經製作好 python.zip，並且是存放在桌面，所以先進入桌面。_
