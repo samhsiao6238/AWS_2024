@@ -11,6 +11,7 @@ _這裡直接實作，使用 AWS CLI 查詢 EC2 實例的相關資訊並設定 C
     ```bash
     LAST_VERSION=
     SECURITY_GROUP_ID=
+    INSTANCE_ID=
     ```
 
 <br>
@@ -109,19 +110,35 @@ _Amazon Machine Image，AMI_
     ```
 
     <img src="images/img_12.png" width="450px">
+
 <br>
 
-5. 建立並啟動 EC2 實例：以上完成建立密鑰、安全群組、啟動端口後，這裡進行建立並啟動，可在主控台中觀察其狀態。
+5. 也可以在主控台中查看安全群組。
+
+    ![](images/img_24.png)
+
+<br>
+
+6. 建立並啟動 EC2 實例：以上完成建立密鑰、安全群組、啟動端口後，這裡進行建立並啟動，可在主控台中觀察其狀態。
 
     ```bash
-    INSTANCE_ID=$(aws ec2 run-instances --image-id $LAST_VERSION --count 1 --instance-type t2.micro --key-name MyKeyPair --security-group-ids $SECURITY_GROUP_ID --query 'Instances[0].InstanceId' --output text) && echo $INSTANCE_ID
+    INSTANCE_ID=$(\
+    aws ec2 run-instances \
+        --image-id $LAST_VERSION \
+        --count 1 \
+        --instance-type t2.micro \
+        --key-name MyKeyPair \
+        --security-group-ids $SECURITY_GROUP_ID \
+        --query 'Instances[0].InstanceId' \
+        --output text) \
+    && echo $INSTANCE_ID
     ```
 
     ![](images/img_03.png)
 
 <br>
 
-6. 查詢特定實例的完整詳細資訊；剛建立完成時會一段時間進行 `initializing`。
+7. 查詢特定實例的完整詳細資訊；剛建立完成時會一段時間進行 `initializing`。
 
     ```bash
     aws ec2 describe-instances --instance-ids $INSTANCE_ID
