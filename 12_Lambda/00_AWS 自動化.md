@@ -302,7 +302,7 @@ _以 LineBot 為例_
 
 <br>
 
-3. 手動寫入記錄中並在終端機裡運行一次
+3. 手動在終端機裡運行一次。
 
     ```bash
     CHANNEL_SECRET=
@@ -333,6 +333,14 @@ _以 LineBot 為例_
         --region $REGION \
         --query 'Environment.Variables'
     ```
+
+    ![](images/img_63.png)
+
+<br>
+
+6. 也可在主控台中查看。
+
+    ![](images/img_62.png)
 
 <br>
 
