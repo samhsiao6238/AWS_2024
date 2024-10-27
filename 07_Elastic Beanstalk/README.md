@@ -1,0 +1,1 @@
+_若要使用 Lab，可參考 `90628 Activity1_AWS Elastic Beanstalk`_
