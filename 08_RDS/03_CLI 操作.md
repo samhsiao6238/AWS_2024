@@ -314,6 +314,52 @@ _假如還未安裝客戶端，請先進行安裝；已經安裝則進行更新�
 
 <br>
 
+## 釋放所有資源
+
+_完成 Lab 後可釋放和刪除所有已建立的資源_
+
+<br>
+
+1. 刪除 RDS 資料庫實例並釋放相關資源。
+
+    ```bash
+    aws rds delete-db-instance \
+        --db-instance-identifier "$DB_NAME" \
+        --skip-final-snapshot \
+        --region "$REGION"
+    ```
+
+<br>
+
+2. 確認 RDS 實例的刪除狀態。
+
+    ```bash
+    aws rds describe-db-instances \
+        --db-instance-identifier "$DB_NAME" \
+        --region "$REGION" \
+        --query 'DBInstances[0].DBInstanceStatus'
+    ```
+
+<br>
+
+3. 刪除安全群組。
+
+    ```bash
+    aws ec2 delete-security-group \
+        --group-id "$SG_ID" \
+        --region "$REGION"
+    ```
+
+<br>
+
+4. 刪除本地記錄文件。
+
+    ```bash
+    rm "$LOG_FILE"
+    ```
+
+<br>
+
 ___
 
 _END_
