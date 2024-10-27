@@ -37,7 +37,7 @@ _這是在 MacOS 操作_
 4. 運行安裝腳本及相關依賴項目。
 
     ```bash
-    python get-pip.py --user && pip install awsebcli --upgrade --user
+    python get-pip.py && pip install awsebcli --upgrade
     ```
 
 <br>
