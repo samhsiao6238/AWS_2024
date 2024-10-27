@@ -49,7 +49,7 @@ _建立 MySQL 資料庫_
 
 <br>
 
-4. 將環境變數寫入 LOG_FILE。
+5. 將環境變數寫入 LOG_FILE。
 
     ```bash
     echo "DB_NAME=\"$DB_NAME\"" | tee -a "$LOG_FILE"
