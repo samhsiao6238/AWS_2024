@@ -115,15 +115,14 @@ _使用前一步驟建立的 Layer_
 
     ```bash
     aws lambda create-function \
-        --function-name $LAMBDA_FUNCTION_NAME \
-        --runtime $RUNTIME \
-        --role "arn:aws:iam::$ACCOUNT_ID:role/$ROLE_NAME" \
+        --function-name "$LAMBDA_FUNCTION_NAME" \
+        --runtime "$RUNTIME" \
+        --role "$ROLE_ARN" \
         --handler lambda_function.lambda_handler \
-        --zip-file $ZIP_FILE \
-        --architectures $ARCHITECTURE \
-        --layers $(\
-            aws lambda list-layer-versions \
-            --layer-name $LAYER_NAME \
+        --zip-file "$ZIP_FILE" \
+        --architectures "$ARCHITECTURE" \
+        --layers $(aws lambda list-layer-versions \
+            --layer-name "$LAYER_NAME" \
             --query 'LayerVersions[0].LayerVersionArn' \
             --output text)
     ```
