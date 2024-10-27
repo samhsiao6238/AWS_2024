@@ -102,7 +102,7 @@ _建立 MySQL 資料庫_
 
 ## 建立 RDS MySQL
 
-1. 建立 RDS 資料庫，並將其設置為可公開訪問。
+1. 建立 RDS 資料庫，並將其設置為可公開訪問；特別注意，指令最後顯式表示 `tee -a "$LOG_FILE"`，也就是會將建立過程的 JSON 回應寫入 `$LOG_FILE`，這部分很常，若要取消請刪掉語句即可。
 
     ```bash
     aws rds create-db-instance \
