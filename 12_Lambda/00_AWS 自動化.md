@@ -344,7 +344,87 @@ _以 LineBot 為例_
 
 <br>
 
+## 測試腳本
+
+_假如想先進行測試_
+
+1. 編輯 `lambda_function.py` 腳本作為上傳使用。
+
+    ```bash
+    code -n lambda_function.py
+    ```
+
+<br>
+
+2. 編輯內容並儲存。
+
+    ```python
+    def lambda_handler(event, context):
+        return {
+            'statusCode': 200,
+            'body': 'Hello from Lambda!'
+        }
+    ```
+
+<br>
+
+3. 將其壓縮成 `function.zip`。
+
+    ```bash
+    zip function.zip lambda_function.py
+    ```
+
+<br>
+
+4. 上傳 ZIP 檔案。
+
+    ```bash
+    aws lambda update-function-code \
+        --function-name "$LAMBDA_FUNCTION_NAME" \
+        --zip-file "fileb://function.zip" \
+        --region "$REGION"
+    ```
+
+<br>
+
+5. 建立測試事件文件 `event.json`，該文件將用作 Lambda 測試的輸入。
+
+    ```bash
+    touch event.json
+    ```
+
+<br>
+
+6. 編輯 `event.json` 內容。
+
+    ```json
+    {
+        "key1": "value1",
+        "key2": "value2",
+        "key3": "value3"
+    }
+    ```
+
+<br>
+
+7. 命令調用 Lambda 函數並使用測試事件。
+
+    ```bash
+    aws lambda invoke \
+        --function-name MyFunction-Bot \
+        --payload file://event.json \
+        --region us-east-1 \
+        --cli-binary-format raw-in-base64-out \
+        /dev/stdout
+    ```
+
+<br>
+
 ## 上傳腳本
+
+_建立步驟與前面相同_
+
+<br>
 
 1. 編輯 `lambda_function.py` 腳本作為上傳使用。
 
