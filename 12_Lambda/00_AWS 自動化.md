@@ -318,6 +318,9 @@ _以 LineBot 為例_
         --function-name "$LAMBDA_FUNCTION_NAME" \
         --environment "Variables={CHANNEL_ACCESS_TOKEN='$CHANNEL_ACCESS_TOKEN',CHANNEL_SECRET='$CHANNEL_SECRET'}" \
         --region "$REGION"
+    
+    echo "CHANNEL_ACCESS_TOKEN=\"$CHANNEL_ACCESS_TOKEN\"" | tee -a "$LOG_FILE"
+    echo "CHANNEL_SECRET=\"$CHANNEL_SECRET\"" | tee -a "$LOG_FILE"
     ```
 
 <br>
