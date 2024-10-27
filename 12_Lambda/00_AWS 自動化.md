@@ -390,7 +390,7 @@ _假如想先進行測試_
 5. 建立測試事件文件 `event.json`，該文件將用作 Lambda 測試的輸入。
 
     ```bash
-    touch event.json
+    code -n event.json
     ```
 
 <br>
@@ -414,8 +414,7 @@ _假如想先進行測試_
         --function-name MyFunction-Bot \
         --payload file://event.json \
         --region us-east-1 \
-        --cli-binary-format raw-in-base64-out \
-        /dev/stdout
+        output.json && cat output.json
     ```
 
 <br>
