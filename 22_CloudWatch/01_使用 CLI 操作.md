@@ -4,6 +4,17 @@ _這裡直接實作，使用 AWS CLI 查詢 EC2 實例的相關資訊並設定 C
 
 <br>
 
+## 準備工作
+
+1. 記錄用文檔。
+
+    ```bash
+    LAST_VERSION=
+    SECURITY_GROUP_ID=
+    ```
+
+<br>
+
 ## 查詢鏡像
 
 _Amazon Machine Image，AMI_
@@ -85,7 +96,16 @@ _Amazon Machine Image，AMI_
 4. 根據前一個步驟儲存的 `SECURITY_GROUP_ID` 建立群組規則，對以下兩個端口進行設置，無需指定 Type 是 SSH 或是 HTTP，系統會自動判斷。
 
     ```bash
-    aws ec2 authorize-security-group-ingress --group-id $SECURITY_GROUP_ID --protocol tcp --port 22 --cidr 0.0.0.0/0 && aws ec2 authorize-security-group-ingress --group-id $SECURITY_GROUP_ID --protocol tcp --port 80 --cidr 0.0.0.0/0
+    aws ec2 authorize-security-group-ingress \
+        --group-id $SECURITY_GROUP_ID \
+        --protocol tcp \
+        --port 22 \
+        --cidr 0.0.0.0/0 && \
+    aws ec2 authorize-security-group-ingress \
+        --group-id $SECURITY_GROUP_ID \
+        --protocol tcp \
+        --port 80 \
+        --cidr 0.0.0.0/0
     ```
 
     <img src="images/img_12.png" width="450px">
