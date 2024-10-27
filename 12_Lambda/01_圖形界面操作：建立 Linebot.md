@@ -339,6 +339,71 @@ _以下步驟包含了 AWS Lambda、AWS API Gateway，並使用 Python 建立一
 
 <br>
 
+## 環境復原
+
+1. 刪除 Lambda 函數。
+
+    ```bash
+    aws lambda delete-function \
+        --function-name "$LAMBDA_FUNCTION_NAME" \
+        --region "$REGION"
+    ```
+
+<br>
+
+2. 刪除 Lambda Layer。
+
+    ```python
+    aws lambda delete-layer-version \
+        --layer-name "$LAYER_NAME" \
+        --version-number $(aws lambda list-layer-versions \
+            --layer-name "$LAYER_NAME" \
+            --query 'LayerVersions[0].Version' \
+            --output text) \
+        --region "$REGION"
+    ```
+
+<br>
+
+3. 查看是否有已部署 Stage。
+
+    ```bash
+    aws apigateway get-stages \
+        --rest-api-id "$API_ID" \
+        --region "$REGION"
+    ```
+
+<br>
+
+4. 如果有先刪除 API Gateway stage。
+
+    ```bash
+    aws apigateway delete-stage \
+        --rest-api-id "$API_ID" \
+        --stage-name "prod" \
+        --region "$REGION"
+    ```
+
+<br>
+
+5. 刪除 API Gateway。
+
+    ```bash
+    aws apigateway delete-rest-api \
+        --rest-api-id "$API_ID" \
+        --region "$REGION"
+    ```
+
+<br>
+
+4. 刪除本地文件。
+
+    ```bash
+    rm "$LOG_FILE" && rm python.zip event.json output.json
+    ```
+
+<br>
+
 ___
 
 _END_
