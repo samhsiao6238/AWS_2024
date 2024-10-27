@@ -20,6 +20,8 @@
 
 <br>
 
+5. CloudWatch
+
 ## 無權限
 
 1. Bedrock。
