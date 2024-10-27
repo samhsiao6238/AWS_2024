@@ -148,7 +148,7 @@ _Amazon Machine Image，AMI_
 
 ## 設置 CloudWatch 監控和警報
 
-1. 建立 CloudWatch 警報，自訂名稱為 `HighCPUUtilization`，對 EC2 的 CPU 使用率進行監控；以下將自動對前面建立的 ID 設置警報。
+1. 建立 CloudWatch 警報，自訂名稱為 `HighCPUUtilization`，對 EC2 的 CPU 使用率進行監控；以下將自動對前面建立的 ID 設置警報；以下指令建立完成不會有任何輸出。
 
     ```bash
     aws cloudwatch put-metric-alarm \
@@ -167,19 +167,25 @@ _Amazon Machine Image，AMI_
 
 <br>
 
-2. 以上指令建立完成不會有任何輸出，可在主控台查看；還沒完成時要點擊顯示更多的 `...` 會自動展開 `All alarms`，可看到自定義的警告 `HighCPUUtilization`。
+2. 進入 CloudWatch 主控台。
+
+    ![](images/img_25.png)
+
+<br>
+
+3. 還沒完成時要點擊顯示更多的 `...` 會自動展開 `All alarms`，可看到自定義的警告 `HighCPUUtilization`。
 
     ![](images/img_04.png)
 
 <br>
 
-3. 完成時會顯示在運行中的選項中，狀態為 `OK`。
+4. 完成時會顯示在運行中的選項中，狀態為 `OK`。
 
     ![](images/img_05.png)
 
 <br>
 
-4. 查詢特定 EC2 實例相關的所有警報，當前僅有一個警報 `HighCPUUtilization`；輸出的詳盡說明在講義最下方，可前往查看說明。
+5. 查詢特定 EC2 實例相關的所有警報，當前僅有一個警報 `HighCPUUtilization`；輸出的詳盡說明在講義最下方，可前往查看說明。
 
     ```bash
     aws cloudwatch describe-alarms-for-metric \
@@ -190,7 +196,7 @@ _Amazon Machine Image，AMI_
 
 <br>
 
-3. 列出指定警報 `HighCPUUtilization` 的詳細資訊。
+6. 列出指定警報 `HighCPUUtilization` 的詳細資訊。
 
     ```bash
     aws cloudwatch describe-alarms --alarm-names "HighCPUUtilization"
@@ -198,7 +204,7 @@ _Amazon Machine Image，AMI_
 
 <br>
 
-4. 檢查 CloudWatch 中的相關度量標準，就是列出指定命名空間 `AWS/EC2` 中的所有 `度量標準（metrics）`。
+7. 檢查 CloudWatch 中的相關度量標準，就是列出指定命名空間 `AWS/EC2` 中的所有 `度量標準（metrics）`。
 
     ```bash
     aws cloudwatch list-metrics --namespace "AWS/EC2"
