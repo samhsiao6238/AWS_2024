@@ -189,6 +189,8 @@ _使用前一步驟建立的 Layer_
         --region $REGION
     ```
 
+    ![](images/img_56.png)
+
 <br>
 
 4. 將 POST 方法連接至 Lambda 函數。
@@ -200,11 +202,26 @@ _使用前一步驟建立的 Layer_
         --http-method POST \
         --type AWS_PROXY \
         --integration-http-method POST \
-        --uri arn:aws:apigateway:$REGION:lambda:path/2015-03-31/functions/arn:aws:lambda:$REGION:$ACCOUNT_ID:function:$LAMBDA_FUNCTION_NAME/invocations \
+        --uri "$(printf "arn:aws:apigateway:%s:lambda:path/2015-03-31/functions/arn:aws:lambda:%s:%s:function:%s/invocations" "$REGION" "$REGION" "$ACCOUNT_ID" "$LAMBDA_FUNCTION_NAME")" \
         --region $REGION
+
     ```
 
 <br>
+
+5. 查看 POST 方法的 Lambda 整合。
+
+    ```bash
+    aws apigateway get-integration \
+        --rest-api-id $API_ID \
+        --resource-id $RESOURCE_ID \
+        --http-method POST \
+        --region $REGION
+    ```
+
+    ![](images/img_57.png)
+
+    <br>
 
 ## 賦予權限
 
