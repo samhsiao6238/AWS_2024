@@ -28,6 +28,7 @@ _建立 MySQL 資料庫_
     DB_PORT="3306"
     REGION="us-east-1"
     SG_NAME="MyRDSGroupRule"
+    ENGINE="mysql"
     DB_INSTANCE_CLASS="db.t4g.micro"
     STORAGE_TYPE="gp3"
     ENGINE_VERSION="8.0.39"
@@ -106,8 +107,8 @@ _建立 MySQL 資料庫_
     ```bash
     aws rds create-db-instance \
         --db-instance-identifier "$DB_NAME" \
-        --db-instance-class db.t4g.micro \
-        --engine mysql \
+        --db-instance-class "$DB_INSTANCE_CLASS" \
+        --engine "$ENGINE" \
         --allocated-storage 20 \
         --master-username "$DB_USERNAME" \
         --master-user-password "$DB_PASSWORD" \
@@ -117,8 +118,8 @@ _建立 MySQL 資料庫_
         --no-multi-az \
         --publicly-accessible \
         --no-auto-minor-version-upgrade \
-        --storage-type gp3 \
-        --engine-version 8.0.39 \
+        --storage-type "$STORAGE_TYPE" \
+        --engine-version "$ENGINE_VERSION" \
         --db-name "$DB_SCHEMA" \
         --region "$REGION" | tee -a "$LOG_FILE"
     ```
