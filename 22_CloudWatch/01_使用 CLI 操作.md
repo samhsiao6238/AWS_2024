@@ -49,7 +49,7 @@ _Amazon Machine Image，AMI_
         --key-name MyKeyPair \
         --query "KeyMaterial" \
         --output text > MyKeyPair.pem \
-        && cat MyKeyPair.pem
+    && cat MyKeyPair.pem
     ```
 
     _可在主控台 EC2 或 VPC 查看 `MyKeyPair`_
