@@ -417,6 +417,8 @@ _假如想先進行測試_
         output.json && cat output.json
     ```
 
+    ![](images/img_68.png)
+
 <br>
 
 ## 上傳腳本
