@@ -23,7 +23,7 @@
 2. 建立記錄文件。
 
     ```bash
-    touch $LOG_FILE && code api_setup_log.txt
+    touch $LOG_FILE && code $LOG_FILE
     ```
 
 <br>
