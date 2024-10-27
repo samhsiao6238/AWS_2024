@@ -433,6 +433,12 @@ _以 LineBot 為例_
 
 <br>
 
+7. 對話測試。
+
+    ![](images/img_67.png)
+
+<br>
+
 ___
 
 _END_
