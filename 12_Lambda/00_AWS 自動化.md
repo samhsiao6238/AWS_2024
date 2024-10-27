@@ -50,6 +50,8 @@
     echo "ARCHITECTURE=\"$ARCHITECTURE\"" >> $LOG_FILE
     ```
 
+<br>
+
 5. 取得 ACCOUNT_ID。
 
     ```bash
