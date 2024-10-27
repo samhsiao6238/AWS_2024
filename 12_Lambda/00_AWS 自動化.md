@@ -154,7 +154,7 @@ _使用前一步驟建立的 Layer_
         --query 'id' \
         --output text)
 
-    echo "API_ID=$API_ID" | tee -a $LOG_FILE
+    echo "API_ID=\"$API_ID\"" | tee -a "$LOG_FILE"
     ```
 
 <br>
