@@ -23,7 +23,7 @@ _建立 MySQL 資料庫_
     DB_NAME="mydatabase-01"
     DB_ENDPOINT="mydatabase-01.cacwqxy1xikj.us-east-1.rds.amazonaws.com"
     DB_USERNAME="sam6238"
-    DB_PASSWORD="sam112233"
+    DB_PASSWORD="<自行輸入>"
     DB_SCHEMA="db20240718"
     DB_PORT="3306"
     REGION="us-east-1"
