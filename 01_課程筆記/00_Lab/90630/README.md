@@ -24,11 +24,7 @@
 
 ## 無權限
 
-1. Bedrock。
-
-<br>
-
-2. Elastic Beanstalk
+1. Bedrock
 
 <br>
 
