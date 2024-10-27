@@ -45,7 +45,11 @@ _Amazon Machine Image，AMI_
 1. 先建立密鑰對，命名為 `MyKeyPair`，並將結果輸出到文件 `MyKeyPair.pem`，這是用於 SSH 連線 EC2；建立完成顯示內容如下。
 
     ```bash
-    aws ec2 create-key-pair --key-name MyKeyPair --query "KeyMaterial" --output text > MyKeyPair.pem && cat MyKeyPair.pem
+    aws ec2 create-key-pair \
+        --key-name MyKeyPair \
+        --query "KeyMaterial" \
+        --output text > MyKeyPair.pem \
+        && cat MyKeyPair.pem
     ```
 
     _可在主控台 EC2 或 VPC 查看 `MyKeyPair`_
