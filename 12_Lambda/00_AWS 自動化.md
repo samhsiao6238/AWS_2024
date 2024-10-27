@@ -284,6 +284,55 @@ _使用前一步驟建立的 Layer_
 
 <br>
 
+## 設置環境變數
+
+_以 LineBot 為例_
+
+<br>
+
+1. 首先取得要寫入的變數，第一個是 `Channel secret`，變數名稱是 `CHANNEL_SECRET`。 
+
+    ![](images/img_60.png)
+
+<br>
+
+2. 另一個是 `Channel access token`，變數名稱 `CHANNEL_ACCESS_TOKEN`。
+
+    ![](images/img_61.png)
+
+<br>
+
+3. 手動寫入記錄中並在終端機裡運行一次
+
+    ```bash
+    CHANNEL_SECRET=
+    CHANNEL_ACCESS_TOKEN=
+    ```
+
+<br>
+
+4. 為 Lambda Function 添加環境變數。
+
+    ```bash
+    aws lambda update-function-configuration \
+        --function-name "$LAMBDA_FUNCTION_NAME" \
+        --environment "Variables={CHANNEL_ACCESS_TOKEN='$CHANNEL_ACCESS_TOKEN',CHANNEL_SECRET='$CHANNEL_SECRET'}" \
+        --region "$REGION"
+    ```
+
+<br>
+
+5. 查看 Lambda Function 的當前配置，確認環境變數已被成功寫入。
+
+    ```bash
+    aws lambda get-function-configuration \
+        --function-name $LAMBDA_FUNCTION_NAME \
+        --region $REGION \
+        --query 'Environment.Variables'
+    ```
+
+<br>
+
 ___
 
 _END_
