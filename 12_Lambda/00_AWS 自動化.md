@@ -237,6 +237,22 @@ _使用前一步驟建立的 Layer_
         --region $REGION
     ```
 
+    ![](images/img_58.png)
+
+<br>
+
+2. 使用 get-policy 查看 Lambda 函數的權限。
+
+    ```bash
+    aws lambda get-policy \
+        --function-name $LAMBDA_FUNCTION_NAME \
+        --region $REGION
+    ```
+
+3. 顯示 Lambda 函數 `MyFunction-Bot` 的 `policy`，以及成功授權 `API Gateway` 調用該 Lambda 的權限。
+
+    ![](images/img_59.png)
+
 <br>
 
 ## 部署 API 並
@@ -252,7 +268,7 @@ _使用前一步驟建立的 Layer_
         --query 'id' \
         --output text)
 
-    echo "DEPLOYMENT_ID=$DEPLOYMENT_ID" | tee -a $LOG_FILE
+    echo "DEPLOYMENT_ID=\"$DEPLOYMENT_ID\"" | tee -a $LOG_FILE
     ```
 
 <br>
