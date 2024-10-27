@@ -16,18 +16,10 @@ _建立 MySQL 資料庫_
 
 <br>
 
-2. 在桌面建立一個記錄文件，並寫入環境變數。
+2. 設置環境變數到記錄文件。
 
     ```bash
     LOG_FILE="$HOME/Desktop/rds_setup_log.txt"
-    touch "$LOG_FILE" && code -n "$LOG_FILE"
-    ```
-
-<br>
-
-3. 設置環境變數到記錄文件。
-
-    ```bash
     DB_NAME="mydatabase-01"
     DB_ENDPOINT="mydatabase-01.cacwqxy1xikj.us-east-1.rds.amazonaws.com"
     DB_USERNAME="sam6238"
@@ -36,6 +28,14 @@ _建立 MySQL 資料庫_
     DB_PORT="3306"
     REGION="us-east-1"
     SG_NAME="MyRDSGroupRule"
+    ```
+
+<br>
+
+3. 在桌面建立一個記錄文件，並寫入環境變數。
+
+    ```bash
+    touch "$LOG_FILE" && code -n "$LOG_FILE"
     ```
 
 <br>
