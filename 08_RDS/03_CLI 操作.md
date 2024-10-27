@@ -28,6 +28,9 @@ _建立 MySQL 資料庫_
     DB_PORT="3306"
     REGION="us-east-1"
     SG_NAME="MyRDSGroupRule"
+    DB_INSTANCE_CLASS="db.t4g.micro"
+    STORAGE_TYPE="gp3"
+    ENGINE_VERSION="8.0.39"
     ```
 
 <br>
@@ -87,10 +90,12 @@ _建立 MySQL 資料庫_
     aws ec2 authorize-security-group-ingress \
         --group-id "$SG_ID" \
         --protocol tcp \
-        --port 3306 \
+        --port "$DB_PORT" \
         --cidr 0.0.0.0/0 \
         --region "$REGION"
     ```
+
+    ![](images/img_56.png)
 
 <br>
 
