@@ -143,9 +143,7 @@ _使用前一步驟建立的 Layer_
 
 ## 建立 API Gateway
 
-1. 建立 REST API。
-
-_將 `API_ID` 寫入變數_
+1. 建立 `REST API`，同時將 `API_ID` 寫入變數。
 
 <br>
 
