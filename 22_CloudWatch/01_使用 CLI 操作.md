@@ -708,15 +708,7 @@ _監控 `/var/log/messages` 中的關鍵字 `ERROR`；_
 
 <br>
 
-3. 取得 EC2 實例的 ID。
-
-    ```bash
-    INSTANCE_ID=$(aws ec2 describe-instances --filters "Name=instance-state-name,Values=running" --query "Reservations[*].Instances[*].InstanceId" --output text) && echo $INSTANCE_ID
-    ```
-
-<br>
-
-4. 查詢 CloudWatch 日誌。
+3. 使用 EC2 實例 ID 查詢 CloudWatch 日誌。
 
     ```bash
     aws logs get-log-events --log-group-name EC2InstanceLogs --log-stream-name ${INSTANCE_ID}/messages --limit 5
