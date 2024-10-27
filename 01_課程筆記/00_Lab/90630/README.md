@@ -4,7 +4,7 @@
 
 ## 可練習專案
 
-1. EC2
+1. EC2、Elastic IPs
 
 <br>
 
