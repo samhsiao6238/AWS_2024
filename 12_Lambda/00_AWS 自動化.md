@@ -59,7 +59,7 @@
     aws sts get-caller-identity \
         --query 'Account' \
         --output text)
-    echo "ACCOUNT_ID=$ACCOUNT_ID" | tee -a $LOG_FILE
+    echo "ACCOUNT_ID=\"$ACCOUNT_ID\"" | tee -a $LOG_FILE
     ```
 
 <br>
