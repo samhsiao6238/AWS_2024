@@ -74,7 +74,19 @@
 
 ## 建立 Lambda Layer
 
-1. 建立名為 `MyLayer-Bot` 的 `Lambda Layer`，並將本地文件 `python.zip` 上傳。
+_假設已經製作好 python.zip_
+
+<br>
+
+1. 進入桌面。
+
+    ```bash
+    cd ~/Desktop
+    ```
+
+<br>
+
+2. 建立名為 `MyLayer-Bot` 的 `Lambda Layer`，並將本地文件 `python.zip` 上傳。
 
     ```bash
     aws lambda publish-layer-version \
