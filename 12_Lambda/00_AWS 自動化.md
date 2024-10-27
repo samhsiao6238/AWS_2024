@@ -135,6 +135,12 @@ _使用前一步驟建立的 Layer_
 
 <br>
 
+2. 完成建立。
+
+    ![](images/img_55.png)
+
+<br>
+
 ## 建立 API Gateway
 
 1. 建立 REST API。
