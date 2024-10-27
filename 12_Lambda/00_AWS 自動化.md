@@ -35,7 +35,6 @@ aws lambda create-function \
 1. 設置變數並建立記錄文件。
 
 ```bash
-# 設置已知變數
 API_NAME="MyAPI-Bot"
 LAMBDA_FUNCTION_NAME="MyFunction-Bot"
 REGION="us-east-1"
