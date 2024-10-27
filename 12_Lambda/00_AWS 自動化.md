@@ -411,9 +411,9 @@ _假如想先進行測試_
 
     ```bash
     aws lambda invoke \
-        --function-name MyFunction-Bot \
+        --function-name "$LAMBDA_FUNCTION_NAME" \
         --payload file://event.json \
-        --region us-east-1 \
+        --region "$REGION" \
         output.json && cat output.json
     ```
 
