@@ -277,7 +277,7 @@ _使用前一步驟建立的 Layer_
 
     ```bash
     INVOKE_URL="https://$API_ID.execute-api.$REGION.amazonaws.com/prod"
-    echo "INVOKE_URL=$INVOKE_URL" | tee -a $LOG_FILE
+    echo "INVOKE_URL=\"$INVOKE_URL\"" | tee -a $LOG_FILE
 
     echo "API Gateway setup complete. Invoke URL: $INVOKE_URL"
     ```
