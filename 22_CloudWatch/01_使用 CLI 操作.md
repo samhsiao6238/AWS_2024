@@ -36,6 +36,8 @@ _Amazon Machine Image，AMI_
     aws ec2 describe-images --owners amazon --filters "Name=name,Values=amzn2-ami-hvm-*-x86_64-gp2" --query "Images[*].[ImageId,Name]" --output table
     ```
 
+    ![](images/img_23.png)
+
 <br>
 
 ## 建立 EC2 實例
