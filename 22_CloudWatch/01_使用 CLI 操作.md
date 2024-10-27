@@ -240,13 +240,13 @@ _捕獲 EC2 實例的系統日誌，並設定 CloudWatch 警報來監控這些�
 
 <br>
 
-3. 第一次連線會詢問是否確定要連線，輸入 `yes` 即可。
+3. 第一次連線會詢問是否確定要連線，輸入 `yes` 即可，連線完成顯示如下畫面。
 
     ![](images/img_26.png)
 
 <br>
 
-4. 在 EC2 下載和安裝 CloudWatch Logs Agent；在測試時可直接安裝，無需更新。
+4. 在 EC2 下載和安裝 CloudWatch Logs Agent；預設已經安裝 yum，可直接使用。
 
     ```bash
     sudo yum update -y && sudo yum install -y awslogs
@@ -262,7 +262,7 @@ _捕獲 EC2 實例的系統日誌，並設定 CloudWatch 警報來監控這些�
 
 <br>
 
-6. 添加或修改如下內容。
+6. 無需搜尋，直接滑動到最下方；修改並添加如下內容。
 
     ```bash
     # 修改
@@ -309,6 +309,8 @@ _捕獲 EC2 實例的系統日誌，並設定 CloudWatch 警報來監控這些�
     sudo systemctl start awslogsd && sudo systemctl enable awslogsd
     ```
 
+    ![](images/img_27.png)
+
 <br>
 
 9. 確認 CloudWatch Logs Agent 已啟動。
@@ -323,6 +325,10 @@ _捕獲 EC2 實例的系統日誌，並設定 CloudWatch 警報來監控這些�
 
 ## 設置 AWS CLI
 
+_假如使用 Learner Lab，直接運行最前面的兩步驟，以下是使用個人帳號的操作，切勿混淆。_
+
+<br>
+
 1. 先在本機另外開啟一個終端，透過以下指令查看設置內容。
 
     ```bash
@@ -336,6 +342,20 @@ _捕獲 EC2 實例的系統日誌，並設定 CloudWatch 警報來監控這些�
     ```bash
     aws configure
     ```
+
+<br>
+
+## 關於建立 IAM 角色
+
+1. 建立腳色主要目的是讓 EC2 實例擁有權限，可直接與 AWS CloudWatch Logs 進行互動。
+
+<br>
+
+2. 透過 IAM 角色可授予 EC2 實例所需的最低權限，例如存取 CloudWatch Logs 的權限，而無需暴露敏感的 AWS 憑證，這是一種標準的作法。
+
+<br>
+
+3. 在不建立 IAM 角色的情況下仍然可以進行操作，但必須將 AWS 憑證直接配置在實例上。
 
 <br>
 
@@ -569,13 +589,13 @@ _使用 AWS CLI 建立 Log Group 和 Log Stream_
 
 <br>
 
-2. 進入主控台可以看到。
+2. 進入主控台可以看到，點擊進入。
 
     ![](images/img_06.png)
 
 <br>
 
-3. 通常情況下，CloudWatch Logs Agent 會自動建立 Log Stream。
+3. 通常情況下，在下方頁籤中可看到 CloudWatch Logs Agent 自動建立 Log Stream。
 
     ![](images/img_21.png)
 
@@ -592,7 +612,10 @@ _使用 AWS CLI 建立 Log Group 和 Log Stream_
 1. 建立 Log Stream。
 
     ```bash
-    aws logs create-log-stream --log-group-name EC2InstanceLogs --log-stream-name ${INSTANCE_ID}/messages --region us-east-1
+    aws logs create-log-stream \
+        --log-group-name EC2InstanceLogs \
+        --log-stream-name ${INSTANCE_ID}/messages \
+        --region us-east-1
     ```
 
     ![](images/img_10.png)
