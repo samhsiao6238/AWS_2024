@@ -15,7 +15,7 @@
     ZIP_FILE="fileb://python.zip"
     RUNTIME="python3.12"
     ARCHITECTURE="x86_64"
-    LOG_FILE="api_setup_log.txt"
+    LOG_FILE="$HOME/Desktop/api_setup_log.txt"
     ```
 
 <br>
@@ -66,7 +66,7 @@
 
 ## 建立 Lambda Layer
 
-_假設已經製作好 python.zip_
+_假設已經製作好 python.zip，並且是存放在桌面，所以先進入桌面。_
 
 <br>
 
