@@ -80,7 +80,7 @@
 
 <br>
 
-6. 掃描 Table 以獲取所有項目。
+6. 掃描 Table 以取得所有項目。
 
     ```bash
     aws --endpoint-url=http://localhost:4566 dynamodb scan --table-name MyTable

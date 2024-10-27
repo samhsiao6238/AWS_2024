@@ -217,7 +217,7 @@ _建立 Greengrass 群組並配置 Lambda 函數_
 
 <br>
 
-6. 啟動 Greengrass 核心軟體，讓它從 AWS 中獲取配置並運行 Lambda 函數。
+6. 啟動 Greengrass 核心軟體，讓它從 AWS 中取得配置並運行 Lambda 函數。
 
    ```bash
    sudo /greengrass/v2/bin/greengrass-cli deployment launch

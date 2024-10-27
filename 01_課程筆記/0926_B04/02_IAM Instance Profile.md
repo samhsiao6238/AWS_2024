@@ -107,7 +107,7 @@ _在官方文件中，`MALZ` 和 `SALZ` 是 AWS Managed Services (AMS) 中的兩
 
 <br>
 
-2. 輸出結果如下，顯示了兩個 `Profile` 的內容；第一個 `EMR_EC2_DefaultRole`  Profile 綁定了一個同名角色 `EMR_EC2_DefaultRole`，為 EMR 提供 EC2 所需的權限來操作 S3、CloudWatch 和其他 AWS 服務，而 `ARN` 就是 Profile 的唯一識別符，可將 IAM 角色與 EC2 實例關聯起來，讓這些實例可以使用角色中的權限；另一個 Profile 是 `LabInstanceProfile`，綁定的角色為 `LabRole`， 其具體權限取決於與它關聯的策略，這些策略可能允許 EC2 實例或其他資源訪問特定的 AWS 服務，如 S3、DynamoDB、SageMaker 等；透過觀察可知 Instance Profile 使 AWS 實例可獲取需要的權限來執行特定操作，而無需硬編碼 AWS 憑證，這提高了安全性和靈活性。
+2. 輸出結果如下，顯示了兩個 `Profile` 的內容；第一個 `EMR_EC2_DefaultRole`  Profile 綁定了一個同名角色 `EMR_EC2_DefaultRole`，為 EMR 提供 EC2 所需的權限來操作 S3、CloudWatch 和其他 AWS 服務，而 `ARN` 就是 Profile 的唯一識別符，可將 IAM 角色與 EC2 實例關聯起來，讓這些實例可以使用角色中的權限；另一個 Profile 是 `LabInstanceProfile`，綁定的角色為 `LabRole`， 其具體權限取決於與它關聯的策略，這些策略可能允許 EC2 實例或其他資源訪問特定的 AWS 服務，如 S3、DynamoDB、SageMaker 等；透過觀察可知 Instance Profile 使 AWS 實例可取得需要的權限來執行特定操作，而無需硬編碼 AWS 憑證，這提高了安全性和靈活性。
 
     ![](images/img_50.png)
 
@@ -165,7 +165,7 @@ _以下使用 AWS CLI 在本機進行查詢_
 
 <br>
 
-4. 獲取具體的 IAM 使用者名稱；這是指與當前身份相關聯的 ARN 中的使用者名稱。
+4. 取得具體的 IAM 使用者名稱；這是指與當前身份相關聯的 ARN 中的使用者名稱。
 
     ```bash
     aws iam list-users

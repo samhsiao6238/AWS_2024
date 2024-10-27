@@ -75,7 +75,7 @@ _在此任務中，將建立一個 AWS Step Functions 狀態機，該狀態機�
 
 <br>
 
-5. 切換到頁籤 `Trust relationships`，_確認這個信任關係允許 `Step Functions` 服務（states.amazonaws.com）假設該角色；也就是說，這個 IAM 角色的信任關係允許 `AWS Step Functions` 服務來扮演這個角色，這個服務也就是 `states.amazonaws.com`；這樣一來，`Step Functions` 就能夠獲取這個角色的權限來執行它需要的操作。
+5. 切換到頁籤 `Trust relationships`，_確認這個信任關係允許 `Step Functions` 服務（states.amazonaws.com）假設該角色；也就是說，這個 IAM 角色的信任關係允許 `AWS Step Functions` 服務來扮演這個角色，這個服務也就是 `states.amazonaws.com`；這樣一來，`Step Functions` 就能夠取得這個角色的權限來執行它需要的操作。
 
     ![](images/img_06.png)
 

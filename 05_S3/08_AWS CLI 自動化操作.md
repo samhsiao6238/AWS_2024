@@ -33,7 +33,7 @@ _以上的 AWS CLI 指令可以打包為 Shell 腳本，並且將不同功能分
         exit 1
     fi
 
-    # 從現有 AWS 配置文件中獲取根用戶憑證並寫入 .env 文件
+    # 從現有 AWS 配置文件中取得根用戶憑證並寫入 .env 文件
     ROOT_ACCESS_KEY_ID=$(aws configure get aws_access_key_id --profile default)
     ROOT_SECRET_ACCESS_KEY=$(aws configure get aws_secret_access_key --profile default)
 

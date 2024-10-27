@@ -4,7 +4,7 @@
 
 ## EC2 相關
 
-1. 獲取 EC2 公共 IP。
+1. 取得 EC2 公共 IP。
 
     ```bash
     aws ec2 describe-instances --instance-ids <EC2-實例-ID> --query "Reservations[*].Instances[*].PublicIpAddress"

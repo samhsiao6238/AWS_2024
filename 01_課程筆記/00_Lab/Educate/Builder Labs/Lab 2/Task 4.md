@@ -49,13 +49,13 @@ _返回 Cloud9 IDE_
             // 綁定 DOM 事件處理，當網頁載入時，觸發 `get-sightings` 操作
             $(document).on("load", "[data-action='get-sightings']", getSightings);
         }
-        // 非同步函數，從 DynamoDB 獲取觀察記錄
+        // 非同步函數，從 DynamoDB 取得觀察記錄
         async function getSightings(req, res, next){
             // 顯示訊息，通知使用者正在驗證 AWS 憑證
             var msg_str = "We are verifying that your temporary AWS credentials can access dynamoDB. One moment...";
             // 更新前端顯示的訊息
             $("[data-role='get-sightings-from-ddb']").text(msg_str);
-            // 從 localStorage 中獲取 Bearer Token，用於身份驗證
+            // 從 localStorage 中取得 Bearer Token，用於身份驗證
             var token_str_or_null = localStorage.getItem("bearer_str");
             // 更新 AWS 配置，設置區域為 "us-east-1"
             AWS.config.update({region: "us-east-1"});
@@ -82,7 +82,7 @@ _返回 Cloud9 IDE_
                     const data = await docClient.scan(params).promise();
                     // 更新訊息
                     msg_str = "Got DB data.";
-                    // 將獲取到的資料存入 sightings_list
+                    // 將取得到的資料存入 sightings_list
                     sightings_list = data['Items'];
                     // 遍歷每一筆觀察記錄，並將日期從 UNIX 時間戳轉換為可讀格式
                     for ( var i = 0; i < sightings_list.length; i++ ) {
@@ -222,7 +222,7 @@ _進入 Cloud9 IDE 中_
                 getSightings
             );
         }
-        // 非同步函數，從 DynamoDB 獲取觀察記錄
+        // 非同步函數，從 DynamoDB 取得觀察記錄
         async function getSightings(req, res, next){
             // 顯示訊息，通知使用者正在驗證 AWS 憑證
             // 輸出紀錄，用於調試
@@ -230,7 +230,7 @@ _進入 Cloud9 IDE 中_
             var msg_str = "We are verifying that your temporary AWS credentials can access dynamoDB. One moment...";
             // 更新前端顯示的訊息
             $("[data-role='get-sightings-from-ddb']").text(msg_str);
-            // 從 localStorage 中獲取 Bearer Token，用於身份驗證
+            // 從 localStorage 中取得 Bearer Token，用於身份驗證
             var token_str_or_null = localStorage.getItem("bearer_str");
             // 更新 AWS 配置，設置區域為 "us-east-1"
             AWS.config.update({region: "us-east-1"});
@@ -271,7 +271,7 @@ _進入 Cloud9 IDE 中_
                     const data = await docClient.scan(params).promise();
                     // 更新訊息
                     msg_str = "Got DB data.";
-                    // 將獲取到的資料存入 sightings_list
+                    // 將取得到的資料存入 sightings_list
                     sightings_list = data['Items'];
                     // 遍歷每一筆觀察記錄，並將日期從 UNIX 時間戳轉換為可讀格式
                     for ( var i = 0; i < sightings_list.length; i++ ) {

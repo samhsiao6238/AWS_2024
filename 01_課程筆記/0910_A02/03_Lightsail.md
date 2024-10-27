@@ -157,7 +157,7 @@ _Lightsail 支援 boto3 進行自動化操作，以下示範簡單的查詢與�
     # 列出所有實例並回傳其狀態資訊
     def list_instances():
         try:
-            # 調用 Lightsail API 來獲取實例資訊
+            # 調用 Lightsail API 來取得實例資訊
             response = client.get_instances()
             instances = response.get('instances', [])
             
@@ -213,7 +213,7 @@ _Lightsail 支援 boto3 進行自動化操作，以下示範簡單的查詢與�
     # 列出所有 Lightsail 實例並回傳其狀態資訊
     def list_instances():
         try:
-            # 調用 Lightsail API 來獲取實例資訊
+            # 調用 Lightsail API 來取得實例資訊
             response = client.get_instances()
             instances = response.get('instances', [])
             

@@ -20,7 +20,7 @@ _用於身份驗證和用戶管理的服務，專為行動應用程式和網頁�
 
 <br>
 
-4. Identity Pool（Identity Pool）：允許用戶獲取 AWS 資源的臨時憑證，讓應用程式能安全地訪問 S3、DynamoDB 等服務。
+4. Identity Pool（Identity Pool）：允許用戶取得 AWS 資源的臨時憑證，讓應用程式能安全地訪問 S3、DynamoDB 等服務。
 
 <br>
 

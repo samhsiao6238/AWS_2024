@@ -1,6 +1,6 @@
 # Task 9：測試應用程式與 Identity Pool 的整合
 
-_此任務將測試更新後的 `Birds 應用程式`，以確保能夠獲取 `臨時 AWS 憑證`，通過這些臨時憑證，使用者可以根據 `Identity Pool` 配置的角色訪問 AWS 服務。_
+_此任務將測試更新後的 `Birds 應用程式`，以確保能夠取得 `臨時 AWS 憑證`，通過這些臨時憑證，使用者可以根據 `Identity Pool` 配置的角色訪問 AWS 服務。_
 
 <br>
 
@@ -42,7 +42,7 @@ _返回 Birds 應用程式的瀏覽器分頁_
 
 <br>
 
-4. 至此確認應用程式與 `Amazon Cognito Identity Pool` 已正確配置；經過身份驗證的使用者將能夠獲取臨時 AWS 憑證，並藉此與 DynamoDB 資料庫進行交互。
+4. 至此確認應用程式與 `Amazon Cognito Identity Pool` 已正確配置；經過身份驗證的使用者將能夠取得臨時 AWS 憑證，並藉此與 DynamoDB 資料庫進行交互。
 
 <br>
 

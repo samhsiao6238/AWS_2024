@@ -148,7 +148,7 @@
         return random.randint(min_int, max_int - 1)
 
 
-    # 獲取當日的可用時間段
+    # 取得當日的可用時間段
     def get_availabilities(date):
         """
         幫助函數，用於在完整實作中連接到後端 API 提供排程可用性查詢。
@@ -210,7 +210,7 @@
         raise Exception('Was not able to understand duration {}'.format(duration))
 
 
-    # 根據預約類型獲取時長
+    # 根據預約類型取得時長
     def get_duration(appointment_type):
         appointment_duration_map = {'cleaning': 30, 'root canal': 60, 'whitening': 30}
         return try_ex(lambda: appointment_duration_map[appointment_type.lower()])

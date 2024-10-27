@@ -74,7 +74,7 @@ _繼續在 `User pools` 的 `bird_app` 詳細頁面中操作_
 
 <br>
 
-## 獲取 Cognito 發送的 Token
+## 取得 Cognito 發送的 Token
 
 1. 在網頁應用程式頁面中，打開瀏覽器的開發者工具，並選擇模擬在行動裝置上的顯示效果。
 

@@ -112,7 +112,7 @@ _在此步驟中，將使用映射器函數將序數特徵轉換為有序的數�
 
 <br>
 
-1. 從 DataFrame 中獲取新的欄類型。
+1. 從 DataFrame 中取得新的欄類型。
 
     ```python
     df_car.info()

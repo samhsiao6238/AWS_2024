@@ -359,7 +359,7 @@ _以下與教程無關，純屬個人筆記，使用 SQL 語句查詢儲存在 S
 
 <br>
 
-7. 查詢完成後，使用以下指令來獲取查詢結果。
+7. 查詢完成後，使用以下指令來取得查詢結果。
 
     ```bash
     aws athena get-query-results --query-execution-id $QueryExecutionId

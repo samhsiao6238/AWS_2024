@@ -43,7 +43,7 @@ _進入 Cloud9 檢查結構差異_
     import pandas as pd
     from tabulate import tabulate
 
-    # 讀取每個 CSV 文件的前幾行，並獲取欄位名稱
+    # 讀取每個 CSV 文件的前幾行，並取得欄位名稱
     df_global = pd.read_csv('SAU-GLOBAL-1-v48-0.csv', nrows=0)
     df_highseas = pd.read_csv('SAU-HighSeas-71-v48-0.csv', nrows=0)
     df_eez = pd.read_csv('SAU-EEZ-242-v48-0.csv', nrows=0)
@@ -95,7 +95,7 @@ _進入 Cloud9 檢查結構差異_
     import pandas as pd
     from tabulate import tabulate
 
-    # 讀取每個 CSV 文件的前幾行，並獲取欄位名稱
+    # 讀取每個 CSV 文件的前幾行，並取得欄位名稱
     df_global = pd.read_csv('SAU-GLOBAL-1-v48-0.csv', nrows=0)
     df_highseas = pd.read_csv('SAU-HighSeas-71-v48-0.csv', nrows=0)
     df_eez = pd.read_csv('SAU-EEZ-242-v48-0.csv', nrows=0)
@@ -576,7 +576,7 @@ _內容複雜的代碼在互動環境中常因縮排問題而出錯，可改為�
     else:
         print("Query succeeded. Fetching results...")
 
-        # 獲取查詢結果
+        # 取得查詢結果
         result_response = athena_client.get_query_results(QueryExecutionId=query_execution_id)
 
         # 解析結果

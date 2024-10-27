@@ -31,7 +31,7 @@ $result = mysqli_query($conn, $sql);
 // 檢查查詢是否成功
 if (!$result) {
     echo "DB Error, could not query the database\n";
-    // 使用 mysqli_error 來獲取錯誤訊息
+    // 使用 mysqli_error 來取得錯誤訊息
     echo 'MySQL Error: ' . mysqli_error($conn);
     exit;
 }

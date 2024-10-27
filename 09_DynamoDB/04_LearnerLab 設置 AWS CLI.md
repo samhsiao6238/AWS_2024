@@ -28,7 +28,7 @@
 
 
 
-4. LearnerLab 提供的憑證：檢查 LearnerLab 的使用手冊或說明，通常會有一個步驟告訴如何獲取與 LearnerLab 帳號相關的 AWS 認證資訊。
+4. LearnerLab 提供的憑證：檢查 LearnerLab 的使用手冊或說明，通常會有一個步驟告訴如何取得與 LearnerLab 帳號相關的 AWS 認證資訊。
    - 憑證通常包含：
      - `AWS Access Key ID`
      - `AWS Secret Access Key`
@@ -40,7 +40,7 @@
 
 ### 步驟 2：在本地設置 AWS 認證
 
-一旦從 LearnerLab 獲取了 `AWS Access Key ID` 和 `AWS Secret Access Key`，可以在本地環境中進行設置。這裡有兩種方法可以設置 AWS 認證憑證。
+一旦從 LearnerLab 取得了 `AWS Access Key ID` 和 `AWS Secret Access Key`，可以在本地環境中進行設置。這裡有兩種方法可以設置 AWS 認證憑證。
 
 #### 方法 1：使用 AWS CLI 進行配置
 如果有安裝 AWS CLI，可以通過 CLI 工具進行配置：
@@ -66,7 +66,7 @@ export AWS_SECRET_ACCESS_KEY='your-secret-access-key'
 export AWS_DEFAULT_REGION='ap-northeast-1'
 ```
 
-將 `your-access-key-id` 和 `your-secret-access-key` 替換為從 LearnerLab 獲取的真實值。這樣，`boto3` 也會自動讀取這些環境變量中的憑證。
+將 `your-access-key-id` 和 `your-secret-access-key` 替換為從 LearnerLab 取得的真實值。這樣，`boto3` 也會自動讀取這些環境變量中的憑證。
 
 ### 步驟 3：編寫 Python 腳本並查詢 DynamoDB
 
@@ -99,7 +99,7 @@ else:
 這段程式碼會使用本地設置的 AWS 認證，並查詢 `movieId` 為 `25` 的 DynamoDB 項目。
 
 ### 總結：
-1. 從 LearnerLab 獲取 AWS 認證憑證：這通常會包括 `AWS Access Key ID`、`AWS Secret Access Key` 和區域資訊。
+1. 從 LearnerLab 取得 AWS 認證憑證：這通常會包括 `AWS Access Key ID`、`AWS Secret Access Key` 和區域資訊。
 2. 在本地環境設置 AWS 認證密鑰：可以使用 AWS CLI 或環境變量設置本地的認證資訊。
 3. 編寫 Python 腳本查詢 DynamoDB：使用 `boto3` 連接到 DynamoDB 並查詢資料。
 

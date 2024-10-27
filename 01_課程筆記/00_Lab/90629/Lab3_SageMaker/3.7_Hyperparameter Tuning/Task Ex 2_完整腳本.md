@@ -22,7 +22,7 @@ import os
 import boto3
 # SageMaker 用於機器學習模型訓練
 import sagemaker
-# 用於獲取模型容器映像
+# 用於取得模型容器映像
 from sagemaker.image_uris import retrieve
 # 用於數據集分割
 from sklearn.model_selection import train_test_split
@@ -70,7 +70,7 @@ def plot_roc(test_labels, target_predicted_binary):
     print(f"False Discovery Rate: {FDR}%")
     print(f"Accuracy: {ACC}%")
 
-    # 獲取測試標籤
+    # 取得測試標籤
     test_labels = test.iloc[:, 0]
     # 計算 AUC 分數
     print(
@@ -230,7 +230,7 @@ data_channels = {
 # 訓練模型
 xgb_model.fit(inputs=data_channels, logs=False)
 
-# 獲取測試數據
+# 取得測試數據
 batch_X = test.iloc[:, 1:]
 
 batch_X_file = "batch-in.csv"
@@ -253,7 +253,7 @@ xgb_transformer.transform(
 # 等待完成
 xgb_transformer.wait(logs=False)
 
-# 從 S3 獲取預測結果
+# 從 S3 取得預測結果
 s3 = boto3.client("s3")
 obj = s3.get_object(
     Bucket=bucket,
@@ -272,7 +272,7 @@ def binary_convert(x):
 
 # 將預測結果轉換為二元值
 target_predicted_binary = target_predicted["class"].apply(binary_convert)
-# 獲取測試標籤
+# 取得測試標籤
 test_labels = test.iloc[:, 0]
 
 # 繪製混淆矩陣
