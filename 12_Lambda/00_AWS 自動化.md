@@ -11,6 +11,10 @@
     LAMBDA_FUNCTION_NAME="MyFunction-Bot"
     REGION="us-east-1"
     ROLE_NAME="LabRole"
+    LAYER_NAME="MyLayer-Bot"
+    ZIP_FILE="fileb://python.zip"
+    RUNTIME="python3.12"
+    ARCHITECTURE="x86_64"
     LOG_FILE="api_setup_log.txt"
     ```
 
@@ -35,13 +39,15 @@
 4. 寫入初始內容。
 
     ```bash
-    LOG_FILE="api_setup_log.txt"
     echo "# 設置已知變數" > $LOG_FILE
     echo "API_NAME=\"$API_NAME\"" >> $LOG_FILE
     echo "LAMBDA_FUNCTION_NAME=\"$LAMBDA_FUNCTION_NAME\"" >> $LOG_FILE
     echo "REGION=\"$REGION\"" >> $LOG_FILE
     echo "ROLE_NAME=\"$ROLE_NAME\"" >> $LOG_FILE
-    echo "LOG_FILE=\"$LOG_FILE\"" >> $LOG_FILE
+    echo "LAYER_NAME=\"$LAYER_NAME\"" >> $LOG_FILE
+    echo "ZIP_FILE=\"$ZIP_FILE\"" >> $LOG_FILE
+    echo "RUNTIME=\"$RUNTIME\"" >> $LOG_FILE
+    echo "ARCHITECTURE=\"$ARCHITECTURE\"" >> $LOG_FILE
     ```
 
 5. 取得 ACCOUNT_ID。
@@ -70,10 +76,10 @@
 
     ```bash
     aws lambda publish-layer-version \
-        --layer-name MyLayer-Bot \
-        --zip-file fileb://python.zip \
-        --compatible-runtimes python3.12 \
-        --compatible-architectures x86_64
+        --layer-name $LAYER_NAME \
+        --zip-file $ZIP_FILE \
+        --compatible-runtimes $RUNTIME \
+        --compatible-architectures $ARCHITECTURE
     ```
 
 <br>
@@ -88,13 +94,17 @@ _使用前一步驟建立的 Layer_
 
     ```bash
     aws lambda create-function \
-        --function-name MyFunction-Bot \
-        --runtime python3.12 \
-        --role arn:aws:iam::114726445145:role/LabRole \
+        --function-name $LAMBDA_FUNCTION_NAME \
+        --runtime $RUNTIME \
+        --role arn:aws:iam::$ACCOUNT_ID:role/$ROLE_NAME \
         --handler lambda_function.lambda_handler \
-        --zip-file fileb://python.zip \
-        --architectures x86_64 \
-        --layers $(aws lambda list-layer-versions --layer-name MyLayer-Bot --query 'LayerVersions[0].LayerVersionArn' --output text)
+        --zip-file $ZIP_FILE \
+        --architectures $ARCHITECTURE \
+        --layers $(\
+        aws lambda list-layer-versions \
+            --layer-name $LAYER_NAME \
+            --query 'LayerVersions[0].LayerVersionArn' \
+            --output text)
     ```
 
 <br>
