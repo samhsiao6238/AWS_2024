@@ -783,6 +783,10 @@ _AWS 的多數服務如 EC2、CloudWatch 和 IAM 都可能產生費用，運行�
     aws ec2 terminate-instances --instance-ids $INSTANCE_ID
     ```
 
+    _會先關機_
+
+    ![](images/img_30.png)
+
 <br>
 
 2. 刪除密鑰對。
@@ -791,9 +795,11 @@ _AWS 的多數服務如 EC2、CloudWatch 和 IAM 都可能產生費用，運行�
     aws ec2 delete-key-pair --key-name MyKeyPair
     ```
 
+    ![](images/img_31.png)
+
 <br>
 
-3. 刪除安全群組。
+3. 刪除安全群組；無回傳值。
 
     ```bash
     aws ec2 delete-security-group --group-id $SECURITY_GROUP_ID
@@ -804,7 +810,10 @@ _AWS 的多數服務如 EC2、CloudWatch 和 IAM 都可能產生費用，運行�
 4. 刪除 CloudWatch 警報。
 
     ```bash
-    aws cloudwatch delete-alarms --alarm-names "HighCPUUtilization" "EC2InstanceErrorAlarm"
+    aws cloudwatch delete-alarms \
+    --alarm-names \
+        "HighCPUUtilization" \
+        "EC2InstanceErrorAlarm"
     ```
 
 <br>
