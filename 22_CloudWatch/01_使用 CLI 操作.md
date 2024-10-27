@@ -69,7 +69,13 @@ _Amazon Machine Image，AMI_
 3. 第二步，建立一個安全群組並命名為 `MySecurityGroup`；完成後同樣可在主控台 EC2 或 VPC 查看 `Security Groups`。
 
     ```bash
-    SECURITY_GROUP_ID=$(aws ec2 create-security-group --group-name MySecurityGroup --description "My security group" --query 'GroupId' --output text) && echo $SECURITY_GROUP_ID
+    SECURITY_GROUP_ID=$(\
+    aws ec2 create-security-group \
+        --group-name MySecurityGroup \
+        --description "My security group" \
+        --query 'GroupId' \
+        --output text) \
+    && echo $SECURITY_GROUP_ID
     ```
 
     ![](images/img_02.png)
