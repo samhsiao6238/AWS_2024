@@ -244,7 +244,8 @@ _使用前一步驟建立的 Layer_
 1. 將階段名稱設定為 `prod`。
 
     ```bash
-    DEPLOYMENT_ID=$(aws apigateway create-deployment \
+    DEPLOYMENT_ID=$(\
+    aws apigateway create-deployment \
         --rest-api-id $API_ID \
         --stage-name prod \
         --region $REGION \
