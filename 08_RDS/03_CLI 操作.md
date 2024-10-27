@@ -290,6 +290,30 @@ _假如還未安裝客戶端，請先進行安裝；已經安裝則進行更新�
 
 <br>
 
+## 在 Workbench 中操作
+
+1. 同樣先切換到資料庫 `db20240718`。 
+
+    ```bash
+    USE db20240718;
+    ```
+
+    _顯示生效_
+
+    ![](images/img_62.png)
+
+<br>
+
+2. 查詢全部資料。
+
+    ```bash
+    SELECT * FROM test_movies;
+    ```
+
+    ![](images/img_63.png)
+
+<br>
+
 ___
 
 _END_
