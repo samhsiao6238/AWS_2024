@@ -225,7 +225,7 @@ _使用前一步驟建立的 Layer_
 
 ## 賦予權限
 
-1. 賦予 API Gateway 調用 Lambda 函數的權限
+1. 賦予 API Gateway 調用 Lambda 函數的權限；特別說明，`*` 字元會被解釋為路徑模式並嘗試展開，所以使用單引號 `' '` 將 `--source-arn` 的值包圍起來，這樣 `zsh` 不會嘗試展開 `*`。
 
     ```bash
     aws lambda add-permission \
@@ -233,7 +233,7 @@ _使用前一步驟建立的 Layer_
         --statement-id apigateway-access \
         --action lambda:InvokeFunction \
         --principal apigateway.amazonaws.com \
-        --source-arn arn:aws:execute-api:$REGION:$ACCOUNT_ID:$API_ID/*/POST/ \
+        --source-arn 'arn:aws:execute-api:'$REGION':'$ACCOUNT_ID':'$API_ID'/*/POST/' \
         --region $REGION
     ```
 
