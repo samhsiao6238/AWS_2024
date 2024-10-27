@@ -716,7 +716,7 @@ _監控 `/var/log/messages` 中的關鍵字 `ERROR`；_
 
 <br>
 
-3. 查詢警報狀態。
+4. 查詢警報狀態。
 
     ```bash
     aws cloudwatch describe-alarms --alarm-names "EC2InstanceErrorAlarm"
