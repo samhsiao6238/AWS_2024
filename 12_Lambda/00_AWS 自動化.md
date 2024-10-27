@@ -23,20 +23,12 @@
 2. 建立記錄文件。
 
     ```bash
-    touch $LOG_FILE && open -e api_setup_log.txt
+    touch $LOG_FILE && code api_setup_log.txt
     ```
 
 <br>
 
-3. 使用文字編輯並不會自動刷新，要重啟才會看到文件，若想即時更新可使用 VSCode。
-
-    ```bash
-    code api_setup_log.txt
-    ```
-
-<br>
-
-4. 寫入初始內容。
+3. 寫入初始內容。
 
     ```bash
     echo "# 設置已知變數" > $LOG_FILE
@@ -52,7 +44,7 @@
 
 <br>
 
-5. 取得 ACCOUNT_ID。
+4. 取得 ACCOUNT_ID。
 
     ```bash
     ACCOUNT_ID=$(\
@@ -64,7 +56,7 @@
 
 <br>
 
-6. 這裡補充說明一下，假如原本已經寫在記錄文檔內，只是沒有值的變數，可使用以下語法進行更新，而不是直接寫入。
+5. 這裡補充說明一下，假如原本已經寫在記錄文檔內，只是沒有值的變數，可使用以下語法進行更新，而不是直接寫入。
 
     ```bash
     sed -i '' "s/^ACCOUNT_ID=.*/ACCOUNT_ID=\"$ACCOUNT_ID\"/" $LOG_FILE
