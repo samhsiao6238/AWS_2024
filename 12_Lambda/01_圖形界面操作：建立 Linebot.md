@@ -1,6 +1,6 @@
 # 建立 LineBot
 
-_以下步驟包含了 AWS Lambda、AWS API Gateway，另外結合 Linebot 及 Python 建立一個部署在 AWS 的 Linebot_
+_以下步驟包含了 AWS Lambda、AWS API Gateway，並使用 Python 建立一個部署在 AWS 的 Linebot。_
 
 <br>
 
