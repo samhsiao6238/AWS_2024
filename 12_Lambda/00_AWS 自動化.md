@@ -98,6 +98,12 @@ _假設已經製作好 python.zip_
 
 <br>
 
+3. 可進入主控台查看，其中 `Version` 會自動設定，包含已經刪除的同名 Layer。
+
+    ![](images/img_54.png)
+
+<br>
+
 ## 建立 Lambda Function
 
 _使用前一步驟建立的 Layer_
