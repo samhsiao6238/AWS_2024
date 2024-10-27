@@ -13,6 +13,7 @@ _這裡直接實作，使用 AWS CLI 查詢 EC2 實例的相關資訊並設定 C
     SECURITY_GROUP_ID=
     INSTANCE_ID=
     MyPublicIP=
+    POLICY_ARN=
     ```
 
 <br>
@@ -807,7 +808,7 @@ _AWS 的多數服務如 EC2、CloudWatch 和 IAM 都可能產生費用，運行�
 
 <br>
 
-4. 刪除 CloudWatch 警報。
+4. 刪除 CloudWatch 警報；無回傳值。
 
     ```bash
     aws cloudwatch delete-alarms \
@@ -826,33 +827,49 @@ _AWS 的多數服務如 EC2、CloudWatch 和 IAM 都可能產生費用，運行�
 
 <br>
 
-6. 刪除 IAM 角色和實例配置文件，先將角色從實例配置文件中移除。
+## 刪除 IAM 角色
+
+_假如有建立 IAM 角色_
+
+<br>
+
+1. 刪除 IAM 角色和實例配置文件，先將角色從實例配置文件中移除。
 
     ```bash
-    aws iam remove-role-from-instance-profile --instance-profile-name CloudWatchLogsProfile --role-name MyCloudWatchLogsRole
+    aws iam remove-role-from-instance-profile \
+        --instance-profile-name CloudWatchLogsProfile \
+        --role-name MyCloudWatchLogsRole
     ```
 
 <br>
 
-7. 然後刪除實例配置文件。
+2. 然後刪除實例配置文件。
 
     ```bash
-    aws iam delete-instance-profile --instance-profile-name CloudWatchLogsProfile
+    aws iam delete-instance-profile \
+        --instance-profile-name CloudWatchLogsProfile
     ```
 
 <br>
 
-8. 刪除角色政策。
+3. 刪除角色政策。
 
     ```bash
-    POLICY_ARN=$(aws iam list-attached-role-policies --role-name MyCloudWatchLogsRole --query "AttachedPolicies[?PolicyName=='CloudWatchLogsPolicy'].PolicyArn" --output text)
-    aws iam detach-role-policy --role-name MyCloudWatchLogsRole --policy-arn $POLICY_ARN
-    aws iam delete-policy --policy-arn $POLICY_ARN
+    POLICY_ARN=$(\
+    aws iam list-attached-role-policies \
+        --role-name MyCloudWatchLogsRole \
+        --query "AttachedPolicies[?PolicyName=='CloudWatchLogsPolicy'].PolicyArn" \
+        --output text)
+    aws iam detach-role-policy \
+        --role-name MyCloudWatchLogsRole \
+        --policy-arn $POLICY_ARN
+        aws iam delete-policy \
+        --policy-arn $POLICY_ARN
     ```
 
 <br>
 
-9. 刪除角色。
+4. 刪除角色。
 
     ```bash
     aws iam delete-role --role-name MyCloudWatchLogsRole
@@ -927,7 +944,7 @@ _說明警報內容的重要參數_
 
 <br>
 
-7. StateReason：當前狀態的原因，此處表示最近一次數據點的值（7.12%）未超過閾值（80%）。
+7. StateReason：當前狀態的原因，此處表示最近一次數據點的值 `7.12%` 未超過閾值 `80%`。
 
 <br>
 
@@ -963,7 +980,7 @@ _說明警報內容的重要參數_
 
 <br>
 
-16.  ComparisonOperator：`"GreaterThanThreshold"`，這是比較運算符，此處為 `大於閾值`。
+16.  ComparisonOperator：`"GreaterThanThreshold"`，這是比較運算子，此處為 `大於閾值`。
 
 <br>
 
