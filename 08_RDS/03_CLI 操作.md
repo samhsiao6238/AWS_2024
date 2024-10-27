@@ -124,11 +124,11 @@ _建立 MySQL 資料庫_
         --region "$REGION" | tee -a "$LOG_FILE"
     ```
 
+    ![](images/img_57.png)
+
 <br>
 
-## 檢查 RDS 狀態並記錄終端點
-
-1. 建立 RDS 後，狀態需要一段時間才能變為 `available`。可以通過以下指令定期檢查。
+2. 建立後，狀態需要一段時間才能變為 `available`，可通過指令檢查狀態。
 
     ```bash
     aws rds describe-db-instances \
