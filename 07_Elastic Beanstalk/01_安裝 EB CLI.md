@@ -40,11 +40,7 @@ _這是在 MacOS 操作_
     eb --version
     ```
 
-    _結果_
-
-    ```bash
-    EB CLI 3.20.10 (Python 3.10.11 (v3.10.11:7d4cc5aa85, Apr  4 2023, 19:05:19) [Clang 13.0.0 (clang-1300.0.29.30)])
-    ```
+    ![](images/img_63.png)
 
 <br>
 
@@ -66,12 +62,24 @@ _這是在 MacOS 操作_
 
 <br>
 
-## MacOS 透過 Homebrew 安裝
+## 使用 Homebrew 安裝
+
+_MacOS_
+
+<br>
 
 1. 安裝 EB CLI。
 
     ```bash
     brew install awsebcli
+    ```
+
+<br>
+
+2. 可查詢 `eb` 是透過 pip 安裝還是 brew 安裝；如果是透過 `brew` 安裝的，路徑通常在 `/usr/local/bin/eb` 或 `/opt/homebrew/bin/eb`，若透過 `pip` 安裝，則會在虛擬環境路徑中，或全局路徑如 `/Users/username/Library/Python/3.x/bin/`。
+
+    ```bash
+    which eb
     ```
 
 <br>
