@@ -711,7 +711,10 @@ _監控 `/var/log/messages` 中的關鍵字 `ERROR`；_
 3. 使用 EC2 實例 ID 查詢 CloudWatch 日誌。
 
     ```bash
-    aws logs get-log-events --log-group-name EC2InstanceLogs --log-stream-name ${INSTANCE_ID}/messages --limit 5
+    aws logs get-log-events \
+        --log-group-name EC2InstanceLogs \
+        --log-stream-name ${INSTANCE_ID}/messages \
+        --limit 5
     ```
 
 <br>
@@ -719,7 +722,8 @@ _監控 `/var/log/messages` 中的關鍵字 `ERROR`；_
 4. 查詢警報狀態。
 
     ```bash
-    aws cloudwatch describe-alarms --alarm-names "EC2InstanceErrorAlarm"
+    aws cloudwatch describe-alarms \
+        --alarm-names "EC2InstanceErrorAlarm"
     ```
 
 <br>
