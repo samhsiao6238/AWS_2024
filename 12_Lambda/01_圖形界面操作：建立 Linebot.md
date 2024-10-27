@@ -14,7 +14,7 @@ _以下步驟包含了 AWS Lambda、AWS API Gateway，並使用 Python 建立一
 
 <br>
 
-2. 建立並進入一個層級資料夾。
+2. 建立並進入一個層級資料夾，以下指令會進入 `site-packages` 中，這就是要安裝套件的位置。
 
     ```bash
     mkdir -p lib/python3.12/site-packages && cd lib/python3.12/site-packages
