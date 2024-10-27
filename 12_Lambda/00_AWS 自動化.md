@@ -273,7 +273,7 @@ _使用前一步驟建立的 Layer_
 
 <br>
 
-2. 取得 Invoke URL 並記錄到文件。
+2. 取得 Invoke URL 並記錄到文件；這就是這個應用的 `Webhook`。
 
     ```bash
     INVOKE_URL="https://$API_ID.execute-api.$REGION.amazonaws.com/prod"
