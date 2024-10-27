@@ -8,7 +8,7 @@ _使用 VSCode_
 
 1. 在專案路徑中建立資料結構。
 
-    ![](images/img_71.png)
+    <img src="images/img_71.png" width="300px">
 
 <br>
 
@@ -160,7 +160,7 @@ _使用 VSCode_
 
 4. 找一張任意圖片作為 logo。
 
-    ![](images/logo.png)
+    <img src="images/logo.png" width="300px">
 
 <br>
 
