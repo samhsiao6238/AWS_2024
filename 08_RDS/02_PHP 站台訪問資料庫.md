@@ -141,7 +141,7 @@ _`index.php`_
 
 <br>
 
-4. 若要停止伺服器運行，需執行。
+1. 若要停止伺服器運行，需執行 `PHP Server: Stop Server`。
 
     ![](images/img_46.png)
 
