@@ -76,7 +76,7 @@ ACCOUNT_ID=$(\
 aws sts get-caller-identity \
     --query 'Account' \
     --output text)
-echo "ACCOUNT_ID=$ACCOUNT_ID" | tee -a $LOG_FILE
+sed -i '' "s/^ACCOUNT_ID=.*/ACCOUNT_ID=\"$ACCOUNT_ID\"/" $LOG_FILE
 ```
 
 ## 建立 API Gateway
