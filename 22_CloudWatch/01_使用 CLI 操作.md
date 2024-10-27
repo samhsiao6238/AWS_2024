@@ -728,6 +728,49 @@ _監控 `/var/log/messages` 中的關鍵字 `ERROR`；_
 
 <br>
 
+## 模擬警報
+
+_以下要安裝 `stress` ，因為在 Amazon Linux 上，`stress` 可能不在預設的 `yum` 軟體庫中，所以使用 `EPEL` 軟體庫進行安裝 `stress`。_
+
+<br>
+
+1. 啟用 EPEL 軟體庫。
+
+    ```bash
+    sudo amazon-linux-extras install -y epel
+    ```
+
+<br>
+
+2. 安裝 `stress`。
+
+   ```bash
+    sudo yum install -y stress
+    ```
+
+<br>
+
+3. 安裝後透過以下指令測試 CPU 負載，從而觸發 CPU 使用率警報，這個指令使用 2 個 CPU 核心、持續 600 秒。
+
+    ```bash
+    stress --cpu 2 --timeout 600
+    ```
+
+<br>
+
+4. 觀察主控台，過一陣子後警報會觸發。
+
+
+    ![](images/img_28.png)
+
+<br>
+
+5. 點擊進入可查看圖形化資訊。
+
+    ![](images/img_29.png)
+
+<br>
+
 ## 涉及收費項目
 
 _AWS 的多數服務如 EC2、CloudWatch 和 IAM 都可能產生費用，運行中的 EC2 實例會按使用時間收費，建立和儲存的日誌和指標也會產生費用，尤其是超出免費使用配額時，另外，雖然 IAM 本身不收費，但與其他服務結合使用可能會導致相關服務的費用增加。_
