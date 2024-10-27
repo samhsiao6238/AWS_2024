@@ -128,7 +128,7 @@ _建立 MySQL 資料庫_
 
 <br>
 
-2. 建立後，狀態需要一段時間才能變為 `available`，可通過指令檢查狀態。
+2. 建立後，狀態需要一段時間才能變為 `available`，可通過指令檢查狀態，在 `Creating` 階段尚未生成端點，需稍作等待。
 
     ```bash
     aws rds describe-db-instances \
@@ -138,11 +138,11 @@ _建立 MySQL 資料庫_
         --output text
     ```
 
+    ![](images/img_58.png)
+
 <br>
 
-## 更新 RDS 終端點到記錄文件
-
-1. 一旦 RDS 可用，取得並記錄其終端點 `DB_ENDPOINT`。
+3. 一旦 RDS 可用，取得並記錄其終端點 `DB_ENDPOINT`。
 
     ```bash
     DB_ENDPOINT=$(aws rds describe-db-instances \
