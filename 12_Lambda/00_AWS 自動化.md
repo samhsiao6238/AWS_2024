@@ -56,19 +56,25 @@
 
 <br>
 
-5. 這裡補充說明一下，假如原本已經寫在記錄文檔內，只是沒有值的變數，可使用以下語法進行更新，而不是直接寫入。
-
-    ```bash
-    sed -i '' "s/^ACCOUNT_ID=.*/ACCOUNT_ID=\"$ACCOUNT_ID\"/" $LOG_FILE
-    ```
-
-<br>
-
-6. 設置 ROLE_ARN 並寫入 LOG_FILE。
+5. 設置 ROLE_ARN 並寫入 LOG_FILE。
 
     ```bash
     ROLE_ARN=$(printf "arn:aws:iam::%s:role/%s" "$ACCOUNT_ID" "$ROLE_NAME")
     echo "ROLE_ARN=\"$ROLE_ARN\"" | tee -a "$LOG_FILE"
+    ```
+
+<br>
+
+## 補充說明
+
+_文檔的寫入與更新_
+
+<br>
+
+1. 假如原本已經寫在記錄文檔內，只是沒有值的變數，可使用以下語法進行更新，而不是直接寫入。
+
+    ```bash
+    sed -i '' "s/^ACCOUNT_ID=.*/ACCOUNT_ID=\"$ACCOUNT_ID\"/" $LOG_FILE
     ```
 
 <br>
