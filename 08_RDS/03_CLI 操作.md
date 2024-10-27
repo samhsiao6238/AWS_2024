@@ -142,7 +142,13 @@ _建立 MySQL 資料庫_
 
 <br>
 
-3. 一旦 RDS 可用，取得並記錄其終端點 `DB_ENDPOINT`。
+3. 還會經過一個 `backing-up` 階段。
+
+    ![](images/img_59.png)
+
+<br>
+
+4. 一旦 RDS 可用，取得並記錄其終端點 `DB_ENDPOINT`。
 
     ```bash
     DB_ENDPOINT=$(aws rds describe-db-instances \
