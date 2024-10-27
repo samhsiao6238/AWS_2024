@@ -116,7 +116,7 @@ _使用前一步驟建立的 Layer_
     aws lambda create-function \
         --function-name $LAMBDA_FUNCTION_NAME \
         --runtime $RUNTIME \
-        --role arn:aws:iam::$ACCOUNT_ID:role/$ROLE_NAME \
+        --role "arn:aws:iam::$ACCOUNT_ID:role/$ROLE_NAME" \
         --handler lambda_function.lambda_handler \
         --zip-file $ZIP_FILE \
         --architectures $ARCHITECTURE \
