@@ -28,6 +28,10 @@
 
 <br>
 
+2. Elastic Beanstalk
+
+<br>
+
 ___
 
 _持續更新_
