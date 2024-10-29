@@ -6,6 +6,10 @@ _使用 `python-dotenv` 設定環境變數_
 
 ## 環境配置
 
+_在本機上操作，先建立專案資料夾與虛擬環境，此部分不做贅述。_
+
+<br>
+
 1. 安裝 `python-dotenv`
 
     ```bash
@@ -29,6 +33,26 @@ _使用 `python-dotenv` 設定環境變數_
     ```
 
 <br>
+
+## 查詢 Learner Lab 憑證
+
+_以下將進行查詢並貼在 `.env` 文件_
+
+<br>
+
+1. Lab 完成啟動後，點擊 `AWS Details`。
+
+![](images/img_38.png)
+
+2. 點擊 `Show`。
+
+![](images/img_39.png)
+
+3. 複製後直接貼到終端機，沒錯，就是直接貼在終端機，特別注意，`[default]` 部分不用。
+
+![](images/img_40.png)
+
+4. 接著在終端機中
 
 4. 在 `.env`寫入敏感資訊。
 
