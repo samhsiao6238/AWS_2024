@@ -13,7 +13,7 @@ _在本機上操作，先建立專案資料夾與虛擬環境，此部分不做�
 1. 安裝 `python-dotenv`
 
     ```bash
-    pip install python-dotenv
+    pip install python-dotenv boto3
     ```
 
 <br>
