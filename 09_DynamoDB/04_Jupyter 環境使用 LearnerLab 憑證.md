@@ -26,7 +26,15 @@ _在本機上操作，先建立專案資料夾與虛擬環境，此部分不做�
 
 <br>
 
-3. 將 `.env` 寫入 `.gitignore`。
+3. 在當前專案路徑中開啟 VSCode。
+
+    ```bash
+    code .
+    ```
+
+<br>
+
+4. 將 `.env` 寫入 `.gitignore`。
 
     ```bash
     .env
@@ -48,19 +56,17 @@ _以下將進行查詢並貼在 `.env` 文件_
 
 ![](images/img_39.png)
 
-3. 複製後直接貼到終端機，沒錯，就是直接貼在終端機，特別注意，`[default]` 部分不用。
+3. 複製後直接貼到 `.env` 文件中。
 
 ![](images/img_40.png)
 
-4. 接著在終端機中
-
-4. 在 `.env`寫入敏感資訊。
+4. 添加 `aws_default_region` 設定。
 
     ```dotenv
-    AWS_ACCESS_KEY_ID=
-    AWS_SECRET_ACCESS_KEY=
-    AWS_SESSION_TOKEN=
-    AWS_DEFAULT_REGION=us-east-1
+    aws_access_key_id=
+    aws_secret_access_key=
+    aws_session_token=
+    aws_default_region=us-east-1
     ```
 
 <br>
