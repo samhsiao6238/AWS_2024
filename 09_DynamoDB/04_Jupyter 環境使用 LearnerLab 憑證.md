@@ -262,11 +262,21 @@ _以 S3 及 EC2 為例_
         print("查詢失敗:", e.response['Error']['Message'])
     ```
 
+<br>
+
+2. 以上腳本會等待狀態轉變後繼續運行。
+
+    ![](images/img_45.png)
+
+<br>
+
+3. 完成時顯示如下。
+
     ![](images/img_33.png)
 
 <br>
 
-2. 刪除指定 DynamoDB 資料表。
+4. 刪除指定 DynamoDB 資料表。
 
     ```python
     import boto3
