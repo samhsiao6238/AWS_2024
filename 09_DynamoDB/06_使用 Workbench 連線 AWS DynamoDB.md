@@ -16,7 +16,7 @@
 
 <br>
 
-3. 點擊 `Add connection` 設定新的連接。
+3. 畫面下方的連線是依據本地 `~/.aws` 的設定文件 `config` 自動載入的；點擊 `Add connection` 設定新的連接。
 
     ![](images/img_49.png)
 
