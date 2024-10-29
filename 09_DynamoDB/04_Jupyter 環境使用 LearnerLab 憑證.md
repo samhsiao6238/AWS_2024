@@ -77,6 +77,47 @@ _以下將進行查詢並貼在 `.env` 文件_
 
 <br>
 
+## 進行驗證
+
+1. 檢查變數內容是否一致。
+
+    ```python
+    from dotenv import load_dotenv
+    import os
+    # 這會自動載入並展開 .env 內的變數
+    load_dotenv()
+
+    print(os.getenv("AWS_ACCESS_KEY_ID"))
+    ```
+
+    ![](images/img_41.png)
+
+<br>
+
+2. 也可以驗證 Account ID；這會使用到 sts 客戶端，也就是 `Security Token Service` 安全令牌服務。
+
+    ```python
+    from dotenv import load_dotenv
+    import os
+    import boto3
+
+    # 載入 .env 檔案中的環境變數
+    load_dotenv()
+
+    # 建立 STS 客戶端
+    sts_client = boto3.client("sts")
+
+    # 呼叫 get_caller_identity 以取得當前 AWS 帳號資訊
+    response = sts_client.get_caller_identity()
+    account_id = response['Account']
+
+    print(f"AWS Account ID: {account_id}")
+    ```
+
+    ![](images/img_42.png)
+
+<br>
+
 ## 使用腳本進行查詢
 
 _以 S3 及 EC2 為例_
