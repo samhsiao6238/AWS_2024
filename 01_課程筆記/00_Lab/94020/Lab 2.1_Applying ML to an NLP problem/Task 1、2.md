@@ -34,51 +34,58 @@
 
 1. 安裝套件。
 
-```bash
-python -m pip install scikit-learn sagemaker botocore nltk --upgrade
-```
+    ```bash
+    python -m pip install scikit-learn sagemaker botocore nltk --upgrade
+    ```
+
+<br>
 
 ## 關於手動下載 NLTK
 
 1. 參考 [網址](https://www.nltk.org/nltk_data/)。
 
+<br>
+
 2. 使用代碼下載。
 
-```python
+    ```python
+    # 後補
+    ```
 
-```
+<br>
 
 ## 關於 Lab AWS CLI
 
 1. 在 AWS Details 中複製所需資訊貼在以下腳本上。
 
-```python
-import os
-import boto3
+    ```python
+    import os
+    import boto3
 
-# 設置臨時憑證為環境變數
-os.environ['AWS_ACCESS_KEY_ID'] = ''
-os.environ['AWS_SECRET_ACCESS_KEY'] = ''
-os.environ['AWS_SESSION_TOKEN'] = ''
+    # 設置臨時憑證為環境變數
+    os.environ['AWS_ACCESS_KEY_ID'] = ''
+    os.environ['AWS_SECRET_ACCESS_KEY'] = ''
+    os.environ['AWS_SESSION_TOKEN'] = ''
 
-# 建立一個 boto3 客戶端
-s3 = boto3.client('s3')
+    # 建立一個 boto3 客戶端
+    s3 = boto3.client('s3')
 
-# 測試連接 (例如，列出 S3 儲存桶)
-response = s3.list_buckets()
-print(response)
+    # 測試連接 (例如，列出 S3 儲存桶)
+    response = s3.list_buckets()
+    print(response)
 
-import sagemaker
+    import sagemaker
 
-# Call the LinearLearner estimator object
-linear_classifier = sagemaker.LinearLearner(
-    role=sagemaker.get_execution_role(),
-    instance_count=1,
-    instance_type='ml.m4.xlarge',
-    predictor_type='binary_classifier'
-)
-```
+    # Call the LinearLearner estimator object
+    linear_classifier = sagemaker.LinearLearner(
+        role=sagemaker.get_execution_role(),
+        instance_count=1,
+        instance_type='ml.m4.xlarge',
+        predictor_type='binary_classifier'
+    )
+    ```
 
+<br>
 
 ___
 
