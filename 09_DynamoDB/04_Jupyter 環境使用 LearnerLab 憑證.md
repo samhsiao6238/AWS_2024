@@ -60,13 +60,13 @@ _以下將進行查詢並貼在 `.env` 文件_
 
 ![](images/img_40.png)
 
-4. 添加 `aws_default_region` 設定。
+4. 添加以下內容到 `.env` 中，這是因為 AWS SDK會自動讀取環境變數中的認證資訊，而環境變數的名稱是內定的，所以必須將貼上的鍵名稱進行另外編輯；除此，添加 `AWS_DEFAULT_REGION` 設定。
 
     ```dotenv
-    aws_access_key_id=
-    aws_secret_access_key=
-    aws_session_token=
-    aws_default_region=us-east-1
+    AWS_ACCESS_KEY_ID=${aws_access_key_id}
+    AWS_SECRET_ACCESS_KEY=${aws_secret_access_key}
+    AWS_SESSION_TOKEN=${aws_session_token}
+    AWS_DEFAULT_REGION=us-east-1
     ```
 
 <br>
