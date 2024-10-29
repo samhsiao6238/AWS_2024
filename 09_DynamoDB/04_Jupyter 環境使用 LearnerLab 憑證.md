@@ -50,15 +50,21 @@ _以下將進行查詢並貼在 `.env` 文件_
 
 1. Lab 完成啟動後，點擊 `AWS Details`。
 
-![](images/img_38.png)
+    ![](images/img_38.png)
+
+<br>
 
 2. 點擊 `Show`。
 
-![](images/img_39.png)
+    ![](images/img_39.png)
+
+<br>
 
 3. 複製後直接貼到 `.env` 文件中。
 
-![](images/img_40.png)
+    ![](images/img_40.png)
+
+<br>
 
 4. 添加以下內容到 `.env` 中，這是因為 AWS SDK會自動讀取環境變數中的認證資訊，而環境變數的名稱是內定的，所以必須將貼上的鍵名稱進行另外編輯；除此，添加 `AWS_DEFAULT_REGION` 設定。
 
