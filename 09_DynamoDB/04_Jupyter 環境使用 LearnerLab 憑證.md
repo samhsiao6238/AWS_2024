@@ -118,7 +118,7 @@ _以下將進行查詢並貼在 `.env` 文件_
 
 <br>
 
-## 使用腳本進行查詢
+## 進行簡單查詢
 
 _以 S3 及 EC2 為例_
 
@@ -143,9 +143,17 @@ _以 S3 及 EC2 為例_
         print(bucket["Name"])
     ```
 
+    ![](images/img_44.png)
+
 <br>
 
-2. 查詢所有的 EC2。
+2. 與主控台查詢一致。
+
+    ![](images/img_43.png)
+
+<br>
+
+3. 查詢所有的 EC2。
 
     ```python
     import boto3
@@ -175,7 +183,7 @@ _以 S3 及 EC2 為例_
 
 <br>
 
-## 操作 DynamoDB
+## 建立並操作 DynamoDB
 
 1. 建立一個包含 `movieId` 和 `title` 欄位的資料表，並使用 `movieId` 作為分區鍵。
 
