@@ -134,7 +134,7 @@ _以 S3 及 EC2 為例_
     # 加載 .env 文件
     load_dotenv()
 
-    # 使用加載的環境變數來創建 boto3 客戶端
+    # 使用加載的環境變數來建立 boto3 客戶端
     s3_client = boto3.client("s3")
 
     # 列出所有 S3 buckets 作為測試
@@ -164,7 +164,7 @@ _以 S3 及 EC2 為例_
     # 加載 .env 文件
     load_dotenv()
 
-    # 使用加載的環境變數來創建 boto3 客戶端
+    # 使用加載的環境變數來建立 boto3 客戶端
     ec2_client = boto3.client("ec2")
 
     # 查詢並列出所有 EC2 實例
@@ -185,7 +185,7 @@ _以 S3 及 EC2 為例_
 
 ## 建立並操作 DynamoDB
 
-1. 建立一個包含 `movieId` 和 `title` 欄位的資料表，並使用 `movieId` 作為分區鍵。
+1. 建立一個資料表 `Table_20240718_01`，包含 `movieId` 和 `title` 兩個欄位，並使用 `movieId` 作為分區鍵。
 
     ```python
     import boto3
@@ -203,7 +203,7 @@ _以 S3 及 EC2 為例_
     # 設定資料表名稱
     table_name = 'Table_20240718_01'
 
-    # 創建資料表
+    # 建立資料表
     try:
         table = dynamodb.create_table(
             TableName=table_name,
@@ -226,9 +226,9 @@ _以 S3 及 EC2 為例_
                 'WriteCapacityUnits': 5
             }
         )
-        print(f"創建資料表 {table_name} 成功。等待資料表變為 active 狀態...")
+        print(f"建立資料表 {table_name} 成功。等待資料表變為 active 狀態...")
         table.meta.client.get_waiter('table_exists').wait(TableName=table_name)
-        print("資料表已創建並可使用。")
+        print("資料表已建立並可使用。")
     except ClientError as e:
         print(e.response['Error']['Message'])
 
