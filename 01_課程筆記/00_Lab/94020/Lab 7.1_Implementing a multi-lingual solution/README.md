@@ -18,7 +18,7 @@ _簡單文字敘述步驟_
 
 <br>
 
-3. 開啟腳本 `en_us/lab-7-1.jpynb`_
+3. 開啟腳本 `en_us/lab-7-1.jpynb`。
 
 <br>
 
