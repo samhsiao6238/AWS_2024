@@ -204,7 +204,7 @@ IFrame(src=os.path.relpath(f"{csv_base_path}readme.html"), width=1000, height=60
 
 
 
-#### 加载示例 CSV 文件
+#### 加载範例 CSV 文件
 
 在合并所有 CSV 文件之前，请检查单个 CSV 文件中的数据。使用 pandas 时，请先读取 `On_Time_Reporting_Carrier_On_Time_Performance_(1987_present)_2018_9.csv` 文件。您可以使用内置的 Python `read_csv` 函数 ([pandas.read_csv documentation](https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.read_csv.html))。
 
@@ -678,7 +678,7 @@ print(test['target'].value_counts())
 print(validate['target'].value_counts())
 ```
 
-示例答案
+範例答案
 ```
 0.0 1033570
 1.0 274902
@@ -708,7 +708,7 @@ classifier_estimator = sagemaker.LinearLearner(role=sagemaker.get_execution_role
                                                binary_classifier_model_selection_criteria=<CODE>)
 ```
 
-### 示例代码
+### 範例代码
 ```
 num_classes = len(pd.unique(train_labels))
 classifier_estimator = sagemaker.LinearLearner(role=sagemaker.get_execution_role(),
@@ -733,7 +733,7 @@ test_records = classifier_estimator.record_set(test.values[:, 1:].astype(np.floa
 
 下面，使用您上传的数据集训练模型。
 
-### 示例代码
+### 範例代码
 ```
 linear.fit([train_records,val_records,test_records])
 ```
@@ -1017,7 +1017,7 @@ weather['MONTH'] = weather['DATE'].apply(lambda x: x.split('-')[1])
 weather.head()
 ```
 
-### 示例输出
+### 範例输出
 ```
   STATION     DATE      AWND PRCP SNOW SNWD TAVG TMAX  TMIN airport MONTH
 0 USW00023174 2014-01-01 16   0   NaN  NaN 131.0 178.0 78.0  LAX    01
@@ -1049,7 +1049,7 @@ TMIN_idx = # Enter your code here
 TAVG_idx
 ```
 
-### 示例输出
+### 範例输出
 
 ```
 array([ 3956,  3957,  3958,  3959,  3960,  3961,  3962,  3963,  3964,
@@ -1164,7 +1164,7 @@ data.shape
 data.columns
 ```
 
-### 示例输出
+### 範例输出
 
 ```
 Index(['Distance', 'DepHourofDay', 'is_delay', 'AWND_O', 'PRCP_O', 'TAVG_O',
@@ -1215,7 +1215,7 @@ data.rename(columns = {<CODE>:<CODE>}, inplace=True )# Enter your code here
 classifier_estimator2 = # Enter your code here
 ```
 
-### 示例代码
+### 範例代码
 
 ```
 num_classes = len(pd.unique(train_labels)) 
