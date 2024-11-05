@@ -9,35 +9,20 @@ _暫時放在這_
 ![](images/img_01.png)
 
 
-此錯誤訊息顯示在 VSCode 中啟用了 PHP IntelliSense 外掛，但系統找不到 PHP 執行檔。以下是排除問題的步驟：
+2. 此錯誤訊息顯示在 VSCode 中啟用了 PHP IntelliSense 外掛，但系統找不到 PHP 執行檔；如果尚未安裝 PHP，先安裝 PHP 7.4 或更高版本。
 
-### 1. 安裝 PHP
-如果尚未安裝 PHP，請先安裝 PHP 7.4 或更高版本。可以參考以下步驟來安裝：
-
-   - macOS：可以透過 [Homebrew](https://brew.sh/) 安裝，執行以下指令：
-     ```bash
-     brew install php
-     ```
-   - Windows：可以從 [PHP 官網](https://windows.php.net/download) 下載安裝程式，並將 PHP 的安裝路徑加入環境變數中。
-   - Linux：可以使用以下指令安裝 PHP：
-     ```bash
-     sudo apt update
-     sudo apt install php
-     ```
-
-### 2. 將 PHP 加入 PATH 環境變數
-確保 PHP 執行檔的路徑在系統的 PATH 環境變數中：
-
-   - macOS / Linux：
-     1. 打開終端機，輸入以下指令來確認 PHP 是否已在 PATH 中：
+   ```bash
+   brew install php
+   ```
+2. 確認 PHP 是否已在 PATH 中：
         ```bash
         php -v
         ```
-     2. 如果顯示版本資訊則代表已正確設定；如果沒有，則需要手動將 PHP 路徑加入 PATH。可以在 `~/.bash_profile` 或 `~/.zshrc` 中加入以下行（假設 PHP 安裝在 `/usr/local/bin/php`）：
+     1. 如果顯示版本資訊則代表已正確設定；如果沒有，則需要手動將 PHP 路徑加入 PATH。可以在 `~/.bash_profile` 或 `~/.zshrc` 中加入以下行（假設 PHP 安裝在 `/usr/local/bin/php`）：
         ```bash
         export PATH="/usr/local/bin/php:$PATH"
         ```
-     3. 存檔後，執行 `source ~/.bash_profile` 或 `source ~/.zshrc` 以重新載入設定。
+     2. 存檔後，執行 `source ~/.bash_profile` 或 `source ~/.zshrc` 以重新載入設定。
 
    - Windows：
      1. 右鍵點擊「此電腦」或「我的電腦」，選擇「屬性」。
