@@ -1,4 +1,4 @@
-# Lab 4.1：實作情绪分析
+# Lab 4.1：實作 Sentiment Analysis
 
 _Version: 02.14.2023_
 
