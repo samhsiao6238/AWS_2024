@@ -66,9 +66,10 @@ code .
 5. 緊接著在 `.env` 下方貼上以下內容，完成 AWS CLI 設置。
 
 ```bash
-export AWS_ACCESS_KEY_ID=$aws_access_key_id
-export AWS_SECRET_ACCESS_KEY=$aws_secret_access_key
-export AWS_SESSION_TOKEN=$aws_session_token
+AWS_ACCESS_KEY_ID=${aws_access_key_id}
+AWS_SECRET_ACCESS_KEY=${aws_secret_access_key}
+AWS_SESSION_TOKEN=${aws_session_token}
+AWS_DEFAULT_REGION=us-east-1
 ```
 
 ## 安装套件
@@ -87,33 +88,58 @@ export AWS_SESSION_TOKEN=$aws_session_token
 2. 在本地運行則建議在終端機中安裝。
 
 ```bash
-python -m pip install --upgrade pip awscli boto3 scikit-learn  nltk seaborn
+python -m pip install --upgrade pip awscli boto3 scikit-learn  nltk seaborn python-dotenv
 ```
 
-3. 安裝以下套件才可以在本地環境中使用 SDK 指定角色，以便在本地環境中使用 SageMaker 提供的各種功能並與服務互動。
+3. 載入環境變數。
+
+```python
+from dotenv import load_dotenv
+import os
+
+# 載入 .env 文件
+load_dotenv()
+```
+
+4. 驗證帳號。
+
+```python
+import boto3
+
+# 初始化 STS 客戶端
+sts_client = boto3.client('sts')
+
+# 獲取當前帳戶的 Account ID
+account_id = sts_client.get_caller_identity()["Account"]
+print("當前的 Account ID:", account_id)
+```
+
+5. 安裝以下套件才可以在本地環境中使用 SDK 指定角色，以便在本地環境中使用 SageMaker 提供的各種功能並與服務互動。
 ```bash
 python -m pip install sagemaker
 ```
 
-3. 若 Lab 有提供指定角色，可硬編碼進行後續操作。
+6. 若 Lab 有提供指定角色，可硬編碼進行後續操作。
 
 ```python
 import sagemaker
 from sagemaker.estimator import Estimator
 from sagemaker import get_execution_role
+```
 
-# 方式一：直接在本地指定角色：這要替換為指定角色
+4. 第一種方式直接在本地指定角色，替換以下代碼為指定角色。
+
+```python
 role = "<arn:aws:iam::XX-共12碼-XXX:role/自己的-SageMaker-執行角色>"
 ```
 
-4. 若未提供，也可透過函數取得角色來執行，特別注意，這只在 SageMaker notebook 執行環境中適用。
+5. 若未提供，也可透過函數取得角色來執行，特別注意，這只在 SageMaker notebook 執行環境中適用。
 
 ```python
-# 方式二：用 get_execution_role 自動獲取角色
 role = get_execution_role()
 ```
 
-4. 導入。
+6. 導入。
 
 ```python
 import boto3
@@ -265,83 +291,144 @@ print("CSV file 'imdb.csv' created successfully.")
 
 ```python
 df = pd.read_csv('imdb.csv', header=0)
+df
 ```
 
-2. 执行探索性数据分析。
+![](images/img_03.png)
+
+2. 可觀察官方數據，這裡我上傳並命名為 `imdb_0.csv`；可看出數據似乎不太一樣，但格式是相同的，這裡暫時先使用自行下載的數據。
+
+```python
+df = pd.read_csv('imdb_0.csv', header=0)
+df
+```
+
+![](images/img_04.png)
+
+3. 觀察兩個數據的欄位名稱。
+
+```python
+imdb_lab_df = pd.read_csv("imdb_0.csv", header=None)
+imdb_generated_df = pd.read_csv("imdb.csv", header=None)
+
+print(imdb_lab_df.head())
+print(imdb_generated_df.head())
+```
+
+![](images/img_05.png)
+
+4. 由前述步驟可知，官方數據集的欄位名稱是 `text` 和 `label`，以下將自行下載並轉換的 `imdb.csv` 的欄位名稱修改與官方資料集一致。
+
+```python
+# 讀取自行下載並轉換的數據集
+imdb_generated_df = pd.read_csv("imdb.csv")
+
+# 將欄位名稱重命名為官方格式
+imdb_generated_df.rename(
+    columns={"review": "text", "sentiment": "label"},
+    inplace=True
+)
+
+# 將更改後的 DataFrame 儲存回 CSV
+imdb_generated_df.to_csv("imdb.csv", index=False)
+
+print("欄位名稱已修改為與官方一致，並重新儲存為 'imdb.csv'。")
+```
+
+5. 比對數據，提取前五筆進行查詢，看看自行下載的數據資料是否都存在官方範例中，確認是否僅僅是排序問題。
+
+```python
+import pandas as pd
+
+# 讀取兩個數據集
+imdb_generated_df = pd.read_csv("imdb.csv")  # 自行下載並轉換的數據集
+imdb_lab_df = pd.read_csv("imdb_0.csv")      # 官方提供的數據集
+
+# 取出自行下載的數據集前五筆資料
+first_five_rows = imdb_generated_df.head(5)
+
+# 建立一個空的列表來儲存匹配的結果
+matches = []
+
+# 遍歷前五筆資料，逐筆與官方數據集比對
+for index, row in first_five_rows.iterrows():
+    match = imdb_lab_df[(imdb_lab_df['text'] == row['text']) & 
+                        (imdb_lab_df['label'] == row['label'])]
+    # 如果有匹配到的行，將匹配結果加入列表
+    if not match.empty:
+        matches.append(match)
+
+# 如果找到匹配的行，將所有匹配的行合併成 DataFrame 並顯示
+if matches:
+    matched_df = pd.concat(matches)
+    print("官方資料集中前五行的匹配：")
+    print(matched_df)
+else:
+    print("在官方數據集中找不到與前五筆資料匹配的行。")
+```
+
+![](images/img_06.png)
+
+## 探索數據
+
+_以下是官方範例中探索數據的代碼_
+
+1. 查看前面 `8` 筆。
 
 ```python
 def show_eight_rows(df):
-    # Implement this function
     return df.head(8)    
-```
 
-3. 輸出。
+# 確保數據正確，再次讀入
+df = pd.read_csv("imdb.csv")
 
-```python
 print(show_eight_rows(df))
 ```
 
-4. 数据形状。
+![](images/img_07.png)
+
+2. 查看數據結構。
 
 ```python
 def show_data_shape(df):
-    # Implement this function
-    ### BEGIN_SOLUTION
     return df.shape
-    ### END_SOLUTION
 
 print(show_data_shape(df))
 ```
 
-```bash
-(50000, 2)
-```
+![](images/img_08.png)
 
-5. 数据中正面和负面实例數量。
+3. 資料中正面和負面實例數量。
 
 ```python
 def show_data_instances(df):
-    # Implement this function
-    ### BEGIN_SOLUTION
+    # 重新讀取 imdb.csv
+    df = pd.read_csv("imdb.csv")
     return df['label'].value_counts()
-    ### END_SOLUTION
 
 print(show_data_instances(df))
 ```
 
+![](images/img_09.png)
 
-    ```bash
-    0    25000
-    1    25000
-    Name: label, dtype: int64
-    ```
-
-
-6. 檢查数据缺失值>
+4. 檢查遺漏缺失值。
 
 ```python
 def show_missing_values(df):
-    # Implement this function
-    ### BEGIN_SOLUTION
     return df.isna().sum()
-    ### END_SOLUTION
     
 
 print(show_missing_values(df))
 ```
 
+![](images/img_10.png)
 
-    ```bash
-    text     0
-    label    0
-    dtype: int64
-    ```
+## 運行第一次傳遞
 
-## 运行第一次传递：最低程度的处理
+_最低程度的處理_
 
 
-1. 导入 Natural Langauge ToolKit (NLTK) 程序包和 Regular Expression (re) 程序包。
-
+1. 導入 `NLTK` 和 `re`。
 
 ```python
 import nltk, re
@@ -350,7 +437,7 @@ from nltk.stem import SnowballStemmer
 from nltk.tokenize import word_tokenize
 ```
 
-2. 拆分数据集，使数据集的 80％ 用于训练，用于验证和测试的各占 10%。
+2. 拆分資料集，使資料集的 `80％` 用於訓練，用於驗證和測試的各佔 `10%`。
 
 ```python
 from sklearn.model_selection import train_test_split
@@ -373,7 +460,7 @@ def split_data(df):
     return train, validate, test
 ```
 
-3. 通过运行以下代码单元格检查是否正确拆分数据集。
+3. 檢查是否正確拆分資料集。
 
 ```python
 train, validate, test = split_data(df)
@@ -382,16 +469,11 @@ print(test.shape)
 print(validate.shape)
 ```
 
-    ```bash
-    (40000, 2)
-    (5000, 2)
-    (5000, 2)
-    ```
+![](images/img_11.png)
 
+## 組裝處理管道
 
-## 组装处理管道
-
-1. 为文本数据组装基本的处理管道。
+1. 為文字資料組裝基本的處理管道。
 
 ```python
 %%time
@@ -403,30 +485,36 @@ from sklearn.compose import ColumnTransformer
 text_features = ['text']
 model_target = 'label'
 
-text_processor_0 = Pipeline([
-    ('text_vect_0', CountVectorizer(max_features=500))
-])
+text_processor_0 = Pipeline([(
+    'text_vect_0', 
+    CountVectorizer(max_features=500)
+)])
 
-data_preprocessor = ColumnTransformer([
-    ('text_pre_0', text_processor_0, text_features[0])
-])
+data_preprocessor = ColumnTransformer([(
+    'text_pre_0', 
+    text_processor_0, 
+    text_features[0]
+)])
 
-print('Datasets shapes before processing: ', train.shape, validate.shape, test.shape)
+print(
+    'Datasets shapes before processing: ', 
+    train.shape, 
+    validate.shape, 
+    test.shape
+)
 train_matrix = data_preprocessor.fit_transform(train)
 test_matrix = data_preprocessor.transform(test)
 validate_matrix = data_preprocessor.transform(validate)
-print('Datasets shapes after processing: ', train_matrix.shape, validate_matrix.shape, test_matrix.shape)
+print(
+    'Datasets shapes after processing: ', 
+    train_matrix.shape, 
+    validate_matrix.shape, 
+    test_matrix.shape
+)
 ```
+![](images/img_12.png)
 
-    ```bash
-    Datasets shapes before processing:  (40000, 2) (5000, 2) (5000, 2)
-    Datasets shapes after processing:  (40000, 500) (5000, 500) (5000, 500)
-    CPU times: user 7.54 s, sys: 114 ms, total: 7.65 s
-    Wall time: 7.65 s
-    ```
-
-
-2. 要训练模型，必须以正确的格式将数据上载到 Amazon Simple Storage Service (Amazon S3)。XGBoost 使用逗号分隔值 (CSV) 文件。
+2. 要訓練模型，必須以正確的格式將資料上載到 S3。XGBoost 使用逗號分隔值 (CSV) 檔案。
 
 ```python
 s3_resource = boto3.Session().resource('s3')
@@ -442,13 +530,36 @@ def upload_s3_csv(filename, folder, X_train, y_train, is_test=False):
     s3_resource.Bucket(bucket).Object(os.path.join(prefix, folder, filename)).put(Body=csv_buffer.getvalue())
 ```
 
-3. Bucket。
+3. 官方腳本中會指定一個 Bucket，但這是會變動的。
 
 ```python
 bucket = 'c133864a3391494l8261467t1w637423426529-labbucket-hcjcbnnncwhe'
 ```
 
-4. 设置此传递的文件名。
+4. 改寫為自動化步驟取得 Bucket 名稱。
+
+```python
+import boto3
+
+# 初始化 S3 客戶端
+s3 = boto3.client('s3')
+
+# 列出所有的 S3 buckets
+response = s3.list_buckets()
+
+# 篩選出名稱中包含 'labbucket' 的 buckets
+labbucket_buckets = [bucket['Name'] for bucket in response['Buckets'] if 'labbucket' in bucket['Name']]
+
+# 顯示結果
+if labbucket_buckets:
+    print("包含 'labbucket' 的 S3 Buckets：")
+    for name in labbucket_buckets:
+        print(name)
+else:
+    print("找不到包含 'labbucket' 的 S3 Buckets。")
+```
+
+5. 设置此传递的文件名。
 
 ```python
 prefix='lab41'
