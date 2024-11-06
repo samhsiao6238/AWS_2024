@@ -2,19 +2,25 @@
 
 _Version: 02.14.2023_
 
+<br>
+
 ## 說明
 
-1. 此 Lab 將開發一個解決方案，對 IMDB 資料集進行情緒分析，評估適用於情緒分析的自然語言處理 (NLP) 機器學習 (ML) 演算法，並針對情緒分析業務問題提供解決方案。
+1. 此 Lab 對 `IMDB` 資料集進行情緒分析，目的是訓練一個機器學習模型，用於分析電影評論的情緒，並能夠對評論進行推理，判斷其為正面還是負面。
 
-2. 本專案的目標是透過正面與負面評論的數量，為特定電影提供整體評價（以笑臉表示正面，悲傷臉表示負面）。開發者將建立一個 ML 解決方案，對電影評論進行推理，分析評論的情緒是正面或負面。
+<br>
 
-3. 為協助完成此任務，您可以使用包含 50,000 條已標記為正面或負面的電影評論文本資料集。該資料集收集了不同電影的評論，發布於 2011 年 6 月，詳細資訊請參考[資料連結](http://ai.stanford.edu/~amaas/data/sentiment/)。
+2. 使用包含 50,000 條已標記為正面或負面的電影評論文本資料集，該資料集發布於 2011 年 6 月，詳細資訊可參考 [連結](http://ai.stanford.edu/~amaas/data/sentiment/)。
 
-4. 此資料集包含評論文本和對應的情緒標籤（1 表示正面，0 表示負面）。
+<br>
+
+3. 特別說明，此資料集的情緒標籤，1 表示正面、0 表示負面。
+
+<br>
 
 ## 步骤
 
-1. 安裝程式包。
+1. 安裝套件。
 
 2. 讀取資料集。
 
@@ -30,11 +36,44 @@ _Version: 02.14.2023_
 
 8. 使用 Amazon Comprehend。
 
+## 本地開發
 
-## 安装程序包
+_若在本地開發_
 
+1. 建立新的虛擬環境。
 
-1. 在筆記本中使用魔法方法安裝套件。
+```bash
+cd ~/Documents/PythonVenv && python -m venv envAWS2
+code ~/.zshrc 
+```
+
+2. 套用變更。
+
+```bash
+source ~/.zshrc
+```
+
+3. 建立專案資料夾。
+
+```bash
+mkdir -p ~/Desktop/_test_ && cd ~/Desktop/_test_
+touch ex01.ipynb .env .gitignore
+code .
+```
+
+4. 在 `.env` 貼上 Lab 首頁的 `AWS CLI` 內容不包含 `[default]` 部分。
+
+5. 緊接著在 `.env` 下方貼上以下內容，完成 AWS CLI 設置。
+
+```bash
+export AWS_ACCESS_KEY_ID=$aws_access_key_id
+export AWS_SECRET_ACCESS_KEY=$aws_secret_access_key
+export AWS_SESSION_TOKEN=$aws_session_token
+```
+
+## 安装套件
+
+1. 在筆記本中可使用魔法方法安裝套件。
 
 ```python
 !pip install --upgrade pip
@@ -45,7 +84,36 @@ _Version: 02.14.2023_
 !pip install --upgrade seaborn
 ```
 
-2. 導入。
+2. 在本地運行則建議在終端機中安裝。
+
+```bash
+python -m pip install --upgrade pip awscli boto3 scikit-learn  nltk seaborn
+```
+
+3. 安裝以下套件才可以在本地環境中使用 SDK 指定角色，以便在本地環境中使用 SageMaker 提供的各種功能並與服務互動。
+```bash
+python -m pip install sagemaker
+```
+
+3. 若 Lab 有提供指定角色，可硬編碼進行後續操作。
+
+```python
+import sagemaker
+from sagemaker.estimator import Estimator
+from sagemaker import get_execution_role
+
+# 方式一：直接在本地指定角色：這要替換為指定角色
+role = "<arn:aws:iam::XX-共12碼-XXX:role/自己的-SageMaker-執行角色>"
+```
+
+4. 若未提供，也可透過函數取得角色來執行，特別注意，這只在 SageMaker notebook 執行環境中適用。
+
+```python
+# 方式二：用 get_execution_role 自動獲取角色
+role = get_execution_role()
+```
+
+4. 導入。
 
 ```python
 import boto3
@@ -69,9 +137,11 @@ nltk.download('averaged_perceptron_tagger')
 nltk.download('wordnet')
 ```
 
+![](images/img_01.png)
+
 ## 自訂輔助函數
 
-1. 绘制混淆矩阵并计算其他关键指标。
+1. 以下函數可用於繪製混淆矩陣並計算其他關鍵指標。
 
 ```python
 def plot_confusion_matrix(test_labels, target_predicted):
@@ -133,13 +203,68 @@ def print_metrics(test_labels, target_predicted_binary):
     print(f"Accuracy: {ACC}%")
 ```
 
-## 读取数据集
+## 手動下載數據集
+
+_IMDB 的數據集並非以 `imdb.csv` 的形式直接提供。_
 
 
-1. 加载数据集；假如要在本地運行，務必記得修正路徑。
+1. 下載並將資料組合轉換成 `CSV` 格式；程式碼生成的 `imdb.csv` 包含兩列 `review（評論文本）` 和 `sentiment（標記為正面或負面）`，這格式適合進行情緒分析任務。
 
 ```python
-df = pd.read_csv('../data/imdb.csv', header=0)
+import os
+import urllib.request
+import tarfile
+import pandas as pd
+
+# 定義下載 URL 和資料夾名稱
+url = "http://ai.stanford.edu/~amaas/data/sentiment/aclImdb_v1.tar.gz"
+data_dir = "aclImdb"
+
+# 下載 IMDB 資料集
+if not os.path.exists("aclImdb_v1.tar.gz"):
+    print("Downloading IMDB dataset...")
+    urllib.request.urlretrieve(url, "aclImdb_v1.tar.gz")
+    print("Download complete.")
+
+# 解壓縮資料集
+if not os.path.exists(data_dir):
+    print("Extracting IMDB dataset...")
+    with tarfile.open("aclImdb_v1.tar.gz", "r:gz") as tar_ref:
+        tar_ref.extractall(".")
+    print("Extraction complete.")
+
+# 準備資料並轉換為 CSV 格式
+data = {"review": [], "sentiment": []}
+
+# 讀取資料夾中的檔案並標記正面/負面
+for split in ["train", "test"]:
+    for sentiment in ["pos", "neg"]:
+        folder_path = os.path.join(data_dir, split, sentiment)
+        # 檢查資料夾是否存在
+        if os.path.exists(folder_path):
+            for filename in os.listdir(folder_path):
+                file_path = os.path.join(folder_path, filename)
+                with open(file_path, "r", encoding="utf-8") as file:
+                    review = file.read()
+                    # 正面為 1，負面為 0
+                    label = 1 if sentiment == "pos" else 0 
+                    data["review"].append(review)
+                    data["sentiment"].append(label)
+
+# 轉換為 DataFrame 並存成 CSV
+df = pd.DataFrame(data)
+df.to_csv("imdb.csv", index=False)
+print("CSV file 'imdb.csv' created successfully.")
+```
+
+![](images/img_02.png)
+
+## 讀取數據集
+
+1. 載入數據集，若在雲端執行的路徑是 `'../data/imdb.csv'`；假如要在本地運行，務必記得修正為本地路徑，在這就是根目錄。
+
+```python
+df = pd.read_csv('imdb.csv', header=0)
 ```
 
 2. 执行探索性数据分析。
@@ -1228,7 +1353,7 @@ plot_confusion_matrix(test['label'], target_predicted_binary)
 print_metrics(test['label'], target_predicted_binary)
 ```
 
-## 使用 Amazon Comprehend
+## 使用Comprehend
 
 
 在本节中，您将使用 Amazon Comprehend 来计算情绪。Amazon Comprehend 为您提供了正面和负面的结果，还显示了中立和喜忧参半的结果。Amazon Comprehend 是一项托管的服务，在使用它之前需要较少的文本处理。您无需处理本节中的任何文本。
