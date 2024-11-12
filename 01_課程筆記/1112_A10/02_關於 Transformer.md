@@ -10,7 +10,7 @@ _常被應用在 NLP 中的深度學習架構，相較於 `RNN` 和 `LSTM` 架�
 
 <br>
 
-2. 以上這樣的模式就是 `自注意力機制（self-attention）`，這種多頭關係就是 `多頭注意力（multi-head attention）`
+2. 以上這樣的模式就是 `自注意力機制（self-attention）`，這種多頭關係就是 `多頭注意力（multi-head attention）`。
 
 <br>
 
