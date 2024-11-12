@@ -29,5 +29,7 @@
     // 專門為 Markdown 文件設置縮排
     "[markdown]": {
         "editor.tabSize": 4
-    }
+    },
+    // 設定 Python language server 為 Microsoft 的 Pylance
+    "python.languageServer": "Pylance",
 }
