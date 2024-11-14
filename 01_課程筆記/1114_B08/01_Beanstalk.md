@@ -33,7 +33,7 @@ _先建立簡易的範例專案_
 
 
     if __name__ == '__main__':
-        app.run()" > app.py
+        application.run()" > application.py
 
 
     echo "Flask" > requirements.txt
@@ -46,7 +46,7 @@ _先建立簡易的範例專案_
 3. 在終端機啟動站台，並訪問 `127.0.0.1:5000`；停止運行按下組合鍵 `command+C`。
 
     ```bash
-    python app.py
+    python application.py
     ```
 
     ![](images/img_01.png)
@@ -163,30 +163,43 @@ _接下來先使用主控台操作，未特別說明的部分使用預設值_
 
 1. 等待建立的過程中，注意這個 `Health` 的狀態，顯示為 `Pending` 表示還在建立中。
 
-![](images/img_15.png)
+    ![](images/img_15.png)
+
+<br>
 
 2. 完成時顯示 `Ok`。
 
-![](images/img_16.png)
+    ![](images/img_16.png)
+
+<br>
 
 3. 這時若點擊下方的 `Domain` 會進入預設的站台中。
 
-![](images/img_17.png)
+    ![](images/img_17.png)
+
+<br>
 
 4. 檢查 Events 無異常事件。
 
-![](images/img_18.png)
+    ![](images/img_18.png)
+
+<br>
 
 ## 部署站台
 
 1. 點擊右上角 `Upload and deploy`。
 
-![](images/img_19.png)
+    ![](images/img_19.png)
+
+<br>
 
 2. 選擇前面步驟建立的壓縮檔進行上傳，會自動生成版本編號，然後點擊 `Deploy`。
 
-![](images/img_20.png)
+    ![](images/img_20.png)
 
+<br>
+
+3.
 ___
 
 
