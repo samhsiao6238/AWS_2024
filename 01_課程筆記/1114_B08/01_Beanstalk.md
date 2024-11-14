@@ -14,6 +14,13 @@ _可參考 `07_Elastic Beanstalk`，編排可能會變_
 
 <br>
 
+## 部署 Flask 站台
+
+_補_
+
+
+<br>
+
 ___
 
 _END_
