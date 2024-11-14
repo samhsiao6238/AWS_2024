@@ -1,6 +1,6 @@
 # Beanstalk
 
-_可參考 `07_Elastic Beanstalk`，編排可能會變_
+_可參考 `07_Elastic Beanstalk`_
 
 <br>
 
