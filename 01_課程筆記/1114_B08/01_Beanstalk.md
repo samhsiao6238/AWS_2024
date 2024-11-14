@@ -36,7 +36,7 @@ _先建立簡易的範例專案_
         app.run()" > app.py
 
 
-    echo "Flask==2.0.2" > requirements.txt
+    echo "Flask" > requirements.txt
 
     code .
     ```
