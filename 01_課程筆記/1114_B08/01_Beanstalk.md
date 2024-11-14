@@ -10,11 +10,11 @@ _先建立簡易的範例專案_
 
 <br>
 
-1. 在 `~/.Downloads` 建立專案資料夾 `_test_`，內含三個 Flask 站台所需文件。
+1. 在 `~/.Downloads` 建立專案資料夾 `_test_`，內含兩個 Flask 站台所需文件；特別注意，在這不需要建立 `Procfile` 文件。
 
     ```bash
     mkdir -p ~/Downloads/_test_ && cd ~/Downloads/_test_
-    touch app.py requirements.txt Procfile
+    touch app.py requirements.txt
     ```
 
 <br>
@@ -29,17 +29,14 @@ _先建立簡易的範例專案_
 
     @app.route('/')
     def home():
-        return 'Hello, AWS Elastic Beanstalk with Flask!'
+        return '這是 Beanstalk Flask 測試站台!'
 
 
     if __name__ == '__main__':
         app.run()" > app.py
 
 
-    echo "Flask==2.0.2
-    gunicorn==20.1.0" > requirements.txt
-
-    echo "web: gunicorn app:app" > Procfile
+    echo "Flask==2.0.2" > requirements.txt
 
     code .
     ```
