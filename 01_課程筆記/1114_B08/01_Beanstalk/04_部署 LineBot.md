@@ -88,7 +88,7 @@ _基礎範例，使用以下代碼覆蓋原本內容即可_
         try:
             handler.handle(body, signature)
         except Exception as e:
-            print(f"發生錯誤：e")
+            print(f"發生錯誤：{e}")
             application.logger.error(
                 f"Handler Error：{traceback.format_exc()}")
             abort(400)
@@ -116,6 +116,7 @@ _基礎範例，使用以下代碼覆蓋原本內容即可_
         # 判斷端口，Beanstalk 環境使用環境變數 `PORT`，本地環境使用 5050
         port = int(os.getenv("PORT", 5050)) if is_beanstalk else 5050
         application.run(debug=not is_beanstalk, port=port)
+
     ```
 
 <br>
@@ -129,6 +130,37 @@ _基礎範例，使用以下代碼覆蓋原本內容即可_
     ```
 
 <br>
+
+3. 修改 `.env`，添加兩個 Linebot 密鑰。
+
+    ```json
+    CHANNEL_ACCESS_TOKEN=
+    CHANNEL_SECRET=
+    ```
+
+<br>
+
+## 本地測試
+
+1. 運行 `ngrok`，在 `ngrok` 所在路徑運行以下指令。
+
+```bash
+ngrok http 5050
+```
+
+2. 運行腳本。
+
+```bash
+python application.py
+```
+
+
+
+4. 再次壓縮。
+
+```bash
+zip -r ../my_project.zip . -x "__MACOSX"
+```
 
 ___
 
