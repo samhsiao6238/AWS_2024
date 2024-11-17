@@ -1,6 +1,6 @@
 # 部署 LineBot
 
-_延續前一個步驟_
+_延續前一個步驟；特別注意，Webhook 必須使用 `https`，但是 Beanstalk 提供的網域是 `Http`。_
 
 <br>
 
@@ -148,19 +148,53 @@ _基礎範例，使用以下代碼覆蓋原本內容即可_
 ngrok http 5050
 ```
 
-2. 運行腳本。
+2. 複製 `Forwarding` 網址。
+
+![](images/img_52.png)
+
+3. 寫入 `Webhook URL`。
+
+![](images/img_53.png)
+
+4. 運行腳本。
 
 ```bash
 python application.py
 ```
 
+5. 進行  `Webhook` 驗證。
 
+![](images/img_54.png)
 
-4. 再次壓縮。
+4. 確認無誤後，再次壓縮備用。
 
 ```bash
 zip -r ../my_project.zip . -x "__MACOSX"
 ```
+
+
+## 部署到雲端
+
+1. 進入 Beanstalk 編輯環境變數，可再次確認 `AWS_EXECUTION_ENV` 已經加入。
+
+![](images/img_55.png)
+
+2. 添加兩個環境變數；務必在正常運作的環境中先添加環境變數。
+
+![](images/img_56.png)
+
+3. 完成時記得點擊右下角 `Apply`。
+
+![](images/img_57.png)
+
+4. 點擊 `Deploy` 等待完成。
+
+![](images/img_59.png)
+
+5. 再次上傳 `Upload and deploy`
+
+![](images/img_58.png)
+
 
 ___
 
