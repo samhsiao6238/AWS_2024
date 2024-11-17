@@ -140,40 +140,69 @@ _基礎範例，使用以下代碼覆蓋原本內容即可_
 
 <br>
 
+4. 在 Line Developer 中複製這兩個變數。
+
+    ![](images/img_63.png)
+
+<br>
+
 ## 本地測試
 
-1. 運行 `ngrok`，在 `ngrok` 所在路徑運行以下指令。
+1. 首先啟動代碼。
 
-```bash
-ngrok http 5050
-```
+    ```bash
+    python application.py
+    ```
 
-2. 複製 `Forwarding` 網址。
+<br>
 
-![](images/img_52.png)
+2. 在 `ngrok` 所在路徑運行以下指令啟動服務。
 
-3. 寫入 `Webhook URL`。
+    ```bash
+    ngrok http 5050
+    ```
 
-![](images/img_53.png)
+    ![](images/img_64.png)
 
-4. 運行腳本。
+<br>
 
-```bash
-python application.py
-```
+3. 複製 `Forwarding` 網址。
 
-5. 進行  `Webhook` 驗證。
+    ![](images/img_52.png)
 
-![](images/img_54.png)
+<br>
 
-4. 確認無誤後，再次壓縮備用。
+4. 寫入 `Webhook URL`。
+
+    ![](images/img_53.png)
+
+<br>
+
+5. 運行腳本。
+
+    ```bash
+    python application.py
+    ```
+
+<br>
+
+6. 進行  `Webhook` 驗證。
+
+    ![](images/img_54.png)
+
+<br>
+
+7. 與 Linebot 對話測試。
+
+<br>
+
+## 部署到雲端
+
+1. 確認無誤後，再次壓縮備用。
 
 ```bash
 zip -r ../my_project.zip . -x "__MACOSX"
 ```
-
-
-## 部署到雲端
 
 1. 進入 Beanstalk 編輯環境變數，可再次確認 `AWS_EXECUTION_ENV` 已經加入。
 
