@@ -14,11 +14,11 @@ _在進行接下來步驟前，先檢查端口佔用情形，確認 Ngrok 將使
     lsof -i :5000
     ```
 
+    ![](images/img_48.png)
+
 <br>
 
 2. 其中 `ControlCe (Control Center)` 是 macOS 系統的 `控制中心（Control Center）`，與 `AirDrop`、音量控制、Wi-Fi、藍牙等功能相關；另外 `Google` 代表可能正在與本地設備或遠程設備進行網絡通信，在這是因為 NAS 佔用了 `5000`；這在之前的專案中不受影響是因為單純在本地運行，接下來要使用 `ngrok`，所以必須確認端口閒置。
-
-    ![](images/img_48.png)
 
 <br>
 
