@@ -16,7 +16,7 @@ _在進行接下來步驟前，先檢查端口佔用情形，確認 Ngrok 將使
 
 <br>
 
-2. 其中 `ControlCe (Control Center)` 是 macOS 系統的「控制中心（Control Center）」，與 AirDrop、音量控制、Wi-Fi、藍牙等功能相關；另外 `Google` 代表可能正在與本地設備或遠程設備進行網絡通信，在這是因為 NAS 佔用了 `5000`。
+2. 其中 `ControlCe (Control Center)` 是 macOS 系統的 `控制中心（Control Center）`，與 `AirDrop`、音量控制、Wi-Fi、藍牙等功能相關；另外 `Google` 代表可能正在與本地設備或遠程設備進行網絡通信，在這是因為 NAS 佔用了 `5000`；這在之前的專案中不受影響是因為單純在本地運行，接下來要使用 `ngrok`，所以必須確認端口閒置。
 
     ![](images/img_48.png)
 
@@ -24,7 +24,7 @@ _在進行接下來步驟前，先檢查端口佔用情形，確認 Ngrok 將使
 
 ## 編輯腳本
 
-_基礎範例_
+_基礎範例，使用以下代碼覆蓋原本內容即可_
 
 <br>
 
@@ -116,6 +116,16 @@ _基礎範例_
         # 判斷端口，Beanstalk 環境使用環境變數 `PORT`，本地環境使用 5050
         port = int(os.getenv("PORT", 5050)) if is_beanstalk else 5050
         application.run(debug=not is_beanstalk, port=port)
+    ```
+
+<br>
+
+2. 修正 `requirements.txt` 內容如下。
+
+    ```json
+    Flask
+    gunicorn
+    line-bot-sdk==3.0.0
     ```
 
 <br>
