@@ -4,4 +4,122 @@ _延續前一個步驟_
 
 <br>
 
+## 檢查端口
+
+_在進行接下來步驟前，先檢查端口佔用情形，確認 Ngrok 將使用的端口目前是閒置的_
+
+1. 檢查。
+
+    ```bash
+    lsof -i :5000
+    ```
+
+<br>
+
+2. 其中 `ControlCe (Control Center)` 是 macOS 系統的「控制中心（Control Center）」，與 AirDrop、音量控制、Wi-Fi、藍牙等功能相關；另外 `Google` 代表可能正在與本地設備或遠程設備進行網絡通信，在這是因為 NAS 佔用了 `5000`。
+
+    ![](images/img_48.png)
+
+<br>
+
+## 編輯腳本
+
+_基礎範例_
+
+<br>
+
+1. `application.py`。
+
+    ```python
+    import os
+    import traceback
+    from flask import (
+        Flask,
+        request,
+        abort
+    )
+    from linebot.v3 import WebhookHandler
+    from linebot.v3.messaging import (
+        Configuration,
+        ApiClient,
+        MessagingApi,
+        ReplyMessageRequest,
+        TextMessage,
+    )
+    from linebot.v3.webhooks import (
+        MessageEvent,
+        TextMessageContent
+    )
+
+
+    # 判斷是否在 Beanstalk 環境
+    is_beanstalk = os.getenv("AWS_EXECUTION_ENV") is not None
+
+    # 如果不是 Beanstalk 環境，導入 dotenv 並加載 .env 文件
+    if not is_beanstalk:
+        from dotenv import load_dotenv
+        load_dotenv()
+
+
+    # 獲取環境變數
+    CHANNEL_ACCESS_TOKEN = os.getenv("CHANNEL_ACCESS_TOKEN")
+    CHANNEL_SECRET = os.getenv("CHANNEL_SECRET")
+
+    if not CHANNEL_ACCESS_TOKEN or not CHANNEL_SECRET:
+        raise ValueError(
+            "請確認環境變數 CHANNEL_ACCESS_TOKEN "
+            "和 CHANNEL_SECRET 是否正確設置。"
+        )
+
+    # 初始化 Flask 應用
+    application = Flask(__name__)
+    configuration = Configuration(access_token=CHANNEL_ACCESS_TOKEN)
+    handler = WebhookHandler(CHANNEL_SECRET)
+
+
+    @application.route("/callback", methods=["POST"])
+    def callback():
+        signature = request.headers.get("X-Line-Signature")
+        body = request.get_data(as_text=True)
+
+        application.logger.info(f"Request Body: {body}")
+        application.logger.info(f"X-Line-Signature: {signature}")
+
+        try:
+            handler.handle(body, signature)
+        except Exception as e:
+            print(f"發生錯誤：e")
+            application.logger.error(
+                f"Handler Error：{traceback.format_exc()}")
+            abort(400)
+
+        return "OK", 200
+
+
+    @handler.add(MessageEvent, message=TextMessageContent)
+    def handle_message(event):
+        application.logger.info(f"Received Event：{event}")
+        with ApiClient(configuration) as api_client:
+            messaging_api = MessagingApi(api_client)
+            reply_token = event.reply_token
+            user_message = event.message.text
+            response_message = TextMessage(text=f"你說了：{user_message}")
+            messaging_api.reply_message_with_http_info(
+                ReplyMessageRequest(
+                    reply_token=reply_token,
+                    messages=[response_message],
+                )
+            )
+
+
+    if __name__ == "__main__":
+        # 判斷端口，Beanstalk 環境使用環境變數 `PORT`，本地環境使用 5050
+        port = int(os.getenv("PORT", 5050)) if is_beanstalk else 5050
+        application.run(debug=not is_beanstalk, port=port)
+    ```
+
+<br>
+
+___
+
 _待續_
