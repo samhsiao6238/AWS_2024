@@ -38,7 +38,7 @@ _大致與之前相同，僅簡單說明建立步驟_
 
 <br>
 
-5. 在 `Presets ` 選擇 `High availability` 模式，這樣可以直接啟用 `Application Load Balancer`。
+5. 在 `Presets ` 選擇 `High availability` 模式，這樣可以直接啟用 `Application Load Balancer`；若使用個人帳號，可選用 Single instance 來避免不必要的費用。
 
     ![](images/img_68.png)
 
