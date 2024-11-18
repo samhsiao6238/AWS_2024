@@ -49,7 +49,7 @@ _假如重新建立專案，則從這裡開始，若沿用之前的專案，可�
 3. 使用指令在 requirements.txt 中寫入套件。
 
     ```bash
-    echo "Flask\ngunicorn\nline-bot-sdk" > requirements.txt
+    echo "Flask\ngunicorn\nline-bot-sdk==3.0.0" > requirements.txt
     ```
 
 <br>
