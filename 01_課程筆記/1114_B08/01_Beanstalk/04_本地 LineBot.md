@@ -1,4 +1,4 @@
-# 部署 LineBot
+# 本地建立 LineBot
 
 _延續前一個步驟；特別注意，Webhook 必須使用 `https`，但是 Beanstalk 提供的網域是 `Http`。_
 
@@ -194,37 +194,10 @@ _基礎範例，使用以下代碼覆蓋原本內容即可_
 
 7. 與 Linebot 對話測試。
 
+    ![](images/img_65.png)
+
 <br>
-
-## 部署到雲端
-
-1. 確認無誤後，再次壓縮備用。
-
-```bash
-zip -r ../my_project.zip . -x "__MACOSX"
-```
-
-1. 進入 Beanstalk 編輯環境變數，可再次確認 `AWS_EXECUTION_ENV` 已經加入。
-
-![](images/img_55.png)
-
-2. 添加兩個環境變數；務必在正常運作的環境中先添加環境變數。
-
-![](images/img_56.png)
-
-3. 完成時記得點擊右下角 `Apply`。
-
-![](images/img_57.png)
-
-4. 點擊 `Deploy` 等待完成。
-
-![](images/img_59.png)
-
-5. 再次上傳 `Upload and deploy`
-
-![](images/img_58.png)
-
 
 ___
 
-_待續_
+_接下到下一個小節_
