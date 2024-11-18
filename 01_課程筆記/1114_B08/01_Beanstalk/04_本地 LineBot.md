@@ -1,6 +1,6 @@
 # 本地建立 LineBot
 
-_延續前一個步驟；特別注意，Webhook 必須使用 `https`，但是 Beanstalk 提供的網域是 `Http`。_
+_可延續前一個步驟；特別注意，Webhook 必須使用 `https`，但是 Beanstalk 提供的網域是 `Http`。_
 
 <br>
 
@@ -19,6 +19,54 @@ _在進行接下來步驟前，先檢查端口佔用情形，確認 Ngrok 將使
 <br>
 
 2. 其中 `ControlCe (Control Center)` 是 macOS 系統的 `控制中心（Control Center）`，與 `AirDrop`、音量控制、Wi-Fi、藍牙等功能相關；另外 `Google` 代表可能正在與本地設備或遠程設備進行網絡通信，在這是因為 NAS 佔用了 `5000`；這在之前的專案中不受影響是因為單純在本地運行，接下來要使用 `ngrok`，所以必須確認端口閒置。
+
+<br>
+
+## 從頭開始
+
+_假如重新建立專案，則從這裡開始，若沿用之前的專案，可以略過這個步驟_
+
+<br>
+
+1. 建立專案。
+
+    ```python
+    mkdir -p ~/Downloads/_linebot_ && cd ~/Downloads/_linebot_
+    touch .env .gitignore application.py requirements.txt Procfile
+    code .
+    ```
+
+<br>
+
+2. 在 .gitignore 中寫入 .env 避免上傳敏感資訊。
+
+    ```bash
+    echo ".env" > .gitignore
+    ```
+
+<br>
+
+3. 使用指令在 requirements.txt 中寫入套件。
+
+    ```bash
+    echo "Flask\ngunicorn\nline-bot-sdk" > requirements.txt
+    ```
+
+<br>
+
+4. 使用指令在 Procfile 中寫入運行指令。
+
+    ```bash
+    echo "web: gunicorn application:application" > Procfile
+    ```
+
+<br>
+
+5. 在 .env，添加兩個 Linebot 密鑰。
+
+    ```bash
+    echo "CHANNEL_ACCESS_TOKEN=\nCHANNEL_SECRET=" > .env
+    ```
 
 <br>
 
