@@ -189,7 +189,7 @@ _使用 GoDaddy 的 Edit DNS_
 5. 使用指令查詢。
 
     ```bash
-    dig _46fe2916631564cfe340e9afb1397203.linebot.samhsiao6238.online CNAME
+    dig <CNAME-的-NAME>.linebot.samhsiao6238.online CNAME
     ```
 
 <br>
