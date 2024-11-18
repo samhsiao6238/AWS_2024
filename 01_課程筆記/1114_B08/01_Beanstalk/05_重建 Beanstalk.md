@@ -20,7 +20,7 @@ _大致與之前相同，僅簡單說明建立步驟_
 
 <br>
 
-1. 建立新的環境。
+1. 進入服務 `Beanstalk`，左側切換到頁籤 `Environments`，接著點擊 `Create environment` 建立新的環境。
 
 <br>
 
