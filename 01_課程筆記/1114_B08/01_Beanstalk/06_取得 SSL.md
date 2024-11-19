@@ -48,7 +48,7 @@ _這是 `Let's Encrypt` 提供的 CLI 工具，以下是在 MacOS 中操作，�
 
 <br>
 
-2. 假如是第一次運行，會提示輸入一個有效的電子郵件信箱。
+2. 提示輸入一個有效的電子郵件信箱。
 
     ![](images/img_103.png)
 
@@ -70,7 +70,13 @@ _這是 `Let's Encrypt` 提供的 CLI 工具，以下是在 MacOS 中操作，�
 
 <br>
 
-6. 可以使用以下命令檢查是否正確配置。
+6. 假如連續提示兩次，就依照指示添加兩筆紀錄。
+
+    ![](images/img_126.png)
+
+<br>
+
+7. 可以使用以下命令檢查是否正確配置。
 
     ```bash
     nslookup -type=TXT _acme-challenge.linebot.samhsiao6238.online
@@ -78,24 +84,24 @@ _這是 `Let's Encrypt` 提供的 CLI 工具，以下是在 MacOS 中操作，�
 
 <br>
 
-7. 顯示結果如下，表示 TXT 記錄已正確配置、DNS 記錄已生效。
+8. 顯示結果如下，表示 TXT 記錄已正確配置、DNS 記錄已生效。
 
     ![](images/img_106.png)
 
 <br>
 
-8. 根據 Certbot 的提示需要為 `_acme-challenge.www.linebot.samhsiao6238.online` 新增另一個 DNS TXT 記錄；Name `_acme-challenge.www.linebot.samhsiao6238.online.`、Value `GlYPnrhuXxd-VW54f_EXFTF3nTt-Oshwx7SwDgU72IQ`，
+9. 根據 Certbot 的提示需要為 `_acme-challenge.www.linebot.samhsiao6238.online` 新增另一個 DNS TXT 記錄；Name `_acme-challenge.www.linebot.samhsiao6238.online.`、Value `GlYPnrhuXxd-VW54f_EXFTF3nTt-Oshwx7SwDgU72IQ`，
 保留上一個記錄勿刪除。
 
 <br>
 
-9. 按下 ENTER 之後會收到以下訊息，會顯示憑證路徑 `/etc/letsencrypt/live/linebot.samhsiao6238.online/fullchain.pem`，私鑰路徑 `/etc/letsencrypt/live/linebot.samhsiao6238.online/privkey.pem`。
+10. 按下 ENTER 之後會收到以下訊息，會顯示憑證路徑 `/etc/letsencrypt/live/linebot.samhsiao6238.online/fullchain.pem`，私鑰路徑 `/etc/letsencrypt/live/linebot.samhsiao6238.online/privkey.pem`。
 
     ![](images/img_107.png)
 
 <br>
 
-10. 使用以下命令檢查生成的憑證。
+11. 使用以下命令檢查生成的憑證。
 
     ```bash
     sudo ls /etc/letsencrypt/live/
@@ -103,7 +109,7 @@ _這是 `Let's Encrypt` 提供的 CLI 工具，以下是在 MacOS 中操作，�
 
 <br>
 
-11. 依據結果進一步查看。
+12. 依據結果進一步查看。
 
     ```bash
     sudo ls -l /etc/letsencrypt/live/linebot.samhsiao6238.online
@@ -111,7 +117,7 @@ _這是 `Let's Encrypt` 提供的 CLI 工具，以下是在 MacOS 中操作，�
 
 <br>
 
-12. 文件包含主憑證`cert.pem`、中間憑證 `chain.pem`、完整憑證鏈 `fullchain.pem`、私鑰 `privkey.pem`。
+13. 文件包含主憑證`cert.pem`、中間憑證 `chain.pem`、完整憑證鏈 `fullchain.pem`、私鑰 `privkey.pem`。
 
     ![](images/img_108.png)
 
