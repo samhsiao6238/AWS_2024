@@ -202,21 +202,13 @@ _使用 GoDaddy_
 
 <br>
 
-2. 貼上 `CNAME name` 及 `CNAME value`；完成後點擊 `Save`。
+2. 同樣選擇 `CNAME`，接著貼上 `CNAME name` 及 `CNAME value`；完成後點擊 `Save`。
 
     ![](images/img_91.png)
 
 <br>
 
 3. 返回 ACM 中等待驗證，通常需要幾分鐘甚至幾小時，取決於 DNS 的生效速度。
-
-<br>
-
-4. 使用指令查詢。
-
-    ```bash
-    dig <CNAME-的-NAME>.linebot.samhsiao6238.online CNAME
-    ```
 
 <br>
 
@@ -237,6 +229,35 @@ _使用 GoDaddy_
 3. 最重要的，不要忘記點擊右下角的 `Apply`。
 
     ![](images/img_85.png)
+
+<br>
+
+## 回到環境清單
+
+1. 由於憑證未完成驗證，接下來就是ㄧ連串錯誤。
+
+    ![](images/img_97.png)
+
+<br>
+
+2. 使用以下指令，確認域名的 CNAME 是否指向正確的 Beanstalk 網域。
+
+    ```bash
+    dig linebot.samhsiao6238.online CNAME
+    ```
+
+<br>
+
+3. 其中 `status: NOERROR` 表示查詢成功、沒有錯誤。
+
+    ![](images/img_98.png)
+
+<br>
+
+4. 另外，CNAME 記錄解析 `linebot.samhsiao6238.online` 被正確解析為 `mylinebot1118.us-east-1.elasticbeanstalk.com`；這表示：
+用戶請求 `linebot.samhsiao6238.online` 時，DNS 會將流量重定向到 Beanstalk 的域名 `mylinebot1118.us-east-1.elasticbeanstalk.com`。
+
+    ![](images/img_99.png)
 
 <br>
 
