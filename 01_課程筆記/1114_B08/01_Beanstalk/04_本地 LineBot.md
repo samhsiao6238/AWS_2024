@@ -59,7 +59,7 @@ _假如重新建立專案，則從這裡開始，若沿用之前的專案，可�
 4. 使用指令在 Procfile 中寫入運行指令。
 
     ```bash
-    echo "web: gunicorn -w 3 -b :8000 application:app" > Procfile
+    echo "web: gunicorn -w 3 -b :8000 application:application" > Procfile
     ```
 
 <br>
@@ -102,15 +102,20 @@ _基礎範例，使用以下代碼覆蓋原本內容即可_
         TextMessageContent
     )
 
-
     # 判斷是否在 Beanstalk 環境
     is_beanstalk = os.getenv("AWS_EXECUTION_ENV") is not None
 
-    # 如果不是 Beanstalk 環境，導入 dotenv 並加載 .env 文件
+    # 如果不是 Beanstalk 環境，嘗試載入 dotenv
     if not is_beanstalk:
-        from dotenv import load_dotenv
-        load_dotenv()
-
+        try:
+            from dotenv import load_dotenv
+            load_dotenv()
+        except ImportError as e:
+            print("dotenv 模組未安裝，本地環境可能無法正確載入 .env 文件。")
+            raise ImportError(
+                "請執行 `pip install python-dotenv` 安裝 dotenv 套件，"
+                "以便在本地測試時載入環境變數。"
+            ) from e
 
     # 獲取環境變數
     CHANNEL_ACCESS_TOKEN = os.getenv("CHANNEL_ACCESS_TOKEN")
@@ -210,7 +215,7 @@ _基礎範例，使用以下代碼覆蓋原本內容即可_
 4. `Procfile`，`-w 3` 指定 `Gunicorn` 使用 `3` 個 `worker` 進程來處理請求，可根據伺服器的 CPU 性能可調整，另外 `-b :8000` 指定 `Gunicorn` 綁定到伺服器的 `8000` 埠，Beanstalk 預設監聽此埠。
 
     ```bash
-    web: gunicorn -w 3 -b :8000 application:app
+    web: gunicorn -w 3 -b :8000 application:application
     ```
 
 <br>
