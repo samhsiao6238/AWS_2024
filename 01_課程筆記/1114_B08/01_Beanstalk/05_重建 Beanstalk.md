@@ -263,6 +263,10 @@ _使用 GoDaddy_
 
 5. 當 SSL 憑證的狀態是 `Pending Validation`，域名仍然無法通過 HTTPS 訪問，但此時訪問 `http://linebot.samhsiao6238.online` 會定向到 Beanstalk 的網域上；以下這是 Beanstalk 預設的內容。
 
+    ```html
+    http://linebot.samhsiao6238.online
+    ```
+    
     ![](images/img_100.png)
 
 <br>

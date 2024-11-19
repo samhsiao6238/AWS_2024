@@ -86,7 +86,8 @@ _基礎範例，使用以下代碼覆蓋原本內容即可_
     from flask import (
         Flask,
         request,
-        abort
+        abort,
+        jsonify
     )
     from linebot.v3 import WebhookHandler
     from linebot.v3.messaging import (
@@ -161,6 +162,14 @@ _基礎範例，使用以下代碼覆蓋原本內容即可_
                 )
             )
 
+    # 添加一個 /home 路由
+    @application.route("/home", methods=["GET"])
+    def home():
+        # 回傳一個簡單的 JSON 訊息
+        return jsonify({
+            "message": "站點正常運作中！",
+            "status": "OK"
+        }), 200
 
     if __name__ == "__main__":
         # 判斷端口，Beanstalk 環境使用環境變數 `PORT`，本地環境使用 5050
