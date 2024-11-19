@@ -24,6 +24,8 @@ _使用 `Learner Lab` 建立支持負載均衡的環境，步驟大致與之前�
 
 1. 進入服務 `Beanstalk`，左側切換到頁籤 `Environments`，接著點擊 `Create environment` 建立新的環境。
 
+    ![](images/img_92.png)
+
 <br>
 
 2. 選擇 `Web Server Environment`。
