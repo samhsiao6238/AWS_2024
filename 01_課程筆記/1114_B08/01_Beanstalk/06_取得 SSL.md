@@ -125,11 +125,13 @@ _一定要完成上述步驟才會下載憑證_
 
 <br>
 
-2. 使用以下命令檢查生成的憑證。
+2. 使用以下命令檢查生成的憑證，內有一個子網域同名的資料夾。
 
     ```bash
     sudo ls /etc/letsencrypt/live/
     ```
+
+    ![](images/img_131.png)
 
 <br>
 
@@ -139,9 +141,11 @@ _一定要完成上述步驟才會下載憑證_
     sudo ls -l /etc/letsencrypt/live/linebot.samhsiao6238.online
     ```
 
+    ![](images/img_132.png)
+
 <br>
 
-4. 文件包含主憑證`cert.pem`、中間憑證 `chain.pem`、完整憑證鏈 `fullchain.pem`、私鑰 `privkey.pem`。
+4. 四個鏈接符號指向四個文件，包含主憑證 `cert.pem`、中間憑證 `chain.pem`、完整憑證鏈 `fullchain.pem`、私鑰 `privkey.pem`。
 
     ![](images/img_108.png)
 
