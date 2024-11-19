@@ -232,7 +232,7 @@ _確認這時候 `Health` 狀態是綠色 `OK`_
 
 <br>
 
-2. 在 `Listeners` 點擊 `Add listener`，`port` 設置為 `443`、`protocol` 設置為 `HTTPS`，完成後點擊 `Save`。
+2. 在 `Listeners` 點擊 `Add listener`，`port` 設置為 `443`、`protocol` 設置為 `HTTPS`，接著下拉選單中點擊 SSL 憑證，Policy 選擇 `2016-08`，完成後點擊 `Save`。
 
     ![](images/img_84.png)
 
