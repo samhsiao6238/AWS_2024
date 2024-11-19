@@ -36,6 +36,8 @@ _使用 `Learner Lab` 建立支持負載均衡的環境，步驟大致與之前�
 
 3. 任意命名如 `MyWSEnb1118`；主機名稱可命名 `mylinebot1118`。
 
+    ![](images/img_93.png)
+
 <br>
 
 4. Platform 一樣使用 `Python 3.9`。
