@@ -1,6 +1,6 @@
 # 本地建立 LineBot
 
-_可延續前一個步驟；特別注意，Webhook 必須使用 `https`，但是 Beanstalk 提供的網域是 `Http`。_
+_接下來嘗試部署 Linebot 到 Beanstalk，可延續前一個步驟的專案，或是建立新的專案；特別注意的是 Linebot 需要設定 Webhook，所以必須將 Beanstalk 的 `Http` 重新定向到  `https`。_
 
 <br>
 
