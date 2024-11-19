@@ -94,19 +94,25 @@ _使用 `Learner Lab` 建立支持負載均衡的環境，步驟大致與之前�
 
 <br>
 
-13. 接下來同樣會看到預設的 Python 路徑，點擊 `Next`。
+13. 接下來同樣會看到預設的 Python 路徑。
 
     ![](images/img_95.png)
 
 <br>
 
-14. 略作瀏覽後點擊 `Submit` 提交。
+14. 添加一個變數 `AWS_EXECUTION_ENV`，值可任意設定如 `True`，因為在邏輯中僅會檢查該 Key 是否存在，不會對值進行判斷；接著點擊 `Next`。
+
+    ![](images/img_124.png)
+
+<br>
+
+15. 略作瀏覽後點擊 `Submit` 提交。
 
     ![](images/img_71.png)
 
 <br>
 
-15. 完成後紀錄域名備用。
+16. 完成後紀錄域名備用。
 
     ![](images/img_79.png)
 
