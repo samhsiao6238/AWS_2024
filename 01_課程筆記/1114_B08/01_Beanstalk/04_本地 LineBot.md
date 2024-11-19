@@ -223,7 +223,7 @@ _基礎範例，使用以下代碼覆蓋原本內容即可_
 
 ## 複製密鑰
 
-1. 前往 Line Developer 複製相關憑證，細節暫略。
+1. 前往 Line Developer 複製兩個憑證 `Channel secret` 與 `Channel access token`，細節暫略。
 
 <br>
 
