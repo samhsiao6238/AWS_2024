@@ -1,12 +1,12 @@
 # 申請憑證
 
-_申請 Let's Encrypt 憑證導入 ACM_
+_申請 `Let's Encrypt` 憑證導入 ACM_
 
 <br>
 
 ## 安裝 Certbot
 
-_以下是在 MacOS 中操作，若在 Windows 操作則安裝適配的系統工具，程序大同小異。_
+_這是 `Let's Encrypt` 提供的 CLI 工具，以下是在 MacOS 中操作，若在 Windows 操作則安裝適配的系統工具，程序大同小異。_
 
 <br>
 
@@ -38,7 +38,7 @@ _以下是在 MacOS 中操作，若在 Windows 操作則安裝適配的系統工
 
 ## 生成憑證
 
-1. 接著使用指令生成憑證，參數 `--manual` 是手動驗證域名，`--preferred-challenges=dns` 選擇 DNS 驗證方式，`-d <自己的域名>` 替換為自己域名，若需保護多個域名，使用多個 `-d`。
+1. 接著 Certbot 申請憑證，參數 `--manual` 是手動驗證域名，`--preferred-challenges=dns` 選擇 DNS 驗證方式，`-d <自己的域名>` 替換為自己域名，若需保護多個域名，使用多個 `-d`。
 
     ```bash
     sudo certbot certonly --manual --preferred-challenges=dns -d linebot.samhsiao6238.online -d www.linebot.samhsiao6238.online
