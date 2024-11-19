@@ -148,6 +148,10 @@ _使用 GoDaddy_
 
 ## 申請 SSL 憑證
 
+_回到 AWS 主控台_
+
+<br>
+
 1. 搜尋並進入 `Certificate Manager`。
 
     ![](images/img_76.png)
