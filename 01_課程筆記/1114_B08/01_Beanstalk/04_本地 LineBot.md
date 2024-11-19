@@ -266,13 +266,13 @@ _先在本地進行測試，完成後才著手部署_
 
 <br>
 
-4. 寫入 `Webhook URL`。
+4. 寫入 `Webhook URL`，尾綴記得加入路由 `/callback`；點擊 `Update`。
 
     ![](images/img_53.png)
 
 <br>
 
-5. 進行  `Webhook` 驗證。
+5. 點擊 `Verify` 進行  `Webhook` 驗證。
 
     ![](images/img_54.png)
 
