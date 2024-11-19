@@ -214,11 +214,17 @@ _回到 AWS 主控台_
 
 <br>
 
-3. 返回 ACM 中等待驗證，通常需要幾分鐘甚至幾小時，取決於 DNS 的生效速度。
+3. 返回 ACM 中等待驗證，通常需要幾分鐘甚至幾小時，取決於 DNS 的生效速度；實測等到天荒地老也不會生效。
+
+    ![](images/img_118.png)
 
 <br>
 
 ## 回到 Beanstalk 環境
+
+_確認這時候 `Health` 狀態是綠色 `OK`_
+
+<br>
 
 1. 點擊 `Configuration`，在 `Instance traffic and scaling` 點擊 `Edit`。
 
