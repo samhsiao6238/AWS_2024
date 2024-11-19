@@ -72,21 +72,7 @@ _這是 `Let's Encrypt` 提供的 CLI 工具，以下是在 MacOS 中操作，�
 
 <br>
 
-6. 會連續提示兩次，特別注意這兩次是不同的紀錄，依照指示添加兩筆紀錄即可。
-
-    ![](images/img_126.png)
-
-<br>
-
-7. 正確完成時 `Name` 會自動轉換如下。
-
-    ![](images/img_127.png)
-
-<br>
-
-## 進行檢查
-
-1. 使用 `nslookup` 指令檢查是否正確配置。
+6. 儲存完成後先不要點擊 `ENTER`，開啟另一個終端機，先進行檢查是否已經玩可以解析網址。
 
     ```bash
     nslookup -type=TXT _acme-challenge.linebot.samhsiao6238.online
@@ -94,24 +80,52 @@ _這是 `Let's Encrypt` 提供的 CLI 工具，以下是在 MacOS 中操作，�
 
 <br>
 
-2. 顯示結果如下，表示 TXT 記錄已正確配置、DNS 記錄已生效。
+7. 確定顯示結果如下，表示 TXT 記錄已正確配置、DNS 記錄已生效，然後才點擊 `ENTER`。
 
     ![](images/img_106.png)
 
 <br>
 
-3. 根據 Certbot 的提示需要為 `_acme-challenge.www.linebot.samhsiao6238.online` 新增另一個 DNS TXT 記錄；Name `_acme-challenge.www.linebot.samhsiao6238.online.`、Value `GlYPnrhuXxd-VW54f_EXFTF3nTt-Oshwx7SwDgU72IQ`，
-保留上一個記錄勿刪除。
+
+8. 會連續提示兩次，特別注意這兩次是不同的紀錄，依照指示添加兩筆紀錄即可。
+
+    ![](images/img_126.png)
 
 <br>
 
-4. 按下 ENTER 之後會收到以下訊息，會顯示憑證路徑 `/etc/letsencrypt/live/linebot.samhsiao6238.online/fullchain.pem`，私鑰路徑 `/etc/letsencrypt/live/linebot.samhsiao6238.online/privkey.pem`。
+9. 再次進行檢查，第二次的網址是有 `www`。
+
+    ```bash
+    nslookup -type=TXT _acme-challenge.www.linebot.samhsiao6238.online
+    ```
+
+<br>
+
+10. 無論多少次，一定要確認通過後才可以點擊 `ENTER`。
+
+    ![](images/img_130.png)
+
+<br>
+
+11. 正確完成時 `Name` 會自動轉換如下。
+
+    ![](images/img_127.png)
+
+<br>
+
+## 下載檢查
+
+_一定要完成上述步驟才會下載憑證_
+
+<br>
+
+1. 按下 `ENTER` 之後會收到以下訊息，會顯示憑證路徑 `/etc/letsencrypt/live/linebot.samhsiao6238.online/fullchain.pem`，私鑰路徑 `/etc/letsencrypt/live/linebot.samhsiao6238.online/privkey.pem`。
 
     ![](images/img_107.png)
 
 <br>
 
-5. 使用以下命令檢查生成的憑證。
+2. 使用以下命令檢查生成的憑證。
 
     ```bash
     sudo ls /etc/letsencrypt/live/
@@ -119,7 +133,7 @@ _這是 `Let's Encrypt` 提供的 CLI 工具，以下是在 MacOS 中操作，�
 
 <br>
 
-6. 依據結果進一步查看。
+3. 依據結果進一步查看。
 
     ```bash
     sudo ls -l /etc/letsencrypt/live/linebot.samhsiao6238.online
@@ -127,7 +141,7 @@ _這是 `Let's Encrypt` 提供的 CLI 工具，以下是在 MacOS 中操作，�
 
 <br>
 
-7. 文件包含主憑證`cert.pem`、中間憑證 `chain.pem`、完整憑證鏈 `fullchain.pem`、私鑰 `privkey.pem`。
+4. 文件包含主憑證`cert.pem`、中間憑證 `chain.pem`、完整憑證鏈 `fullchain.pem`、私鑰 `privkey.pem`。
 
     ![](images/img_108.png)
 
