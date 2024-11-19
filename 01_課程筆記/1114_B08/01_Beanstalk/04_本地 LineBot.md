@@ -59,7 +59,7 @@ _假如重新建立專案，則從這裡開始，若沿用之前的專案，可�
 4. 使用指令在 Procfile 中寫入運行指令。
 
     ```bash
-    echo "web: gunicorn application:application" > Procfile
+    echo "web: gunicorn -w 3 -b :8000 application:app" > Procfile
     ```
 
 <br>
@@ -173,6 +173,12 @@ _基礎範例，使用以下代碼覆蓋原本內容即可_
         }), 200
 
 
+    # 添加一個 / 路由
+    @application.route('/')
+    def welcome():
+        return "Hello, Elastic Beanstalk!"
+
+
     if __name__ == "__main__":
         # 判斷端口，Beanstalk 環境使用環境變數 `PORT`，本地環境使用 5050
         port = int(os.getenv("PORT", 5050)) if is_beanstalk else 5050
@@ -197,6 +203,14 @@ _基礎範例，使用以下代碼覆蓋原本內容即可_
     ```json
     CHANNEL_ACCESS_TOKEN=
     CHANNEL_SECRET=
+    ```
+
+<br>
+
+4. `Procfile`，`-w 3` 指定 `Gunicorn` 使用 `3` 個 `worker` 進程來處理請求，可根據伺服器的 CPU 性能可調整，另外 `-b :8000` 指定 `Gunicorn` 綁定到伺服器的 `8000` 埠，Beanstalk 預設監聽此埠。
+
+    ```bash
+    web: gunicorn -w 3 -b :8000 application:app
     ```
 
 <br>
