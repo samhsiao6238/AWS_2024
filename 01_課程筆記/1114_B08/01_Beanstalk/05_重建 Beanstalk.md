@@ -208,7 +208,7 @@ _回到 AWS 主控台_
 
 <br>
 
-2. 同樣選擇 `CNAME`，接著貼上 `CNAME name` 及 `CNAME value`；完成後點擊 `Save`。
+2. 同樣選擇 `CNAME`，接著貼上 `CNAME name` 及 `CNAME value`，特別注意，這兩個值都有一個尾綴點 `.`，這不可省略；完成後點擊 `Save`。
 
     ![](images/img_91.png)
 
