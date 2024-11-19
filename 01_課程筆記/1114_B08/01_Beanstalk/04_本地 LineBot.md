@@ -234,21 +234,13 @@ _基礎範例，使用以下代碼覆蓋原本內容即可_
 
 <br>
 
-5. 運行腳本。
-
-    ```bash
-    python application.py
-    ```
-
-<br>
-
-6. 進行  `Webhook` 驗證。
+5. 進行  `Webhook` 驗證。
 
     ![](images/img_54.png)
 
 <br>
 
-7. 與 Linebot 對話測試。
+6. 與 Linebot 對話測試。
 
     ![](images/img_65.png)
 
