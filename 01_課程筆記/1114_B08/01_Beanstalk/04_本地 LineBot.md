@@ -171,7 +171,7 @@ _基礎範例，使用以下代碼覆蓋原本內容即可_
 
 <br>
 
-2. 修正 `requirements.txt` 內容如下。
+2. 查看 `requirements.txt` 內容，若見到如下內容代表已正確寫入。
 
     ```json
     Flask
