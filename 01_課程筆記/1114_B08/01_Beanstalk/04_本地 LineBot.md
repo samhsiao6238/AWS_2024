@@ -51,7 +51,7 @@ _假如重新建立專案，則從這裡開始，若沿用之前的專案，可�
 3. 使用指令在 requirements.txt 中寫入套件。
 
     ```bash
-    echo "Flask\ngunicorn\nline-bot-sdk==3.0.0" > requirements.txt
+    echo "Flask==2.3.2\ngunicorn==20.1.0\nline-bot-sdk==3.14.2" > requirements.txt
     ```
 
 <br>
@@ -183,9 +183,9 @@ _基礎範例，使用以下代碼覆蓋原本內容即可_
 2. 查看 `requirements.txt` 內容，若見到如下內容代表已正確寫入。
 
     ```json
-    Flask
-    gunicorn
-    line-bot-sdk==3.0.0
+    Flask==2.3.2
+    line-bot-sdk==3.14.2
+    gunicorn==20.1.0
     ```
 
 <br>
