@@ -129,6 +129,7 @@ _基礎範例，使用以下代碼覆蓋原本內容即可_
 
     # 初始化 Flask 應用
     application = Flask(__name__)
+
     configuration = Configuration(access_token=CHANNEL_ACCESS_TOKEN)
     handler = WebhookHandler(CHANNEL_SECRET)
 
