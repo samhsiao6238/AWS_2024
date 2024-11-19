@@ -266,8 +266,16 @@ _使用 GoDaddy_
     ```html
     http://linebot.samhsiao6238.online
     ```
-    
+
     ![](images/img_100.png)
+
+<br>
+
+## 查看 Log
+
+1. 切換到 `Logs` 頁籤，可查看近 `100` 條日誌，或點擊 `Full` 下載完整日誌。
+
+    ![](images/img_101.png)
 
 <br>
 
