@@ -6,6 +6,10 @@ _申請 Let's Encrypt 憑證導入 ACM_
 
 ## 安裝 Certbot
 
+_以下是在 MacOS 中操作，若在 Windows 操作則安裝適配的系統工具，程序大同小異。_
+
+<br>
+
 1. 如果尚未安裝 Homebrew，執行安裝命令。
 
     ```bash
