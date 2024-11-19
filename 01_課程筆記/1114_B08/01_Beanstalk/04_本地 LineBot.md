@@ -30,7 +30,7 @@ _假如重新建立專案，則從這裡開始，若沿用之前的專案，可�
 
 <br>
 
-1. 建立專案。
+1. 建立專案，使用名稱 `_linebot_`。
 
     ```python
     mkdir -p ~/Downloads/_linebot_ && cd ~/Downloads/_linebot_
