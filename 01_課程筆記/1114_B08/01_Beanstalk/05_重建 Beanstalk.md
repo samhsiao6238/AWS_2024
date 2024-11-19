@@ -234,7 +234,7 @@ _使用 GoDaddy_
 
 ## 回到環境清單
 
-1. 由於憑證未完成驗證，接下來就是ㄧ連串錯誤。
+1. 由於憑證未完成驗證，在這會顯示ㄧ連串錯誤。
 
     ![](images/img_97.png)
 
@@ -258,6 +258,12 @@ _使用 GoDaddy_
 用戶請求 `linebot.samhsiao6238.online` 時，DNS 會將流量重定向到 Beanstalk 的域名 `mylinebot1118.us-east-1.elasticbeanstalk.com`。
 
     ![](images/img_99.png)
+
+<br>
+
+5. 當 SSL 憑證的狀態是 `Pending Validation`，域名仍然無法通過 HTTPS 訪問，但此時訪問 `http://linebot.samhsiao6238.online` 會定向到 Beanstalk 的網域上；以下這是 Beanstalk 預設的內容。
+
+    ![](images/img_100.png)
 
 <br>
 
