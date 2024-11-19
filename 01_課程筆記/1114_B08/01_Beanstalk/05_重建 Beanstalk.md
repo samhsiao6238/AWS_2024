@@ -134,13 +134,13 @@ _使用 GoDaddy_
 
 <br>
 
-4. 添加新的紀錄。
+4. 點擊 `Add New Record` 添加新的紀錄。
 
     ![](images/img_87.png)
 
 <br>
 
-3. 使用新的子域名如 `linebot`，Value 寫入 Beanstalk 的網域 `mylinebot1118.us-east-1.elasticbeanstalk.com`；點擊 `Save` 儲存。
+3. 使用新的子域名如 `linebot`，Value 寫入 Beanstalk 的網域 `mylinebot1118.us-east-1.elasticbeanstalk.com`，TTL 可使用預設值，或設定為 `1 Hour`，這是解析器在緩存中保留一條記錄的時間長度；點擊 `Save` 儲存。
 
     ![](images/img_88.png)
 
