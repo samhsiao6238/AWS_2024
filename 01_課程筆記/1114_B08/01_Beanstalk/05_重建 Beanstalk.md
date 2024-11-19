@@ -279,10 +279,10 @@ _使用 GoDaddy_
 
 <br>
 
-2. 特別注意，若要設置 `Listerner`，必須先確認 SSL 認證已經完成。
+2. 特別注意，若要在 `Listerner` 添加 `443` 埠並啟用 `HTTPS`，必須確保已在 ACM 中建立或導入有效的 SSL 憑證，憑證必須覆蓋域名如 `linebot.samhsiao6238.online`。
 
 <br>
 
 ___
 
-_未完_
+_未完，延續下一個步驟_
