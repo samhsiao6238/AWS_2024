@@ -188,26 +188,25 @@ _使用 GoDaddy_
 
 <br>
 
-
-## 設置 GoDaddy
-
-1. 目前的狀態 `Pending validation` 表示憑證的申請已經提交，但尚未完成驗證，需要完成以下操作，才能讓狀態變為 `Issued`。
+8. 目前的狀態 `Pending validation` 表示憑證的申請已經提交，但尚未完成驗證，需要完成以下操作，才能讓狀態變為 `Issued`。
 
     ![](images/img_89.png)
 
 <br>
 
-2. 回到 GoDaddy，添加一條紀錄，貼上 `CNAME name` 及 `CNAME value`；完成後點擊 `Save`。
+## 設置 GoDaddy
+
+1. 回到 GoDaddy，添加一條紀錄，貼上 `CNAME name` 及 `CNAME value`；完成後點擊 `Save`。
 
     ![](images/img_91.png)
 
 <br>
 
-3. 返回 ACM 中等待驗證，通常需要幾分鐘甚至幾小時，取決於 DNS 的生效速度。
+2. 返回 ACM 中等待驗證，通常需要幾分鐘甚至幾小時，取決於 DNS 的生效速度。
 
 <br>
 
-4. 使用指令查詢。
+3. 使用指令查詢。
 
     ```bash
     dig <CNAME-的-NAME>.linebot.samhsiao6238.online CNAME
