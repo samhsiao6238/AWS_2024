@@ -84,7 +84,7 @@ _這是 `Let's Encrypt` 提供的 CLI 工具，以下是在 MacOS 中操作，�
 
 ## 進行檢查
 
-1. 使用以下命令檢查是否正確配置。
+1. 使用 `nslookup` 指令檢查是否正確配置。
 
     ```bash
     nslookup -type=TXT _acme-challenge.linebot.samhsiao6238.online
