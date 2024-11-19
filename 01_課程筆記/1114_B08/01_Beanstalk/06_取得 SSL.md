@@ -182,34 +182,6 @@ _使用 CLI 導入憑證到 ACM_
 
 <br>
 
-## 配置 Load Balancer
-
-1. 新增 HTTPS Listener，點擊 Save；接著點擊 `Apply`。
-
-    ![](images/img_111.png)
-
-<br>
-
-2. 測試 HTTPS 訪問。
-
-    ![](images/img_112.png)
-
-<br>
-
-## 設置 Linebot webhook
-
-1. 可使用自己註冊的網域。
-
-    ![](images/img_113.png)
-
-<br>
-
-2. 確認成功。
-
-    ![](images/img_114.png)
-
-<br>
-
 ## 憑證效期
 
 _特別注意 `Let's Encrypt` 憑證有效期為 `90` 天_
