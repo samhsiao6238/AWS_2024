@@ -78,7 +78,7 @@ _基礎範例，使用以下代碼覆蓋原本內容即可_
 
 <br>
 
-1. `application.py`。
+1. `application.py`，這是主腳本。
 
     ```python
     import os
@@ -213,7 +213,7 @@ _基礎範例，使用以下代碼覆蓋原本內容即可_
 
 <br>
 
-4. `Procfile`，`-w 3` 指定 `Gunicorn` 使用 `3` 個 `worker` 進程來處理請求，可根據伺服器的 CPU 性能可調整，另外 `-b :8000` 指定 `Gunicorn` 綁定到伺服器的 `8000` 埠，Beanstalk 預設監聽此埠。
+4. `Procfile` 文件，用於在告知服務器如何啟動應用程式的進程；參數部分，`-w 3` 指定 `Gunicorn` 使用 `3` 個 `worker` 進程來處理請求，可根據伺服器的 CPU 性能可調整，另外 `-b :8000` 指定 `Gunicorn` 綁定到伺服器的 `8000` 埠，Beanstalk 預設監聽此埠。
 
     ```bash
     web: gunicorn -w 3 -b :8000 application:application
