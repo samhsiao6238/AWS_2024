@@ -38,7 +38,7 @@ _這是 `Let's Encrypt` 提供的 CLI 工具，以下是在 MacOS 中操作，�
 
 ## 生成憑證
 
-1. 接著 Certbot 申請憑證，參數 `--manual` 是手動驗證域名，`--preferred-challenges=dns` 選擇 DNS 驗證方式，`-d <自己的域名>` 替換為自己域名，若需保護多個域名，使用多個 `-d`。
+1. 接著 Certbot 申請憑證，參數 `certonly` 表示只申請憑證，不會自動安裝到伺服器；`--manual` 是手動模式，Certbot 會要求用戶自行進行 DNS 設定來完成域名所有權的驗證；`--preferred-challenges=dns` 指定使用 DNS TXT 記錄驗證域名所有權；`-d` 指定要申請憑證的域名，這裡涵蓋主域名與子域名，憑證將同時覆蓋這兩個域名。
 
     ```bash
     sudo certbot certonly --manual --preferred-challenges=dns -d linebot.samhsiao6238.online -d www.linebot.samhsiao6238.online
