@@ -181,7 +181,7 @@ _基礎範例，使用以下代碼覆蓋原本內容即可_
 
 <br>
 
-3. 修改 `.env`，添加兩個 Linebot 密鑰。
+3. `.env` 文件中包含兩個 Linebot 密鑰的 Key。
 
     ```json
     CHANNEL_ACCESS_TOKEN=
@@ -190,7 +190,13 @@ _基礎範例，使用以下代碼覆蓋原本內容即可_
 
 <br>
 
-4. 在 Line Developer 中複製這兩個變數。
+## 複製密鑰
+
+1. 前往 Line Developer 複製相關憑證，細節暫略。
+
+<br>
+
+2. 將這兩個憑證的值貼到 `.env`。
 
     ![](images/img_63.png)
 
