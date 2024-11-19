@@ -197,17 +197,17 @@ _使用 GoDaddy_
 
 <br>
 
-3. 回到 GoDaddy，添加一條紀錄，貼上 `CNAME name` 及 `CNAME value`；完成後點擊 `Save`。
+2. 回到 GoDaddy，添加一條紀錄，貼上 `CNAME name` 及 `CNAME value`；完成後點擊 `Save`。
 
     ![](images/img_91.png)
 
 <br>
 
-4. 返回 ACM 中等待驗證，通常需要幾分鐘甚至幾小時，取決於 DNS 的生效速度。
+3. 返回 ACM 中等待驗證，通常需要幾分鐘甚至幾小時，取決於 DNS 的生效速度。
 
 <br>
 
-5. 使用指令查詢。
+4. 使用指令查詢。
 
     ```bash
     dig <CNAME-的-NAME>.linebot.samhsiao6238.online CNAME
