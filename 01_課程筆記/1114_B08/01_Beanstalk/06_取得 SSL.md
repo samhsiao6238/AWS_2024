@@ -179,6 +179,8 @@ _使用主控台_
     sudo cat /etc/letsencrypt/live/linebot.samhsiao6238.online/fullchain.pem
     ```
 
+    ![](images/img_134.png)
+
 <br>
 
 3. 查詢 `privkey.pem` 並貼在 `Certificate private key`。
@@ -204,6 +206,38 @@ _使用主控台_
 6. 完成。
 
     ![](images/img_110.png)
+
+<br>
+
+## 設置 HTTPS
+
+1. 再次前往。
+
+    ![](images/img_135.png)
+
+<br>
+
+2. 點擊 `Add listener`。
+
+    ![](images/img_136.png)
+
+<br>
+
+3. 設置相同，不贅述。
+
+    ![](images/img_137.png)
+
+<br>
+
+4. 最重要的記得點擊右下角 `Apply`。
+
+    ![](images/img_138.png)
+
+<br>
+
+5. 完成後訪問 HTTPS。
+
+    ![](images/img_139.png)
 
 <br>
 
