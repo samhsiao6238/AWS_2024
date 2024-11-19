@@ -48,7 +48,7 @@ _假如重新建立專案，則從這裡開始，若沿用之前的專案，可�
 
 <br>
 
-3. 使用指令在 requirements.txt 中寫入套件。
+3. 使用指令在 `requirements.txt` 文件中寫入套件。
 
     ```bash
     echo "Flask==2.3.2\ngunicorn==20.1.0\nline-bot-sdk==3.14.2" > requirements.txt
@@ -56,7 +56,7 @@ _假如重新建立專案，則從這裡開始，若沿用之前的專案，可�
 
 <br>
 
-4. 使用指令在 Procfile 中寫入運行指令。
+4. 使用指令在 `Procfile` 文件中寫入運行指令。
 
     ```bash
     echo "web: gunicorn -w 3 -b :8000 application:application" > Procfile
@@ -64,7 +64,7 @@ _假如重新建立專案，則從這裡開始，若沿用之前的專案，可�
 
 <br>
 
-5. 在 .env，添加兩個 Linebot 密鑰。
+5. 在 `.env` 文件中添加兩個 Linebot 憑證密鑰。
 
     ```bash
     echo "CHANNEL_ACCESS_TOKEN=\nCHANNEL_SECRET=" > .env
