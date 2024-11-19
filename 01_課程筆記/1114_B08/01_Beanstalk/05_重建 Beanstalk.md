@@ -42,6 +42,8 @@ _使用 `Learner Lab` 建立支持負載均衡的環境，步驟大致與之前�
 
 4. Platform 一樣使用 `Python 3.9`。
 
+    ![](images/img_117.png)
+
 <br>
 
 5. 在 `Presets ` 選擇 `High availability` 模式，這樣可以直接啟用 `Application Load Balancer`；若使用個人帳號，可選用 Single instance 來避免不必要的費用。
