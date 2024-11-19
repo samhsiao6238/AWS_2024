@@ -94,7 +94,7 @@ _使用 `Learner Lab` 建立支持負載均衡的環境，步驟大致與之前�
 
 <br>
 
-13. 接下來同樣會看到預設的 Python 路徑。
+13. 在 `Configure updates, monitoring, and logging` 頁面滑動到最下方，會看到預設的 Python 路徑。
 
     ![](images/img_95.png)
 
