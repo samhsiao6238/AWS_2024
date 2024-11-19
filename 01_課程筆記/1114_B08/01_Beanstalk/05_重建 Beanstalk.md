@@ -154,7 +154,7 @@ _使用 GoDaddy_
 
 <br>
 
-2. 點擊 `Request a certificate`。
+2. 在 `List certificates` 中點擊右側 `Request`。
 
     ![](images/img_77.png)
 
@@ -182,17 +182,18 @@ _使用 GoDaddy_
 
 <br>
 
+7. 完成後，在 `Domains` 區塊會顯示 `CNAME name` 及 `CNAME value`，稍後步驟還會用到。
+
+    ![](images/img_90.png)
+
+<br>
+
+
 ## 設置 GoDaddy
 
 1. 目前的狀態 `Pending validation` 表示憑證的申請已經提交，但尚未完成驗證，需要完成以下操作，才能讓狀態變為 `Issued`。
 
     ![](images/img_89.png)
-
-<br>
-
-2. 在 `Domains` 區塊會顯示 `CNAME name` 及 `CNAME value`。
-
-    ![](images/img_90.png)
 
 <br>
 
