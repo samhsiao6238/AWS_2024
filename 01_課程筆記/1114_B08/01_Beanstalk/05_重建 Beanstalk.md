@@ -50,7 +50,7 @@ _使用 `Learner Lab` 建立支持負載均衡的環境，步驟大致與之前�
 
 <br>
 
-6. 在 `Configure service access` 與之前相同，選擇三個 Lab 準備好的實例。
+6. 在 `Configure service access` 與之前相同，選擇三個 Lab 準備好的實例；然後點擊 `Next`。
 
     ![](images/img_69.png)
 
