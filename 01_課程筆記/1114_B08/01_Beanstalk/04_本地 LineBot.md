@@ -40,7 +40,7 @@ _假如重新建立專案，則從這裡開始，若沿用之前的專案，可�
 
 <br>
 
-2. 在 .gitignore 中寫入 .env 避免上傳敏感資訊。
+2. 繼續使用終端機指令，在 `.gitignore` 文件中寫入 `.env`，用以避免上傳敏感資訊。
 
     ```bash
     echo ".env" > .gitignore
