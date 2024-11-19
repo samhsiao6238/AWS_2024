@@ -56,7 +56,9 @@ _使用 `Learner Lab` 建立支持負載均衡的環境，步驟大致與之前�
 
 <br>
 
-7. 在 `Set up networking, database, and tags`，特別注意開啟 `Public IP address`。
+7. 在 `Set up networking, database, and tags`，先從下拉選單選取 Lab 預設好的 VPC，接著勾選並開啟 `Public IP address`。
+
+    ![](images/img_94.png)
 
 <br>
 
