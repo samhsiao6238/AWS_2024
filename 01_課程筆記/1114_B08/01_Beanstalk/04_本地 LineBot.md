@@ -30,7 +30,7 @@ _假如重新建立專案，則從這裡開始，若沿用之前的專案，可�
 
 <br>
 
-1. 建立專案，使用名稱 `_linebot_`。
+1. 建立專案，可自訂名稱如 `_linebot_`，然後開啟 VSCode。
 
     ```python
     mkdir -p ~/Downloads/_linebot_ && cd ~/Downloads/_linebot_
