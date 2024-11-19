@@ -151,6 +151,16 @@ _一定要完成上述步驟才會下載憑證_
 
 <br>
 
+5. 實際位置在 `/etc/letsencrypt/archive/linebot4.samhsiao6238.online`。
+
+    ```bash
+    sudo ls -l /etc/letsencrypt/archive/linebot4.samhsiao6238.online 
+    ```
+
+    ![](images/img_133.png)
+
+<br>
+
 ## 導入憑證到 ACM
 
 _使用主控台_
