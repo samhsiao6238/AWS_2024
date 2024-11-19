@@ -32,11 +32,13 @@ _以下是在 MacOS 中操作，若在 Windows 操作則安裝適配的系統工
     certbot --version
     ```
 
+    ![](images/img_119.png)
+
 <br>
 
 ## 生成憑證
 
-1. 在 MacOS 上，需要使用 DNS 驗證，使用以下命令生成憑證。
+1. 接著使用指令生成憑證，參數 `--manual` 是手動驗證域名，`--preferred-challenges=dns` 選擇 DNS 驗證方式，`-d <自己的域名>` 替換為自己域名，若需保護多個域名，使用多個 `-d`。
 
     ```bash
     sudo certbot certonly --manual --preferred-challenges=dns -d linebot.samhsiao6238.online -d www.linebot.samhsiao6238.online
@@ -46,33 +48,29 @@ _以下是在 MacOS 中操作，若在 Windows 操作則安裝適配的系統工
 
 <br>
 
-2. 參數 `--manual` 是手動驗證域名，`--preferred-challenges=dns` 選擇 DNS 驗證方式，`-d <自己的域名>` 替換為自己域名，若需保護多個域名，使用多個 `-d`。
-
-<br>
-
-3. 輸入一個有效的電子郵件信箱。
+2. 輸入一個有效的電子郵件信箱。
 
     ![](images/img_103.png)
 
 <br>
 
-4. 先點擊兩次 `Y`。
+3. 先點擊兩次 `Y`。
 
 <br>
 
-5. 按照提示進行 DNS 驗證，登入 DNS 管理平台，這裡使用 `GoDaddy`，添加 `TXT` 記錄，`Name` 為 `_acme-XXXXXXX.XXXXXXX.samhsiao6238.online.`，`Value` 為 `ziVuXXXXXXXXXXXXXXXXXxNwyKdIPsvIhfUQT43o`。
+4. 按照提示進行 DNS 驗證，登入 DNS 管理平台，這裡使用 `GoDaddy`，添加 `TXT` 記錄，`Name` 為 `_acme-XXXXXXX.XXXXXXX.samhsiao6238.online.`，`Value` 為 `ziVuXXXXXXXXXXXXXXXXXxNwyKdIPsvIhfUQT43o`。
 
     ![](images/img_104.png)
 
 <br>
 
-6. 完成配置顯示如下。
+5. 完成配置顯示如下。
 
     ![](images/img_105.png)
 
 <br>
 
-7. 可以使用以下命令檢查是否正確配置。
+6. 可以使用以下命令檢查是否正確配置。
 
     ```bash
     nslookup -type=TXT _acme-challenge.linebot.samhsiao6238.online
@@ -80,24 +78,24 @@ _以下是在 MacOS 中操作，若在 Windows 操作則安裝適配的系統工
 
 <br>
 
-8. 顯示結果如下，表示 TXT 記錄已正確配置、DNS 記錄已生效。
+7. 顯示結果如下，表示 TXT 記錄已正確配置、DNS 記錄已生效。
 
     ![](images/img_106.png)
 
 <br>
 
-9. 根據 Certbot 的提示需要為 `_acme-challenge.www.linebot.samhsiao6238.online` 新增另一個 DNS TXT 記錄；Name `_acme-challenge.www.linebot.samhsiao6238.online.`、Value `GlYPnrhuXxd-VW54f_EXFTF3nTt-Oshwx7SwDgU72IQ`，
+8. 根據 Certbot 的提示需要為 `_acme-challenge.www.linebot.samhsiao6238.online` 新增另一個 DNS TXT 記錄；Name `_acme-challenge.www.linebot.samhsiao6238.online.`、Value `GlYPnrhuXxd-VW54f_EXFTF3nTt-Oshwx7SwDgU72IQ`，
 保留上一個記錄勿刪除。
 
 <br>
 
-10. 按下 ENTER 之後會收到以下訊息，會顯示憑證路徑 `/etc/letsencrypt/live/linebot.samhsiao6238.online/fullchain.pem`，私鑰路徑 `/etc/letsencrypt/live/linebot.samhsiao6238.online/privkey.pem`。
+9. 按下 ENTER 之後會收到以下訊息，會顯示憑證路徑 `/etc/letsencrypt/live/linebot.samhsiao6238.online/fullchain.pem`，私鑰路徑 `/etc/letsencrypt/live/linebot.samhsiao6238.online/privkey.pem`。
 
     ![](images/img_107.png)
 
 <br>
 
-11. 使用以下命令檢查生成的憑證。
+10. 使用以下命令檢查生成的憑證。
 
     ```bash
     sudo ls /etc/letsencrypt/live/
@@ -105,7 +103,7 @@ _以下是在 MacOS 中操作，若在 Windows 操作則安裝適配的系統工
 
 <br>
 
-12. 依據結果進一步查看。
+11. 依據結果進一步查看。
 
     ```bash
     sudo ls -l /etc/letsencrypt/live/linebot.samhsiao6238.online
@@ -113,7 +111,7 @@ _以下是在 MacOS 中操作，若在 Windows 操作則安裝適配的系統工
 
 <br>
 
-13. 文件包含主憑證`cert.pem`、中間憑證 `chain.pem`、完整憑證鏈 `fullchain.pem`、私鑰 `privkey.pem`。
+12. 文件包含主憑證`cert.pem`、中間憑證 `chain.pem`、完整憑證鏈 `fullchain.pem`、私鑰 `privkey.pem`。
 
     ![](images/img_108.png)
 
