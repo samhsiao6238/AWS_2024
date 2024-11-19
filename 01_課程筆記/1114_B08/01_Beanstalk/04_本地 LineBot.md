@@ -272,13 +272,13 @@ _先在本地進行測試，完成後才著手部署_
 
 <br>
 
-5. 點擊 `Verify` 進行  `Webhook` 驗證。
+5. 點擊 `Verify` 進行  `Webhook` 驗證；顯示 `Success` 代表成功。
 
     ![](images/img_54.png)
 
 <br>
 
-6. 與 Linebot 對話測試。
+6. 開啟 Line 應用與指定的 Linebot 對話測試。
 
     ![](images/img_65.png)
 
