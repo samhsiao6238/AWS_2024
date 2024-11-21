@@ -349,11 +349,11 @@ _監聽的來源與寫入的目標_
 
 <br>
 
-8. 在 `mysource1121` 中寫入一個測試的 `.txt` 文件。
+## 進行測試
+
+1. 在 `mysource1121` 中寫入一個測試的 `.txt` 文件。
 
     ```python
-    import boto3
-
     s3 = boto3.client('s3')
 
     source_bucket_name = 'mysource1121'
@@ -370,7 +370,7 @@ _監聽的來源與寫入的目標_
 
 <br>
 
-9. 查詢 `mytarget1121` 的內容，是否將文件寫入。 
+2. 查詢 `mytarget1121` 的內容，是否將文件寫入。 
 
     ```python
     response = s3_client.list_objects_v2(Bucket='mytarget1121')
@@ -386,11 +386,9 @@ _監聽的來源與寫入的目標_
 
 ## 刪除資源
 
-1. 完整腳本。
+1. 完成以上測試後，進行環境清理，恢復原狀。
 
     ```python
-    import boto3
-
     # 初始化 S3 和 Lambda 客戶端
     s3_client = boto3.client('s3', region_name='us-east-1')
     lambda_client = boto3.client('lambda', region_name='us-east-1')
@@ -407,20 +405,26 @@ _監聽的來源與寫入的目標_
             objects = s3_client.list_objects_v2(Bucket=bucket_name)
             if 'Contents' in objects:
                 for obj in objects['Contents']:
-                    print(f"Deleting object: {obj['Key']} from bucket: {bucket_name}")
-                    s3_client.delete_object(Bucket=bucket_name, Key=obj['Key'])
+                    print(
+                        f"Deleting object: {obj['Key']} "
+                        f"from bucket: {bucket_name}")
+                    s3_client.delete_object(Bucket=bucket_name, Key=obj['Key']
+                    )
             
             # 刪除多部分上傳的暫存文件（如果存在）
             multipart_uploads = s3_client.list_multipart_uploads(Bucket=bucket_name)
             if 'Uploads' in multipart_uploads:
                 for upload in multipart_uploads['Uploads']:
-                    print(f"Aborting multipart upload: {upload['UploadId']} in bucket: {bucket_name}")
+                    print(
+                        f"Aborting multipart upload: {upload['UploadId']} "
+                        f"in bucket: {bucket_name}"
+                    )
                     s3_client.abort_multipart_upload(
                         Bucket=bucket_name,
                         Key=upload['Key'],
                         UploadId=upload['UploadId']
                     )
-            
+
             print(f"All objects cleared from bucket: {bucket_name}")
         except Exception as e:
             print(f"Error clearing bucket {bucket_name}: {e}")
@@ -460,11 +464,9 @@ _監聽的來源與寫入的目標_
 
 <br>
 
-2. 若是刪除指定的 Function。
+2. 若是要刪除指定的 Function。
 
     ```python
-    import boto3
-
     # 初始化 Lambda 客戶端
     lambda_client = boto3.client('lambda', region_name='us-east-1')
 
@@ -476,7 +478,10 @@ _監聽的來源與寫入的目標_
         try:
             # 調用 Lambda Delete Function API
             lambda_client.delete_function(FunctionName=function_name)
-            print(f"Lambda function '{function_name}' deleted successfully.")
+            print(
+                f"Lambda function '{function_name}' "
+                "deleted successfully."
+            )
         except Exception as e:
             print(f"Error deleting Lambda function '{function_name}': {e}")
 
