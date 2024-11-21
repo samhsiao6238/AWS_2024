@@ -37,7 +37,7 @@ if not is_beanstalk:
             "以便在本地測試時載入環境變數。"
         ) from e
 
-# 獲取環境變數
+# 取得環境變數
 CHANNEL_ACCESS_TOKEN = os.getenv("CHANNEL_ACCESS_TOKEN")
 CHANNEL_SECRET = os.getenv("CHANNEL_SECRET")
 

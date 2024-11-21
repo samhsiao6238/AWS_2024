@@ -84,14 +84,14 @@ _這個練習在 Jupyter Notebook 中運行，所有授權工作僅針對筆記�
             # 初始化 STS 客戶端
             sts_client = boto3.client('sts')
             
-            # 獲取當前身份的資訊
+            # 取得當前身份的資訊
             response = sts_client.get_caller_identity()
             
             # 輸出帳號 ID 和使用者 ARN
             print("Account ID:", response['Account'])
             print("User ARN:", response['Arn'])
         except Exception as e:
-            print("無法獲取帳號資訊，錯誤原因：", e)
+            print("無法取得帳號資訊，錯誤原因：", e)
 
     if __name__ == "__main__":
         get_account_id()
@@ -99,30 +99,30 @@ _這個練習在 Jupyter Notebook 中運行，所有授權工作僅針對筆記�
 
 <br>
 
-## 編輯專案
+## 建立 Function
 
 _使用 SDK 逐步進行_
 
 <br>
 
-1. 在 Lambda 建立一個 Function。
+1. 在 `Lambda` 中建立一個 `Function`；以下將使用 Lab 所提供的角色 `LabRole`。
 
     ```python
-    import boto3
     import zipfile
-    import os
 
     # 初始化 IAM 和 Lambda 客戶端
     iam_client = boto3.client('iam')
-    lambda_client = boto3.client('lambda', region_name='us-east-1')
+    lambda_client = boto3.client(
+        'lambda', region_name='us-east-1'
+    )
 
-    # 獲取 LabRole 的 ARN
+    # 取得 LabRole 的 ARN
     role_name = "LabRole"
     response = iam_client.get_role(RoleName=role_name)
     role_arn = response['Role']['Arn']
     print(f"LabRole ARN: {role_arn}")
 
-    # 創建有效的 ZIP 文件，包含一個占位符 Lambda 函數
+    # 建立有效的 ZIP 文件，包含一個占位符 Lambda 函數
     with open("lambda_function.py", "w") as f:
         f.write("# Placeholder Lambda function\n")
         f.write("def lambda_handler(event, context):\n")
@@ -143,7 +143,7 @@ _使用 SDK 逐步進行_
     runtime = 'python3.9'
     handler = 'lambda_function.lambda_handler'
 
-    # 創建 Lambda Function，使用有效的 ZIP 文件
+    # 建立 Lambda Function
     response = lambda_client.create_function(
         FunctionName=function_name,
         Runtime=runtime,
@@ -166,7 +166,9 @@ _使用 SDK 逐步進行_
 
 <br>
 
-2. 寫入 Python 腳本，其中來源與目的 Bucket 的命名分別是 `mysource1121` 及 `mytarget1121`，這裡先展示代碼內容。
+## 編輯並上傳 Python 代碼
+
+1. 先開啟任意文件進行腳本編輯，其中指定兩個 Bucket 作為後續邏輯所需的來源與目的 Bucket，分別命名為 `mysource1121` 及 `mytarget1121`。
 
     ```python
     import datetime
@@ -194,7 +196,7 @@ _使用 SDK 逐步進行_
 
 <br>
 
-3. 生成一個壓縮檔 `new_lambda_function.zip`，其中包含指定的 `Lambda Function` 邏輯。
+2. 使用以上的代碼生成一個壓縮檔 `new_lambda_function.zip`，這將作為指定的 `Lambda Function` 邏輯。
 
     ```python
     import zipfile
@@ -237,18 +239,18 @@ _使用 SDK 逐步進行_
 
 <br>
 
-4. 更新 Lambda Function。
+3. 更新 Lambda Function。
 
     ```python
-    import boto3
-
     # 初始化 Lambda 客戶端
-    lambda_client = boto3.client('lambda', region_name='us-east-1')
+    lambda_client = boto3.client(
+        'lambda', region_name='us-east-1'
+    )
 
-    # Lambda Function 名稱
+    # 指定 Function 名稱
     function_name = 'myfunction112102'
 
-    # 讀取壓縮檔案內容
+    # 讀取壓縮檔案
     with open(zip_file_name, "rb") as f:
         zip_file_content = f.read()
 
@@ -263,11 +265,15 @@ _使用 SDK 逐步進行_
 
 <br>
 
-5. 建立這兩個 Bucket。
+## 建立 Bucket
+
+_監聽的來源與寫入的目標_
+
+<br>
+
+1. 建立這兩個 Bucket。
 
     ```python
-    import boto3
-
     # 初始化 S3 客戶端
     s3 = boto3.client('s3', region_name='us-east-1')
 
@@ -275,22 +281,21 @@ _使用 SDK 逐步進行_
     source_bucket_name = 'mysource1121'
     target_bucket_name = 'mytarget1121'
 
-    # 創建來源 Bucket（us-east-1 不需要指定 LocationConstraint）
+    # 建立來源 Bucket
+    # us-east-1 不需要指定 LocationConstraint
     s3.create_bucket(Bucket=source_bucket_name)
     print(f"Bucket {source_bucket_name} created.")
 
-    # 創建目標 Bucket（us-east-1 不需要指定 LocationConstraint）
+    # 建立目標 Bucket
     s3.create_bucket(Bucket=target_bucket_name)
     print(f"Bucket {target_bucket_name} created.")
     ```
 
 <br>
 
-6. 確保 S3 獲得調用 Lambda 的權限。
+2. 確保 S3 取得調用 Lambda 的權限。
 
     ```python
-    import boto3
-
     # 初始化 Lambda 客戶端
     lambda_client = boto3.client('lambda', region_name='us-east-1')
 
@@ -298,7 +303,7 @@ _使用 SDK 逐步進行_
     function_name = 'myfunction112102'
     source_bucket_name = 'mysource1121'
 
-    # 獲取 Lambda ARN
+    # 取得 Lambda ARN
     lambda_response = lambda_client.get_function(FunctionName=function_name)
     lambda_arn = lambda_response['Configuration']['FunctionArn']
 
@@ -329,13 +334,17 @@ _使用 SDK 逐步進行_
             'LambdaFunctionConfigurations': [
                 {
                     'LambdaFunctionArn': lambda_arn,
-                    'Events': ['s3:ObjectCreated:*']  # 監聽寫入事件
+                    # 監聽寫入事件
+                    'Events': ['s3:ObjectCreated:*']
                 }
             ]
         }
     )
 
-    print(f"S3 event notification configured for bucket {source_bucket_name} to trigger Lambda {function_name}.")
+    print(
+        f"S3 event notification configured for bucket {source_bucket_name} "
+        f"to trigger Lambda {function_name}."
+    )
     ```
 
 <br>

@@ -119,7 +119,7 @@ _基礎範例，使用以下代碼覆蓋原本內容即可_
                 "以便在本地測試時載入環境變數。"
             ) from e
 
-    # 獲取環境變數
+    # 取得環境變數
     CHANNEL_ACCESS_TOKEN = os.getenv("CHANNEL_ACCESS_TOKEN")
     CHANNEL_SECRET = os.getenv("CHANNEL_SECRET")
 
