@@ -101,6 +101,10 @@ _這個練習在 Jupyter Notebook 中運行，所有授權工作僅針對筆記�
 
 ## 編輯專案
 
+_使用 SDK 逐步進行_
+
+<br>
+
 1. 在 Lambda 建立一個 Function。
 
     ```python
