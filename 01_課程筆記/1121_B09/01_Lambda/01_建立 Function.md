@@ -483,11 +483,16 @@ _監聽的來源與寫入的目標_
                 "deleted successfully."
             )
         except Exception as e:
-            print(f"Error deleting Lambda function '{function_name}': {e}")
+            print(
+                f"Error deleting Lambda function "
+                f"'{function_name}': {e}"
+            )
 
     # 主程序
     if __name__ == "__main__":
-        print(f"Attempting to delete Lambda function: {function_name}")
+        print(
+            f"Attempting to delete Lambda function: {function_name}"
+        )
         delete_lambda_function(function_name)
     ```
 
