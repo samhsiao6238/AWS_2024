@@ -1,4 +1,4 @@
-# 基本介紹
+# 建立 Function
 
 _使用 Lambda 對指定 bucket 進行監聽，並將變動寫入另一個指定的 Bucket_
 
@@ -6,7 +6,7 @@ _使用 Lambda 對指定 bucket 進行監聽，並將變動寫入另一個指定
 
 ## 準備工作
 
-1. 建立專案。
+1. 建立專案資料夾；這裡建立在下載資料夾中，命名為 `_test_`。
 
     ```bash
     mkdir -p ~/Downloads/_test_
@@ -15,10 +15,11 @@ _使用 Lambda 對指定 bucket 進行監聽，並將變動寫入另一個指定
 
 <br>
 
-2. 建立必要文件。
+2. 建立專案必要文件；除 `.gitignore` 文件中寫入 `.env` 外，其餘空白。
 
     ```bash
     touch .env .gitignore application.ipynb
+    echo ".env" > .gitignore
     code .
     ```
 
