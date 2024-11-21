@@ -27,7 +27,13 @@ _使用 Lambda 對指定 bucket 進行監聽，並將變動寫入另一個指定
 
 ## 建立憑證
 
-1. 建立 AWS SDK 環境，編輯 `.env` 文件，並填入 AWS Details 提供的憑證。
+_這個練習在 Jupyter Notebook 中運行，所有授權工作僅針對筆記本的開發環境_
+
+<br>
+
+1. 建立 AWS SDK 環境，編輯 `.env` 文件，複製並貼上 `AWS Details` 中提供的憑證。
+
+    ![](images/img_02.png)
 
 <br>
 
@@ -42,14 +48,14 @@ _使用 Lambda 對指定 bucket 進行監聽，並將變動寫入另一個指定
 
 <br>
 
-3. 建立環境變數。
+3. 在 `application.ipynb` 腳本中添加新的 Cell，運行以下代碼建立環境變數；以下每段代碼接使用新的 Cell 運行，不再贅述。
 
     ```python
     import os
     import boto3
     from dotenv import load_dotenv
 
-    # 載入 .env 文件中的環境變數
+    # 載入環境變數
     load_dotenv()
 
     def check_credentials():
@@ -65,9 +71,11 @@ _使用 Lambda 對指定 bucket 進行監聽，並將變動寫入另一個指定
         check_credentials()
     ```
 
+    ![](images/img_03.png)
+
 <br>
 
-4. 在新的 CELL 中運行以下代碼，這會取得當前使用這身份；同樣的，務必確認該身份與 Lab 主控台中顯示相同。
+4. 運行以下代碼取得當前使用這身份；同樣的，務必確認該身份與 Lab 主控台中顯示相同。
 
     ```python
     # 自訂義函數
