@@ -50,7 +50,9 @@ _接下來建立一個新的觸發事件，監聽指定的 DynamoDB_
                 'WriteCapacityUnits': 5
             },
             StreamSpecification={
+                # 啟用流功能
                 'StreamEnabled': True,
+                # 設定流的視圖類型為 `同時記錄變更前和變更後的完整數據項`
                 'StreamViewType': 'NEW_AND_OLD_IMAGES'
             }
         )
