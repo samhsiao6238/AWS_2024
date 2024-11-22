@@ -287,34 +287,40 @@ _與之前步驟相同，先在本地進行編輯，然後上傳覆蓋當前的 
 
 5. 使用以下程式碼插入一些測試數據到 DynamoDB 表；使用 `boto3.resource` 提供的物件接口 `.Table()` 訪問表對象。
 
-```python
-dynamodb = boto3.resource('dynamodb')
+    ```python
+    dynamodb = boto3.resource('dynamodb')
 
-# 定義表名稱
-table_name = 'MyDynamoDBTable'
+    # 定義表名稱
+    table_name = 'MyDynamoDBTable'
 
-# 獲取表對象並插入數據
-table = dynamodb.Table(table_name)
-table.put_item(
-    Item={
-        'id': 'test001',
-        'name': 'Test User',
-        'email': 'test@example.com',
-        'message': 'Hello from DynamoDB!'
-    }
-)
-print(f"數據已成功插入到表 {table_name}")
-```
+    # 獲取表對象並插入數據
+    table = dynamodb.Table(table_name)
+    table.put_item(
+        Item={
+            'id': 'test001',
+            'name': 'Test User',
+            'email': 'test@example.com',
+            'message': 'Hello from DynamoDB!'
+        }
+    )
+    print(f"數據已成功插入到表 {table_name}")
+    ```
 
     ![](images/img_32.png)
 
+<br>
+
 6. 可進入主控台查看。
 
-![](images/img_33.png)
+    ![](images/img_33.png)
+
+<br>
 
 7. 進入 S3 主控台查看寫入的 `.html` 文本。
 
-![](images/img_34.png)
+    ![](images/img_34.png)
+
+<br>
 
 ## 訪問
 
@@ -330,166 +336,274 @@ print(f"數據已成功插入到表 {table_name}")
 
     ![](images/img_35.png)
 
+<br>
+
 2. 禁用存儲桶的公共訪問限制，也就是允許公共訪問。
 
-```python
-try:
-    # 禁用 Block Public Access 設置
-    response = s3_client.put_public_access_block(
-        Bucket=bucket_name,
-        PublicAccessBlockConfiguration={
-            "BlockPublicAcls": False,
-            "IgnorePublicAcls": False,
-            "BlockPublicPolicy": False,
-            "RestrictPublicBuckets": False,
-        },
-    )
-    print(f"成功禁用存儲桶 {bucket_name} 的公共訪問限制。")
-except Exception as e:
-    print(f"禁用公共訪問限制時發生錯誤：{e}")
-```
+    ```python
+    try:
+        # 禁用 Block Public Access 設置
+        response = s3_client.put_public_access_block(
+            Bucket=bucket_name,
+            PublicAccessBlockConfiguration={
+                "BlockPublicAcls": False,
+                "IgnorePublicAcls": False,
+                "BlockPublicPolicy": False,
+                "RestrictPublicBuckets": False,
+            },
+        )
+        print(f"成功禁用存儲桶 {bucket_name} 的公共訪問限制。")
+    except Exception as e:
+        print(f"禁用公共訪問限制時發生錯誤：{e}")
+    ```
 
     ![](images/img_36.png)
 
+<br>
+
 3. 禁用公共訪問限制後，重新執行以下代碼，設置公共訪問策略。
 
-```python
-bucket_policy = {
-    "Version": "2012-10-17",
-    "Statement": [
-        {
-            "Sid": "PublicReadGetObject",
-            "Effect": "Allow",
-            "Principal": "*",
-            "Action": "s3:GetObject",
-            "Resource": f"arn:aws:s3:::{bucket_name}/*"
-        }
-    ]
-}
+    ```python
+    bucket_policy = {
+        "Version": "2012-10-17",
+        "Statement": [
+            {
+                "Sid": "PublicReadGetObject",
+                "Effect": "Allow",
+                "Principal": "*",
+                "Action": "s3:GetObject",
+                "Resource": f"arn:aws:s3:::{bucket_name}/*"
+            }
+        ]
+    }
 
-bucket_policy_json = json.dumps(bucket_policy)
+    bucket_policy_json = json.dumps(bucket_policy)
 
-try:
-    response = s3_client.put_bucket_policy(Bucket=bucket_name, Policy=bucket_policy_json)
-    print(f"已成功為存儲桶 {bucket_name} 設置公共訪問策略。")
-except Exception as e:
-    print(f"設置存儲桶策略時發生錯誤：{e}")
-```
+    try:
+        response = s3_client.put_bucket_policy(Bucket=bucket_name, Policy=bucket_policy_json)
+        print(f"已成功為存儲桶 {bucket_name} 設置公共訪問策略。")
+    except Exception as e:
+        print(f"設置存儲桶策略時發生錯誤：{e}")
+    ```
 
     ![](images/img_37.png)
+
+<br>
 
 4. 進行訪問。
 
     ![](images/img_38.png)
 
+<br>
+
 5. 顯示如下網頁。
 
-![](images/img_39.png)
+    ![](images/img_39.png)
+
+<br>
 
 6. 在寫入一筆。
 
-```python
-table.put_item(
-    Item={
-        'id': 'test002',
-        'name': 'Test User 02',
-        'email': 'test02@example.com',
-        'message': 'Hello from DynamoDB 02!'
-    }
-)
-print(f"數據已成功插入到表 {table_name}")
-```
+    ```python
+    table.put_item(
+        Item={
+            'id': 'test002',
+            'name': 'Test User 02',
+            'email': 'test02@example.com',
+            'message': 'Hello from DynamoDB 02!'
+        }
+    )
+    print(f"數據已成功插入到表 {table_name}")
+    ```
+
+<br>
 
 7. 進行訪問。
 
-![](images/img_40.png)
+    ![](images/img_40.png)
+
+<br>
 
 ## 優化代碼
 
 _覆蓋元文本_
 
+<br>
+
 1. 編輯新的腳本。
 
-```python
-import boto3
-from botocore.exceptions import ClientError
+    ```python
+    import boto3
+    from botocore.exceptions import ClientError
 
-# 初始化 S3 和 DynamoDB
-s3 = boto3.client("s3")
-dynamodb = boto3.resource("dynamodb")
+    # 初始化 S3 和 DynamoDB
+    s3 = boto3.client("s3")
+    dynamodb = boto3.resource("dynamodb")
 
-# 配置目標 S3 Bucket 和 DynamoDB 表
-target_bucket = "mytarget1121"
-table_name = "MyDynamoDBTable"
-# 固定的文件名稱
-file_name = "dynamodb_data.html"
-
-
-def lambda_handler(event, context):
-    try:
-        # 獲取 DynamoDB 表對象
-        table = dynamodb.Table(table_name)
-
-        # 掃描 DynamoDB 表數據
-        response = table.scan()
-        items = response["Items"]
-        if not items:
-            print(f"DynamoDB 表 {table_name} 中無數據")
-            return
-
-        # 生成 HTML 文件
-        html_content = generate_html(items)
-
-        # 上傳 HTML 文件到 S3（覆蓋同一文件）
-        upload_to_s3(file_name, html_content)
-    except Exception as e:
-        print(f"處理事件時發生錯誤：{e}")
+    # 配置目標 S3 Bucket 和 DynamoDB 表
+    target_bucket = "mytarget1121"
+    table_name = "MyDynamoDBTable"
+    # 固定的文件名稱
+    file_name = "dynamodb_data.html"
 
 
-def generate_html(items):
-    """生成 HTML 文件，包含 Bootstrap 格式表格"""
-    html_content = """
-    <!DOCTYPE html>
-    <html>
-    <head>
-        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
-        <title>DynamoDB Data</title>
-    </head>
-    <body>
-        <div class="container mt-5">
-            <h1 class="text-center">DynamoDB Table Data</h1>
-            <table class="table table-striped">
-                <thead>
-                    <tr>"""
-    if items:
-        # 表頭
-        for key in items[0].keys():
-            html_content += f"<th>{key}</th>"
-        html_content += "</tr></thead><tbody>"
-        for item in items:  # 表內容
-            html_content += "<tr>"
-            for value in item.values():
-                html_content += f"<td>{value}</td>"
-            html_content += "</tr>"
-    html_content += "</tbody></table></div></body></html>"
-    return html_content
+    def lambda_handler(event, context):
+        try:
+            # 獲取 DynamoDB 表對象
+            table = dynamodb.Table(table_name)
+
+            # 掃描 DynamoDB 表數據
+            response = table.scan()
+            items = response["Items"]
+            if not items:
+                print(f"DynamoDB 表 {table_name} 中無數據")
+                return
+
+            # 生成 HTML 文件
+            html_content = generate_html(items)
+
+            # 上傳 HTML 文件到 S3（覆蓋同一文件）
+            upload_to_s3(file_name, html_content)
+        except Exception as e:
+            print(f"處理事件時發生錯誤：{e}")
 
 
-def upload_to_s3(file_name, content):
-    """上傳文件到 S3，覆蓋原有文件"""
-    try:
-        s3.put_object(
-            Bucket=target_bucket,
-            Key=file_name,
-            Body=content,
-            # 確保是 HTML 文件
-            ContentType="text/html",
+    def generate_html(items):
+        """生成 HTML 文件，包含 Bootstrap 格式表格"""
+        html_content = """
+        <!DOCTYPE html>
+        <html>
+        <head>
+            <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
+            <title>DynamoDB Data</title>
+        </head>
+        <body>
+            <div class="container mt-5">
+                <h1 class="text-center">DynamoDB Table Data</h1>
+                <table class="table table-striped">
+                    <thead>
+                        <tr>"""
+        if items:
+            # 表頭
+            for key in items[0].keys():
+                html_content += f"<th>{key}</th>"
+            html_content += "</tr></thead><tbody>"
+            for item in items:  # 表內容
+                html_content += "<tr>"
+                for value in item.values():
+                    html_content += f"<td>{value}</td>"
+                html_content += "</tr>"
+        html_content += "</tbody></table></div></body></html>"
+        return html_content
+
+
+    def upload_to_s3(file_name, content):
+        """上傳文件到 S3，覆蓋原有文件"""
+        try:
+            s3.put_object(
+                Bucket=target_bucket,
+                Key=file_name,
+                Body=content,
+                # 確保是 HTML 文件
+                ContentType="text/html",
+            )
+            print(f"文件 {file_name} 已成功上傳至 S3")
+            print(f"訪問 URL：https://{target_bucket}.s3.amazonaws.com/{file_name}")
+        except ClientError as e:
+            print(f"上傳文件至 S3 時發生錯誤：{e}")
+
+    ```
+
+<br>
+
+2. 壓縮。
+
+    ```python
+    # 來源 Python 文件名
+    source_file = "_test_.py"
+    # 壓縮後的 ZIP 文件名
+    zip_file_name = "new_lambda_function.zip"
+
+    # 檢查來源文件是否存在
+    if not os.path.exists(source_file):
+        raise FileNotFoundError(
+            f"{source_file} 不存在，"
+            "請確認檔案存在當前目錄中。"
         )
-        print(f"文件 {file_name} 已成功上傳至 S3")
-        print(f"訪問 URL：https://{target_bucket}.s3.amazonaws.com/{file_name}")
-    except ClientError as e:
-        print(f"上傳文件至 S3 時發生錯誤：{e}")
 
-```
+    # 壓縮來源文件為 ZIP 文件
+    with zipfile.ZipFile(zip_file_name, "w") as zipf:
+        # 壓縮時更名為 lambda_function.py
+        zipf.write(
+            source_file, 
+            arcname="lambda_function.py"
+        )
 
-2. 
+    print(f"成功建立 {zip_file_name}。")
+    ```
+
+<br>
+
+3. 上傳。
+
+    ```python
+    # 讀取壓縮檔案
+    with open(zip_file_name, "rb") as f:
+        zip_file_content = f.read()
+
+    # 更新 Lambda Function 代碼
+    response = lambda_client.update_function_code(
+        FunctionName=function_name,
+        ZipFile=zip_file_content
+    )
+
+    print("成功上傳 Lambda function：", response)
+    ```
+
+<br>
+
+4. 寫入。
+
+    ```python
+    table.put_item(
+        Item={
+            'id': 'test003',
+            'name': 'Test User 03',
+            'email': 'test03@example.com',
+            'message': 'Hello from DynamoDB 03!'
+        }
+    )
+    print(f"數據已成功插入到表 {table_name}")
+    ```
+
+<br>
+
+5. 進入 S3 點擊 URL 進行訪問。
+
+<br>
+
+6. 再次寫入資料庫。
+
+    ```python
+    table.put_item(
+        Item={
+            'id': 'test004',
+            'name': 'Test User 04',
+            'email': 'test04@example.com',
+            'message': 'Hello from DynamoDB 04!'
+        }
+    )
+    print(f"數據已成功插入到表 {table_name}")
+    ```
+
+<br>
+
+7. 相同網址刷新一次，內容已更新。
+
+    ![](images/img_41.png)
+
+<br>
+
+___
+
+_END_
