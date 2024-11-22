@@ -55,141 +55,188 @@ except dynamodb.exceptions.ResourceInUseException:
 
 ![](images/img_23.png)
 
+3. 假如資料表已經存在會顯示如下訊息。
 
-## 建立 Lambda 函數
+![](images/img_24.png)
 
-1. 從 DynamoDB 獲取變更數據，轉化為 HTML 格式並上傳至 S3 ，同時設置 ACL 為 `public-read`。
+
+## 建立觸發
+
+1. 獲取流 ARN。
 
 ```python
-import boto3
-import json
-from botocore.exceptions import ClientError
-
-# 初始化 S3 資源
-s3 = boto3.client('s3')
-target_bucket = 'mytarget1121'  # 替換為目標 Bucket 名稱
-
-def lambda_handler(event, context):
-    # 循環處理 DynamoDB 流中的每條記錄
-    for record in event['Records']:
-        if record['eventName'] == 'INSERT':
-            # 獲取新插入的數據
-            new_image = record['dynamodb']['NewImage']
-            id_value = new_image['id']['S']
-            data = {k: v[list(v.keys())[0]] for k, v in new_image.items()}
-
-            # 將數據轉化為 HTML 格式（Bootstrap 美化）
-            html_content = f"""
-            <!DOCTYPE html>
-            <html>
-            <head>
-                <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
-                <title>DynamoDB Data</title>
-            </head>
-            <body>
-                <div class="container mt-5">
-                    <h1 class="text-center">DynamoDB Record</h1>
-                    <table class="table table-striped">
-                        <thead>
-                            <tr>
-                                <th>Key</th>
-                                <th>Value</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-            """
-            for key, value in data.items():
-                html_content += f"<tr><td>{key}</td><td>{value}</td></tr>"
-            html_content += """
-                        </tbody>
-                    </table>
-                </div>
-            </body>
-            </html>
-            """
-
-            # 上傳至 S3
-            file_name = f"{id_value}.html"
-            try:
-                s3.put_object(
-                    Bucket=target_bucket,
-                    Key=file_name,
-                    Body=html_content,
-                    ContentType='text/html',
-                    ACL='public-read'
-                )
-                print(f"文件 {file_name} 已成功上傳至 S3 並設置為公開訪問。")
-            except ClientError as e:
-                print(f"上傳文件至 S3 時發生錯誤：{e}")
-```
-
----
-
-### 步驟 3：配置 Lambda 觸發事件
-
-將 DynamoDB 流事件設置為 Lambda 函數的觸發事件。
-
-#### 程式碼：配置 Lambda 觸發
-```python
-import boto3
-
-# 初始化 AWS 客戶端
-lambda_client = boto3.client('lambda', region_name='us-east-1')
-dynamodb = boto3.client('dynamodb', region_name='us-east-1')
-
-# Lambda 函數名稱
-function_name = 'myDynamoDBTriggerFunction'
-
-# 獲取 DynamoDB 流 ARN
-table_name = 'MyDynamoDBTable'
+# 獲取表描述，提取流 ARN
 table_desc = dynamodb.describe_table(TableName=table_name)
 stream_arn = table_desc['Table']['LatestStreamArn']
-
-# 添加觸發器
-response = lambda_client.create_event_source_mapping(
-    EventSourceArn=stream_arn,
-    FunctionName=function_name,
-    StartingPosition='LATEST'
-)
-
-print(f"成功配置 Lambda 函數觸發事件：{response}")
+print(f"DynamoDB 表 {table_name} 的流 ARN：{stream_arn}")
 ```
 
----
+    ![](images/img_25.png)
 
-### 步驟 4：測試流程
+2. 檢查 Lambda 函數是否存在。
 
-1. 插入數據至 DynamoDB：
-   ```python
-   import boto3
+```python
+try:
+    response = lambda_client.get_function(FunctionName=function_name)
+    print(f"Lambda 函數 {function_name} 存在。")
+except lambda_client.exceptions.ResourceNotFoundException:
+    print(f"Lambda 函數 {function_name} 不存在，請檢查名稱拼寫或區域設定。")
+```
 
-   dynamodb = boto3.resource('dynamodb', region_name='us-east-1')
-   table = dynamodb.Table('MyDynamoDBTable')
+![](images/img_26.png)
 
-   # 插入測試數據
-   response = table.put_item(
-       Item={
-           'id': '123',
-           'name': 'John Doe',
-           'email': 'john.doe@example.com',
-           'message': 'Hello, DynamoDB!'
-       }
-   )
-   print("測試數據已插入：", response)
-   ```
+3. 添加觸發器，將 DynamoDB 流 ARN 綁定到現有的 Lambda 函數。
 
-2. 檢查 S3 Bucket：
-   - 登錄 AWS S3 控制台，檢查 `mytarget1121` Bucket 是否生成了一個 HTML 文件（例如 `123.html`）。
-   - 點擊該文件的公開 URL，應顯示美化的 HTML 表格。
+```python
+# 添加觸發器
+try:
+    response = lambda_client.create_event_source_mapping(
+        # DynamoDB 流 ARN
+        EventSourceArn=stream_arn,
+        # 現有 Lambda 函數名稱
+        FunctionName=function_name,
+        # 從最新的數據開始觸發
+        StartingPosition='LATEST'
+    )
+    print(f"成功為 Lambda 函數 {function_name} 添加觸發器：{response}")
+except Exception as e:
+    print(f"添加觸發器時發生錯誤：{e}")
+```
 
----
+![](images/img_27.png)
 
-### 總結
+4. 可在主控台中查看。
 
-上述流程完整實現了以下功能：
-1. 建立 DynamoDB 表並啟用流。
-2. 建立 Lambda 函數，將 DynamoDB 的數據轉化為 HTML，並上傳到 S3。
-3. 設置 Lambda 函數為 DynamoDB 流的觸發器。
-4. 測試插入數據並驗證結果。
+![](images/img_28.png)
 
-如果有其他需求，或需要進一步調整，請隨時告知！
+## 編輯新的腳本
+
+1. 使用既有的 `_test_.py`，貼上以下內容。
+
+```python
+import boto3
+import datetime
+import dateutil.tz
+from botocore.exceptions import ClientError
+
+# 初始化 S3 和 DynamoDB
+s3 = boto3.client("s3")
+dynamodb = boto3.resource("dynamodb")
+
+# 配置目標 S3 Bucket 和 DynamoDB 表
+target_bucket = "mytarget1121"
+table_name = "MyDynamoDBTable"
+
+
+def lambda_handler(event, context):
+    try:
+        # 獲取 DynamoDB 表對象
+        table = dynamodb.Table(table_name)
+
+        # 掃描 DynamoDB 表數據
+        response = table.scan()
+        items = response["Items"]
+        if not items:
+            print(f"DynamoDB 表 {table_name} 中無數據")
+            return
+
+        # 生成 HTML 文件
+        html_content = generate_html(items)
+        tz = dateutil.tz.gettz("Asia/Taipei")
+        timestr = datetime.datetime.now(tz).strftime("%Y%m%d%H%M%S")
+        file_name = f"{timestr}.html"
+
+        # 上傳 HTML 文件到 S3
+        upload_to_s3(file_name, html_content)
+    except Exception as e:
+        print(f"處理事件時發生錯誤：{e}")
+
+
+def generate_html(items):
+    """生成 HTML 文件，包含 Bootstrap 格式表格"""
+    html_content = """
+    <!DOCTYPE html>
+    <html>
+    <head>
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
+        <title>DynamoDB Data</title>
+    </head>
+    <body>
+        <div class="container mt-5">
+            <h1 class="text-center">DynamoDB Table Data</h1>
+            <table class="table table-striped">
+                <thead>
+                    <tr>"""
+    if items:
+        # 表頭
+        for key in items[0].keys():
+            html_content += f"<th>{key}</th>"
+        html_content += "</tr></thead><tbody>"
+        for item in items:  # 表內容
+            html_content += "<tr>"
+            for value in item.values():
+                html_content += f"<td>{value}</td>"
+            html_content += "</tr>"
+    html_content += "</tbody></table></div></body></html>"
+    return html_content
+
+
+def upload_to_s3(file_name, content):
+    """上傳文件到 S3，不使用 ACL，通過存儲桶策略管理訪問權限"""
+    try:
+        s3.put_object(
+            Bucket=target_bucket,
+            Key=file_name,
+            Body=content,
+            # 確保是 HTML 文件
+            ContentType="text/html",
+        )
+        print(f"文件 {file_name} 已成功上傳至 S3")
+        print(f"訪問 URL：https://{target_bucket}.s3.amazonaws.com/{file_name}")
+    except ClientError as e:
+        print(f"上傳文件至 S3 時發生錯誤：{e}")
+```
+
+2. 再次壓縮。
+
+```python
+# 來源 Python 文件名
+source_file = "_test_.py"
+# 壓縮後的 ZIP 文件名
+zip_file_name = "new_lambda_function.zip"
+
+# 檢查來源文件是否存在
+if not os.path.exists(source_file):
+    raise FileNotFoundError(
+        f"{source_file} 不存在，"
+        "請確認檔案存在當前目錄中。"
+    )
+
+# 壓縮來源文件為 ZIP 文件
+with zipfile.ZipFile(zip_file_name, "w") as zipf:
+    # 壓縮時更名為 lambda_function.py
+    zipf.write(
+        source_file, 
+        arcname="lambda_function.py"
+    )
+
+print(f"成功建立 {zip_file_name}。")
+```
+
+3. 更新 Lambda 函數代碼。
+
+```python
+# 讀取壓縮檔案
+with open(zip_file_name, "rb") as f:
+    zip_file_content = f.read()
+
+# 更新 Lambda Function 代碼
+response = lambda_client.update_function_code(
+    FunctionName=function_name,
+    ZipFile=zip_file_content
+)
+
+print("成功上傳 Lambda function：", response)
+```
+
+4. 
