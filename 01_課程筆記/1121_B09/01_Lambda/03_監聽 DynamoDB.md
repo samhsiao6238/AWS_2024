@@ -604,6 +604,63 @@ _覆蓋元文本_
 
 <br>
 
+## 刪除資源
+
+1. 刪除 DynamoDB 表的代碼區塊。
+
+    ```python
+    # 初始化 S3 和 DynamoDB 客戶端
+    s3_client = boto3.client("s3")
+    dynamodb_client = boto3.client("dynamodb")
+    lambda_client = boto3.client("lambda")
+
+    # 4. 刪除 DynamoDB 表
+    def delete_dynamodb_table(table_name):
+        try:
+            # 檢查表是否存在
+            table = dynamodb_client.describe_table(TableName=table_name)
+            if table:
+                print(f"DynamoDB 表 {table_name} 存在，正在刪除...")
+                dynamodb_client.delete_table(TableName=table_name)
+
+                # 等待表刪除完成
+                waiter = dynamodb_client.get_waiter("table_not_exists")
+                waiter.wait(TableName=table_name)
+                print(f"DynamoDB 表 {table_name} 已成功刪除。")
+        except dynamodb_client.exceptions.ResourceNotFoundException:
+            print(f"DynamoDB 表 {table_name} 不存在。")
+        except Exception as e:
+            print(f"刪除 DynamoDB 表 {table_name} 時發生錯誤：{e}")
+
+
+    # 刪除過程
+    if __name__ == "__main__":
+        print("開始清理資源 ...")
+        
+        # 刪除 Lambda 授權
+        remove_lambda_permission(function_name, statement_id)
+        
+        # 移除 S3 事件通知
+        remove_s3_event_notification(source_bucket_name)
+        remove_s3_event_notification(target_bucket_name)
+        
+        # 刪除 Lambda Function
+        delete_lambda_function(function_name)
+        
+        # 刪除 S3 Buckets
+        delete_bucket(source_bucket_name)
+        delete_bucket(target_bucket_name)
+        
+        # 刪除 DynamoDB 表
+        delete_dynamodb_table(table_name)
+
+        print("清理工作結束。")
+    ```
+
+    ![](images/img_42.png)
+
+<br>
+
 ___
 
 _END_
