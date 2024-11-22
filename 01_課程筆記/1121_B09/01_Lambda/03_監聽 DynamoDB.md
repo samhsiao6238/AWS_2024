@@ -136,7 +136,7 @@ _接下來建立一個新的觸發事件，監聽指定的 DynamoDB_
 
 ## 編輯腳本
 
-_在本地進行編輯，然後上傳覆蓋當前的 Function Code_
+_與之前步驟相同，先在本地進行編輯，然後上傳覆蓋當前的 Function Code_
 
 <br>
 
@@ -224,6 +224,7 @@ _在本地進行編輯，然後上傳覆蓋當前的 Function Code_
             print(f"訪問 URL：https://{target_bucket}.s3.amazonaws.com/{file_name}")
         except ClientError as e:
             print(f"上傳文件至 S3 時發生錯誤：{e}")
+
     ```
 
 <br>
@@ -254,6 +255,8 @@ _在本地進行編輯，然後上傳覆蓋當前的 Function Code_
     print(f"成功建立 {zip_file_name}。")
     ```
 
+    ![](images/img_29.png)
+
 <br>
 
 3. 更新 Lambda 函數代碼。
@@ -272,6 +275,14 @@ _在本地進行編輯，然後上傳覆蓋當前的 Function Code_
     print("成功上傳 Lambda function：", response)
     ```
 
+    ![](images/img_30.png)
+
 <br>
 
-4. 
+4. 可進入主控台查看，確認內容已經更新。
+
+    ![](images/img_31.png)
+
+<br>
+
+5. 
