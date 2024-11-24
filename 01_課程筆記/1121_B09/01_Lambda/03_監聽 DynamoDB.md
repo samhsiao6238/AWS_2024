@@ -79,10 +79,10 @@ _接下來建立一個新的觸發事件，監聽指定的 DynamoDB_
 
 ## 建立觸發
 
-1. 獲取流 ARN。
+1. 取得流 ARN。
 
     ```python
-    # 獲取表描述，提取流 ARN
+    # 取得表描述，提取流 ARN
     table_desc = dynamodb.describe_table(TableName=table_name)
     stream_arn = table_desc['Table']['LatestStreamArn']
     print(f"DynamoDB 表 {table_name} 的流 ARN：{stream_arn}")
@@ -159,7 +159,7 @@ _與之前步驟相同，先在本地進行編輯，然後上傳覆蓋當前的 
 
     def lambda_handler(event, context):
         try:
-            # 獲取 DynamoDB 表對象
+            # 取得 DynamoDB 表對象
             table = dynamodb.Table(table_name)
 
             # 掃描 DynamoDB 表數據
@@ -293,7 +293,7 @@ _與之前步驟相同，先在本地進行編輯，然後上傳覆蓋當前的 
     # 定義表名稱
     table_name = 'MyDynamoDBTable'
 
-    # 獲取表對象並插入數據
+    # 取得表對象並插入數據
     table = dynamodb.Table(table_name)
     table.put_item(
         Item={
@@ -449,7 +449,7 @@ _覆蓋元文本_
 
     def lambda_handler(event, context):
         try:
-            # 獲取 DynamoDB 表對象
+            # 取得 DynamoDB 表對象
             table = dynamodb.Table(table_name)
 
             # 掃描 DynamoDB 表數據
