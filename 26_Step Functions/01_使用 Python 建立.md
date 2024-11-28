@@ -1,5 +1,7 @@
 # 使用 Python 建立 Step Function
 
+<br>
+
 ##  安裝和配置 `boto3`
 
 1. 先在 Cloud9 或 Jupyter Notebook 環境中安裝。
@@ -8,11 +10,15 @@
     pip install boto3
     ```
 
+<br>
+
 2. 設定憑證。
 
     ```bash
     aws configure
     ```
+
+<br>
 
 3. 使用 Python 代碼來運行 Step Functions。
 
@@ -42,6 +48,8 @@
     print("Execution ARN:", response['executionArn'])
     ```
 
+<br>
+
 4. 檢查 Step Functions 執行狀態。
 
     ```python
@@ -55,6 +63,8 @@
     print("Execution Output:", response['output'])
     ```
 
+<br>
+
 ## 管理其他 Step Functions 操作
 
 1. 停止執行。
@@ -63,6 +73,8 @@
         executionArn=execution_arn
     )
     ```
+
+<br>
 
 2. 列出所有執行。
 
