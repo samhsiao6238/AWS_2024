@@ -237,6 +237,84 @@ _以下使用 AWS CLI 建立、停止和終止 EC2_
 
 <br>
 
+## 刪除所有資源
+
+_在本地的終端機中運行_
+
+<br>
+
+1. 複製 AWS Details，開啟本地新的終端機，並將憑證直接複製貼上。
+
+    ![](images/img_21.png)
+
+<br>
+
+2. 接著貼上以下指令，用於將憑證轉換為環境變數。
+
+    ```bash
+    export AWS_ACCESS_KEY_ID=$aws_access_key_id
+    export AWS_SECRET_ACCESS_KEY=$aws_secret_access_key
+    export AWS_SESSION_TOKEN=$aws_session_token
+    ```
+
+<br>
+
+3. 確認使用者資訊，務必確實核對輸出是否與主控台顯示的相同。
+
+    ```bash
+    aws sts get-caller-identity
+    ```
+
+<br>
+
+4. 先列出所有 Cloud9 環境，以確認需要刪除的資源。
+
+    ```bash
+    aws cloud9 list-environments --output table
+    ```
+
+<br>
+
+5. 刪除 Cloud9 環境，這會自動終止與該環境相關聯的 EC2 實例。
+
+    ```bash
+    for ENV_ID in $(aws cloud9 list-environments --query "environmentIds[]" --output text); do
+        echo "Deleting Cloud9 environment: $ENV_ID"
+        aws cloud9 delete-environment --environment-id $ENV_ID
+    done
+    ```
+
+<br>
+
+6. 假如要手動刪除所有與 Cloud9 相關的 EC2 實例，可透過 Cloud9 實例 `aws-cloud9` 前綴進行篩選。
+
+    ```bash
+    for INSTANCE_ID in $(aws ec2 describe-instances \
+        --filters "Name=tag:aws:cloud9" "Name=instance-state-name,Values=running,stopped" \
+        --query "Reservations[*].Instances[*].InstanceId" --output text); do
+        echo "Terminating EC2 instance: $INSTANCE_ID"
+        aws ec2 terminate-instances --instance-ids $INSTANCE_ID
+    done
+    ```
+
+<br>
+
+7. 刪除全部的 Key Pair，並保留預設的 `vockey`。
+
+    ```bash
+    for KEY_NAME in $(aws ec2 describe-key-pairs --query "KeyPairs[*].KeyName" --output text); do
+        if [ "$KEY_NAME" != "vockey" ]; then
+            echo "Deleting Key Pair: $KEY_NAME"
+            aws ec2 delete-key-pair --key-name $KEY_NAME
+        else
+            echo "Skipping Key Pair: $KEY_NAME"
+        fi
+    done
+    ```
+
+<br>
+
 ___
+
 
 _END_
