@@ -39,4 +39,12 @@
     },
     // 設定 Python language server 為 Microsoft 的 Pylance
     "python.languageServer": "Pylance",
+    "indentRainbow.colors": [
+        "rgba(255,69,0,0.1)",  // 第一層
+        "rgba(255,140,0,0.1)", // 第二層
+        "rgba(34,139,34,0.1)", // 第三層
+        "rgba(0,0,255,0.1)"    // 第四層
+    ],
+    // 當縮排不一致時顯示的錯誤顏色
+    "indentRainbow.errorColor": "rgba(128,32,32,0.8)"
 }
