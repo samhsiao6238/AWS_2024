@@ -154,6 +154,8 @@ _Boto3_
     python3 -m venv envSandBox
     ```
 
+    ![](images/img_50.png)
+
 <br>
 
 3. 啟動虛擬環境。
@@ -161,6 +163,8 @@ _Boto3_
     ```bash
     source envSandBox/bin/activate
     ```
+
+    ![](images/img_51.png)
 
 <br>
 
@@ -443,7 +447,13 @@ _為了排除相關限制，嘗試在允許範圍內對預設的 IAM 進行設�
 
 <br>
 
-5. 完成以上步驟後，可嘗試在本機進行終端機查詢指令，會得到跳板與目標 EC2 實例的資訊；確保可以運行，然後繼續以下步驟。
+## 查詢
+
+_完成以上步驟後，可在本機連線跳板主機後的終端機中進行以下查詢_
+
+<br>
+
+1. 查詢跳板與目標 EC2 實例的資訊；得到正確訊息代表設定皆正確，然後繼續以下步驟。
 
     ```bash
     aws ec2 describe-instances \
