@@ -589,13 +589,15 @@ _回到 Cloud9 的目標 EC2 的終端機中_
 
 <br>
 
-8. 連線成功顯示如下。
+5. 輸入 `yes` 之後會進行連線，若成功會顯示如下畫面。
 
     ![](images/img_45.png)
 
 <br>
 
-12. 使用以下指令進行驗證，這會進入 `~/environment` 並輸出 `README.md` 文件內容。
+## 驗證連線成功
+
+1. 進入 `目標 EC2` 的目錄 `~/environment`，這就是在 `Cloud9` 終端機所顯示的資料夾，接著使用 `cat` 指令輸出 `README.md` 文件內容。
 
     ```bash
     cd ~/environment && cat README.md
