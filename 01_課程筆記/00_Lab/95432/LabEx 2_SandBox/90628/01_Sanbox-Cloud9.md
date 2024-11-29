@@ -130,6 +130,12 @@ _已經內建 CLI，無需額外安裝_
 
 <br>
 
+4. 特別注意，這個 `Bastion Host` 會比較慢完成，可等待狀態變成 `Running` 再進行後續操作。
+
+    ![](images/img_49.png)
+
+<br>
+
 ## 使用 AWS SDK for Python
 
 _Boto3_
